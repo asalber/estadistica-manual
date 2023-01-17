@@ -1,0 +1,1963 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Manual de Estadística - 2&nbsp; Estadística Descriptiva</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./introduccion.html" rel="prev">
+<link href="./img/logos/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la busqueda",
+    "search-hide-matches-text": "Esconder resultados adicionales",
+    "search-more-match-text": "hay más resultados en este documento",
+    "search-more-matches-text": "más resultados en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta property="og:title" content="Manual de Estadística - 2&nbsp; Estadística Descriptiva">
+<meta property="og:description" content="La estadística descriptiva es la parte de la estadística encargada de representar, analizar y resumir la información contenida en la muestra.">
+<meta property="og:site-name" content="Manual de Estadística">
+<meta name="twitter:title" content="Manual de Estadística - 2&nbsp; Estadística Descriptiva">
+<meta name="twitter:description" content="La estadística descriptiva es la parte de la estadística encargada de representar, analizar y resumir la información contenida en la muestra.">
+<meta name="twitter:site" content="@aprendeconalf">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estadística Descriptiva</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Manual de Estadística</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://aprendeconalf.es" title="" class="sidebar-tool px-1"><i class="bi bi-house-fill"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./manual-estadistica.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./manual-estadistica.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+    <a href="" title="Share" id="sidebar-tool-dropdown-1" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-1">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+            <i class="bi bi-bi-twitter pe-1"></i>
+          Twitter
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+            <i class="bi bi-bi-linkedin pe-1"></i>
+          LinkedIn
+          </a>
+        </li>
+    </ul>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefacio</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introduccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a la Estadística</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./estadistica-descriptiva.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estadística Descriptiva</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#distribución-de-frecuencias" id="toc-distribución-de-frecuencias" class="nav-link active" data-scroll-target="#distribución-de-frecuencias"><span class="toc-section-number">2.1</span>  Distribución de frecuencias</a>
+  <ul class="collapse">
+  <li><a href="#clasificación-de-la-muestra" id="toc-clasificación-de-la-muestra" class="nav-link" data-scroll-target="#clasificación-de-la-muestra"><span class="toc-section-number">2.1.1</span>  Clasificación de la muestra</a></li>
+  <li><a href="#recuento-de-frecuencias" id="toc-recuento-de-frecuencias" class="nav-link" data-scroll-target="#recuento-de-frecuencias"><span class="toc-section-number">2.1.2</span>  Recuento de frecuencias</a></li>
+  </ul></li>
+  <li><a href="#frecuencias-muestrales" id="toc-frecuencias-muestrales" class="nav-link" data-scroll-target="#frecuencias-muestrales"><span class="toc-section-number">2.2</span>  Frecuencias muestrales</a>
+  <ul class="collapse">
+  <li><a href="#tabla-de-frecuencias" id="toc-tabla-de-frecuencias" class="nav-link" data-scroll-target="#tabla-de-frecuencias"><span class="toc-section-number">2.2.1</span>  Tabla de frecuencias</a></li>
+  <li><a href="#construcción-de-clases" id="toc-construcción-de-clases" class="nav-link" data-scroll-target="#construcción-de-clases"><span class="toc-section-number">2.2.2</span>  Construcción de clases</a></li>
+  </ul></li>
+  <li><a href="#representaciones-gráficas" id="toc-representaciones-gráficas" class="nav-link" data-scroll-target="#representaciones-gráficas"><span class="toc-section-number">2.3</span>  Representaciones gráficas</a>
+  <ul class="collapse">
+  <li><a href="#diagrama-de-barras" id="toc-diagrama-de-barras" class="nav-link" data-scroll-target="#diagrama-de-barras"><span class="toc-section-number">2.3.1</span>  Diagrama de barras</a></li>
+  <li><a href="#histograma" id="toc-histograma" class="nav-link" data-scroll-target="#histograma"><span class="toc-section-number">2.3.2</span>  Histograma</a></li>
+  <li><a href="#diagrama-de-sectores" id="toc-diagrama-de-sectores" class="nav-link" data-scroll-target="#diagrama-de-sectores"><span class="toc-section-number">2.3.3</span>  Diagrama de sectores</a></li>
+  <li><a href="#la-distribución-normal" id="toc-la-distribución-normal" class="nav-link" data-scroll-target="#la-distribución-normal"><span class="toc-section-number">2.3.4</span>  La distribución Normal</a></li>
+  </ul></li>
+  <li><a href="#datos-atípicos" id="toc-datos-atípicos" class="nav-link" data-scroll-target="#datos-atípicos"><span class="toc-section-number">2.4</span>  Datos atípicos</a>
+  <ul class="collapse">
+  <li><a href="#tratamiento-de-los-datos-atípicos" id="toc-tratamiento-de-los-datos-atípicos" class="nav-link" data-scroll-target="#tratamiento-de-los-datos-atípicos"><span class="toc-section-number">2.4.1</span>  Tratamiento de los datos atípicos</a></li>
+  </ul></li>
+  <li><a href="#estadísticos-muestrales" id="toc-estadísticos-muestrales" class="nav-link" data-scroll-target="#estadísticos-muestrales"><span class="toc-section-number">2.5</span>  Estadísticos muestrales</a></li>
+  <li><a href="#estadísticos-de-posición" id="toc-estadísticos-de-posición" class="nav-link" data-scroll-target="#estadísticos-de-posición"><span class="toc-section-number">2.6</span>  Estadísticos de posición</a>
+  <ul class="collapse">
+  <li><a href="#media-aritmética" id="toc-media-aritmética" class="nav-link" data-scroll-target="#media-aritmética"><span class="toc-section-number">2.6.1</span>  Media aritmética</a></li>
+  <li><a href="#mediana" id="toc-mediana" class="nav-link" data-scroll-target="#mediana"><span class="toc-section-number">2.6.2</span>  Mediana</a></li>
+  <li><a href="#moda" id="toc-moda" class="nav-link" data-scroll-target="#moda"><span class="toc-section-number">2.6.3</span>  Moda</a></li>
+  <li><a href="#qué-estadístico-de-tendencia-central-usar" id="toc-qué-estadístico-de-tendencia-central-usar" class="nav-link" data-scroll-target="#qué-estadístico-de-tendencia-central-usar"><span class="toc-section-number">2.6.4</span>  ¿Qué estadístico de tendencia central usar?</a></li>
+  <li><a href="#medidas-de-posición-no-centrales" id="toc-medidas-de-posición-no-centrales" class="nav-link" data-scroll-target="#medidas-de-posición-no-centrales"><span class="toc-section-number">2.6.5</span>  Medidas de posición no centrales</a></li>
+  </ul></li>
+  <li><a href="#estadísticos-de-dispersión" id="toc-estadísticos-de-dispersión" class="nav-link" data-scroll-target="#estadísticos-de-dispersión"><span class="toc-section-number">2.7</span>  Estadísticos de dispersión</a>
+  <ul class="collapse">
+  <li><a href="#recorrido" id="toc-recorrido" class="nav-link" data-scroll-target="#recorrido"><span class="toc-section-number">2.7.1</span>  Recorrido</a></li>
+  <li><a href="#rango-intercuartílico" id="toc-rango-intercuartílico" class="nav-link" data-scroll-target="#rango-intercuartílico"><span class="toc-section-number">2.7.2</span>  Rango intercuartílico</a></li>
+  <li><a href="#diagrama-de-caja-y-bigotes" id="toc-diagrama-de-caja-y-bigotes" class="nav-link" data-scroll-target="#diagrama-de-caja-y-bigotes"><span class="toc-section-number">2.7.3</span>  Diagrama de caja y bigotes</a></li>
+  <li><a href="#varianza-y-desviación-típica" id="toc-varianza-y-desviación-típica" class="nav-link" data-scroll-target="#varianza-y-desviación-típica"><span class="toc-section-number">2.7.4</span>  Varianza y desviación típica</a></li>
+  <li><a href="#coeficiente-de-variación" id="toc-coeficiente-de-variación" class="nav-link" data-scroll-target="#coeficiente-de-variación"><span class="toc-section-number">2.7.5</span>  Coeficiente de variación</a></li>
+  </ul></li>
+  <li><a href="#estadísticos-de-forma" id="toc-estadísticos-de-forma" class="nav-link" data-scroll-target="#estadísticos-de-forma"><span class="toc-section-number">2.8</span>  Estadísticos de forma</a>
+  <ul class="collapse">
+  <li><a href="#coeficiente-de-asimetría" id="toc-coeficiente-de-asimetría" class="nav-link" data-scroll-target="#coeficiente-de-asimetría"><span class="toc-section-number">2.8.1</span>  Coeficiente de asimetría</a></li>
+  <li><a href="#coeficiente-de-apuntamiento-o-curtosis" id="toc-coeficiente-de-apuntamiento-o-curtosis" class="nav-link" data-scroll-target="#coeficiente-de-apuntamiento-o-curtosis"><span class="toc-section-number">2.8.2</span>  Coeficiente de apuntamiento o curtosis</a></li>
+  <li><a href="#distribuciones-no-normales" id="toc-distribuciones-no-normales" class="nav-link" data-scroll-target="#distribuciones-no-normales"><span class="toc-section-number">2.8.3</span>  Distribuciones no normales</a></li>
+  </ul></li>
+  <li><a href="#transformaciones-de-variables" id="toc-transformaciones-de-variables" class="nav-link" data-scroll-target="#transformaciones-de-variables"><span class="toc-section-number">2.9</span>  Transformaciones de variables</a>
+  <ul class="collapse">
+  <li><a href="#transformaciones-lineales" id="toc-transformaciones-lineales" class="nav-link" data-scroll-target="#transformaciones-lineales"><span class="toc-section-number">2.9.1</span>  Transformaciones lineales</a></li>
+  <li><a href="#transformación-de-tipificación-y-puntuaciones-típicas" id="toc-transformación-de-tipificación-y-puntuaciones-típicas" class="nav-link" data-scroll-target="#transformación-de-tipificación-y-puntuaciones-típicas"><span class="toc-section-number">2.9.2</span>  Transformación de tipificación y puntuaciones típicas</a></li>
+  <li><a href="#variables-clasificadoras-o-factores" id="toc-variables-clasificadoras-o-factores" class="nav-link" data-scroll-target="#variables-clasificadoras-o-factores"><span class="toc-section-number">2.9.3</span>  Variables clasificadoras o factores</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estadística Descriptiva</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>La estadística descriptiva es la parte de la estadística encargada de representar, analizar y resumir la información contenida en la muestra.</p>
+<p>Tras el proceso de muestreo, es la siguiente etapa de todo estudio estadístico y suele consistir en:</p>
+<ol type="1">
+<li><p>Clasificar, agrupar y ordenar los datos de la muestra.</p></li>
+<li><p>Tabular y representar gráficamente los datos de acuerdo a sus frecuencias.</p></li>
+<li><p>Calcular medidas que resuman la información que contiene la muestra (<em>estadísticos muestrales</em>).</p></li>
+</ol>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No tiene poder inferencial, por lo que nunca deben sacarse conclusiones sobre la población a partir de las medidas resumen que aporta la Estadística Descriptiva.</p>
+</div>
+</div>
+<section id="distribución-de-frecuencias" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="distribución-de-frecuencias"><span class="header-section-number">2.1</span> Distribución de frecuencias</h2>
+<p>El estudio de una variable estadística comienza por medir la variable en los individuos de la muestra y clasificar los valores obtenidos.</p>
+<p>Existen dos formas de clasificar estos valores:</p>
+<ul>
+<li><p><strong>Sin agrupar</strong>: Ordenar todos los valores obtenidos en la muestra de menor a mayor. Se utiliza con atributos y variables discretas con pocos valores diferentes.</p></li>
+<li><p><strong>Agrupados</strong>: Agrupar los valores en clases (intervalos) y ordenar dichas clases de menor a mayor. Se utiliza con variables continuas y con variables discretas con muchos valores diferentes.</p></li>
+</ul>
+<section id="clasificación-de-la-muestra" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="clasificación-de-la-muestra"><span class="header-section-number">2.1.1</span> Clasificación de la muestra</h3>
+<p>Consiste colocar juntos los valores iguales y ordenarlos si existe un orden entre ellos.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/clasificacion_muestra.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Clasificación de la muestra.</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="recuento-de-frecuencias" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="recuento-de-frecuencias"><span class="header-section-number">2.1.2</span> Recuento de frecuencias</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/recuento_frecuencias.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Recuento de frecuencias</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="frecuencias-muestrales" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="frecuencias-muestrales"><span class="header-section-number">2.2</span> Frecuencias muestrales</h2>
+<div id="def-frecuencias-muestrales" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.1 (Frecuencias muestrales) </strong></span>Dada una muestra de tamaño <span class="math inline">\(n\)</span> de una variable <span class="math inline">\(X\)</span>, para cada valor de la variable <span class="math inline">\(x_i\)</span> observado en la muestra, se define</p>
+<ul>
+<li><strong>Frecuencia Absoluta <span class="math inline">\(n_i\)</span></strong>: Es el número de veces que el valor <span class="math inline">\(x_i\)</span> aparece en la muestra.</li>
+<li><strong>Frecuencia Relativa <span class="math inline">\(f_i\)</span></strong>: Es la proporción de veces que el valor <span class="math inline">\(x_i\)</span> aparece en la muestra. <span class="math display">\[f_i = \frac{n_i}{n}\]</span></li>
+<li><strong>Frecuencia Absoluta Acumulada <span class="math inline">\(N_i\)</span></strong>: Es el número de valores en la muestra menores o iguales que <span class="math inline">\(x_i\)</span>. <span class="math display">\[N_i = n_1 + \cdots + n_i = N_{i-1}+n_i\]</span></li>
+<li><strong>Frecuencia Relativa Acumulada <span class="math inline">\(F_i\)</span></strong>: Es la proporción de valores en la muestra menores o iguales que <span class="math inline">\(x_i\)</span>. <span class="math display">\[F_i = \frac{N_i}{n}\]</span></li>
+</ul>
+</div>
+<section id="tabla-de-frecuencias" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="tabla-de-frecuencias"><span class="header-section-number">2.2.1</span> Tabla de frecuencias</h3>
+<p>Al conjunto de valores observados en la muestra junto a sus respectivas frecuencias se le denomina <strong>distribución de frecuencias</strong> y suele representarse mediante una <strong>tabla de frecuencias</strong>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Valores de <span class="math inline">\(X\)</span></th>
+<th style="text-align: center;">Frecuencia Absoluta</th>
+<th style="text-align: center;">Frecuencia Relativa</th>
+<th style="text-align: center;">Frecuencia Absoluta Acumulada</th>
+<th style="text-align: center;">Frecuencia Relativa Acumulada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(x_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(N_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_1\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(x_i\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_i\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_i\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(N_i\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_i\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(x_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(N_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_k\)</span></td>
+</tr>
+</tbody>
+</table>
+<div id="exm-tabla-frecuencias-datos-no-agrupados" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.1 (Variable cuantitativa y datos no agrupados) </strong></span>El número de hijos en 25 familias es:</p>
+<div style="text-align:center">
+<p>1, 2, 4, 2, 2, 2, 3, 2, 1, 1, 0, 2, 2, 0, 2, 2, 1, 2, 2, 3, 1, 2, 2, 1, 2</p>
+</div>
+<p>La tabla de frecuencias del número de hijos en esta muestra es</p>
+<p><span class="math display">\[
+\begin{array}{rrrrr}
+\hline
+x_i &amp; n_i &amp; f_i &amp; N_i &amp; F_i\\
+\hline
+0 &amp; 2 &amp; 0.08 &amp; 2 &amp; 0.08\\
+1 &amp; 6 &amp; 0.24 &amp; 8 &amp; 0.32\\
+2 &amp; 14 &amp; 0.56 &amp; 22 &amp; 0.88\\
+3 &amp; 2 &amp; 0.08 &amp; 24 &amp; 0.96\\
+4 &amp; 1 &amp; 0.04 &amp; 25 &amp; 1 \\
+\hline
+\sum &amp; 25 &amp; 1 \\
+\hline
+\end{array}
+\]</span></p>
+</div>
+<div id="exm-tabla-frecuencias-datos-agrupados" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.2 (Variable cuantitativa y datos agrupados) </strong></span>Se ha medido la estatura (en cm) de 30 universitarios obteniendo:</p>
+<div style="text-align:center">
+<p>179, 173, 181, 170, 158, 174, 172, 166, 194, 185,<br> 162, 187, 198, 177, 178, 165, 154, 188, 166, 171,<br> 175, 182, 167, 169, 172, 186, 172, 176, 168, 187.</p>
+</div>
+<p>La tabla de frecuencias de la estatura en a esta muestra es</p>
+<p><span class="math display">\[
+\begin{array}{crrrr}
+\hline
+x_i &amp; n_i &amp; f_i &amp; N_i &amp; F_i\\
+\hline
+(150,160] &amp; 2 &amp; 0.07 &amp; 2 &amp; 0.07\\
+(160,170] &amp; 8 &amp; 0.27 &amp; 10 &amp; 0.34\\
+(170,180] &amp; 11 &amp; 0.36 &amp; 21 &amp; 0.70\\
+(180,190] &amp; 7 &amp; 0.23 &amp; 28 &amp; 0.93\\
+(190,200] &amp; 2 &amp; 0.07 &amp; 30 &amp; 1 \\
+\hline
+\sum &amp; 30 &amp; 1 \\
+\hline
+\end{array}
+\]</span></p>
+</div>
+</section>
+<section id="construcción-de-clases" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="construcción-de-clases"><span class="header-section-number">2.2.2</span> Construcción de clases</h3>
+<p>Cada intervalo de agrupación de datos se denomina <strong>clase</strong> y el centro del intervalo se llama <strong>marca de clase</strong>.</p>
+<p>A la hora de agrupar los datos en clases hay que tener en cuenta lo siguiente:</p>
+<ul>
+<li>El número de intervalos no debe ser muy grande ni muy pequeño. Una regla orientativa es tomar un número de intervalos próximo a <span class="math inline">\(\sqrt{n}\)</span> o <span class="math inline">\(\log_2(n)\)</span>.</li>
+<li>Los intervalos no deben solaparse y deben cubrir todo el rango de valores. Es indiferente si se abren por la izquierda y se cierran por la derecha o al revés.</li>
+<li>El valor más pequeño debe caer dentro del primer intervalo y el más grande dentro del último.</li>
+</ul>
+<div id="exm-tabla-frecuencias-cualitativa" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.3 (Variable cualitativa) </strong></span>Los grupos sanguíneos de una muestra de 30 personas son:</p>
+<div style="text-align:center">
+<p>A, B, B, A, AB, 0, 0, A, B, B, A, A, A, A, AB, A, A, A, B, 0, B, B, B, A, A, A, 0, A, AB, 0.</p>
+</div>
+<p>La tabla de frecuencias del grupo sanguíneo en esta muestra es</p>
+<p><span class="math display">\[
+\begin{array}{crr}
+\hline
+x_i &amp; n_i &amp; f_i \\
+\hline
+\mbox{0} &amp; 5 &amp; 0.16 \\
+\mbox{A} &amp; 14 &amp; 0.47 \\
+\mbox{B} &amp; 8 &amp; 0.27 \\
+\mbox{AB} &amp; 3 &amp; 0.10 \\
+\hline
+\sum &amp; 30 &amp; 1 \\
+\hline
+\end{array}
+\]</span></p>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Advertencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Obsérvese que en este caso las frecuencias acumuladas no tienen sentido al no existir un orden entre los valores de la variable.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="representaciones-gráficas" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="representaciones-gráficas"><span class="header-section-number">2.3</span> Representaciones gráficas</h2>
+<p>La tabla de frecuencias también suele representarse gráficamente. Dependiendo del tipo de variable y de si se han agrupado o no los datos, se utilizan distintos tipos de gráficos:</p>
+<ul>
+<li><p>Diagrama de barras</p></li>
+<li><p>Histograma</p></li>
+<li><p>Diagrama de líneas o polígonos.</p></li>
+<li><p>Diagrama de sectores.</p></li>
+</ul>
+<section id="diagrama-de-barras" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="diagrama-de-barras"><span class="header-section-number">2.3.1</span> Diagrama de barras</h3>
+<p>Un <strong>diagrama de barras</strong> consiste en un conjunto de barras, una para cada valor o categoría de la variable, dibujadas sobre unos ejes cartesianos.</p>
+<p>Habitualmente los valores o categorías de la variable se representan en eje <span class="math inline">\(X\)</span>, y las frecuencias en el eje <span class="math inline">\(Y\)</span>. Para cada valor o categoría se dibuja una barra con la altura correspondiente a su frecuencia. La anchura de la barra no es importante pero las barras deben aparecer claramente separadas unas de otras.</p>
+<p>Dependiendo del tipo de frecuencia representada en el eje <span class="math inline">\(Y\)</span> se tienen diferentes tipos de diagramas de barras.</p>
+<p>En ocasiones se dibuja un polígono, conocido como <strong>polígono de frecuencias</strong>, uniendo mediante segmentos los puntos más altos de cada barra.</p>
+<div id="exm-diagrama-barras" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.4 </strong></span>El diagrama de barras que aparece a continuación muestra la distribución de frecuencias absolutas del número de hijos en la muestra anterior.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/diagrama-barras-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Y a continuación se muestra el polígono de frecuencias.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/poligono-frecuencias-absolutas-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>El diagrama de barras que aparece a continuación muestra la distribución de frecuencias relativas del número de hijos en la muestra anterior.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/diagrama-barras-relativas-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>El diagrama de barras que aparece a continuación muestra la distribución de frecuencias absolutas acumuladas del número de hijos en la muestra anterior.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/diagrama-barras-acumuladas-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Y el diagrama de barras que aparece a continuación muestra la distribución de frecuencias relativas acumuladas del número de hijos en la muestra anterior.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/diagrama-barras-relativas-acumuladas-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Finalmente, el último diagrama muestra el polígono de frecuencias relativas acumuladas.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/poligono-relativas-acumuladas-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="histograma" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="histograma"><span class="header-section-number">2.3.2</span> Histograma</h3>
+<p>Un <em>histograma</em> es similar a un diagrama de barras pero para datos agrupados.</p>
+<p>Habitualmente las clases o intervalos de agrupación se representan en el eje <span class="math inline">\(X\)</span>, y las frecuencias en el eje <span class="math inline">\(Y\)</span>. Para cada clase se dibuja una barra de altura la correspondiente frecuencia. A diferencia del diagrama de barras, la anchura del la barra coincide con la anchura de las clases y no hay separación entre dos barras consecutivas.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/histogram_creation.gif" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Clasifiación en clases.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p>Dependiendo del tipo de frecuencia representada en el eje <span class="math inline">\(Y\)</span> existen distintos tipos de histogramas.</p>
+<p>Al igual que con el diagrama de barras, se puede dibujar un <em>polígono de frecuencias</em> uniendo los puntos centrales más altos de cada barra con segmentos.</p>
+<div id="exm-histograma" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.5 </strong></span>El siguiente histograma muestra la distribución de frecuencias absolutas de las estaturas.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/histograma-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>El siguiente histograma muestra la distribución de frecuencias relativas con el polígono de frecuencias.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/histograma-frecuencias-relativas-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<p>El polígono de frecuencias acumuladas (absolutas o relativas) se conoce como <strong>ojiva</strong>.</p>
+<div id="exm-ojiva" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.6 </strong></span>El histograma y la ojiva siguientes muestran la distribución de frecuencias relativas acumuladas de estaturas.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/histograma-frecuencias-relativas-acumuladas-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<p>Obsérvese que en la ojiva se unen los vértices superiores derechos de cada barra con segmentos, en lugar de los puntos centrales, ya que no se consigue alcanzar la frecuencia acumulada correspondiente a la clase hasta que no se alcanza el final del intervalo.</p>
+</section>
+<section id="diagrama-de-sectores" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="diagrama-de-sectores"><span class="header-section-number">2.3.3</span> Diagrama de sectores</h3>
+<p>Un <em>diagrama de sectores</em> consiste en un círculo divido en porciones, uno por cada valor o categoría de la variable. Cada porción se conoce como <em>sector</em> y su ángulo o área es proporcional a la correspondiente frecuencia del valor o categoría.</p>
+<p>Los diagramas de sectores pueden representar frecuencias absolutas o relativas, pero no pueden representar frecuencias acumuladas, y se utilizan sobre todo con atributos nominales. Para atributos ordinales o variables cuantitativas es mejor utilizar diagramas de barras, ya es más fácil percibir las diferencias en una dimensión (altura de las barras) que en dos dimensiones (áreas de los sectores).</p>
+<div id="exm-diagrama-sectores" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.7 </strong></span>El diagrama de sectores siguiente muestra la distribución de frecuencias relativas de los grupos sanguíneos.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/diagrama-sectores-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="la-distribución-normal" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="la-distribución-normal"><span class="header-section-number">2.3.4</span> La distribución Normal</h3>
+<p>Las distribuciones con diferentes propiedades presentan formas distintas.</p>
+<div id="exm-distribucion-ingresos-familiares" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.8 (Distribución de los ingresos familiares) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/histograma-ingresos-familiares-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="exm-distribucion-edad-fallecimiento" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.9 (Distribución de la edad de fallecimiento) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/histograma-edad-fallecimiento-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="exm-distribucion-tiempo-espera-metro" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.10 (Distribución del tiempo de espera del metro) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/histograma-tiempo-espera-metro-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="exm-distribucion-llegada-clientes-restaurantes" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.11 (Distribución del tiempo de llegada de clientes a un restaurante) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/histograma-tiempo-llegada-restaurante-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<p>Las distribuciones con forma de campana se presentan muy a menudo en las variables biológicas.</p>
+<div id="exm-distribucion-peso-hombres" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.12 (Distribución del peso de los hombres) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/histograma-peso-hombres-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="exm-distribucion-estatura-mujeres" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.13 (Distribución de la estatura de las mujeres) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/histograma-estatura-mujeres-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="exm-distribucion-estaturas-sexo" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.14 (Distribución de la estatura según el sexo) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/histograma-estatura-sexo-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="exm-distribucion-estaturas-ambos-sexos" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.15 (Distribución de la estatura de hombres y mujeres) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/histograma-estatura-ambos-sexo-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="exm-distribucion-colesterol" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.16 (Distribución del colesterol) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/histograma-colesterol-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="exm-distribucion-notas" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.17 (Distribución de notas) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estadistica-descriptiva_files/figure-html/histograma-notas-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<p>La distribución con forma de campana aparece tan a menudo en la Naturaleza que se conoce como <em>distribución normal</em> o <em>distribución gaussiana</em>.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/campana-gauss.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Campana de Gauss.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="datos-atípicos" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="datos-atípicos"><span class="header-section-number">2.4</span> Datos atípicos</h2>
+<p>Uno de los principales problemas de las muestras son los <strong>datos atípicos</strong>, que son valores de la variable que se diferencian mucho del resto de los valores en la muestra.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/dato_atipico.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Dato atípico.</figcaption><p></p>
+</figure>
+</div>
+<p>Es muy importante detectar los datos atípicos antes de realizar cualquier análisis de los datos, pues suelen distorsionar los resultados.</p>
+<p>Aparecen siempre en los extremos de la distribución, y pueden detectarse con un diagrama de caja y bigotes (tal y como veremos más adelante).</p>
+<section id="tratamiento-de-los-datos-atípicos" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="tratamiento-de-los-datos-atípicos"><span class="header-section-number">2.4.1</span> Tratamiento de los datos atípicos</h3>
+<p>Cuando trabajemos con muestras grandes, los datos atípicos tienen menor influencia y pueden dejarse en la muestra.</p>
+<p>Cuando trabajemos con muestras pequeñas tenemos varias opciones:</p>
+<ul>
+<li>Eliminar el dato atípico si se trata de un error.</li>
+<li>Sustituir el dato atípico por el menor o el mayor valor de la distribución que no es atípico si no se trata de un error y el dato atípico no concuerda con la distribución teórica.</li>
+<li>Dejar el dato atípico si no es un error, y cambiar el modelo de distribución teórico para adecuarlo a los datos atípicos.</li>
+</ul>
+</section>
+</section>
+<section id="estadísticos-muestrales" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="estadísticos-muestrales"><span class="header-section-number">2.5</span> Estadísticos muestrales</h2>
+<p>La tabla de frecuencias sintetiza la información de la distribución de valores de la variable estudiada en la muestra, pero en muchas ocasiones es insuficiente para describir determinados aspectos de la distribución, como por ejemplo, cuáles son los valores más representativos de la muestra, cómo es la variabilidad de los datos, qué datos pueden considerarse atípicos, o cómo es la simetría de la distribución.</p>
+<p>Para describir esos aspectos de la distribución muestral se utilizan unas medidas resumen llamadas <strong>estadísticos muestrales</strong>.</p>
+<p>De acuerdo al aspecto de las distribución que miden, existen diferentes tipos de estadísticos:</p>
+<p><strong>Estadísticos de Posición</strong>: Miden los valores en torno a los que se agrupan los datos o que dividen la distribución en partes iguales.</p>
+<p><strong>Estadísticos de Dispersión</strong>: Miden la heterogeneidad de los datos.</p>
+<p><strong>Estadísticos de Forma</strong>: Miden aspectos de la forma que tiene la distribución de los datos, como la simetría o el apuntamiento.</p>
+</section>
+<section id="estadísticos-de-posición" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="estadísticos-de-posición"><span class="header-section-number">2.6</span> Estadísticos de posición</h2>
+<p>Pueden ser de dos tipos:</p>
+<p><strong>Estadísticos de Tendencia Central</strong>: Determinan valores alrededor de los cuales se concentran los datos, habitualmente en el centro de la distribución. Estas medidas suelen utilizarse como valores representativos de la muestra. Las más importantes son:</p>
+<ul>
+<li>Media aritmética</li>
+<li>Mediana</li>
+<li>Moda</li>
+</ul>
+<p><strong>Estadísticos de Posición no centrales</strong>: Dividen la distribución en partes con el mismo número de datos. Las más importantes son:</p>
+<ul>
+<li>Cuartiles.</li>
+<li>Deciles.</li>
+<li>Percentiles.</li>
+</ul>
+<section id="media-aritmética" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="media-aritmética"><span class="header-section-number">2.6.1</span> Media aritmética</h3>
+<div id="def-media-aritmetica" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.2 (Media aritmética muestral <span class="math inline">\(\bar{x}\)</span>) </strong></span>La <em>media aritmética muestral</em> de una variable <span class="math inline">\(X\)</span> es la suma de los valores observados en la muestra dividida por el tamaño muestral</p>
+<p><span class="math display">\[\bar{x} = \frac{\sum x_i}{n}\]</span></p>
+</div>
+<p>A partir de la tabla de frecuencias puede calcularse con la fórmula</p>
+<p><span class="math display">\[\bar{x} = \frac{\sum x_in_i}{n} = \sum x_i f_i\]</span></p>
+<p>En la mayoría de los casos, la media aritmética es la medida que mejor representa a la muestra.</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Advertencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No puede calcularse para variables cualitativas.</p>
+</div>
+</div>
+<div id="exm-media-datos-no-agrupados" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.18 (Datos no agrupados) </strong></span>Utilizando los datos de la muestra del número de hijos en las familias, la media aritmética es</p>
+<p><span class="math display">\[
+\begin{aligned}
+\bar{x} &amp;= \frac{1+2+4+2+2+2+3+2+1+1+0+2+2}{25}+\\
+&amp;+\frac{0+2+2+1+2+2+3+1+2+2+1+2}{25} = \frac{44}{25} = 1.76 \mbox{ hijos}.
+\end{aligned}
+\]</span></p>
+<p>o bien, desde la tabla de frecuencias</p>
+<p><span class="math display">\[
+\begin{array}{rrrrr}
+\hline
+x_i &amp; n_i &amp; f_i &amp; x_in_i &amp; x_if_i\\
+\hline
+0 &amp; 2 &amp; 0.08 &amp; 0 &amp; 0\\
+1 &amp; 6 &amp; 0.24 &amp; 6 &amp; 0.24\\
+2 &amp; 14 &amp; 0.56 &amp; 28 &amp; 1.12\\
+3 &amp; 2  &amp; 0.08 &amp; 6 &amp; 0.24\\
+4 &amp; 1 &amp; 0.04 &amp; 4 &amp; 0.16 \\
+\hline
+\sum &amp; 25 &amp; 1 &amp; 44 &amp; 1.76 \\
+\hline
+\end{array}
+\]</span></p>
+<p><span class="math display">\[
+\bar{x} = \frac{\sum x_in_i}{n} = \frac{44}{25}= 1.76 \mbox{ hijos}\qquad \bar{x}=\sum{x_if_i} = 1.76 \mbox{ hijos}.
+\]</span></p>
+<p>Esto significa que el valor que mejor representa el número de hijos en las familias de la muestra es 1.76 hijos.</p>
+</div>
+<div id="exm-media-datos-agrupados" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.19 (Datos agrupados) </strong></span>Utilizando los datos de la muestra de estaturas, la media es</p>
+<p><span class="math display">\[
+\bar{x} = \frac{179+173+\cdots+187}{30} = 175.07 \mbox{ cm}.
+\]</span></p>
+<p>o bien, desde la tabla de frecuencias utilizando las marcas de clase <span class="math inline">\(x_i\)</span>:</p>
+<p><span class="math display">\[
+\begin{array}{crrrrr}
+\hline
+X &amp; x_i &amp; n_i &amp; f_i &amp; x_in_i &amp; x_if_i\\
+\hline
+(150,160] &amp; 155 &amp; 2 &amp; 0.07 &amp; 310 &amp; 10.33\\
+(160,170] &amp; 165 &amp; 8 &amp; 0.27 &amp; 1320 &amp; 44.00\\
+(170,180] &amp; 175 &amp; 11 &amp; 0.36 &amp; 1925 &amp; 64.17\\
+(180,190] &amp; 185 &amp; 7 &amp; 0.23 &amp; 1295 &amp; 43.17\\
+(190,200] &amp; 195 &amp; 2 &amp; 0.07 &amp; 390 &amp; 13 \\
+\hline
+\sum &amp;  &amp; 30 &amp; 1 &amp; 5240 &amp; 174.67 \\
+\hline
+\end{array}
+\]</span></p>
+<p><span class="math display">\[
+\bar{x} = \frac{\sum x_in_i}{n} = \frac{5240}{30}= 174.67 \mbox{ cm} \qquad \bar{x}=\sum{x_if_i} = 174.67 \mbox{ cm}.
+\]</span></p>
+<p>Obsérvese que al calcular la media desde la tabla de frecuencias el resultado difiere ligeramente del valor real obtenido directamente desde la muestra, ya que los valores usados en los cálculos no son los datos reales sino las marcas de clase.</p>
+</div>
+<section id="media-ponderada" class="level4" data-number="2.6.1.1">
+<h4 data-number="2.6.1.1" class="anchored" data-anchor-id="media-ponderada"><span class="header-section-number">2.6.1.1</span> Media ponderada</h4>
+<p>En algunos casos, los valores de la muestra no tienen la misma importancia. En este caso la importancia o <em>peso</em> de cada valor de la muestra debe tenerse en cuenta al calcular la media.</p>
+<div id="def-media-ponderada" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.3 (Media ponderada muestral <span class="math inline">\(\bar x_p\)</span>) </strong></span>Dada una muestra de valores <span class="math inline">\(x_1,\ldots, x_n\)</span> donde cada valor <span class="math inline">\(x_i\)</span> tiene asociado un peso <span class="math inline">\(p_i\)</span>, la <em>media ponderada muestral</em> de la variable <span class="math inline">\(X\)</span> es la suma de los productos de cada valor observado en la muestra por su peso, dividida por la suma de todos los pesos</p>
+<p><span class="math display">\[\bar{x}_p = \frac{\sum x_ip_i}{\sum p_i}\]</span></p>
+</div>
+<p>A partir de la tabla de frecuencias puede calcularse con la fórmula</p>
+<p><span class="math display">\[\bar{x}_p = \frac{\sum x_ip_in_i}{\sum p_i}\]</span></p>
+<div id="exm-media-ponderada" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.20 </strong></span>Supóngase que un estudiante quiere calcular una medida que represente su rendimiento en el curso. La nota obtenida en cada asignatura y sus créditos son</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Asignatura</th>
+<th style="text-align: center;">Créditos</th>
+<th style="text-align: left;">Nota</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Matemáticas</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Economía</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Química</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: left;">6</td>
+</tr>
+</tbody>
+</table>
+<p>La media aritmética vale</p>
+<p><span class="math display">\[\bar{x} = \frac{\sum x_i}{n} = \frac{5+3+6}{3}= 4.67 \text{ puntos}.\]</span></p>
+<p>Sin embargo, esta nota no representa bien el rendimiento académico del alumno ya que no todas las asignaturas tienen la misma importancia ni requieren el mismo esfuerzo para aprobar. Las asignaturas con más créditos requieren más trabajo y deben tener más peso en el cálculo de la media.</p>
+<p>Es más lógico usar la media ponderada como medida del rendimiento del estudiante, tomando como pesos los créditos de cada asignatura</p>
+<p><span class="math display">\[
+\bar{x}_p = \frac{\sum x_ip_i}{\sum p_i} = \frac{5\cdot 6+3\cdot 4+6\cdot 8}{6+4+8}= \frac{90}{18} = 5 \text{ puntos}.
+\]</span></p>
+</div>
+</section>
+</section>
+<section id="mediana" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="mediana"><span class="header-section-number">2.6.2</span> Mediana</h3>
+<div id="def-mediana" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.4 (Mediana muestral <span class="math inline">\(Me\)</span>) </strong></span>La <em>mediana muestral</em> de una variable <span class="math inline">\(X\)</span> es el valor de la variable que está en el medio de la muestra ordenada.</p>
+</div>
+<p>La mediana divide la distribución de la muestra en dos partes iguales, es decir, hay el mismo número de valores por debajo y por encima de la mediana. Por tanto, tiene frecuencias acumuladas <span class="math inline">\(N_{Me}= n/2\)</span> y <span class="math inline">\(F_{Me}= 0.5\)</span>.</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Advertencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No puede calcularse para variables nominales.</p>
+</div>
+</div>
+<p>Con datos no agrupados pueden darse varios casos:</p>
+<ul>
+<li>Tamaño muestral impar: La mediana es el valor que ocupa la posición <span class="math inline">\(\frac{n+1}{2}\)</span>.</li>
+<li>Tamaño muestral par: La mediana es la media de los valores que ocupan las posiciones <span class="math inline">\(\frac{n}{2}\)</span> y <span class="math inline">\(\frac{n}{2}+1\)</span>.</li>
+</ul>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/mediana.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Cálculo de la mediana con datos no agrupados.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p>:::{#exm-mediana-datos-no-agrupados} Utilizando los datos del número de hijos de las familias, el tamaño muestral es 25, que es impar, y la mediana es el valor que ocupa la posición <span class="math inline">\(\frac{25+1}{2} = 13\)</span> de la muestra ordenada.</p>
+<p><span class="math display">\[
+0,0,1,1,1,1,1,1,2,2,2,2,\fbox{2},2,2,2,2,2,2,2,2,2,3,3,4
+\]</span></p>
+<p>y la mediana es 2 hijos.</p>
+<p>Si se trabaja con la tabla de frecuencias, la mediana es el valor más pequeño con una frecuencia acumulada mayor o igual a <span class="math inline">\(13\)</span>, o con una frecuencia relativa acumulada mayor o igual que <span class="math inline">\(0.5\)</span>.</p>
+<p><span class="math display">\[
+\begin{array}{rrrrr}
+\hline
+x_i &amp; n_i &amp; f_i &amp; N_i &amp; F_i\\
+\hline
+0 &amp; 2 &amp; 0.08 &amp; 2 &amp; 0.08\\
+1 &amp; 6 &amp; 0.24 &amp; 8 &amp; 0.32\\
+\color{red}2 &amp; 14 &amp; 0.56 &amp; 22 &amp; 0.88\\
+3 &amp; 2  &amp; 0.08 &amp; 24 &amp; 0.96\\
+4 &amp; 1 &amp; 0.04 &amp; 25 &amp; 1 \\
+\hline
+\sum &amp; 25 &amp; 1 \\
+\hline
+\end{array}
+\]</span></p>
+<section id="cálculo-de-la-mediana-con-datos-agrupados" class="level4" data-number="2.6.2.1">
+<h4 data-number="2.6.2.1" class="anchored" data-anchor-id="cálculo-de-la-mediana-con-datos-agrupados"><span class="header-section-number">2.6.2.1</span> Cálculo de la mediana con datos agrupados</h4>
+<p>Con datos agrupados la mediana se calcula interpolando en el polígono de frecuencias relativas acumuladas para el valor 0.5.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/interpolacion.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Cálculo de la mediana con datos agrupados.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p>Ambas expresiones son iguales ya que el ángulo <span class="math inline">\(\alpha\)</span> es el mismo, y resolviendo la ecuación se tiene la siguiente fórmula para calcular la mediana</p>
+<p><span class="math display">\[
+Me=l_i+\frac{0.5-F_{i-1}}{F_i-F_{i-1}}(l_i-l_{i-1})=l_i+\frac{0.5-F_{i-1}}{f_i}a_i
+\]</span></p>
+<div id="exm-mediana-datos-agrupados" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.21 (Datos agrupados) </strong></span>Utilizando los datos de la muestra de las estaturas de estudiantes, la mediana cae en la clase (170,180].</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/interpolacion_ejemplo_1.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Ejemplo de cálculo de la mediana con datos agrupados.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p>Interpolando en el intervalo (170,180] se tiene</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/interpolacion_ejemplo_2.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Ejemplo de cálculo de la mediana con datos agrupados.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p>Igualando ambas expresiones y resolviendo la ecuación se obtiene</p>
+<p><span class="math display">\[
+Me= 170+\frac{0.5-0.34}{0.7-0.34}(180-170)=170+\frac{0.16}{0.36}10=174.54 \mbox{ cm}.
+\]</span></p>
+<p>Esto significa que la mitad de los estudiantes tienen estaturas menores o iguales que 174.54 cm y la otra mitad mayores o iguales.</p>
+</div>
+</section>
+</section>
+<section id="moda" class="level3" data-number="2.6.3">
+<h3 data-number="2.6.3" class="anchored" data-anchor-id="moda"><span class="header-section-number">2.6.3</span> Moda</h3>
+<div id="def-moda" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.5 (Moda muestral <span class="math inline">\(Mo\)</span>) </strong></span>La <em>moda muestral</em> de una variable <span class="math inline">\(X\)</span> es el valor de la variable más frecuente en la muestra.</p>
+</div>
+<p>Con datos agrupados la <em>clase modal</em> es la clase con mayor frecuencia en la muestra.</p>
+<p>Puede calcularse para todos los tipos de variables (cuantitativas y cualitativas).</p>
+<p>Las distribuciones pueden tener más de una moda.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/moda.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Cálculo de la moda.</figcaption><p></p>
+</figure>
+</div>
+<div id="exm-moda-datos-no-agrupados" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.22 </strong></span>Utilizando los datos de la muestra del número de hijos en las familias, el valor con mayor frecuencia es 2, y por tanto la moda es <span class="math inline">\(Mo=2\)</span>.</p>
+<p><span class="math display">\[
+\begin{array}{rr}
+\hline
+x_i &amp; n_i \\
+\hline
+0 &amp; 2 \\
+1 &amp; 6 \\
+\color{red} 2 &amp; 14 \\
+3 &amp; 2  \\
+4 &amp; 1 \\
+\hline
+\end{array}
+\]</span></p>
+</div>
+<div id="exm-moda-datos-agrupados" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.23 </strong></span>Utilizando los datos de la muestra de estaturas de estudiantes, la clase con la mayor frecuencia es <span class="math inline">\((170,180]\)</span>, que es la clase modal <span class="math inline">\(Mo=(170,180]\)</span>.</p>
+<p><span class="math display">\[
+\begin{array}{cr}
+\hline
+X &amp; n_i \\
+\hline
+(150,160] &amp; 2 \\
+(160,170] &amp; 8 \\
+\color{red}{(170,180]} &amp; 11 \\
+(180,190] &amp; 7 \\
+(190,200] &amp; 2 \\
+\hline
+\end{array}
+\]</span></p>
+</div>
+</section>
+<section id="qué-estadístico-de-tendencia-central-usar" class="level3" data-number="2.6.4">
+<h3 data-number="2.6.4" class="anchored" data-anchor-id="qué-estadístico-de-tendencia-central-usar"><span class="header-section-number">2.6.4</span> ¿Qué estadístico de tendencia central usar?</h3>
+<p>En general, siempre que puedan calcularse los estadísticos de tendencia central, es recomendable utilizarlos como valores representativos en el siguiente orden:</p>
+<ol type="1">
+<li><p>Media. La media utiliza más información que el resto ya que para calcularla se tiene en cuenta la magnitud de los datos.</p></li>
+<li><p>Mediana. La mediana utiliza menos información que la media, pero más que la moda, ya que para calcularla se tiene en cuenta el orden de los datos.</p></li>
+<li><p>Moda. La moda es la que menos información utiliza ya que para calcularla sólo se tienen en cuenta las frecuencias absolutas.</p></li>
+</ol>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Advertencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Hay que tener cuidado con los datos atípicos, ya que la media puede distorsionarse cuando hay datos atípicos. En tal caso es mejor utilizar la mediana como valor más representativo.</p>
+</div>
+</div>
+<div id="exm-media-mediana-datos-atipicos" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.24 </strong></span>Si una muestra de número de hijos de 7 familias es</p>
+<div style="text-align:center">
+<p>0, 0, 1, 1, 2, 2, 15,</p>
+</div>
+<p>entonces, <span class="math inline">\(\bar{x}=3\)</span> hijos y <span class="math inline">\(Me=1\)</span> hijo.</p>
+<p><em>¿Qué medida representa mejor el número de hijos en la muestra?</em></p>
+</div>
+</section>
+<section id="medidas-de-posición-no-centrales" class="level3" data-number="2.6.5">
+<h3 data-number="2.6.5" class="anchored" data-anchor-id="medidas-de-posición-no-centrales"><span class="header-section-number">2.6.5</span> Medidas de posición no centrales</h3>
+<p>Las medidas de posición no centrales o <em>cuantiles</em> dividen la distribución en partes iguales.</p>
+<p>Los más utilizados son:</p>
+<p><strong>Cuartiles</strong>: Dividen la distribución en 4 partes iguales. Hay 3 cuartiles: <span class="math inline">\(C_1\)</span> (25% acumulado), <span class="math inline">\(C_2\)</span> (50% acumulado), <span class="math inline">\(C_3\)</span> (75% acumulado).</p>
+<p><strong>Deciles</strong>: Dividen la distribución en 10 partes iguales. Hay 9 deciles: <span class="math inline">\(D_1\)</span> (10% acumulado),…, <span class="math inline">\(D_9\)</span> (90% acumulado).</p>
+<p><strong>Percentiles</strong>: Dividen la distribución en 100 partes iguales. Hay 99 percentiles: <span class="math inline">\(P_1\)</span> (1% acumulado),…, <span class="math inline">\(P_{99}\)</span> (99% acumulado).</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/cuantiles.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Cuartiles, deciles y percentiles.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p>Obsérvese que hay una correspondencia entre los cuartiles, los deciles y los percentiles. Por ejemplo, el primer cuartil coincide con el percentil 25, y el cuarto decil coincide con el percentil 40.</p>
+<p>Los cuantiles se calculan de forma similar a la mediana. La única diferencia es la frecuencia relativa acumulada que corresponde a cada cuantil.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/cuantiles_calculo.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Cálculo de cuartiles, deciles y percentiles.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div id="exm-cuantiles-datos-no-agrupados" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.25 </strong></span>Utilizando los datos de la muestra del número de hijos de las familias, la frecuencia relativa acumulada era</p>
+<p><span class="math display">\[
+\begin{array}{rr}
+\hline
+x_i &amp; F_i \\
+\hline
+0 &amp; 0.08\\
+1 &amp; 0.32\\
+2 &amp; 0.88\\
+3 &amp; 0.96\\
+4 &amp; 1\\
+\hline
+\end{array}
+\]</span></p>
+<p><span class="math display">\[\begin{align*}
+F_{C_1}=0.25 &amp;\Rightarrow Q_1 = 1 \text{ hijos},\\
+F_{C_2}=0.5 &amp;\Rightarrow Q_2 = 2 \text{ hijos},\\
+F_{C_3}=0.75 &amp;\Rightarrow Q_3 = 2 \text{ hijos},\\
+F_{D_4}=0.4 &amp;\Rightarrow D_4 = 2 \text{ hijos},\\
+F_{P_{92}}=0.92 &amp;\Rightarrow P_{92} = 3 \text{ hijos}.
+\end{align*}\]</span></p>
+</div>
+</section>
+</section>
+<section id="estadísticos-de-dispersión" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="estadísticos-de-dispersión"><span class="header-section-number">2.7</span> Estadísticos de dispersión</h2>
+<p>La <em>dispersión</em> se refiere a la heterogeneidad o variabilidad de los datos. Así pues, los estadísticos de dispersión mide la variabilidad global de los datos, o con respecto a una medida de tendencia central.</p>
+<p>Para las variables cuantitativas, las más empleadas son:</p>
+<ul>
+<li>Recorrido.</li>
+<li>Rango Intercuartílico.</li>
+<li>Varianza.</li>
+<li>Desviación Típica.</li>
+<li>Coeficiente de Variación.</li>
+</ul>
+<section id="recorrido" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="recorrido"><span class="header-section-number">2.7.1</span> Recorrido</h3>
+<div id="def-recorrido-muestral" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.6 (Recorrido muestral <span class="math inline">\(Re\)</span>) </strong></span>El <em>recorrido muestral</em> o <em>rango muestral</em> de una variable <span class="math inline">\(X\)</span> se define como la diferencia entre el máximo y el mínimo de los valores en la muestra.</p>
+<p><span class="math display">\[Re = \max_{x_i} -\min_{x_i}\]</span></p>
+</div>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/rango.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Rango muestral.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p>El recorrido mide la máxima variación que hay entre los datos muestrales. No obstante, es muy sensible a datos atípicos ya que suelen aparecer justo en los extremos de la distribución, por lo que no se suele utilizar mucho.</p>
+</section>
+<section id="rango-intercuartílico" class="level3" data-number="2.7.2">
+<h3 data-number="2.7.2" class="anchored" data-anchor-id="rango-intercuartílico"><span class="header-section-number">2.7.2</span> Rango intercuartílico</h3>
+<p>Para evitar el problema de los datos atípicos en el recorrido, se puede utilizar el primer y tercer cuartil en lugar del mínimo y el máximo.</p>
+<div id="def-rango-intercuartilico" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.7 (Rango intercuartílico muestral <span class="math inline">\(RI\)</span>) </strong></span>El <em>rango intercuartílico muestral</em> de una variable <span class="math inline">\(X\)</span> se define como la diferencia entre el tercer y el primer cuartil de la muestra.</p>
+<p><span class="math display">\[RI = C_3 -C_1\]</span></p>
+</div>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/rango_intercuartilico.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Rango intercuartílico.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p>El rango intercuartílico mide la dispersión del 50% de los datos centrales.</p>
+</section>
+<section id="diagrama-de-caja-y-bigotes" class="level3" data-number="2.7.3">
+<h3 data-number="2.7.3" class="anchored" data-anchor-id="diagrama-de-caja-y-bigotes"><span class="header-section-number">2.7.3</span> Diagrama de caja y bigotes</h3>
+<p>La dispersión de una variable suele representarse gráficamente mediante un <em>diagrama de caja y bigotes</em>, que representa cinco estadísticos descriptivos (mínimo, cuartiles y máximo) conocidos como los <em>cinco números</em>. Consiste en una caja, dibujada desde el primer al tercer cuartil, que representa el rango intercuartílico, y dos segmentos, conocidos como <em>bigotes</em> inferior y superior. A menudo la caja se divide en dos por la mediana.</p>
+<p>Este diagrama es muy útil y se utiliza para muchos propósitos:</p>
+<ul>
+<li>Sirve para medir la dispersión de los datos ya que representa el rango y el rango intercuartílico.</li>
+<li>Sirve para detectar datos atípicos, que son los valores que quedan fuera del intervalo definido por los bigotes.</li>
+<li>Sirve para medir la simetría de la distribución, comparando la longitud de las cajas y de los bigotes por encima y por debajo de la mediana.</li>
+</ul>
+<p>:::{#exm-diagrama-caja} El diagrama siguiente muestra el diagrama de caja y bigotes del peso de una muestra de recién nacidos.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/diagrama_caja.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Diagrama de caja y bigotes del peso de recién nacidos.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p>Para construir el diagrama de caja y bigotes hay que seguir los siguientes pasos:</p>
+<ol type="1">
+<li><p>Calcular los cuartiles.</p></li>
+<li><p>Dibujar una caja de manera que el extremo inferior caiga sobre el primer cuartil y el extremo superior sobre el tercer cuartil.</p></li>
+<li><p>Dividir la caja con una línea que caiga sobre el segundo cuartil.</p></li>
+<li><p>Para los bigotes inicialmente se calculan dos valores llamados <em>vallas</em> <span class="math inline">\(v_1\)</span> y <span class="math inline">\(v_2\)</span>. La valla inferior es el primer cuartil menos una vez y media el rango intercuartílico, y la valla superior es el tercer cuartil más una vez y media el rango intercuartílico.</p>
+<p><span class="math display">\[
+\begin{aligned}
+v_1&amp;=Q_1-1.5\,\text{IQR}\\
+v_2&amp;=Q_3+1.5\,\text{IQR}
+\end{aligned}
+\]</span></p>
+<p>Las vallas definen el intervalo donde los datos se consideran normales. Cualquier valor fuera de ese intervalo se considera un dato atípico.<br>
+El bigote superior se dibuja desde el borde inferior de la caja hasta el menor valor de la muestra que es mayor o igual a la valla inferior, y el bigote superior se dibuja desde el borde superior de la caja hasta el mayor valor de la muestra que es menor o igual a la valla superior.</p></li>
+</ol>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Advertencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Los bigotes no son las vallas.</p>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Finalmente, si en la muestra hay algún dato atípico, se dibuja un punto para cada uno de ellos.</li>
+</ol>
+<div id="exm-diagrama-caja" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.26 </strong></span>El diagrama de caja y bigotes de la muestra del número de hijos de las familias se muestra a continuación.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/diagrama_caja_hijos.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Diagrama de caja y bigotes del número de hijos.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="desviaciones-respecto-de-la-media" class="level4" data-number="2.7.3.1">
+<h4 data-number="2.7.3.1" class="anchored" data-anchor-id="desviaciones-respecto-de-la-media"><span class="header-section-number">2.7.3.1</span> Desviaciones respecto de la media</h4>
+<p>Otra forma de medir la variabilidad de una variable es estudiar la concentración de los valores en torno a algún estadístico de tendencia central como por ejemplo la media.</p>
+<p>Para ello se suele medir la distancia de cada valor a la media. A ese valor se le llama <strong>desviación de la media</strong>.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/desviaciones.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Desviaciones con respecto a la media.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p>Si las desviaciones son grandes la media no será tan representativa como cuando la desviaciones sean pequeñas.</p>
+<div id="exm-desviaciones" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.27 </strong></span>La siguiente tabla contiene las notas de 3 estudiantes en un curso con las asignaturas <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span>.</p>
+<p><span class="math display">\[
+\begin{array}{cccc}
+\hline
+A &amp; B &amp; C &amp; \bar x \\
+0 &amp; 5 &amp; 10 &amp; 5 \\
+4 &amp; 5 &amp; 6 &amp; 5 \\
+5 &amp; 5 &amp; 5 &amp; 5 \\
+\hline
+\end{array}
+\]</span></p>
+<p>Todos los estudiantes tienen la misma media, pero, en qué caso la media representa mejor el rendimiento en el curso?</p>
+</div>
+</section>
+</section>
+<section id="varianza-y-desviación-típica" class="level3" data-number="2.7.4">
+<h3 data-number="2.7.4" class="anchored" data-anchor-id="varianza-y-desviación-típica"><span class="header-section-number">2.7.4</span> Varianza y desviación típica</h3>
+<div id="def-varianza" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.8 (Varianza <span class="math inline">\(s^2\)</span>) </strong></span>La <em>varianza muestral</em> de una variable <span class="math inline">\(X\)</span> se define como el promedio del cuadrado de las desviaciones de los valores de la muestra respecto de la media muestral.</p>
+<p><span class="math display">\[s^2 = \frac{\sum (x_i-\bar x)^2n_i}{n} = \sum (x_i-\bar x)^2f_i\]</span></p>
+</div>
+<p>También puede calcularse de manera más sencilla mediante la fórmula</p>
+<p><span class="math display">\[s^2 = \frac{\sum x_i^2n_i}{n} -\bar x^2= \sum x_i^2f_i-\bar x^2\]</span></p>
+<p>La varianza tiene las unidades de la variable al cuadrado, por lo que para facilitar su interpretación se suele utilizar su raíz cuadrada.</p>
+<div id="def-desviacion-tipica" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.9 (Desviación típica <span class="math inline">\(s\)</span>) </strong></span>La <em>desviación típica muestral</em> de una variable <span class="math inline">\(X\)</span> se define como la raíz cuadrada positiva de su varianza muestral.</p>
+<p><span class="math display">\[s = +\sqrt{s^2}\]</span></p>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Tanto la varianza como la desviación típica sirven para cuantificar la dispersión de los datos en torno a la media. Cuando la varianza o la desviación típica son pequeñas, los datos de la muestra están concentrados en torno a la media, y la media es una buena medida de representatividad. Por contra, cuando la varianza o la desviación típica son grandes, los datos de la muestra están alejados de la media, y la media ya no representa tan bien.</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Desviación típica pequeña</td>
+<td style="text-align: center;"><span class="math inline">\(\Rightarrow\)</span></td>
+<td style="text-align: left;">Media representativa</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Desviación típica grande</td>
+<td style="text-align: center;"><span class="math inline">\(\Rightarrow\)</span></td>
+<td style="text-align: left;">Media no representativa</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="exm-intrepretacion-desviacion-tipica" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.28 </strong></span>Las siguientes muestras contienen las notas de dos estudiantes en dos asignaturas.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/interpretacion_desviacion_tipica.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Interpretación de la desviación típica.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p><em>¿Qué media es más representativa?</em></p>
+</div>
+<div id="exm-desviacion-tipica-datos-no-agrupados" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.29 (Datos no agrupados) </strong></span>Utilizando los datos de la muestra del número de hijos de las familias, con una media <span class="math inline">\(\bar x=1.76\)</span> hijos, y añadiendo una nueva columna a la tabla de frecuencias con los cuadrados de los valores,</p>
+<p><span class="math display">\[
+\begin{array}{rrr}
+\hline
+x_i &amp; n_i &amp; x_i^2n_i \\
+\hline
+0 &amp; 2 &amp; 0 \\
+1 &amp; 6 &amp; 6 \\
+2 &amp; 14 &amp; 56\\
+3 &amp; 2  &amp; 18\\
+4 &amp; 1 &amp; 16 \\
+\hline
+\sum &amp; 25 &amp; 96 \\
+\hline
+\end{array}\]</span></p>
+<p><span class="math display">\[s^2 = \frac{\sum x_i^2n_i}{n}-\bar x^2 = \frac{96}{25}-1.76^2= 0.7424 \mbox{ hijos}^2.\]</span></p>
+<p>y la desviación típica es <span class="math inline">\(s=\sqrt{0.7424} = 0.8616\)</span> hijos.</p>
+<p>Comparado este valor con el recorrido, que va de 0 a 4 hijos se observa que no es demasiado grande por lo que se puede concluir que no hay mucha dispersión y en consecuencia la media de <span class="math inline">\(1.76\)</span> hijos representa bien el número de hijos de las familias de la muestra.</p>
+</div>
+<div id="exm-desviacion-tipica-datos-agrupados" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.30 (Datos agrupados) </strong></span>Utilizando los datos de la muestra de estaturas de los estudiantes y agrupando las estaturas en clases, se obtenía una media <span class="math inline">\(\bar x = 174.67\)</span> cm. El cálculo de la varianza se realiza igual que antes pero tomando como valores de la variable las marcas de clase.</p>
+<p><span class="math display">\[
+\begin{array}{crrr}
+\hline
+X &amp; x_i &amp; n_i &amp; x_i^2n_i \\
+\hline
+(150,160] &amp; 155 &amp; 2 &amp; 48050\\
+(160,170] &amp; 165 &amp; 8 &amp; 217800\\
+(170,180] &amp; 175 &amp; 11 &amp; 336875\\
+(180,190] &amp; 185 &amp; 7 &amp; 239575\\
+(190,200] &amp; 195 &amp; 2 &amp; 76050\\
+\hline
+\sum &amp;  &amp; 30 &amp; 918350 \\
+\hline
+\end{array}
+\]</span></p>
+<p><span class="math display">\[s^2 = \frac{\sum x_i^2n_i}{n}-\bar x^2 = \frac{918350}{30}-174.67^2= 102.06 \mbox{ cm}^2,\]</span></p>
+<p>y la desviación típica es <span class="math inline">\(s=\sqrt{102.06} = 10.1\)</span> cm.</p>
+<p>Este valor es bastante pequeño, comparado con el recorrido de la variable, que va de 150 a 200 cm, por lo que la variable tiene poca dispersión y en consecuencia su media es muy representativa.</p>
+</div>
+</section>
+<section id="coeficiente-de-variación" class="level3" data-number="2.7.5">
+<h3 data-number="2.7.5" class="anchored" data-anchor-id="coeficiente-de-variación"><span class="header-section-number">2.7.5</span> Coeficiente de variación</h3>
+<p>Tanto la varianza como la desviación típica tienen unidades y eso dificulta a veces su interpretación, especialmente cuando se compara la dispersión de variables con diferentes unidades.</p>
+<p>Por este motivo, es también común utilizar la siguiente medida de dispersión que no tiene unidades.</p>
+<div id="def-coeficiente-variacion" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.10 (Coeficiente de variación muestral <span class="math inline">\(cv\)</span>) </strong></span>El <em>coeficiente de variación muestral</em> de una variable <span class="math inline">\(X\)</span> se define como el cociente entre su desviación típica muestral y el valor absoluto de su media muestral.</p>
+<p><span class="math display">\[cv = \frac{s}{|\bar x|}\]</span></p>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El coeficiente de variación muestral mide la dispersión relativa de los valores de la muestra en torno a la media muestral.</p>
+<p>Como no tiene unidades, es muy sencillo de interpretar: Cuanto mayor sea, mayor será la dispersión relativa con respecto a la media y menos representativa será la media.</p>
+</div>
+</div>
+<p>El coeficiente de variación es muy útil para comparar la dispersión de distribuciones de variables diferentes, incluso si las variables tienen unidades diferentes.</p>
+<div id="exm-coeficiente-variacion" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.31 </strong></span>En la muestra del número de hijos, donde la media era <span class="math inline">\(\bar x=1.76\)</span> hijos y la desviación típica <span class="math inline">\(s=0.8616\)</span> hijos, el coeficiente de variación vale</p>
+<p><span class="math display">\[cv = \frac{s}{|\bar x|} = \frac{0.8616}{|1.76|} = 0.49.\]</span></p>
+<p>En la muestra de las estaturas, donde la media era <span class="math inline">\(\bar x=174.67\)</span> cm y la desviación típica <span class="math inline">\(s=10.1\)</span> cm, el coeficiente de variación vale</p>
+<p><span class="math display">\[cv = \frac{s}{|\bar x|} = \frac{10.1}{|174.67|} = 0.06.\]</span></p>
+<p>Esto significa que la dispersión relativa en la muestra de estaturas es mucho menor que en la del número de hijos, por lo que la media de las estaturas será más representativa que la media del número de hijos.</p>
+</div>
+</section>
+</section>
+<section id="estadísticos-de-forma" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="estadísticos-de-forma"><span class="header-section-number">2.8</span> Estadísticos de forma</h2>
+<p>Son medidas que describen la forma de la distribución.</p>
+<p>Los aspectos más relevantes son:</p>
+<p><strong>Simetría</strong> Mide la simetría de la distribución de frecuencias en torno a la media. El estadístico más utilizado es el <em>Coeficiente de Asimetría de Fisher</em>.</p>
+<p><strong>Apuntamiento</strong> Mide el apuntamiento o el grado de concentración de valores en torno a la media de la distribución de frecuencias. El estadístico más utilizado es el <em>Coeficiente de Apuntamiento o Curtosis</em>.</p>
+<section id="coeficiente-de-asimetría" class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1" class="anchored" data-anchor-id="coeficiente-de-asimetría"><span class="header-section-number">2.8.1</span> Coeficiente de asimetría</h3>
+<div id="def-coeficiente-asimetria" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.11 (Coeficiente de asimetría muestral <span class="math inline">\(g_1\)</span>) </strong></span>El <em>coeficiente de asimetría muestral</em> de una variable <span class="math inline">\(X\)</span> es el promedio de las desviaciones de los valores de la muestra respecto de la media muestral, elevadas al cubo, dividido por la desviación típica al cubo.</p>
+<p><span class="math display">\[g_1 = \frac{\sum (x_i-\bar x)^3 n_i/n}{s^3} = \frac{\sum (x_i-\bar x)^3 f_i}{s^3}\]</span></p>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Mide el grado de simetría de los valores de la muestra con respecto a la media muestra, es decir, cuantos valores de la muestra están por encima o por debajo de la media y cómo de alejados de esta.</p>
+<ul>
+<li><span class="math inline">\(g_1=0\)</span> indica que hay el mismo número de valores por encima y por debajo de la media e igualmente alejados de ella (simétrica).</li>
+</ul>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/distribucion_simetrica.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Distribución simétrica.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(g_1&lt;0\)</span> indica que la mayoría de los valores son mayores que la media, pero los valores menores están más alejados de ella (asimétrica a la izquierda).</li>
+</ul>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/distribucion_asimetrica_izquierda.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Distribución asimétrica hacia la izquierda.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(g_1&gt;0\)</span> indica que la mayoría de los valores son menores que la media, pero los valores mayores están más alejados de ella (asimétrica a la derecha).</li>
+</ul>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/distribucion_asimetrica_derecha.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Distribución asimétrica hacia la derecha.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="exm-coeficiente-asimetria" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.32 (Datos agrupados) </strong></span>Utilizando la tabla de frecuencias de la muestra de estaturas y añadiendo una nueva columna con las desviaciones de la media <span class="math inline">\(\bar x = 174.67\)</span> cm al cubo, se tiene</p>
+<p><span class="math display">\[
+\begin{array}{crrrr}
+\hline
+X &amp; x_i &amp; n_i &amp; x_i-\bar x &amp; (x_i-\bar x)^3 n_i \\
+\hline
+(150,160] &amp; 155 &amp; 2 &amp; -19.67 &amp; -15221.00\\
+(160,170] &amp; 165 &amp; 8 &amp; -9.67 &amp; -7233.85\\
+(170,180] &amp; 175 &amp; 11 &amp; 0.33 &amp; 0.40\\
+(180,190] &amp; 185 &amp; 7 &amp; 10.33 &amp; 7716.12\\
+(190,200] &amp; 195 &amp; 2 &amp; 20.33 &amp; 16805.14\\
+\hline
+\sum &amp;  &amp; 30 &amp; &amp; 2066.81 \\
+\hline
+\end{array}
+\]</span></p>
+<p><span class="math display">\[g_1 = \frac{\sum (x_i-\bar x)^3n_i/n}{s^3} = \frac{2066.81/30}{10.1^3} = 0.07.\]</span></p>
+<p>Como está cerca de 0, eso significa que la distribución de las estaturas es casi simétrica.</p>
+</div>
+</section>
+<section id="coeficiente-de-apuntamiento-o-curtosis" class="level3" data-number="2.8.2">
+<h3 data-number="2.8.2" class="anchored" data-anchor-id="coeficiente-de-apuntamiento-o-curtosis"><span class="header-section-number">2.8.2</span> Coeficiente de apuntamiento o curtosis</h3>
+<div id="def-coeficiente-apuntamiento" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.12 (Coeficiente de apuntamiento muestral <span class="math inline">\(g_2\)</span>) </strong></span>El <em>coeficiente de apuntamiento muestral</em> de una variable <span class="math inline">\(X\)</span> es el promedio de las desviaciones de los valores de la muestra respecto de la media muestral, elevadas a la cuarta, dividido por la desviación típica a la cuarta y al resultado se le resta 3.</p>
+<p><span class="math display">\[g_2 = \frac{\sum (x_i-\bar x)^4 n_i/n}{s^4}-3 = \frac{\sum (x_i-\bar x)^4 f_i}{s^4}-3\]</span></p>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El coeficiente de apuntamiento mide la concentración de valores en torno a la media y la longitud de las colas de la distribución. Se toma como referencia la distribución normal (campana de Gauss).</p>
+<ul>
+<li><span class="math inline">\(g_2=0\)</span> indica que la distribución tienen un apuntamiento normal, es decir, la concentración de valores en torno a la media es similar al de una campana de Gauss (<em>mesocúrtica</em>).</li>
+</ul>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/distribucion_mesocurtica.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Distribución mesocúrtica.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(g_2&lt;0\)</span> indica que la distribución tiene menos apuntamiento de lo normal, es decir, la concentración de valores en torno a la media es menor que en una campana de Gauss (<em>platicúrtica</em>).</li>
+</ul>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/distribucion_platicurtica.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Distribución platicúrtica.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(g_2&gt;0\)</span> indica que la distribución tiene más apuntamiento de lo normal, es decir, la concentración de valores en torno a la media es menor que en una campana de Gauss (<em>leptocúrtica</em>).</li>
+</ul>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/distribucion_leptocurtica.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Distribución leptocúrtica.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>:::{#exm-coeficiente-apuntamiento} ## Datos agrupados Utilizando la tabla de frecuencias de la muestra de estaturas y añadiendo una nueva columna con las desviaciones de la media <span class="math inline">\(\bar x = 174.67\)</span> cm a la cuarta, se tiene</p>
+<p><span class="math display">\[
+\begin{array}{rrrrr}
+\hline
+X &amp; x_i &amp; n_i &amp; x_i-\bar x &amp; (x_i-\bar x)^4 n_i\\
+\hline
+(150,160] &amp; 155 &amp; 2 &amp; -19.67 &amp; 299396.99\\
+(160,170] &amp; 165 &amp; 8 &amp; -9.67 &amp; 69951.31\\
+(170,180] &amp; 175 &amp; 11 &amp; 0.33 &amp; 0.13\\
+(180,190] &amp; 185 &amp; 7 &amp; 10.33 &amp; 79707.53\\
+(190,200] &amp; 195 &amp; 2 &amp; 20.33 &amp; 341648.49\\
+\hline
+\sum &amp;  &amp; 30 &amp; &amp; 790704.45 \\
+\hline
+\end{array}
+\]</span></p>
+<p><span class="math display">\[g_2 = \frac{\sum (x_i-\bar x)^4n_i/n}{s^4} - 3 = \frac{790704.45/30}{10.1^4}-3 = -0.47.\]</span></p>
+<p>Como se trata de un valor negativo, aunque cercano a 0, podemos decir que la distribución es ligeramente platicúrtica.</p>
+<p>Como se verá más adelante en la parte de inferencia, muchas de las pruebas estadísticas solo pueden aplicarse a poblaciones normales.</p>
+<p>Las poblaciones normales se caracterizan por ser simétricas y mesocúrticas, de manera que, tanto el coeficiente de asimetría como el de apuntamiento pueden utilizarse para contrastar si los datos de la muestra provienen de una población normal.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En general, se suele rechazar la hipótesis de normalidad de la población cuando <span class="math inline">\(g_1\)</span> o <span class="math inline">\(g_2\)</span> estén fuera del intervalo <span class="math inline">\([-2,2]\)</span>.</p>
+</div>
+</div>
+<p>En tal caso, lo habitual es aplicar alguna transformación a la variable para corregir la anormalidad.</p>
+</section>
+<section id="distribuciones-no-normales" class="level3" data-number="2.8.3">
+<h3 data-number="2.8.3" class="anchored" data-anchor-id="distribuciones-no-normales"><span class="header-section-number">2.8.3</span> Distribuciones no normales</h3>
+<section id="distribución-asimétrica-a-la-derecha-no-normal" class="level4" data-number="2.8.3.1">
+<h4 data-number="2.8.3.1" class="anchored" data-anchor-id="distribución-asimétrica-a-la-derecha-no-normal"><span class="header-section-number">2.8.3.1</span> Distribución asimétrica a la derecha no normal</h4>
+<p>Un ejemplo de distribución asimétrica a la derecha es el ingreso de las familias.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/ejemplo_distribucion_asimetrica_derecha.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Distribucion de los ingresos familiares de EEUU.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="distribución-asimétrica-a-la-izquierda-no-normal" class="level4" data-number="2.8.3.2">
+<h4 data-number="2.8.3.2" class="anchored" data-anchor-id="distribución-asimétrica-a-la-izquierda-no-normal"><span class="header-section-number">2.8.3.2</span> Distribución asimétrica a la izquierda no normal</h4>
+<p>Un ejemplo de distribución asimétrica a la izquierda es la edad de fallecimiento.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/ejemplo_distribucion_asimetrica_izquierda.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Distribucion de la edad de fallecimiento.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="distribución-bimodal-no-normal" class="level4" data-number="2.8.3.3">
+<h4 data-number="2.8.3.3" class="anchored" data-anchor-id="distribución-bimodal-no-normal"><span class="header-section-number">2.8.3.3</span> Distribución bimodal no normal</h4>
+<p>Un ejemplo de distribución bimodal es la hora de llegada de los clientes de un restaurante.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/ejemplo_distribucion_bimodal.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Distribucion de la hora de llegada de los clientes de un restaurante.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="transformaciones-de-variables" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="transformaciones-de-variables"><span class="header-section-number">2.9</span> Transformaciones de variables</h2>
+<p>En muchas ocasiones se suelen transformar los datos brutos para corregir alguna anormalidad de la distribución o simplemente para trabajar con unas unidades más cómodas.</p>
+<p>Por ejemplo, si estamos trabajando con estaturas medidas en metros y tenemos los siguientes valores:</p>
+<p><span class="math display">\[
+1.75 \mbox{ m}, 1.65 \mbox{ m}, 1.80 \mbox{ m},
+\]</span></p>
+<p>podemos evitar los decimales multiplicando por 100, es decir, pasando de metros a centímetros:</p>
+<p><span class="math display">\[
+175 \mbox{ cm}, 165 \mbox{ cm}, 180 \mbox{ cm},
+\]</span></p>
+<p>Y si queremos reducir la magnitud de los datos podemos restarles a todos el menor de ellos, en este caso, 165cm:</p>
+<p><span class="math display">\[10\mbox{cm}, 0\mbox{cm}, 15\mbox{cm},\]</span></p>
+<p>Está claro que este conjunto de datos es mucho más sencillo que el original. En el fondo lo que se ha hecho es aplicar a los datos la transformación:</p>
+<p><span class="math display">\[Y= 100X-165\]</span></p>
+<section id="transformaciones-lineales" class="level3" data-number="2.9.1">
+<h3 data-number="2.9.1" class="anchored" data-anchor-id="transformaciones-lineales"><span class="header-section-number">2.9.1</span> Transformaciones lineales</h3>
+<p>Una de las transformaciones más habituales es la <em>transformación lineal</em>:</p>
+<p><span class="math display">\[Y=a+bX.\]</span></p>
+<div id="thm-transformaciones-lineales" class="theorem">
+<p><span class="theorem-title"><strong>Teorema 2.1 </strong></span>Dada una variable muestral <span class="math inline">\(X\)</span>, si <span class="math inline">\(Y\)</span> es la variable muestral que resulta de aplicar a <span class="math inline">\(X\)</span> la transformación lineal <span class="math inline">\(Y=a+bX\)</span>, entonces</p>
+<p><span class="math display">\[\begin{align*}
+\bar y &amp;= a+ b\bar x,\\
+s_{y} &amp;= |b|s_{x}
+\end{align*}\]</span></p>
+<p>Además, el coeficiente de curtosis no se altera y el de asimetría sólo cambia de signo si <span class="math inline">\(b\)</span> es negativo.</p>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Demostración
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Se deja como ejercicio. <!-- TODO: Demostración propiedades transformaciones lineales --></p>
+</div>
+</div>
+</div>
+</section>
+<section id="transformación-de-tipificación-y-puntuaciones-típicas" class="level3" data-number="2.9.2">
+<h3 data-number="2.9.2" class="anchored" data-anchor-id="transformación-de-tipificación-y-puntuaciones-típicas"><span class="header-section-number">2.9.2</span> Transformación de tipificación y puntuaciones típicas</h3>
+<p>Una de las transformaciones lineales más habituales es la <em>tipificación</em>:</p>
+<div id="def-variable-tipificada" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.13 (Variable tipificada) </strong></span>La <em>variable tipificada</em> de una variable estadística <span class="math inline">\(X\)</span> es la variable que resulta de restarle su media y dividir por su desviación típica.</p>
+<p><span class="math display">\[Z=\frac{X-\bar x}{s_{x}}\]</span></p>
+<p>Para cada valor <span class="math inline">\(x_i\)</span> de la muestra, la <em>puntuación típica</em> es el valor que resulta de aplicarle la transformación de tipificación</p>
+<p><span class="math display">\[z_i=\frac{x_i-\bar x}{s_{x}}.\]</span></p>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La puntuación típica es el número de desviaciones típicas que un valor está por encima o por debajo de la media, y es útil para evitar la dependencia de una variable respecto de las unidades de medida empleadas. Esto es útil, por ejemplo, para comparar valores de variables o muestras distintas.</p>
+</div>
+</div>
+<div class="{cor-propiedades-variable-tipificada}">
+<p>Dada una variable muetral <span class="math inline">\(X\)</span>, si <span class="math inline">\(Z\)</span> es la variable tipificada de <span class="math inline">\(X\)</span>, entonces</p>
+<p><span class="math display">\[\bar z = 0 \qquad s_{z} = 1.\]</span></p>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Demostración
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Se deja como ejercicio. <!-- TODO: Demostración propiedades tipificación. --></p>
+</div>
+</div>
+</div>
+<div id="exm-tipificacion" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.33 </strong></span>Las notas de 5 alumnos en dos asignaturas <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> son</p>
+<p><span class="math display">\[
+\begin{array}{rccccccccc}
+\mbox{Alumno:} &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
+\hline
+X: &amp; 2 &amp; 5 &amp; 4 &amp; \color{red} 8 &amp; 6 &amp; \qquad &amp; \bar x = 5 &amp; \quad s_x = 2\\
+Y: &amp; 1 &amp; 9 &amp; \color{red} 8 &amp; 5 &amp; 2 &amp; \qquad &amp; \bar y = 5 &amp; \quad s_y = 3.16\\
+\hline
+\end{array}
+\]</span></p>
+<p><em>¿Ha tenido el mismo rendimiento el cuarto alumno en la asignatura <span class="math inline">\(X\)</span> que el tercero en la asignatura <span class="math inline">\(Y\)</span>?</em></p>
+<p>Podría parecer que ambos alumnos han tenido el mismo rendimiento puesto que tienen la misma nota, pero si queremos ver el rendimiento relativo al resto del grupo, tendríamos que tener en cuenta la dispersión de cada muestra y medir sus puntuaciones típicas:</p>
+<p><span class="math display">\[
+\begin{array}{cccccc}
+\mbox{Alumno:} &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
+\hline
+X: &amp; -1.50 &amp; 0.00 &amp; -0.50 &amp; \color{red}{1.50} &amp; 0.50 \\
+Y: &amp; -1.26 &amp; 1.26 &amp; \color{red}{0.95} &amp; 0.00 &amp; -0.95\\
+\hline
+\end{array}
+\]</span></p>
+<p>Es decir, el alumno que tiene un 8 en <span class="math inline">\(X\)</span> está <span class="math inline">\(1.5\)</span> veces la desviación típica por encima de la media de <span class="math inline">\(X\)</span>, mientras que el alumno que tiene un 8 en <span class="math inline">\(Y\)</span> sólo está <span class="math inline">\(0.95\)</span> desviaciones típicas por encima de la media de <span class="math inline">\(Y\)</span>. Así pues, el primer alumno tuvo un rendimiento superior al segundo.</p>
+<p>Siguiendo con el ejemplo anterior y considerando ambas asignaturas, <em>¿cuál es el mejor alumno?</em></p>
+<p>Si simplemente se suman las puntuaciones de cada asignatura se tiene:</p>
+<p><span class="math display">\[\begin{array}{rccccc}
+\mbox{Alumno:} &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
+\hline
+X: &amp; 2 &amp; 5 &amp; 4 &amp; 8 &amp; 6 \\
+Y: &amp; 1 &amp; 9 &amp; 8 &amp; 5 &amp; 2 \\
+\hline
+\sum &amp; 3 &amp; \color{red}{14} &amp; 12 &amp; 13 &amp; 8
+\end{array}
+\]</span></p>
+<p>El mejor alumno sería el segundo.</p>
+<p>Pero si se considera el rendimiento relativo tomando las puntuaciones típicas se tiene</p>
+<p><span class="math display">\[
+\begin{array}{rccccc}
+\mbox{Alumno:} &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
+\hline
+X: &amp; -1.50 &amp; 0.00 &amp; -0.50 &amp; 1.50 &amp; 0.50 \\
+Y: &amp; -1.26 &amp; 1.26 &amp; 0.95 &amp; 0.00 &amp; -0.95\\
+\hline
+\sum &amp; -2.76 &amp; 1.26 &amp; 0.45 &amp; \color{red}{1.5} &amp; -0.45
+\end{array}
+\]</span></p>
+<p>Y el mejor alumno sería el cuarto.</p>
+</div>
+<section id="transformaciones-no-lineales" class="level4" data-number="2.9.2.1">
+<h4 data-number="2.9.2.1" class="anchored" data-anchor-id="transformaciones-no-lineales"><span class="header-section-number">2.9.2.1</span> Transformaciones no lineales</h4>
+<p>Las transformaciones no lineales son también habituales para corregir la anormalidad de las distribuciones.</p>
+<p>La transformación <span class="math inline">\(Y=X^2\)</span> comprime la escala para valores pequeños y la expande para valores altos, de manera que es muy útil para corregir asimetrías hacia la izquierda.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/transformacion_cuadratica.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Transformación cuadrática.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p>Las transformaciones <span class="math inline">\(Y=\sqrt x\)</span>, <span class="math inline">\(Y= \log X\)</span> y <span class="math inline">\(Y=1/X\)</span> comprimen la escala para valores altos y la expanden para valores pequeños, de manera que son útiles para corregir asimetrías hacia la derecha.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/transformacion_logaritmica.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Transformación logarítmica.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="variables-clasificadoras-o-factores" class="level3" data-number="2.9.3">
+<h3 data-number="2.9.3" class="anchored" data-anchor-id="variables-clasificadoras-o-factores"><span class="header-section-number">2.9.3</span> Variables clasificadoras o factores</h3>
+<p>En ocasiones interesa describir el comportamiento de una variable, no para toda la muestra, sino para distintos grupos de individuos correspondientes a las categorías de otra variable conocida como <strong>variable clasificadora</strong> o <strong>factor</strong>.</p>
+<div id="exm-factores" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.34 </strong></span>Dividiendo la muestra de estaturas según el sexo se obtienen dos submuestras:</p>
+<p><span class="math display">\[
+\begin{array}{lll}
+\hline
+\mbox{Mujeres} &amp; &amp; 173, 158, 174, 166, 162, 177, 165, 154, 166, 182, 169, 172, 170, 168. \\
+\mbox{Hombres} &amp; &amp; 179, 181, 172, 194, 185, 187, 198, 178, 188, 171, 175, 167, 186, 172, 176, 187. \\
+\hline
+\end{array}
+\]</span></p>
+</div>
+<p>Habitualmente los factores se usan para comparar la distribución de la variable principal para cada categoría del factor.</p>
+<div id="exm-diagramas-agrupados-factores" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.35 </strong></span>Los siguientes diagramas permiten comparar la distribución de estaturas según el sexo.</p>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/histograma_estatura_sexo.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Histograma de estaturas por sexo.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/descriptiva/diagrama_caja_estatura_sexo.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Diagramas de cajas de estaturas por sexo.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'alternate';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./introduccion.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a la Estadística</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

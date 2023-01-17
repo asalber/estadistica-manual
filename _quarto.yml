@@ -1,0 +1,75 @@
+project:
+  type: book
+  output-dir: "docs"
+
+website:
+  favicon: img/logos/favicon.ico
+  reader-mode: true
+  comments: 
+    hypothesis:
+      theme: clean
+      openSidebar: true
+
+book:
+  title: "Manual de Estadística"
+  subtitle: "para Ciencias e Ingenierías"
+  author: "Alfredo Sánchez Alberca"
+  date: "1/6/2022"
+  output-file: "manual-estadistica"
+  image: cover.png
+  cover-image: img/logos/gauss-bell.png
+  sharing: [twitter, linkedin]
+  downloads: [pdf, epub]
+  favicon: "img/logos/favicon.ico"
+  sidebar:
+    logo: img/logos/aprendeconalf.png
+    tools:
+      - icon: house-fill
+        href: https://aprendeconalf.es
+  open-graph: true
+  twitter-card: 
+    site: "@aprendeconalf"
+  chapters:
+    - index.qmd
+    - introduccion.qmd
+    - estadistica-descriptiva.qmd
+    # - regresion.qmd
+    # - probabilidad.qmd
+    # - variables-aletaorias-discretas.qmd
+    # - variables-aleatorias-continuas.qmd
+    # - estimacion-parametros.qmd
+    # - contraste-hipotesis.qmd
+    
+#bibliography: references.bib
+
+format:
+  html:
+    highlight-style: a11y
+    theme:
+      dark: darkly
+      light: flatly
+    html-math-method: mathjax
+  pdf:
+    documentclass: scrreport
+    papersize: a4
+    template-partials:
+      - before-body.tex
+    titlegraphic: img/logos/gauss-bell.png
+    institution: CEU San Pablo
+    email: asalber@ceu.es
+    web: https://aprendeconalf.es
+    logo: img/logos/aprendeconalf.png
+    include-in-header:
+      - preamble.tex
+      - macros.tex
+    keep-tex: true
+    #mainfont: TeX Gyre Termes
+    #mainfontoptions:
+    #  - Numbers=Lowercase
+    #  - Numbers=Proportional    
+    
+  epub:
+    cover-image: img/logos/gauss-bell.jpg
+
+
+

@@ -1,0 +1,63 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Prefacio}{3}{chapter*.2}%
+\contentsline {section}{Licencia}{3}{section*.3}%
+\contentsline {chapter}{\numberline {1}Introducción a la Estadística}{4}{chapter.1}%
+\contentsline {subsection}{\numberline {1.0.1}¿Qué es la estadística?}{4}{subsection.1.0.1}%
+\contentsline {subsection}{\numberline {1.0.2}La variabilidad de nuestro mundo}{4}{subsection.1.0.2}%
+\contentsline {section}{\numberline {1.1}Población y muestra}{5}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Población estadística}{5}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Inconvenientes en el estudio de la población}{6}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Muestra estadística}{6}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Determinación del tamaño muestral}{6}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}Tipos de razonamiento}{8}{subsection.1.1.5}%
+\contentsline {section}{\numberline {1.2}Muestreo}{11}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Modalidades de muestreo}{11}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Muestreo aleatorio simple}{12}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Variables estadísticas}{12}{subsection.1.2.3}%
+\contentsline {subsubsection}{\numberline {1.2.3.1}Elección del tipo de variable más apropiado}{14}{subsubsection.1.2.3.1}%
+\contentsline {subsection}{\numberline {1.2.4}Tipos de estudios estadísticos}{15}{subsection.1.2.4}%
+\contentsline {subsection}{\numberline {1.2.5}La tabla de datos}{15}{subsection.1.2.5}%
+\contentsline {subsection}{\numberline {1.2.6}Fases del análisis estadístico}{16}{subsection.1.2.6}%
+\contentsline {subsubsection}{\numberline {1.2.6.1}El ciclo estadístico}{16}{subsubsection.1.2.6.1}%
+\contentsline {chapter}{\numberline {2}Estadística Descriptiva}{18}{chapter.2}%
+\contentsline {subsection}{\numberline {2.0.1}Clasificación de la muestra}{18}{subsection.2.0.1}%
+\contentsline {subsection}{\numberline {2.0.2}Recuento de frecuencias}{21}{subsection.2.0.2}%
+\contentsline {section}{\numberline {2.1}Frecuencias muestrales}{21}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Tabla de frecuencias}{21}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Construcción de clases}{22}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Representaciones gráficas}{23}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Diagrama de barras}{24}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Histograma}{25}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Diagrama de sectores}{26}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}La distribución Normal}{27}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}Datos atípicos}{29}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Tratamiento de los datos atípicos}{31}{subsection.2.3.1}%
+\contentsline {section}{\numberline {2.4}Estadísticos muestrales}{31}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Estadísticos de posición}{32}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Media aritmética}{32}{subsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.1.1}Media ponderada}{34}{subsubsection.2.5.1.1}%
+\contentsline {subsection}{\numberline {2.5.2}Mediana}{35}{subsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.2.1}Cálculo de la mediana con datos agrupados}{36}{subsubsection.2.5.2.1}%
+\contentsline {subsection}{\numberline {2.5.3}Moda}{39}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}¿Qué estadístico de tendencia central usar?}{40}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.5}Medidas de posición no centrales}{40}{subsection.2.5.5}%
+\contentsline {section}{\numberline {2.6}Estadísticos de dispersión}{43}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Recorrido}{43}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Rango intercuartílico}{44}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}Diagrama de caja y bigotes}{44}{subsection.2.6.3}%
+\contentsline {subsubsection}{\numberline {2.6.3.1}Desviaciones respecto de la media}{46}{subsubsection.2.6.3.1}%
+\contentsline {subsection}{\numberline {2.6.4}Varianza y desviación típica}{48}{subsection.2.6.4}%
+\contentsline {subsection}{\numberline {2.6.5}Coeficiente de variación}{50}{subsection.2.6.5}%
+\contentsline {section}{\numberline {2.7}Estadísticos de forma}{51}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Coeficiente de asimetría}{51}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}Coeficiente de apuntamiento o curtosis}{55}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3}Distribuciones no normales}{59}{subsection.2.7.3}%
+\contentsline {subsubsection}{\numberline {2.7.3.1}Distribución asimétrica a la derecha no normal}{59}{subsubsection.2.7.3.1}%
+\contentsline {subsubsection}{\numberline {2.7.3.2}Distribución asimétrica a la izquierda no normal}{60}{subsubsection.2.7.3.2}%
+\contentsline {subsubsection}{\numberline {2.7.3.3}Distribución bimodal no normal}{60}{subsubsection.2.7.3.3}%
+\contentsline {section}{\numberline {2.8}Transformaciones de variables}{60}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1}Transformaciones lineales}{62}{subsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.8.2}Transformación de tipificación y puntuaciones típicas}{63}{subsection.2.8.2}%
+\contentsline {subsubsection}{\numberline {2.8.2.1}Transformaciones no lineales}{64}{subsubsection.2.8.2.1}%
+\contentsline {subsection}{\numberline {2.8.3}Variables clasificadoras o factores}{66}{subsection.2.8.3}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
