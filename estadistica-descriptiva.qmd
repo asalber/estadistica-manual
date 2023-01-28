@@ -1602,3 +1602,4 @@ Los siguientes diagramas permiten comparar la distribución de estaturas según 
 ![Diagramas de cajas de estaturas por sexo.](img/descriptiva/diagrama_caja_estatura_sexo.png)
 :::
 :::
+

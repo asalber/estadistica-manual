@@ -155,9 +155,9 @@
 \newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
 \usepackage{amsthm}
 \theoremstyle{definition}
-\newtheorem{definition}{Definición}[chapter]
-\theoremstyle{definition}
 \newtheorem{example}{Ejemplo}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[chapter]
 \theoremstyle{plain}
 \newtheorem{theorem}{Teorema}[chapter]
 \theoremstyle{remark}
@@ -230,7 +230,7 @@
 
 \vspace{1.5cm}
 
-\includegraphics[width=0.4\textwidth]{img/logos/gauss-bell.png}
+\includegraphics[width=0.4\textwidth]{img/logos/sticker.png}
 \end{center}
 
 \vfill
@@ -242,7 +242,7 @@ Sánchez
 Alberca}\\ \textsf{asalber@ceu.es} \\ \textsf{https://aprendeconalf.es}}
 \end{tabular}
 \end{flushleft}
-\end{titlepage}\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, interior hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}, sharp corners, boxrule=0pt, frame hidden]}{\end{tcolorbox}}\fi
+\end{titlepage}\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, enhanced, sharp corners, breakable, frame hidden, interior hidden, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Indice de contenidos}
 {
@@ -973,7 +973,7 @@ estadístico y suele consistir en:
   (\emph{estadísticos muestrales}).
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-important-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-important-color-frame, coltitle=black, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, colframe=quarto-callout-important-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-important-color!10!white]
 
 No tiene poder inferencial, por lo que nunca deben sacarse conclusiones
 sobre la población a partir de las medidas resumen que aporta la
@@ -1203,7 +1203,7 @@ x_i & n_i & f_i \\
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-warning-color-frame, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-warning-color!10!white]
 
 Obsérvese que en este caso las frecuencias acumuladas no tienen sentido
 al no existir un orden entre los valores de la variable.
@@ -1611,7 +1611,7 @@ A partir de la tabla de frecuencias puede calcularse con la fórmula
 En la mayoría de los casos, la media aritmética es la medida que mejor
 representa a la muestra.
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-warning-color-frame, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-warning-color!10!white]
 
 No puede calcularse para variables cualitativas.
 
@@ -1773,7 +1773,7 @@ es decir, hay el mismo número de valores por debajo y por encima de la
 mediana. Por tanto, tiene frecuencias acumuladas \(N_{Me}= n/2\) y
 \(F_{Me}= 0.5\).
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-warning-color-frame, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-warning-color!10!white]
 
 No puede calcularse para variables nominales.
 
@@ -1992,7 +1992,7 @@ siguiente orden:
   calcularla sólo se tienen en cuenta las frecuencias absolutas.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-warning-color-frame, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-warning-color!10!white]
 
 Hay que tener cuidado con los datos atípicos, ya que la media puede
 distorsionarse cuando hay datos atípicos. En tal caso es mejor utilizar
@@ -2252,7 +2252,7 @@ siguientes pasos:
   superior.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-warning-color-frame, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, colframe=quarto-callout-warning-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-warning-color!10!white]
 
 Los bigotes no son las vallas.
 
@@ -2363,7 +2363,7 @@ como la raíz cuadrada positiva de su varianza muestral.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-tip-color-frame, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Interpretación}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Interpretación}, colframe=quarto-callout-tip-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-tip-color!10!white]
 
 Tanto la varianza como la desviación típica sirven para cuantificar la
 dispersión de los datos en torno a la media. Cuando la varianza o la
@@ -2495,7 +2495,7 @@ absoluto de su media muestral.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-tip-color-frame, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Interpretación}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Interpretación}, colframe=quarto-callout-tip-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-tip-color!10!white]
 
 El coeficiente de variación muestral mide la dispersión relativa de los
 valores de la muestra en torno a la media muestral.
@@ -2563,7 +2563,7 @@ cubo.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-tip-color-frame, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Interpretación}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Interpretación}, colframe=quarto-callout-tip-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-tip-color!10!white]
 
 Mide el grado de simetría de los valores de la muestra con respecto a la
 media muestra, es decir, cuantos valores de la muestra están por encima
@@ -2671,7 +2671,7 @@ típica a la cuarta y al resultado se le resta 3.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-tip-color-frame, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Interpretación}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Interpretación}, colframe=quarto-callout-tip-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-tip-color!10!white]
 
 El coeficiente de apuntamiento mide la concentración de valores en torno
 a la media y la longitud de las colas de la distribución. Se toma como
@@ -2767,7 +2767,7 @@ mesocúrticas, de manera que, tanto el coeficiente de asimetría como el
 de apuntamiento pueden utilizarse para contrastar si los datos de la
 muestra provienen de una población normal.
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-tip-color-frame, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Interpretación}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Interpretación}, colframe=quarto-callout-tip-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-tip-color!10!white]
 
 En general, se suele rechazar la hipótesis de normalidad de la población
 cuando \(g_1\) o \(g_2\) estén fuera del intervalo \([-2,2]\).
@@ -2890,7 +2890,7 @@ cambia de signo si \(b\) es negativo.
 
 \end{theorem}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-note-color-frame, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, colframe=quarto-callout-note-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-note-color!10!white]
 
 Se deja como ejercicio.
 
@@ -2919,7 +2919,7 @@ valor que resulta de aplicarle la transformación de tipificación
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-tip-color-frame, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Interpretación}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Interpretación}, colframe=quarto-callout-tip-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-tip-color!10!white]
 
 La puntuación típica es el número de desviaciones típicas que un valor
 está por encima o por debajo de la media, y es útil para evitar la
@@ -2934,7 +2934,7 @@ Dada una variable muetral \(X\), si \(Z\) es la variable tipificada de
 
 \[\bar z = 0 \qquad s_{z} = 1.\]
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-note-color-frame, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, left=2mm, titlerule=0mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, breakable, bottomrule=.15mm, colback=white, bottomtitle=1mm, toprule=.15mm, opacitybacktitle=0.6, titlerule=0mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, colframe=quarto-callout-note-color-frame, opacityback=0, arc=.35mm, left=2mm, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-note-color!10!white]
 
 Se deja como ejercicio.
 

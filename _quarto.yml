@@ -16,8 +16,8 @@ book:
   author: "Alfredo Sánchez Alberca"
   date: "1/6/2022"
   output-file: "manual-estadistica"
-  image: cover.png
-  cover-image: img/logos/gauss-bell.png
+  image: img/logos/sticker.png
+  cover-image: img/logos/sticker.png
   sharing: [twitter, linkedin]
   downloads: [pdf, epub]
   favicon: "img/logos/favicon.ico"
@@ -54,7 +54,7 @@ format:
     papersize: a4
     template-partials:
       - before-body.tex
-    titlegraphic: img/logos/gauss-bell.png
+    titlegraphic: img/logos/sticker.png
     institution: CEU San Pablo
     email: asalber@ceu.es
     web: https://aprendeconalf.es
@@ -69,7 +69,7 @@ format:
     #  - Numbers=Proportional    
     
   epub:
-    cover-image: img/logos/gauss-bell.jpg
+    cover-image: img/logos/sticker.png
 
 
 
