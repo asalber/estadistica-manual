@@ -1,5 +1,5 @@
 ---
-title: "Estimación de parámetros poblacionales"
+title: Estimación de parámetros poblacionales
 lang: es
 ---
 
@@ -18,8 +18,6 @@ library(tidyverse)
 library(plotly)
 library(latex2exp)
 ```
-
-## Estimación de Parámetros
 
 Los modelos de distribución de probabilidad vistos en el tema anterior explican el comportamiento de las variables aleatorias, pero para ello debemos saber qué modelo de distribución sigue una determinada variable.
 Este es el primer paso de la etapa de _Inferencia Estadística_. 
@@ -121,6 +119,7 @@ Si se toma la media muestral $\bar X$ de las muestras de tamaño 2 del ejemplo a
 ![](img/estimacion/diagrama-barras-distribucion-poblacion.svg){fig-alt="Distribución de la media de una muestra de tamaño 2." fig-align="center" width=80%}
 
 ![](img/estimacion/diagrama-barras-distribucion-media.svg){fig-alt="Distribución de la media de una muestra de tamaño 2." fig-align="center" width=80%}
+:::
 :::
 
 ::: {.content-visible unless-format="html"}
@@ -254,11 +253,11 @@ Por ser una función de la variable aleatoria muestral, un estimador es, a su ve
 Mientras que el estimador es una función que es única, la estimación no es única, sino que depende de la muestra tomada.
 
 ::: {.content-visible when-format="html"}
-![](img/estimacion/estimador-estimacion.svg){fig-alt="Diferencia entre estimador y estimación de un parámetro poblacional." fig-align="center"}
+![](img/estimacion/estimador-estimacion.svg){fig-alt="Diferencia entre estimador y estimación de un parámetro poblacional." fig-align="center" width=80%}
 :::
 
 ::: {.content-visible unless-format="html"}
-![](img/estimacion/estimador-estimacion.pdf){fig-alt="Diferencia entre estimador y estimación de un parámetro poblacional." fig-align="center"}
+![](img/estimacion/estimador-estimacion.pdf){fig-alt="Diferencia entre estimador y estimación de un parámetro poblacional." fig-align="center" width=80%}
 :::
 
 :::{#exm-estimacion-fumadores}
@@ -509,13 +508,13 @@ Un intervalo de confianza nunca garantiza con absoluta certeza que el parámetro
 
 Tampoco se puede decir que la probabilidad de que el parámetro esté dentro del intervalo es $1-\alpha$, ya que una vez calculado el intervalo, las variables aleatorias que determinan sus extremos han tomado un valor concreto y ya no tiene sentido hablar de probabilidad, es decir, o el parámetro está dentro, o está fuera, pero con absoluta certeza.
 
-Lo que si se deduce de la definición es que el $(1-\alpha)\%$ de los intervalos correspondientes a las todas las posibles muestras aleatorias, contendrán al parámetro. Es por eso que se habla de \color{red}{confianza} y no de probabilidad.
+Lo que si se deduce de la definición es que el $(1-\alpha)\%$ de los intervalos correspondientes a las todas las posibles muestras aleatorias, contendrán al parámetro. Es por eso que se habla de _confianza_ y no de probabilidad.
 
 Para que un intervalo sea útil su nivel de confianza debe ser alto:
 
 \begin{align*}
 1-\alpha &= 0.90 \mbox{ o } \alpha=0.10\\
-\color{red}{1-\alpha} &= \color{red}{0.95} \mbox{ o } \color{red}{\alpha=0.05}\\
+1-\alpha &= {0.95} \mbox{ o } \alpha=0.05\\
 1-\alpha &= 0.99 \mbox{ o } \alpha=0.01\\
 \end{align*}
 
@@ -699,7 +698,7 @@ $$
 de donde se deduce
 
 $$
-\color{red}{n = 4 z_{\alpha/2}^2\frac{\sigma^2}{A^2}}
+{n = 4 z_{\alpha/2}^2\frac{\sigma^2}{A^2}}
 $$
 
 :::{#exm-intervalo-confianza-media}
@@ -801,7 +800,7 @@ $$
 de donde se deduce
 
 $$
-\color{red}{n = 4 (t^{n-1}_{\alpha/2})^2\frac{\hat{S}^2}{A^2}}
+{n = 4 (t^{n-1}_{\alpha/2})^2\frac{\hat{S}^2}{A^2}}
 $$
 
 El único problema, a diferencia del caso anterior en que $\sigma$ era conocida, es que se necesita $\hat{S}$, por lo
@@ -1026,7 +1025,7 @@ $$
 de donde se deduce
 
 $$
-\color{red}{n= 4 z_{\alpha/2}^2\frac{\hat{p}(1-\hat{p})}{A^2}}
+{n= 4 z_{\alpha/2}^2\frac{\hat{p}(1-\hat{p})}{A^2}}
 $$
 
 Para poder hacer el cálculo se necesita una estimación de la proporción $\hat{p}$, por lo que suele tomarse una muestra previa pequeña para calcularla.

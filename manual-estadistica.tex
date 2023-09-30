@@ -157,12 +157,12 @@
 \floatname{codelisting}{Listado}
 \newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
 \usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}[chapter]
 \theoremstyle{definition}
 \newtheorem{example}{Ejemplo}[chapter]
 \theoremstyle{definition}
 \newtheorem{definition}{Definición}[chapter]
-\theoremstyle{plain}
-\newtheorem{theorem}{Teorema}[chapter]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Prueba}}
 \newtheorem*{remark}{Observación}
@@ -247,7 +247,7 @@ Sánchez
 Alberca}\\ \textsf{asalber@ceu.es} \\ \textsf{https://aprendeconalf.es}}
 \end{tabular}
 \end{flushleft}
-\end{titlepage}\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, breakable, frame hidden, interior hidden, boxrule=0pt, enhanced, sharp corners]}{\end{tcolorbox}}\fi
+\end{titlepage}\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, frame hidden, interior hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, breakable]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Indice de contenidos}
 {
@@ -971,7 +971,7 @@ estadístico y suele consistir en:
   (\emph{estadísticos muestrales}).
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-important-color-frame, breakable, colbacktitle=quarto-callout-important-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-important-color!10!white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-important-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 No tiene poder inferencial, por lo que nunca deben sacarse conclusiones
 sobre la población a partir de las medidas resumen que aporta la
@@ -1202,7 +1202,7 @@ x_i & n_i & f_i \\
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, breakable, colbacktitle=quarto-callout-warning-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-warning-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 Obsérvese que en este caso las frecuencias acumuladas no tienen sentido
 al no existir un orden entre los valores de la variable.
@@ -1596,7 +1596,7 @@ A partir de la tabla de frecuencias puede calcularse con la fórmula
 En la mayoría de los casos, la media aritmética es la medida que mejor
 representa a la muestra.
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, breakable, colbacktitle=quarto-callout-warning-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-warning-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 No puede calcularse para variables cualitativas.
 
@@ -1757,7 +1757,7 @@ es decir, hay el mismo número de valores por debajo y por encima de la
 mediana. Por tanto, tiene frecuencias acumuladas \(N_{Me}= n/2\) y
 \(F_{Me}= 0.5\).
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, breakable, colbacktitle=quarto-callout-warning-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-warning-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 No puede calcularse para variables nominales.
 
@@ -1974,7 +1974,7 @@ siguiente orden:
   calcularla sólo se tienen en cuenta las frecuencias absolutas.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, breakable, colbacktitle=quarto-callout-warning-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-warning-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 Hay que tener cuidado con los datos atípicos, ya que la media puede
 distorsionarse cuando hay datos atípicos. En tal caso es mejor utilizar
@@ -2230,7 +2230,7 @@ siguientes pasos:
   superior.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, breakable, colbacktitle=quarto-callout-warning-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-warning-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 Los bigotes no son las vallas.
 
@@ -2339,7 +2339,7 @@ como la raíz cuadrada positiva de su varianza muestral.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-tip-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 Tanto la varianza como la desviación típica sirven para cuantificar la
 dispersión de los datos en torno a la media. Cuando la varianza o la
@@ -2468,7 +2468,7 @@ absoluto de su media muestral.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-tip-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 El coeficiente de variación muestral mide la dispersión relativa de los
 valores de la muestra en torno a la media muestral.
@@ -2534,7 +2534,7 @@ cubo.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-tip-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 Mide el grado de simetría de los valores de la muestra con respecto a la
 media muestra, es decir, cuantos valores de la muestra están por encima
@@ -2641,7 +2641,7 @@ típica a la cuarta y al resultado se le resta 3.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-tip-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 El coeficiente de apuntamiento mide la concentración de valores en torno
 a la media y la longitud de las colas de la distribución. Se toma como
@@ -2703,12 +2703,10 @@ referencia la distribución normal (campana de Gauss).
 
 \end{tcolorbox}
 
-\begin{example}[Datos
-agrupados]\protect\hypertarget{exm-coeficiente-apuntamiento}{}\label{exm-coeficiente-apuntamiento}
-
-Utilizando la tabla de frecuencias de la muestra de estaturas y
-añadiendo una nueva columna con las desviaciones de la media
-\(\bar x = 174.67\) cm a la cuarta, se tiene
+:::\{\#exm-coeficiente-apuntamiento\} \#\# Datos agrupados Utilizando la
+tabla de frecuencias de la muestra de estaturas y añadiendo una nueva
+columna con las desviaciones de la media \(\bar x = 174.67\) cm a la
+cuarta, se tiene
 
 \[
 \begin{array}{rrrrr}
@@ -2739,7 +2737,7 @@ mesocúrticas, de manera que, tanto el coeficiente de asimetría como el
 de apuntamiento pueden utilizarse para contrastar si los datos de la
 muestra provienen de una población normal.
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-tip-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 En general, se suele rechazar la hipótesis de normalidad de la población
 cuando \(g_1\) o \(g_2\) estén fuera del intervalo \([-2,2]\).
@@ -2750,15 +2748,12 @@ En tal caso, lo habitual es aplicar alguna transformación a la variable
 para corregir la anormalidad.
 
 \hypertarget{distribuciones-no-normales}{%
-\subsection*{Distribuciones no
+\subsection{Distribuciones no
 normales}\label{distribuciones-no-normales}}
-\addcontentsline{toc}{subsection}{Distribuciones no normales}
 
 \hypertarget{distribuciuxf3n-asimuxe9trica-a-la-derecha-no-normal}{%
-\subsubsection*{Distribución asimétrica a la derecha no
+\subsubsection{Distribución asimétrica a la derecha no
 normal}\label{distribuciuxf3n-asimuxe9trica-a-la-derecha-no-normal}}
-\addcontentsline{toc}{subsubsection}{Distribución asimétrica a la
-derecha no normal}
 
 Un ejemplo de distribución asimétrica a la derecha es el ingreso de las
 familias.
@@ -2774,10 +2769,8 @@ familias.
 \end{figure}
 
 \hypertarget{distribuciuxf3n-asimuxe9trica-a-la-izquierda-no-normal}{%
-\subsubsection*{Distribución asimétrica a la izquierda no
+\subsubsection{Distribución asimétrica a la izquierda no
 normal}\label{distribuciuxf3n-asimuxe9trica-a-la-izquierda-no-normal}}
-\addcontentsline{toc}{subsubsection}{Distribución asimétrica a la
-izquierda no normal}
 
 Un ejemplo de distribución asimétrica a la izquierda es la edad de
 fallecimiento.
@@ -2793,9 +2786,8 @@ fallecimiento.
 \end{figure}
 
 \hypertarget{distribuciuxf3n-bimodal-no-normal}{%
-\subsubsection*{Distribución bimodal no
+\subsubsection{Distribución bimodal no
 normal}\label{distribuciuxf3n-bimodal-no-normal}}
-\addcontentsline{toc}{subsubsection}{Distribución bimodal no normal}
 
 Un ejemplo de distribución bimodal es la hora de llegada de los clientes
 de un restaurante.
@@ -2812,11 +2804,8 @@ restaurante.}
 \end{figure}
 
 \hypertarget{transformaciones-de-variables}{%
-\section*{Transformaciones de
+\section{Transformaciones de
 variables}\label{transformaciones-de-variables}}
-\addcontentsline{toc}{section}{Transformaciones de variables}
-
-\markright{Transformaciones de variables}
 
 En muchas ocasiones se suelen transformar los datos brutos para corregir
 alguna anormalidad de la distribución o simplemente para trabajar con
@@ -2848,9 +2837,7 @@ transformación:
 \[Y= 100X-165\]
 
 \hypertarget{transformaciones-lineales}{%
-\subsection*{Transformaciones
-lineales}\label{transformaciones-lineales}}
-\addcontentsline{toc}{subsection}{Transformaciones lineales}
+\subsection{Transformaciones lineales}\label{transformaciones-lineales}}
 
 Una de las transformaciones más habituales es la \emph{transformación
 lineal}:
@@ -2872,17 +2859,15 @@ cambia de signo si \(b\) es negativo.
 
 \end{theorem}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-note-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 Se deja como ejercicio.
 
 \end{tcolorbox}
 
 \hypertarget{transformaciuxf3n-de-tipificaciuxf3n-y-puntuaciones-tuxedpicas}{%
-\subsection*{Transformación de tipificación y puntuaciones
+\subsection{Transformación de tipificación y puntuaciones
 típicas}\label{transformaciuxf3n-de-tipificaciuxf3n-y-puntuaciones-tuxedpicas}}
-\addcontentsline{toc}{subsection}{Transformación de tipificación y
-puntuaciones típicas}
 
 Una de las transformaciones lineales más habituales es la
 \emph{tipificación}:
@@ -2903,7 +2888,7 @@ valor que resulta de aplicarle la transformación de tipificación
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, breakable, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-tip-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 La puntuación típica es el número de desviaciones típicas que un valor
 está por encima o por debajo de la media, y es útil para evitar la
@@ -2918,7 +2903,7 @@ Dada una variable muetral \(X\), si \(Z\) es la variable tipificada de
 
 \[\bar z = 0 \qquad s_{z} = 1.\]
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, arc=.35mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white, leftrule=.75mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, leftrule=.75mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, breakable, colframe=quarto-callout-note-color-frame, coltitle=black, toprule=.15mm, toptitle=1mm, titlerule=0mm, rightrule=.15mm, left=2mm, colback=white]
 
 Se deja como ejercicio.
 
@@ -2998,9 +2983,8 @@ Y el mejor alumno sería el cuarto.
 \end{example}
 
 \hypertarget{transformaciones-no-lineales}{%
-\subsubsection*{Transformaciones no
+\subsubsection{Transformaciones no
 lineales}\label{transformaciones-no-lineales}}
-\addcontentsline{toc}{subsubsection}{Transformaciones no lineales}
 
 Las transformaciones no lineales son también habituales para corregir la
 anormalidad de las distribuciones.
@@ -3034,9 +3018,8 @@ manera que son útiles para corregir asimetrías hacia la derecha.
 \end{figure}
 
 \hypertarget{variables-clasificadoras-o-factores}{%
-\subsection*{Variables clasificadoras o
+\subsection{Variables clasificadoras o
 factores}\label{variables-clasificadoras-o-factores}}
-\addcontentsline{toc}{subsection}{Variables clasificadoras o factores}
 
 En ocasiones interesa describir el comportamiento de una variable, no
 para toda la muestra, sino para distintos grupos de individuos
@@ -3092,19 +3075,8 @@ según el sexo.
 \bookmarksetup{startatroot}
 
 \hypertarget{estimaciuxf3n-de-paruxe1metros-poblacionales}{%
-\chapter*{Estimación de parámetros
+\chapter{Estimación de parámetros
 poblacionales}\label{estimaciuxf3n-de-paruxe1metros-poblacionales}}
-\addcontentsline{toc}{chapter}{Estimación de parámetros poblacionales}
-
-\markboth{Estimación de parámetros poblacionales}{Estimación de
-parámetros poblacionales}
-
-\hypertarget{estimaciuxf3n-de-paruxe1metros}{%
-\section*{Estimación de
-Parámetros}\label{estimaciuxf3n-de-paruxe1metros}}
-\addcontentsline{toc}{section}{Estimación de Parámetros}
-
-\markright{Estimación de Parámetros}
 
 Los modelos de distribución de probabilidad vistos en el tema anterior
 explican el comportamiento de las variables aleatorias, pero para ello
@@ -3150,10 +3122,7 @@ errores, aunque no se pueden evitar, se tratará de reducirlos al máximo
 y acotarlos.
 
 \hypertarget{distribuciones-muestrales}{%
-\section*{Distribuciones muestrales}\label{distribuciones-muestrales}}
-\addcontentsline{toc}{section}{Distribuciones muestrales}
-
-\markright{Distribuciones muestrales}
+\section{Distribuciones muestrales}\label{distribuciones-muestrales}}
 
 Los valores de una variable \(X\) en una muestra de tamaño \(n\) de una
 población pueden verse como el valor de una variable aleatoria
@@ -3274,19 +3243,6 @@ ejemplo anterior, su distribución de probabilidad es
 
 \end{example}
 
-::: \{.content-visible when-format=``html''\} :::\{layout-ncol=``2''\}
-\includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/estimacion/diagrama-barras-distribucion-poblacion.pdf}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/estimacion/diagrama-barras-distribucion-media.pdf}
-
-}
-
-\end{figure}
-
-\end{example}
-
 \begin{figure}
 
 \begin{minipage}[t]{0.50\linewidth}
@@ -3295,7 +3251,7 @@ ejemplo anterior, su distribución de probabilidad es
 
 \raisebox{-\height}{
 
-\includegraphics{index_files/mediabag/img/estimacion/diagrama-barras-distribucion-poblacion.pdf}
+\includegraphics{img/estimacion/diagrama-barras-distribucion-poblacion.pdf}
 
 }
 
@@ -3309,7 +3265,7 @@ ejemplo anterior, su distribución de probabilidad es
 
 \raisebox{-\height}{
 
-\includegraphics{index_files/mediabag/img/estimacion/diagrama-barras-distribucion-media.pdf}
+\includegraphics{img/estimacion/diagrama-barras-distribucion-media.pdf}
 
 }
 
@@ -3485,7 +3441,7 @@ es única, sino que depende de la muestra tomada.
 
 \begin{figure}
 
-{\centering \includegraphics{img/estimacion/estimador-estimacion.pdf}
+{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/estimador-estimacion.pdf}
 
 }
 
@@ -3855,13 +3811,13 @@ certeza.
 Lo que si se deduce de la definición es que el \((1-\alpha)\%\) de los
 intervalos correspondientes a las todas las posibles muestras
 aleatorias, contendrán al parámetro. Es por eso que se habla de
-\color{red}{confianza} y no de probabilidad.
+\emph{confianza} y no de probabilidad.
 
 Para que un intervalo sea útil su nivel de confianza debe ser alto:
 
 \begin{align*}
 1-\alpha &= 0.90 \mbox{ o } \alpha=0.10\\
-\color{red}{1-\alpha} &= \color{red}{0.95} \mbox{ o } \color{red}{\alpha=0.05}\\
+1-\alpha &= {0.95} \mbox{ o } \alpha=0.05\\
 1-\alpha &= 0.99 \mbox{ o } \alpha=0.01\\
 \end{align*}
 
@@ -4100,7 +4056,7 @@ A= 2 z_{\alpha/2}\frac{\sigma}{\sqrt{n}} \Leftrightarrow \sqrt{n}= 2 z_{\alpha/2
 de donde se deduce
 
 \[
-\color{red}{n = 4 z_{\alpha/2}^2\frac{\sigma^2}{A^2}}
+{n = 4 z_{\alpha/2}^2\frac{\sigma^2}{A^2}}
 \]
 
 \begin{example}[]\protect\hypertarget{exm-intervalo-confianza-media}{}\label{exm-intervalo-confianza-media}
@@ -4241,7 +4197,7 @@ A= 2 t^{n-1}_{\alpha/2}\frac{\hat{S}}{\sqrt{n}} \Leftrightarrow \sqrt{n}= 2 t^{n
 de donde se deduce
 
 \[
-\color{red}{n = 4 (t^{n-1}_{\alpha/2})^2\frac{\hat{S}^2}{A^2}}
+{n = 4 (t^{n-1}_{\alpha/2})^2\frac{\hat{S}^2}{A^2}}
 \]
 
 El único problema, a diferencia del caso anterior en que \(\sigma\) era
@@ -4547,7 +4503,7 @@ A= 2 z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \Leftrightarrow A^2= 4 z_{\
 de donde se deduce
 
 \[
-\color{red}{n= 4 z_{\alpha/2}^2\frac{\hat{p}(1-\hat{p})}{A^2}}
+{n= 4 z_{\alpha/2}^2\frac{\hat{p}(1-\hat{p})}{A^2}}
 \]
 
 Para poder hacer el cálculo se necesita una estimación de la proporción
