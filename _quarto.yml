@@ -31,13 +31,13 @@ book:
     site: "@aprendeconalf"
   chapters:
     - index.qmd
-    - introduccion.qmd
-    - estadistica-descriptiva.qmd
+    - 01-introduccion.qmd
+    - 02-estadistica-descriptiva.qmd
     # - regresion.qmd
     # - probabilidad.qmd
     # - variables-aletaorias-discretas.qmd
     # - variables-aleatorias-continuas.qmd
-    # - estimacion-parametros.qmd
+    - 07-estimacion.qmd
     # - contraste-hipotesis.qmd
     
 #bibliography: references.bib
@@ -46,8 +46,8 @@ format:
   html:
     highlight-style: a11y
     theme:
-      dark: darkly
-      light: flatly
+      dark: [darkly, custom-dark.scss]
+      light: [flatly, custom.scss]
     html-math-method: mathjax
   pdf:
     documentclass: scrreport

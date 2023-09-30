@@ -1,0 +1,31 @@
+% Autor: Alfredo Sánchez Alberca (email:asalber@ceu.es)
+% Gráfico que muestra cómo obtener una muestra a partir de la variable muestral
+\begin{tikzpicture}
+\tikzstyle{node} = [align=center, node distance=1cm, text=color1]; 
+\tikzstyle{arrow} = [-latex, color1, line width=2pt];
+
+\node (x) [label=90:$X$] at (0,5) {\includegraphics[height=1.5cm]{../introduccion/poblacion.png}}; 
+\node [anchor=west, align=left] at (6,5) {Población};
+
+\node (x1) [label=90:$X_1$] at (-5,2.5) {\includegraphics[height=1.5cm]{../introduccion/poblacion.png}};
+\draw [arrow] (x) -- (x1); 
+
+\node (x2) [label=90:$X_2$] at (-2,2.5) {\includegraphics[height=1.5cm]{../introduccion/poblacion.png}};
+\draw [arrow] (x) -- (x2); 
+
+\node [label=90:$n$ copias] at (1,2.5) {\LARGE\ldots};
+\node (xn) [label=90:$X_n$] at (4,2.5) {\includegraphics[height=1.5cm]{../introduccion/poblacion.png}};
+\draw [arrow] (x) -- (xn); 
+\node [anchor=west, align=left] at (6,2.5) {Variable\\ Aleatoria\\ Muestral};
+
+\node (i1) [label=-90:$x_1$, scale=1] at (-5,0) {\includegraphics[height=1.5cm]{../estimacion/individuo1.png}};
+\draw [arrow] (x1) -- (i1);
+ 
+\node (i2) [label=-90:$x_2$] at (-2,0) {\includegraphics[height=1.5cm]{../estimacion/individuo2.png}};
+\draw [arrow] (x2) -- (i2); 
+
+\node at (1,2.5) {\LARGE\ldots};
+\node (in) [label=-90:$x_n$] at (4,0) {\includegraphics[height=1.5cm]{../estimacion/individuo3.png}};
+\draw [arrow] (xn) -- (in); 
+\node [anchor=west, align=left] at (6,0) {Muestra};
+\end{tikzpicture} 

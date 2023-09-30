@@ -1,0 +1,28 @@
+% Autor: Alfredo Sánchez Alberca (email:asalber@ceu.es)
+% Gráfico que muestra la diferencia entre estimador y estimación 
+\begin{tikzpicture}
+\tikzstyle{node} = [align=center, node distance=1cm, text=color1]; 
+\tikzstyle{arrow} = [fill=color1, single arrow, shape border rotate=0, text=white, minimum width=1.1cm, align=left];
+
+\node at (0,5) {Distribución de la población}; 
+\node at (0,4.5) {$X$}; 
+\pause
+\node at (3,4.5) [arrow]{Parámetro poblacional};
+\node (parametro) at (6,4.5) {¿$\theta$?};
+\pause
+\draw[-latex, color1, line width=2pt] (0,4) -- (0,3); 
+\node at (0,2.5) {Variable aleatoria muestral}; 
+\node at (0,2) {$(X_1,\ldots,X_n)$};
+\pause
+\node at (3,2) [arrow]{Estimador};
+\node at (6,2) {$\hat\theta=F(X_1,\ldots,X_n)$}; 
+\pause
+\draw[-latex, color1, line width=2pt] (0,1.5) -- (0,0.5); 
+\node at (0,0) {Muestra de tamaño $n$}; 
+\node at (0,-0.5) {$(x_1,\ldots,x_n)$};
+\pause
+\node at (3,-0.5) [arrow]{Estimación};
+\node (estimacion) at (6,-0.5) {$\hat\theta_0=F(x_1,\ldots,x_n)$}; 
+\pause
+\draw [-latex, color1, line width=2pt] (estimacion.north east) to [out=50,in=-35] (parametro.south east);
+\end{tikzpicture}

@@ -1,0 +1,34 @@
+\documentclass[tikz, convert={pdf2svg, subjobname=obtencion-muestra}]{standalone}
+\usepackage{amsmath}
+\usepackage{ amssymb}
+\usepackage{mathptmx}
+\usepackage{pgfplots}
+\usetikzlibrary{angles, quotes}
+\usetikzlibrary{arrows.meta, arrows}
+%\usetikzlibrary{external}
+% \tikzexternalize[prefix={external/}]
+
+% \tikzset{
+%     export as png/.style={
+%         external/system call/.add={}{
+%             && convert -density #1 -transparent white "\image.pdf" "\image.png"
+%         },
+%     },
+%     export as png/.default={200},
+%     % Arrow tips
+%     >=stealth,
+% }
+
+% pgfplots settings
+\input{colors}
+%\input{pgfplots}
+
+% \DeclareSymbolFont{symbolsb}{OMS}{cmsy}{m}{n}
+% \SetSymbolFont{symbolsb}{bold}{OMS}{cmsy}{b}{n}
+% \DeclareSymbolFontAlphabet{\mathcal}{symbolsb}
+
+% \def\req{\protect\rotatebox{90}{$\scriptstyle=$}}
+
+\begin{document}
+\input{../estimacion/100-intervalos-confianza.tex}
+\end{document}
