@@ -38,7 +38,7 @@ book:
     # - variables-aletaorias-discretas.qmd
     # - variables-aleatorias-continuas.qmd
     - 07-estimacion.qmd
-    # - contraste-hipotesis.qmd
+    - 08-contrastes-parametricos.qmd
     
 #bibliography: references.bib
 
