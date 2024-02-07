@@ -28,7 +28,7 @@ Tras el proceso de muestreo, es la siguiente etapa de todo estudio estadístico 
 
 3. Calcular medidas que resuman la información que contiene la muestra (_estadísticos muestrales_).
 
-:::{.callout-important}
+:::{.callout-note title="Interpretación"}
 No tiene poder inferencial, por lo que nunca deben sacarse conclusiones sobre la población a partir de las medidas resumen que aporta la Estadística Descriptiva.
 :::
 
@@ -172,7 +172,6 @@ $$
 :::
 
 :::{.callout-warning}
-
 Obsérvese que en este caso las frecuencias acumuladas no tienen sentido al no existir un orden entre los valores de la variable.
 :::
 
@@ -268,7 +267,7 @@ Un _histograma_ es similar a un diagrama de barras pero para datos agrupados.
 Habitualmente las clases o intervalos de agrupación se representan en el eje $X$, y las frecuencias en el eje $Y$. Para cada clase se dibuja una barra de altura la correspondiente frecuencia. A diferencia del diagrama de barras, la anchura del la barra coincide con la anchura de las clases y no hay separación entre dos
 barras consecutivas.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Clasifiación en clases.](img/descriptiva/histogram_creation.gif)
 :::
 
@@ -514,11 +513,11 @@ p
 
 La distribución con forma de campana aparece tan a menudo en la Naturaleza que se conoce como _distribución normal_ o _distribución gaussiana_.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Campana de Gauss.](img/descriptiva/campana-gauss.png)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Campana de Gauss.](img/descriptiva/campana-gauss.tex)
 :::
 
@@ -596,12 +595,10 @@ No puede calcularse para variables cualitativas.
 ## Datos no agrupados
 Utilizando los datos de la muestra del número de hijos en las familias, la media aritmética es
 
-$$
-\begin{aligned}
+\begin{align*}
 \bar{x} &= \frac{1+2+4+2+2+2+3+2+1+1+0+2+2}{25}+\\
  &+\frac{0+2+2+1+2+2+3+1+2+2+1+2}{25} = \frac{44}{25} = 1.76 \mbox{ hijos}.
-\end{aligned}
-$$
+\end{align*}
 
 o bien, desde la tabla de frecuencias
 
@@ -716,11 +713,11 @@ Con datos no agrupados pueden darse varios casos:
 - Tamaño muestral impar: La mediana es el valor que ocupa la posición $\frac{n+1}{2}$.
 - Tamaño muestral par: La mediana es la media de los valores que ocupan las posiciones $\frac{n}{2}$ y $\frac{n}{2}+1$.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Cálculo de la mediana con datos no agrupados.](img/descriptiva/mediana.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Cálculo de la mediana con datos no agrupados.](img/descriptiva/mediana.png)
 :::
 
@@ -755,11 +752,11 @@ $$
 
 Con datos agrupados la mediana se calcula interpolando en el polígono de frecuencias relativas acumuladas para el valor 0.5.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Cálculo de la mediana con datos agrupados.](img/descriptiva/interpolacion.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Cálculo de la mediana con datos agrupados.](img/descriptiva/interpolacion.png)
 :::
 
@@ -773,21 +770,21 @@ $$
 ## Datos agrupados
 Utilizando los datos de la muestra de las estaturas de estudiantes, la mediana cae en la clase (170,180].
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Ejemplo de cálculo de la mediana con datos agrupados.](img/descriptiva/interpolacion_ejemplo_1.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Ejemplo de cálculo de la mediana con datos agrupados.](img/descriptiva/interpolacion_ejemplo_1.png)
 :::
 
 Interpolando en el intervalo (170,180] se tiene
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Ejemplo de cálculo de la mediana con datos agrupados.](img/descriptiva/interpolacion_ejemplo_2.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Ejemplo de cálculo de la mediana con datos agrupados.](img/descriptiva/interpolacion_ejemplo_2.png)
 :::
 
@@ -889,11 +886,11 @@ Los más utilizados son:
 
 **Percentiles**: Dividen la distribución en 100 partes iguales. Hay 99 percentiles: $P_1$ (1% acumulado),..., $P_{99}$ (99% acumulado).
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Cuartiles, deciles y percentiles.](img/descriptiva/cuantiles.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Cuartiles, deciles y percentiles.](img/descriptiva/cuantiles.png)
 :::
 
@@ -901,11 +898,11 @@ Obsérvese que hay una correspondencia entre los cuartiles, los deciles y los pe
 
 Los cuantiles se calculan de forma similar a la mediana. La única diferencia es la frecuencia relativa acumulada que corresponde a cada cuantil.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Cálculo de cuartiles, deciles y percentiles.](img/descriptiva/cuantiles_calculo.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Cálculo de cuartiles, deciles y percentiles.](img/descriptiva/cuantiles_calculo.png)
 :::
 
@@ -956,11 +953,11 @@ El _recorrido muestral_ o _rango muestral_ de una variable $X$ se define como la
 $$Re = \max_{x_i} -\min_{x_i}$$
 :::
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Rango muestral.](img/descriptiva/rango.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Rango muestral.](img/descriptiva/rango.png)
 :::
 
@@ -977,11 +974,11 @@ El _rango intercuartílico muestral_ de una variable $X$ se define como la difer
 $$RI = C_3 -C_1$$
 :::
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Rango intercuartílico.](img/descriptiva/rango_intercuartilico.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Rango intercuartílico.](img/descriptiva/rango_intercuartilico.png)
 :::
 
@@ -1000,11 +997,11 @@ Este diagrama es muy útil y se utiliza para muchos propósitos:
 :::{#exm-diagrama-caja}
 El diagrama siguiente muestra el diagrama de caja y bigotes del peso de una muestra de recién nacidos.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Diagrama de caja y bigotes del peso de recién nacidos.](img/descriptiva/diagrama_caja.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Diagrama de caja y bigotes del peso de recién nacidos.](img/descriptiva/diagrama_caja.png)
 :::
 
@@ -1034,11 +1031,11 @@ Los bigotes no son las vallas.
 :::{#exm-diagrama-caja}
 El diagrama de caja y bigotes de la muestra del número de hijos de las familias se muestra a continuación.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Diagrama de caja y bigotes del número de hijos.](img/descriptiva/diagrama_caja_hijos.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Diagrama de caja y bigotes del número de hijos.](img/descriptiva/diagrama_caja_hijos.png)
 :::
 :::
@@ -1049,11 +1046,11 @@ Otra forma de medir la variabilidad de una variable es estudiar la concentració
 
 Para ello se suele medir la distancia de cada valor a la media. A ese valor se le llama **desviación de la media**.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Desviaciones con respecto a la media.](img/descriptiva/desviaciones.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Desviaciones con respecto a la media.](img/descriptiva/desviaciones.png)
 :::
 
@@ -1110,11 +1107,11 @@ Tanto la varianza como la desviación típica sirven para cuantificar la dispers
 :::{#exm-intrepretacion-desviacion-tipica}
 Las siguientes muestras contienen las notas de dos estudiantes en dos asignaturas.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Interpretación de la desviación típica.](img/descriptiva/interpretacion_desviacion_tipica.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Interpretación de la desviación típica.](img/descriptiva/interpretacion_desviacion_tipica.png)
 :::
 
@@ -1231,31 +1228,31 @@ Mide el grado de simetría de los valores de la muestra con respecto a la media 
 
 - $g_1=0$ indica que hay el mismo número de valores por encima y por debajo de la media e igualmente alejados de ella (simétrica).
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Distribución simétrica.](img/descriptiva/distribucion_simetrica.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Distribución simétrica.](img/descriptiva/distribucion_simetrica.png)
 :::
 
 - $g_1<0$ indica que la mayoría de los valores son mayores que la media, pero los valores menores están más alejados de ella (asimétrica a la izquierda).
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Distribución asimétrica hacia la izquierda.](img/descriptiva/distribucion_asimetrica_izquierda.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Distribución asimétrica hacia la izquierda.](img/descriptiva/distribucion_asimetrica_izquierda.png)
 :::
 
 - $g_1>0$ indica que la mayoría de los valores son menores que la media, pero los valores mayores están más alejados de ella (asimétrica a la derecha).
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Distribución asimétrica hacia la derecha.](img/descriptiva/distribucion_asimetrica_derecha.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Distribución asimétrica hacia la derecha.](img/descriptiva/distribucion_asimetrica_derecha.png)
 :::
 :::
@@ -1302,31 +1299,31 @@ Se toma como referencia la distribución normal (campana de Gauss).
 
 - $g_2=0$ indica que la distribución tienen un apuntamiento normal, es decir, la concentración de valores en torno a la media es similar al de una campana de Gauss (_mesocúrtica_).
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Distribución mesocúrtica.](img/descriptiva/distribucion_mesocurtica.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Distribución mesocúrtica.](img/descriptiva/distribucion_mesocurtica.png)
 :::
 
 - $g_2<0$ indica que la distribución tiene menos apuntamiento de lo normal, es decir, la concentración de valores en torno a la media es menor que en una campana de Gauss (_platicúrtica_).
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Distribución platicúrtica.](img/descriptiva/distribucion_platicurtica.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Distribución platicúrtica.](img/descriptiva/distribucion_platicurtica.png)
 :::
 
 - $g_2>0$ indica que la distribución tiene más apuntamiento de lo normal, es decir, la concentración de valores en torno a la media es menor que en una campana de Gauss (_leptocúrtica_).
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Distribución leptocúrtica.](img/descriptiva/distribucion_leptocurtica.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Distribución leptocúrtica.](img/descriptiva/distribucion_leptocurtica.png)
 :::
 :::
@@ -1370,33 +1367,33 @@ En tal caso, lo habitual es aplicar alguna transformación a la variable para co
 #### Distribución asimétrica a la derecha no normal
 Un ejemplo de distribución asimétrica a la derecha es el ingreso de las familias.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Distribucion de los ingresos familiares de EEUU.](img/descriptiva/ejemplo_distribucion_asimetrica_derecha.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Distribucion de los ingresos familiares de EEUU.](img/descriptiva/ejemplo_distribucion_asimetrica_derecha.png)
 :::
 
 #### Distribución asimétrica a la izquierda no normal
 Un ejemplo de distribución asimétrica a la izquierda es la edad de fallecimiento.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Distribucion de la edad de fallecimiento.](img/descriptiva/ejemplo_distribucion_asimetrica_izquierda.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Distribucion de la edad de fallecimiento.](img/descriptiva/ejemplo_distribucion_asimetrica_izquierda.png)
 :::
 
 #### Distribución bimodal no normal
 Un ejemplo de distribución bimodal es la hora de llegada de los clientes de un restaurante.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Distribucion de la hora de llegada de los clientes de un restaurante.](img/descriptiva/ejemplo_distribucion_bimodal.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Distribucion de la hora de llegada de los clientes de un restaurante.](img/descriptiva/ejemplo_distribucion_bimodal.png)
 :::
 
@@ -1546,21 +1543,21 @@ Las transformaciones no lineales son también habituales para corregir la anorma
 
 La transformación $Y=X^2$ comprime la escala para valores pequeños y la expande para valores altos, de manera que es muy útil para corregir asimetrías hacia la izquierda.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Transformación cuadrática.](img/descriptiva/transformacion_cuadratica.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Transformación cuadrática.](img/descriptiva/transformacion_cuadratica.png)
 :::
 
 Las transformaciones $Y=\sqrt x$, $Y= \log X$ y $Y=1/X$ comprimen la escala para valores altos y la expanden para valores pequeños, de manera que son útiles para corregir asimetrías hacia la derecha.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Transformación logarítmica.](img/descriptiva/transformacion_logaritmica.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Transformación logarítmica.](img/descriptiva/transformacion_logaritmica.png)
 :::
 
@@ -1586,19 +1583,19 @@ Habitualmente los factores se usan para comparar la distribución de la variable
 :::{#exm-diagramas-agrupados-factores}
 Los siguientes diagramas permiten comparar la distribución de estaturas según el sexo.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Histograma de estaturas por sexo.](img/descriptiva/histograma_estatura_sexo.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Histograma de estaturas por sexo.](img/descriptiva/histograma_estatura_sexo.png)
 :::
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Diagramas de cajas de estaturas por sexo.](img/descriptiva/diagrama_caja_estatura_sexo.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Diagramas de cajas de estaturas por sexo.](img/descriptiva/diagrama_caja_estatura_sexo.png)
 :::
 :::

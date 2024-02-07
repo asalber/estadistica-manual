@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-99.9.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./07-estimacion.html" rel="next">
+<link href="./03-regresion.html" rel="next">
 <link href="./01-introduccion.html" rel="prev">
 <link href="./img/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -174,14 +208,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./03-regresion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regresión</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./07-estimacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-contrastes-parametricos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
   </div>
 </li>
     </ul>
@@ -274,13 +314,13 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Tabular y representar gráficamente los datos de acuerdo a sus frecuencias.</p></li>
 <li><p>Calcular medidas que resuman la información que contiene la muestra (<em>estadísticos muestrales</em>).</p></li>
 </ol>
-<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="Interpretación">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Importante
+Interpretación
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -491,37 +531,71 @@ Advertencia
 <p>En ocasiones se dibuja un polígono, conocido como <strong>polígono de frecuencias</strong>, uniendo mediante segmentos los puntos más altos de cada barra.</p>
 <div id="exm-diagrama-barras" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.4 </strong></span>El diagrama de barras que aparece a continuación muestra la distribución de frecuencias absolutas del número de hijos en la muestra anterior.</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/diagrama-barras_a7d56bb42008f7f65fc1c5cb94983c90">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datos/hijos-coches.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>Hijos)) <span class="sc">+</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">fill=</span>blueceu, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/diagrama-barras-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Y a continuación se muestra el polígono de frecuencias.</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/poligono-frecuencias-absolutas_d016db139b2d83ad9022b83fb5279418">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span>  </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">bins=</span><span class="dv">5</span>, <span class="at">col=</span>redceu)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/poligono-frecuencias-absolutas-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>El diagrama de barras que aparece a continuación muestra la distribución de frecuencias relativas del número de hijos en la muestra anterior.</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/diagrama-barras-relativas_9df0baf3fd641978b38adf5ffe09878c">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>Hijos)) <span class="sc">+</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..prop..), <span class="at">fill=</span>blueceu, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia Relativa"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The dot-dot notation (`..prop..`) was deprecated in ggplot2 3.4.0.
+ℹ Please use `after_stat(prop)` instead.</code></pre>
+</div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/diagrama-barras-relativas-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>El diagrama de barras que aparece a continuación muestra la distribución de frecuencias absolutas acumuladas del número de hijos en la muestra anterior.</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/diagrama-barras-acumuladas_c67c2e5098100afd7dab0ebeb2673770">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>Hijos)) <span class="sc">+</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">cumsum</span>(..count..)), <span class="at">fill=</span>blueceu, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia acumulada"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/diagrama-barras-acumuladas-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Y el diagrama de barras que aparece a continuación muestra la distribución de frecuencias relativas acumuladas del número de hijos en la muestra anterior.</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/diagrama-barras-relativas-acumuladas_604227cb04d987226580a5cf2ecf5068">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>Hijos)) <span class="sc">+</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">cumsum</span>(..prop..)), <span class="at">fill=</span>blueceu, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa acumulada"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/diagrama-barras-relativas-acumuladas-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Finalmente, el último diagrama muestra el polígono de frecuencias relativas acumuladas.</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/poligono-relativas-acumuladas_86281233bc744f2a25a5613e1b1f128d">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.freq <span class="ot">&lt;-</span> <span class="fu">count</span>(df, Hijos) <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">f =</span> n <span class="sc">/</span><span class="fu">sum</span>(n), <span class="at">N =</span> <span class="fu">cumsum</span>(n), <span class="at">F =</span> N <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(df.freq<span class="sc">$</span>Hijos, rep, <span class="dv">2</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>F <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">head</span>(<span class="fu">unlist</span>(<span class="fu">lapply</span>(df.freq<span class="sc">$</span>F, rep, <span class="dv">2</span>)),<span class="sc">-</span><span class="dv">1</span>))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Hijos =</span> x, <span class="at">F =</span> F)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>Hijos)) <span class="sc">+</span> </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">cumsum</span>(..prop..)), <span class="at">fill=</span>blueceu, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> df2, <span class="fu">aes</span>(<span class="at">x=</span>Hijos, <span class="at">y=</span>F, <span class="at">group=</span><span class="dv">1</span>), <span class="at">col=</span>redceu) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa acumulada"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/poligono-relativas-acumuladas-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -542,13 +616,24 @@ Advertencia
 <p>Al igual que con el diagrama de barras, se puede dibujar un <em>polígono de frecuencias</em> uniendo los puntos centrales más altos de cada barra con segmentos.</p>
 <div id="exm-histograma" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.5 </strong></span>El siguiente histograma muestra la distribución de frecuencias absolutas de las estaturas.</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/histograma_d59b244c44d7fb6d067f31401820bdd6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datos/estatura-peso.csv"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>Estatura)) <span class="sc">+</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">10</span>), <span class="at">col=</span><span class="st">"white"</span>, <span class="at">fill=</span>blueceu) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/histograma-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>El siguiente histograma muestra la distribución de frecuencias relativas con el polígono de frecuencias.</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/histograma-frecuencias-relativas_6364ae19ae1151beb00feea26943a6fb">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">10</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>Estatura)) <span class="sc">+</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">breaks =</span> breaks, <span class="at">col=</span><span class="st">"white"</span>, <span class="at">fill=</span>blueceu) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col=</span>redceu, <span class="at">breaks =</span> breaks) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/histograma-frecuencias-relativas-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -557,7 +642,18 @@ Advertencia
 <p>El polígono de frecuencias acumuladas (absolutas o relativas) se conoce como <strong>ojiva</strong>.</p>
 <div id="exm-ojiva" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.6 </strong></span>El histograma y la ojiva siguientes muestran la distribución de frecuencias relativas acumuladas de estaturas.</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/histograma-frecuencias-relativas-acumuladas_e1470b52af5b9b573e4090b288728eb9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">10</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>Estatura)) <span class="sc">+</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">cumsum</span>(..count..)<span class="sc">/</span><span class="fu">sum</span>(..count..)), <span class="at">breaks =</span> breaks, <span class="at">col=</span><span class="st">"white"</span>, <span class="at">fill=</span>blueceu) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa acumulada"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>df.p <span class="ot">&lt;-</span> <span class="fu">ggplot_build</span>(p)<span class="sc">$</span>data[[<span class="dv">1</span>]]</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(df.p<span class="sc">$</span>xmin[<span class="dv">1</span>], df.p<span class="sc">$</span>xmax)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, df.p<span class="sc">$</span>ymax)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, y)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> df2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">group =</span> <span class="dv">1</span>), <span class="at">col=</span>redceu)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/histograma-frecuencias-relativas-acumuladas-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -571,7 +667,14 @@ Advertencia
 <p>Los diagramas de sectores pueden representar frecuencias absolutas o relativas, pero no pueden representar frecuencias acumuladas, y se utilizan sobre todo con atributos nominales. Para atributos ordinales o variables cuantitativas es mejor utilizar diagramas de barras, ya es más fácil percibir las diferencias en una dimensión (altura de las barras) que en dos dimensiones (áreas de los sectores).</p>
 <div id="exm-diagrama-sectores" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.7 </strong></span>El diagrama de sectores siguiente muestra la distribución de frecuencias relativas de los grupos sanguíneos.</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/diagrama-sectores_f2805bfb3382e83e7212c75a1b0fc59c">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datos/grupo-sanguineo.csv"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(df[[<span class="st">"Grupo.Sanguineo.Hijo"</span>]])</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">names</span>(tab)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>pctg <span class="ot">&lt;-</span> <span class="fu">round</span>(tab<span class="sc">/</span><span class="fu">sum</span>(tab)<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">paste</span>(labels, pctg) <span class="co"># add percents to labels </span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">paste</span>(labels,<span class="st">"%"</span>,<span class="at">sep=</span><span class="st">""</span>) <span class="co"># ad % to labels </span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(tab, <span class="at">main=</span><span class="st">"Distribución de los grupos sanguineos"</span>, <span class="at">labels=</span>labels, <span class="at">col=</span><span class="fu">c</span>(greenceu, redceu, mygreen, blueceu))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/diagrama-sectores-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -583,7 +686,17 @@ Advertencia
 <p>Las distribuciones con diferentes propiedades presentan formas distintas.</p>
 <div id="exm-distribucion-ingresos-familiares" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.8 (Distribución de los ingresos familiares) </strong></span>&nbsp;</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/histograma-ingresos-familiares_b3989a98f4b2ca55b8d3b8c3314546da">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>income <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2500</span>,<span class="dv">207500</span>,<span class="dv">5000</span>)<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4235</span>, <span class="dv">4071</span>, <span class="dv">6324</span>, <span class="dv">6470</span>, <span class="dv">6765</span>, <span class="dv">6222</span>, <span class="dv">6354</span>, <span class="dv">5743</span>, <span class="dv">5203</span>, <span class="dv">5002</span>, <span class="dv">5078</span>, <span class="dv">4140</span>, <span class="dv">4367</span>, <span class="dv">3733</span>, <span class="dv">3683</span>, <span class="dv">3650</span>, <span class="dv">3354</span>, <span class="dv">2893</span>, <span class="dv">2850</span>, <span class="dv">2452</span>, <span class="dv">2792</span>, <span class="dv">2232</span>, <span class="dv">2158</span>, <span class="dv">1748</span>, <span class="dv">1987</span>, <span class="dv">1675</span>, <span class="dv">1474</span>, <span class="dv">1380</span>, <span class="dv">1220</span>, <span class="dv">1111</span>, <span class="dv">1313</span>, <span class="dv">1017</span>, <span class="dv">993</span>, <span class="dv">761</span>, <span class="dv">822</span>, <span class="dv">700</span>, <span class="dv">677</span>, <span class="dv">536</span>, <span class="dv">561</span>, <span class="dv">431</span>, <span class="dv">314</span>, <span class="dv">215</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">210000</span>,<span class="dv">5000</span>)<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Ingresos =</span> <span class="fu">rep</span>(income, counts))</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>Ingresos)) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">breaks =</span> breaks, <span class="at">col =</span> <span class="st">"white"</span>, <span class="at">fill =</span> blueceu) <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Ingresos anuales (miles de $)"</span>) <span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa"</span>) <span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Distribución de ingresos familiares en USA"</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/histograma-ingresos-familiares-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -591,7 +704,16 @@ Advertencia
 </div>
 <div id="exm-distribucion-edad-fallecimiento" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.9 (Distribución de la edad de fallecimiento) </strong></span>&nbsp;</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/histograma-edad-fallecimiento_ab08f0c2cfb50e50ab51b00f915c669b">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">116</span>, <span class="dv">69</span>, <span class="dv">78</span>, <span class="dv">319</span>, <span class="dv">501</span>, <span class="dv">633</span>, <span class="dv">655</span>, <span class="dv">848</span>, <span class="dv">1226</span>, <span class="dv">1633</span>, <span class="dv">2459</span>, <span class="dv">3375</span>, <span class="dv">4669</span>, <span class="dv">6152</span>, <span class="dv">7436</span>, <span class="dv">9526</span>, <span class="dv">12619</span>, <span class="dv">12455</span>, <span class="dv">7113</span>, <span class="dv">2104</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">5</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Edad =</span> <span class="fu">rep</span>(breaks, counts))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>Edad)) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">breaks =</span> breaks, <span class="at">col =</span> <span class="st">"white"</span>, <span class="at">fill =</span> blueceu) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Edad de fallecimiento"</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa"</span>) <span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Distribución de la edad de fallecimiento de hombres australianos."</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/histograma-edad-fallecimiento-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -599,7 +721,17 @@ Advertencia
 </div>
 <div id="exm-distribucion-tiempo-espera-metro" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.10 (Distribución del tiempo de espera del metro) </strong></span>&nbsp;</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/histograma-tiempo-espera-metro_c0dc6d0c83d8b2626046b2af3879cd96">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1000</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">15</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Tiempo =</span> time)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>Tiempo)) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">breaks =</span> breaks, <span class="at">col =</span> <span class="st">"white"</span>, <span class="at">fill =</span> blueceu) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Tiempo de espera (min)"</span>) <span class="sc">+</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa"</span>) <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Distribución del tiempo de espera del metro."</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/histograma-tiempo-espera-metro-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -607,7 +739,17 @@ Advertencia
 </div>
 <div id="exm-distribucion-llegada-clientes-restaurantes" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.11 (Distribución del tiempo de llegada de clientes a un restaurante) </strong></span>&nbsp;</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/histograma-tiempo-llegada-restaurante_761c02955aad11e14d0ea2867b8f6555">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">20</span>, <span class="dv">18</span>, <span class="dv">48</span>, <span class="dv">75</span>, <span class="dv">67</span>, <span class="dv">43</span>, <span class="dv">22</span>, <span class="dv">14</span>, <span class="dv">21</span>, <span class="dv">23</span>, <span class="dv">47</span>, <span class="dv">63</span>, <span class="dv">44</span>, <span class="dv">25</span>, <span class="dv">15</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">8.5</span>,<span class="fl">23.5</span>,<span class="dv">1</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Tiempo =</span> <span class="fu">rep</span>(breaks, counts))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">8</span>,<span class="dv">24</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>Tiempo)) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">breaks =</span> breaks, <span class="at">col =</span> <span class="st">"white"</span>, <span class="at">fill =</span> blueceu) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Tiempo"</span>) <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa"</span>) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Distribución del tiempo de llegada de clientes a un restaurante"</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/histograma-tiempo-llegada-restaurante-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -616,7 +758,16 @@ Advertencia
 <p>Las distribuciones con forma de campana se presentan muy a menudo en las variables biológicas.</p>
 <div id="exm-distribucion-peso-hombres" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.12 (Distribución del peso de los hombres) </strong></span>&nbsp;</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/histograma-peso-hombres_cb7b5ea4d37dcc013ac54ea5f3b3ed61">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Peso =</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">88</span>, <span class="at">sd =</span> <span class="dv">12</span>))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">140</span>, <span class="dv">2</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Peso)) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">breaks =</span> breaks, <span class="at">col =</span> <span class="st">"white"</span>, <span class="at">fill =</span> blueceu) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Peso (kg)"</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa"</span>) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Distribución del peso de los hombres"</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/histograma-peso-hombres-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -624,7 +775,16 @@ Advertencia
 </div>
 <div id="exm-distribucion-estatura-mujeres" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.13 (Distribución de la estatura de las mujeres) </strong></span>&nbsp;</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/histograma-estatura-mujeres_ab9e96e9eb69dc654f8d156acf271d42">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Estatura =</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">164</span>, <span class="at">sd =</span> <span class="dv">8</span>))</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">130</span>, <span class="dv">200</span>, <span class="dv">2</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Estatura)) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">breaks =</span> breaks, <span class="at">col =</span> <span class="st">"white"</span>, <span class="at">fill =</span> blueceu) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Estatura (cm)"</span>) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa"</span>) <span class="sc">+</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Distribución de la estatura de las mujeres"</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/histograma-estatura-mujeres-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -632,7 +792,19 @@ Advertencia
 </div>
 <div id="exm-distribucion-estaturas-sexo" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.14 (Distribución de la estatura según el sexo) </strong></span>&nbsp;</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/histograma-estatura-sexo_9961284175e927c6d5f3881d56f6ff21">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>mujeres <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">164</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>hombres <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">175</span>, <span class="at">sd =</span> <span class="dv">9</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Estatura =</span> <span class="fu">c</span>(mujeres, hombres), <span class="at">Sexo =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Mujer"</span>,n), <span class="fu">rep</span>(<span class="st">"Hombre"</span>, n)))</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">130</span>, <span class="dv">210</span>, <span class="dv">2</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Estatura, <span class="at">fill =</span> Sexo)) <span class="sc">+</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">breaks =</span> breaks, <span class="at">position =</span> <span class="st">"identity"</span>, <span class="at">col =</span> <span class="st">"white"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Estatura (cm)"</span>) <span class="sc">+</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa"</span>) <span class="sc">+</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Distribución de estaturas según sexo"</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/histograma-estatura-sexo-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -640,7 +812,13 @@ Advertencia
 </div>
 <div id="exm-distribucion-estaturas-ambos-sexos" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.15 (Distribución de la estatura de hombres y mujeres) </strong></span>&nbsp;</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/histograma-estatura-ambos-sexo_0f1b585a7de1aab389cb7c435a741f79">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Estatura)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">breaks =</span> breaks, <span class="at">col =</span> <span class="st">"white"</span>, <span class="at">fill =</span> blueceu) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Estatura (cm)"</span>) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa"</span>) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Distribución de estaturas de hombres y mujeres"</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/histograma-estatura-ambos-sexo-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -648,7 +826,16 @@ Advertencia
 </div>
 <div id="exm-distribucion-colesterol" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.16 (Distribución del colesterol) </strong></span>&nbsp;</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/histograma-colesterol_f7f29a9eb284bbdffa9d15eb974b9a6f">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Colesterol =</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">192</span>, <span class="at">sd =</span> <span class="dv">18</span>))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">120</span>, <span class="dv">265</span>, <span class="dv">5</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Colesterol)) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">breaks =</span> breaks, <span class="at">col =</span> <span class="st">"white"</span>, <span class="at">fill =</span> blueceu) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Colesterol (mg/dl)"</span>) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa"</span>) <span class="sc">+</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Distribución del colesterol"</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/histograma-colesterol-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -656,7 +843,16 @@ Advertencia
 </div>
 <div id="exm-distribucion-notas" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.17 (Distribución de notas) </strong></span>&nbsp;</p>
-<div class="cell">
+<div class="cell" data-hash="02-estadistica-descriptiva_cache/html/histograma-notas_ab9176ab2e3977737fb4a91b86a0c0b9">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Nota =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="fl">5.5</span>, <span class="at">sd =</span> <span class="fl">1.4</span>))</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Nota)) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">breaks =</span> breaks, <span class="at">col =</span> <span class="st">"white"</span>, <span class="at">fill =</span> blueceu) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Nota"</span>) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa"</span>) <span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Distribución de notas de Estadística"</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02-estadistica-descriptiva_files/figure-html/histograma-notas-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -741,12 +937,10 @@ Advertencia
 </div>
 <div id="exm-media-datos-no-agrupados" class="theorem example">
 <p><span class="theorem-title"><strong>Ejemplo 2.18 (Datos no agrupados) </strong></span>Utilizando los datos de la muestra del número de hijos en las familias, la media aritmética es</p>
-<p><span class="math display">\[
-\begin{aligned}
+<p><span class="math display">\[\begin{align*}
 \bar{x} &amp;= \frac{1+2+4+2+2+2+3+2+1+1+0+2+2}{25}+\\
 &amp;+\frac{0+2+2+1+2+2+3+1+2+2+1+2}{25} = \frac{44}{25} = 1.76 \mbox{ hijos}.
-\end{aligned}
-\]</span></p>
+\end{align*}\]</span></p>
 <p>o bien, desde la tabla de frecuencias</p>
 <p><span class="math display">\[
 \begin{array}{rrrrr}
@@ -2030,8 +2224,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07-estimacion.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./03-regresion.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regresión</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

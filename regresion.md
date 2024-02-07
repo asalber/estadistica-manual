@@ -27,18 +27,18 @@ En este capítulo se verán los estudios de dependencia simple que son más senc
 
 Al estudiar la dependencia simple entre dos variables $X$ e $Y$, no se pueden estudiar sus distribuciones por separado, sino que hay que estudiar la distribución conjunta de la **variable bidimensional** $(X,Y)$, cuyos valores son los pares $(x_i,y_j)$ donde el primer elemento es un valor $X$ y el segundo uno de $Y$.
 
-{{% alert def %}}
-**Definición - Frecuencias muestrales conjuntas**. Dada una muestra de tamaño $n$ de una variable bidimensional $(X,Y)$, para cada valor de la variable $(x_i,y_j)$ observado en la muestra se define
+:::{#def-}
+## Frecuencias muestrales conjuntas**. Dada una muestra de tamaño $n$ de una variable bidimensional $(X,Y)$, para cada valor de la variable $(x_i,y_j)$ observado en la muestra se define
 
 - **Frecuencia absoluta** $n_{ij}$: Es el número de veces que el par $(x_i,y_j)$ aparece en la muestra.
 - **Frecuencia relativa** $f_{ij}$: Es la proporción de veces que el par $(x_i,y_j)$ aparece en la muestra.
   
 $$f_{ij}=\frac{n_{ij}}{n}$$
-{{% /alert %}}
+:::
 
-{{% alert warning %}}
+:::{.callout-warning}
 Para las variables bidimensionales no tienen sentido las frecuencias acumuladas.
-{{% /alert %}}
+:::
 
 ### Distribución de frecuencias bidimensional
 
@@ -46,17 +46,17 @@ Al conjunto de valores de la variable bidimensional y sus respectivas frecuencia
 
 $$\begin{array}{|c|ccccc|}
 \hline
-X\backslash Y & y_1 & \cdots & y_j & \cdots & y_q\newline
+X\backslash Y & y_1 & \cdots & y_j & \cdots & y_q\\
 \hline
-x_1 & n_{11} & \cdots & n_{1j} & \cdots & n_{1q}\newline
-\vdots & \vdots & \vdots & \vdots & \vdots & \vdots\newline
-x_i & n_{i1} & \cdots & n_{ij} & \cdots & n_{iq}\newline
-\vdots & \vdots & \vdots & \vdots & \vdots & \vdots\newline
-x_p & n_{p1} & \cdots & n_{pj} & \cdots & n_{pq}\newline
+x_1 & n_{11} & \cdots & n_{1j} & \cdots & n_{1q}\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+x_i & n_{i1} & \cdots & n_{ij} & \cdots & n_{iq}\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+x_p & n_{p1} & \cdots & n_{pj} & \cdots & n_{pq}\\
 \hline
 \end{array}$$
 
-**Ejemplo (datos agrupados)**. La estatura (en cm) y el peso (en Kg) de una muestra de 30 estudiantes es:
+:::{#exm- (datos agrupados)**. La estatura (en cm) y el peso (en Kg) de una muestra de 30 estudiantes es:
 
 <div style="text-align:center">
 (179,85), (173,65), (181,71), (170,65), (158,51), (174,66),<br/>
@@ -70,17 +70,17 @@ La tabla de frecuencias bidimensional es
 
 $$\begin{array}{|c||c|c|c|c|c|c|}
 \hline
-  X/Y & [50,60) & [60,70) & [70,80) & [80,90) & [90,100) & [100,110) \newline
+  X/Y & [50,60) & [60,70) & [70,80) & [80,90) & [90,100) & [100,110) \\
   \hline\hline
-  (150,160] & 2 & 0 & 0 & 0 & 0 & 0 \newline
+  (150,160] & 2 & 0 & 0 & 0 & 0 & 0 \\
   \hline
-  (160,170] & 4 & 4 & 0 & 0 & 0 & 0 \newline
+  (160,170] & 4 & 4 & 0 & 0 & 0 & 0 \\
   \hline
-  (170,180] & 1 & 6 & 3 & 1 & 0 & 0 \newline
+  (170,180] & 1 & 6 & 3 & 1 & 0 & 0 \\
   \hline
-  (180,190] & 0 & 1 & 4 & 1 & 1 & 0 \newline
+  (180,190] & 0 & 1 & 4 & 1 & 1 & 0 \\
   \hline
-  (190,200] & 0 & 0 & 0 & 0 & 1 & 1 \newline
+  (190,200] & 0 & 0 & 0 & 0 & 1 & 1 \\
   \hline
 \end{array}$$
 
@@ -94,15 +94,15 @@ Habitualmente la variable independiente se representa en el eje $X$ y la variabl
 
 El resultado es un conjunto de puntos que se conoce como _nube de puntos_.
 
-**Ejemplo**. El siguiente diagrama de dispersión representa la distribución conjunta de estaturas y pesos de la muestra anterior.
+:::{#exm-**. El siguiente diagrama de dispersión representa la distribución conjunta de estaturas y pesos de la muestra anterior.
 
 <img src="../img/regresion/diagrama_dispersion_estatura_peso.svg" alt="Diagrama de dispersión de estaturas y pesos" width="600">
 
-{{% alert int %}}
+:::{.callout-note title="Interpretación"}
 El diagrama de dispersión da información visual sobre el tipo de relación entre las variables.
 
 <img src="../img/regresion/diagrama_dispersion_tipos_relaciones.svg" alt="Diagramas de dispersión de diferentes tipos de relaciones" width="700">
-{{% /alert %}}
+:::
 
 ### Distribuciones marginales
 
@@ -115,37 +115,37 @@ frecuencias bidimensional, sumando las frecuencias por filas y columnas.
 $$
 \begin{array}{|c|ccccc|c|}
 \hline
-X\backslash Y & y_1 & \cdots & y_j & \cdots & y_q & \color{red}{n_x}\newline
+X\backslash Y & y_1 & \cdots & y_j & \cdots & y_q & \color{red}{n_x}\\
 \hline
-x_1 & n_{11} & \cdots & n_{1j} & \cdots & n_{1q} & \color{red}{n_{x_1}}\newline
-\vdots & \vdots & \vdots & \downarrow + & \vdots & \vdots & \color{red}{\vdots} \newline
-x_i & n_{i1} & \stackrel{+}{\rightarrow} & n_{ij} & \stackrel{+}{\rightarrow} & n_{iq} & \color{red}{n_{x_i}}\newline
-\vdots & \vdots & \vdots & \downarrow +  & \vdots & \vdots & \color{red}{\vdots}\newline
-x_p & n_{p1} & \cdots & n_{pj} & \cdots & n_{pq} & \color{red}{n_{x_p}} \newline
+x_1 & n_{11} & \cdots & n_{1j} & \cdots & n_{1q} & \color{red}{n_{x_1}}\\
+\vdots & \vdots & \vdots & \downarrow + & \vdots & \vdots & \color{red}{\vdots} \\
+x_i & n_{i1} & \stackrel{+}{\rightarrow} & n_{ij} & \stackrel{+}{\rightarrow} & n_{iq} & \color{red}{n_{x_i}}\\
+\vdots & \vdots & \vdots & \downarrow +  & \vdots & \vdots & \color{red}{\vdots}\\
+x_p & n_{p1} & \cdots & n_{pj} & \cdots & n_{pq} & \color{red}{n_{x_p}} \\
 \hline
-\color{red}{n_y} & \color{red}{n_{y_1}} & \color{red}{\cdots} & \color{red}{n_{y_j}} & \color{red}{\cdots} & \color{red}{n_{y_q}} & n\newline
+\color{red}{n_y} & \color{red}{n_{y_1}} & \color{red}{\cdots} & \color{red}{n_{y_j}} & \color{red}{\cdots} & \color{red}{n_{y_q}} & n\\
 \hline
 \end{array}
 $$
 
-**Ejemplo**. En el ejemplo anterior de las estaturas y los pesos, las distribuciones marginales son
+:::{#exm-**. En el ejemplo anterior de las estaturas y los pesos, las distribuciones marginales son
 
 $$
 \begin{array}{|c||c|c|c|c|c|c|c|}
 \hline
-  X/Y & [50,60) & [60,70) & [70,80) & [80,90) & [90,100) & [100,110) & \color{red}{n_x}\newline
+  X/Y & [50,60) & [60,70) & [70,80) & [80,90) & [90,100) & [100,110) & \color{red}{n_x}\\
   \hline\hline
-  (150,160] & 2 & 0 & 0 & 0 & 0 & 0 & \color{red}{2}\newline
+  (150,160] & 2 & 0 & 0 & 0 & 0 & 0 & \color{red}{2}\\
   \hline
-  (160,170] & 4 & 4 & 0 & 0 & 0 & 0 & \color{red}{8}\newline
+  (160,170] & 4 & 4 & 0 & 0 & 0 & 0 & \color{red}{8}\\
   \hline
-  (170,180] & 1 & 6 & 3 & 1 & 0 & 0 & \color{red}{11} \newline
+  (170,180] & 1 & 6 & 3 & 1 & 0 & 0 & \color{red}{11} \\
   \hline
-  (180,190] & 0 & 1 & 4 & 1 & 1 & 0 & \color{red}{7} \newline
+  (180,190] & 0 & 1 & 4 & 1 & 1 & 0 & \color{red}{7} \\
   \hline
-  (190,200] & 0 & 0 & 0 & 0 & 1 & 1 & \color{red}{2}\newline
+  (190,200] & 0 & 0 & 0 & 0 & 1 & 1 & \color{red}{2}\\
   \hline
-  \color{red}{n_y} & \color{red}{7} & \color{red}{11} & \color{red}{7} & \color{red}{2} & \color{red}{2} & \color{red}{1} & 30\newline
+  \color{red}{n_y} & \color{red}{7} & \color{red}{11} & \color{red}{7} & \color{red}{2} & \color{red}{2} & \color{red}{1} & 30\\
   \hline
 \end{array}
 $$
@@ -154,7 +154,7 @@ y los estadísticos correspondientes son
 
 $$
 \begin{array}{lllll}
-\bar x = 174.67 \mbox{ cm} & \quad & s^2_x = 102.06 \mbox{ cm}^2 & \quad & s_x = 10.1 \mbox{ cm}\newline
+\bar x = 174.67 \mbox{ cm} & \quad & s^2_x = 102.06 \mbox{ cm}^2 & \quad & s_x = 10.1 \mbox{ cm}\\
 \bar y = 69.67 \mbox{ Kg} & & s^2_y = 164.42 \mbox{ Kg}^2 & & s_y = 12.82 \mbox{ Kg}
 \end{array}
 $$
@@ -191,42 +191,42 @@ $$\sum(x_i-\bar x)(y_j-\bar y) = -$$
 Usando el producto de las desviaciones respecto de las medias surge el
 siguiente estadístico.
 
-{{% alert def %}}
-**Definición - Covarianza muestral**. La _covarianza muestral_ de una variable aleatoria bidimensional $(X,Y)$ se define como el promedio de los productos de las respectivas desviaciones respecto de las medias de $X$ e $Y$.
+:::{#def-}
+## Covarianza muestral**. La _covarianza muestral_ de una variable aleatoria bidimensional $(X,Y)$ se define como el promedio de los productos de las respectivas desviaciones respecto de las medias de $X$ e $Y$.
 
 $$s_{xy}=\frac{\sum (x_i-\bar x)(y_j-\bar y)n_{ij}}{n}$$
-{{% /alert %}}
+:::
 
 También puede calcularse de manera más sencilla mediante la fórmula
 
 $$s_{xy}=\frac{\sum x_iy_jn_{ij}}{n}-\bar x\bar y.$$
 
-{{% alert int %}}
+:::{.callout-note title="Interpretación"}
 La covarianza sirve para estudiar la relación lineal entre dos variables:
 
 - Si $s_{xy}>0$ existe una relación lineal creciente.
 - Si $s_{xy}<0$ existe una relación lineal decreciente.
 - Si $s_{xy}=0$ no existe relación lineal.
-{{% /alert %}}
+:::
 
-**Ejemplo**. Utilizando la tabla de frecuencias bidimensional de la muestra de estaturas y pesos
+:::{#exm-**. Utilizando la tabla de frecuencias bidimensional de la muestra de estaturas y pesos
 
 $$
 \begin{array}{|c||c|c|c|c|c|c|c|}
 \hline
-  X/Y & [50,60) & [60,70) & [70,80) & [80,90) & [90,100) & [100,110) & n_x\newline
+  X/Y & [50,60) & [60,70) & [70,80) & [80,90) & [90,100) & [100,110) & n_x\\
   \hline\hline
-  (150,160] & 2 & 0 & 0 & 0 & 0 & 0 & 2\newline
+  (150,160] & 2 & 0 & 0 & 0 & 0 & 0 & 2\\
   \hline
-  (160,170] & 4 & 4 & 0 & 0 & 0 & 0 & 8\newline
+  (160,170] & 4 & 4 & 0 & 0 & 0 & 0 & 8\\
   \hline
-  (170,180] & 1 & 6 & 3 & 1 & 0 & 0 & 11 \newline
+  (170,180] & 1 & 6 & 3 & 1 & 0 & 0 & 11 \\
   \hline
-  (180,190] & 0 & 1 & 4 & 1 & 1 & 0 & 7 \newline
+  (180,190] & 0 & 1 & 4 & 1 & 1 & 0 & 7 \\
   \hline
-  (190,200] & 0 & 0 & 0 & 0 & 1 & 1 & 2\newline
+  (190,200] & 0 & 0 & 0 & 0 & 1 & 1 & 2\\
   \hline
-  n_y & 7 & 11 & 7 & 2 & 2 & 1 & 30\newline
+  n_y & 7 & 11 & 7 & 2 & 2 & 1 & 30\\
   \hline
 \end{array}
 $$
@@ -235,12 +235,10 @@ $$\bar x = 174.67 \mbox{ cm} \qquad \bar y = 69.67 \mbox{ Kg}$$
 
 la covarianza vale
 
-$$
-\begin{aligned}
-s_{xy} &=\frac{\sum x_iy_jn_{ij}}{n}-\bar x\bar y =  \frac{155\cdot 55\cdot 2 + 165\cdot 55\cdot 4 + \cdots + 195\cdot 105\cdot 1}{30}-174.67\cdot 69.67 =\newline
+\begin{align*}
+s_{xy} &=\frac{\sum x_iy_jn_{ij}}{n}-\bar x\bar y =  \frac{155\cdot 55\cdot 2 + 165\cdot 55\cdot 4 + \cdots + 195\cdot 105\cdot 1}{30}-174.67\cdot 69.67 =\\
 & = \frac{368200}{30}-12169.26 = 104.07 \mbox{ cm$\cdot$ Kg}.
-\end{aligned}
-$$
+\end{align*}
 
 Esto indica que existe una relación lineal creciente entre la estatura y el peso.
 
@@ -280,11 +278,11 @@ distancias entre los valores de la variable dependiente observados en la
 muestra, y los predichos por la función de regresión. Estas distancias
 se conocen como _residuos_ o _errores predictivos_.
 
-{{% alert def %}}
-**Definición - Residuos o errores predictivos**. Dado el modelo de regresión $y=f(x)$ para una variable bidimensional $(X,Y)$, el _residuo_ o _error predictivo_ de un valor $(x_i,y_j)$ observado en la muestra, es la diferencia entre el valor observado de la variable dependiente $y_j$ y el predicho por la función de regresión para $x_i$,
+:::{#def-}
+## Residuos o errores predictivos**. Dado el modelo de regresión $y=f(x)$ para una variable bidimensional $(X,Y)$, el _residuo_ o _error predictivo_ de un valor $(x_i,y_j)$ observado en la muestra, es la diferencia entre el valor observado de la variable dependiente $y_j$ y el predicho por la función de regresión para $x_i$,
 
 $$e_{ij} = y_j-f(x_i).$$
-{{% /alert %}}
+:::
 
 <img src="../img/regresion/residuos_y.svg" alt="Residuos de un modelo de regresión" width="600">
 
@@ -302,12 +300,10 @@ Así pues, todo se reduce a buscar los valores $a$ y $b$ que hacen mínima esta 
 
 Considerando la suma de los cuadrados de los residuos como una función de dos variables $\theta(a,b)$, se pueden calcular los valores de los parámetros del modelo que hacen mínima esta suma derivando e igualando a 0 las derivadas con respecto a $a$ y $b$.
 
-$$
-\begin{aligned}
-\frac{\partial \theta(a,b)}{\partial a} &=  \frac{\partial \sum (y_j-a-bx_i)^2 }{\partial a} =0\newline
+\begin{align*}
+\frac{\partial \theta(a,b)}{\partial a} &=  \frac{\partial \sum (y_j-a-bx_i)^2 }{\partial a} =0\\
 \frac{\partial \theta(a,b)}{\partial b} &=  \frac{\partial \sum (y_j-a-bx_i)^2 }{\partial b} =0
-\end{aligned}
-$$
+\end{align*}
 
 Tras resolver el sistema se obtienen los valores
 
@@ -318,22 +314,22 @@ de regresión óptima.
 
 ## Recta de regresión
 
-{{% alert def %}}
-**Definición - Recta de regresión**. Dada una variable bidimensional $(X,Y)$, la _recta de regresión_ de $Y$ sobre $X$ es
+:::{#def-}
+## Recta de regresión**. Dada una variable bidimensional $(X,Y)$, la _recta de regresión_ de $Y$ sobre $X$ es
 
 $$y = \bar y +\frac{s_{xy}}{s_x^2}(x-\bar x).$$
-{{% /alert %}}
+:::
 
-{{% alert int %}}
+:::{.callout-note title="Interpretación"}
 La recta de regresión de $Y$ sobre $X$ es la recta que hace mínimos los errores predictivos en $Y$, y por tanto es la recta que hará mejores predicciones de $Y$ para cualquier valor de $X$.
-{{% /alert %}}
+:::
 
-**Ejemplo**. Utilizando la muestra anterior de estaturas ($X$) y pesos ($Y$) con los siguientes estadísticos
+:::{#exm-**. Utilizando la muestra anterior de estaturas ($X$) y pesos ($Y$) con los siguientes estadísticos
 
 $$
 \begin{array}{lllll}
-\bar x = 174.67 \mbox{ cm} & \quad & s^2_x = 102.06 \mbox{ cm}^2 & \quad & s_x = 10.1 \mbox{ cm}\newline
-\bar y = 69.67 \mbox{ Kg} & & s^2_y = 164.42 \mbox{ Kg}^2 & & s_y = 12.82 \mbox{ Kg}\newline
+\bar x = 174.67 \mbox{ cm} & \quad & s^2_x = 102.06 \mbox{ cm}^2 & \quad & s_x = 10.1 \mbox{ cm}\\
+\bar y = 69.67 \mbox{ Kg} & & s^2_y = 164.42 \mbox{ Kg}^2 & & s_y = 12.82 \mbox{ Kg}\\
 & & s_{xy} = 104.07 \mbox{ cm$\cdot$ Kg} & &
 \end{array}
 $$
@@ -347,9 +343,9 @@ recta de regresión de la estatura sobre el peso es
 
 $$x = \bar x +\frac{s_{xy}}{s_y^2}(y-\bar y) = 174.67+\frac{104.07}{164.42}(y-69.67) = +130.78 + 0.63 y.$$
 
-{{% alert warning %}}
+:::{.callout-warning}
 ¡Obsérvese que ambas rectas de regresión son diferentes!
-{{% /alert %}}
+:::
 
 <img src="../img/regresion/rectas_regresion.svg" alt="Rectas de regresión de estaturas y pesos" width="600">
 
@@ -373,21 +369,21 @@ y se cortan perpendicularmente.
 
 El parámetro más importante de una recta de regresión es su pendiente.
 
-{{% alert def %}}
-**Definición - Coeficiente de regresión** $b_{yx}$. Dada una variable bidimensional $(X,Y)$, el _coeficiente de regresión_ de la recta de regresión de $Y$ sobre $X$ es su pendiente,
+:::{#def-}
+## Coeficiente de regresión** $b_{yx}$. Dada una variable bidimensional $(X,Y)$, el _coeficiente de regresión_ de la recta de regresión de $Y$ sobre $X$ es su pendiente,
 
 $$b_{yx} = \frac{s_{xy}}{s_x^2}$$
-{{% /alert %}}
+:::
 
-{{% alert warning %}}
+:::{.callout-warning}
 El coeficiente de regresión siempre tiene el mismo signo que la covarianza.
-{{% /alert %}}
+:::
 
-{{% alert int %}}
+:::{.callout-note title="Interpretación"}
 Refleja el crecimiento de la variable dependiente en relación a la independiente según la recta de regresión. En concreto da el número de unidades que aumenta o disminuye la variable dependiente por cada unidad que aumenta la variable independiente.
-{{% /alert %}}
+:::
 
-**Ejemplo**. En el ejemplo de las estaturas y los pesos, la recta de regresión del
+:::{#exm-**. En el ejemplo de las estaturas y los pesos, la recta de regresión del
 peso sobre la estatura era
 
 $$y=-108.49 +1.02 x,$$
@@ -402,7 +398,7 @@ Esto significa que, según la recta de regresión del peso sobre la estatura, po
 
 Las rectas de regresión, y en general cualquier modelo de regresión, suele utilizarse con fines predictivos.
 
-**Ejemplo**. En la muestra de las estaturas y los pesos, si se quiere predecir
+:::{#exm-**. En la muestra de las estaturas y los pesos, si se quiere predecir
 el peso de una persona que mide 180 cm, se debe utilizar la recta de regresión del peso sobre la estatura,
 
 $$y = 1.02 \cdot 180 -108.49 = 75.11 \mbox{ Kg}.$$
@@ -425,19 +421,19 @@ La correlación se basa en el estudio de los residuos: cuanto menores sean ésto
 Una medida de la bondad del ajuste del modelo de regresión es la
 _varianza residual_.
 
-{{% alert def %}}
-**Definición - Varianza residual muestral** $s_{ry}^2$. Dado un modelo de regresión simple $y=f(x)$ de una variable bidimensional $(X,Y)$, su _varianza residual muestral_ es el promedio de los cuadrados de los residuos para los valores de la muestra,
+:::{#def-}
+## Varianza residual muestral** $s_{ry}^2$. Dado un modelo de regresión simple $y=f(x)$ de una variable bidimensional $(X,Y)$, su _varianza residual muestral_ es el promedio de los cuadrados de los residuos para los valores de la muestra,
 
 $$s_{ry}^2 = \frac{\sum e_{ij}^2n_{ij}}{n} = \frac{\sum (y_j - f(x_i))^2n_{ij}}{n}.$$
-{{% /alert %}}
+:::
 
-{{% alert int %}}
+:::{.callout-note title="Interpretación"}
 Cuanto más alejados estén los puntos de la curva de regresión, mayor será la varianza residual y menor la dependencia.
 
 Cuando la relación lineal es perfecta los residuos se anulan y la varianza residual vale cero. Por contra, cuando no existe relación, los residuos coinciden con las desviaciones de la media, y la varianza residual es igual a la varianza de la variable dependiente.
 
 $$0\leq s_{ry}^2\leq s_y^2$$
-{{% /alert %}}
+:::
 
 ### Descomposición de la variabilidad total: Variabilidad explicada y no explicada
 
@@ -447,58 +443,57 @@ $$0\leq s_{ry}^2\leq s_y^2$$
 
 A partir de la varianza residual se puede definir otro estadístico más sencillo de interpretar.
 
-{{% alert def %}}
-**Definición - Coeficiente de determinación muestral $r^2$**. Dado un modelo de regresión simple $y=f(x)$ de una variable bidimensional $(X,Y)$, su _coeficiente de determinación muestral_ es
+:::{#def-}
+## Coeficiente de determinación muestral $r^2$**. Dado un modelo de regresión simple $y=f(x)$ de una variable bidimensional $(X,Y)$, su _coeficiente de determinación muestral_ es
 
 $$r^2 = 1- \frac{s_{ry}^2}{s_y^2}$$
-{{% /alert %}}
+:::
 
-{{% alert warning %}}
+:::{.callout-warning}
 Como la varianza residual puede tomar valores entre 0 y $s_y^2$, se tiene que
 
 $$0\leq r^2\leq 1$$
-{{% /alert %}}
+:::
 
-{{% alert int %}}
+:::{.callout-note title="Interpretación"}
 Cuanto mayor sea $r^2$, mejor explicará el modelo de regresión la relación entre las variables, en particular:
 
 - Si $r^2 =0$ entonces no existe relación del tipo planteado por el modelo.
 - Si $r^2=1$ entonces la relación que plantea el modelo es perfecta.
-{{% /alert %}}
+:::
 
-{{% alert warning %}}
+:::{.callout-warning}
 En el caso de las rectas de regresión, el coeficiente de determinación puede calcularse con esta fórmula
 
 $$ r^2 =  \frac{s_{xy}^2}{s_x^2s_y^2}.$$
-{{% /alert %}}
+:::
 
-{{< spoiler text="Demostración" >}}
+:::{.callout-note collapse="true"}
+## Demostración
+:::{.proof}
 Cuando el modelo ajustado es la recta de regresión la varianza residual vale
 
-$$
-\begin{aligned}
-s_{ry}^2 & = \sum e_{ij}^2f_{ij} = \sum (y_j - f(x_i))^2f_{ij} = \sum \left(y_j - \bar y -\frac{s_{xy}}{s_x^2}(x_i-\bar x) \right)^2f_{ij}=\newline
-& = \sum \left((y_j - \bar y)^2 +\frac{s_{xy}^2}{s_x^4}(x_i-\bar x)^2 - 2\frac{s_{xy}}{s_x^2}(x_i-\bar x)(y_j -\bar y)\right)f_{ij} =\newline
-& = \sum (y_j - \bar y)^2f_{ij} +\frac{s_{xy}^2}{s_x^4}\sum (x_i-\bar x)^2f_{ij}- 2\frac{s_{xy}}{s_x^2}\sum (x_i-\bar x)(y_j -\bar y)f_{ij}=\newline
+\begin{align*}
+s_{ry}^2 & = \sum e_{ij}^2f_{ij} = \sum (y_j - f(x_i))^2f_{ij} = \sum \left(y_j - \bar y -\frac{s_{xy}}{s_x^2}(x_i-\bar x) \right)^2f_{ij}=\\
+& = \sum \left((y_j - \bar y)^2 +\frac{s_{xy}^2}{s_x^4}(x_i-\bar x)^2 - 2\frac{s_{xy}}{s_x^2}(x_i-\bar x)(y_j -\bar y)\right)f_{ij} =\\
+& = \sum (y_j - \bar y)^2f_{ij} +\frac{s_{xy}^2}{s_x^4}\sum (x_i-\bar x)^2f_{ij}- 2\frac{s_{xy}}{s_x^2}\sum (x_i-\bar x)(y_j -\bar y)f_{ij}=\\
 & = s_y^2 + \frac{s_{xy}^2}{s_x^4}s_x^2 - 2 \frac{s_{xy}}{s_x^2}s_{xy} = s_y^2 - \frac{s_{xy}^2}{s_x^2}.
-\end{aligned}
-$$
+\end{align*}
 
 y, por tanto, el coeficiente de determinación lineal vale
 
-$$
-\begin{aligned}
+\begin{align*}
 r^2 &= 1- \frac{s_{ry}^2}{s_y^2} = 1- \frac{s_y^2 - \frac{s_{xy}^2}{s_x^2}}{s_y^2} = 1 - 1 + \frac{s_{xy}^2}{s_x^2s_y^2} = \frac{s_{xy}^2}{s_x^2s_y^2}.
-\end{aligned}
-$$
-{{< /spoiler >}}
+\end{align*}
+:::
+:::
 
-**Ejemplo**. En el ejemplo de las estaturas y pesos se tenía
+:::{#exm-**. En el ejemplo de las estaturas y pesos se tenía
 
 $$
 \begin{array}{lll}
-\bar x = 174.67 \mbox{ cm} & \quad & s^2_x = 102.06 \mbox{ cm}^2\newline
-\bar y = 69.67 \mbox{ Kg} & & s^2_y = 164.42 \mbox{ Kg}^2\newline
+\bar x = 174.67 \mbox{ cm} & \quad & s^2_x = 102.06 \mbox{ cm}^2\\
+\bar y = 69.67 \mbox{ Kg} & & s^2_y = 164.42 \mbox{ Kg}^2\\
 s_{xy} = 104.07 \mbox{ cm$\cdot$ Kg}
 \end{array}
 $$
@@ -511,33 +506,33 @@ Esto indica que la recta de regresión del peso sobre la estatura explica el 65%
 
 ### Coeficiente de correlación lineal
 
-{{% alert def %}}
-**Definición - Coeficiente de correlación lineal muestral**. Dada una variable bidimensional $(X,Y)$, el _coeficiente de correlación lineal muestral_ es la raíz cuadrada de su coeficiente de determinación lineal, con signo el de la covarianza
+:::{#def-}
+## Coeficiente de correlación lineal muestral**. Dada una variable bidimensional $(X,Y)$, el _coeficiente de correlación lineal muestral_ es la raíz cuadrada de su coeficiente de determinación lineal, con signo el de la covarianza
 
 $$r = \sqrt{r^2} = \dfrac{s_{xy}}{s_xs_y}.$$
-{{% /alert %}}
+:::
 
-{{% alert warning %}}
+:::{.callout-warning}
 Como $r^2$ toma valores entre 0 y 1, $r$ tomará valores entre -1 y 1,
 
 $$-1\leq r\leq 1$$
-{{% /alert %}}
+:::
 
-{{% alert int %}}
+:::{.callout-note title="Interpretación"}
 El coeficiente de correlación lineal no sólo mide mide el grado de dependencia
 lineal sino también su dirección (creciente o decreciente):
 
 - Si $r =0$ entonces no existe relación lineal.
 - Si $r=1$ entonces existe una relación lineal creciente perfecta.
 - Si $r=-1$ entonces existe una relación lineal decreciente perfecta.
-{{% /alert %}}
+:::
 
-**Ejemplo**. En el ejemplo de las estaturas y los pesos se tenía
+:::{#exm-**. En el ejemplo de las estaturas y los pesos se tenía
 
 $$
 \begin{array}{lll}
-\bar x = 174.67 \mbox{ cm} & \quad & s^2_x = 102.06 \mbox{ cm}^2\newline
-\bar y = 69.67 \mbox{ Kg} & & s^2_y = 164.42 \mbox{ Kg}^2\newline
+\bar x = 174.67 \mbox{ cm} & \quad & s^2_x = 102.06 \mbox{ cm}^2\\
+\bar y = 69.67 \mbox{ Kg} & & s^2_y = 164.42 \mbox{ Kg}^2\\
 s_{xy} = 104.07 \mbox{ cm$\cdot$ Kg}
 \end{array}
 $$
@@ -562,9 +557,9 @@ Aunque el coeficiente de determinación o el de correlación determinan la bonda
 - La variabilidad de la población: Cuanto más variable es una población, más difícil es predecir y por tanto menos fiables serán las predicciones.
 - El tamaño muestral: Cuanto mayor sea, más información tendremos y, en consecuencia, más fiables serán las predicciones.
 
-{{% alert warning %}}
+:::{.callout-warning}
 Además, hay que tener en cuenta que un modelo de regresión es válido únicamente para el rango de valores observados en la muestra. Fuera de ese rango no hay información del tipo de relación entre las variables, por lo que no deben hacerse predicciones para valores lejos de los observados en la muestra.
-{{% /alert %}}
+:::
 
 ## Regresión no lineal
 
@@ -599,20 +594,20 @@ No obstante, en determinados casos un ajuste no lineal puede convertirse en un a
 
 ### Relación exponencial
 
-**Ejemplo** El número de bacterias de un cultivo evoluciona con el tiempo según la
+:::{#exm-** El número de bacterias de un cultivo evoluciona con el tiempo según la
 siguiente tabla:
 
 $$\begin{array}{c|c}
-\mbox{Horas} & \mbox{Bacterias}\newline
+\mbox{Horas} & \mbox{Bacterias}\\
 \hline
-0 &  25 \newline
-1 & 28 \newline
-2 &  47\newline
-3 & 65 \newline
-4 & 86\newline
-5 & 121\newline
-6 & 190\newline
-7 & 290\newline
+0 &  25 \\
+1 & 28 \\
+2 &  47\\
+3 & 65 \\
+4 & 86\\
+5 & 121\\
+6 & 190\\
+7 & 290\\
 8 & 362
 \end{array}
 $$
@@ -635,16 +630,16 @@ Para construir el modelo exponencial $y = ae^{bx}$ hay que realizar la
 transformación $z=\log y$, es decir, aplicar el logaritmo a la variable dependiente.
 
 $$\begin{array}{c|c|c}
-\mbox{Horas} & \mbox{Bacterias} & \mbox{$\log$(Bacterias)}\newline
+\mbox{Horas} & \mbox{Bacterias} & \mbox{$\log$(Bacterias)}\\
 \hline
-0 &  25 & 3.22\newline
-1 & 28 & 3.33\newline
-2 &  47 & 3.85\newline
-3 & 65  & 4.17\newline
-4 & 86 & 4.45\newline
-5 & 121 & 4.80\newline
-6 & 190 & 5.25\newline
-7 & 290 & 5.67\newline
+0 &  25 & 3.22\\
+1 & 28 & 3.33\\
+2 &  47 & 3.85\\
+3 & 65  & 4.17\\
+4 & 86 & 4.45\\
+5 & 121 & 4.80\\
+6 & 190 & 5.25\\
+7 & 290 & 5.67\\
 8 & 362 & 5.89
 \end{array}
 $$
@@ -669,9 +664,9 @@ Como se puede apreciar, el modelo exponencial se ajusta mucho mejor que el model
 
 Es importante señalar que cada modelo de regresión tiene su propio coeficiente de determinación.
 
-{{% alert warning %}}
+:::{.callout-warning}
 Así, un coeficiente de determinación cercano a cero significa que no existe relación entre las variables del tipo planteado por el modelo, pero _eso no quiere decir que las variables sean independientes_, ya que puede existir relación de otro tipo.
-{{% /alert %}}
+:::
 
 <img src="../img/regresion/regresion_lineal_relacion_cuadratica.svg" alt="Modelo de regresión lineal en una relación cuadrática" width="500">
 <img src="../img/regresion/regresion_cuadratica.svg" alt="Modelo de regresión cuadrático en una relación cuadrática" width="500">
@@ -682,9 +677,9 @@ Los _datos atípicos_ en un estudio de regresión son los puntos que claramente 
 
 <img src="../img/regresion/diagrama_dispersion_con_datos_atipicos.svg" alt="Diagrama de dispersión con un dato atípico" width="500">
 
-{{% alert warning %}}
+:::{.callout-warning}
 Los datos atípicos en regresión suelen provocar cambios drásticos en el ajuste de los modelos de regresión, y por tanto, habrá que tener mucho cuidado con ellos.
-{{% /alert %}}
+:::
 
 <div class="center">
 <img src="../img/regresion/regresion_lineal_con_datos_atipicos.svg" alt="Modelo de regresión lineal con datos atípicos" width="500"> <img src="../img/regresion/regresion_lineal_sin_datos_atipicos.svg" alt="Modelo de regresión lineal sin datos atípicos" width="500">
@@ -695,7 +690,7 @@ Los datos atípicos en regresión suelen provocar cambios drásticos en el ajust
 A veces, una tendencia desaparece o incluso se revierte cuando se divide la muestra en grupos de acuerdo a una variable cualitativa que está relacionada con la variable dependiente.
 Esto se conoce como la _paradoja de Simpson_.
 
-**Ejemplo**. El siguiente diagrama de dispersión muestra una relación inversa entre entre las horas de estudio preparando un examen y la nota del examen.
+:::{#exm-**. El siguiente diagrama de dispersión muestra una relación inversa entre entre las horas de estudio preparando un examen y la nota del examen.
 
 <div class="center">
 <img src="../img/regresion/paradoja_simpson_1.svg" alt="Paradoja de Simpson. Relación inversa entre las horas de estudio para un examen y la nota obtenida." width="500">

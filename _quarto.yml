@@ -1,6 +1,13 @@
 project:
   type: book
   output-dir: "docs"
+  preview:
+    port: 1313
+
+execute: 
+  freeze: auto
+  cache: true
+  daemon: 3600
 
 website:
   favicon: img/logos/favicon.ico
@@ -33,10 +40,10 @@ book:
     - index.qmd
     - 01-introduccion.qmd
     - 02-estadistica-descriptiva.qmd
-    # - regresion.qmd
-    # - probabilidad.qmd
-    # - variables-aletaorias-discretas.qmd
-    # - variables-aleatorias-continuas.qmd
+    - 03-regresion.qmd
+    # - 04-probabilidad.qmd
+    # - 05-variables-aletaorias-discretas.qmd
+    # - 06-variables-aleatorias-continuas.qmd
     - 07-estimacion.qmd
     - 08-contrastes-parametricos.qmd
     
@@ -70,6 +77,9 @@ format:
     
   epub:
     cover-image: img/logos/sticker.png
+    html-math-method: mathml
+    toc: true
+
 
 
 

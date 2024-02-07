@@ -237,11 +237,11 @@ Tampoco tiene sentido hablar de la probabilidad de haberse equivocado una vez to
 Una vez fijado el riesgo $\alpha$ que se está dispuesto a tolerar, es posible delimitar las regiones de aceptación y de rechazo para el estadístico del contraste de manera que la probabilidad acumulada en la región de rechazo sea $\alpha$, suponiendo cierta la hipótesis nula.
 
 :::{.columns}
-::: {.column width="50%"}
+:::{.column width="50%"}
 ![](/img/contrastes/regiones_bilateral_normal.svg){fig-alt="Regiones de un contraste bilateral en una distribución normal" fig-align="center" width=100%}
 :::
 
-::: {.column width="50%"}
+:::{.column width="50%"}
 ![](/img/contrastes/regiones_unilateral_mayor_normal.svg){fig-alt="Regiones de un contraste unilateral de mayor en una distribución normal" fig-align="center" width=100%}
 :::
 :::
@@ -285,7 +285,7 @@ Un contraste poco potente no suele ser interesante ya que no permitirá rechazar
 
 ### Cálculo del riesgo $\beta$ y de la potencia $1-\beta$
 
-**Ejemplo** Supóngase que en el contraste sobre la proporción de hombres no se considera importante una diferencia de menos de un 10% con respecto al valor que establece la hipótesis nula, es decir, $\delta=0.1$.
+:::{#exm-** Supóngase que en el contraste sobre la proporción de hombres no se considera importante una diferencia de menos de un 10% con respecto al valor que establece la hipótesis nula, es decir, $\delta=0.1$.
 
 Esto permite fijar la hipótesis alternativa
 
@@ -421,7 +421,7 @@ En cierto modo, el $p$-valor expresa la confianza que se tiene al tomar la decis
 
 Una vez fijado el riesgo $\alpha$, la regla de decisión para realizar un contraste también puede expresarse de la siguiente manera:
 
-:::{.callout-important}
+:::{.callout-note title="Interpretación"}
  **Regla de decisión**  
 
 $$
@@ -485,11 +485,9 @@ Sea $X$ una variable aleatoria que cumple las siguientes condiciones:
 
 **Contraste**:
 
-$$
-\begin{aligned}
+\begin{align*}
 H_0 &: \mu=\mu_0 \\
-H_1 &: \mu\neq \mu_0\end{aligned}
-$$
+H_1 &: \mu\neq \mu_0\end{align*}
 
 **Estadístico del contraste**:
 
@@ -509,11 +507,9 @@ Sea $X$ una variable aleatoria que cumple las siguientes condiciones:
 
 **Contraste**:
 
-$$
-\begin{aligned}
+\begin{align*}
 H_0 &: \mu=\mu_0 \\
-H_1 &: \mu\neq \mu_0\end{aligned}
-$$
+H_1 &: \mu\neq \mu_0\end{align*}
 
 **Estadístico del contraste**: Utilizando la cuasivarianza como estimador de la varianza poblacional se tiene
 
@@ -616,12 +612,10 @@ Sea $X$ una variable aleatoria que cumple las siguientes condiciones:
 
 **Contraste**:
 
-$$
-\begin{aligned}
+\begin{align*}
 H_0 &: \mu=\mu_0 \\
 H_1 &: \mu\neq \mu_0
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**: Utilizando la cuasivarianza como estimador de la varianza poblacional y gracias al teorema central del límite por tratarse de muestras grandes ($n\geq 30)$ se tiene
 
@@ -641,12 +635,10 @@ Sea $X$ una variable aleatoria que cumple las siguientes hipótesis:
 
 **Contraste**:
 
-$$
-\begin{aligned}
+\begin{align*}
 H_0 &: \sigma=\sigma_0 \\
 H_1 &: \sigma\neq \sigma_0
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**: Partiendo de la cuasivarianza muestral como estimador de la varianza poblacional, se tiene
 
@@ -692,12 +684,10 @@ Sea $p$ la proporción de individuos de una población que tienen una determinad
 
 **Contraste**:
 
-$$
-\begin{aligned}
+\begin{align*}
 H_0 &: p=p_0 \\
 H_1 &: p\neq p_0
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**: La variable que mide el número de individuos con la característica en una muestra aleatoria de tamaño $n$ sigue una distribución binomial $X\sim B(n,p_0)$. De acuerdo al teorema central del límite, para muestras grandes ($np\geq 5$ y $n(1-p)\geq 5$), $X\sim N(np_0,\sqrt{np_0(1-p_0)})$, y se cumple
 
@@ -714,12 +704,10 @@ En un grupo de alumnos se desea estimar si el porcentaje de aprobados es mayor d
 
 El contraste que se plantea es
 
-$$
-\begin{aligned}
+\begin{align*}
 H_0 &: p=0.5 \\
 H_1 &: p>0.5
-\end{aligned}
-$$
+\end{align*}
 
 Para realizar el contraste se tiene que $\hat p= 50/80 = 0.625$ y como se cumple $n\hat p=80\cdot 0.625 = 50\geq 5$ y $n(1-\hat p)=80(1-0.625)=30\geq 5$, el estadístico del contraste vale
 
@@ -740,12 +728,10 @@ Sean $X_1$ y $X_2$ dos variables aleatorias que cumplen las siguientes condicion
 
 **Contraste**:
 
-$$
-\begin{aligned}
+\begin{align*}
 H_0 &: \mu_1=\mu_2 \\
 H_1 &: \mu_1\neq \mu_2
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**:
 
@@ -778,12 +764,10 @@ Sean $X_1$ y $X_2$ dos variables aleatorias que cumplen las siguientes condicion
 
 **Contraste**:
 
-$$
-\begin{aligned}
+\begin{align*}
 H_0 &: \mu_1=\mu_2 \\
 H_1 &: \mu_1\neq \mu_2
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**:
 
@@ -804,12 +788,10 @@ $$
 :::{#exm-contraste-diferencia-medias-normales-varianzas-desconocidas-iguales}
 Se quiere comparar el rendimiento académico de dos grupos de alumnos, uno con 10 alumnos y otro con 12, que han seguido metodologías diferentes. Para ello se les realiza un examen y se obtienen las siguientes puntuaciones:
 
-$$
-\begin{aligned}
+\begin{align*}
 X_1 &: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3  \\
 X_2 &: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
-\end{aligned}
-$$
+\end{align*}
 
 El contraste que se plantea es
 
@@ -841,12 +823,10 @@ Sean $X_1$ y $X_2$ dos variables aleatorias que cumplen las siguientes condicion
 
 **Contraste**:
 
-$$
-\begin{aligned}
+\begin{align*}
 H_0 &: \mu_1=\mu_2 \\
 H_1 &: \mu_1\neq \mu_2
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**:
 
@@ -871,12 +851,10 @@ Sean $X_1$ y $X_2$ dos variables aleatorias que cumplen las siguientes condicion
 
 **Contraste**:
 
-$$
-\begin{aligned}
+\begin{align*}
 H_0 &: \sigma_1=\sigma_2 \\
 H_1 &: \sigma_1\neq \sigma_2
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**:
 $$\left.
@@ -896,12 +874,10 @@ $$
 :::{#exm-contraste-comparacion-varianzas}
 Siguiendo con el ejemplo de las puntuaciones en dos grupos:
 
-$$
-\begin{aligned}
+\begin{align*}
 X_1 &: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3  \\
 X_2 &: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
-\end{aligned}
-$$
+\end{align*}
 
 Si se desea comparar las varianzas, el contraste que se plantea es
 
@@ -993,12 +969,10 @@ contraste es unilateral de mayor, se comparará con el límite inferior del inte
 :::{#exm-contraste-mediante-intervalos-confianza}
 Volviendo al contraste para comparar el rendimiento académico de dos grupos de alumnos que han obtenido las siguientes puntuaciones:
 
-$$
-\begin{aligned}
+\begin{align*}
 X_1 &: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3  \\
 X_2 &: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
-\end{aligned}
-$$
+\end{align*}
 
 El contraste que se planteaba era
 

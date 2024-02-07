@@ -14,11 +14,11 @@ La _estadística_ es una rama de las matemáticas que se encarga de la recogida,
 
 El papel de la Estadística es extraer información de los datos para adquirir el conocimiento necesario para tomar decisiones.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Propósito de la Estadística](img/introduccion/proposito_estadistica.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Propósito de la Estadística](img/introduccion/proposito_estadistica.png)
 :::
 
@@ -129,11 +129,11 @@ Lo importante es que _¡No es necesario conocer todos los píxeles para averigua
 
 Así pues, habitualmente realizaremos el estudio de la población a partir de muestras y luego trataremos de extrapolar lo observado en la muestra al resto de la población. A este tipo de razonamiento que saca conclusiones desde la muestra hacia la población se le conoce como _razonamiento inductivo_.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Tipos de razonamiento.](img/introduccion/tipos_razonamiento.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Tipos de razonamiento.](img/introduccion/tipos_razonamiento.png)
 :::
 
@@ -189,11 +189,11 @@ Una _variable estadística_ es una propiedad o característica medida en los ind
 Los _datos_ son los valores observados en las variables estadísticas.
 :::
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Variables estadísticas.](img/introduccion/variables_estadisticas.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Variables estadísticas.](img/introduccion/variables_estadisticas.png)
 :::
 
@@ -217,11 +217,11 @@ Estas características pueden ser de distintos tipos de acuerdo a su naturaleza 
 
 Las variables cualitativas y discretas se conocen también con _variables categóricas_ y sus valores _categorías_.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Tipos de variables estadísticas.](img/introduccion/tipos_variables.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Tipos de variables estadísticas.](img/introduccion/tipos_variables.png)
 :::
 
@@ -241,11 +241,11 @@ Si una persona fuma o no podría medirse de diferentes formas:
 
 En estos casos es preferible usar variables cuantitativas a cualitativas. Dentro de las cuantitativas es preferible usar las continuas a las discretas y dentro de las cualitativas es preferible usar ordinales a nominales pues aportan más información.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Cantidad de información de los tipos de variables estadísticas.](img/introduccion/informacion_variables.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Cantidad de información de los tipos de variables estadísticas.](img/introduccion/informacion_variables.png)
 :::
 
@@ -312,10 +312,10 @@ Normalmente un estudio estadístico pasa por las siguientes etapas:
 
 #### El ciclo estadístico
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![El ciclo estadístico.](img/introduccion/ciclo_estadistico.svg)
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![El ciclo estadístico.](img/introduccion/ciclo_estadistico.eps)
 :::

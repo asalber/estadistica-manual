@@ -24,14 +24,14 @@ La teoría de la probabilidad precisamente se encarga de controlar ese azar para
 
 El estudio de una característica en una población se realiza a través de experimentos aleatorios.
 
-{{% alert def %}}
-**Definición - Experimento aleatorio**. Un *experimento aleatorio* es un experimento que cumple dos condiciones:
+:::{#def-}
+## Experimento aleatorio**. Un *experimento aleatorio* es un experimento que cumple dos condiciones:
 
 1. El conjunto de posibles resultados es conocido.
 2. No se puede predecir con absoluta certeza el resultado del experimento.
-{{% /alert %}}
+:::
 
-**Ejemplo**. Un ejemplo típico de experimentos aleatorios son los juegos
+:::{#exm-**. Un ejemplo típico de experimentos aleatorios son los juegos
 de azar. El lanzamiento de un dado, por ejemplo, es un experimento
 aleatorio ya que:
 
@@ -45,10 +45,10 @@ aleatorio.
 
 ### Espacio muestral
 
-{{% alert def %}}
-**Definición - Espacio muestral**. Al conjunto $\Omega$ de todos los posibles resultados de un
+:::{#def-}
+## Espacio muestral**. Al conjunto $\Omega$ de todos los posibles resultados de un
 experimento aleatorio se le llama _espacio muestral_.
-{{% /alert %}}
+:::
 
 Algunos ejemplos de espacios muestrales son:
 
@@ -65,15 +65,15 @@ En experimentos donde se mide más de una variable, la determinación del espaci
 
 En un diagrama de árbol cada variable se representa en un nivel del árbol y cada posible valor de la variable como una rama.
 
-**Ejemplo** El siguiente diagrama de árbol representa el espacio muestral de un experimento aleatorio en el que se mide el sexo y el grupo sanguineo de un individuo al azar.
+:::{#exm-** El siguiente diagrama de árbol representa el espacio muestral de un experimento aleatorio en el que se mide el sexo y el grupo sanguineo de un individuo al azar.
 
 <img src="../img/probabilidad/espacio_muestral.svg" alt="Diagrama de árbol del espacio muestral del sexo y el grupo sanguineo" width="500">
 
 ### Sucesos aleatorios
 
-{{% alert def %}}
-**Definición - Suceso aleatorio**. Un *suceso aleatorio* es cualquier subconjunto del espacio muestral $\Omega$ de un experimento aleatorio.
-{{% /alert %}}
+:::{#def-}
+## Suceso aleatorio**. Un *suceso aleatorio* es cualquier subconjunto del espacio muestral $\Omega$ de un experimento aleatorio.
+:::
 
 Existen distintos tipos de sucesos:
 
@@ -86,11 +86,11 @@ Existen distintos tipos de sucesos:
 
 ### Espacio de sucesos
 
-{{% alert def %}}
-**Definición - Espacio de sucesos**. Dado un espacio muestral $\Omega$ de un experimento aleatorio, el conjunto formado por todos los posibles sucesos de $\Omega$ se llama *espacio de sucesos de $\Omega$* y se denota $\mathcal{P}(\Omega)$.
-{{% /alert %}}
+:::{#def-}
+## Espacio de sucesos**. Dado un espacio muestral $\Omega$ de un experimento aleatorio, el conjunto formado por todos los posibles sucesos de $\Omega$ se llama *espacio de sucesos de $\Omega$* y se denota $\mathcal{P}(\Omega)$.
+:::
 
-**Ejemplo**. Dado el espacio muestral $\Omega=\\{a,b,c\\}$, su espacio de sucesos es
+:::{#exm-**. Dado el espacio muestral $\Omega=\\{a,b,c\\}$, su espacio de sucesos es
 
 $$\mathcal{P}(\Omega)=\left\\{\emptyset, \\{a\\},\\{b\\},\\{c\\},\\{a,b\\},\\{a,c\\},\\{b,c\\},\\{a,b,c\\}\right\\}$$
 
@@ -106,11 +106,11 @@ conjuntos se pueden definir las siguientes operaciones entre sucesos:
 
 ### Unión de sucesos
 
-{{% alert def %}}
-**Definición - Suceso unión**. Dados dos sucesos $A,B\subseteq \Omega$, se llama *suceso unión* de $A$ y $B$, y se denota $A\cup B$, al suceso formado por los elementos de $A$ junto a los elementos de $B$, es decir, 
+:::{#def-}
+## Suceso unión**. Dados dos sucesos $A,B\subseteq \Omega$, se llama *suceso unión* de $A$ y $B$, y se denota $A\cup B$, al suceso formado por los elementos de $A$ junto a los elementos de $B$, es decir, 
 
 $$A\cup B = \\{x\\,|\\, x\in A\textrm{ o }x\in B\\}.$$
-{{% /alert %}}
+:::
 
 <img src="../img/probabilidad/union.svg" alt="Union de dos sucesos" width="300">
 
@@ -118,11 +118,11 @@ El suceso unión $A\cup B$ ocurre siempre que ocurre $A$ <span style="color:red;
 
 ### Intersección de sucesos
 
-{{% alert def %}}
-**Definición - Suceso intersección**. Dados dos sucesos $A,B\subseteq \Omega$, se llama *suceso intersección* de $A$ y $B$, y se denota $A\cap B$, al suceso formado por los elementos comunes de $A$ y $B$, es decir,
+:::{#def-}
+## Suceso intersección**. Dados dos sucesos $A,B\subseteq \Omega$, se llama *suceso intersección* de $A$ y $B$, y se denota $A\cap B$, al suceso formado por los elementos comunes de $A$ y $B$, es decir,
 
 $$A\cap B = \\{x\\,|\\, x\in A\textrm{ y }x\in B\\}.$$
-{{% /alert %}}
+:::
 
 <img src="../img/probabilidad/interseccion.svg" alt="Intersección de dos sucesos" width="300">
 
@@ -132,11 +132,11 @@ Diremos que dos sucesos son **incompatibles** si su intersección es vacía.
 
 ### Contrario de un suceso
 
-{{% alert def %}}
-**Definición - Suceso contrario**. Dado suceso $A\subseteq \Omega$, se llama *suceso contrario o complementario* de $A$, y se denota $\overline A$, al suceso formado por los elementos de $\Omega$ que no pertenecen a $A$, es decir,
+:::{#def-}
+## Suceso contrario**. Dado suceso $A\subseteq \Omega$, se llama *suceso contrario o complementario* de $A$, y se denota $\overline A$, al suceso formado por los elementos de $\Omega$ que no pertenecen a $A$, es decir,
 
 $$\overline A = \\{x\\,|\\, x\not\in A\\}.$$
-{{% /alert %}}
+:::
 
 <img src="../img/probabilidad/contrario.svg" alt="Contrario de un suceso" width="300">
 
@@ -144,17 +144,17 @@ El suceso contrario $\overline A$ ocurre siempre que <span style="color:red;">no
 
 ### Diferencia de sucesos
 
-{{% alert def %}}
-**Definición - Suceso diferencia**. Dados dos sucesos $A,B\subseteq \Omega$, se llama *suceso diferencia* de $A$ y $B$, y se denota $A-B$, al suceso formado por los elementos de $A$ que no pertenecen a $B$, es decir,
+:::{#def-}
+## Suceso diferencia**. Dados dos sucesos $A,B\subseteq \Omega$, se llama *suceso diferencia* de $A$ y $B$, y se denota $A-B$, al suceso formado por los elementos de $A$ que no pertenecen a $B$, es decir,
 
 $$A-B = \\{x\\,|\\, x\in A\mbox{ y }x\not\in B\\} = A \cap \overline B.$$
-{{% /alert %}}
+:::
 
 <img src="../img/probabilidad/diferencia.svg" alt="Diferencia de sucesos" width="300">
 
 El suceso diferencia $A-B$ ocurre siempre que ocurre $A$ pero no ocurre $B$, y también puede expresarse como $A\cap \bar B$.
 
-**Ejemplo**. Dado el espacio muestral correspondiente al lanzamiento de un dado
+:::{#exm-**. Dado el espacio muestral correspondiente al lanzamiento de un dado
 $\Omega=\\{1,2,3,4,5,6\\}$ y los sucesos $A=\\{2,4,6\\}$ y $B=\\{1,2,3,4\\}$,
 
 - La unión de $A$ y $B$ es $A\cup B=\\{1,2,3,4,6\\}$.
@@ -187,7 +187,7 @@ siguientes propiedades:
 Dado un espacio muestral $\Omega$ de un experimento aleatorio donde todos los elementos de $\Omega$ son equiprobables, la *probabilidad* de un suceso $A\subseteq \Omega$ es el cociente entre el número de elementos de $A$ y el número de elementos de $\Omega$ 
 
 $$P(A) = \frac{|A|}{|\Omega|} = \frac{\mbox{nº casos favorables a A}}{\mbox{nº casos posibles}}$$
-{{% /alert %}}
+:::
 
 Esta definición es ampliamente utilizada, aunque tiene importantes
 restricciones:
@@ -201,7 +201,7 @@ restricciones:
 <span class="alert">*¡Ojo\! Esto no se cumple en muchos experimentos
 aleatorios reales.*</span>
 
-**Ejemplo**. Dado el espacio muestral correspondiente al lanzamiento de un dado $\Omega=\\{1,2,3,4,5,6\\}$ y el suceso $A=\\{2,4,6\\}$, la probabilidad de $A$ es
+:::{#exm-**. Dado el espacio muestral correspondiente al lanzamiento de un dado $\Omega=\\{1,2,3,4,5,6\\}$ y el suceso $A=\\{2,4,6\\}$, la probabilidad de $A$ es
 
 $$P(A) = \frac{|A|}{|\Omega|} = \frac{3}{6} = 0.5.$$
 
@@ -215,23 +215,23 @@ ya que los grupos sanguíneos no son igualmente probables en las poblaciones hum
 
 {{% alert theo %}}
 **Teorema - Ley de los grandes números**.Cuando un experimento aleatorio se repite un gran número de veces, las frecuencias relativas de los sucesos del experimento tienden a estabilizarse en torno a cierto número, que es precisamente su probabilidad.
-{{% /alert %}}
+:::
 
 De acuerdo al teorema anterior, podemos dar la siguiente definición
 
-{{% alert def %}}
-**Definición - Probabilidad frecuentista**. Dado un espacio muestral $\Omega$ de un experimento aleatorio
+:::{#def-}
+## Probabilidad frecuentista**. Dado un espacio muestral $\Omega$ de un experimento aleatorio
 reproducible, la *probabilidad* de un suceso $A\subseteq \Omega$ es la frecuencia relativa del suceso $A$ en infinitas repeticiones del experimento 
 
 $$P(A) = lim_{n\rightarrow \infty}\frac{n_{A}}{n}$$
-{{% /alert %}}
+:::
 
 Aunque esta definición es muy útil en experimentos científicos reproducibles, también tiene serios inconvenientes, ya que
 
   - Sólo se calcula una aproximación de la probabilidad real.
   - La repetición del experimento debe ser en las mismas condiciones.
 
-**Ejemplo**. Dado el espacio muestral correspondiente al lanzamiento de una moneda $\Omega=\\{C,X\\}$, si después de lanzar la moneda 100 veces obtenemos 54 caras, entonces la probabilidad de $C$ es aproximadamente
+:::{#exm-**. Dado el espacio muestral correspondiente al lanzamiento de una moneda $\Omega=\\{C,X\\}$, si después de lanzar la moneda 100 veces obtenemos 54 caras, entonces la probabilidad de $C$ es aproximadamente
 
 $$P(C) = \frac{n_C}{n} = \frac{54}{100} = 0.54.$$
 
@@ -241,8 +241,8 @@ $$P(A) = \frac{n_A}{n} = \frac{412}{1000} = 0.412.$$
 
 ### Definición axiomática de probabilidad
 
-{{% alert def %}}
-**Definición - Probabilidad (Kolmogórov)**.Dado un espacio muestral $\Omega$ de un experimento aleatorio, una función de *probabilidad* es una aplicación que asocia a cada suceso $A\subseteq \Omega$ un número real $P(A)$, conocido como probabilidad de $A$, que cumple los siguientes axiomas:
+:::{#def-}
+## Probabilidad (Kolmogórov)**.Dado un espacio muestral $\Omega$ de un experimento aleatorio, una función de *probabilidad* es una aplicación que asocia a cada suceso $A\subseteq \Omega$ un número real $P(A)$, conocido como probabilidad de $A$, que cumple los siguientes axiomas:
 
 1.  La probabilidad de un suceso cualquiera es positiva o nula,
     $$P(A)\geq 0.$$
@@ -254,7 +254,7 @@ $$P(A) = \frac{n_A}{n} = \frac{412}{1000} = 0.412.$$
     ($A\cap B=\emptyset$) es igual a la suma de las probabilidades de
     cada uno de ellos, 
     $$P(A\cup B) = P(A)+P(B).$$
-{{% /alert %}}
+:::
 
 ### Consecuencias de los axiomas de probabilidad
 
@@ -274,7 +274,9 @@ deducir los siguientes resultados:
     
     $$P(A)=\sum_{i=1}^n P(e_i).$$
 
-{{< spoiler text="Demostración" >}}
+:::{.callout-note collapse="true"}
+## Demostración
+:::{.proof}
 1. $\overline A = \Omega \Rightarrow P(A\cup \overline A) = P(\Omega) \Rightarrow P(A)+P(\overline A) = 1 \Rightarrow P(\overline A)=1-P(A)$.
 2. $\emptyset = \overline \Omega \Rightarrow P(\emptyset) = P(\overline \Omega) = 1-P(\Omega) = 1-1 = 0.$
 3. $B = A\cup (B-A)$. Como $A$ y $B-A$ son incompatibles, $P(B) = P(A\cup (B-A)) = P(A)+P(B-A) \geq P(A).$
@@ -298,7 +300,8 @@ deducir los siguientes resultados:
 
     
 7. $A=\\{e_1,\cdots,e_n\\} = \\{e_1\\}\cup \cdots \cup \\{e_n\\} \Rightarrow$ $P(A)=P(\\{e_1\\}\cup \cdots \cup \\{e_n\\}) = P(\\{e_1\\})+ \cdots P(\\{e_n\\}).$
-{{< /spoiler >}} 
+:::
+::: 
 
 ### Interpretación de la probabilidad
 
@@ -325,16 +328,16 @@ Esto debe leerse como *probabilidad de $A$ dado $B$* o *probabilidad de $A$ bajo
 
 Los condicionantes suelen cambiar el espacio muestral del experimento y por tanto las probabilidades de sus sucesos.
 
-**Ejemplo**. Supongamos que tenemos una muestra de 100 hombres y 100 mujeres con las siguientes frecuencias 
+:::{#exm-**. Supongamos que tenemos una muestra de 100 hombres y 100 mujeres con las siguientes frecuencias 
 
 $$
 \begin{array}{|c|c|c|}
 \hline 
- & \mbox{No fumadores} & \mbox{Fumadores} \newline
+ & \mbox{No fumadores} & \mbox{Fumadores} \\
  \hline 
- \mbox{Mujeres} & 80 & 20 \newline
+ \mbox{Mujeres} & 80 & 20 \\
  \hline
- \mbox{Hombres} & 60 & 40 \newline
+ \mbox{Hombres} & 60 & 40 \\
  \hline
 \end{array}
 $$ 
@@ -349,17 +352,17 @@ $$P(\mbox{Fumadora}|\mbox{Mujer})=\frac{20}{100}=0.2.$$
 
 ### Probabilidad condicionada
 
-{{% alert def %}}
-**Definición - Probabilidad condicionada**. Dado un espacio muestral $\Omega$ de un experimento aleatorio, y dos dos sucesos $A,B\subseteq \Omega$, la probabilidad de $A$ *condicionada* por $B$ es 
+:::{#def-}
+## Probabilidad condicionada**. Dado un espacio muestral $\Omega$ de un experimento aleatorio, y dos dos sucesos $A,B\subseteq \Omega$, la probabilidad de $A$ *condicionada* por $B$ es 
 
 $$P(A|B) = \frac{P(A\cap B)}{P(B)},$$
 
 siempre y cuando, $P(B)\neq 0$.
-{{% /alert %}}
+:::
 
 Esta definición permite calcular probabilidades sin tener que alterar el espacio muestral original del experimento.
 
-**Ejemplo**. En el ejemplo anterior
+:::{#exm-**. En el ejemplo anterior
 
 $$P(\mbox{Fumadora}|\mbox{Mujer})= \frac{P(\mbox{Fumadora}\cap \mbox{Mujer})}{P(\mbox{Mujer})} =  \frac{20/200}{100/200}=\frac{20}{100}=0.2.$$
 
@@ -369,7 +372,7 @@ A partir de la definición de probabilidad condicionada es posible obtener la f�
 
 $$P(A\cap B) = P(A)P(B|A) = P(B)P(A|B).$$
 
-**Ejemplo**. En una población hay un 30% de fumadores y se sabe que el 40% de los fumadores tiene cáncer de pulmón. La probabilidad de que una persona elegida al azar sea fumadora y tenga cáncer de pulmón es
+:::{#exm-**. En una población hay un 30% de fumadores y se sabe que el 40% de los fumadores tiene cáncer de pulmón. La probabilidad de que una persona elegida al azar sea fumadora y tenga cáncer de pulmón es
 
 $$P(\mbox{Fumadora}\cap \mbox{Cáncer})= P(\mbox{Fumadora})P(\mbox{Cáncer}|\mbox{Fumadora}) = 0.3\times 0.4 = 0.12.$$
 
@@ -378,14 +381,14 @@ $$P(\mbox{Fumadora}\cap \mbox{Cáncer})= P(\mbox{Fumadora})P(\mbox{Cáncer}|\mbo
 En ocasiones, la ocurrencia del suceso condicionante no cambia la
 probabilidad original del suceso principal.
 
-{{% alert def %}}
-**Definición - Sucesos independientes**. Dado un espacio muestral $\Omega$ de un experimento aleatorio, dos
+:::{#def-}
+## Sucesos independientes**. Dado un espacio muestral $\Omega$ de un experimento aleatorio, dos
 sucesos $A,B\subseteq \Omega$ son *independientes* si la probabilidad de $A$ no se ve alterada al condicionar por $B$, y viceversa, es decir, 
 
 $$P(A|B) = P(A) \quad \mbox{and} \quad P(B|A)=P(B),$$ 
 
 si $P(A)\neq 0$ y $P(B)\neq 0$.
-{{% /alert %}}
+:::
 
 Esto significa que la ocurrencia de uno evento no aporta información relevante para cambiar la incertidumbre sobre el otro.
 
@@ -395,13 +398,13 @@ $$P(A\cap B) = P(A)P(B).$$
 
 ## Espacio probabilístico
 
-{{% alert def %}}
-**Definición - Espacio probabilístico**. Un *espacio probabilístico* de un experimento aleatorio es una terna $(\Omega,\mathcal{F},P)$ donde
+:::{#def-}
+## Espacio probabilístico**. Un *espacio probabilístico* de un experimento aleatorio es una terna $(\Omega,\mathcal{F},P)$ donde
 
   - $\Omega$ es el espacio muestral del experimento.
   - $\mathcal{F}$ es un un conjunto de sucesos del experimento.
   - $P$ es una función de probabilidad.
-{{% /alert %}}
+:::
 
 Si conocemos la probabilidad de todos los elementos de $\Omega$, entonces podemos calcular la  probabilidad de cualquier suceso en $\mathcal{F}$ y se puede construir fácilmente el espacio probabilístico.
 
@@ -418,7 +421,7 @@ Para determinar la probabilidad de cada suceso elemental se puede utilizar un di
 
 ### Árboles de probabilidad con variables dependientes
 
-**Ejemplo**. Sea una población en la que el 30% de las personas fuman, y que la incidencia del cáncer de pulmón en fumadores es del 40% mientras que en los no fumadores es del 10%.
+:::{#exm-**. Sea una población en la que el 30% de las personas fuman, y que la incidencia del cáncer de pulmón en fumadores es del 40% mientras que en los no fumadores es del 10%.
 
 El espacio probabilístico del experimento aleatorio que consiste en elegir una persona al azar y medir las variables Fumar y Cáncer de pulmón se muestra a continuación.
 
@@ -426,13 +429,13 @@ El espacio probabilístico del experimento aleatorio que consiste en elegir una 
 
 ### Árboles de probabilidad con variables independientes
 
-**Ejemplo** El árbol de probabilidad asociado al experimento aleatorio que consiste en el lanzamiento de dos monedas se muestra a continuación.
+:::{#exm-** El árbol de probabilidad asociado al experimento aleatorio que consiste en el lanzamiento de dos monedas se muestra a continuación.
 
 <img src="../img/probabilidad/espacio_probabilistico_monedas.svg" alt="Diágrama de árbol del espacio probabilístico del lanzamiento de dos monedas" width="550">
 
 ### Árboles de probabilidad con variables independientes
 
-**Ejemplo**. Dada una población en la que hay un 40% de hombres y un 60% de mujeres, el experimento aleatorio que consiste en tomar una muestra aleatoria de tres personas tiene el árbol de probabilidad que se muestra a continuación.
+:::{#exm-**. Dada una población en la que hay un 40% de hombres y un 60% de mujeres, el experimento aleatorio que consiste en tomar una muestra aleatoria de tres personas tiene el árbol de probabilidad que se muestra a continuación.
 
 <img src="../img/probabilidad/espacio_probabilistico_muestra.svg" alt="Diagrama de árbol del espacio probabilístico del sexo de tres individuos elegidos al azar" width="600">
 
@@ -456,11 +459,11 @@ En realidad un sistema completo de sucesos es una partición del espacio muestra
 
 Conocer las probabilidades de un determinado suceso en cada una de las partes de un sistema completo puede ser útil para calcular su probabilidad.
 
-{{% alert def %}}
-**Definición - Teorema de la probabilidad total**. Dado un sistema completo de sucesos $A_1,\ldots,A_n$ y un suceso $B$ de un espacio muestral $\Omega$, la probabilidad de cualquier suceso $B$ del espacio muestral se puede calcular mediante la fórmula 
+:::{#def-}
+## Teorema de la probabilidad total**. Dado un sistema completo de sucesos $A_1,\ldots,A_n$ y un suceso $B$ de un espacio muestral $\Omega$, la probabilidad de cualquier suceso $B$ del espacio muestral se puede calcular mediante la fórmula 
 
 $$P(B) = \sum_{i=1}^n P(A_i\cap B) = \sum_{i=1}^n P(A_i)P(B|A_i).$$
-{{% /alert %}}
+:::
 
 {{< spoiler text=Demostración >}} 
 La demostración del teorema es sencilla, ya que al ser $A_1,\ldots,A_n$ un sistema completo tenemos
@@ -469,17 +472,16 @@ $$B = B\cap E = B\cap (A_1\cup \cdots \cup A_n) = (B\cap A_1)\cup \cdots \cup (B
 
 y como estos sucesos son incompatibles entre sí, se tiene
 
-$$
-\begin{aligned}
-P(B) &= P((B\cap A_1)\cup \cdots \cup (B\cap A_n)) = P(B\cap A_1)+\cdots + P(B\cap A_n) =\newline
+\begin{align*}
+P(B) &= P((B\cap A_1)\cup \cdots \cup (B\cap A_n)) = P(B\cap A_1)+\cdots + P(B\cap A_n) =\\
 &= P(A_1)P(B/A_1)+\cdots + P(A_n)P(B/A_n) = \sum_{i=1}^n P(A_i)P(B/A_i).
-\end{aligned}
-$$
+\end{align*}
 
 <img src="../img/probabilidad/probabilidad_total.svg" alt="Teorema de la probabilidad total" width="400">
-{{< /spoiler >}}
+:::
+:::
 
-**Ejemplo**. Un determinado síntoma $S$ puede ser originado por una enfermedad $E$ pero también lo pueden presentar las personas sin la enfermedad.
+:::{#exm-**. Un determinado síntoma $S$ puede ser originado por una enfermedad $E$ pero también lo pueden presentar las personas sin la enfermedad.
 Sabemos que la prevalencia de la enfermedad $E$ es $0.2$. Además, se sabe que el $90\%$ de las personas con la enfermedad presentan el síntoma, mientras que sólo el $40\%$ de las personas sin la enfermedad lo presentan. Si se toma una persona al azar de la población, *¿qué probabilidad hay de que tenga el síntoma?*
 
 Para responder a la pregunta se puede aplicar el teorema de la probabilidad total usando el sistema completo $\\{E,\overline{E}\\}$:
@@ -494,12 +496,10 @@ La respuesta a la pregunta anterior es evidente a la luz del árbol de probabili
 
 <img src="../img/probabilidad/espacio_probabilistico_total.svg" alt="Aplicación del teorema de la probabilidad total en un espacio probabilístico" width="600">
 
-$$
-\begin{aligned}
-P(S) &= P(E,S) + P(\overline E,S) = P(E)P(S|E)+P(\overline E)P(S|\overline E)\newline
+\begin{align*}
+P(S) &= P(E,S) + P(\overline E,S) = P(E)P(S|E)+P(\overline E)P(S|\overline E)\\
 & = 0.2\cdot 0.9+ 0.8\cdot 0.4 = 0.18 + 0.32 = 0.5.
-\end{aligned}
-$$
+\end{align*}
 
 
 ## Teorema de Bayes
@@ -508,14 +508,14 @@ Los sucesos de un sistema completo de sucesos $A_1,\cdots,A_n$ también pueden v
 
 En estas condiciones resulta útil poder calcular las probabilidades a posteriori $P(A_i|B)$ de cada una de las hipótesis.
 
-{{% alert def %}}
-**Definición - Teorema de Bayes**. Dado un sistema completo de sucesos $A_1,\ldots,A_n$ y un suceso $B$
+:::{#def-}
+## Teorema de Bayes**. Dado un sistema completo de sucesos $A_1,\ldots,A_n$ y un suceso $B$
 de un espacio muestral $\Omega$ y otro suceso $B$ del mismo espacio muestral, la probabilidad de cada suceso $A_i$ $i=1,\ldots,n$ condicionada por $B$ puede calcularse con la siguiente fórmula
 
 $$P(A_i|B) = \frac{P(A_i\cap B)}{P(B)} = \frac{P(A_i)P(B|A_i)}{\sum_{i=1}^n P(A_i)P(B|A_i)}.$$
-{{% /alert %}}
+:::
 
-**Ejemplo**. En el ejemplo anterior, una pregunta más interesante es qué diagnosticar a una persona que presenta el síntoma.
+:::{#exm-**. En el ejemplo anterior, una pregunta más interesante es qué diagnosticar a una persona que presenta el síntoma.
 
 En este caso se puede interpretar $E$ y $\overline{E}$ como las dos posibles hipótesis para el síntoma $S$. Las probabilidades a priori para ellas son $P(E)=0.2$ y $P(\overline E)=0.8$. Esto quiere decir que si no se dispone de información sobre el síntoma, el diagnóstico será que la persona no tiene la enfermedad.
 
@@ -524,12 +524,10 @@ decir, $P(E|S)$ y P(\overline{E}|S)$.
 
 Para calcular las probabilidades a posteriori se puede utilizar el teorema de Bayes: 
 
-$$
-\begin{aligned}
-P(E|S) &= \frac{P(E)P(S|E)}{P(E)P(S|E)+P(\overline{E})P(S|\overline{E})} = \frac{0.2\cdot 0.9}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.18}{0.5}=0.36,\newline
+\begin{align*}
+P(E|S) &= \frac{P(E)P(S|E)}{P(E)P(S|E)+P(\overline{E})P(S|\overline{E})} = \frac{0.2\cdot 0.9}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.18}{0.5}=0.36,\\
 P(\overline{E}|S) &= \frac{P(\overline{E})P(S|\overline{E})}{P(E)P(S|E)+P(\overline{E})P(S|\overline{E})} = \frac{0.8\cdot 0.4}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.32}{0.5}=0.64.
-\end{aligned}
-$$
+\end{align*}
 
 Como se puede ver la probabilidad de tener la enfermedad ha aumentado.
 No obstante, la probabilidad de no tener la enfermedad sigue siendo mayor que la de tenerla, y por esta razón el diagnóstico seguirá siendo que no tiene la enfermedad.
@@ -552,38 +550,38 @@ Hay diferentes medidas relativas a la frecuencia de un suceso médico. Las más 
 
 ### Prevalencia
 
-{{% alert def %}}
-**Definición - Prevalencia**. La *prevalencia* de un suceso médico $E$ es la proporción de una población que está afectada por el suceso.
+:::{#def-}
+## Prevalencia**. La *prevalencia* de un suceso médico $E$ es la proporción de una población que está afectada por el suceso.
 
 $$\mbox{Prevalencia}(E) = \frac{\mbox{Nº individuos afectados por $E$}}{\mbox{Tamaño poblacional}}$$
-{{% /alert %}}
+:::
 
 A menudo, la prevalencia se estima mediante una muestra como la frecuencia relativa de los individuos afectados por el suceso en la muestra. Es también común expresarla esta frecuencia como un porcentaje.
 
-**Ejemplo**. Para estimar la prevalencia de la gripe se estudió una muestra de 1000 personas de las que 150 presentaron gripe. Así, la prevalencia de la gripe es aproximadamente 150/1000=0.15, es decir, un
+:::{#exm-**. Para estimar la prevalencia de la gripe se estudió una muestra de 1000 personas de las que 150 presentaron gripe. Así, la prevalencia de la gripe es aproximadamente 150/1000=0.15, es decir, un
 15%.
 
 ### Incidencia
 
 La mide la probabilidad de ocurrencia de un suceso médico en una población durante un periodo de tiempo específico. La incidencia puede medirse como una proporción acumulada o como una tasa.
 
-{{% alert def %}}
-**Definición - Incidencia acumulada**. La *incidencia acumulada* de un suceso médico $E$ es la proporción de individuos que experimentaron el evento en un periodo de tiempo, es decir, el número de nuevos casos afectados por el evento en el periodo de tiempo, divido por el tamaño de la población inicialmente en riesgo de verse afectada.
+:::{#def-}
+## Incidencia acumulada**. La *incidencia acumulada* de un suceso médico $E$ es la proporción de individuos que experimentaron el evento en un periodo de tiempo, es decir, el número de nuevos casos afectados por el evento en el periodo de tiempo, divido por el tamaño de la población inicialmente en riesgo de verse afectada.
 
 $$R(E)=\frac{\mbox{Nº de nuevos casos con $E$}}{\mbox{Tamaño de la población en riesgo}}$$
-{{% /alert %}}
+:::
 
-**Ejemplo**. Una población contenía inicialmente $1000$ personas sin gripe y después de dos años se observó que 160 de ellas sufrieron gripe. La incidencia acumulada de la gripe es 160 casos pro 1000 personas por dos años, es decir, 16% en dos años.
+:::{#exm-**. Una población contenía inicialmente $1000$ personas sin gripe y después de dos años se observó que 160 de ellas sufrieron gripe. La incidencia acumulada de la gripe es 160 casos pro 1000 personas por dos años, es decir, 16% en dos años.
 
 ### Tasa de incidencia o Riesgo absoluto
 
-{{% alert def %}}
-**Definición - Riesgo absoluto**.La *tasa de incidencia* o *riesgo absoluto* de un suceso médico $E$ es el número de nuevos casos afectados por el evento divido por la población en riesgo y por el número de unidades temporales del periodo considerado.
+:::{#def-}
+## Riesgo absoluto**.La *tasa de incidencia* o *riesgo absoluto* de un suceso médico $E$ es el número de nuevos casos afectados por el evento divido por la población en riesgo y por el número de unidades temporales del periodo considerado.
 
 $$R(E)=\frac{\mbox{Nº nuevos casos con $E$}}{\mbox{Tamaño población en riesgo}\times \mbox{Nº unidades de tiempo}}$$
-{{% /alert %}}
+:::
 
-**Ejemplo**. Una población contenía inicialmente $1000$ personas sin gripe y después de dos años se observó que 160 de ellas sufrieron gripe. Si se considera el año como intervalo de tiempo, la tasa de incidencia de la gripe es 160 casos dividida por 1000 personas y por dos años, es decir, 80 casos por 1000 personas-año o 8% de personas al año.
+:::{#exm-**. Una población contenía inicialmente $1000$ personas sin gripe y después de dos años se observó que 160 de ellas sufrieron gripe. Si se considera el año como intervalo de tiempo, la tasa de incidencia de la gripe es 160 casos dividida por 1000 personas y por dos años, es decir, 80 casos por 1000 personas-año o 8% de personas al año.
 
 ### Prevalencia vs Incidencia
 
@@ -629,18 +627,18 @@ Habitualmente los casos observados para cada grupo se representan en una tabla d
 
 ### Riesgo atribuible o diferencia de riesgos $RA$
 
-{{% alert def %}}
-**Definición - Riesgo atribuible**. El *riesgo atribuible* o *diferencia de riesgo* de un suceso médico
+:::{#def-}
+## Riesgo atribuible**. El *riesgo atribuible* o *diferencia de riesgo* de un suceso médico
 $E$ para los individuos expuestos a un factor es la diferencia entre los riesgos absolutos de los grupos tratamiento y control.
 
 $$RA(E)=R_T(E)-R_C(E)=\frac{a}{a+b}-\frac{c}{c+d}.$$
-{{% /alert %}}
+:::
 
 El riesgo atribuible es el riesgo de un suceso que es debido específicamente al factor de interés.
 
 Obsérvese que el riesgo atribuible puede ser positivo, cuando el riesgo del grupo tratamiento es mayor que el del grupo control, o negativo, de lo contrario.
 
-**Ejemplo**. Para determinar la efectividad de una vacuna contra la gripe, una muestra de 1000 personas sin gripe fueron seleccionadas al comienzo del año. La mitad de ellas fueron vacunadas (grupo tratamiento) y la otra mitad recibieron un placebo (grupo control). La tabla siguiente resume los resultados al final del año.
+:::{#exm-**. Para determinar la efectividad de una vacuna contra la gripe, una muestra de 1000 personas sin gripe fueron seleccionadas al comienzo del año. La mitad de ellas fueron vacunadas (grupo tratamiento) y la otra mitad recibieron un placebo (grupo control). La tabla siguiente resume los resultados al final del año.
 
 <table>
 <thead>
@@ -673,12 +671,12 @@ que en no vacunados.
 
 ### Riesgo relativo $RR$
 
-{{% alert def %}}
-**Definición - Teorema de Bayes**. El *riesgo relativo* de un suceso médico $E$ para los individuos expuestos a un factor es el cociente entre las proporciones de individuos afectados por el suceso en un periodo de tiempo de los grupos tratamiento y control. Es decir, el cociente entre las incidencias de
+:::{#def-}
+## Teorema de Bayes**. El *riesgo relativo* de un suceso médico $E$ para los individuos expuestos a un factor es el cociente entre las proporciones de individuos afectados por el suceso en un periodo de tiempo de los grupos tratamiento y control. Es decir, el cociente entre las incidencias de
 grupo tratamiento y el grupo control.
 
 $$RR(D)=\frac{\mbox{Riesgo grupo tratamiento}}{\mbox{Riesgo grupo control}}=\frac{R_T(E)}{R_C(E)}=\frac{a/(a+b)}{c/(c+d)}$$
-{{% /alert %}}
+:::
 
 El riesgo relativo compara el riesgo de desarrollar un suceso médico entre el grupo tratamiento y el grupo control.
 
@@ -688,7 +686,7 @@ El riesgo relativo compara el riesgo de desarrollar un suceso médico entre el g
 
 Cuanto más lejos de 1, más fuerte es la asociación.
 
-**Ejemplo**. Para determinar la efectividad de una vacuna contra la gripe, una muestra de 1000 personas sin gripe fueron seleccionadas al comienzo del año. La mitad de ellas fueron vacunadas (grupo tratamiento) y la otra mitad recibieron un placebo (grupo control). La tabla siguiente resume los resultados al final del año.
+:::{#exm-**. Para determinar la efectividad de una vacuna contra la gripe, una muestra de 1000 personas sin gripe fueron seleccionadas al comienzo del año. La mitad de ellas fueron vacunadas (grupo tratamiento) y la otra mitad recibieron un placebo (grupo control). La tabla siguiente resume los resultados al final del año.
 
 <table>
 <thead>
@@ -731,18 +729,18 @@ A diferencia de la incidencia, que es una proporción menor o igual que 1, el od
 
 $$P(E) = \frac{ODDS(E)}{ODDS(E)+1}$$
 
-**Ejemplo** Una población contenía inicialmente $1000$ personas sin gripe. Después de un año 160 de ellas tuvieron gripe. Entonces el odds de la gripe es 160/840.
+:::{#exm-** Una población contenía inicialmente $1000$ personas sin gripe. Después de un año 160 de ellas tuvieron gripe. Entonces el odds de la gripe es 160/840.
 
 Obsérvese que la incidencia es 160/1000.
 
 ### Odds ratio $OR$ 
 
-{{% alert def %}}
-**Definición - Odds ratio**. El *odds ratio* o la *oportunidad relativa* de un suceso médico $E$
+:::{#def-}
+## Odds ratio**. El *odds ratio* o la *oportunidad relativa* de un suceso médico $E$
 para los individuos expuestos a un factor es el cociente entre los odds del sucesos de los grupos tratamiento y control.
 
 $$OR(E)=\frac{\mbox{Odds en grupo tratamiento}}{\mbox{Odds en grupo control}}=\frac{a/b}{c/d}=\frac{ad}{bc}$$
-{{% /alert %}}
+:::
 
 El odds ratio compara los odds de un suceso médico entre el grupo tratamiento y control. La interpretación es similar a la del riesgo relativo:
 
@@ -752,7 +750,7 @@ El odds ratio compara los odds de un suceso médico entre el grupo tratamiento y
 
 Cuanto más lejos de 1, más fuerte es la asociación.
 
-**Ejemplo**. Para determinar la efectividad de una vacuna contra la gripe, una muestra de 1000 personas sin gripe fueron seleccionadas al comienzo del año. La mitad de ellas fueron vacunadas (grupo tratamiento) y la otra mitad recibieron un placebo (grupo control). La tabla siguiente resume los resultados al final del año.
+:::{#exm-**. Para determinar la efectividad de una vacuna contra la gripe, una muestra de 1000 personas sin gripe fueron seleccionadas al comienzo del año. La mitad de ellas fueron vacunadas (grupo tratamiento) y la otra mitad recibieron un placebo (grupo control). La tabla siguiente resume los resultados al final del año.
 
 <table>
 <thead>
@@ -792,7 +790,7 @@ grupo control es tan frecuente que ocurra el suceso como que no.
 La ventaja del odds ratio es que no depende de la prevalencia o la incidencia del suceso, y debe usarse siempre que el número de individuos que presenta el suceso se selecciona arbitrariamente en ambos grupos,
 como ocurre en los estudios casos-control.
 
-**Ejemplo**. Para determinar la asociación entre el cáncer de pulmón y fumar se tomaron dos muestras (la segunda con el doble de individuos sin cáncer) obteniendo los siguientes resultados:
+:::{#exm-**. Para determinar la asociación entre el cáncer de pulmón y fumar se tomaron dos muestras (la segunda con el doble de individuos sin cáncer) obteniendo los siguientes resultados:
 
 **Sample 1**
 
@@ -818,12 +816,10 @@ como ocurre en los estudios casos-control.
 </tbody>
 </table>
 
-$$
-\begin{aligned}
-RR(D) &= \frac{60/(60+80)}{40/(40+320)} = 3.86.\newline
+\begin{align*}
+RR(D) &= \frac{60/(60+80)}{40/(40+320)} = 3.86.\\
 OR(D) &= \frac{60/80}{40/320} = 6. 
-\end{aligned}
-$$
+\end{align*}
 
 **Sample 2**
 
@@ -849,12 +845,10 @@ $$
 </tbody>
 </table>
 
-$$
-\begin{aligned}
-RR(D) &= \frac{60/(60+160)}{40/(40+640)} = 4.64.\newline
+\begin{align*}
+RR(D) &= \frac{60/(60+160)}{40/(40+640)} = 4.64.\\
 OR(D) &= \frac{60/160}{40/640} = 6. 
-\end{aligned}
-$$
+\end{align*}
 
 Así, cuando cambia la incidencia o prevalencia de un suceso (cáncer de pulmón) el riesgo relativo cambia, mientras que el odds ratio no.
 
@@ -903,18 +897,18 @@ Generalmente estos test no son totalmente fiables, sino que hay cierta probabili
 
 La fiabilidad de un test diagnóstico depende de las siguientes probabilidades.
 
-{{% alert def %}}
-**Definición - Sensibilidad**. La *sensibilidad* de un test diagnóstico es la proporción de resultados positivos del test en personas con la enfermedad, 
+:::{#def-}
+## Sensibilidad**. La *sensibilidad* de un test diagnóstico es la proporción de resultados positivos del test en personas con la enfermedad, 
 
 $$P(+|E)=\frac{VP}{VP+FN}$$
-{{% /alert %}}
+:::
 
-{{% alert def %}}
-**Definición - Especificidad**. La *especificidad* de un test diagnóstico es la proporción de resultados
+:::{#def-}
+## Especificidad**. La *especificidad* de un test diagnóstico es la proporción de resultados
 negativos del test en personas sin la enfermedad,
 
 $$P(-|\overline{E})=\frac{VN}{VN+FP}$$
-{{% /alert %}}
+:::
 
 Normalmente existe un balance entre la sensibilidad y la especificidad.
 
@@ -940,42 +934,40 @@ Y utilizaremos un test específico cuando:
 
 Pero el aspecto más importante de un test diagnóstico es su poder predictivo, que se mide con las siguientes probabilidades a posteriori.
 
-{{% alert def %}}
-**Definición - Valor predictivo positivo**. El *valor predictivo positivo* de un test diagnóstico es la proporción de personas con la enfermedad entre las personas con resultado positivo
+:::{#def-}
+## Valor predictivo positivo**. El *valor predictivo positivo* de un test diagnóstico es la proporción de personas con la enfermedad entre las personas con resultado positivo
 en el test, 
 
 $$P(E|+) = \frac{VP}{VP+FP}$$
 
-{{% /alert %}}
+:::
 
-{{% alert def %}}
-**Definición - Valor predictivo negativo**. El *valor predictivo negativo* de un test diagnóstico es la proporción de personas sin la enfermedad entre las personas con resultado negativo en el test, 
+:::{#def-}
+## Valor predictivo negativo**. El *valor predictivo negativo* de un test diagnóstico es la proporción de personas sin la enfermedad entre las personas con resultado negativo en el test, 
 
 $$P(\overline{E}|-) = \frac{VN}{VN+FN}$$
 
-{{% /alert %}}
+:::
 
 Los valores predictivos positivo y negativo permiten confirmar o descartar la enfermedad, respectivamente, si alcanzan al menos el umbral de $0.5$. 
 
 $$
 \begin{array}{rcl}
-VPP>0.5 & \Rightarrow & \mbox{Diagnosticar la enfermedad}\newline
+VPP>0.5 & \Rightarrow & \mbox{Diagnosticar la enfermedad}\\
 VPN>0.5 & \Rightarrow & \mbox{Diagnosticar la no enfermedad} 
 \end{array}
 $$
 
 No obstante, estas probabilidades dependen de la proporción de personas con la enfermedad en la población $P(E)$ que se conoce como de la enfermedad. Pueden calcularse a partir de la sensibilidad y la especificidad del test diagnóstico usando el teorema de Bayes.
 
-$$
-\begin{aligned}
-VPP=P(E|+) &= \frac{P(E)P(+|E)}{P(E)P(+|E)+P(\overline{E})P(+|\overline{E})}\newline
+\begin{align*}
+VPP=P(E|+) &= \frac{P(E)P(+|E)}{P(E)P(+|E)+P(\overline{E})P(+|\overline{E})}\\
 VPN=P(\overline{E}|-) &= \frac{P(\overline{E})P(-|\overline{E})}{P(E)P(-|E)+P(\overline{E})P(-|\overline{E})}
-\end{aligned}
-$$
+\end{align*}
 
 Así, con enfermedades frecuentes, el valor predictivo positivo aumenta, y con enfermedades raras, el valor predictivo negativo aumenta.
 
-**Ejemplo** Un test diagnóstico para la gripe se ha aplicado a una muestra aleatoria de 1000 personas. Los resultados aparecen resumidos en la siguiente
+:::{#exm-** Un test diagnóstico para la gripe se ha aplicado a una muestra aleatoria de 1000 personas. Los resultados aparecen resumidos en la siguiente
 tabla.
 
 <table>
@@ -1031,20 +1023,20 @@ Así, se puede concluir que este test es muy potente para descartar la gripe, pe
 
 La siguientes medidas también se derivan de la sensibilidad y la especificidad de un test diagnóstico.
 
-{{% alert def %}}
-**Definición - Razón de verosimilitud positiva**. La *razón de verosimilitud positiva* de un test diagnóstico es el cociente entre la probabilidad de un resultado positivo en personas con
+:::{#def-}
+## Razón de verosimilitud positiva**. La *razón de verosimilitud positiva* de un test diagnóstico es el cociente entre la probabilidad de un resultado positivo en personas con
 la enfermedad y personas sin la enfermedad, respectivamente.
 
 $$RV+=\frac{P(+|E)}{P(+|\overline{E})} = \frac{\mbox{Sensibilidad}}{1-\mbox{Especificidad}}$$
 
-{{% /alert %}}
+:::
 
-{{% alert def %}}
-**Definición - Razón de verosimilitud negativa**. La *razón de verosimilitud negativa* de un test diagnóstico es el cociente entre la probabilidad de un resultado negativo en personas con la enfermedad y personas sin la enfermedad, respectivamente.
+:::{#def-}
+## Razón de verosimilitud negativa**. La *razón de verosimilitud negativa* de un test diagnóstico es el cociente entre la probabilidad de un resultado negativo en personas con la enfermedad y personas sin la enfermedad, respectivamente.
 
 $$RV-=\frac{P(-|E)}{P(-|\overline{E})} = \frac{1-\mbox{Sensibilidad}}{\mbox{Especificidad}}$$
 
-{{% /alert %}}
+:::
 
 La razón de verosimilitud positiva puede interpretarse como el número de veces que un resultado positivo es más probable en personas con la enfermedad que en personas sin la enfermedad.
 

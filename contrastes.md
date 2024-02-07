@@ -17,11 +17,11 @@ En muchos estudios estadísticos, el objetivo, más que estimar el valor de un p
 
 El investigador, de acuerdo a su experiencia o a estudios previos, suele tener conjeturas sobre la población estudiada que expresa en forma de hipótesis.
 
-{{% alert def %}}
-**Definición - Hipótesis estadística**. Una *hipótesis estadística* es cualquier afirmación o conjetura que determina, total o parcialmente, la distribución de una o varias variables de la población.
-{{% /alert %}}
+:::{#def-}
+## Hipótesis estadística**. Una *hipótesis estadística* es cualquier afirmación o conjetura que determina, total o parcialmente, la distribución de una o varias variables de la población.
+:::
 
-**Ejemplo**. Para contrastar el rendimiento académico de un grupo de alumnos en una determinada asignatura, podríamos platear la hipótesis de si el porcentaje de aprobados es mayor del 50%.
+:::{#exm-**. Para contrastar el rendimiento académico de un grupo de alumnos en una determinada asignatura, podríamos platear la hipótesis de si el porcentaje de aprobados es mayor del 50%.
 
 ### Contraste de hipótesis
 
@@ -37,19 +37,19 @@ La metodología que se encarga de contrastar la veracidad de las hipótesis esta
 
 - **Contrastes de bondad de ajuste**: El objetivo es comprobar una hipótesis sobre la forma de la distribución de la población.  
 
-**Ejemplo**. Contrastar si las notas de un grupo de alumnos siguen una distribución normal.
+:::{#exm-**. Contrastar si las notas de un grupo de alumnos siguen una distribución normal.
 
 - **Contrastes de conformidad**: El objetivo es comprobar una hipótesis sobre alguno de los parámetros de la población.  
 
-    **Ejemplo**. Contrastar si las nota media en un grupo de alumnos es igual a 5.
+    :::{#exm-**. Contrastar si las nota media en un grupo de alumnos es igual a 5.
 
 - **Contrastes de homogeneidad** : El objetivo es comparar dos poblaciones con respecto a alguno de sus parámetros.  
 
-    **Ejemplo**. Contrastar si el rendimiento de dos grupos de alumnos es el mismo comparando sus notas medias.
+    :::{#exm-**. Contrastar si el rendimiento de dos grupos de alumnos es el mismo comparando sus notas medias.
 
 - **Contrastes de independencia**: El objetivo es comprobar si existe relación entre dos variables de la población.  
 
-    **Ejemplo**. Contrastar si existe relación entre la notas de dos asignaturas diferentes.
+    :::{#exm-**. Contrastar si existe relación entre la notas de dos asignaturas diferentes.
 
 Cuando las hipótesis se plantean sobre parámetros de la población, también se habla de **contrastes paramétricos**.
 
@@ -75,7 +75,7 @@ En el caso de un juicio, en el que el juez debe decidir si el acusado es culpabl
 
 $$
 \begin{align*}
-H_0: & \mbox{ Inocente}\newline
+H_0: & \mbox{ Inocente}\\
 H_1: & \mbox{ Culpable}
 \end{align*}
 $$
@@ -86,9 +86,9 @@ Según esto, el juez sólo aceptaría la hipótesis alternativa cuando hubiese p
 
 El investigador jugaría el papel del fiscal, ya que su objetivo consistiría en intentar rechazar la hipótesis nula, es decir, demostrar culpabilidad del acusado.
 
-{{% alert warning %}}
+:::{.callout-warning}
 ¡Esta metodología siempre favorece a la hipótesis nula!
-{{% /alert %}}
+:::
 
 ### Contrastes de hipótesis paramétricos
 
@@ -105,7 +105,7 @@ Esto da lugar a tres tipos de contrastes:
 
 ### Elección del tipo de contraste
 
-**Ejemplo**. Supóngase que existen sospechas de que en una población hay menos hombres que mujeres.
+:::{#exm-**. Supóngase que existen sospechas de que en una población hay menos hombres que mujeres.
 
 ¿Qué tipo de contraste debería plantearse para validar o refutar esta sospecha?
 
@@ -119,7 +119,7 @@ Así pues, el contraste que debería plantearse es el siguiente:
 
 $$
 \begin{align*}
-H_0: & p=0.5\newline
+H_0: & p=0.5\\
 H_1: & p<0.5
 \end{align*}
 $$
@@ -134,11 +134,11 @@ Para cada muestra, el estadístico dará una estimación a partir de la cual se 
 
 La lógica que guía la decisión es la de mantener la hipótesis nula a no ser que en la muestra haya pruebas contundentes de su falsedad. Siguiendo con el símil del juicio, se trataría de mantener la inocencia mientras no haya pruebas claras de culpabilidad.
 
-**Ejemplo**. Volviendo al ejemplo del contraste sobre la proporción de hombres de una población
+:::{#exm-**. Volviendo al ejemplo del contraste sobre la proporción de hombres de una población
 
 $$
 \begin{align*}
-H_0: & p=0.5\newline
+H_0: & p=0.5\\
 H_1: & p<0.5
 \end{align*}
 $$
@@ -168,11 +168,11 @@ Dependiendo de la dirección del contraste, la región de rechazo quedará a un 
 - Contraste unilateral de mayor $H_0:\ \theta=\theta_0$ $H_1:\ \theta>\theta_0$.
 <img src="../img/contrastes/regiones_unilateral_mayor.svg" alt="Regiones de un contraste unilateral de mayor" width="700">
 
-**Ejemplo**. Siguiendo con el ejemplo del contraste sobre la proporción de hombres de una población
+:::{#exm-**. Siguiendo con el ejemplo del contraste sobre la proporción de hombres de una población
 
 $$
 \begin{align*}
-H_0: & p=0.5\newline
+H_0: & p=0.5\\
 H_1: & p<0.5
 \end{align*}
 $$
@@ -196,11 +196,11 @@ Los errores que se pueden cometer en un contraste de hipótesis son de dos tipos
 $$
 \begin{array}{|c|c|c|}
 \hline
-\mbox{Decisión} & H_0 \mbox{ cierta} & H_1 \mbox{ cierta}\newline
+\mbox{Decisión} & H_0 \mbox{ cierta} & H_1 \mbox{ cierta}\\
 \hline
-\mbox{Aceptar } H_0 & \color{green}{\mbox{Decisión correcta}} & \color{red}{\mbox{Error de tipo II}}\newline
+\mbox{Aceptar } H_0 & \color{green}{\mbox{Decisión correcta}} & \color{red}{\mbox{Error de tipo II}}\\
 \hline
-\mbox{Rechazar }H_0 & \color{red}{\mbox{Error de tipo I}} & \color{green}{\mbox{Decisión correcta}}\newline
+\mbox{Rechazar }H_0 & \color{red}{\mbox{Error de tipo I}} & \color{green}{\mbox{Decisión correcta}}\\
 \hline
 \end{array}
 $$
@@ -209,27 +209,27 @@ $$
 
 Los riesgos de cometer cada tipo de error se cuantifican mediante probabilidades:
 
-{{% alert def %}}
-**Definición - Riesgos $\alpha$ y $\beta$**. En un contraste de hipótesis, se define el _riesgo_ $\alpha$ como la máxima probabilidad de cometer un error de tipo I, es decir,
+:::{#def-}
+## Riesgos $\alpha$ y $\beta$**. En un contraste de hipótesis, se define el _riesgo_ $\alpha$ como la máxima probabilidad de cometer un error de tipo I, es decir,
 
 $$P(\mbox{Rechazar }H_0|H_0) \leq \alpha,$$
 
 y se define el _riesgo_ $\beta$ como la máxima probabilidad de cometer un error de tipo II, es decir,
 
 $P(\mbox{Aceptar }H_0|H_1) \leq \beta.$$
-{{% /alert %}}
+:::
 
 ### Interpretación del riesgo $\alpha$
 
-{{% alert warning %}}
+:::{.callout-warning}
 En principio, puesto que esta metodología favorece a la hipótesis nula, el error del tipo I suele ser más grave que el error del tipo II, y por tanto, el riesgo $\alpha$ suele fijarse a niveles bajos de $0.1$, $0.05$ o $0.01$, siendo $0.05$ lo más habitual.
-{{% /alert %}}
+:::
 
-{{% alert int %}}
+:::{.callout-note title="Interpretación"}
 Debe tenerse cuidado al interpretar el riesgo $\alpha$ ya que se trata de una probabilidad condicionada a que la hipótesis nula sea cierta. Por tanto, cuando se rechace la hipótesis nula con un riesgo $\alpha=0.05$, es erróneo decir 5 de cada 100 veces nos equivocaremos, ya que esto sería cierto sólo si la hipótesis nula fuese siempre verdadera.
 
 Tampoco tiene sentido hablar de la probabilidad de haberse equivocado una vez tomada una decisión a partir de una muestra concreta, pues en tal caso, si se ha tomado la decisión acertada, la probabilidad de error es 0 y si se ha tomado la decisión equivocada, la probabilidad de error es 1.
-{{% /alert %}}
+:::
 
 ### Determinación de las regiones de aceptación y de rechazo en función del riesgo $\alpha$
 
@@ -238,7 +238,7 @@ Una vez fijado el riesgo $\alpha$ que se está dispuesto a tolerar, es posible d
 <img src="../img/contrastes/regiones_bilateral_normal.svg" alt="Regiones de un contraste bilateral en una distribución normal" width="600">
 <img src="../img/contrastes/regiones_unilateral_mayor_normal.svg" alt="Regiones de un contraste unilateral de mayor en una distribución normal" width="600">
 
-**Ejemplo**. Siguiendo con el contraste sobre la proporción de hombres de una población, como el estadístico del contraste sigue una distribución binomial $X\sim B(10,0.5)$, si se decide rechazar la hipótesis nula
+:::{#exm-**. Siguiendo con el contraste sobre la proporción de hombres de una población, como el estadístico del contraste sigue una distribución binomial $X\sim B(10,0.5)$, si se decide rechazar la hipótesis nula
 cuando en la muestra haya 2 o menos hombres, la probabilidad de cometer un error de tipo I será
 
 $$P(X\leq 2)= f(0)+f(1)+f(2)= 0.0010 + 0.0098 + 0.0439 = 0.0547.$$
@@ -260,11 +260,11 @@ Lo normal es fijar el valor del parámetro del contraste a la mínima cantidad p
 
 Puesto que el objetivo del investigador suele ser rechazar la hipótesis nula, a menudo, lo más interesante de un contraste es su capacidad para detectar la falsedad de la hipótesis nula cuando realmente hay diferencias mayores que $\delta$ entre el verdadero valor del parámetro y el que establece la hipótesis nula.
 
-{{% alert def %}}
-**Definición - Potencia de un contraste**. La _potencia_ de un contraste de hipótesis se define como
+:::{#def-}
+## Potencia de un contraste**. La _potencia_ de un contraste de hipótesis se define como
 
 $$\mbox{Potencia} = P(\mbox{Rechazar }H_0|H_1) = 1 - P(\mbox{Aceptar }H_0|H_1) = 1-\beta.$$
-{{% /alert %}}
+:::
 
 Así pues, al reducir el riesgo $\beta$ se aumentará la potencia del contraste.
 
@@ -272,7 +272,7 @@ Un contraste poco potente no suele ser interesante ya que no permitirá rechazar
 
 ### Cálculo del riesgo $\beta$ y de la potencia $1-\beta$
 
-**Ejemplo** Supóngase que en el contraste sobre la proporción de hombres no se considera importante una diferencia de menos de un 10% con respecto al valor que establece la hipótesis nula, es decir, $\delta=0.1$.
+:::{#exm-** Supóngase que en el contraste sobre la proporción de hombres no se considera importante una diferencia de menos de un 10% con respecto al valor que establece la hipótesis nula, es decir, $\delta=0.1$.
 
 Esto permite fijar la hipótesis alternativa
 
@@ -297,7 +297,7 @@ El riesgo $\beta$ depende directamente de la mínima diferencia $\delta$ que se 
 <img src="../img/contrastes/riesgo_beta_tamaño_efecto_pequeño.svg" alt="Riesgo beta para un tamaño del efecto pequeño." width="600">
 <img src="../img/contrastes/riesgo_beta_tamaño_efecto_grande.svg" alt="Riesgo beta para un tamaño del efecto grande." width="600">
 
-**Ejemplo**. Si en el contraste sobre la proporción de hombres se desease detectar una diferencia de al menos un 20% con respecto al valor que establece la hipótesis nula, es decir, $\delta=0.2$, entonces la hipótesis alternativa se fijaría a
+:::{#exm-**. Si en el contraste sobre la proporción de hombres se desease detectar una diferencia de al menos un 20% con respecto al valor que establece la hipótesis nula, es decir, $\delta=0.2$, entonces la hipótesis alternativa se fijaría a
 
 $$H_1:\ p=0.5-0.2=0.3,$$
 
@@ -320,7 +320,7 @@ Los riesgos $\alpha$ y $\beta$ están enfrentados, es decir, cuando uno aumenta 
 <img src="../img/contrastes/relacion_riesgos_alpha_pequeño.svg" alt="Riesgo beta para un tamaño del efecto pequeño." width="600">
 <img src="../img/contrastes/relacion_riesgos_alpha_grande.svg" alt="Riesgo beta para un tamaño del efecto grande." width="600">
 
-**Ejemplo**. Si en el contraste sobre la proporción de hombres toma como riesgo $\alpha=0.1,$ entonces la región de rechazo sería $X\leq 2$ ya que, suponiendo cierta la hipótesis nula, $X\sim B(10,\, 0.5)$, y
+:::{#exm-**. Si en el contraste sobre la proporción de hombres toma como riesgo $\alpha=0.1,$ entonces la región de rechazo sería $X\leq 2$ ya que, suponiendo cierta la hipótesis nula, $X\sim B(10,\, 0.5)$, y
 
 $$P(X\leq 2) = 0.0547 \leq 0.1=\alpha.$$
 
@@ -340,7 +340,7 @@ Los riesgos de error también dependen el tamaño de la muestra, ya que al aumen
 <img src="../img/contrastes/relacion_riesgos_tamaño_muestral_pequeño.svg" alt="Riesgo beta para un tamaño del efecto grande." width="600">
 <img src="../img/contrastes/relacion_riesgos_tamaño_muestral_grande.svg" alt="Riesgo beta para un tamaño del efecto grande." width="600">
 
-**Ejemplo**. Si para realizar el contraste sobre la proporción de hombres se hubiese
+:::{#exm-**. Si para realizar el contraste sobre la proporción de hombres se hubiese
 tomado una muestra de tamaño 100, en lugar de 10, entonces, bajo la suposición de certeza de la hipótesis nula, el estadístico del contraste seguiría una distribución binomial $B(100,\,0.5)$, y ahora la región de rechazo sería $X\leq 41$, ya que
 
 $$P(X\leq 41) = 0.0443 \leq 0.05 =\alpha.$$
@@ -366,11 +366,11 @@ Esta función da la probabilidad de rechazar la hipótesis nula para cada valor 
 
 Cuando no se puede fijar el valor concreto del parámetro en la hipótesis alternativa, resulta útil representar esta curva para ver la bondad del contraste cuando no se rechaza la hipótesis nula. También es útil cuando sólo de dispone de un número determinado de individuos en la muestra, para ver si merece la pena hacer el estudio.
 
-{{% alert int %}}
+:::{.callout-note title="Interpretación"}
 Un contraste será mejor cuanto mayor sea el área encerrada por debajo de la curva de potencia.
-{{% /alert %}}
+:::
 
-**Ejemplo**. La curva de potencia correspondiente al contraste sobre la proporción de hombres en la población es la siguiente
+:::{#exm-**. La curva de potencia correspondiente al contraste sobre la proporción de hombres en la población es la siguiente
 
 <img src="../img/contrastes/potencia.svg" alt="Curva de potencia para muestras de distinto tamaño." width="600">
 
@@ -385,33 +385,33 @@ Por este motivo, al realizar un contraste, también se calcula la probabilidad d
 
 $$
 \begin{array}{lc}
-\mbox{Contraste bilateral}: & 2P(X\geq x_0|H_0)\newline
-\mbox{Contraste unilateral de menor}: & P(X\leq x_0|H_0)\newline
+\mbox{Contraste bilateral}: & 2P(X\geq x_0|H_0)\\
+\mbox{Contraste unilateral de menor}: & P(X\leq x_0|H_0)\\
 \mbox{Contraste unilateral de mayor}: & P(X\geq x_0|H_0)
 \end{array}
 $$
-{{% /alert %}}
+:::
 
-{{% alert int %}}
+:::{.callout-note title="Interpretación"}
 En cierto modo, el $p$-valor expresa la confianza que se tiene al tomar la decisión de rechazar la hipótesis nula. Cuanto más próximo esté el $p$-valor a 1, mayor confianza existe al aceptar la hipótesis nula, y cuanto más próximo esté a 0, mayor confianza hay al rechazarla.
-{{% /alert %}}
+:::
 
 Una vez fijado el riesgo $\alpha$, la regla de decisión para realizar un contraste también puede expresarse de la siguiente manera:
 
-{{% alert warning %}}
+:::{.callout-warning}
  **Regla de decisión de un contraste**  
 
 $$
 \begin{array}{ccc}
-\mbox{Si $p$-valor $\leq \alpha$} & \rightarrow & \mbox{Rechazar $H_0$}\newline
+\mbox{Si $p$-valor $\leq \alpha$} & \rightarrow & \mbox{Rechazar $H_0$}\\
 \mbox{Si $p$-valor $> \alpha$} & \rightarrow & \mbox{Aceptar $H_0$}.
 \end{array}
 $$
-{{% /alert %}}
+:::
 
 De este modo, el $p$-valor nos da información de para qué niveles de significación puede rechazarse la hipótesis nula y para cuales no.
 
-**Ejemplo**. Si el contraste sobre la proporción de hombres se toma una muestra de tamaño 10 y se observa 1 hombre, entonces el $p$-valor, bajo a supuesta certeza de la hipótesis nula, $X\sim B(10,\, 0.5)$, será
+:::{#exm-**. Si el contraste sobre la proporción de hombres se toma una muestra de tamaño 10 y se observa 1 hombre, entonces el $p$-valor, bajo a supuesta certeza de la hipótesis nula, $X\sim B(10,\, 0.5)$, será
 
 $$p = P(X\leq 1)= 0.0107,$$
 
@@ -462,11 +462,9 @@ Sea $X$ una variable aleatoria que cumple las siguientes condiciones:
 
 **Contraste**:
 
-$$
-\begin{aligned}
-H_0 &: \mu=\mu_0\newline
-H_1 &: \mu\neq \mu_0\end{aligned}
-$$
+\begin{align*}
+H_0 &: \mu=\mu_0\\
+H_1 &: \mu\neq \mu_0\end{align*}
 
 **Estadístico del contraste**:
 
@@ -486,11 +484,9 @@ Sea $X$ una variable aleatoria que cumple las siguientes condiciones:
 
 **Contraste**:
 
-$$
-\begin{aligned}
-H_0 &: \mu=\mu_0\newline
-H_1 &: \mu\neq \mu_0\end{aligned}
-$$
+\begin{align*}
+H_0 &: \mu=\mu_0\\
+H_1 &: \mu\neq \mu_0\end{align*}
 
 **Estadístico del contraste**: Utilizando la cuasivarianza como estimador de la varianza poblacional se tiene
 
@@ -501,7 +497,7 @@ $$
 **Región de aceptación**: $t^{n-1}\_{\alpha/2} < T < t^{n-1}\_{1-\alpha/2}$.  
 **Región de rechazo**: $T\leq t^{n-1}\_{\alpha/2}$ y $T\geq t^{n-1}\_{1-\alpha/2}$.
 
-**Ejemplo**. En un grupo de alumnos se quiere contrastar si la nota media de estadística es mayor que 5 puntos. Para ello se toma la siguiente muestra:
+:::{#exm-**. En un grupo de alumnos se quiere contrastar si la nota media de estadística es mayor que 5 puntos. Para ello se toma la siguiente muestra:
 
 <div style="text-align:center">
 6.3, 5.4, 4.1, 5.0, 8.2, 7.6, 6.4, 5.6, 4.3, 5.2
@@ -567,7 +563,7 @@ $$
 z_\beta = \frac{z_{1-\alpha}\frac{\hat s}{\sqrt n}-\delta}{\frac{\hat s}{\sqrt n}} \Leftrightarrow \delta = (z_{1-\alpha}-z_\beta)\frac{\hat s}{\sqrt n} \Leftrightarrow n = (z_{1-\alpha}-z_\beta)^2\frac{\hat s^2}{\delta^2} = (z_\alpha+z_\beta)^2\frac{\hat s^2}{\delta^2}.
 $$
 
-**Ejemplo**. Se ha visto en el ejemplo anterior que la potencia del contraste para detectar una diferencia en la nota media de 1 punto era del $69.96\%$.
+:::{#exm-**. Se ha visto en el ejemplo anterior que la potencia del contraste para detectar una diferencia en la nota media de 1 punto era del $69.96\%$.
 Para aumentar la potencia del test hasta un $90\%$, ¿cuántos alumnos habría que tomar en la muestra?
 
 Como se desea una potencia $1-\beta=0.9$, el riesgo $\beta=0.1$ y mirando en la tabla de la normal estándar se puede comprobar que $z_\beta = z_{0.1}=1.2816$.
@@ -589,12 +585,10 @@ Sea $X$ una variable aleatoria que cumple las siguientes condiciones:
 
 **Contraste**:
 
-$$
-\begin{aligned}
-H_0 &: \mu=\mu_0\newline
+\begin{align*}
+H_0 &: \mu=\mu_0\\
 H_1 &: \mu\neq \mu_0
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**: Utilizando la cuasivarianza como estimador de la varianza poblacional y gracias al teorema central del límite por tratarse de muestras grandes ($n\geq 30)$ se tiene
 
@@ -614,12 +608,10 @@ Sea $X$ una variable aleatoria que cumple las siguientes hipótesis:
 
 **Contraste**:
 
-$$
-\begin{aligned}
-H_0 &: \sigma=\sigma_0\newline
+\begin{align*}
+H_0 &: \sigma=\sigma_0\\
 H_1 &: \sigma\neq \sigma_0
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**: Partiendo de la cuasivarianza muestral como estimador de la varianza poblacional, se tiene
 
@@ -632,7 +624,7 @@ que sigue una distribución chi-cuadrado de $n-1$ grados de libertad.
 **Región de aceptación**: $\chi\_{\alpha/2}^{n-1} < J < \chi\_{1-\alpha/2}^{n-1}$.  
 **Región de rechazo**: $J\leq \chi_{\alpha/2}^{n-1}$ y $J\geq \chi_{1-\alpha/2}^{n-1}$.
 
-**Ejemplo**. En un grupo de alumnos se quiere contrastar si la desviación típica de la nota es mayor de 1 punto. Para ello se toma la siguiente muestra:
+:::{#exm-**. En un grupo de alumnos se quiere contrastar si la desviación típica de la nota es mayor de 1 punto. Para ello se toma la siguiente muestra:
 
 <div style="text-align:center">
 6.3, 5.4, 4.1, 5.0, 8.2, 7.6, 6.4, 5.6, 4.3, 5.2
@@ -663,12 +655,10 @@ Sea $p$ la proporción de individuos de una población que tienen una determinad
 
 **Contraste**:
 
-$$
-\begin{aligned}
-H_0 &: p=p_0\newline
+\begin{align*}
+H_0 &: p=p_0\\
 H_1 &: p\neq p_0
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**: La variable que mide el número de individuos con la característica en una muestra aleatoria de tamaño $n$ sigue una distribución binomial $X\sim B(n,p_0)$. De acuerdo al teorema central del límite, para muestras grandes ($np\geq 5$ y $n(1-p)\geq 5$), $X\sim N(np_0,\sqrt{np_0(1-p_0)})$, y se cumple
 
@@ -680,16 +670,14 @@ $$
 **Región de aceptación**: $z\_{\alpha/2}< Z < z\_{1-\alpha/2}$.  
 **Región de rechazo**: $Z\leq z_{\alpha/2}$ y $Z\geq z_{1-\alpha/2}$.
 
-**Ejemplo**. En un grupo de alumnos se desea estimar si el porcentaje de aprobados es mayor del $50\%$. Para ello se toma una muestra de 80 alumnos entre los que hay 50 aprobados.
+:::{#exm-**. En un grupo de alumnos se desea estimar si el porcentaje de aprobados es mayor del $50\%$. Para ello se toma una muestra de 80 alumnos entre los que hay 50 aprobados.
 
 El contraste que se plantea es
 
-$$
-\begin{aligned}
-H_0 &: p=0.5\newline
+\begin{align*}
+H_0 &: p=0.5\\
 H_1 &: p>0.5
-\end{aligned}
-$$
+\end{align*}
 
 Para realizar el contraste se tiene que $\hat p= 50/80 = 0.625$ y como se cumple $n\hat p=80\cdot 0.625 = 50\geq 5$ y $n(1-\hat p)=80(1-0.625)=30\geq 5$, el estadístico del contraste vale
 
@@ -711,19 +699,17 @@ Sean $X_1$ y $X_2$ dos variables aleatorias que cumplen las siguientes condicion
 
 **Contraste**:
 
-$$
-\begin{aligned}
-H_0 &: \mu_1=\mu_2\newline
+\begin{align*}
+H_0 &: \mu_1=\mu_2\\
 H_1 &: \mu_1\neq \mu_2
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**:
 
 $$
 \left.
 \begin{array}{l}
-\bar{X}_1\sim N\left(\mu_1,\frac{\sigma_1}{\sqrt{n_1}} \right)\newline
+\bar{X}_1\sim N\left(\mu_1,\frac{\sigma_1}{\sqrt{n_1}} \right)\\
 \bar{X}_2\sim N\left(\mu_2,\frac{\sigma_2}{\sqrt{n_2}} \right)
 \end{array}
 \right\\}
@@ -748,19 +734,17 @@ Sean $X_1$ y $X_2$ dos variables aleatorias que cumplen las siguientes condicion
 
 **Contraste**:
 
-$$
-\begin{aligned}
-H_0 &: \mu_1=\mu_2\newline
+\begin{align*}
+H_0 &: \mu_1=\mu_2\\
 H_1 &: \mu_1\neq \mu_2
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**:
 
 $$
 \left.
 \begin{array}{l}
-\bar{X}_1-\bar{X}_2\sim N\left(\mu_1-\mu_2,\sigma\sqrt{\frac{n_1+n_2}{n_1n_2}} \right)\newline
+\bar{X}_1-\bar{X}_2\sim N\left(\mu_1-\mu_2,\sigma\sqrt{\frac{n_1+n_2}{n_1n_2}} \right)\\
 \displaystyle \frac{n_1S_1^2+n_2S_2^2}{\sigma^2} \sim \chi^2(n_1+n_2-2)
 \end{array}
 \right\\}
@@ -771,14 +755,12 @@ $$
 **Región de aceptación**: $-t_{\alpha/2}^{n_1+n_2-2} < T < t_{\alpha/2}^{n_1+n_2-2}$.  
 **Región de rechazo**: $T\leq -t_{\alpha/2}^{n_1+n_2-2}$ y $T\geq t_{\alpha/2}^{n_1+n_2-2}$.
 
-**Ejemplo**. Se quiere comparar el rendimiento académico de dos grupos de alumnos, uno con 10 alumnos y otro con 12, que han seguido metodologías diferentes. Para ello se les realiza un examen y se obtienen las siguientes puntuaciones:
+:::{#exm-**. Se quiere comparar el rendimiento académico de dos grupos de alumnos, uno con 10 alumnos y otro con 12, que han seguido metodologías diferentes. Para ello se les realiza un examen y se obtienen las siguientes puntuaciones:
 
-$$
-\begin{aligned}
-X_1 &: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3 \newline
+\begin{align*}
+X_1 &: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3 \\
 X_2 &: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
-\end{aligned}
-$$
+\end{align*}
 
 El contraste que se plantea es
 
@@ -809,12 +791,10 @@ Sean $X_1$ y $X_2$ dos variables aleatorias que cumplen las siguientes condicion
 
 **Contraste**:
 
-$$
-\begin{aligned}
-H_0 &: \mu_1=\mu_2\newline
+\begin{align*}
+H_0 &: \mu_1=\mu_2\\
 H_1 &: \mu_1\neq \mu_2
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**:
 
@@ -839,17 +819,15 @@ Sean $X_1$ y $X_2$ dos variables aleatorias que cumplen las siguientes condicion
 
 **Contraste**:
 
-$$
-\begin{aligned}
-H_0 &: \sigma_1=\sigma_2\newline
+\begin{align*}
+H_0 &: \sigma_1=\sigma_2\\
 H_1 &: \sigma_1\neq \sigma_2
-\end{aligned}
-$$
+\end{align*}
 
 **Estadístico del contraste**:
 $$\left.
 \begin{array}{l}
-\displaystyle \frac{(n_1-1)\hat{S}_1^2}{\sigma_1^2}\sim \chi^2(n_1-1) \newline
+\displaystyle \frac{(n_1-1)\hat{S}_1^2}{\sigma_1^2}\sim \chi^2(n_1-1) \\
 \displaystyle \frac{(n_2-1)\hat{S}_2^2}{\sigma_2^2}\sim \chi^2(n_2-1)
 \end{array}
 \right\\}
@@ -861,14 +839,12 @@ $$
 **Región de aceptación**: $F_{\alpha/2}^{n_1-1,n_2-1} < F < F_{1-\alpha/2}^{n_1-1,n_2-1}$.  
 **Región de rechazo**: $F\leq F_{\alpha/2}^{n_1-1,n_2-1}$ y $F\geq F_{1-\alpha/2}^{n_1-1,n_2-1}$.
 
-**Ejemplo**. Siguiendo con el ejemplo de las puntuaciones en dos grupos:
+:::{#exm-**. Siguiendo con el ejemplo de las puntuaciones en dos grupos:
 
-$$
-\begin{aligned}
-X_1 &: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3 \newline
+\begin{align*}
+X_1 &: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3 \\
 X_2 &: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
-\end{aligned}
-$$
+\end{align*}
 
 Si se desea comparar las varianzas, el contraste que se plantea es
 
@@ -905,7 +881,7 @@ $X_1\sim B(n_1,p_1)$ y $X_2\sim B(n_2,p_2)$. Si las muestras son grandes ($n_ip_
 $$
 \left.
 \begin{array}{l}
-\hat{p}_1=\frac{X_1}{n_1} \sim N\left(p_1,\sqrt{\frac{p_1(1-p_1)}{n_1}}\right)\newline
+\hat{p}_1=\frac{X_1}{n_1} \sim N\left(p_1,\sqrt{\frac{p_1(1-p_1)}{n_1}}\right)\\
 \hat{p}_2=\frac{X_2}{n_2} \sim N\left(p_2,\sqrt{\frac{p_2(1-p_2)}{n_2}}\right)
 \end{array}
 \right\\}
@@ -915,7 +891,7 @@ $$
 **Región de aceptación**: $z_{\alpha/2}< Z < z_{1-\alpha/2}$.  
 **Región de rechazo**: $z\leq z_{\alpha/2}$ y $z\geq z_{1-\alpha/2}$.
 
-**Ejemplo**. Se quiere comparar los porcentajes de aprobados en dos grupos que han seguido metodologías distintas. En el primer grupo han aprobado 24 alumnos de un total de 40, mientras que en el segundo han aprobado 48 de 60.
+:::{#exm-**. Se quiere comparar los porcentajes de aprobados en dos grupos que han seguido metodologías distintas. En el primer grupo han aprobado 24 alumnos de un total de 40, mientras que en el segundo han aprobado 48 de 60.
 
 El contraste que se plantea es
 
@@ -955,14 +931,12 @@ contraste es unilateral de mayor, se comparará con el límite inferior del inte
 | Unilateral menor | $[-\infty,l_s]$ con nivel de confianza $1-2\alpha$ |      Rechazar $H_0$ si $\theta_0\geq l_s$      |
 | Unilateral mayor | $[l_i,\infty]$ con nivel de confianza $1-2\alpha$  |      Rechazar $H_0$ si $\theta_0\leq l_i$      |
 
-**Ejemplo**. Volviendo al contraste para comparar el rendimiento académico de dos grupos de alumnos que han obtenido las siguientes puntuaciones:
+:::{#exm-**. Volviendo al contraste para comparar el rendimiento académico de dos grupos de alumnos que han obtenido las siguientes puntuaciones:
 
-$$
-\begin{aligned}
-X_1 &: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3 \newline
+\begin{align*}
+X_1 &: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3 \\
 X_2 &: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
-\end{aligned}
-$$
+\end{align*}
 
 El contraste que se planteaba era
 

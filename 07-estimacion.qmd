@@ -53,7 +53,7 @@ Una _variable aleatoria muestral_ de una variable $X$ estudiada en una població
 
 Los valores que puede tomar esta variable $n$ dimensional, serán todas las posibles muestras de tamaño $n$ que pueden extraerse de la población.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Proceso de obtención de la muestra.](img/estimacion/obtencion-muestra.svg){fig-alt="Proceso de obtención de la muestra." fig-align="center" width=100%}
 :::
 
@@ -90,11 +90,11 @@ La distribución de probabilidad de los valores de la variable muestral depende 
 :::{#exm-distribucion-muestral}
 Sea una población en la que la cuarta parte de las familias no tienen hijos, la mitad de las familias tiene 1 hijo, y el resto tiene 2 hijos.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![](img/estimacion/distribucion-variable-muestral.svg){fig-alt="Distribución de la variable muestral." fig-align="center" width=80%}
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![](img/estimacion/distribucion-variable-muestral.pdf){fig-alt="Distribución de la variable muestral." fig-align="center" width=80%}
 :::
 :::
@@ -105,16 +105,16 @@ Por tanto, su distribución de probabilidad también depende de la distribución
 :::{#exm-distribucion-media-muestral}
 Si se toma la media muestral $\bar X$ de las muestras de tamaño 2 del ejemplo anterior, su distribución de probabilidad es
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![](img/estimacion/distribucion-media.svg){fig-alt="Distribución de la media de una muestra de tamaño 2." fig-align="center" width=80%}
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![](img/estimacion/distribucion-media.pdf){fig-alt="Distribución de la media de una muestra de tamaño 2." fig-align="center" width=80%}
 :::
 :::
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 :::{layout-ncol="2"}
 ![](img/estimacion/diagrama-barras-distribucion-poblacion.svg){fig-alt="Distribución de la media de una muestra de tamaño 2." fig-align="center" width=80%}
 
@@ -122,7 +122,7 @@ Si se toma la media muestral $\bar X$ de las muestras de tamaño 2 del ejemplo a
 :::
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 :::{layout-ncol="2"}
 ![](img/estimacion/diagrama-barras-distribucion-poblacion.pdf){fig-alt="Distribución de la media de una muestra de tamaño 2." fig-align="center" width=80%}
 
@@ -176,8 +176,8 @@ Supóngase que se desea estimar el número medio de hijos de una población con 
 
 _¿Qué probabilidad hay de estimar $\mu$ a partir de $\bar x$ con un error menor de $0.2$?_
 
-:::: {.columns}
-::: {.column width="50%"}
+::::{.columns}
+:::{.column width="50%"}
 De acuerdo al teorema central del límite se tiene:
 
 1. Para $n=30$, $\bar x\sim N(2,1/\sqrt{30})$ y
@@ -252,11 +252,11 @@ Por ser una función de la variable aleatoria muestral, un estimador es, a su ve
 
 Mientras que el estimador es una función que es única, la estimación no es única, sino que depende de la muestra tomada.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![](img/estimacion/estimador-estimacion.svg){fig-alt="Diferencia entre estimador y estimación de un parámetro poblacional." fig-align="center" width=80%}
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![](img/estimacion/estimador-estimacion.pdf){fig-alt="Diferencia entre estimador y estimación de un parámetro poblacional." fig-align="center" width=80%}
 :::
 
@@ -341,11 +341,11 @@ E(\hat \theta)=\theta.
 $$
 :::
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Distribución de estimadores sesgados e insesgados.](img/estimacion/estimadores-sesgados-insesgados.svg){fig-alt="Distribución de estimadores sesgados e insesgados." fig-align="center" width=80%}
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Distribución de estimadores sesgados e insesgados.](img/estimacion/estimadores-sesgados-insesgados.pdf){fig-alt="Distribución de estimadores sesgados e insesgados." fig-align="center" width=80%}
 :::
 
@@ -400,11 +400,11 @@ $$
 
 <!-- Evidentemente, si el estimador con menor varianza es insesgado, entonces es un estimador eficiente. -->
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![Distribución de estimadores insesgados y eficientes sesgados.](img/estimacion/estimador-eficiente-sesgado.svg){fig-alt="Distribución de estimadores insesgados y eficientes sesgados." fig-align="center" width=80%}
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![Distribución de estimadores insesgados y eficientes sesgados.](img/estimacion/estimador-eficiente-sesgado.pdf){fig-alt="Distribución de estimadores insesgados y eficientes sesgados." fig-align="center" width=80%}
 :::
 
@@ -579,11 +579,11 @@ Habitualmente, para calcular un intervalo de confianza se suele partir de un est
 A partir de este estimador se calculan los extremos del intervalo sobre su distribución, buscando los valores que dejan encerrada una probabilidad $1-\alpha$.
 Estos valores suelen tomarse de manera simétrica, de manera que el extremo inferior deje una probabilidad acumulada inferior $\alpha/2$ y el extremo superior deje una probabilidad acumulada superior también de $\alpha/2$.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![](img/estimacion/extremos-intervalos.svg){fig-alt="Cálculo de los límites del intervalo." fig-align="center" width=70%}
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![](img/estimacion/extremos-intervalos.pdf){fig-alt="Cálculo de los límites del intervalo." fig-align="center" width=70%}
 :::
 
@@ -625,11 +625,11 @@ $$
 Como la distribución normal estándar es simétrica respecto al 0, lo mejor es tomar valores opuestos $-z_{\alpha/2}$ y $z_{\alpha/2}$ que dejen sendas colas de probabilidad acumulada $\alpha/2$.
 
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![](img/estimacion/extremos-intervalo-media-normal.svg){fig-alt="Cálculo de los límites del intervalo de confianza para le media." fig-align="center" width=80%}
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![](img/estimacion/extremos-intervalo-media-normal.pdf){fig-alt="Cálculo de los límites del intervalo de confianza para le media." fig-align="center" width=80%}
 :::
 
@@ -894,11 +894,11 @@ $$
 
 Como la distribución chi-cuadrado no es simétrica respecto al 0, se toman dos valores $\chi^{n-1}_{\alpha/2}$ y $\chi^{n-1}_{1-\alpha/2}$ que dejen sendas colas de probabilidad acumulada inferior de $\alpha/2$ y $1-\alpha/2$ respectivamente.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![](img/estimacion/extremos-intervalo-varianza-normal.svg){fig-alt="Extremos del intervalo de confianza para la varianza de una población normal." fig-align="center" width=80%}
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![](img/estimacion/extremos-intervalo-varianza-normal.pdf){fig-alt="Extremos del intervalo de confianza para la varianza de una población normal." fig-align="center" width=80%}
 :::
 
@@ -1339,11 +1339,11 @@ $$
 Como la distribución F de Fisher-Snedecor no es simétrica respecto al 0, se toman dos valores $f^{n_2-1,n_1-1}_{\alpha/2}$ y
 $f^{n_2-1,n_1-1}_{1-\alpha/2}$ que dejen sendas colas de probabilidad acumulada inferior de $\alpha/2$ y $1-\alpha/2$ respectivamente.
 
-::: {.content-visible when-format="html"}
+:::{.content-visible when-format="html"}
 ![](img/estimacion/extremos-intervalo-comparacion-varianzas-normal.svg){fig-alt="Extremos del intervalo de confianza para comparación de varianzas de una población normal." fig-align="center" width=80%}
 :::
 
-::: {.content-visible unless-format="html"}
+:::{.content-visible unless-format="html"}
 ![](img/estimacion/extremos-intervalo-comparacion-varianzas-normal.pdf){fig-alt="Extremos del intervalo de confianza para comparación de varianzas de una población normal." fig-align="center" width=80%}
 :::
 

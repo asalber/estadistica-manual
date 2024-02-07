@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-99.9.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Manual de Estadística - 3&nbsp; Estimación de parámetros poblacionales</title>
+<title>Manual de Estadística - 4&nbsp; Estimación de parámetros poblacionales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./08-contrastes-parametricos.html" rel="next">
-<link href="./02-estadistica-descriptiva.html" rel="prev">
+<link href="./03-regresion.html" rel="prev">
 <link href="./img/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -68,11 +68,11 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Manual de Estadística - 3&nbsp; Estimación de parámetros poblacionales">
+<meta property="og:title" content="Manual de Estadística - 4&nbsp; Estimación de parámetros poblacionales">
 <meta property="og:description" content="">
 <meta property="og:image" content="img/estimacion/obtencion-muestra.svg">
 <meta property="og:site-name" content="Manual de Estadística">
-<meta name="twitter:title" content="Manual de Estadística - 3&nbsp; Estimación de parámetros poblacionales">
+<meta name="twitter:title" content="Manual de Estadística - 4&nbsp; Estimación de parámetros poblacionales">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="img/estimacion/obtencion-muestra.svg">
 <meta name="twitter:site" content="@aprendeconalf">
@@ -88,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-estimacion.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-estimacion.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -174,14 +174,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./03-regresion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regresión</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./07-estimacion.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-contrastes-parametricos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
   </div>
 </li>
     </ul>
@@ -194,32 +200,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#distribuciones-muestrales" id="toc-distribuciones-muestrales" class="nav-link active" data-scroll-target="#distribuciones-muestrales"><span class="header-section-number">3.1</span> Distribuciones muestrales</a>
+  <li><a href="#distribuciones-muestrales" id="toc-distribuciones-muestrales" class="nav-link active" data-scroll-target="#distribuciones-muestrales"><span class="header-section-number">4.1</span> Distribuciones muestrales</a>
   <ul class="collapse">
-  <li><a href="#distribución-de-la-media-muestral-para-muestras-grandes-ngeq-30" id="toc-distribución-de-la-media-muestral-para-muestras-grandes-ngeq-30" class="nav-link" data-scroll-target="#distribución-de-la-media-muestral-para-muestras-grandes-ngeq-30"><span class="header-section-number">3.1.1</span> Distribución de la media muestral para muestras grandes (<span class="math inline">\(n\geq 30\)</span>)</a></li>
-  <li><a href="#distribución-de-una-proporción-muestral-para-muestras-grandes-ngeq-30" id="toc-distribución-de-una-proporción-muestral-para-muestras-grandes-ngeq-30" class="nav-link" data-scroll-target="#distribución-de-una-proporción-muestral-para-muestras-grandes-ngeq-30"><span class="header-section-number">3.1.2</span> Distribución de una proporción muestral para muestras grandes (<span class="math inline">\(n\geq 30\)</span>)</a></li>
+  <li><a href="#distribución-de-la-media-muestral-para-muestras-grandes-ngeq-30" id="toc-distribución-de-la-media-muestral-para-muestras-grandes-ngeq-30" class="nav-link" data-scroll-target="#distribución-de-la-media-muestral-para-muestras-grandes-ngeq-30"><span class="header-section-number">4.1.1</span> Distribución de la media muestral para muestras grandes (<span class="math inline">\(n\geq 30\)</span>)</a></li>
+  <li><a href="#distribución-de-una-proporción-muestral-para-muestras-grandes-ngeq-30" id="toc-distribución-de-una-proporción-muestral-para-muestras-grandes-ngeq-30" class="nav-link" data-scroll-target="#distribución-de-una-proporción-muestral-para-muestras-grandes-ngeq-30"><span class="header-section-number">4.1.2</span> Distribución de una proporción muestral para muestras grandes (<span class="math inline">\(n\geq 30\)</span>)</a></li>
   </ul></li>
-  <li><a href="#estimadores" id="toc-estimadores" class="nav-link" data-scroll-target="#estimadores"><span class="header-section-number">3.2</span> Estimadores</a></li>
-  <li><a href="#estimación-puntual" id="toc-estimación-puntual" class="nav-link" data-scroll-target="#estimación-puntual"><span class="header-section-number">3.3</span> Estimación puntual</a></li>
-  <li><a href="#estimación-por-intervalos" id="toc-estimación-por-intervalos" class="nav-link" data-scroll-target="#estimación-por-intervalos"><span class="header-section-number">3.4</span> Estimación por intervalos</a>
+  <li><a href="#estimadores" id="toc-estimadores" class="nav-link" data-scroll-target="#estimadores"><span class="header-section-number">4.2</span> Estimadores</a></li>
+  <li><a href="#estimación-puntual" id="toc-estimación-puntual" class="nav-link" data-scroll-target="#estimación-puntual"><span class="header-section-number">4.3</span> Estimación puntual</a></li>
+  <li><a href="#estimación-por-intervalos" id="toc-estimación-por-intervalos" class="nav-link" data-scroll-target="#estimación-por-intervalos"><span class="header-section-number">4.4</span> Estimación por intervalos</a>
   <ul class="collapse">
-  <li><a href="#error-de-estimación" id="toc-error-de-estimación" class="nav-link" data-scroll-target="#error-de-estimación"><span class="header-section-number">3.4.1</span> Error de estimación</a></li>
+  <li><a href="#error-de-estimación" id="toc-error-de-estimación" class="nav-link" data-scroll-target="#error-de-estimación"><span class="header-section-number">4.4.1</span> Error de estimación</a></li>
   </ul></li>
-  <li><a href="#intervalos-de-confianza-para-una-población" id="toc-intervalos-de-confianza-para-una-población" class="nav-link" data-scroll-target="#intervalos-de-confianza-para-una-población"><span class="header-section-number">3.5</span> Intervalos de confianza para una población</a>
+  <li><a href="#intervalos-de-confianza-para-una-población" id="toc-intervalos-de-confianza-para-una-población" class="nav-link" data-scroll-target="#intervalos-de-confianza-para-una-población"><span class="header-section-number">4.5</span> Intervalos de confianza para una población</a>
   <ul class="collapse">
-  <li><a href="#intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-conocida" id="toc-intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-conocida" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-conocida"><span class="header-section-number">3.5.1</span> Intervalo de confianza para la media de una población normal con varianza conocida</a></li>
-  <li><a href="#intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-desconocida" id="toc-intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-desconocida" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-desconocida"><span class="header-section-number">3.5.2</span> Intervalo de confianza para la media de una población normal con varianza desconocida</a></li>
-  <li><a href="#intervalo-de-confianza-para-la-media-de-una-población-no-normal" id="toc-intervalo-de-confianza-para-la-media-de-una-población-no-normal" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-media-de-una-población-no-normal"><span class="header-section-number">3.5.3</span> Intervalo de confianza para la media de una población no normal</a></li>
-  <li><a href="#intervalo-de-confianza-para-la-varianza-de-una-población-normal" id="toc-intervalo-de-confianza-para-la-varianza-de-una-población-normal" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-varianza-de-una-población-normal"><span class="header-section-number">3.5.4</span> Intervalo de confianza para la varianza de una población normal</a></li>
-  <li><a href="#intervalo-de-confianza-para-una-proporción" id="toc-intervalo-de-confianza-para-una-proporción" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-una-proporción"><span class="header-section-number">3.5.5</span> Intervalo de confianza para una proporción</a></li>
+  <li><a href="#intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-conocida" id="toc-intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-conocida" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-conocida"><span class="header-section-number">4.5.1</span> Intervalo de confianza para la media de una población normal con varianza conocida</a></li>
+  <li><a href="#intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-desconocida" id="toc-intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-desconocida" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-desconocida"><span class="header-section-number">4.5.2</span> Intervalo de confianza para la media de una población normal con varianza desconocida</a></li>
+  <li><a href="#intervalo-de-confianza-para-la-media-de-una-población-no-normal" id="toc-intervalo-de-confianza-para-la-media-de-una-población-no-normal" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-media-de-una-población-no-normal"><span class="header-section-number">4.5.3</span> Intervalo de confianza para la media de una población no normal</a></li>
+  <li><a href="#intervalo-de-confianza-para-la-varianza-de-una-población-normal" id="toc-intervalo-de-confianza-para-la-varianza-de-una-población-normal" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-varianza-de-una-población-normal"><span class="header-section-number">4.5.4</span> Intervalo de confianza para la varianza de una población normal</a></li>
+  <li><a href="#intervalo-de-confianza-para-una-proporción" id="toc-intervalo-de-confianza-para-una-proporción" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-una-proporción"><span class="header-section-number">4.5.5</span> Intervalo de confianza para una proporción</a></li>
   </ul></li>
-  <li><a href="#intervalos-de-confianza-para-la-comparación-dos-poblaciones" id="toc-intervalos-de-confianza-para-la-comparación-dos-poblaciones" class="nav-link" data-scroll-target="#intervalos-de-confianza-para-la-comparación-dos-poblaciones"><span class="header-section-number">3.6</span> Intervalos de confianza para la comparación dos poblaciones</a>
+  <li><a href="#intervalos-de-confianza-para-la-comparación-dos-poblaciones" id="toc-intervalos-de-confianza-para-la-comparación-dos-poblaciones" class="nav-link" data-scroll-target="#intervalos-de-confianza-para-la-comparación-dos-poblaciones"><span class="header-section-number">4.6</span> Intervalos de confianza para la comparación dos poblaciones</a>
   <ul class="collapse">
-  <li><a href="#intervalo-de-confianza-para-la-diferencia-de-medias-de-poblaciones-normales-con-varianzas-conocidas" id="toc-intervalo-de-confianza-para-la-diferencia-de-medias-de-poblaciones-normales-con-varianzas-conocidas" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-diferencia-de-medias-de-poblaciones-normales-con-varianzas-conocidas"><span class="header-section-number">3.6.1</span> Intervalo de confianza para la diferencia de medias de poblaciones normales con varianzas conocidas</a></li>
-  <li><a href="#intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales" id="toc-intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales"><span class="header-section-number">3.6.2</span> Intervalo de confianza para la diferencia de medias de dos poblaciones normales con varianzas desconocidas e iguales</a></li>
-  <li><a href="#intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-y-distintas" id="toc-intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-y-distintas" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-y-distintas"><span class="header-section-number">3.6.3</span> Intervalo de confianza para la diferencia de medias de dos poblaciones normales con varianzas desconocidas y distintas</a></li>
-  <li><a href="#intervalo-de-confianza-para-el-cociente-de-varianzas" id="toc-intervalo-de-confianza-para-el-cociente-de-varianzas" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-el-cociente-de-varianzas"><span class="header-section-number">3.6.4</span> Intervalo de confianza para el cociente de varianzas</a></li>
-  <li><a href="#intervalo-de-confianza-para-la-diferencia-de-proporciones" id="toc-intervalo-de-confianza-para-la-diferencia-de-proporciones" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-diferencia-de-proporciones"><span class="header-section-number">3.6.5</span> Intervalo de confianza para la diferencia de proporciones</a></li>
+  <li><a href="#intervalo-de-confianza-para-la-diferencia-de-medias-de-poblaciones-normales-con-varianzas-conocidas" id="toc-intervalo-de-confianza-para-la-diferencia-de-medias-de-poblaciones-normales-con-varianzas-conocidas" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-diferencia-de-medias-de-poblaciones-normales-con-varianzas-conocidas"><span class="header-section-number">4.6.1</span> Intervalo de confianza para la diferencia de medias de poblaciones normales con varianzas conocidas</a></li>
+  <li><a href="#intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales" id="toc-intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales"><span class="header-section-number">4.6.2</span> Intervalo de confianza para la diferencia de medias de dos poblaciones normales con varianzas desconocidas e iguales</a></li>
+  <li><a href="#intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-y-distintas" id="toc-intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-y-distintas" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-y-distintas"><span class="header-section-number">4.6.3</span> Intervalo de confianza para la diferencia de medias de dos poblaciones normales con varianzas desconocidas y distintas</a></li>
+  <li><a href="#intervalo-de-confianza-para-el-cociente-de-varianzas" id="toc-intervalo-de-confianza-para-el-cociente-de-varianzas" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-el-cociente-de-varianzas"><span class="header-section-number">4.6.4</span> Intervalo de confianza para el cociente de varianzas</a></li>
+  <li><a href="#intervalo-de-confianza-para-la-diferencia-de-proporciones" id="toc-intervalo-de-confianza-para-la-diferencia-de-proporciones" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-diferencia-de-proporciones"><span class="header-section-number">4.6.5</span> Intervalo de confianza para la diferencia de proporciones</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -229,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></h1>
 </div>
 
 
@@ -259,11 +265,11 @@ ul.task-list li input[type="checkbox"] {
 <li>Posibilidad de cometer errores (<em>sesgos</em>).</li>
 </ul>
 <p>Afortunadamente, estos errores pueden ser superados: La representatividad de la muestra se consigue eligiendo la modalidad de muestreo más apropiada para el tipo de estudio; en el caso de los errores, aunque no se pueden evitar, se tratará de reducirlos al máximo y acotarlos.</p>
-<section id="distribuciones-muestrales" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="distribuciones-muestrales"><span class="header-section-number">3.1</span> Distribuciones muestrales</h2>
+<section id="distribuciones-muestrales" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="distribuciones-muestrales"><span class="header-section-number">4.1</span> Distribuciones muestrales</h2>
 <p>Los valores de una variable <span class="math inline">\(X\)</span> en una muestra de tamaño <span class="math inline">\(n\)</span> de una población pueden verse como el valor de una variable aleatoria <span class="math inline">\(n\)</span>-dimensional.</p>
 <div id="def-variable-aleatoria-muestral" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.1 (Variable aleatoria muestral) </strong></span>Una <em>variable aleatoria muestral</em> de una variable <span class="math inline">\(X\)</span> estudiada en una población es una colección de <span class="math inline">\(n\)</span> variables aleatorias <span class="math inline">\(X_1,\ldots,X_n\)</span> tales que:</p>
+<p><span class="theorem-title"><strong>Definición 4.1 (Variable aleatoria muestral) </strong></span>Una <em>variable aleatoria muestral</em> de una variable <span class="math inline">\(X\)</span> estudiada en una población es una colección de <span class="math inline">\(n\)</span> variables aleatorias <span class="math inline">\(X_1,\ldots,X_n\)</span> tales que:</p>
 <ul>
 <li>Cada una de las variables <span class="math inline">\(X_i\)</span> sigue la misma distribución de probabilidad que la variable <span class="math inline">\(X\)</span> en la población.</li>
 <li>Todas las variables <span class="math inline">\(X_i\)</span> son mutuamente independientes.</li>
@@ -328,7 +334,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>La distribución de probabilidad de los valores de la variable muestral depende claramente de la distribución de probabilidad de los valores de la población.</p>
 <div id="exm-distribucion-muestral" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.1 </strong></span>Sea una población en la que la cuarta parte de las familias no tienen hijos, la mitad de las familias tiene 1 hijo, y el resto tiene 2 hijos.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.1 </strong></span>Sea una población en la que la cuarta parte de las familias no tienen hijos, la mitad de las familias tiene 1 hijo, y el resto tiene 2 hijos.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/estimacion/distribucion-variable-muestral.svg" class="img-fluid figure-img" style="width:80.0%" alt="Distribución de la variable muestral."></p>
@@ -337,7 +343,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>Por ser función de una variable aleatoria, un estadístico en el muestreo es también una variable aleatoria. Por tanto, su distribución de probabilidad también depende de la distribución de la población y de los parámetros que la determinan (<span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(p\)</span>, …).</p>
 <div id="exm-distribucion-media-muestral" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.2 </strong></span>Si se toma la media muestral <span class="math inline">\(\bar X\)</span> de las muestras de tamaño 2 del ejemplo anterior, su distribución de probabilidad es</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.2 </strong></span>Si se toma la media muestral <span class="math inline">\(\bar X\)</span> de las muestras de tamaño 2 del ejemplo anterior, su distribución de probabilidad es</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/estimacion/distribucion-media.svg" class="img-fluid figure-img" style="width:80.0%" alt="Distribución de la media de una muestra de tamaño 2."></p>
@@ -365,14 +371,14 @@ ul.task-list li input[type="checkbox"] {
 <p><em>¿Cuál es la probabilidad de obtener una media muestral que aproxime la media poblacional con un error máximo de 0.5?</em></p>
 <p>Como hemos visto, para conocer la distribución de un estadístico muestral, es necesario conocer la distribución de la población, lo cual no siempre es posible. Afortunadamente, para muestras grandes es posible aproximar la distribución de algunos estadísticos como la media, gracias al siguiente teorema:</p>
 <div id="thm-teorema-central-limite" class="theorem">
-<p><span class="theorem-title"><strong>Teorema 3.1 (Teorema central del límite) </strong></span>Si <span class="math inline">\(X_1,\ldots, X_n\)</span> son variables aleatorias independientes (<span class="math inline">\(n\geq 30\)</span>) con medias y varianzas <span class="math inline">\(\mu_i=E(X_i)\)</span>, <span class="math inline">\(\sigma^2_i=Var(X_i)\)</span>, <span class="math inline">\(i=1,\ldots,n\)</span> respectivamente, entonces la variable aleatoria <span class="math inline">\(X=X_1+\cdots+X_n\)</span> sigue una distribución aproximadamente normal de media la suma de las medias y varianza la suma de las varianzas</p>
+<p><span class="theorem-title"><strong>Teorema 4.1 (Teorema central del límite) </strong></span>Si <span class="math inline">\(X_1,\ldots, X_n\)</span> son variables aleatorias independientes (<span class="math inline">\(n\geq 30\)</span>) con medias y varianzas <span class="math inline">\(\mu_i=E(X_i)\)</span>, <span class="math inline">\(\sigma^2_i=Var(X_i)\)</span>, <span class="math inline">\(i=1,\ldots,n\)</span> respectivamente, entonces la variable aleatoria <span class="math inline">\(X=X_1+\cdots+X_n\)</span> sigue una distribución aproximadamente normal de media la suma de las medias y varianza la suma de las varianzas</p>
 <p><span class="math display">\[
 X=X_1+\cdots+X_n\stackrel{n\geq 30} \sim N\left(\sum_{i=1}^n \mu_i, \sqrt{\sum_{i=1}^n \sigma^2_i}\right)
 \]</span></p>
 </div>
 <p>Este teorema además es la explicación de que la mayoría de las variables biológicas presenten una distribución normal, ya que suelen ser causa de múltiples factores que suman sus efectos de manera independiente.</p>
-<section id="distribución-de-la-media-muestral-para-muestras-grandes-ngeq-30" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="distribución-de-la-media-muestral-para-muestras-grandes-ngeq-30"><span class="header-section-number">3.1.1</span> Distribución de la media muestral para muestras grandes (<span class="math inline">\(n\geq 30\)</span>)</h3>
+<section id="distribución-de-la-media-muestral-para-muestras-grandes-ngeq-30" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="distribución-de-la-media-muestral-para-muestras-grandes-ngeq-30"><span class="header-section-number">4.1.1</span> Distribución de la media muestral para muestras grandes (<span class="math inline">\(n\geq 30\)</span>)</h3>
 <p>La media muestral de una muestra aleatoria de tamaño <span class="math inline">\(n\)</span> es la suma de <span class="math inline">\(n\)</span> variables aleatorias independientes, idénticamente distribuidas:</p>
 <p><span class="math display">\[
 \bar X = \frac{X_1+\cdots+X_n}{n} = \frac{X_1}{n}+\cdots+\frac{X_n}{n}
@@ -387,7 +393,7 @@ E\left(\frac{X_i}{n}\right) =\frac{\mu}{n} \quad  \mbox{y} \quad Var\left(\frac{
 \bar X \sim N\left(\sum_{i=1}^n \frac{\mu}{n},\sqrt{\sum_{i=1}^n \frac{\sigma^2}{n^2}} \right) = N\left(\mu,\frac{\sigma}{\sqrt{n}} \right).
 \]</span></p>
 <div id="exm-distribucion-media-muestras-grandes" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.3 (Ejemplo para muestras grandes (<span class="math inline">\(n\geq 30\)</span>)) </strong></span>Supóngase que se desea estimar el número medio de hijos de una población con media <span class="math inline">\(\mu=2\)</span> hijos y desviación típica <span class="math inline">\(\sigma=1\)</span> hijo.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.3 (Ejemplo para muestras grandes (<span class="math inline">\(n\geq 30\)</span>)) </strong></span>Supóngase que se desea estimar el número medio de hijos de una población con media <span class="math inline">\(\mu=2\)</span> hijos y desviación típica <span class="math inline">\(\sigma=1\)</span> hijo.</p>
 <p><em>¿Qué probabilidad hay de estimar <span class="math inline">\(\mu\)</span> a partir de <span class="math inline">\(\bar x\)</span> con un error menor de <span class="math inline">\(0.2\)</span>?</em></p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -414,8 +420,8 @@ P(1.8&lt;\bar x&lt;2.2) = 0.9545.
 </div>
 </div>
 </section>
-<section id="distribución-de-una-proporción-muestral-para-muestras-grandes-ngeq-30" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="distribución-de-una-proporción-muestral-para-muestras-grandes-ngeq-30"><span class="header-section-number">3.1.2</span> Distribución de una proporción muestral para muestras grandes (<span class="math inline">\(n\geq 30\)</span>)</h3>
+<section id="distribución-de-una-proporción-muestral-para-muestras-grandes-ngeq-30" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="distribución-de-una-proporción-muestral-para-muestras-grandes-ngeq-30"><span class="header-section-number">4.1.2</span> Distribución de una proporción muestral para muestras grandes (<span class="math inline">\(n\geq 30\)</span>)</h3>
 <p>Una proporción <span class="math inline">\(p\)</span> poblacional puede calcularse como la media de una variable dicotómica (0,1). Esta variable se conoce como <em>variable de Bernouilli</em> <span class="math inline">\(B(p)\)</span>, que es un caso particular de la binomial para <span class="math inline">\(n=1\)</span>. Por tanto, para una muestra aleatoria de tamaño <span class="math inline">\(n\)</span>, una proporción muestral <span class="math inline">\(\hat p\)</span> también puede expresarse como la suma de <span class="math inline">\(n\)</span> variables aleatorias independientes, idénticamente distribuidas:</p>
 <p><span class="math display">\[
 \hat p = \bar X = \frac{X_1+\cdots+X_n}{n} = \frac{X_1}{n}+\cdots+\frac{X_n}{n}, \mbox{ con } X_i\sim B(p)
@@ -430,11 +436,11 @@ E\left(\frac{X_i}{n}\right) =\frac{p}{n} \quad  \mbox{y} \quad Var\left(\frac{X_
 \]</span></p>
 </section>
 </section>
-<section id="estimadores" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="estimadores"><span class="header-section-number">3.2</span> Estimadores</h2>
+<section id="estimadores" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="estimadores"><span class="header-section-number">4.2</span> Estimadores</h2>
 <p>Los estadísticos muestrales pueden utilizarse para aproximar los parámetros de la población, y cuando un estadístico se utiliza con este fin se le llama <em>estimador del parámetro</em>.</p>
 <div id="def-estimador-estimacion" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.2 (Estimador y estimación) </strong></span>Un <em>estimador</em> es una función de la variable aleatoria muestral</p>
+<p><span class="theorem-title"><strong>Definición 4.2 (Estimador y estimación) </strong></span>Un <em>estimador</em> es una función de la variable aleatoria muestral</p>
 <p><span class="math display">\[
 \hat \theta = F(X_1,\ldots,X_n).
 \]</span></p>
@@ -451,7 +457,7 @@ E\left(\frac{X_i}{n}\right) =\frac{p}{n} \quad  \mbox{y} \quad Var\left(\frac{X_
 </figure>
 </div>
 <div id="exm-estimacion-fumadores" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.4 </strong></span>Supóngase que se quiere saber la proporción <span class="math inline">\(p\)</span> de fumadores en una ciudad. En ese caso, la variable dicotómica que mide si una persona fuma (1) o no (0), sigue una distribución de Bernouilli <span class="math inline">\(B(p)\)</span>.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.4 </strong></span>Supóngase que se quiere saber la proporción <span class="math inline">\(p\)</span> de fumadores en una ciudad. En ese caso, la variable dicotómica que mide si una persona fuma (1) o no (0), sigue una distribución de Bernouilli <span class="math inline">\(B(p)\)</span>.</p>
 <p>Si se toma una muestra aleatoria de tamaño 5, <span class="math inline">\((X_1,X_2,X_3,X_4,X_5)\)</span>, de esta población, se puede utilizar la proporción de fumadores en la muestra como estimador para la proporción de fumadores en la población:</p>
 <p><span class="math display">\[
 \hat p = \frac{\sum_{i=1}^5 X_i}{5}
@@ -485,8 +491,8 @@ E\left(\frac{X_i}{n}\right) =\frac{p}{n} \quad  \mbox{y} \quad Var\left(\frac{X_
 </figure>
 </div>
 </section>
-<section id="estimación-puntual" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="estimación-puntual"><span class="header-section-number">3.3</span> Estimación puntual</h2>
+<section id="estimación-puntual" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="estimación-puntual"><span class="header-section-number">4.3</span> Estimación puntual</h2>
 <p>La estimación puntual utiliza un único estimador para estimar el valor del parámetro desconocido de la población.</p>
 <p>En teoría pueden utilizarse distintos estimadores para estimar un mismo parámetro. Por ejemplo, en el caso de estimar la proporción de fumadores en una ciudad, podrían haberse utilizado otros posibles estimadores además de la proporción muestral, como pueden ser: <span class="math display">\[\begin{align*}
 \hat \theta_1 &amp;= \sqrt[5]{X_1X_2X_3X_4X_5}\\
@@ -505,7 +511,7 @@ E\left(\frac{X_i}{n}\right) =\frac{p}{n} \quad  \mbox{y} \quad Var\left(\frac{X_
 <li>Suficiencia</li>
 </ul>
 <div id="def-estimador-insesgado" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.3 (Estimador insesgado) </strong></span>Un estimador <span class="math inline">\(\hat \theta\)</span> es <em>insesgado</em> para un parámetro <span class="math inline">\(\theta\)</span> si su esperanza es precisamente <span class="math inline">\(\theta\)</span>, es decir,</p>
+<p><span class="theorem-title"><strong>Definición 4.3 (Estimador insesgado) </strong></span>Un estimador <span class="math inline">\(\hat \theta\)</span> es <em>insesgado</em> para un parámetro <span class="math inline">\(\theta\)</span> si su esperanza es precisamente <span class="math inline">\(\theta\)</span>, es decir,</p>
 <p><span class="math display">\[
 E(\hat \theta)=\theta.
 \]</span></p>
@@ -522,7 +528,7 @@ Sesgo(\hat \theta) = E(\hat \theta)-\theta.
 \]</span></p>
 <p>Cuanto menor sea el sesgo de un estimador, mejor se aproximarán sus estimaciones al verdadero valor del parámetro.</p>
 <div id="def-estimador-consistente" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.4 (Estimador consistente) </strong></span>Un estimador <span class="math inline">\(\hat \theta_n\)</span> para muestras de tamaño <span class="math inline">\(n\)</span> es <em>consistente</em> para un parámetro <span class="math inline">\(\theta\)</span> si para cualquier valor <span class="math inline">\(\epsilon&gt;0\)</span> se cumple</p>
+<p><span class="theorem-title"><strong>Definición 4.4 (Estimador consistente) </strong></span>Un estimador <span class="math inline">\(\hat \theta_n\)</span> para muestras de tamaño <span class="math inline">\(n\)</span> es <em>consistente</em> para un parámetro <span class="math inline">\(\theta\)</span> si para cualquier valor <span class="math inline">\(\epsilon&gt;0\)</span> se cumple</p>
 <p><span class="math display">\[
 \lim_{n\rightarrow \infty} P(|\hat \theta_n-\theta|&lt;\epsilon)=1.
 \]</span></p>
@@ -554,7 +560,7 @@ Sesgo(\hat \theta) = E(\hat \theta)-\theta.
 </ol>
 <p>Así pues, si la varianza y el sesgo disminuyen a medida que aumenta el tamaño de la muestra, el estimador será consistente.</p>
 <div id="def-estimador-eficiente" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.5 (Estimador eficiente) </strong></span>Un estimador <span class="math inline">\(\hat \theta\)</span> de un parámetro <span class="math inline">\(\theta\)</span> es <em>eficiente</em> si tiene el menor error cuadrático medio</p>
+<p><span class="theorem-title"><strong>Definición 4.5 (Estimador eficiente) </strong></span>Un estimador <span class="math inline">\(\hat \theta\)</span> de un parámetro <span class="math inline">\(\theta\)</span> es <em>eficiente</em> si tiene el menor error cuadrático medio</p>
 <p><span class="math display">\[
 ECM(\hat \theta) = Sesgo(\hat \theta)^2+Var(\theta).
 \]</span></p>
@@ -567,7 +573,7 @@ ECM(\hat \theta) = Sesgo(\hat \theta)^2+Var(\theta).
 </figure>
 </div>
 <div id="def-estimador-asintóticamente-normal" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.6 (Estimador asintóticamente normal) </strong></span>Un estimador <span class="math inline">\(\hat \theta\)</span> es <em>asintóticamente normal</em> si, independientemente de la distribución de la variable aleatoria muestral, su distribución es normal si el tamaño de la muestra es suficientemente grande.:::</p>
+<p><span class="theorem-title"><strong>Definición 4.6 (Estimador asintóticamente normal) </strong></span>Un estimador <span class="math inline">\(\hat \theta\)</span> es <em>asintóticamente normal</em> si, independientemente de la distribución de la variable aleatoria muestral, su distribución es normal si el tamaño de la muestra es suficientemente grande.:::</p>
 </div>
 <p>Como veremos más adelante esta propiedad es muy interesante para hacer estimaciones de parámetros mediante intervalos.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -577,7 +583,7 @@ ECM(\hat \theta) = Sesgo(\hat \theta)^2+Var(\theta).
 </figure>
 </div>
 <div id="def-estimador-suficiente" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.7 (Estimador suficiente) </strong></span>Un estimador <span class="math inline">\(\hat \theta\)</span> es <em>suficiente</em> para un parámetro <span class="math inline">\(\theta\)</span>, si la distribución condicionada de la variable aleatoria muestral, una vez dada la estimación <span class="math inline">\(\hat \theta = \hat \theta_0\)</span>, no depende de <span class="math inline">\(\theta\)</span>.</p>
+<p><span class="theorem-title"><strong>Definición 4.7 (Estimador suficiente) </strong></span>Un estimador <span class="math inline">\(\hat \theta\)</span> es <em>suficiente</em> para un parámetro <span class="math inline">\(\theta\)</span>, si la distribución condicionada de la variable aleatoria muestral, una vez dada la estimación <span class="math inline">\(\hat \theta = \hat \theta_0\)</span>, no depende de <span class="math inline">\(\theta\)</span>.</p>
 </div>
 <p>Esto significa que cuando se obtiene una estimación, cualquier otra información es irrelevante para <span class="math inline">\(\theta\)</span>.</p>
 <p>El estimador que se suele utilizar para estimar la media poblacional es la media muestral.</p>
@@ -600,14 +606,14 @@ E(S^2)= \frac{n-1}{n}\sigma^2.
 \]</span></p>
 <p>No obstante, resulta sencillo corregir este sesgo para llegar a un estimador insesgado:</p>
 <div id="def-cuasivarianza-muestral" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.8 (Cuasivarianza muestral) </strong></span>Dada una muestra de tamaño <span class="math inline">\(n\)</span> de una variable aleatoria <span class="math inline">\(X\)</span>, se define la <em>cuasivarianza muestral</em> como</p>
+<p><span class="theorem-title"><strong>Definición 4.8 (Cuasivarianza muestral) </strong></span>Dada una muestra de tamaño <span class="math inline">\(n\)</span> de una variable aleatoria <span class="math inline">\(X\)</span>, se define la <em>cuasivarianza muestral</em> como</p>
 <p><span class="math display">\[
 \hat{S}^2 = \frac{\sum_{i=1}^n (X_i-\bar X)^2}{n-1} = \frac{n}{n-1}S^2.
 \]</span></p>
 </div>
 </section>
-<section id="estimación-por-intervalos" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="estimación-por-intervalos"><span class="header-section-number">3.4</span> Estimación por intervalos</h2>
+<section id="estimación-por-intervalos" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="estimación-por-intervalos"><span class="header-section-number">4.4</span> Estimación por intervalos</h2>
 <p>El principal problema de la estimación puntual es que, una vez seleccionada la muestra y hecha la estimación, resulta imposible saber el error cometido.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -622,7 +628,7 @@ E(S^2)= \frac{n-1}{n}\sigma^2.
 </div>
 <p>La estimación por intervalos trata de construir a partir de la muestra un intervalo dentro del cual se supone que se encuentra el parámetro a estimar con un cierto grado de confianza. Para ello se utilizan dos estimadores, uno para el límite inferior del intervalo y otro para el superior.</p>
 <div id="def-intervalo-confianza" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.9 (Intervalo de confianza) </strong></span>Dados dos estimadores <span class="math inline">\(\hat l_i(X_1,\ldots,X_n)\)</span> y <span class="math inline">\(\hat l_s(X_1,\ldots,X_n)\)</span>, y sus respectivas estimaciones <span class="math inline">\(l_1\)</span> y <span class="math inline">\(l_2\)</span> para una muestra concreta, se dice que el intervalo <span class="math inline">\(I=[l_1,l_2]\)</span> es un intervalo de confianza para un parámetro poblacional <span class="math inline">\(\theta\)</span>, con un nivel de confianza <span class="math inline">\(1-\alpha\)</span> (o nivel de significación <span class="math inline">\(\alpha\)</span>), si se cumple</p>
+<p><span class="theorem-title"><strong>Definición 4.9 (Intervalo de confianza) </strong></span>Dados dos estimadores <span class="math inline">\(\hat l_i(X_1,\ldots,X_n)\)</span> y <span class="math inline">\(\hat l_s(X_1,\ldots,X_n)\)</span>, y sus respectivas estimaciones <span class="math inline">\(l_1\)</span> y <span class="math inline">\(l_2\)</span> para una muestra concreta, se dice que el intervalo <span class="math inline">\(I=[l_1,l_2]\)</span> es un intervalo de confianza para un parámetro poblacional <span class="math inline">\(\theta\)</span>, con un nivel de confianza <span class="math inline">\(1-\alpha\)</span> (o nivel de significación <span class="math inline">\(\alpha\)</span>), si se cumple</p>
 <p><span class="math display">\[
 P(\hat l_i(X_1,\ldots,X_n)\leq \theta \leq \hat l_s(X_1,\ldots,X_n))= 1-\alpha.
 \]</span></p>
@@ -638,16 +644,16 @@ P(\hat l_i(X_1,\ldots,X_n)\leq \theta \leq \hat l_s(X_1,\ldots,X_n))= 1-\alpha.
 \end{align*}\]</span></p>
 <p>siendo <span class="math inline">\(0.95\)</span> el nivel de confianza más habitual y <span class="math inline">\(0.99\)</span> en casos críticos.</p>
 <p>Teóricamente, de cada 100 intervalos para estimar un parámetro <span class="math inline">\(\theta\)</span> con nivel de confianza <span class="math inline">\(1-\alpha=0.95\)</span>, 95 contendrían a <span class="math inline">\(\theta\)</span> y sólo 5 lo dejarían fuera.</p>
-<div class="cell">
+<div class="cell" data-hash="07-estimacion_cache/html/unnamed-chunk-1_a37af5c44fdd2d54cfd460688312cc86">
 <div class="cell-output-display">
 <p><img src="07-estimacion_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<section id="error-de-estimación" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="error-de-estimación"><span class="header-section-number">3.4.1</span> Error de estimación</h3>
+<section id="error-de-estimación" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="error-de-estimación"><span class="header-section-number">4.4.1</span> Error de estimación</h3>
 <p>Otro de los aspectos más importantes de un intervalo de confianza es su error.</p>
 <div id="def-error-intervalo-confianza" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.10 (Error o imprecisión de un intervalo) </strong></span>El <em>error</em> o la <em>imprecisión</em> de un intervalo de confianza <span class="math inline">\([l_i,l_s]\)</span> es su amplitud</p>
+<p><span class="theorem-title"><strong>Definición 4.10 (Error o imprecisión de un intervalo) </strong></span>El <em>error</em> o la <em>imprecisión</em> de un intervalo de confianza <span class="math inline">\([l_i,l_s]\)</span> es su amplitud</p>
 <p><span class="math display">\[
 A=l_s-l_i.
 \]</span></p>
@@ -676,8 +682,8 @@ A=l_s-l_i.
 </div>
 </section>
 </section>
-<section id="intervalos-de-confianza-para-una-población" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="intervalos-de-confianza-para-una-población"><span class="header-section-number">3.5</span> Intervalos de confianza para una población</h2>
+<section id="intervalos-de-confianza-para-una-población" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="intervalos-de-confianza-para-una-población"><span class="header-section-number">4.5</span> Intervalos de confianza para una población</h2>
 <p>A continuación se presentan los intervalos de confianza para estimar un parámetro de una poblacion:</p>
 <ul>
 <li>Intervalo para la media de una población normal con varianza conocida.</li>
@@ -686,8 +692,8 @@ A=l_s-l_i.
 <li>Intervalo para la varianza de una población normal.</li>
 <li>Intervalo para un proporción de una población.</li>
 </ul>
-<section id="intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-conocida" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-conocida"><span class="header-section-number">3.5.1</span> Intervalo de confianza para la media de una población normal con varianza conocida</h3>
+<section id="intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-conocida" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-conocida"><span class="header-section-number">4.5.1</span> Intervalo de confianza para la media de una población normal con varianza conocida</h3>
 <p>Sea <span class="math inline">\(X\)</span> una variable aleatoria que cumple las siguientes hipótesis:</p>
 <ul>
 <li>Su distribución es normal <span class="math inline">\(X\sim N(\mu,\sigma)\)</span>.</li>
@@ -720,7 +726,7 @@ P(z_i\leq Z \leq z_s) = 1-\alpha.
 \end{align*}\]</span></p>
 <p>Así pues, el intervalo de confianza para la media de una población normal con varianza conocida es:</p>
 <div id="thm-intervalo-confianza-media-normal-varianza-conocida" class="theorem">
-<p><span class="theorem-title"><strong>Teorema 3.2 (Intervalo de confianza para la media de una población normal con varianza conocida) </strong></span>Si <span class="math inline">\(X\sim N(\mu, \sigma)\)</span> con <span class="math inline">\(\sigma\)</span> conocida, el <em>intervalo de confianza para la media</em> <span class="math inline">\(\mu\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
+<p><span class="theorem-title"><strong>Teorema 4.2 (Intervalo de confianza para la media de una población normal con varianza conocida) </strong></span>Si <span class="math inline">\(X\sim N(\mu, \sigma)\)</span> con <span class="math inline">\(\sigma\)</span> conocida, el <em>intervalo de confianza para la media</em> <span class="math inline">\(\mu\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
 <p><span class="math display">\[
 \left[\bar{X}-z_{\alpha/2}\frac{\sigma}{\sqrt{n}},\bar{X}+z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right]
 \]</span> o bien <span class="math display">\[
@@ -746,8 +752,8 @@ A= 2 z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
 <li><span class="math inline">\(n\)</span>: cuanto mayor sea el tamaño de la muestra, menor será la imprecisión.</li>
 </ul>
 <p>Por tanto, la única forma de reducir la imprecisión del intervalo, manteniendo la confianza, es aumentando el tamaño muestral.</p>
-<section id="cálculo-del-tamaño-muestra-para-estimar-la-media-de-una-población-normal-con-varianza-conocida" class="level4" data-number="3.5.1.1">
-<h4 data-number="3.5.1.1" class="anchored" data-anchor-id="cálculo-del-tamaño-muestra-para-estimar-la-media-de-una-población-normal-con-varianza-conocida"><span class="header-section-number">3.5.1.1</span> Cálculo del tamaño muestra para estimar la media de una población normal con varianza conocida</h4>
+<section id="cálculo-del-tamaño-muestra-para-estimar-la-media-de-una-población-normal-con-varianza-conocida" class="level4" data-number="4.5.1.1">
+<h4 data-number="4.5.1.1" class="anchored" data-anchor-id="cálculo-del-tamaño-muestra-para-estimar-la-media-de-una-población-normal-con-varianza-conocida"><span class="header-section-number">4.5.1.1</span> Cálculo del tamaño muestra para estimar la media de una población normal con varianza conocida</h4>
 <p>Teniendo en cuenta que la amplitud o imprecisión del intervalo para la media de una población normal con varianza conocida es</p>
 <p><span class="math display">\[
 A= 2 z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
@@ -761,7 +767,7 @@ A= 2 z_{\alpha/2}\frac{\sigma}{\sqrt{n}} \Leftrightarrow \sqrt{n}= 2 z_{\alpha/2
 {n = 4 z_{\alpha/2}^2\frac{\sigma^2}{A^2}}
 \]</span></p>
 <div id="exm-intervalo-confianza-media" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.5 </strong></span>Sea una población de estudiantes en la que la puntuación obtenida en un examen sigue una distribución normal <span class="math inline">\(X\sim N(\mu,\sigma=1.5)\)</span>.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.5 </strong></span>Sea una población de estudiantes en la que la puntuación obtenida en un examen sigue una distribución normal <span class="math inline">\(X\sim N(\mu,\sigma=1.5)\)</span>.</p>
 <p>Para estimar la nota media <span class="math inline">\(\mu\)</span>, se toma una muestra de 10 estudiantes:</p>
 <p><span class="math display">\[
 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3
@@ -778,7 +784,7 @@ A= 2 z_{\alpha/2}\frac{\sigma}{\sqrt{n}} \Leftrightarrow \sqrt{n}= 2 z_{\alpha/2
 <p>Es decir, <span class="math inline">\(\mu\)</span> estaría entre <span class="math inline">\(4.37\)</span> y <span class="math inline">\(6.23\)</span> puntos con un 95% de confianza.</p>
 </div>
 <div id="exm-tamaño-muestral-media" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.6 </strong></span>La imprecisión del intervalo anterior es de <span class="math inline">\(\pm 0.93\)</span> puntos.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.6 </strong></span>La imprecisión del intervalo anterior es de <span class="math inline">\(\pm 0.93\)</span> puntos.</p>
 <p>Si se desea reducir esta imprecisión a <span class="math inline">\(\pm 0.5\)</span> puntos, <em>¿qué tamaño muestral sería necesario?</em></p>
 <p><span class="math display">\[
 n = 4 z_{\alpha/2}^2\frac{\sigma^2}{A^2} = 4\cdot 1.96^2\frac{1.5^2}{(2\cdot 0.5)^2} = 34.57.
@@ -787,8 +793,8 @@ n = 4 z_{\alpha/2}^2\frac{\sigma^2}{A^2} = 4\cdot 1.96^2\frac{1.5^2}{(2\cdot 0.5
 </div>
 </section>
 </section>
-<section id="intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-desconocida" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-desconocida"><span class="header-section-number">3.5.2</span> Intervalo de confianza para la media de una población normal con varianza desconocida</h3>
+<section id="intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-desconocida" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-media-de-una-población-normal-con-varianza-desconocida"><span class="header-section-number">4.5.2</span> Intervalo de confianza para la media de una población normal con varianza desconocida</h3>
 <p>Sea <span class="math inline">\(X\)</span> una variable aleatoria que cumple las siguientes hipótesis:</p>
 <ul>
 <li>Su distribución es normal <span class="math inline">\(X\sim N(\mu,\sigma)\)</span>.</li>
@@ -813,7 +819,7 @@ n = 4 z_{\alpha/2}^2\frac{\sigma^2}{A^2} = 4\cdot 1.96^2\frac{1.5^2}{(2\cdot 0.5
 &amp;= P\left(\bar X-t^{n-1}_{\alpha/2}\frac{\hat{S}}{\sqrt{n}}\leq \mu \leq \bar X t^{n-1}_{\alpha/2}\frac{\hat{S}}{\sqrt{n}}\right)
 \end{align*}\]</span></p>
 <div id="thm-intervalo-confianza-media-normal-varianza-desconocida" class="theorem">
-<p><span class="theorem-title"><strong>Teorema 3.3 (Intervalo de confianza para la media de una población normal con varianza desconocida) </strong></span>Si <span class="math inline">\(X\sim N(\mu, \sigma)\)</span> con <span class="math inline">\(\sigma\)</span> desconocida, el <em>intervalo de confianza para la media</em> <span class="math inline">\(\mu\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
+<p><span class="theorem-title"><strong>Teorema 4.3 (Intervalo de confianza para la media de una población normal con varianza desconocida) </strong></span>Si <span class="math inline">\(X\sim N(\mu, \sigma)\)</span> con <span class="math inline">\(\sigma\)</span> desconocida, el <em>intervalo de confianza para la media</em> <span class="math inline">\(\mu\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
 <p><span class="math display">\[
 \left[\bar{X}-t^{n-1}_{\alpha/2}\frac{\hat{S}}{\sqrt{n}},\bar{X}+t^{n-1}_{\alpha/2}\frac{\hat{S}}{\sqrt{n}}\right]
 \]</span></p>
@@ -822,8 +828,8 @@ n = 4 z_{\alpha/2}^2\frac{\sigma^2}{A^2} = 4\cdot 1.96^2\frac{1.5^2}{(2\cdot 0.5
 \bar{X}\pm t^{n-1}_{\alpha/2}\frac{\hat{S}}{\sqrt{n}}
 \]</span></p>
 </div>
-<section id="calculo-del-tamaño-muestral-para-estimar-la-media-de-una-población-normal-con-varianza-desconocida" class="level4" data-number="3.5.2.1">
-<h4 data-number="3.5.2.1" class="anchored" data-anchor-id="calculo-del-tamaño-muestral-para-estimar-la-media-de-una-población-normal-con-varianza-desconocida"><span class="header-section-number">3.5.2.1</span> Calculo del tamaño muestral para estimar la media de una población normal con varianza desconocida</h4>
+<section id="calculo-del-tamaño-muestral-para-estimar-la-media-de-una-población-normal-con-varianza-desconocida" class="level4" data-number="4.5.2.1">
+<h4 data-number="4.5.2.1" class="anchored" data-anchor-id="calculo-del-tamaño-muestral-para-estimar-la-media-de-una-población-normal-con-varianza-desconocida"><span class="header-section-number">4.5.2.1</span> Calculo del tamaño muestral para estimar la media de una población normal con varianza desconocida</h4>
 <p>Al igual que antes, teniendo en cuenta que la amplitud o imprecisión del intervalo para la media de una población con varianza desconocida es</p>
 <p><span class="math display">\[
 A= 2 t^{n-1}_{\alpha/2}\frac{\hat{S}}{\sqrt{n}}
@@ -838,7 +844,7 @@ A= 2 t^{n-1}_{\alpha/2}\frac{\hat{S}}{\sqrt{n}} \Leftrightarrow \sqrt{n}= 2 t^{n
 \]</span></p>
 <p>El único problema, a diferencia del caso anterior en que <span class="math inline">\(\sigma\)</span> era conocida, es que se necesita <span class="math inline">\(\hat{S}\)</span>, por lo que se suele tomar una muestra pequeña previa para calcularla. Por otro lado, el valor de la T de student suele aproximarse asintóticamente por el de la normal estándar <span class="math inline">\(t^{n-1}_{\alpha/2}\approx z_{\alpha/2}\)</span>.</p>
 <div id="exm-intervalo-confianza-media-normal-varianza-desconocida" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.7 </strong></span>Supóngase que en el ejemplo anterior no se conoce la varianza poblacional de las puntuaciones.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.7 </strong></span>Supóngase que en el ejemplo anterior no se conoce la varianza poblacional de las puntuaciones.</p>
 <p>Trabajando con la misma muestra de las puntuaciones de 10 estudiantes</p>
 <p><span class="math display">\[
 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3
@@ -855,7 +861,7 @@ A= 2 t^{n-1}_{\alpha/2}\frac{\hat{S}}{\sqrt{n}} \Leftrightarrow \sqrt{n}= 2 t^{n
 \]</span></p>
 </div>
 <div id="exm-tamaño-muestral-ntervalo-confianza-media-normal-varianza-desconocida" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.8 </strong></span>Como se puede apreciar, la imprecisión del intervalo anterior es de <span class="math inline">\(\pm 1.8886\)</span> puntos, que es significativamente mayor que en el caso de conocer la varianza de la población. Esto es lógico pues al tener que estimar la varianza de la población, el error de la estimación se agrega al error del intervalo.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.8 </strong></span>Como se puede apreciar, la imprecisión del intervalo anterior es de <span class="math inline">\(\pm 1.8886\)</span> puntos, que es significativamente mayor que en el caso de conocer la varianza de la población. Esto es lógico pues al tener que estimar la varianza de la población, el error de la estimación se agrega al error del intervalo.</p>
 <p>Ahora, el tamaño muestral necesario para reducir la imprecisión a <span class="math inline">\(\pm 0.5\)</span> puntos es</p>
 <p><span class="math display">\[
 n = 4 (z_{\alpha/2})^2\frac{\hat{S}^2}{A^2} = 4\cdot 1.96^2\frac{3.5667}{(2\cdot 0.5)^2} = 54.81.
@@ -864,8 +870,8 @@ n = 4 (z_{\alpha/2})^2\frac{\hat{S}^2}{A^2} = 4\cdot 1.96^2\frac{3.5667}{(2\cdot
 </div>
 </section>
 </section>
-<section id="intervalo-de-confianza-para-la-media-de-una-población-no-normal" class="level3" data-number="3.5.3">
-<h3 data-number="3.5.3" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-media-de-una-población-no-normal"><span class="header-section-number">3.5.3</span> Intervalo de confianza para la media de una población no normal</h3>
+<section id="intervalo-de-confianza-para-la-media-de-una-población-no-normal" class="level3" data-number="4.5.3">
+<h3 data-number="4.5.3" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-media-de-una-población-no-normal"><span class="header-section-number">4.5.3</span> Intervalo de confianza para la media de una población no normal</h3>
 <p>Sea <span class="math inline">\(X\)</span> una variable aleatoria que cumple las siguientes hipótesis:</p>
 <ul>
 <li>Su distribución no es normal.</li>
@@ -878,14 +884,14 @@ n = 4 (z_{\alpha/2})^2\frac{\hat{S}^2}{A^2} = 4\cdot 1.96^2\frac{3.5667}{(2\cdot
 \]</span></p>
 <p>En consecuencia, sigue siendo válido el intervalo anterior.</p>
 <div id="thm-intervalo-confianza-media-no-normal" class="theorem">
-<p><span class="theorem-title"><strong>Teorema 3.4 (Intervalo de confianza para la media de una población no normal con muestras grandes) </strong></span>Si <span class="math inline">\(X\)</span> es una variable con distribución no normal y <span class="math inline">\(n\geq 30\)</span>, el <em>intervalo de confianza para la media</em> <span class="math inline">\(\mu\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
+<p><span class="theorem-title"><strong>Teorema 4.4 (Intervalo de confianza para la media de una población no normal con muestras grandes) </strong></span>Si <span class="math inline">\(X\)</span> es una variable con distribución no normal y <span class="math inline">\(n\geq 30\)</span>, el <em>intervalo de confianza para la media</em> <span class="math inline">\(\mu\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
 <p><span class="math display">\[
 \bar{X}\pm t^{n-1}_{\alpha/2}\frac{\hat{S}}{\sqrt{n}}
 \]</span></p>
 </div>
 </section>
-<section id="intervalo-de-confianza-para-la-varianza-de-una-población-normal" class="level3" data-number="3.5.4">
-<h3 data-number="3.5.4" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-varianza-de-una-población-normal"><span class="header-section-number">3.5.4</span> Intervalo de confianza para la varianza de una población normal</h3>
+<section id="intervalo-de-confianza-para-la-varianza-de-una-población-normal" class="level3" data-number="4.5.4">
+<h3 data-number="4.5.4" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-varianza-de-una-población-normal"><span class="header-section-number">4.5.4</span> Intervalo de confianza para la varianza de una población normal</h3>
 <p>Sea <span class="math inline">\(X\)</span> una variable aleatoria que cumple las siguientes hipótesis:</p>
 <ol type="1">
 <li>Su distribución es normal <span class="math inline">\(X\sim N(\mu,\sigma)\)</span>.</li>
@@ -915,13 +921,13 @@ P\left(\frac{1}{\chi^{n-1}_{\alpha/2}}\geq \frac{\sigma^2}{nS^2}  \geq \frac{1}{
 \end{align*}\]</span></p>
 <p>Por tanto, el intervalo de confianza para la varianza de una población normal es:</p>
 <div id="thm-intervalo-confianza-varianza-normal" class="theorem">
-<p><span class="theorem-title"><strong>Teorema 3.5 (Intervalo de confianza para la varianza de una población normal) </strong></span>Si <span class="math inline">\(X\sim N(\mu, \sigma)\)</span> con <span class="math inline">\(\sigma\)</span> conocida, el <em>intervalo de confianza para la varianza</em> <span class="math inline">\(\sigma^2\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
+<p><span class="theorem-title"><strong>Teorema 4.5 (Intervalo de confianza para la varianza de una población normal) </strong></span>Si <span class="math inline">\(X\sim N(\mu, \sigma)\)</span> con <span class="math inline">\(\sigma\)</span> conocida, el <em>intervalo de confianza para la varianza</em> <span class="math inline">\(\sigma^2\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
 <p><span class="math display">\[
 \left[\frac{nS^2}{\chi^{n-1}_{1-\alpha/2}},\frac{nS^2}{\chi^{n-1}_{\alpha/2}}\right]
 \]</span></p>
 </div>
 <div id="exm-intervalo-confianza-varianza-normal" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.9 </strong></span>Siguiendo con el ejemplo de las puntuaciones en un examen, si se quiere estimar la varianza a partir de la muestra:</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.9 </strong></span>Siguiendo con el ejemplo de las puntuaciones en un examen, si se quiere estimar la varianza a partir de la muestra:</p>
 <p><span class="math display">\[
 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3
 \]</span></p>
@@ -938,8 +944,8 @@ P\left(\frac{1}{\chi^{n-1}_{\alpha/2}}\geq \frac{\sigma^2}{nS^2}  \geq \frac{1}{
 \]</span></p>
 </div>
 </section>
-<section id="intervalo-de-confianza-para-una-proporción" class="level3" data-number="3.5.5">
-<h3 data-number="3.5.5" class="anchored" data-anchor-id="intervalo-de-confianza-para-una-proporción"><span class="header-section-number">3.5.5</span> Intervalo de confianza para una proporción</h3>
+<section id="intervalo-de-confianza-para-una-proporción" class="level3" data-number="4.5.5">
+<h3 data-number="4.5.5" class="anchored" data-anchor-id="intervalo-de-confianza-para-una-proporción"><span class="header-section-number">4.5.5</span> Intervalo de confianza para una proporción</h3>
 <p>Para estimar la proporción <span class="math inline">\(p\)</span> de individuos de una población que presentan una determinada característica, se parte de la variable que mide el número de individuos que la presentan en una muestra de tamaño <span class="math inline">\(n\)</span>. Dicha variable sigue una distribución binomial</p>
 <p><span class="math display">\[
 X\sim B(n,p)
@@ -970,7 +976,7 @@ P\left(-z_{\alpha/2}\leq \frac{\hat p-p}{\sqrt{p(1-p)/n}}\leq z_{\alpha/2} \righ
 \end{align*}\]</span></p>
 <p>Por tanto, el intervalo de confianza para una proporción es</p>
 <div id="thm-intervalo-confianza-proporcion" class="theorem">
-<p><span class="theorem-title"><strong>Teorema 3.6 (Intervalo de confianza para una proporción) </strong></span>Si <span class="math inline">\(X\sim B(n,p)\)</span>, y se cumple que <span class="math inline">\(np\geq 5\)</span> y <span class="math inline">\(n(1-p)\geq 5\)</span>, entonces el <em>intervalo de confianza para la proporción</em> <span class="math inline">\(p\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
+<p><span class="theorem-title"><strong>Teorema 4.6 (Intervalo de confianza para una proporción) </strong></span>Si <span class="math inline">\(X\sim B(n,p)\)</span>, y se cumple que <span class="math inline">\(np\geq 5\)</span> y <span class="math inline">\(n(1-p)\geq 5\)</span>, entonces el <em>intervalo de confianza para la proporción</em> <span class="math inline">\(p\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
 <p><span class="math display">\[
 \left[\hat{p}-z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}},\hat{p}+z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\right]
 \]</span></p>
@@ -979,8 +985,8 @@ P\left(-z_{\alpha/2}\leq \frac{\hat p-p}{\sqrt{p(1-p)/n}}\leq z_{\alpha/2} \righ
 \hat{p}\pm z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
 \]</span></p>
 </div>
-<section id="cálculo-del-tamaño-muestra-para-estimar-una-proporción" class="level4" data-number="3.5.5.1">
-<h4 data-number="3.5.5.1" class="anchored" data-anchor-id="cálculo-del-tamaño-muestra-para-estimar-una-proporción"><span class="header-section-number">3.5.5.1</span> Cálculo del tamaño muestra para estimar una proporción</h4>
+<section id="cálculo-del-tamaño-muestra-para-estimar-una-proporción" class="level4" data-number="4.5.5.1">
+<h4 data-number="4.5.5.1" class="anchored" data-anchor-id="cálculo-del-tamaño-muestra-para-estimar-una-proporción"><span class="header-section-number">4.5.5.1</span> Cálculo del tamaño muestra para estimar una proporción</h4>
 <p>La amplitud o imprecisión del intervalo para la proporción de una población es</p>
 <p><span class="math display">\[
 A= 2 z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
@@ -995,7 +1001,7 @@ A= 2 z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \Leftrightarrow A^2= 4 z_{\
 \]</span></p>
 <p>Para poder hacer el cálculo se necesita una estimación de la proporción <span class="math inline">\(\hat{p}\)</span>, por lo que suele tomarse una muestra previa pequeña para calcularla. En el peor de los casos, si no se dispone de una muestra previa, puede tomarse <span class="math inline">\(\hat{p}=0.5\)</span>.</p>
 <div id="exm-intervalo-confianza-proporcion" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.10 </strong></span>Supóngase que se quiere estimar la proporción de fumadores que hay en una determinada población. Para ello se toma una muestra de 20 personas y se observa si fuman (1) o no (0):</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.10 </strong></span>Supóngase que se quiere estimar la proporción de fumadores que hay en una determinada población. Para ello se toma una muestra de 20 personas y se observa si fuman (1) o no (0):</p>
 <p><span class="math display">\[
 0 - 1 - 1 - 0 - 0 - 0 - 1 - 0 - 0 - 1 - 0 - 0 - 0 - 1 - 1- 0 - 1 - 1 - 0 - 0
 \]</span></p>
@@ -1011,7 +1017,7 @@ A= 2 z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \Leftrightarrow A^2= 4 z_{\
 <p>Es decir, <span class="math inline">\(p\)</span> estaría entre <span class="math inline">\(0.1\)</span> y <span class="math inline">\(0.7\)</span> con un 95% de confianza.</p>
 </div>
 <div id="exm-tamaño-muestral-intervalo-confianza-proporcion" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.11 </strong></span>Como se puede apreciar la imprecisión del intervalo anterior es <span class="math inline">\(\pm 0.3\)</span>, que es enorme teniendo en cuenta que se trata de un intervalo para una proporción.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.11 </strong></span>Como se puede apreciar la imprecisión del intervalo anterior es <span class="math inline">\(\pm 0.3\)</span>, que es enorme teniendo en cuenta que se trata de un intervalo para una proporción.</p>
 <p>Para conseguir intervalos precisos para estimar proporciones se necesitan tamaños muestrales bastante grandes. Si por ejemplo se quiere una precisión de <span class="math inline">\(\pm 0.05\)</span>, el tamaño muestral necesario sería:</p>
 <p><span class="math display">\[
 n= 4 z_{\alpha/2}^2\frac{\hat{p}(1-\hat{p})}{A^2}=4\cdot 1.96^2\frac{0.4\cdot 0.6}{(2\cdot0.05)^2}= 368.79.
@@ -1021,8 +1027,8 @@ n= 4 z_{\alpha/2}^2\frac{\hat{p}(1-\hat{p})}{A^2}=4\cdot 1.96^2\frac{0.4\cdot 0.
 </section>
 </section>
 </section>
-<section id="intervalos-de-confianza-para-la-comparación-dos-poblaciones" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="intervalos-de-confianza-para-la-comparación-dos-poblaciones"><span class="header-section-number">3.6</span> Intervalos de confianza para la comparación dos poblaciones</h2>
+<section id="intervalos-de-confianza-para-la-comparación-dos-poblaciones" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="intervalos-de-confianza-para-la-comparación-dos-poblaciones"><span class="header-section-number">4.6</span> Intervalos de confianza para la comparación dos poblaciones</h2>
 <p>En muchos estudios el objetivo en sí no es averiguar el valor de un parámetro, sino compararlo con el de otra población. Por ejemplo, comparar si un determinado parámetro vale lo mismo en la población de hombres y en la de mujeres.</p>
 <p>En estos casos no interesa realmente estimar los dos parámetros por separado, sino hacer una estimación que permita su comparación.</p>
 <p>Se verán tres casos:</p>
@@ -1039,8 +1045,8 @@ n= 4 z_{\alpha/2}^2\frac{\hat{p}(1-\hat{p})}{A^2}=4\cdot 1.96^2\frac{0.4\cdot 0.
 <li>Intervalo para el cociente de varianzas de dos poblaciones normales.</li>
 <li>Intervalo para la diferencia de proporciones de dos poblaciones.</li>
 </ul>
-<section id="intervalo-de-confianza-para-la-diferencia-de-medias-de-poblaciones-normales-con-varianzas-conocidas" class="level3" data-number="3.6.1">
-<h3 data-number="3.6.1" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-diferencia-de-medias-de-poblaciones-normales-con-varianzas-conocidas"><span class="header-section-number">3.6.1</span> Intervalo de confianza para la diferencia de medias de poblaciones normales con varianzas conocidas</h3>
+<section id="intervalo-de-confianza-para-la-diferencia-de-medias-de-poblaciones-normales-con-varianzas-conocidas" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-diferencia-de-medias-de-poblaciones-normales-con-varianzas-conocidas"><span class="header-section-number">4.6.1</span> Intervalo de confianza para la diferencia de medias de poblaciones normales con varianzas conocidas</h3>
 <p>Sean <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span> dos variables aleatorias que cumplen las siguientes hipótesis:</p>
 <ol type="1">
 <li>Su distribución es normal <span class="math inline">\(X_1\sim N(\mu_1,\sigma_1)\)</span> y <span class="math inline">\(X_2\sim N(\mu_2,\sigma_2)\)</span>.</li>
@@ -1070,7 +1076,7 @@ P\left(-z_{\alpha/2}\leq \frac{(\bar{X}_1-\bar{X}_2)-(\mu_1-\mu_2)}{\sqrt{\frac{
 \end{align*}\]</span></p>
 <p>Así pues, el intervalo de confianza para la diferencia de medias es</p>
 <div id="thm-intervalo-confianza-diferencia-medias-normales-varianzas-conocidas" class="theorem">
-<p><span class="theorem-title"><strong>Teorema 3.7 (Intervalo de confianza para la diferencia de medias de poblaciones normales con varianzas conocidas) </strong></span>Si <span class="math inline">\(X_1\sim N(\mu_1,\sigma_1)\)</span> y <span class="math inline">\(X_2\sim N(\mu_2,\sigma_2)\)</span>, con <span class="math inline">\(\sigma_1\)</span> y <span class="math inline">\(\sigma_2\)</span> conocidas, el <em>intervalo de confianza para la diferencia de medias</em> <span class="math inline">\(\mu_1-\mu_2\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
+<p><span class="theorem-title"><strong>Teorema 4.7 (Intervalo de confianza para la diferencia de medias de poblaciones normales con varianzas conocidas) </strong></span>Si <span class="math inline">\(X_1\sim N(\mu_1,\sigma_1)\)</span> y <span class="math inline">\(X_2\sim N(\mu_2,\sigma_2)\)</span>, con <span class="math inline">\(\sigma_1\)</span> y <span class="math inline">\(\sigma_2\)</span> conocidas, el <em>intervalo de confianza para la diferencia de medias</em> <span class="math inline">\(\mu_1-\mu_2\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
 <p><span class="math display">\[
 \left[\bar{X}_1-\bar{X}_2-z_{\alpha/2}\sqrt{\frac{\sigma^2_1}{n_1}+\frac{\sigma^2_2}{n_2}},\bar{X}_1-\bar{X}_2+z_{\alpha/2}\sqrt{\frac{\sigma^2_1}{n_1}+\frac{\sigma^2_2}{n_2}}\right]
 \]</span></p>
@@ -1080,8 +1086,8 @@ P\left(-z_{\alpha/2}\leq \frac{(\bar{X}_1-\bar{X}_2)-(\mu_1-\mu_2)}{\sqrt{\frac{
 \]</span></p>
 </div>
 </section>
-<section id="intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales" class="level3" data-number="3.6.2">
-<h3 data-number="3.6.2" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales"><span class="header-section-number">3.6.2</span> Intervalo de confianza para la diferencia de medias de dos poblaciones normales con varianzas desconocidas e iguales</h3>
+<section id="intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales" class="level3" data-number="4.6.2">
+<h3 data-number="4.6.2" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales"><span class="header-section-number">4.6.2</span> Intervalo de confianza para la diferencia de medias de dos poblaciones normales con varianzas desconocidas e iguales</h3>
 <p>Sean <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span> dos variables aleatorias que cumplen las siguientes hipótesis:</p>
 <ul>
 <li>Su distribución es normal <span class="math inline">\(X_1\sim N(\mu_1,\sigma_1)\)</span> y <span class="math inline">\(X_2\sim N(\mu_2,\sigma_2)\)</span>.</li>
@@ -1118,7 +1124,7 @@ P\left(-t^{n_1+n_2-2}_{\alpha/2}\leq \frac{(\bar{X}_1-\bar{X}_2)-(\mu_1-\mu_2)}{
 </div>
 <p>Así pues, el intervalo de confianza para la diferencia de medias es</p>
 <div id="thm-intervalo-confianza-diferencia-medias-normales-varianzas-desconocidas-iguales" class="theorem">
-<p><span class="theorem-title"><strong>Teorema 3.8 (Intervalo de confianza para la diferencia de medias de poblaciones normales con varianzas desconocidas iguales) </strong></span>Si <span class="math inline">\(X_1\sim N(\mu_1,\sigma_1)\)</span> y <span class="math inline">\(X_2\sim N(\mu_2,\sigma_2)\)</span>, con <span class="math inline">\(\sigma_1 = \sigma_2\)</span> desconocidas, el <em>intervalo de confianza para la diferencia de medias</em> <span class="math inline">\(\mu_1-\mu_2\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
+<p><span class="theorem-title"><strong>Teorema 4.8 (Intervalo de confianza para la diferencia de medias de poblaciones normales con varianzas desconocidas iguales) </strong></span>Si <span class="math inline">\(X_1\sim N(\mu_1,\sigma_1)\)</span> y <span class="math inline">\(X_2\sim N(\mu_2,\sigma_2)\)</span>, con <span class="math inline">\(\sigma_1 = \sigma_2\)</span> desconocidas, el <em>intervalo de confianza para la diferencia de medias</em> <span class="math inline">\(\mu_1-\mu_2\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
 <p><span class="math display">\[
 \left[\bar{X}_1-\bar{X}_2-t^{n_1+n_2-2}_{\alpha/2}\hat{S}_p\sqrt{\frac{n_1+n_2}{n_1n_2}},\bar{X}_1-\bar{X}_2+t^{n_1+n_2-2}_{\alpha/2}\hat{S}_p\sqrt{\frac{n_1+n_2}{n_1n_2}}\right]
 \]</span></p>
@@ -1140,7 +1146,7 @@ P\left(-t^{n_1+n_2-2}_{\alpha/2}\leq \frac{(\bar{X}_1-\bar{X}_2)-(\mu_1-\mu_2)}{
 </ul>
 <p>Tanto en el primer como en el segundo caso se dice que entre las medias hay diferencias <em>estadísticamente significativas</em>.</p>
 <div id="exm-intervalo-confianza-diferencia-medias-normales-varianzas-desconocidas-iguales" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.12 </strong></span>Supóngase que se quiere comparar el rendimiento académico de dos grupos de alumnos, uno con 10 alumnos y otro con 12, que han seguido metodologías diferentes. Para ello se les realiza un examen y se obtienen las siguientes puntuaciones:</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.12 </strong></span>Supóngase que se quiere comparar el rendimiento académico de dos grupos de alumnos, uno con 10 alumnos y otro con 12, que han seguido metodologías diferentes. Para ello se les realiza un examen y se obtienen las siguientes puntuaciones:</p>
 <p><span class="math display">\[\begin{align*}
 X_1 &amp;: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3 \\
 X_2 &amp;: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
@@ -1160,8 +1166,8 @@ X_2 &amp;: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
 <p>Es decir, la diferencia de puntuaciones medias <span class="math inline">\(\mu_1-\mu_2\)</span> está entre <span class="math inline">\(-3.0521\)</span> y <span class="math inline">\(0.1521\)</span> puntos con una confianza del <span class="math inline">\(95\%\)</span>.</p>
 <p>A la vista del intervalo se puede concluir que, puesto que el intervalo contiene tanto valores positivos como negativos, y por tanto contiene al 0, no puede afirmarse que una de las medias se mayor que la otra, de modo que se supone que son iguales y no se puede decir que haya diferencias significativas entre los grupos.</p>
 </section>
-<section id="intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-y-distintas" class="level3" data-number="3.6.3">
-<h3 data-number="3.6.3" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-y-distintas"><span class="header-section-number">3.6.3</span> Intervalo de confianza para la diferencia de medias de dos poblaciones normales con varianzas desconocidas y distintas</h3>
+<section id="intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-y-distintas" class="level3" data-number="4.6.3">
+<h3 data-number="4.6.3" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-y-distintas"><span class="header-section-number">4.6.3</span> Intervalo de confianza para la diferencia de medias de dos poblaciones normales con varianzas desconocidas y distintas</h3>
 <p>Sean <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span> dos variables aleatorias que cumplen las siguientes hipótesis:</p>
 <ul>
 <li>Su distribución es normal <span class="math inline">\(X_1\sim N(\mu_1,\sigma_1)\)</span> y <span class="math inline">\(X_2\sim N(\mu_2,\sigma_2)\)</span>.</li>
@@ -1191,7 +1197,7 @@ P\left(-t^{g}_{\alpha/2}\leq \frac{(\bar{X}_1-\bar{X}_2)-(\mu_1-\mu_2)}{\sqrt{\f
 </div>
 <p>Así pues, el intervalo de confianza para la diferencia de medias es</p>
 <div id="thm-intervalo-confianza-diferencia-medias-normales-varianzas-desconocidas-iguales" class="theorem">
-<p><span class="theorem-title"><strong>Teorema 3.9 (Intervalo de confianza para la diferencia de medias de poblaciones normales con varianzas desconocidas distintas) </strong></span>Si <span class="math inline">\(X_1\sim N(\mu_1,\sigma_1)\)</span> y <span class="math inline">\(X_2\sim N(\mu_2,\sigma_2)\)</span>, con <span class="math inline">\(\sigma_1 \neq \sigma_2\)</span> desconocidas, el <em>intervalo de confianza para la diferencia de medias</em> <span class="math inline">\(\mu_1-\mu_2\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es <span class="math display">\[
+<p><span class="theorem-title"><strong>Teorema 4.9 (Intervalo de confianza para la diferencia de medias de poblaciones normales con varianzas desconocidas distintas) </strong></span>Si <span class="math inline">\(X_1\sim N(\mu_1,\sigma_1)\)</span> y <span class="math inline">\(X_2\sim N(\mu_2,\sigma_2)\)</span>, con <span class="math inline">\(\sigma_1 \neq \sigma_2\)</span> desconocidas, el <em>intervalo de confianza para la diferencia de medias</em> <span class="math inline">\(\mu_1-\mu_2\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es <span class="math display">\[
 \left[\bar{X}_1-\bar{X}_2-t^{g}_{\alpha/2}\sqrt{\frac{\hat{S}^2_1}{n_1}+\frac{\hat{S}^2_2}{n_2}},\bar{X}_1-\bar{X}_2-t^{g}_{\alpha/2}\sqrt{\frac{\hat{S}^2_1}{n_1}+\frac{\hat{S}^2_2}{n_2}}\right]
 \]</span></p>
 <p>o bien</p>
@@ -1207,8 +1213,8 @@ P\left(-t^{g}_{\alpha/2}\leq \frac{(\bar{X}_1-\bar{X}_2)-(\mu_1-\mu_2)}{\sqrt{\f
 <p>La respuesta está en el próximo intervalo que se verá, que permite estimar la razón de varianzas <span class="math inline">\(\frac{\sigma_2^2}{\sigma_1^2}\)</span> y por tanto, su comparación.</p>
 <p>Así pues, antes de calcular el intervalo de confianza para la comparación de medias, cuando las varianzas poblacionales sean desconocidas, es necesario calcular el intervalo de confianza para la razón de varianzas y elegir el intervalo para la comparación de medias en función del valor de dicho intervalo.</p>
 </section>
-<section id="intervalo-de-confianza-para-el-cociente-de-varianzas" class="level3" data-number="3.6.4">
-<h3 data-number="3.6.4" class="anchored" data-anchor-id="intervalo-de-confianza-para-el-cociente-de-varianzas"><span class="header-section-number">3.6.4</span> Intervalo de confianza para el cociente de varianzas</h3>
+<section id="intervalo-de-confianza-para-el-cociente-de-varianzas" class="level3" data-number="4.6.4">
+<h3 data-number="4.6.4" class="anchored" data-anchor-id="intervalo-de-confianza-para-el-cociente-de-varianzas"><span class="header-section-number">4.6.4</span> Intervalo de confianza para el cociente de varianzas</h3>
 <p>Sean <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span> dos variables aleatorias que cumplen las siguientes hipótesis:</p>
 <ul>
 <li>Su distribución es normal <span class="math inline">\(X_1\sim N(\mu_1,\sigma_1)\)</span> y <span class="math inline">\(X_2\sim N(\mu_2,\sigma_2)\)</span>.</li>
@@ -1240,7 +1246,7 @@ f^{n_2-1,n_1-1}_{1-\alpha/2}\right) = \\ &amp;= P\left(f^{n_2-1,n_1-1}_{\alpha/2
 \end{align*}\]</span></p>
 <p>Por tanto, el intervalo de confianza para la comparación de varianzas de dos poblaciones normales es</p>
 <div id="thm-intervalo-confianza-cociente-varianzas-normales-varianzas" class="theorem">
-<p><span class="theorem-title"><strong>Teorema 3.10 (Intervalo de confianza para el cociente de varianzas de poblaciones normales) </strong></span>Si <span class="math inline">\(X_1\sim N(\mu_1,\sigma_1)\)</span> y <span class="math inline">\(X_2\sim N(\mu_2,\sigma_2)\)</span>, el <em>intervalo de confianza para el cociente de varianzas</em> <span class="math inline">\(\sigma_1/\sigma_2\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
+<p><span class="theorem-title"><strong>Teorema 4.10 (Intervalo de confianza para el cociente de varianzas de poblaciones normales) </strong></span>Si <span class="math inline">\(X_1\sim N(\mu_1,\sigma_1)\)</span> y <span class="math inline">\(X_2\sim N(\mu_2,\sigma_2)\)</span>, el <em>intervalo de confianza para el cociente de varianzas</em> <span class="math inline">\(\sigma_1/\sigma_2\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
 <p><span class="math display">\[
 \left[f^{n_2-1,n_1-1}_{\alpha/2}\frac{\hat{S}_1^2}{\hat{S}_2^2},f^{n_2-1,n_1-1}_{1-\alpha/2}\frac{\hat{S}_1^2}{\hat{S}_2^2}\right]
 \]</span></p>
@@ -1257,7 +1263,7 @@ f^{n_2-1,n_1-1}_{1-\alpha/2}\right) = \\ &amp;= P\left(f^{n_2-1,n_1-1}_{\alpha/2
 <li>Si el intervalo tiene tanto valores mayores como menores que 1, y por tanto contiene al 1 (<span class="math inline">\(1\in [l_i,l_s])\)</span>, entonces no se puede afirmar que una varianza sea mayor que la otra. En este caso se suele asumir la hipótesis de que las varianzas son iguales <span class="math inline">\(\sigma_1^2=\sigma_2^2\)</span>.</li>
 </ul>
 <div id="exm-intervalo-confianza-cociente-varianzas" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.13 </strong></span>Siguiendo con el ejemplo de las puntuaciones en dos grupos:</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.13 </strong></span>Siguiendo con el ejemplo de las puntuaciones en dos grupos:</p>
 <p><span class="math display">\[\begin{align*}
 X_1 &amp;: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3 \\
 X_2 &amp;: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
@@ -1278,8 +1284,8 @@ X_2 &amp;: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
 <p>Como el intervalo tiene tanto valores menores como mayores que 1, no se puede concluir que una varianza sea mayor que la otra, y por tanto se mantiene la hipótesis de que ambas varianzas son iguales.</p>
 <p>Si ahora se quisiesen comparar las medias de ambas poblaciones, el intervalo de confianza para la diferencia de medias que habría que tomar es el que parte de la hipótesis de igualdad de varianzas, que precisamente es el que se ha utilizado antes.</p>
 </section>
-<section id="intervalo-de-confianza-para-la-diferencia-de-proporciones" class="level3" data-number="3.6.5">
-<h3 data-number="3.6.5" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-diferencia-de-proporciones"><span class="header-section-number">3.6.5</span> Intervalo de confianza para la diferencia de proporciones</h3>
+<section id="intervalo-de-confianza-para-la-diferencia-de-proporciones" class="level3" data-number="4.6.5">
+<h3 data-number="4.6.5" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-diferencia-de-proporciones"><span class="header-section-number">4.6.5</span> Intervalo de confianza para la diferencia de proporciones</h3>
 <p>Para comparar las proporciones <span class="math inline">\(p_1\)</span> y <span class="math inline">\(p_2\)</span> de individuos que presentan una determinada característica en dos poblaciones independientes, se estima su diferencia <span class="math inline">\(p_1-p_2\)</span>.</p>
 <p>Si se toma una muestra de cada población, de tamaños <span class="math inline">\(n_1\)</span> y <span class="math inline">\(n_2\)</span> respectivamente, las variables que miden el número de individuos que presentan la característica en cada una de ellas siguen distribuciones</p>
 <p><span class="math display">\[
@@ -1313,13 +1319,13 @@ P\left(-z_{\alpha/2}\leq \frac{(\hat{p}_1-\hat{p_2})-(p_1-p_2)}{\sqrt{\frac{p_1(
 </div>
 <p>Así pues, el intervalo de confianza para la diferencia de proporciones es</p>
 <div id="thm-intervalo-confianza-diferencia-proporciones" class="theorem">
-<p><span class="theorem-title"><strong>Teorema 3.11 (Intervalo de confianza para la diferencia de proporciones) </strong></span>Si <span class="math inline">\(X_1\sim B(n_1,p_1)\)</span> y <span class="math inline">\(X_2\sim B(n_2,p_2)\)</span>, con <span class="math inline">\(n_1p_1\geq 5\)</span>, <span class="math inline">\(n_1(1-p_1)\geq 5\)</span>, <span class="math inline">\(n_2p_2\geq 5\)</span> y <span class="math inline">\(n_2(1-p_2)\geq 5\)</span>, el <em>intervalo de confianza para la diferencia de proporciones</em> <span class="math inline">\(p_1-p_2\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
+<p><span class="theorem-title"><strong>Teorema 4.11 (Intervalo de confianza para la diferencia de proporciones) </strong></span>Si <span class="math inline">\(X_1\sim B(n_1,p_1)\)</span> y <span class="math inline">\(X_2\sim B(n_2,p_2)\)</span>, con <span class="math inline">\(n_1p_1\geq 5\)</span>, <span class="math inline">\(n_1(1-p_1)\geq 5\)</span>, <span class="math inline">\(n_2p_2\geq 5\)</span> y <span class="math inline">\(n_2(1-p_2)\geq 5\)</span>, el <em>intervalo de confianza para la diferencia de proporciones</em> <span class="math inline">\(p_1-p_2\)</span> con nivel de confianza <span class="math inline">\(1-\alpha\)</span> es</p>
 <p><span class="math display">\[
 \hat{p}_1-\hat{p}_2\pm z_{\alpha/2}\sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1}+\frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}
 \]</span></p>
 </div>
 <div id="exm-intervalo-confianza-diferencia-proporciones" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.14 </strong></span>Supóngase que se quieren comparar las proporciones o porcentajes de aprobados en dos grupos que han seguido metodologías distintas. En el primer grupo han aprobado 24 alumnos de un total de 40, mientras que en el segundo han aprobado 48 de 60.</p>
+<p><span class="theorem-title"><strong>Ejemplo 4.14 </strong></span>Supóngase que se quieren comparar las proporciones o porcentajes de aprobados en dos grupos que han seguido metodologías distintas. En el primer grupo han aprobado 24 alumnos de un total de 40, mientras que en el segundo han aprobado 48 de 60.</p>
 <p>Para calcular el intervalo de confianza para la diferencia de proporciones con un nivel de confianza del <span class="math inline">\(95\%\)</span>, se tiene:</p>
 <ul>
 <li><span class="math inline">\(\hat{p}_1=24/40= 0.6\)</span> y <span class="math inline">\(\hat{p}_2=48/60=0.8\)</span>, de manera que se cumplen las hipótesis <span class="math inline">\(n_1\hat{p}_1=40\cdot 0.6=24\geq 5\)</span>, <span class="math inline">\(n_1(1-\hat{p}_1)=40(1-0.6)=26\geq 5\)</span>, <span class="math inline">\(n_2\hat{p}_2=60\cdot 0.8 =48\geq 5\)</span> y <span class="math inline">\(n_2(1-\hat{p}_2)=60(1-0.8)=12\geq 5\)</span>.</li>
@@ -1687,13 +1693,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02-estadistica-descriptiva.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estadística Descriptiva</span></span>
+      <a href="./03-regresion.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regresión</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./08-contrastes-parametricos.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

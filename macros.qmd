@@ -1,4 +1,4 @@
-::: {.hidden}
+:::{.hidden}
 $$
 \newcommand{\mathbb{N}}{\mathbb{N}}
 \newcommand{\mathbb{Z}}{\mathbb{Z}}
