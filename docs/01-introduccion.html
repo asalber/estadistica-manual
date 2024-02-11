@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-99.9.9">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -50,7 +50,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
@@ -59,6 +65,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "hay más resultados en este documento",
     "search-more-matches-text": "más resultados en este documento",
     "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancelar",
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
@@ -68,13 +75,40 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <meta property="og:title" content="Manual de Estadística - 1&nbsp; Introducción a la Estadística">
 <meta property="og:description" content="">
-<meta property="og:image" content="img/introduccion/proposito_estadistica.svg">
-<meta property="og:site-name" content="Manual de Estadística">
+<meta property="og:image" content="img/logos/sticker.png">
+<meta property="og:site_name" content="Manual de Estadística">
 <meta name="twitter:title" content="Manual de Estadística - 1&nbsp; Introducción a la Estadística">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="img/introduccion/proposito_estadistica.svg">
+<meta name="twitter:image" content="img/logos/sticker.png">
 <meta name="twitter:site" content="@aprendeconalf">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -85,12 +119,12 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-introduccion.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a la Estadística</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-introduccion.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a la Estadística</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -100,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -108,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Manual de Estadística</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://aprendeconalf.es" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
+    <a href="https://aprendeconalf.es" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -180,20 +214,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./04-probabilidad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./07-estimacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-contrastes-parametricos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -243,20 +283,22 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <section id="la-estadística-como-herramienta-científica" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="la-estadística-como-herramienta-científica"><span class="header-section-number">1.1</span> La estadística como herramienta científica</h2>
 <section id="qué-es-la-estadística" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="qué-es-la-estadística"><span class="header-section-number">1.1.1</span> ¿Qué es la estadística?</h3>
 <div id="def-estadistica" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 1.1 (Estadística) </strong></span>La <em>estadística</em> es una rama de las matemáticas que se encarga de la recogida, análisis e interpretación de datos.</p>
+<p><span class="theorem-title"><strong>Definición 1.1 (Estadística)</strong></span> La <em>estadística</em> es una rama de las matemáticas que se encarga de la recogida, análisis e interpretación de datos.</p>
 </div>
 <p>El papel de la Estadística es extraer información de los datos para adquirir el conocimiento necesario para tomar decisiones.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/introduccion/proposito_estadistica.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Propósito de la Estadística</figcaption>
+<figcaption>Propósito de la Estadística</figcaption>
 </figure>
 </div>
 <p>La estadística es imprescindible en cualquier disciplina científica o técnica donde se manejen datos, especialmente si son grandes volúmenes de datos, como por ejemplo en Física, Química, Medicina, Psicología, Economía o Ciencias Sociales.</p>
@@ -274,13 +316,13 @@ ul.task-list li input[type="checkbox"] {
 <section id="población-estadística" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="población-estadística"><span class="header-section-number">1.2.1</span> Población estadística</h3>
 <div id="def-poblacion" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 1.2 (Población) </strong></span>Una <em>población</em> es un conjunto de elementos definido por una o más características que tienen todos los elementos, y sólo ellos. Cada elemento de la población se llama <em>individuo</em>.</p>
+<p><span class="theorem-title"><strong>Definición 1.2 (Población)</strong></span> Una <em>población</em> es un conjunto de elementos definido por una o más características que tienen todos los elementos, y sólo ellos. Cada elemento de la población se llama <em>individuo</em>.</p>
 </div>
 <div id="def-tamaño-poblacional" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 1.3 (Tamaño poblacional) </strong></span>El número de individuos de una población se conoce como <em>tamaño poblacional</em> y se representa como <span class="math inline">\(N\)</span>.</p>
+<p><span class="theorem-title"><strong>Definición 1.3 (Tamaño poblacional)</strong></span> El número de individuos de una población se conoce como <em>tamaño poblacional</em> y se representa como <span class="math inline">\(N\)</span>.</p>
 </div>
 <div id="exm-tamaño-poblacional" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 1.1 </strong></span>En unas elecciones generales a la presidencia del gobierno, la población serían todos los individuos del estado con derecho a voto. En el estudio de una enfermedad, la población sería todas las personas que tienen la enfermedad. Y en un proceso de control de calidad en la fabricación de un fármaco, la población estaría formada por todos los fármacos que se producen en la fábrica.</p>
+<p><span class="theorem-title"><strong>Ejemplo 1.1</strong></span> En unas elecciones generales a la presidencia del gobierno, la población serían todos los individuos del estado con derecho a voto. En el estudio de una enfermedad, la población sería todas las personas que tienen la enfermedad. Y en un proceso de control de calidad en la fabricación de un fármaco, la población estaría formada por todos los fármacos que se producen en la fábrica.</p>
 </div>
 <p>A veces, no todos los elementos de la población están accesibles para su estudio. Entonces se distingue entre:</p>
 <ul>
@@ -288,7 +330,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Población Estudiada</strong>: Conjunto de elementos realmente accesibles en el estudio.</li>
 </ul>
 <div id="exm-poblacion-teorica-observada" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 1.2 </strong></span>En el caso del estudio de una enfermedad, la población teórica sería todas las personas que contraigan la enfermedad, incluso si aún no han nacido, mientras que la población estudiada se limitaría al número de personas enfermas que realmente podemos estudiar (obsérvese que incluso quedarían fuera las personas enfermas pero de las que no podemos conseguir información).</p>
+<p><span class="theorem-title"><strong>Ejemplo 1.2</strong></span> En el caso del estudio de una enfermedad, la población teórica sería todas las personas que contraigan la enfermedad, incluso si aún no han nacido, mientras que la población estudiada se limitaría al número de personas enfermas que realmente podemos estudiar (obsérvese que incluso quedarían fuera las personas enfermas pero de las que no podemos conseguir información).</p>
 </div>
 </section>
 <section id="inconvenientes-en-el-estudio-de-la-población" class="level3" data-number="1.2.2">
@@ -304,10 +346,10 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="1.2.3" class="anchored" data-anchor-id="muestra-estadística"><span class="header-section-number">1.2.3</span> Muestra estadística</h3>
 <p>Cuando no es posible o conveniente estudiar todos los individuos de la población, se estudia sólo una parte de la misma.</p>
 <div id="def-muestra" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 1.4 (Muestra) </strong></span>Una <em>muestra</em> es un subconjunto de la población.</p>
+<p><span class="theorem-title"><strong>Definición 1.4 (Muestra)</strong></span> Una <em>muestra</em> es un subconjunto de la población.</p>
 </div>
 <div id="def-tamaño-muestral" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 1.5 (Tamaño muestral) </strong></span>Al número de individuos que componen la muestra se le llama <em>tamaño muestral</em> y se representa por <span class="math inline">\(n\)</span>.</p>
+<p><span class="theorem-title"><strong>Definición 1.5 (Tamaño muestral)</strong></span> Al número de individuos que componen la muestra se le llama <em>tamaño muestral</em> y se representa por <span class="math inline">\(n\)</span>.</p>
 </div>
 <p>Habitualmente, el estudio de una población se realiza a partir de muestras extraídas de dicha población.</p>
 <p>Generalmente, el estudio de la muestra sólo aporta conocimiento aproximado de la población. Pero en muchos casos es <em>suficiente</em>.</p>
@@ -318,7 +360,7 @@ ul.task-list li input[type="checkbox"] {
 <p>La respuesta depende de varios factores, como la variabilidad de la población o la fiabilidad deseada para las extrapolaciones que se hagan hacia la población.</p>
 <p>Por desgracia no se podrá responder hasta casi el final del curso, pero en general, cuantos más individuos haya en la muestra, más fiables serán las conclusiones sobre la población, pero también será más lento y costoso el estudio.</p>
 <div id="exm-tamaño-muestral-suficiente" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 1.3 </strong></span>Para entender a qué nos referimos cuando hablamos de un tamaño muestral suficiente para comprender lo que ocurre en la población, podemos utilizar el siguiente símil en que se trata de comprender el motivo que representa una fotografía.</p>
+<p><span class="theorem-title"><strong>Ejemplo 1.3</strong></span> Para entender a qué nos referimos cuando hablamos de un tamaño muestral suficiente para comprender lo que ocurre en la población, podemos utilizar el siguiente símil en que se trata de comprender el motivo que representa una fotografía.</p>
 <p>Una fotografía digital está formada por multitud de pequeños puntitos llamados pixels que se dispone en una enorme tabla de filas y columnas (cuantas más filas y columnas haya se habla de que la foto tiene más resolución). Aquí la población estaría formada por todos y cada uno de los píxeles que forman la foto. Por otro lado cada pixel tiene un color y es la variedad de colores a lo largo de los pixels la que permite formar la imagen de la fotografía.</p>
 <p><em>¿Cuántos píxeles debemos tomar en una muestra para averiguar la imagen de la foto?</em></p>
 <p>La respuesta depende de la variabilidad de colores en la foto. Si todos los pixels de la foto son del mismo color, entonces un sólo pixel basta para desvelar la imagen. Pero, si la foto tiene mucha variabilidad de colores, necesitaremos muchos más pixels en la muestra para descubrir el motivo de la foto.</p>
@@ -326,7 +368,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/introduccion/muestra_molinos1.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Muestra pequeña de píxeles de una foto.</figcaption>
+<figcaption>Muestra pequeña de píxeles de una foto.</figcaption>
 </figure>
 </div>
 <p><em>¡Con una muestra pequeña es difícil averiguar el contenido de la imagen!</em></p>
@@ -335,7 +377,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/introduccion/muestra_molinos2.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Muestra mayor de píxeles de una foto.</figcaption>
+<figcaption>Muestra mayor de píxeles de una foto.</figcaption>
 </figure>
 </div>
 <p><em>¡Con una muestra mayor es posible desvelar el motivo de la foto!</em></p>
@@ -343,7 +385,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/introduccion/muestra_molinos3.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Población de píxeles de una foto.</figcaption>
+<figcaption>Población de píxeles de una foto.</figcaption>
 </figure>
 </div>
 <p>Lo importante es que <em>¡No es necesario conocer todos los píxeles para averiguar la imagen!</em></p>
@@ -355,7 +397,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/introduccion/tipos_razonamiento.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Tipos de razonamiento.</figcaption>
+<figcaption>Tipos de razonamiento.</figcaption>
 </figure>
 </div>
 <ul>
@@ -368,9 +410,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="muestreo" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="muestreo"><span class="header-section-number">1.3</span> Muestreo</h2>
 <div id="def-muestreo" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 1.6 (Muestreo) </strong></span>El proceso de selección de los elementos que compondrán una muestra se conoce como <em>muestreo</em>.</p>
+<p><span class="theorem-title"><strong>Definición 1.6 (Muestreo)</strong></span> El proceso de selección de los elementos que compondrán una muestra se conoce como <em>muestreo</em>.</p>
 </div>
-<p>[](img/introduccion/muestreo.svg” alt=“Muestreo” width=“500px”&gt;</p>
+<p>![](img/introduccion/muestreo.svg” alt=“Muestreo” width=“500px”&gt;</p>
 <p>Para que una muestra refleje información fidedigna sobre la población global debe ser representativa de la misma, lo que significa que debe reproducir a pequeña escala la variabilidad de la población.</p>
 <p><em>El objetivo es obtener una muestra representativa de la población.</em></p>
 <section id="modalidades-de-muestreo" class="level3" data-number="1.3.1">
@@ -397,13 +439,13 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="1.3.3" class="anchored" data-anchor-id="variables-estadísticas"><span class="header-section-number">1.3.3</span> Variables estadísticas</h3>
 <p>Todo estudio estadístico comienza por la identificación de las características que interesa estudiar en la población y que se medirán en los individuos de la muestra.</p>
 <div id="def-variable-estadistica" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 1.7 (Variable estadística) </strong></span>Una <em>variable estadística</em> es una propiedad o característica medida en los individuos de la población.</p>
+<p><span class="theorem-title"><strong>Definición 1.7 (Variable estadística)</strong></span> Una <em>variable estadística</em> es una propiedad o característica medida en los individuos de la población.</p>
 <p>Los <em>datos</em> son los valores observados en las variables estadísticas.</p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/introduccion/variables_estadisticas.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Variables estadísticas.</figcaption>
+<figcaption>Variables estadísticas.</figcaption>
 </figure>
 </div>
 <p>Estas características pueden ser de distintos tipos de acuerdo a su naturaleza y su escala:</p>
@@ -426,14 +468,14 @@ Ejemplo: El peso o la estatura.</p></li>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/introduccion/tipos_variables.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Tipos de variables estadísticas.</figcaption>
+<figcaption>Tipos de variables estadísticas.</figcaption>
 </figure>
 </div>
 <section id="elección-del-tipo-de-variable-más-apropiado" class="level4" data-number="1.3.3.1">
 <h4 data-number="1.3.3.1" class="anchored" data-anchor-id="elección-del-tipo-de-variable-más-apropiado"><span class="header-section-number">1.3.3.1</span> Elección del tipo de variable más apropiado</h4>
 <p>En ocasiones una característica puede medirse mediante variables de distinto tipo.</p>
 <div id="exm-eleccion-tipos-variables" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 1.4 </strong></span>Si una persona fuma o no podría medirse de diferentes formas:</p>
+<p><span class="theorem-title"><strong>Ejemplo 1.4</strong></span> Si una persona fuma o no podría medirse de diferentes formas:</p>
 <ul>
 <li><p>Fuma: si/no. (Nominal)</p></li>
 <li><p>Nivel de fumador: No fuma / ocasional / moderado / bastante / empedernido. (Ordinal)</p></li>
@@ -444,7 +486,7 @@ Ejemplo: El peso o la estatura.</p></li>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/introduccion/informacion_variables.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Cantidad de información de los tipos de variables estadísticas.</figcaption>
+<figcaption>Cantidad de información de los tipos de variables estadísticas.</figcaption>
 </figure>
 </div>
 <p>De acuerdo al papel que juegan en el estudio las variables también pueden clasificarse como:</p>
@@ -453,7 +495,7 @@ Ejemplo: El peso o la estatura.</p></li>
 <li><p><strong>Variables dependientes</strong>: Variables que supuestamente dependen de otras variables en el estudio. No son manipuladas en el experimento y también se conocen como <em>variables respuesta</em>.</p></li>
 </ul>
 <div id="exm-variables-dependientes-independientes" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 1.5 </strong></span>En un estudio sobre el rendimiento de los alumnos de un curso, la inteligencia de los alumnos y el número de horas de estudio diarias serían variables independientes y la nota del curso sería una variable dependiente.</p>
+<p><span class="theorem-title"><strong>Ejemplo 1.5</strong></span> En un estudio sobre el rendimiento de los alumnos de un curso, la inteligencia de los alumnos y el número de horas de estudio diarias serían variables independientes y la nota del curso sería una variable dependiente.</p>
 </div>
 </section>
 </section>
@@ -464,13 +506,13 @@ Ejemplo: El peso o la estatura.</p></li>
 <li><strong>Experimentales</strong>: Cuando las variables independientes son manipuladas para ver el efecto que producen en las variables dependientes.</li>
 </ul>
 <div id="exm-estudios-experimentales" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 1.6 </strong></span>En un estudio sobre el rendimiento de los estudiantes en un test, el profesor manipula la metodología de estudio para crear dos o más grupos con metodologías de estudio distintas.</p>
+<p><span class="theorem-title"><strong>Ejemplo 1.6</strong></span> En un estudio sobre el rendimiento de los estudiantes en un test, el profesor manipula la metodología de estudio para crear dos o más grupos con metodologías de estudio distintas.</p>
 </div>
 <ul>
 <li><strong>No experimentales</strong>: Cuando las variables independientes no son manipuladas. Esto no significa que sea imposible hacerlo, sino que es difícil o poco ético hacerlo.</li>
 </ul>
 <div id="exm-estudios-no-experimentales" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 1.7 </strong></span>En un estudio un investigador puede estar interesado en el efecto de fumar sobre el cáncer de pulmón. Aunque es posible, no sería ético pedirle a los pacientes que fumasen para ver el efecto que tiene sobre sus pulmones. En este caso, el investigador podría estudiar dos grupos de pacientes, uno con cáncer de pulmón y otro sin cáncer, y observar en cada grupo cuántos fuman o no.</p>
+<p><span class="theorem-title"><strong>Ejemplo 1.7</strong></span> En un estudio un investigador puede estar interesado en el efecto de fumar sobre el cáncer de pulmón. Aunque es posible, no sería ético pedirle a los pacientes que fumasen para ver el efecto que tiene sobre sus pulmones. En este caso, el investigador podría estudiar dos grupos de pacientes, uno con cáncer de pulmón y otro sin cáncer, y observar en cada grupo cuántos fuman o no.</p>
 </div>
 <p>Los estudios experimentales permiten identificar causas y efectos entre las variables del estudio, mientras que los no experimentales sólo permiten identificar relaciones de asociación entre las variables.</p>
 </section>
@@ -479,7 +521,7 @@ Ejemplo: El peso o la estatura.</p></li>
 <p>Las variables a estudiar se medirán en cada uno de los individuos de la muestra, obteniendo un conjunto de datos que suele organizarse en forma de matriz que se conoce como tabla de datos_.</p>
 <p>En esta tabla cada columna contiene la información de una variable y cada fila la información de un individuo.</p>
 <div id="exm-tabla-datos" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 1.8 </strong></span>La siguiente tabla contiene información de las variables Nombre, Edad, Sexo, Peso y Altura de una muestra de 6 personas.</p>
+<p><span class="theorem-title"><strong>Ejemplo 1.8</strong></span> La siguiente tabla contiene información de las variables Nombre, Edad, Sexo, Peso y Altura de una muestra de 6 personas.</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -552,7 +594,7 @@ Ejemplo: El peso o la estatura.</p></li>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/introduccion/ciclo_estadistico.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">El ciclo estadístico.</figcaption>
+<figcaption>El ciclo estadístico.</figcaption>
 </figure>
 </div>
 
@@ -603,6 +645,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -671,13 +740,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'alternate';
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -756,10 +827,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -769,8 +839,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -783,6 +862,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -826,6 +1024,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -851,6 +1050,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -912,17 +1137,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
+      <a href="./index.html" class="pagination-link  aria-label=" prefacio"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefacio</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02-estadistica-descriptiva.html" class="pagination-link">
+      <a href="./02-estadistica-descriptiva.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>Estadística Descriptiva</span>">
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estadística Descriptiva</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

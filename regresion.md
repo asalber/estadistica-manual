@@ -652,7 +652,7 @@ $$\mbox{Log Bacterias} = 3.107 + 0.352\, \mbox{Horas}.$$
 
 Y, deshaciendo el cambio de variable, se obtiene el modelo exponencial
 
-$$\mbox{Bacterias} = e^{3.107+0.352\,\textrm{Horas}}, \mbox{ con } r^2=0.99.$$
+$$\mbox{Bacterias} = e^{3.107+0.352\,\mbox{Horas}}, \mbox{ con } r^2=0.99.$$
 
 <img src="../img/regresion/regresion_exponencial_bacterias.svg" alt="Regresión exponencial de la evolución de las bacterias de un cultivo" width="500">
 

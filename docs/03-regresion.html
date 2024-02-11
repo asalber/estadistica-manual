@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-99.9.9">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./07-estimacion.html" rel="next">
+<link href="./04-probabilidad.html" rel="next">
 <link href="./02-estadistica-descriptiva.html" rel="prev">
 <link href="./img/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -50,7 +50,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
@@ -59,6 +65,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "hay más resultados en este documento",
     "search-more-matches-text": "más resultados en este documento",
     "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancelar",
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
@@ -68,13 +75,40 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <meta property="og:title" content="Manual de Estadística - 3&nbsp; Regresión">
 <meta property="og:description" content="">
-<meta property="og:image" content="img/regresion/diagrama_dispersion.svg">
-<meta property="og:site-name" content="Manual de Estadística">
+<meta property="og:image" content="img/logos/sticker.png">
+<meta property="og:site_name" content="Manual de Estadística">
 <meta name="twitter:title" content="Manual de Estadística - 3&nbsp; Regresión">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="img/regresion/diagrama_dispersion.svg">
+<meta name="twitter:image" content="img/logos/sticker.png">
 <meta name="twitter:site" content="@aprendeconalf">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -85,12 +119,12 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-regresion.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regresión</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-regresion.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regresión</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -100,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -108,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Manual de Estadística</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://aprendeconalf.es" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
+    <a href="https://aprendeconalf.es" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -180,20 +214,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./04-probabilidad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./07-estimacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-contrastes-parametricos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -250,7 +290,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <p>Hasta ahora se ha visto como describir el comportamiento de una variable, pero en los fenómenos naturales normalmente aparecen más de una variable que suelen estar relacionadas. Por ejemplo, en un estudio sobre el peso de las personas, deberíamos incluir todas las variables con las que podría tener relación: altura, edad, sexo, dieta, tabaco, ejercicio físico, etc.</p>
 <p>Para comprender el fenómeno no basta con estudiar cada variable por separado y es preciso un estudio conjunto de todas las variables para ver cómo interactúan y qué relaciones se dan entre ellas. El objetivo de la estadística en este caso es dar medidas del grado y del tipo de relación entre dichas variables.</p>
@@ -263,7 +305,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="frecuencias-conjuntas"><span class="header-section-number">3.1.1</span> Frecuencias conjuntas</h3>
 <p>Al estudiar la dependencia simple entre dos variables <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, no se pueden estudiar sus distribuciones por separado, sino que hay que estudiar la distribución conjunta de la <strong>variable bidimensional</strong> <span class="math inline">\((X,Y)\)</span>, cuyos valores son los pares <span class="math inline">\((x_i,y_j)\)</span> donde el primer elemento es un valor <span class="math inline">\(X\)</span> y el segundo uno de <span class="math inline">\(Y\)</span>.</p>
 <div id="def-frecuencias-muestrales-conjuntas" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.1 (Frecuencias muestrales conjuntas) </strong></span>Dada una muestra de tamaño <span class="math inline">\(n\)</span> de una variable bidimensional <span class="math inline">\((X,Y)\)</span>, para cada valor de la variable <span class="math inline">\((x_i,y_j)\)</span> observado en la muestra se define</p>
+<p><span class="theorem-title"><strong>Definición 3.1 (Frecuencias muestrales conjuntas)</strong></span> Dada una muestra de tamaño <span class="math inline">\(n\)</span> de una variable bidimensional <span class="math inline">\((X,Y)\)</span>, para cada valor de la variable <span class="math inline">\((x_i,y_j)\)</span> observado en la muestra se define</p>
 <ul>
 <li><strong>Frecuencia absoluta</strong> <span class="math inline">\(n_{ij}\)</span>: Es el número de veces que el par <span class="math inline">\((x_i,y_j)\)</span> aparece en la muestra.</li>
 <li><strong>Frecuencia relativa</strong> <span class="math inline">\(f_{ij}\)</span>: Es la proporción de veces que el par <span class="math inline">\((x_i,y_j)\)</span> aparece en la muestra.</li>
@@ -299,7 +341,7 @@ x_p &amp; n_{p1} &amp; \cdots &amp; n_{pj} &amp; \cdots &amp; n_{pq}\\
 \hline
 \end{array}\]</span></p>
 <div id="exm-datos-agrupados" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.1 </strong></span>La estatura (en cm) y el peso (en Kg) de una muestra de 30 estudiantes es:</p>
+<p><span class="theorem-title"><strong>Ejemplo 3.1</strong></span> La estatura (en cm) y el peso (en Kg) de una muestra de 30 estudiantes es:</p>
 <div style="text-align:center">
 <p>(179,85), (173,65), (181,71), (170,65), (158,51), (174,66),<br> (172,62), (166,60), (194,90), (185,75), (162,55), (187,78),<br> (198,109), (177,61), (178,70), (165,58), (154,50), (183,93),<br> (166,51), (171,65), (175,70), (182,60), (167,59), (169,62),<br> (172,70), (186,71), (172,54), (176,68),(168,67), (187,80).</p>
 </div>
@@ -328,16 +370,16 @@ x_p &amp; n_{p1} &amp; \cdots &amp; n_{pj} &amp; \cdots &amp; n_{pq}\\
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/diagrama_dispersion.svg" class="img-fluid figure-img" width="500"></p>
-<figcaption class="figure-caption">Diagrama de dispersión.</figcaption>
+<figcaption>Diagrama de dispersión.</figcaption>
 </figure>
 </div>
 <p>El resultado es un conjunto de puntos que se conoce como <em>nube de puntos</em>.</p>
 <div id="exm-diagrama-dispersion" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.2 </strong></span>El siguiente diagrama de dispersión representa la distribución conjunta de estaturas y pesos de la muestra anterior.</p>
+<p><span class="theorem-title"><strong>Ejemplo 3.2</strong></span> El siguiente diagrama de dispersión representa la distribución conjunta de estaturas y pesos de la muestra anterior.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/diagrama_dispersion_estatura_peso.svg" class="img-fluid figure-img" width="600"></p>
-<figcaption class="figure-caption">Diagrama de dispersión de estaturas y pesos.</figcaption>
+<figcaption>Diagrama de dispersión de estaturas y pesos.</figcaption>
 </figure>
 </div>
 </div>
@@ -355,7 +397,7 @@ Interpretación
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/diagrama_dispersion_tipos_relaciones.svg" class="img-fluid figure-img" width="600"></p>
-<figcaption class="figure-caption">Diagramas de dispersión de diferentes tipos de relaciones.</figcaption>
+<figcaption>Diagramas de dispersión de diferentes tipos de relaciones.</figcaption>
 </figure>
 </div>
 </div>
@@ -381,7 +423,7 @@ x_p &amp; n_{p1} &amp; \cdots &amp; n_{pj} &amp; \cdots &amp; n_{pq} &amp; \colo
 \end{array}
 \]</span></p>
 <div id="exm-distribuciones-marginales" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.3 </strong></span>En el ejemplo anterior de las estaturas y los pesos, las distribuciones marginales son</p>
+<p><span class="theorem-title"><strong>Ejemplo 3.3</strong></span> En el ejemplo anterior de las estaturas y los pesos, las distribuciones marginales son</p>
 <p><span class="math display">\[
 \begin{array}{|c||c|c|c|c|c|c|c|}
 \hline
@@ -417,7 +459,7 @@ x_p &amp; n_{p1} &amp; \cdots &amp; n_{pj} &amp; \cdots &amp; n_{pq} &amp; \colo
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/desviaciones_media.svg" class="img-fluid figure-img" width="600"></p>
-<figcaption class="figure-caption">Desviaciones de las medias en un diagrama de dispersión.</figcaption>
+<figcaption>Desviaciones de las medias en un diagrama de dispersión.</figcaption>
 </figure>
 </div>
 <p>Si dividimos la nube de puntos del diagrama de dispersión en 4 cuadrantes centrados en el punto de medias <span class="math inline">\((\bar x, \bar y)\)</span>, el signo de las desviaciones será:</p>
@@ -460,7 +502,7 @@ x_p &amp; n_{p1} &amp; \cdots &amp; n_{pj} &amp; \cdots &amp; n_{pq} &amp; \colo
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/cuadrantes_diagrama_dispersion.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Cuadrantes de un diagrama de dispersión.</figcaption>
+<figcaption>Cuadrantes de un diagrama de dispersión.</figcaption>
 </figure>
 </div>
 <p>Si la relación entre las variables es <em>lineal y creciente</em>, entonces la mayor parte de los puntos estarán en los cuadrantes 1 y 3 y la suma de los productos de desviaciones será positiva.</p>
@@ -468,7 +510,7 @@ x_p &amp; n_{p1} &amp; \cdots &amp; n_{pj} &amp; \cdots &amp; n_{pq} &amp; \colo
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/diagrama_dispersion_lineal_creciente.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Diagrama de dispersión de una relación lineal creciente.</figcaption>
+<figcaption>Diagrama de dispersión de una relación lineal creciente.</figcaption>
 </figure>
 </div>
 <p>Si la relación entre las variables es <em>lineal y decreciente</em>, entonces la mayor parte de los puntos estarán en los cuadrantes 2 y 4 y la suma de los productos de desviaciones será negativa.</p>
@@ -476,12 +518,12 @@ x_p &amp; n_{p1} &amp; \cdots &amp; n_{pj} &amp; \cdots &amp; n_{pq} &amp; \colo
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/diagrama_dispersion_lineal_decreciente.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Diagrama de dispersión de una relación lineal decreciente.</figcaption>
+<figcaption>Diagrama de dispersión de una relación lineal decreciente.</figcaption>
 </figure>
 </div>
 <p>Usando el producto de las desviaciones respecto de las medias surge el siguiente estadístico.</p>
 <div id="def-covarianza" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.2 (Covarianza muestral) </strong></span>La <em>covarianza muestral</em> de una variable aleatoria bidimensional <span class="math inline">\((X,Y)\)</span> se define como el promedio de los productos de las respectivas desviaciones respecto de las medias de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Definición 3.2 (Covarianza muestral)</strong></span> La <em>covarianza muestral</em> de una variable aleatoria bidimensional <span class="math inline">\((X,Y)\)</span> se define como el promedio de los productos de las respectivas desviaciones respecto de las medias de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
 <p><span class="math display">\[s_{xy}=\frac{\sum (x_i-\bar x)(y_j-\bar y)n_{ij}}{n}\]</span></p>
 </div>
 <p>También puede calcularse de manera más sencilla mediante la fórmula</p>
@@ -505,7 +547,7 @@ Interpretación
 </div>
 </div>
 <div id="exm-covarianza" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.4 </strong></span>Utilizando la tabla de frecuencias bidimensional de la muestra de estaturas y pesos</p>
+<p><span class="theorem-title"><strong>Ejemplo 3.4</strong></span> Utilizando la tabla de frecuencias bidimensional de la muestra de estaturas y pesos</p>
 <p><span class="math display">\[
 \begin{array}{|c||c|c|c|c|c|c|c|}
 \hline
@@ -590,13 +632,13 @@ s_{xy} &amp;=\frac{\sum x_iy_jn_{ij}}{n}-\bar x\bar y =  \frac{155\cdot 55\cdot 
 <p>Una vez elegida la familia de curvas que mejor se adapta a la nube de puntos, se determina, dentro de dicha familia, la curva que mejor se ajusta a la distribución, es decir, la función que mejor predice la variable dependiente.</p>
 <p>El objetivo es encontrar la función de regresión que haga mínimas las distancias entre los valores de la variable dependiente observados en la muestra, y los predichos por la función de regresión. Estas distancias se conocen como <em>residuos</em> o <em>errores predictivos</em>.</p>
 <div id="def-resiudos" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.3 (Residuos o errores predictivos) </strong></span>Dado el modelo de regresión <span class="math inline">\(y=f(x)\)</span> para una variable bidimensional <span class="math inline">\((X,Y)\)</span>, el <em>residuo</em> o <em>error predictivo</em> de un valor <span class="math inline">\((x_i,y_j)\)</span> observado en la muestra, es la diferencia entre el valor observado de la variable dependiente <span class="math inline">\(y_j\)</span> y el predicho por la función de regresión para <span class="math inline">\(x_i\)</span>,</p>
+<p><span class="theorem-title"><strong>Definición 3.3 (Residuos o errores predictivos)</strong></span> Dado el modelo de regresión <span class="math inline">\(y=f(x)\)</span> para una variable bidimensional <span class="math inline">\((X,Y)\)</span>, el <em>residuo</em> o <em>error predictivo</em> de un valor <span class="math inline">\((x_i,y_j)\)</span> observado en la muestra, es la diferencia entre el valor observado de la variable dependiente <span class="math inline">\(y_j\)</span> y el predicho por la función de regresión para <span class="math inline">\(x_i\)</span>,</p>
 <p><span class="math display">\[e_{ij} = y_j-f(x_i).\]</span></p>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/residuos_y.svg" class="img-fluid figure-img" width="600"></p>
-<figcaption class="figure-caption">Residuos de un modelo de regresión.</figcaption>
+<figcaption>Residuos de un modelo de regresión.</figcaption>
 </figure>
 </div>
 </section>
@@ -622,7 +664,7 @@ a= \bar y - \frac{s_{xy}}{s_x^2}\bar x \qquad b=\frac{s_{xy}}{s_x^2}
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="coeficiente-de-determinación"><span class="header-section-number">3.3.4</span> Coeficiente de determinación</h3>
 <p>A partir de la varianza residual se puede definir otro estadístico más sencillo de interpretar.</p>
 <div id="def-coeficiente-determinacion" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.4 (Coeficiente de determinación muestral <span class="math inline">\(r^2\)</span>) </strong></span>Dado un modelo de regresión simple <span class="math inline">\(y=f(x)\)</span> de una variable bidimensional <span class="math inline">\((X,Y)\)</span>, su <em>coeficiente de determinación muestral</em> es</p>
+<p><span class="theorem-title"><strong>Definición 3.4 (Coeficiente de determinación muestral <span class="math inline">\(r^2\)</span>)</strong></span> Dado un modelo de regresión simple <span class="math inline">\(y=f(x)\)</span> de una variable bidimensional <span class="math inline">\((X,Y)\)</span>, su <em>coeficiente de determinación muestral</em> es</p>
 <p><span class="math display">\[r^2 = 1- \frac{s_{ry}^2}{s_y^2}\]</span></p>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -699,7 +741,7 @@ r^2 &amp;= 1- \frac{s_{ry}^2}{s_y^2} = 1- \frac{s_y^2 - \frac{s_{xy}^2}{s_x^2}}{
 </div>
 </div>
 <div id="exm-coeficiente-determinacion" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 3.5 </strong></span>En el ejemplo de las estaturas y pesos se tenía</p>
+<p><span class="theorem-title"><strong>Ejemplo 3.5</strong></span> En el ejemplo de las estaturas y pesos se tenía</p>
 <p><span class="math display">\[
 \begin{array}{lll}
 \bar x = 174.67 \mbox{ cm} &amp; \quad &amp; s^2_x = 102.06 \mbox{ cm}^2\\
@@ -720,7 +762,7 @@ r^2
 <section id="coeficiente-de-correlación-lineal" class="level3" data-number="3.3.5">
 <h3 data-number="3.3.5" class="anchored" data-anchor-id="coeficiente-de-correlación-lineal"><span class="header-section-number">3.3.5</span> Coeficiente de correlación lineal</h3>
 <div id="def-coeficiente-correlacion" class="theorem definition">
-<p><span class="theorem-title"><strong>Definición 3.5 (Coeficiente de correlación lineal muestral) </strong></span>Dada una variable bidimensional <span class="math inline">\((X,Y)\)</span>, el <em>coeficiente de correlación lineal muestral</em> es la raíz cuadrada de su coeficiente de determinación lineal, con signo el de la covarianza</p>
+<p><span class="theorem-title"><strong>Definición 3.5 (Coeficiente de correlación lineal muestral)</strong></span> Dada una variable bidimensional <span class="math inline">\((X,Y)\)</span>, el <em>coeficiente de correlación lineal muestral</em> es la raíz cuadrada de su coeficiente de determinación lineal, con signo el de la covarianza</p>
 <p><span class="math display">\[
 r = \sqrt{r^2} = \dfrac{s_{xy}}{s_xs_y}.
 \]</span></p>
@@ -780,7 +822,7 @@ r
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/grados_correlacion.svg" class="img-fluid figure-img" width="700"></p>
-<figcaption class="figure-caption">Modelos de regresión lineales con diferentes grados de correlación.</figcaption>
+<figcaption>Modelos de regresión lineales con diferentes grados de correlación.</figcaption>
 </figure>
 </div>
 </section>
@@ -847,7 +889,7 @@ Advertencia
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/evolucion_bacterias.svg" class="img-fluid figure-img" width="600"></p>
-<figcaption class="figure-caption">Diagrama de dispersión de la evolución de bacterias.</figcaption>
+<figcaption>Diagrama de dispersión de la evolución de bacterias.</figcaption>
 </figure>
 </div>
 <p>Si realizamos un ajuste lineal, obtenemos la siguiente recta de regresión</p>
@@ -855,7 +897,7 @@ Advertencia
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/regresion_lineal_bacterias.svg" class="img-fluid figure-img" width="600"></p>
-<figcaption class="figure-caption">Regresión lineal de la evolución de un cultivo de bacterias.</figcaption>
+<figcaption>Regresión lineal de la evolución de un cultivo de bacterias.</figcaption>
 </figure>
 </div>
 <p><em>¿Es un buen modelo?</em></p>
@@ -878,17 +920,17 @@ Advertencia
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./img/regresion/evolucion_log_bacterias.svg" class="img-fluid figure-img" width="600"></p>
-<figcaption class="figure-caption">Diagrama de dispersión de la evolución del logarítmo de las bacterias de un cultivo.</figcaption>
+<figcaption>Diagrama de dispersión de la evolución del logarítmo de las bacterias de un cultivo.</figcaption>
 </figure>
 </div>
 <p>Ahora sólo queda calcular la recta de regresión del logaritmo de Bacterias sobre Horas</p>
 <p><span class="math display">\[\mbox{Log Bacterias} = 3.107 + 0.352\, \mbox{Horas}.\]</span></p>
 <p>Y, deshaciendo el cambio de variable, se obtiene el modelo exponencial</p>
-<p><span class="math display">\[\mbox{Bacterias} = e^{3.107+0.352\,\textrm{Horas}}, \mbox{ con } r^2=0.99.\]</span></p>
+<p><span class="math display">\[\mbox{Bacterias} = e^{3.107+0.352\,\mbox{Horas}}, \mbox{ con } r^2=0.99.\]</span></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/regresion_exponencial_bacterias.svg" class="img-fluid figure-img" width="600"></p>
-<figcaption class="figure-caption">Regresión exponencial de la evolución de las bacterias de un cultivo.</figcaption>
+<figcaption>Regresión exponencial de la evolución de las bacterias de un cultivo.</figcaption>
 </figure>
 </div>
 <p>Como se puede apreciar, el modelo exponencial se ajusta mucho mejor que el modelo lineal.</p>
@@ -912,21 +954,24 @@ Advertencia
 <p>Así, un coeficiente de determinación cercano a cero significa que no existe relación entre las variables del tipo planteado por el modelo, pero <em>eso no quiere decir que las variables sean independientes</em>, ya que puede existir relación de otro tipo.</p>
 </div>
 </div>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/regresion_lineal_relacion_cuadratica.svg" class="img-fluid figure-img" width="500"></p>
-<figcaption class="figure-caption">Modelo de regresión lineal en una relación cuadrática.</figcaption>
+<figcaption>Modelo de regresión lineal en una relación cuadrática.</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/regresion_cuadratica.svg" class="img-fluid figure-img" width="500"></p>
-<figcaption class="figure-caption">Modelo de regresión cuadrático en una relación cuadrática.</figcaption>
+<figcaption>Modelo de regresión cuadrático en una relación cuadrática.</figcaption>
 </figure>
 </div>
 </div>
@@ -939,7 +984,7 @@ Advertencia
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/diagrama_dispersion_con_datos_atipicos.svg" class="img-fluid figure-img" width="600"></p>
-<figcaption class="figure-caption">Diagrama de dispersión con un dato atípico.</figcaption>
+<figcaption>Diagrama de dispersión con un dato atípico.</figcaption>
 </figure>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -955,21 +1000,24 @@ Advertencia
 <p>Los datos atípicos en regresión suelen provocar cambios drásticos en el ajuste de los modelos de regresión, y por tanto, habrá que tener mucho cuidado con ellos.</p>
 </div>
 </div>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/regresion_lineal_con_datos_atipicos.svg" class="img-fluid figure-img" width="500"></p>
-<figcaption class="figure-caption">Modelo de regresión lineal con datos atípicos.</figcaption>
+<figcaption>Modelo de regresión lineal con datos atípicos.</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/regresion_lineal_sin_datos_atipicos.svg" class="img-fluid figure-img" width="500"></p>
-<figcaption class="figure-caption">Modelo de regresión lineal sin datos atípicos.</figcaption>
+<figcaption>Modelo de regresión lineal sin datos atípicos.</figcaption>
 </figure>
 </div>
 </div>
@@ -983,14 +1031,14 @@ Advertencia
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/paradoja_simpson_1.svg" class="img-fluid figure-img" width="600"></p>
-<figcaption class="figure-caption">Paradoja de Simpson. Relación inversa entre las horas de estudio para un examen y la nota obtenida.</figcaption>
+<figcaption>Paradoja de Simpson. Relación inversa entre las horas de estudio para un examen y la nota obtenida.</figcaption>
 </figure>
 </div>
 <p>Pero si se divide la muestra en dos grupos (buenos y malos estudiantes) se obtienen diferentes tendencias y ahora la relación es directa, lo que tiene más lógica.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/regresion/paradoja_simpson_2.svg" class="img-fluid figure-img" width="600"></p>
-<figcaption class="figure-caption">Paradoja de Simpson. Relación directa entre las horas de estudio para un examen y la nota obtenida.</figcaption>
+<figcaption>Paradoja de Simpson. Relación directa entre las horas de estudio para un examen y la nota obtenida.</figcaption>
 </figure>
 </div>
 
@@ -1040,6 +1088,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1108,13 +1183,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'alternate';
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1193,10 +1270,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1206,8 +1282,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1220,6 +1305,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1263,6 +1467,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1288,6 +1493,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1349,17 +1580,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02-estadistica-descriptiva.html" class="pagination-link">
+      <a href="./02-estadistica-descriptiva.html" class="pagination-link  aria-label=" &lt;span="" descriptiva&lt;="" span&gt;"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estadística Descriptiva</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07-estimacion.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04-probabilidad.html" class="pagination-link" aria-label="<span class='chapter-number'>4</span>&nbsp; <span class='chapter-title'>Probabilidad</span>">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

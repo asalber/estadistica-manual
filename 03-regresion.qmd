@@ -15,7 +15,6 @@ orangeceu <- rgb(248,131,121,255,maxColorValue = 255)#F88379
 purpleceu <- rgb(169,78,145,255,maxColorValue = 255) #996699
 greyceu <- rgb(117,117,97,255,maxColorValue = 255) #666666
 library(tidyverse)
-library(plotly)
 ```
 
 Hasta ahora se ha visto como describir el comportamiento de una variable, pero en los fenómenos naturales normalmente aparecen más de una variable que suelen estar relacionadas. Por ejemplo, en un estudio sobre el peso de las personas, deberíamos incluir todas las variables con las que podría tener relación: altura, edad, sexo, dieta, tabaco,
@@ -622,7 +621,7 @@ $$
 :::
 
 :::{.content-visible unless-format="html"}
-![Diagrama de dispersión de la evolución del logarítmo de las bacterias de un cultivo.](/img/regresion/evolucion_log_bacterias.pdf){width=600}
+![Diagrama de dispersión de la evolución del logarítmo de las bacterias de un cultivo.](/img/regresion/evolucion_log_bacterias.pdf)
 :::
 
 Ahora sólo queda calcular la recta de regresión del logaritmo de Bacterias sobre Horas
@@ -631,14 +630,14 @@ $$\mbox{Log Bacterias} = 3.107 + 0.352\, \mbox{Horas}.$$
 
 Y, deshaciendo el cambio de variable, se obtiene el modelo exponencial
 
-$$\mbox{Bacterias} = e^{3.107+0.352\,\textrm{Horas}}, \mbox{ con } r^2=0.99.$$
+$$\mbox{Bacterias} = e^{3.107+0.352\,\mbox{Horas}}, \mbox{ con } r^2=0.99.$$
 
 :::{.content-visible when-format="html"}
 ![Regresión exponencial de la evolución de las bacterias de un cultivo.](img/regresion/regresion_exponencial_bacterias.svg){width=600}
 :::
 
 :::{.content-visible unless-format="html"}
-![Regresión exponencial de la evolución de las bacterias de un cultivo.](img/regresion/regresion_exponencial_bacterias.pdf){width=600}
+![Regresión exponencial de la evolución de las bacterias de un cultivo.](img/regresion/regresion_exponencial_bacterias.pdf)
 :::
 
 Como se puede apreciar, el modelo exponencial se ajusta mucho mejor que el modelo lineal.
@@ -663,9 +662,9 @@ Así, un coeficiente de determinación cercano a cero significa que no existe re
 
 :::{.content-visible unless-format="html"}
 ::: {layout-ncol=2}
-![Modelo de regresión lineal en una relación cuadrática.](img/regresion/regresion_lineal_relacion_cuadratica.pdf){width=500}
+![Modelo de regresión lineal en una relación cuadrática.](img/regresion/regresion_lineal_relacion_cuadratica.pdf)
 
-![Modelo de regresión cuadrático en una relación cuadrática.](img/regresion/regresion_cuadratica.pdf){width=500}
+![Modelo de regresión cuadrático en una relación cuadrática.](img/regresion/regresion_cuadratica.pdf)
 :::
 :::
 
@@ -678,7 +677,7 @@ Los _datos atípicos_ en un estudio de regresión son los puntos que claramente 
 :::
 
 :::{.content-visible unless-format="html"}
-![Diagrama de dispersión con un dato atípico.](img/regresion/diagrama_dispersion_con_datos_atipicos.pdf){width=600}
+![Diagrama de dispersión con un dato atípico.](img/regresion/diagrama_dispersion_con_datos_atipicos.pdf)
 :::
 
 
@@ -696,9 +695,9 @@ Los datos atípicos en regresión suelen provocar cambios drásticos en el ajust
 
 :::{.content-visible unless-format="html"}
 ::: {layout-ncol=2}
-![Modelo de regresión lineal con datos atípicos.](img/regresion/regresion_lineal_con_datos_atipicos.pdf){width=500}
+![Modelo de regresión lineal con datos atípicos.](img/regresion/regresion_lineal_con_datos_atipicos.pdf)
 
-![Modelo de regresión lineal sin datos atípicos.](img/regresion/regresion_lineal_sin_datos_atipicos.pdf){width=500}
+![Modelo de regresión lineal sin datos atípicos.](img/regresion/regresion_lineal_sin_datos_atipicos.pdf)
 :::
 :::
 
@@ -715,7 +714,7 @@ El siguiente diagrama de dispersión muestra una relación inversa entre entre l
 :::
 
 :::{.content-visible unless-format="html"}
-![Paradoja de Simpson. Relación inversa entre las horas de estudio para un examen y la nota obtenida.](img/regresion/paradoja_simpson_1.pdf){width=600}
+![Paradoja de Simpson. Relación inversa entre las horas de estudio para un examen y la nota obtenida.](img/regresion/paradoja_simpson_1.pdf)
 :::
 
 Pero si se divide la muestra en dos grupos (buenos y malos estudiantes) se obtienen diferentes tendencias y ahora la relación es directa, lo que tiene más lógica.
@@ -725,5 +724,5 @@ Pero si se divide la muestra en dos grupos (buenos y malos estudiantes) se obtie
 :::
 
 :::{.content-visible unless-format="html"}
-![Paradoja de Simpson. Relación directa entre las horas de estudio para un examen y la nota obtenida.](img/regresion/paradoja_simpson_2.pdf){width=600}
+![Paradoja de Simpson. Relación directa entre las horas de estudio para un examen y la nota obtenida.](img/regresion/paradoja_simpson_2.pdf)
 :::

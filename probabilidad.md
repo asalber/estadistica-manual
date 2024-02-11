@@ -35,7 +35,7 @@ El estudio de una característica en una población se realiza a través de expe
 de azar. El lanzamiento de un dado, por ejemplo, es un experimento
 aleatorio ya que:
 
-- Se conoce el conjunto posibles de resultados $\\\{1,2,3,4,5,6\\\}$.
+- Se conoce el conjunto posibles de resultados $\\{1,2,3,4,5,6\\}$.
 - Antes de lanzar el dado, es imposible predecir con absoluta certeza el valor que saldrá.
 
 Otro ejemplo de experimento aleatorio sería la selección de un individuo de una población al azar y la determinación de su grupo sanguíneo.
@@ -52,10 +52,10 @@ experimento aleatorio se le llama _espacio muestral_.
 
 Algunos ejemplos de espacios muestrales son:
 
-- Lanzamiento de una moneda: $\Omega=\\{c,x\\}$.
-- Lanzamiento de un dado: $\Omega=\\{1,2,3,4,5,6\\}$.
+- Lanzamiento de una moneda: $\Omega=\{c,x\}$.
+- Lanzamiento de un dado: $\Omega=\{1,2,3,4,5,6\}$.
 - Grupo sanguíneo de un individuo seleccionado al azar:
-$\Omega=\\{\mbox{A},\mbox{B},\mbox{AB},\mbox{0}\\}$.
+$\Omega=\{\mbox{A},\mbox{B},\mbox{AB},\mbox{0}\}$.
 - Estatura de un individuo seleccionado al azar:
 $\Omega=\mathbb{R}^+$.
 
@@ -90,9 +90,9 @@ Existen distintos tipos de sucesos:
 ## Espacio de sucesos**. Dado un espacio muestral $\Omega$ de un experimento aleatorio, el conjunto formado por todos los posibles sucesos de $\Omega$ se llama *espacio de sucesos de $\Omega$* y se denota $\mathcal{P}(\Omega)$.
 :::
 
-:::{#exm-**. Dado el espacio muestral $\Omega=\\{a,b,c\\}$, su espacio de sucesos es
+:::{#exm-**. Dado el espacio muestral $\Omega=\{a,b,c\}$, su espacio de sucesos es
 
-$$\mathcal{P}(\Omega)=\left\\{\emptyset, \\{a\\},\\{b\\},\\{c\\},\\{a,b\\},\\{a,c\\},\\{b,c\\},\\{a,b,c\\}\right\\}$$
+$$\mathcal{P}(\Omega)=\left\{\emptyset, \{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\}\right\}$$
 
 ### Operaciones entre sucesos
 
@@ -109,7 +109,7 @@ conjuntos se pueden definir las siguientes operaciones entre sucesos:
 :::{#def-}
 ## Suceso unión**. Dados dos sucesos $A,B\subseteq \Omega$, se llama *suceso unión* de $A$ y $B$, y se denota $A\cup B$, al suceso formado por los elementos de $A$ junto a los elementos de $B$, es decir, 
 
-$$A\cup B = \\{x\\,|\\, x\in A\textrm{ o }x\in B\\}.$$
+$$A\cup B = \{x\,|\, x\in A\mbox{ o }x\in B\}.$$
 :::
 
 <img src="../img/probabilidad/union.svg" alt="Union de dos sucesos" width="300">
@@ -121,7 +121,7 @@ El suceso unión $A\cup B$ ocurre siempre que ocurre $A$ <span style="color:red;
 :::{#def-}
 ## Suceso intersección**. Dados dos sucesos $A,B\subseteq \Omega$, se llama *suceso intersección* de $A$ y $B$, y se denota $A\cap B$, al suceso formado por los elementos comunes de $A$ y $B$, es decir,
 
-$$A\cap B = \\{x\\,|\\, x\in A\textrm{ y }x\in B\\}.$$
+$$A\cap B = \{x\,|\, x\in A\mbox{ y }x\in B\}.$$
 :::
 
 <img src="../img/probabilidad/interseccion.svg" alt="Intersección de dos sucesos" width="300">
@@ -135,7 +135,7 @@ Diremos que dos sucesos son **incompatibles** si su intersección es vacía.
 :::{#def-}
 ## Suceso contrario**. Dado suceso $A\subseteq \Omega$, se llama *suceso contrario o complementario* de $A$, y se denota $\overline A$, al suceso formado por los elementos de $\Omega$ que no pertenecen a $A$, es decir,
 
-$$\overline A = \\{x\\,|\\, x\not\in A\\}.$$
+$$\overline A = \{x\,|\, x\not\in A\}.$$
 :::
 
 <img src="../img/probabilidad/contrario.svg" alt="Contrario de un suceso" width="300">
@@ -147,7 +147,7 @@ El suceso contrario $\overline A$ ocurre siempre que <span style="color:red;">no
 :::{#def-}
 ## Suceso diferencia**. Dados dos sucesos $A,B\subseteq \Omega$, se llama *suceso diferencia* de $A$ y $B$, y se denota $A-B$, al suceso formado por los elementos de $A$ que no pertenecen a $B$, es decir,
 
-$$A-B = \\{x\\,|\\, x\in A\mbox{ y }x\not\in B\\} = A \cap \overline B.$$
+$$A-B = \{x\,|\, x\in A\mbox{ y }x\not\in B\} = A \cap \overline B.$$
 :::
 
 <img src="../img/probabilidad/diferencia.svg" alt="Diferencia de sucesos" width="300">
@@ -155,13 +155,13 @@ $$A-B = \\{x\\,|\\, x\in A\mbox{ y }x\not\in B\\} = A \cap \overline B.$$
 El suceso diferencia $A-B$ ocurre siempre que ocurre $A$ pero no ocurre $B$, y también puede expresarse como $A\cap \bar B$.
 
 :::{#exm-**. Dado el espacio muestral correspondiente al lanzamiento de un dado
-$\Omega=\\{1,2,3,4,5,6\\}$ y los sucesos $A=\\{2,4,6\\}$ y $B=\\{1,2,3,4\\}$,
+$\Omega=\{1,2,3,4,5,6\}$ y los sucesos $A=\{2,4,6\}$ y $B=\{1,2,3,4\}$,
 
-- La unión de $A$ y $B$ es $A\cup B=\\{1,2,3,4,6\\}$.
-- La intersección de $A$ y $B$ es $A\cap B=\\{2,4\\}$.
-- El contrario de $A$ es $\overline A=\\{1,3,5\\}$.
+- La unión de $A$ y $B$ es $A\cup B=\{1,2,3,4,6\}$.
+- La intersección de $A$ y $B$ es $A\cap B=\{2,4\}$.
+- El contrario de $A$ es $\overline A=\{1,3,5\}$.
 - Los eventos $A$ y $\overline A$ son incompatibles.
-- La diferencia de $A$ y $B$ es $A-B=\\{6\\}$, y la diferencia de $B$ y $A$ es $B-A=\\{1,3\\}$.
+- La diferencia de $A$ y $B$ es $A-B=\{6\}$, y la diferencia de $B$ y $A$ es $B-A=\{1,3\}$.
 
 ### Álgebra de sucesos
 
@@ -201,11 +201,11 @@ restricciones:
 <span class="alert">*¡Ojo\! Esto no se cumple en muchos experimentos
 aleatorios reales.*</span>
 
-:::{#exm-**. Dado el espacio muestral correspondiente al lanzamiento de un dado $\Omega=\\{1,2,3,4,5,6\\}$ y el suceso $A=\\{2,4,6\\}$, la probabilidad de $A$ es
+:::{#exm-**. Dado el espacio muestral correspondiente al lanzamiento de un dado $\Omega=\{1,2,3,4,5,6\}$ y el suceso $A=\{2,4,6\}$, la probabilidad de $A$ es
 
 $$P(A) = \frac{|A|}{|\Omega|} = \frac{3}{6} = 0.5.$$
 
-Sin embargo, si se considera el espacio muestral correspondiente a observar el grupo sanguíneo de un individuo al azar, $\Omega=\\{O,A,B,AB\\}$, no se puede usar la definición clásica de probabilidad para calcular la probabilidad de que tenga grupo sanguíneo $A$,
+Sin embargo, si se considera el espacio muestral correspondiente a observar el grupo sanguíneo de un individuo al azar, $\Omega=\{O,A,B,AB\}$, no se puede usar la definición clásica de probabilidad para calcular la probabilidad de que tenga grupo sanguíneo $A$,
 
 $$P(A) \neq \frac{|A|}{|\Omega|} = \frac{1}{4} = 0.25,$$
 
@@ -231,11 +231,11 @@ Aunque esta definición es muy útil en experimentos científicos reproducibles,
   - Sólo se calcula una aproximación de la probabilidad real.
   - La repetición del experimento debe ser en las mismas condiciones.
 
-:::{#exm-**. Dado el espacio muestral correspondiente al lanzamiento de una moneda $\Omega=\\{C,X\\}$, si después de lanzar la moneda 100 veces obtenemos 54 caras, entonces la probabilidad de $C$ es aproximadamente
+:::{#exm-**. Dado el espacio muestral correspondiente al lanzamiento de una moneda $\Omega=\{C,X\}$, si después de lanzar la moneda 100 veces obtenemos 54 caras, entonces la probabilidad de $C$ es aproximadamente
 
 $$P(C) = \frac{n_C}{n} = \frac{54}{100} = 0.54.$$
 
-Si se considera el espacio muestral correspondiente a observar el grupo sanguíneo de un individuo al azar, $\Omega=\\{O,A,B,AB\\}$, si se toma una muestra aleatoria de 1000 personas y se observa que 412 tienen grupo sanguíneo $A$, entonces la probabilidad del grupo sanguíneo $A$ es aproximadamente
+Si se considera el espacio muestral correspondiente a observar el grupo sanguíneo de un individuo al azar, $\Omega=\{O,A,B,AB\}$, si se toma una muestra aleatoria de 1000 personas y se observa que 412 tienen grupo sanguíneo $A$, entonces la probabilidad del grupo sanguíneo $A$ es aproximadamente
 
 $$P(A) = \frac{n_A}{n} = \frac{412}{1000} = 0.412.$$
 
@@ -299,7 +299,7 @@ deducir los siguientes resultados:
     <img src="../img/probabilidad/probabilidad_union.svg" alt="Probabilidad de la unión de dos sucesos" width="300">
 
     
-7. $A=\\{e_1,\cdots,e_n\\} = \\{e_1\\}\cup \cdots \cup \\{e_n\\} \Rightarrow$ $P(A)=P(\\{e_1\\}\cup \cdots \cup \\{e_n\\}) = P(\\{e_1\\})+ \cdots P(\\{e_n\\}).$
+7. $A=\{e_1,\cdots,e_n\} = \{e_1\}\cup \cdots \cup \{e_n\} \Rightarrow$ $P(A)=P(\{e_1\}\cup \cdots \cup \{e_n\}) = P(\{e_1\})+ \cdots P(\{e_n\}).$
 :::
 ::: 
 
@@ -484,7 +484,7 @@ P(B) &= P((B\cap A_1)\cup \cdots \cup (B\cap A_n)) = P(B\cap A_1)+\cdots + P(B\c
 :::{#exm-**. Un determinado síntoma $S$ puede ser originado por una enfermedad $E$ pero también lo pueden presentar las personas sin la enfermedad.
 Sabemos que la prevalencia de la enfermedad $E$ es $0.2$. Además, se sabe que el $90\%$ de las personas con la enfermedad presentan el síntoma, mientras que sólo el $40\%$ de las personas sin la enfermedad lo presentan. Si se toma una persona al azar de la población, *¿qué probabilidad hay de que tenga el síntoma?*
 
-Para responder a la pregunta se puede aplicar el teorema de la probabilidad total usando el sistema completo $\\{E,\overline{E}\\}$:
+Para responder a la pregunta se puede aplicar el teorema de la probabilidad total usando el sistema completo $\{E,\overline{E}\}$:
 
 $$P(S) = P(E)P(S|E)+P(\overline E)P(S|\overline E) = 0.2\cdot 0.9 + 0.8\cdot 0.4 = 0.5.$$
 

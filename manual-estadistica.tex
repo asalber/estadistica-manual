@@ -117,9 +117,6 @@
 \definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
 \makeatother
 \makeatletter
-\@ifpackageloaded{tikz}{}{\usepackage{tikz}}
-\makeatother
-\makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
 \makeatother
 \makeatletter
@@ -160,27 +157,22 @@
 \theoremstyle{plain}
 \newtheorem{theorem}{Teorema}[chapter]
 \theoremstyle{definition}
-\newtheorem{example}{Ejemplo}[chapter]
-\theoremstyle{definition}
 \newtheorem{definition}{Definición}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Ejemplo}[chapter]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Prueba}}
 \newtheorem*{remark}{Observación}
 \newtheorem*{solution}{Solución}
+\newtheorem{refremark}{Observación}[chapter]
+\newtheorem{refsolution}{Solución}[chapter]
+\makeatother
+\makeatletter
+\@ifpackageloaded{tikz}{}{\usepackage{tikz}}
 \makeatother
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
-\makeatother
-\makeatletter
-\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
-\makeatother
-\makeatletter
-\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
-\makeatother
-\makeatletter
-\makeatother
-\makeatletter
 \makeatother
 \ifLuaTeX
 \usepackage[bidi=basic]{babel}
@@ -194,7 +186,8 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
+
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
@@ -247,8 +240,7 @@ Sánchez
 Alberca}\\ \textsf{asalber@ceu.es} \\ \textsf{https://aprendeconalf.es}}
 \end{tabular}
 \end{flushleft}
-\end{titlepage}\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, breakable, enhanced, frame hidden, sharp corners, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt]}{\end{tcolorbox}}\fi
-
+\end{titlepage}
 \renewcommand*\contentsname{Indice de contenidos}
 {
 \hypersetup{linkcolor=}
@@ -257,8 +249,7 @@ Alberca}\\ \textsf{asalber@ceu.es} \\ \textsf{https://aprendeconalf.es}}
 }
 \bookmarksetup{startatroot}
 
-\hypertarget{prefacio}{%
-\chapter*{Prefacio}\label{prefacio}}
+\chapter*{Prefacio}\label{prefacio}
 \addcontentsline{toc}{chapter}{Prefacio}
 
 \markboth{Prefacio}{Prefacio}
@@ -280,8 +271,7 @@ Este libro se complementa con los siguientes recursos:
   Estadística con R}
 \end{itemize}
 
-\hypertarget{licencia}{%
-\section*{Licencia}\label{licencia}}
+\section*{Licencia}\label{licencia}
 \addcontentsline{toc}{section}{Licencia}
 
 \markright{Licencia}
@@ -327,16 +317,13 @@ autor.
 
 \bookmarksetup{startatroot}
 
-\hypertarget{introducciuxf3n-a-la-estaduxedstica}{%
 \chapter{Introducción a la
-Estadística}\label{introducciuxf3n-a-la-estaduxedstica}}
+Estadística}\label{introducciuxf3n-a-la-estaduxedstica}
 
-\hypertarget{la-estaduxedstica-como-herramienta-cientuxedfica}{%
 \section{La estadística como herramienta
-científica}\label{la-estaduxedstica-como-herramienta-cientuxedfica}}
+científica}\label{la-estaduxedstica-como-herramienta-cientuxedfica}
 
-\hypertarget{quuxe9-es-la-estaduxedstica}{%
-\subsection{¿Qué es la estadística?}\label{quuxe9-es-la-estaduxedstica}}
+\subsection{¿Qué es la estadística?}\label{quuxe9-es-la-estaduxedstica}
 
 \begin{definition}[Estadística]\protect\hypertarget{def-estadistica}{}\label{def-estadistica}
 
@@ -348,7 +335,7 @@ la recogida, análisis e interpretación de datos.
 El papel de la Estadística es extraer información de los datos para
 adquirir el conocimiento necesario para tomar decisiones.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/introduccion/proposito_estadistica.png}
 
@@ -356,7 +343,7 @@ adquirir el conocimiento necesario para tomar decisiones.
 
 \caption{Propósito de la Estadística}
 
-\end{figure}
+\end{figure}%
 
 La estadística es imprescindible en cualquier disciplina científica o
 técnica donde se manejen datos, especialmente si son grandes volúmenes
@@ -365,9 +352,8 @@ Economía o Ciencias Sociales.
 
 Pero, \emph{¿por qué es necesaria la Estadística?}
 
-\hypertarget{la-variabilidad-de-nuestro-mundo}{%
 \subsection{La variabilidad de nuestro
-mundo}\label{la-variabilidad-de-nuestro-mundo}}
+mundo}\label{la-variabilidad-de-nuestro-mundo}
 
 El científico trata de estudiar el mundo que le rodea; un mundo que está
 lleno de variaciones que dificultan la determinación del comportamiento
@@ -382,11 +368,9 @@ Esto la convierte en una herramienta indispensable en las ciencias
 aplicadas que requieran el análisis de datos y el diseño de
 experimentos.
 
-\hypertarget{poblaciuxf3n-y-muestra}{%
-\section{Población y muestra}\label{poblaciuxf3n-y-muestra}}
+\section{Población y muestra}\label{poblaciuxf3n-y-muestra}
 
-\hypertarget{poblaciuxf3n-estaduxedstica}{%
-\subsection{Población estadística}\label{poblaciuxf3n-estaduxedstica}}
+\subsection{Población estadística}\label{poblaciuxf3n-estaduxedstica}
 
 \begin{definition}[Población]\protect\hypertarget{def-poblacion}{}\label{def-poblacion}
 
@@ -439,9 +423,8 @@ conseguir información).
 
 \end{example}
 
-\hypertarget{inconvenientes-en-el-estudio-de-la-poblaciuxf3n}{%
 \subsection{Inconvenientes en el estudio de la
-población}\label{inconvenientes-en-el-estudio-de-la-poblaciuxf3n}}
+población}\label{inconvenientes-en-el-estudio-de-la-poblaciuxf3n}
 
 El científico estudia un determinado fenómeno en una población para
 comprenderlo, obtener conocimiento sobre el mismo, y así poder
@@ -461,8 +444,7 @@ embargo, esto no siempre es posible por distintos motivos:
   todos los individuos es excesivo.
 \end{itemize}
 
-\hypertarget{muestra-estaduxedstica}{%
-\subsection{Muestra estadística}\label{muestra-estaduxedstica}}
+\subsection{Muestra estadística}\label{muestra-estaduxedstica}
 
 Cuando no es posible o conveniente estudiar todos los individuos de la
 población, se estudia sólo una parte de la misma.
@@ -487,9 +469,8 @@ muestras extraídas de dicha población.
 Generalmente, el estudio de la muestra sólo aporta conocimiento
 aproximado de la población. Pero en muchos casos es \emph{suficiente}.
 
-\hypertarget{determinaciuxf3n-del-tamauxf1o-muestral}{%
 \subsection{Determinación del tamaño
-muestral}\label{determinaciuxf3n-del-tamauxf1o-muestral}}
+muestral}\label{determinaciuxf3n-del-tamauxf1o-muestral}
 
 Una de las preguntas más interesantes que surge inmediatamente es:
 \emph{¿cuántos individuos es necesario tomar en la muestra para tener un
@@ -531,7 +512,7 @@ motivo de la foto.
 La imagen siguiente contiene una muestra pequeña de píxeles de una foto.
 ¿Puedes averiguar el motivo de a foto?
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/introduccion/muestra_molinos1.jpg}
 
@@ -539,7 +520,7 @@ La imagen siguiente contiene una muestra pequeña de píxeles de una foto.
 
 \caption{Muestra pequeña de píxeles de una foto.}
 
-\end{figure}
+\end{figure}%
 
 \emph{¡Con una muestra pequeña es difícil averiguar el contenido de la
 imagen!}
@@ -552,7 +533,7 @@ la foto.
 La siguiente imagen contiene una muestra mayor de píxeles. ¿Eres capaz
 de adivinar el motivo de la foto ahora?
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/introduccion/muestra_molinos2.jpg}
 
@@ -560,13 +541,13 @@ de adivinar el motivo de la foto ahora?
 
 \caption{Muestra mayor de píxeles de una foto.}
 
-\end{figure}
+\end{figure}%
 
 \emph{¡Con una muestra mayor es posible desvelar el motivo de la foto!}
 
 Y aquí está la población completa.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/introduccion/muestra_molinos3.jpg}
 
@@ -574,15 +555,14 @@ Y aquí está la población completa.
 
 \caption{Población de píxeles de una foto.}
 
-\end{figure}
+\end{figure}%
 
 Lo importante es que \emph{¡No es necesario conocer todos los píxeles
 para averiguar la imagen!}
 
 \end{example}
 
-\hypertarget{tipos-de-razonamiento}{%
-\subsection{Tipos de razonamiento}\label{tipos-de-razonamiento}}
+\subsection{Tipos de razonamiento}\label{tipos-de-razonamiento}
 
 Así pues, habitualmente realizaremos el estudio de la población a partir
 de muestras y luego trataremos de extrapolar lo observado en la muestra
@@ -590,7 +570,7 @@ al resto de la población. A este tipo de razonamiento que saca
 conclusiones desde la muestra hacia la población se le conoce como
 \emph{razonamiento inductivo}.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/introduccion/tipos_razonamiento.png}
 
@@ -598,7 +578,7 @@ conclusiones desde la muestra hacia la población se le conoce como
 
 \caption{Tipos de razonamiento.}
 
-\end{figure}
+\end{figure}%
 
 \begin{itemize}
 \item
@@ -623,8 +603,7 @@ de generalizar sobre la población lo observado en al muestra, ya que si
 la muestra no es representativa de la población o contiene sesgos, las
 conclusiones pueden ser erróneas.
 
-\hypertarget{muestreo}{%
-\section{Muestreo}\label{muestreo}}
+\section{Muestreo}\label{muestreo}
 
 \begin{definition}[Muestreo]\protect\hypertarget{def-muestreo}{}\label{def-muestreo}
 
@@ -633,7 +612,7 @@ conoce como \emph{muestreo}.
 
 \end{definition}
 
-{[}{]}(img/introduccion/muestreo.svg'' alt=``Muestreo''
+!{[}{]}(img/introduccion/muestreo.svg'' alt=``Muestreo''
 width=``500px''\textgreater{}
 
 Para que una muestra refleje información fidedigna sobre la población
@@ -643,8 +622,7 @@ reproducir a pequeña escala la variabilidad de la población.
 \emph{El objetivo es obtener una muestra representativa de la
 población.}
 
-\hypertarget{modalidades-de-muestreo}{%
-\subsection{Modalidades de muestreo}\label{modalidades-de-muestreo}}
+\subsection{Modalidades de muestreo}\label{modalidades-de-muestreo}
 
 Existen muchas técnicas de muestreo pero se pueden agrupar en dos
 categorías:
@@ -668,8 +646,7 @@ Las técnicas no aleatorias no sirven para hacer generalizaciones, ya que
 no garantizan la representatividad de la muestra. Sin embargo, son menos
 costosas y pueden utilizarse en estudios exploratorios.
 
-\hypertarget{muestreo-aleatorio-simple}{%
-\subsection{Muestreo aleatorio simple}\label{muestreo-aleatorio-simple}}
+\subsection{Muestreo aleatorio simple}\label{muestreo-aleatorio-simple}
 
 Dentro de las modalidades de muestreo aleatorio, el tipo más conocido es
 el \emph{muestreo aleatorio simple}, caracterizado por:
@@ -691,8 +668,7 @@ La única forma de realizar un muestreo aleatorio es asignar un número a
 cada individuo de la población (\emph{censo}) y realizar un sorteo
 aleatorio.
 
-\hypertarget{variables-estaduxedsticas}{%
-\subsection{Variables estadísticas}\label{variables-estaduxedsticas}}
+\subsection{Variables estadísticas}\label{variables-estaduxedsticas}
 
 Todo estudio estadístico comienza por la identificación de las
 características que interesa estudiar en la población y que se medirán
@@ -709,7 +685,7 @@ estadísticas.
 
 \end{definition}
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/introduccion/variables_estadisticas.png}
 
@@ -717,7 +693,7 @@ estadísticas.
 
 \caption{Variables estadísticas.}
 
-\end{figure}
+\end{figure}%
 
 Estas características pueden ser de distintos tipos de acuerdo a su
 naturaleza y su escala:
@@ -754,7 +730,7 @@ naturaleza y su escala:
 Las variables cualitativas y discretas se conocen también con
 \emph{variables categóricas} y sus valores \emph{categorías}.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/introduccion/tipos_variables.png}
 
@@ -762,11 +738,10 @@ Las variables cualitativas y discretas se conocen también con
 
 \caption{Tipos de variables estadísticas.}
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{elecciuxf3n-del-tipo-de-variable-muxe1s-apropiado}{%
 \subsubsection{Elección del tipo de variable más
-apropiado}\label{elecciuxf3n-del-tipo-de-variable-muxe1s-apropiado}}
+apropiado}\label{elecciuxf3n-del-tipo-de-variable-muxe1s-apropiado}
 
 En ocasiones una característica puede medirse mediante variables de
 distinto tipo.
@@ -792,7 +767,7 @@ cualitativas. Dentro de las cuantitativas es preferible usar las
 continuas a las discretas y dentro de las cualitativas es preferible
 usar ordinales a nominales pues aportan más información.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/introduccion/informacion_variables.png}
 
@@ -801,7 +776,7 @@ usar ordinales a nominales pues aportan más información.
 \caption{Cantidad de información de los tipos de variables
 estadísticas.}
 
-\end{figure}
+\end{figure}%
 
 De acuerdo al papel que juegan en el estudio las variables también
 pueden clasificarse como:
@@ -828,9 +803,8 @@ dependiente.
 
 \end{example}
 
-\hypertarget{tipos-de-estudios-estaduxedsticos}{%
 \subsection{Tipos de estudios
-estadísticos}\label{tipos-de-estudios-estaduxedsticos}}
+estadísticos}\label{tipos-de-estudios-estaduxedsticos}
 
 Dependiendo de si se manipulan las variables independientes existen dos
 tipos de estudios:
@@ -874,8 +848,7 @@ Los estudios experimentales permiten identificar causas y efectos entre
 las variables del estudio, mientras que los no experimentales sólo
 permiten identificar relaciones de asociación entre las variables.
 
-\hypertarget{la-tabla-de-datos}{%
-\subsection{La tabla de datos}\label{la-tabla-de-datos}}
+\subsection{La tabla de datos}\label{la-tabla-de-datos}
 
 Las variables a estudiar se medirán en cada uno de los individuos de la
 muestra, obteniendo un conjunto de datos que suele organizarse en forma
@@ -906,9 +879,8 @@ Antonio Ruiz & 68 & H & 66 & 174 \\
 
 \end{example}
 
-\hypertarget{fases-del-anuxe1lisis-estaduxedstico}{%
 \subsection{Fases del análisis
-estadístico}\label{fases-del-anuxe1lisis-estaduxedstico}}
+estadístico}\label{fases-del-anuxe1lisis-estaduxedstico}
 
 Normalmente un estudio estadístico pasa por las siguientes etapas:
 
@@ -935,10 +907,9 @@ Normalmente un estudio estadístico pasa por las siguientes etapas:
   conclusiones sobre la población de partida con cierta confianza.
 \end{enumerate}
 
-\hypertarget{el-ciclo-estaduxedstico}{%
-\subsubsection{El ciclo estadístico}\label{el-ciclo-estaduxedstico}}
+\subsubsection{El ciclo estadístico}\label{el-ciclo-estaduxedstico}
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/introduccion/ciclo_estadistico.eps}
 
@@ -946,12 +917,11 @@ Normalmente un estudio estadístico pasa por las siguientes etapas:
 
 \caption{El ciclo estadístico.}
 
-\end{figure}
+\end{figure}%
 
 \bookmarksetup{startatroot}
 
-\hypertarget{estaduxedstica-descriptiva}{%
-\chapter{Estadística Descriptiva}\label{estaduxedstica-descriptiva}}
+\chapter{Estadística Descriptiva}\label{estaduxedstica-descriptiva}
 
 La estadística descriptiva es la parte de la estadística encargada de
 representar, analizar y resumir la información contenida en la muestra.
@@ -971,7 +941,7 @@ estadístico y suele consistir en:
   (\emph{estadísticos muestrales}).
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, left=2mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 No tiene poder inferencial, por lo que nunca deben sacarse conclusiones
 sobre la población a partir de las medidas resumen que aporta la
@@ -979,9 +949,8 @@ Estadística Descriptiva.
 
 \end{tcolorbox}
 
-\hypertarget{distribuciuxf3n-de-frecuencias}{%
 \section{Distribución de
-frecuencias}\label{distribuciuxf3n-de-frecuencias}}
+frecuencias}\label{distribuciuxf3n-de-frecuencias}
 
 El estudio de una variable estadística comienza por medir la variable en
 los individuos de la muestra y clasificar los valores obtenidos.
@@ -999,14 +968,13 @@ Existen dos formas de clasificar estos valores:
   continuas y con variables discretas con muchos valores diferentes.
 \end{itemize}
 
-\hypertarget{clasificaciuxf3n-de-la-muestra}{%
 \subsection{Clasificación de la
-muestra}\label{clasificaciuxf3n-de-la-muestra}}
+muestra}\label{clasificaciuxf3n-de-la-muestra}
 
 Consiste colocar juntos los valores iguales y ordenarlos si existe un
 orden entre ellos.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/clasificacion_muestra.png}
 
@@ -1014,12 +982,11 @@ orden entre ellos.
 
 \caption{Clasificación de la muestra.}
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{recuento-de-frecuencias}{%
-\subsection{Recuento de frecuencias}\label{recuento-de-frecuencias}}
+\subsection{Recuento de frecuencias}\label{recuento-de-frecuencias}
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/recuento_frecuencias.png}
 
@@ -1027,10 +994,9 @@ orden entre ellos.
 
 \caption{Recuento de frecuencias}
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{frecuencias-muestrales}{%
-\section{Frecuencias muestrales}\label{frecuencias-muestrales}}
+\section{Frecuencias muestrales}\label{frecuencias-muestrales}
 
 \begin{definition}[Frecuencias
 muestrales]\protect\hypertarget{def-frecuencias-muestrales}{}\label{def-frecuencias-muestrales}
@@ -1058,8 +1024,7 @@ de la variable \(x_i\) observado en la muestra, se define
 
 \end{definition}
 
-\hypertarget{tabla-de-frecuencias}{%
-\subsection{Tabla de frecuencias}\label{tabla-de-frecuencias}}
+\subsection{Tabla de frecuencias}\label{tabla-de-frecuencias}
 
 Al conjunto de valores observados en la muestra junto a sus respectivas
 frecuencias se le denomina \textbf{distribución de frecuencias} y suele
@@ -1151,8 +1116,7 @@ x_i & n_i & f_i & N_i & F_i\\
 
 \end{example}
 
-\hypertarget{construcciuxf3n-de-clases}{%
-\subsection{Construcción de clases}\label{construcciuxf3n-de-clases}}
+\subsection{Construcción de clases}\label{construcciuxf3n-de-clases}
 
 Cada intervalo de agrupación de datos se denomina \textbf{clase} y el
 centro del intervalo se llama \textbf{marca de clase}.
@@ -1202,15 +1166,14 @@ x_i & n_i & f_i \\
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Obsérvese que en este caso las frecuencias acumuladas no tienen sentido
 al no existir un orden entre los valores de la variable.
 
 \end{tcolorbox}
 
-\hypertarget{representaciones-gruxe1ficas}{%
-\section{Representaciones gráficas}\label{representaciones-gruxe1ficas}}
+\section{Representaciones gráficas}\label{representaciones-gruxe1ficas}
 
 La tabla de frecuencias también suele representarse gráficamente.
 Dependiendo del tipo de variable y de si se han agrupado o no los datos,
@@ -1227,8 +1190,7 @@ se utilizan distintos tipos de gráficos:
   Diagrama de sectores.
 \end{itemize}
 
-\hypertarget{diagrama-de-barras}{%
-\subsection{Diagrama de barras}\label{diagrama-de-barras}}
+\subsection{Diagrama de barras}\label{diagrama-de-barras}
 
 Un \textbf{diagrama de barras} consiste en un conjunto de barras, una
 para cada valor o categoría de la variable, dibujadas sobre unos ejes
@@ -1282,8 +1244,7 @@ relativas acumuladas.
 
 \end{example}
 
-\hypertarget{histograma}{%
-\subsection{Histograma}\label{histograma}}
+\subsection{Histograma}\label{histograma}
 
 Un \emph{histograma} es similar a un diagrama de barras pero para datos
 agrupados.
@@ -1332,8 +1293,7 @@ cada barra con segmentos, en lugar de los puntos centrales, ya que no se
 consigue alcanzar la frecuencia acumulada correspondiente a la clase
 hasta que no se alcanza el final del intervalo.
 
-\hypertarget{diagrama-de-sectores}{%
-\subsection{Diagrama de sectores}\label{diagrama-de-sectores}}
+\subsection{Diagrama de sectores}\label{diagrama-de-sectores}
 
 Un \emph{diagrama de sectores} consiste en un círculo divido en
 porciones, uno por cada valor o categoría de la variable. Cada porción
@@ -1356,8 +1316,7 @@ relativas de los grupos sanguíneos.
 
 \end{example}
 
-\hypertarget{la-distribuciuxf3n-normal}{%
-\subsection{La distribución Normal}\label{la-distribuciuxf3n-normal}}
+\subsection{La distribución Normal}\label{la-distribuciuxf3n-normal}
 
 Las distribuciones con diferentes propiedades presentan formas
 distintas.
@@ -1460,25 +1419,18 @@ Naturaleza que se conoce como \emph{distribución normal} o
 \emph{distribución gaussiana}.
 
 \begin{figure}
-
-{\centering 
-
+\centering
 \input{img/descriptiva/campana-gauss.tex}
-
-}
-
 \caption{Campana de Gauss.}
-
 \end{figure}
 
-\hypertarget{datos-atuxedpicos}{%
-\section{Datos atípicos}\label{datos-atuxedpicos}}
+\section{Datos atípicos}\label{datos-atuxedpicos}
 
 Uno de los principales problemas de las muestras son los \textbf{datos
 atípicos}, que son valores de la variable que se diferencian mucho del
 resto de los valores en la muestra.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/dato_atipico.png}
 
@@ -1486,7 +1438,7 @@ resto de los valores en la muestra.
 
 \caption{Dato atípico.}
 
-\end{figure}
+\end{figure}%
 
 Es muy importante detectar los datos atípicos antes de realizar
 cualquier análisis de los datos, pues suelen distorsionar los
@@ -1495,9 +1447,8 @@ resultados.
 Aparecen siempre en los extremos de la distribución, y pueden detectarse
 con un diagrama de caja y bigotes (tal y como veremos más adelante).
 
-\hypertarget{tratamiento-de-los-datos-atuxedpicos}{%
 \subsection{Tratamiento de los datos
-atípicos}\label{tratamiento-de-los-datos-atuxedpicos}}
+atípicos}\label{tratamiento-de-los-datos-atuxedpicos}
 
 Cuando trabajemos con muestras grandes, los datos atípicos tienen menor
 influencia y pueden dejarse en la muestra.
@@ -1517,8 +1468,7 @@ Cuando trabajemos con muestras pequeñas tenemos varias opciones:
   distribución teórico para adecuarlo a los datos atípicos.
 \end{itemize}
 
-\hypertarget{estaduxedsticos-muestrales}{%
-\section{Estadísticos muestrales}\label{estaduxedsticos-muestrales}}
+\section{Estadísticos muestrales}\label{estaduxedsticos-muestrales}
 
 La tabla de frecuencias sintetiza la información de la distribución de
 valores de la variable estudiada en la muestra, pero en muchas ocasiones
@@ -1542,9 +1492,7 @@ datos.
 \textbf{Estadísticos de Forma}: Miden aspectos de la forma que tiene la
 distribución de los datos, como la simetría o el apuntamiento.
 
-\hypertarget{estaduxedsticos-de-posiciuxf3n}{%
-\section{Estadísticos de
-posición}\label{estaduxedsticos-de-posiciuxf3n}}
+\section{Estadísticos de posición}\label{estaduxedsticos-de-posiciuxf3n}
 
 Pueden ser de dos tipos:
 
@@ -1576,8 +1524,7 @@ en partes con el mismo número de datos. Las más importantes son:
   Percentiles.
 \end{itemize}
 
-\hypertarget{media-aritmuxe9tica}{%
-\subsection{Media aritmética}\label{media-aritmuxe9tica}}
+\subsection{Media aritmética}\label{media-aritmuxe9tica}
 
 \begin{definition}[Media aritmética muestral
 \(\bar{x}\)]\protect\hypertarget{def-media-aritmetica}{}\label{def-media-aritmetica}
@@ -1596,7 +1543,7 @@ A partir de la tabla de frecuencias puede calcularse con la fórmula
 En la mayoría de los casos, la media aritmética es la medida que mejor
 representa a la muestra.
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 No puede calcularse para variables cualitativas.
 
@@ -1679,8 +1626,7 @@ reales sino las marcas de clase.
 
 \end{example}
 
-\hypertarget{media-ponderada}{%
-\subsubsection{Media ponderada}\label{media-ponderada}}
+\subsubsection{Media ponderada}\label{media-ponderada}
 
 En algunos casos, los valores de la muestra no tienen la misma
 importancia. En este caso la importancia o \emph{peso} de cada valor de
@@ -1739,8 +1685,7 @@ estudiante, tomando como pesos los créditos de cada asignatura
 
 \end{example}
 
-\hypertarget{mediana}{%
-\subsection{Mediana}\label{mediana}}
+\subsection{Mediana}\label{mediana}
 
 \begin{definition}[Mediana muestral
 \(Me\)]\protect\hypertarget{def-mediana}{}\label{def-mediana}
@@ -1755,7 +1700,7 @@ es decir, hay el mismo número de valores por debajo y por encima de la
 mediana. Por tanto, tiene frecuencias acumuladas \(N_{Me}= n/2\) y
 \(F_{Me}= 0.5\).
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 No puede calcularse para variables nominales.
 
@@ -1773,7 +1718,7 @@ Con datos no agrupados pueden darse varios casos:
   las posiciones \(\frac{n}{2}\) y \(\frac{n}{2}+1\).
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/mediana.png}
 
@@ -1781,7 +1726,7 @@ Con datos no agrupados pueden darse varios casos:
 
 \caption{Cálculo de la mediana con datos no agrupados.}
 
-\end{figure}
+\end{figure}%
 
 :::\{\#exm-mediana-datos-no-agrupados\} Utilizando los datos del número
 de hijos de las familias, el tamaño muestral es 25, que es impar, y la
@@ -1814,14 +1759,13 @@ x_i & n_i & f_i & N_i & F_i\\
 \end{array}
 \]
 
-\hypertarget{cuxe1lculo-de-la-mediana-con-datos-agrupados}{%
 \subsubsection{Cálculo de la mediana con datos
-agrupados}\label{cuxe1lculo-de-la-mediana-con-datos-agrupados}}
+agrupados}\label{cuxe1lculo-de-la-mediana-con-datos-agrupados}
 
 Con datos agrupados la mediana se calcula interpolando en el polígono de
 frecuencias relativas acumuladas para el valor 0.5.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/interpolacion.png}
 
@@ -1829,7 +1773,7 @@ frecuencias relativas acumuladas para el valor 0.5.
 
 \caption{Cálculo de la mediana con datos agrupados.}
 
-\end{figure}
+\end{figure}%
 
 Ambas expresiones son iguales ya que el ángulo \(\alpha\) es el mismo, y
 resolviendo la ecuación se tiene la siguiente fórmula para calcular la
@@ -1845,7 +1789,7 @@ agrupados]\protect\hypertarget{exm-mediana-datos-agrupados}{}\label{exm-mediana-
 Utilizando los datos de la muestra de las estaturas de estudiantes, la
 mediana cae en la clase (170,180{]}.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/interpolacion_ejemplo_1.png}
 
@@ -1853,11 +1797,11 @@ mediana cae en la clase (170,180{]}.
 
 \caption{Ejemplo de cálculo de la mediana con datos agrupados.}
 
-\end{figure}
+\end{figure}%
 
 Interpolando en el intervalo (170,180{]} se tiene
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/interpolacion_ejemplo_2.png}
 
@@ -1865,7 +1809,7 @@ Interpolando en el intervalo (170,180{]} se tiene
 
 \caption{Ejemplo de cálculo de la mediana con datos agrupados.}
 
-\end{figure}
+\end{figure}%
 
 Igualando ambas expresiones y resolviendo la ecuación se obtiene
 
@@ -1878,8 +1822,7 @@ o iguales que 174.54 cm y la otra mitad mayores o iguales.
 
 \end{example}
 
-\hypertarget{moda}{%
-\subsection{Moda}\label{moda}}
+\subsection{Moda}\label{moda}
 
 \begin{definition}[Moda muestral
 \(Mo\)]\protect\hypertarget{def-moda}{}\label{def-moda}
@@ -1897,7 +1840,7 @@ cualitativas).
 
 Las distribuciones pueden tener más de una moda.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/moda.png}
 
@@ -1905,7 +1848,7 @@ Las distribuciones pueden tener más de una moda.
 
 \caption{Cálculo de la moda.}
 
-\end{figure}
+\end{figure}%
 
 \begin{example}[]\protect\hypertarget{exm-moda-datos-no-agrupados}{}\label{exm-moda-datos-no-agrupados}
 
@@ -1950,9 +1893,8 @@ X & n_i \\
 
 \end{example}
 
-\hypertarget{quuxe9-estaduxedstico-de-tendencia-central-usar}{%
 \subsection{¿Qué estadístico de tendencia central
-usar?}\label{quuxe9-estaduxedstico-de-tendencia-central-usar}}
+usar?}\label{quuxe9-estaduxedstico-de-tendencia-central-usar}
 
 En general, siempre que puedan calcularse los estadísticos de tendencia
 central, es recomendable utilizarlos como valores representativos en el
@@ -1972,7 +1914,7 @@ siguiente orden:
   calcularla sólo se tienen en cuenta las frecuencias absolutas.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Hay que tener cuidado con los datos atípicos, ya que la media puede
 distorsionarse cuando hay datos atípicos. En tal caso es mejor utilizar
@@ -1992,9 +1934,8 @@ entonces, \(\bar{x}=3\) hijos y \(Me=1\) hijo.
 
 \end{example}
 
-\hypertarget{medidas-de-posiciuxf3n-no-centrales}{%
 \subsection{Medidas de posición no
-centrales}\label{medidas-de-posiciuxf3n-no-centrales}}
+centrales}\label{medidas-de-posiciuxf3n-no-centrales}
 
 Las medidas de posición no centrales o \emph{cuantiles} dividen la
 distribución en partes iguales.
@@ -2012,7 +1953,7 @@ deciles: \(D_1\) (10\% acumulado),\ldots, \(D_9\) (90\% acumulado).
 99 percentiles: \(P_1\) (1\% acumulado),\ldots, \(P_{99}\) (99\%
 acumulado).
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/cuantiles.png}
 
@@ -2020,7 +1961,7 @@ acumulado).
 
 \caption{Cuartiles, deciles y percentiles.}
 
-\end{figure}
+\end{figure}%
 
 Obsérvese que hay una correspondencia entre los cuartiles, los deciles y
 los percentiles. Por ejemplo, el primer cuartil coincide con el
@@ -2030,7 +1971,7 @@ Los cuantiles se calculan de forma similar a la mediana. La única
 diferencia es la frecuencia relativa acumulada que corresponde a cada
 cuantil.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/cuantiles_calculo.png}
 
@@ -2038,7 +1979,7 @@ cuantil.
 
 \caption{Cálculo de cuartiles, deciles y percentiles.}
 
-\end{figure}
+\end{figure}%
 
 \begin{example}[]\protect\hypertarget{exm-cuantiles-datos-no-agrupados}{}\label{exm-cuantiles-datos-no-agrupados}
 
@@ -2069,9 +2010,8 @@ F_{P_{92}}=0.92 &\Rightarrow P_{92} = 3 \text{ hijos}.
 
 \end{example}
 
-\hypertarget{estaduxedsticos-de-dispersiuxf3n}{%
 \section{Estadísticos de
-dispersión}\label{estaduxedsticos-de-dispersiuxf3n}}
+dispersión}\label{estaduxedsticos-de-dispersiuxf3n}
 
 La \emph{dispersión} se refiere a la heterogeneidad o variabilidad de
 los datos. Así pues, los estadísticos de dispersión mide la variabilidad
@@ -2093,8 +2033,7 @@ Para las variables cuantitativas, las más empleadas son:
   Coeficiente de Variación.
 \end{itemize}
 
-\hypertarget{recorrido}{%
-\subsection{Recorrido}\label{recorrido}}
+\subsection{Recorrido}\label{recorrido}
 
 \begin{definition}[Recorrido muestral
 \(Re\)]\protect\hypertarget{def-recorrido-muestral}{}\label{def-recorrido-muestral}
@@ -2107,7 +2046,7 @@ valores en la muestra.
 
 \end{definition}
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/rango.png}
 
@@ -2115,15 +2054,14 @@ valores en la muestra.
 
 \caption{Rango muestral.}
 
-\end{figure}
+\end{figure}%
 
 El recorrido mide la máxima variación que hay entre los datos
 muestrales. No obstante, es muy sensible a datos atípicos ya que suelen
 aparecer justo en los extremos de la distribución, por lo que no se
 suele utilizar mucho.
 
-\hypertarget{rango-intercuartuxedlico}{%
-\subsection{Rango intercuartílico}\label{rango-intercuartuxedlico}}
+\subsection{Rango intercuartílico}\label{rango-intercuartuxedlico}
 
 Para evitar el problema de los datos atípicos en el recorrido, se puede
 utilizar el primer y tercer cuartil en lugar del mínimo y el máximo.
@@ -2138,7 +2076,7 @@ como la diferencia entre el tercer y el primer cuartil de la muestra.
 
 \end{definition}
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/rango_intercuartilico.png}
 
@@ -2146,14 +2084,13 @@ como la diferencia entre el tercer y el primer cuartil de la muestra.
 
 \caption{Rango intercuartílico.}
 
-\end{figure}
+\end{figure}%
 
 El rango intercuartílico mide la dispersión del 50\% de los datos
 centrales.
 
-\hypertarget{diagrama-de-caja-y-bigotes}{%
 \subsection{Diagrama de caja y
-bigotes}\label{diagrama-de-caja-y-bigotes}}
+bigotes}\label{diagrama-de-caja-y-bigotes}
 
 La dispersión de una variable suele representarse gráficamente mediante
 un \emph{diagrama de caja y bigotes}, que representa cinco estadísticos
@@ -2182,7 +2119,7 @@ Este diagrama es muy útil y se utiliza para muchos propósitos:
 :::\{\#exm-diagrama-caja\} El diagrama siguiente muestra el diagrama de
 caja y bigotes del peso de una muestra de recién nacidos.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/diagrama_caja.png}
 
@@ -2190,7 +2127,7 @@ caja y bigotes del peso de una muestra de recién nacidos.
 
 \caption{Diagrama de caja y bigotes del peso de recién nacidos.}
 
-\end{figure}
+\end{figure}%
 
 Para construir el diagrama de caja y bigotes hay que seguir los
 siguientes pasos:
@@ -2228,7 +2165,7 @@ siguientes pasos:
   superior.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Los bigotes no son las vallas.
 
@@ -2248,7 +2185,7 @@ Los bigotes no son las vallas.
 El diagrama de caja y bigotes de la muestra del número de hijos de las
 familias se muestra a continuación.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/diagrama_caja_hijos.png}
 
@@ -2256,13 +2193,12 @@ familias se muestra a continuación.
 
 \caption{Diagrama de caja y bigotes del número de hijos.}
 
-\end{figure}
+\end{figure}%
 
 \end{example}
 
-\hypertarget{desviaciones-respecto-de-la-media}{%
 \subsubsection{Desviaciones respecto de la
-media}\label{desviaciones-respecto-de-la-media}}
+media}\label{desviaciones-respecto-de-la-media}
 
 Otra forma de medir la variabilidad de una variable es estudiar la
 concentración de los valores en torno a algún estadístico de tendencia
@@ -2271,7 +2207,7 @@ central como por ejemplo la media.
 Para ello se suele medir la distancia de cada valor a la media. A ese
 valor se le llama \textbf{desviación de la media}.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/desviaciones.png}
 
@@ -2279,7 +2215,7 @@ valor se le llama \textbf{desviación de la media}.
 
 \caption{Desviaciones con respecto a la media.}
 
-\end{figure}
+\end{figure}%
 
 Si las desviaciones son grandes la media no será tan representativa como
 cuando la desviaciones sean pequeñas.
@@ -2305,9 +2241,8 @@ representa mejor el rendimiento en el curso?
 
 \end{example}
 
-\hypertarget{varianza-y-desviaciuxf3n-tuxedpica}{%
 \subsection{Varianza y desviación
-típica}\label{varianza-y-desviaciuxf3n-tuxedpica}}
+típica}\label{varianza-y-desviaciuxf3n-tuxedpica}
 
 \begin{definition}[Varianza
 \(s^2\)]\protect\hypertarget{def-varianza}{}\label{def-varianza}
@@ -2337,7 +2272,7 @@ como la raíz cuadrada positiva de su varianza muestral.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, left=2mm, colbacktitle=quarto-callout-tip-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, coltitle=black, colframe=quarto-callout-tip-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Tanto la varianza como la desviación típica sirven para cuantificar la
 dispersión de los datos en torno a la media. Cuando la varianza o la
@@ -2363,7 +2298,7 @@ Desviación típica grande & \(\Rightarrow\) & Media no representativa \\
 Las siguientes muestras contienen las notas de dos estudiantes en dos
 asignaturas.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/interpretacion_desviacion_tipica.png}
 
@@ -2371,7 +2306,7 @@ asignaturas.
 
 \caption{Interpretación de la desviación típica.}
 
-\end{figure}
+\end{figure}%
 
 \emph{¿Qué media es más representativa?}
 
@@ -2444,9 +2379,7 @@ dispersión y en consecuencia su media es muy representativa.
 
 \end{example}
 
-\hypertarget{coeficiente-de-variaciuxf3n}{%
-\subsection{Coeficiente de
-variación}\label{coeficiente-de-variaciuxf3n}}
+\subsection{Coeficiente de variación}\label{coeficiente-de-variaciuxf3n}
 
 Tanto la varianza como la desviación típica tienen unidades y eso
 dificulta a veces su interpretación, especialmente cuando se compara la
@@ -2466,7 +2399,7 @@ absoluto de su media muestral.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, left=2mm, colbacktitle=quarto-callout-tip-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, coltitle=black, colframe=quarto-callout-tip-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 El coeficiente de variación muestral mide la dispersión relativa de los
 valores de la muestra en torno a la media muestral.
@@ -2500,8 +2433,7 @@ estaturas será más representativa que la media del número de hijos.
 
 \end{example}
 
-\hypertarget{estaduxedsticos-de-forma}{%
-\section{Estadísticos de forma}\label{estaduxedsticos-de-forma}}
+\section{Estadísticos de forma}\label{estaduxedsticos-de-forma}
 
 Son medidas que describen la forma de la distribución.
 
@@ -2516,9 +2448,7 @@ de valores en torno a la media de la distribución de frecuencias. El
 estadístico más utilizado es el \emph{Coeficiente de Apuntamiento o
 Curtosis}.
 
-\hypertarget{coeficiente-de-asimetruxeda}{%
-\subsection{Coeficiente de
-asimetría}\label{coeficiente-de-asimetruxeda}}
+\subsection{Coeficiente de asimetría}\label{coeficiente-de-asimetruxeda}
 
 \begin{definition}[Coeficiente de asimetría muestral
 \(g_1\)]\protect\hypertarget{def-coeficiente-asimetria}{}\label{def-coeficiente-asimetria}
@@ -2532,7 +2462,7 @@ cubo.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, left=2mm, colbacktitle=quarto-callout-tip-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, coltitle=black, colframe=quarto-callout-tip-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Mide el grado de simetría de los valores de la muestra con respecto a la
 media muestra, es decir, cuantos valores de la muestra están por encima
@@ -2553,7 +2483,7 @@ o por debajo de la media y cómo de alejados de esta.
 
 \caption{Distribución simétrica.}
 
-\end{figure}
+\end{figure}%
 
 \begin{itemize}
 \tightlist
@@ -2571,7 +2501,7 @@ o por debajo de la media y cómo de alejados de esta.
 
 \caption{Distribución asimétrica hacia la izquierda.}
 
-\end{figure}
+\end{figure}%
 
 \begin{itemize}
 \tightlist
@@ -2589,7 +2519,7 @@ o por debajo de la media y cómo de alejados de esta.
 
 \caption{Distribución asimétrica hacia la derecha.}
 
-\end{figure}
+\end{figure}%
 
 \end{tcolorbox}
 
@@ -2623,9 +2553,8 @@ es casi simétrica.
 
 \end{example}
 
-\hypertarget{coeficiente-de-apuntamiento-o-curtosis}{%
 \subsection{Coeficiente de apuntamiento o
-curtosis}\label{coeficiente-de-apuntamiento-o-curtosis}}
+curtosis}\label{coeficiente-de-apuntamiento-o-curtosis}
 
 \begin{definition}[Coeficiente de apuntamiento muestral
 \(g_2\)]\protect\hypertarget{def-coeficiente-apuntamiento}{}\label{def-coeficiente-apuntamiento}
@@ -2639,7 +2568,7 @@ típica a la cuarta y al resultado se le resta 3.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, left=2mm, colbacktitle=quarto-callout-tip-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, coltitle=black, colframe=quarto-callout-tip-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 El coeficiente de apuntamiento mide la concentración de valores en torno
 a la media y la longitud de las colas de la distribución. Se toma como
@@ -2661,7 +2590,7 @@ referencia la distribución normal (campana de Gauss).
 
 \caption{Distribución mesocúrtica.}
 
-\end{figure}
+\end{figure}%
 
 \begin{itemize}
 \tightlist
@@ -2679,7 +2608,7 @@ referencia la distribución normal (campana de Gauss).
 
 \caption{Distribución platicúrtica.}
 
-\end{figure}
+\end{figure}%
 
 \begin{itemize}
 \tightlist
@@ -2697,7 +2626,7 @@ referencia la distribución normal (campana de Gauss).
 
 \caption{Distribución leptocúrtica.}
 
-\end{figure}
+\end{figure}%
 
 \end{tcolorbox}
 
@@ -2735,7 +2664,7 @@ mesocúrticas, de manera que, tanto el coeficiente de asimetría como el
 de apuntamiento pueden utilizarse para contrastar si los datos de la
 muestra provienen de una población normal.
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, left=2mm, colbacktitle=quarto-callout-tip-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, coltitle=black, colframe=quarto-callout-tip-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 En general, se suele rechazar la hipótesis de normalidad de la población
 cuando \(g_1\) o \(g_2\) estén fuera del intervalo \([-2,2]\).
@@ -2745,18 +2674,16 @@ cuando \(g_1\) o \(g_2\) estén fuera del intervalo \([-2,2]\).
 En tal caso, lo habitual es aplicar alguna transformación a la variable
 para corregir la anormalidad.
 
-\hypertarget{distribuciones-no-normales}{%
 \subsection{Distribuciones no
-normales}\label{distribuciones-no-normales}}
+normales}\label{distribuciones-no-normales}
 
-\hypertarget{distribuciuxf3n-asimuxe9trica-a-la-derecha-no-normal}{%
 \subsubsection{Distribución asimétrica a la derecha no
-normal}\label{distribuciuxf3n-asimuxe9trica-a-la-derecha-no-normal}}
+normal}\label{distribuciuxf3n-asimuxe9trica-a-la-derecha-no-normal}
 
 Un ejemplo de distribución asimétrica a la derecha es el ingreso de las
 familias.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/ejemplo_distribucion_asimetrica_derecha.png}
 
@@ -2764,16 +2691,15 @@ familias.
 
 \caption{Distribucion de los ingresos familiares de EEUU.}
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{distribuciuxf3n-asimuxe9trica-a-la-izquierda-no-normal}{%
 \subsubsection{Distribución asimétrica a la izquierda no
-normal}\label{distribuciuxf3n-asimuxe9trica-a-la-izquierda-no-normal}}
+normal}\label{distribuciuxf3n-asimuxe9trica-a-la-izquierda-no-normal}
 
 Un ejemplo de distribución asimétrica a la izquierda es la edad de
 fallecimiento.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/ejemplo_distribucion_asimetrica_izquierda.png}
 
@@ -2781,16 +2707,15 @@ fallecimiento.
 
 \caption{Distribucion de la edad de fallecimiento.}
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{distribuciuxf3n-bimodal-no-normal}{%
 \subsubsection{Distribución bimodal no
-normal}\label{distribuciuxf3n-bimodal-no-normal}}
+normal}\label{distribuciuxf3n-bimodal-no-normal}
 
 Un ejemplo de distribución bimodal es la hora de llegada de los clientes
 de un restaurante.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/ejemplo_distribucion_bimodal.png}
 
@@ -2799,11 +2724,10 @@ de un restaurante.
 \caption{Distribucion de la hora de llegada de los clientes de un
 restaurante.}
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{transformaciones-de-variables}{%
 \section{Transformaciones de
-variables}\label{transformaciones-de-variables}}
+variables}\label{transformaciones-de-variables}
 
 En muchas ocasiones se suelen transformar los datos brutos para corregir
 alguna anormalidad de la distribución o simplemente para trabajar con
@@ -2834,8 +2758,7 @@ transformación:
 
 \[Y= 100X-165\]
 
-\hypertarget{transformaciones-lineales}{%
-\subsection{Transformaciones lineales}\label{transformaciones-lineales}}
+\subsection{Transformaciones lineales}\label{transformaciones-lineales}
 
 Una de las transformaciones más habituales es la \emph{transformación
 lineal}:
@@ -2857,15 +2780,14 @@ cambia de signo si \(b\) es negativo.
 
 \end{theorem}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, left=2mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Se deja como ejercicio.
 
 \end{tcolorbox}
 
-\hypertarget{transformaciuxf3n-de-tipificaciuxf3n-y-puntuaciones-tuxedpicas}{%
 \subsection{Transformación de tipificación y puntuaciones
-típicas}\label{transformaciuxf3n-de-tipificaciuxf3n-y-puntuaciones-tuxedpicas}}
+típicas}\label{transformaciuxf3n-de-tipificaciuxf3n-y-puntuaciones-tuxedpicas}
 
 Una de las transformaciones lineales más habituales es la
 \emph{tipificación}:
@@ -2886,7 +2808,7 @@ valor que resulta de aplicarle la transformación de tipificación
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, left=2mm, colbacktitle=quarto-callout-tip-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, coltitle=black, colframe=quarto-callout-tip-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 La puntuación típica es el número de desviaciones típicas que un valor
 está por encima o por debajo de la media, y es útil para evitar la
@@ -2901,7 +2823,7 @@ Dada una variable muetral \(X\), si \(Z\) es la variable tipificada de
 
 \[\bar z = 0 \qquad s_{z} = 1.\]
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, left=2mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Se deja como ejercicio.
 
@@ -2980,9 +2902,8 @@ Y el mejor alumno sería el cuarto.
 
 \end{example}
 
-\hypertarget{transformaciones-no-lineales}{%
 \subsubsection{Transformaciones no
-lineales}\label{transformaciones-no-lineales}}
+lineales}\label{transformaciones-no-lineales}
 
 Las transformaciones no lineales son también habituales para corregir la
 anormalidad de las distribuciones.
@@ -2991,7 +2912,7 @@ La transformación \(Y=X^2\) comprime la escala para valores pequeños y
 la expande para valores altos, de manera que es muy útil para corregir
 asimetrías hacia la izquierda.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/transformacion_cuadratica.png}
 
@@ -2999,13 +2920,13 @@ asimetrías hacia la izquierda.
 
 \caption{Transformación cuadrática.}
 
-\end{figure}
+\end{figure}%
 
 Las transformaciones \(Y=\sqrt x\), \(Y= \log X\) y \(Y=1/X\) comprimen
 la escala para valores altos y la expanden para valores pequeños, de
 manera que son útiles para corregir asimetrías hacia la derecha.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/transformacion_logaritmica.png}
 
@@ -3013,11 +2934,10 @@ manera que son útiles para corregir asimetrías hacia la derecha.
 
 \caption{Transformación logarítmica.}
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{variables-clasificadoras-o-factores}{%
 \subsection{Variables clasificadoras o
-factores}\label{variables-clasificadoras-o-factores}}
+factores}\label{variables-clasificadoras-o-factores}
 
 En ocasiones interesa describir el comportamiento de una variable, no
 para toda la muestra, sino para distintos grupos de individuos
@@ -3048,7 +2968,7 @@ variable principal para cada categoría del factor.
 Los siguientes diagramas permiten comparar la distribución de estaturas
 según el sexo.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/histograma_estatura_sexo.png}
 
@@ -3056,9 +2976,9 @@ según el sexo.
 
 \caption{Histograma de estaturas por sexo.}
 
-\end{figure}
+\end{figure}%
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/descriptiva/diagrama_caja_estatura_sexo.png}
 
@@ -3066,14 +2986,13 @@ según el sexo.
 
 \caption{Diagramas de cajas de estaturas por sexo.}
 
-\end{figure}
+\end{figure}%
 
 \end{example}
 
 \bookmarksetup{startatroot}
 
-\hypertarget{regresiuxf3n}{%
-\chapter{Regresión}\label{regresiuxf3n}}
+\chapter{Regresión}\label{regresiuxf3n}
 
 Hasta ahora se ha visto como describir el comportamiento de una
 variable, pero en los fenómenos naturales normalmente aparecen más de
@@ -3100,12 +3019,10 @@ múltiple}.
 En este capítulo se verán los estudios de dependencia simple que son más
 sencillos.
 
-\hypertarget{distribuciuxf3n-de-frecuencias-conjunta}{%
 \section{Distribución de frecuencias
-conjunta}\label{distribuciuxf3n-de-frecuencias-conjunta}}
+conjunta}\label{distribuciuxf3n-de-frecuencias-conjunta}
 
-\hypertarget{frecuencias-conjuntas}{%
-\subsection{Frecuencias conjuntas}\label{frecuencias-conjuntas}}
+\subsection{Frecuencias conjuntas}\label{frecuencias-conjuntas}
 
 Al estudiar la dependencia simple entre dos variables \(X\) e \(Y\), no
 se pueden estudiar sus distribuciones por separado, sino que hay que
@@ -3134,16 +3051,15 @@ muestra se define
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Para las variables bidimensionales no tienen sentido las frecuencias
 acumuladas.
 
 \end{tcolorbox}
 
-\hypertarget{distribuciuxf3n-de-frecuencias-bidimensional}{%
 \subsection{Distribución de frecuencias
-bidimensional}\label{distribuciuxf3n-de-frecuencias-bidimensional}}
+bidimensional}\label{distribuciuxf3n-de-frecuencias-bidimensional}
 
 Al conjunto de valores de la variable bidimensional y sus respectivas
 frecuencias muestrales se le denomina \textbf{distribución de
@@ -3193,8 +3109,7 @@ La tabla de frecuencias bidimensional es
 
 \end{example}
 
-\hypertarget{diagrama-de-dispersiuxf3n}{%
-\subsection{Diagrama de dispersión}\label{diagrama-de-dispersiuxf3n}}
+\subsection{Diagrama de dispersión}\label{diagrama-de-dispersiuxf3n}
 
 La distribución de frecuencias conjunta de una variable bidimensional
 puede representarse gráficamente mediante un \textbf{diagrama de
@@ -3206,7 +3121,7 @@ la variable dependiente en el eje \(Y\). Por cada par de valores
 \((x_i,y_j)\) en la muestra se dibuja un punto en el plano con esas
 coordenadas.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/regresion/diagrama_dispersion.pdf}
 
@@ -3214,7 +3129,7 @@ coordenadas.
 
 \caption{Diagrama de dispersión.}
 
-\end{figure}
+\end{figure}%
 
 El resultado es un conjunto de puntos que se conoce como \emph{nube de
 puntos}.
@@ -3224,7 +3139,7 @@ puntos}.
 El siguiente diagrama de dispersión representa la distribución conjunta
 de estaturas y pesos de la muestra anterior.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/regresion/diagrama_dispersion_estatura_peso.pdf}
 
@@ -3232,11 +3147,11 @@ de estaturas y pesos de la muestra anterior.
 
 \caption{Diagrama de dispersión de estaturas y pesos.}
 
-\end{figure}
+\end{figure}%
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, left=2mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 El diagrama de dispersión da información visual sobre el tipo de
 relación entre las variables.
@@ -3249,12 +3164,11 @@ relación entre las variables.
 
 \caption{Diagramas de dispersión de diferentes tipos de relaciones.}
 
-\end{figure}
+\end{figure}%
 
 \end{tcolorbox}
 
-\hypertarget{distribuciones-marginales}{%
-\subsection{Distribuciones marginales}\label{distribuciones-marginales}}
+\subsection{Distribuciones marginales}\label{distribuciones-marginales}
 
 A cada una de las distribuciones de las variables que conforman la
 variable bidimensional se les llama .
@@ -3314,14 +3228,13 @@ y los estadísticos correspondientes son
 
 \end{example}
 
-\hypertarget{covarianza}{%
-\section{Covarianza}\label{covarianza}}
+\section{Covarianza}\label{covarianza}
 
 Para analizar la relación entre dos variables cuantitativas es
 importante hacer un estudio conjunto de las desviaciones respecto de la
 media de cada variable.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/regresion/desviaciones_media.pdf}
 
@@ -3329,7 +3242,7 @@ media de cada variable.
 
 \caption{Desviaciones de las medias en un diagrama de dispersión.}
 
-\end{figure}
+\end{figure}%
 
 Si dividimos la nube de puntos del diagrama de dispersión en 4
 cuadrantes centrados en el punto de medias \((\bar x, \bar y)\), el
@@ -3349,7 +3262,7 @@ signo de las desviaciones será:
 4 & \(+\) & \(-\) & \(-\) \\
 \end{longtable}
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/regresion/cuadrantes_diagrama_dispersion.pdf}
 
@@ -3357,7 +3270,7 @@ signo de las desviaciones será:
 
 \caption{Cuadrantes de un diagrama de dispersión.}
 
-\end{figure}
+\end{figure}%
 
 Si la relación entre las variables es \emph{lineal y creciente},
 entonces la mayor parte de los puntos estarán en los cuadrantes 1 y 3 y
@@ -3365,7 +3278,7 @@ la suma de los productos de desviaciones será positiva.
 
 \[\sum(x_i-\bar x)(y_j-\bar y) > 0\]
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/regresion/diagrama_dispersion_lineal_creciente.pdf}
 
@@ -3373,7 +3286,7 @@ la suma de los productos de desviaciones será positiva.
 
 \caption{Diagrama de dispersión de una relación lineal creciente.}
 
-\end{figure}
+\end{figure}%
 
 Si la relación entre las variables es \emph{lineal y decreciente},
 entonces la mayor parte de los puntos estarán en los cuadrantes 2 y 4 y
@@ -3381,7 +3294,7 @@ la suma de los productos de desviaciones será negativa.
 
 \[\sum(x_i-\bar x)(y_j-\bar y) = -\]
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/regresion/diagrama_dispersion_lineal_decreciente.pdf}
 
@@ -3389,7 +3302,7 @@ la suma de los productos de desviaciones será negativa.
 
 \caption{Diagrama de dispersión de una relación lineal decreciente.}
 
-\end{figure}
+\end{figure}%
 
 Usando el producto de las desviaciones respecto de las medias surge el
 siguiente estadístico.
@@ -3409,7 +3322,7 @@ También puede calcularse de manera más sencilla mediante la fórmula
 
 \[s_{xy}=\frac{\sum x_iy_jn_{ij}}{n}-\bar x\bar y.\]
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, left=2mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 La covarianza sirve para estudiar la relación lineal entre dos
 variables:
@@ -3465,8 +3378,7 @@ el peso.
 
 \end{example}
 
-\hypertarget{regresiuxf3n-1}{%
-\section{Regresión}\label{regresiuxf3n-1}}
+\section{Regresión}\label{regresiuxf3n-1}
 
 En muchos casos el objetivo de un estudio no es solo detectar una
 relación entre dos variables, sino explicarla mediante alguna función
@@ -3477,9 +3389,8 @@ La \textbf{regresión} es la parte de la Estadística encargada de
 construir esta función, que se conoce como \textbf{función de regresión}
 o \textbf{modelo de regresión}.
 
-\hypertarget{modelos-de-regresiuxf3n-simple}{%
 \subsection{Modelos de regresión
-simple}\label{modelos-de-regresiuxf3n-simple}}
+simple}\label{modelos-de-regresiuxf3n-simple}
 
 Dependiendo de la forma de función de regresión, existen muchos tipos de
 regresión simple. Los más habituales son los que aparecen en la
@@ -3505,9 +3416,8 @@ Sigmoidal & \(y=e^{a+\frac{b}{x}}\) \\
 La elección de un tipo u otro depende de la forma que tenga la nube de
 puntos del diagrama de dispersión.
 
-\hypertarget{residuos-o-errores-predictivos}{%
 \subsection{Residuos o errores
-predictivos}\label{residuos-o-errores-predictivos}}
+predictivos}\label{residuos-o-errores-predictivos}
 
 Una vez elegida la familia de curvas que mejor se adapta a la nube de
 puntos, se determina, dentro de dicha familia, la curva que mejor se
@@ -3532,7 +3442,7 @@ función de regresión para \(x_i\),
 
 \end{definition}
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics{img/regresion/residuos_y.pdf}
 
@@ -3540,11 +3450,10 @@ función de regresión para \(x_i\),
 
 \caption{Residuos de un modelo de regresión.}
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{ajuste-de-muxednimos-cuadrados}{%
 \subsection{Ajuste de mínimos
-cuadrados}\label{ajuste-de-muxednimos-cuadrados}}
+cuadrados}\label{ajuste-de-muxednimos-cuadrados}
 
 Una forma posible de obtener la función de regresión es mediante el
 método de \emph{mínimos cuadrados} que consiste en calcular la función
@@ -3580,9 +3489,8 @@ a= \bar y - \frac{s_{xy}}{s_x^2}\bar x \qquad b=\frac{s_{xy}}{s_x^2}
 Estos valores hacen mínimos los residuos en \(Y\) y por tanto dan la
 recta de regresión óptima.
 
-\hypertarget{coeficiente-de-determinaciuxf3n}{%
 \subsection{Coeficiente de
-determinación}\label{coeficiente-de-determinaciuxf3n}}
+determinación}\label{coeficiente-de-determinaciuxf3n}
 
 A partir de la varianza residual se puede definir otro estadístico más
 sencillo de interpretar.
@@ -3598,7 +3506,7 @@ es
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Como la varianza residual puede tomar valores entre 0 y \(s_y^2\), se
 tiene que
@@ -3607,7 +3515,7 @@ tiene que
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, left=2mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Cuanto mayor sea \(r^2\), mejor explicará el modelo de regresión la
 relación entre las variables, en particular:
@@ -3623,7 +3531,7 @@ relación entre las variables, en particular:
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 En el caso de las rectas de regresión, el coeficiente de determinación
 puede calcularse con esta fórmula
@@ -3632,10 +3540,9 @@ puede calcularse con esta fórmula
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, left=2mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 \begin{proof}
-
 Cuando el modelo ajustado es la recta de regresión la varianza residual
 vale
 
@@ -3651,7 +3558,6 @@ y, por tanto, el coeficiente de determinación lineal vale
 \begin{align*}
 r^2 &= 1- \frac{s_{ry}^2}{s_y^2} = 1- \frac{s_y^2 - \frac{s_{xy}^2}{s_x^2}}{s_y^2} = 1 - 1 + \frac{s_{xy}^2}{s_x^2s_y^2} = \frac{s_{xy}^2}{s_x^2s_y^2}.
 \end{align*}
-
 \end{proof}
 
 \end{tcolorbox}
@@ -3684,9 +3590,8 @@ variabilidad de la estatura.
 
 \end{example}
 
-\hypertarget{coeficiente-de-correlaciuxf3n-lineal}{%
 \subsection{Coeficiente de correlación
-lineal}\label{coeficiente-de-correlaciuxf3n-lineal}}
+lineal}\label{coeficiente-de-correlaciuxf3n-lineal}
 
 \begin{definition}[Coeficiente de correlación lineal
 muestral]\protect\hypertarget{def-coeficiente-correlacion}{}\label{def-coeficiente-correlacion}
@@ -3701,7 +3606,7 @@ r = \sqrt{r^2} = \dfrac{s_{xy}}{s_xs_y}.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Como \(r^2\) toma valores entre 0 y 1, \(r\) tomará valores entre -1 y
 1,
@@ -3710,7 +3615,7 @@ Como \(r^2\) toma valores entre 0 y 1, \(r\) tomará valores entre -1 y
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, left=2mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 El coeficiente de correlación lineal no sólo mide mide el grado de
 dependencia lineal sino también su dirección (creciente o decreciente):
@@ -3750,14 +3655,13 @@ r
 Esto indica que la relación lineal entre el peso y la estatura es
 fuerte, y además creciente.
 
-\hypertarget{distintos-grados-de-correlaciuxf3n}{%
 \subsection{Distintos grados de
-correlación}\label{distintos-grados-de-correlaciuxf3n}}
+correlación}\label{distintos-grados-de-correlaciuxf3n}
 
 Los siguientes diagramas de dispersión muestran modelos de regresión
 lineales con diferentes grados de correlación.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics[width=6.25in,height=\textheight]{img/regresion/grados_correlacion.pdf}
 
@@ -3766,11 +3670,10 @@ lineales con diferentes grados de correlación.
 \caption{Modelos de regresión lineales con diferentes grados de
 correlación.}
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{fiabilidad-de-las-predicciones-de-un-modelo-de-regresiuxf3n}{%
 \subsection{Fiabilidad de las predicciones de un modelo de
-regresión}\label{fiabilidad-de-las-predicciones-de-un-modelo-de-regresiuxf3n}}
+regresión}\label{fiabilidad-de-las-predicciones-de-un-modelo-de-regresiuxf3n}
 
 Aunque el coeficiente de determinación o el de correlación determinan la
 bondad de ajuste de un modelo de regresión, existen otros factores que
@@ -3790,7 +3693,7 @@ influyen en la fiabilidad de las predicciones de un modelo de regresión:
   consecuencia, más fiables serán las predicciones.
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Además, hay que tener en cuenta que un modelo de regresión es válido
 únicamente para el rango de valores observados en la muestra. Fuera de
@@ -3800,8 +3703,7 @@ observados en la muestra.
 
 \end{tcolorbox}
 
-\hypertarget{regresiuxf3n-no-lineal}{%
-\section{Regresión no lineal}\label{regresiuxf3n-no-lineal}}
+\section{Regresión no lineal}\label{regresiuxf3n-no-lineal}
 
 El ajuste de un modelo de regresión no lineal es similar al del modelo
 lineal y también puede realizarse mediante la técnica de mínimos
@@ -3811,9 +3713,8 @@ No obstante, en determinados casos un ajuste no lineal puede convertirse
 en un ajuste lineal mediante una sencilla transformación de alguna de
 las variables del modelo.
 
-\hypertarget{transformaciuxf3n-de-modelos-de-regresiuxf3n-no-lineales}{%
 \subsection{Transformación de modelos de regresión no
-lineales}\label{transformaciuxf3n-de-modelos-de-regresiuxf3n-no-lineales}}
+lineales}\label{transformaciuxf3n-de-modelos-de-regresiuxf3n-no-lineales}
 
 \begin{itemize}
 \item
@@ -3843,8 +3744,7 @@ lineales}\label{transformaciuxf3n-de-modelos-de-regresiuxf3n-no-lineales}}
   \[z = \log y = \log (e^{a+b/x}) = a+b(1/x) = a+bt.\]
 \end{itemize}
 
-\hypertarget{relaciuxf3n-exponencial}{%
-\subsection{Relación exponencial}\label{relaciuxf3n-exponencial}}
+\subsection{Relación exponencial}\label{relaciuxf3n-exponencial}
 
 :::\{\#exm-regresion-exponencial\} El número de bacterias de un cultivo
 evoluciona con el tiempo según la siguiente tabla:
@@ -3866,7 +3766,7 @@ evoluciona con el tiempo según la siguiente tabla:
 
 El diagrama de dispersión asociado es
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics[width=6.25in,height=\textheight]{img/regresion/evolucion_bacterias.pdf}
 
@@ -3874,14 +3774,14 @@ El diagrama de dispersión asociado es
 
 \caption{Diagrama de dispersión de la evolución de bacterias.}
 
-\end{figure}
+\end{figure}%
 
 Si realizamos un ajuste lineal, obtenemos la siguiente recta de
 regresión
 
 \[\mbox{Bacterias} = -30.18+41,27\,\mbox{Horas, with } r^2=0.85.\]
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics[width=6.25in,height=\textheight]{img/regresion/regresion_lineal_bacterias.pdf}
 
@@ -3889,7 +3789,7 @@ regresión
 
 \caption{Regresión lineal de la evolución de un cultivo de bacterias.}
 
-\end{figure}
+\end{figure}%
 
 \emph{¿Es un buen modelo?}
 
@@ -3915,16 +3815,16 @@ variable dependiente.
 \end{array}
 \]
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=6.25in,height=\textheight]{img/regresion/evolucion_log_bacterias.pdf}
+{\centering \includegraphics{img/regresion/evolucion_log_bacterias.pdf}
 
 }
 
 \caption{Diagrama de dispersión de la evolución del logarítmo de las
 bacterias de un cultivo.}
 
-\end{figure}
+\end{figure}%
 
 Ahora sólo queda calcular la recta de regresión del logaritmo de
 Bacterias sobre Horas
@@ -3933,33 +3833,31 @@ Bacterias sobre Horas
 
 Y, deshaciendo el cambio de variable, se obtiene el modelo exponencial
 
-\[\mbox{Bacterias} = e^{3.107+0.352\,\textrm{Horas}}, \mbox{ con } r^2=0.99.\]
+\[\mbox{Bacterias} = e^{3.107+0.352\,\mbox{Horas}}, \mbox{ con } r^2=0.99.\]
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=6.25in,height=\textheight]{img/regresion/regresion_exponencial_bacterias.pdf}
+{\centering \includegraphics{img/regresion/regresion_exponencial_bacterias.pdf}
 
 }
 
 \caption{Regresión exponencial de la evolución de las bacterias de un
 cultivo.}
 
-\end{figure}
+\end{figure}%
 
 Como se puede apreciar, el modelo exponencial se ajusta mucho mejor que
 el modelo lineal.
 
-\hypertarget{riesgos-de-la-regresiuxf3n}{%
-\section{Riesgos de la regresión}\label{riesgos-de-la-regresiuxf3n}}
+\section{Riesgos de la regresión}\label{riesgos-de-la-regresiuxf3n}
 
-\hypertarget{la-falta-de-ajuste-no-significa-independencia}{%
 \subsection{La falta de ajuste no significa
-independencia}\label{la-falta-de-ajuste-no-significa-independencia}}
+independencia}\label{la-falta-de-ajuste-no-significa-independencia}
 
 Es importante señalar que cada modelo de regresión tiene su propio
 coeficiente de determinación.
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Así, un coeficiente de determinación cercano a cero significa que no
 existe relación entre las variables del tipo planteado por el modelo,
@@ -3970,60 +3868,43 @@ ya que puede existir relación de otro tipo.
 
 \begin{figure}
 
-\begin{minipage}[t]{0.50\linewidth}
+\begin{minipage}{0.50\linewidth}
 
-{\centering 
+\includegraphics{img/regresion/regresion_lineal_relacion_cuadratica.pdf}
 
-\raisebox{-\height}{
-
-\includegraphics[width=5.20833in,height=\textheight]{img/regresion/regresion_lineal_relacion_cuadratica.pdf}
-
-}
-
-\caption{Modelo de regresión lineal en una relación cuadrática.}
-
-}
-
+\subcaption{\label{}Modelo de regresión lineal en una relación
+cuadrática.}
 \end{minipage}%
 %
-\begin{minipage}[t]{0.50\linewidth}
+\begin{minipage}{0.50\linewidth}
 
-{\centering 
+\includegraphics{img/regresion/regresion_cuadratica.pdf}
 
-\raisebox{-\height}{
-
-\includegraphics[width=5.20833in,height=\textheight]{img/regresion/regresion_cuadratica.pdf}
-
-}
-
-\caption{Modelo de regresión cuadrático en una relación cuadrática.}
-
-}
-
+\subcaption{\label{}Modelo de regresión cuadrático en una relación
+cuadrática.}
 \end{minipage}%
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{datos-atuxedpicos-en-regresiuxf3n}{%
 \subsection{Datos atípicos en
-regresión}\label{datos-atuxedpicos-en-regresiuxf3n}}
+regresión}\label{datos-atuxedpicos-en-regresiuxf3n}
 
 Los \emph{datos atípicos} en un estudio de regresión son los puntos que
 claramente no siguen la tendencia del resto de los puntos en el diagrama
 de dispersión, incluso si los valores del par no se pueden considerar
 atípicos para cada variable por separado.
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=6.25in,height=\textheight]{img/regresion/diagrama_dispersion_con_datos_atipicos.pdf}
+{\centering \includegraphics{img/regresion/diagrama_dispersion_con_datos_atipicos.pdf}
 
 }
 
 \caption{Diagrama de dispersión con un dato atípico.}
 
-\end{figure}
+\end{figure}%
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 Los datos atípicos en regresión suelen provocar cambios drásticos en el
 ajuste de los modelos de regresión, y por tanto, habrá que tener mucho
@@ -4033,42 +3914,23 @@ cuidado con ellos.
 
 \begin{figure}
 
-\begin{minipage}[t]{0.50\linewidth}
+\begin{minipage}{0.50\linewidth}
 
-{\centering 
+\includegraphics{img/regresion/regresion_lineal_con_datos_atipicos.pdf}
 
-\raisebox{-\height}{
-
-\includegraphics[width=5.20833in,height=\textheight]{img/regresion/regresion_lineal_con_datos_atipicos.pdf}
-
-}
-
-\caption{Modelo de regresión lineal con datos atípicos.}
-
-}
-
+\subcaption{\label{}Modelo de regresión lineal con datos atípicos.}
 \end{minipage}%
 %
-\begin{minipage}[t]{0.50\linewidth}
+\begin{minipage}{0.50\linewidth}
 
-{\centering 
+\includegraphics{img/regresion/regresion_lineal_sin_datos_atipicos.pdf}
 
-\raisebox{-\height}{
-
-\includegraphics[width=5.20833in,height=\textheight]{img/regresion/regresion_lineal_sin_datos_atipicos.pdf}
-
-}
-
-\caption{Modelo de regresión lineal sin datos atípicos.}
-
-}
-
+\subcaption{\label{}Modelo de regresión lineal sin datos atípicos.}
 \end{minipage}%
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{la-paradoja-de-simpson}{%
-\subsection{La paradoja de Simpson}\label{la-paradoja-de-simpson}}
+\subsection{La paradoja de Simpson}\label{la-paradoja-de-simpson}
 
 A veces, una tendencia desaparece o incluso se revierte cuando se divide
 la muestra en grupos de acuerdo a una variable cualitativa que está
@@ -4079,37 +3941,1867 @@ relacionada con la variable dependiente. Esto se conoce como la
 muestra una relación inversa entre entre las horas de estudio preparando
 un examen y la nota del examen.
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=6.25in,height=\textheight]{img/regresion/paradoja_simpson_1.pdf}
+{\centering \includegraphics{img/regresion/paradoja_simpson_1.pdf}
 
 }
 
 \caption{Paradoja de Simpson. Relación inversa entre las horas de
 estudio para un examen y la nota obtenida.}
 
-\end{figure}
+\end{figure}%
 
 Pero si se divide la muestra en dos grupos (buenos y malos estudiantes)
 se obtienen diferentes tendencias y ahora la relación es directa, lo que
 tiene más lógica.
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=6.25in,height=\textheight]{img/regresion/paradoja_simpson_2.pdf}
+{\centering \includegraphics{img/regresion/paradoja_simpson_2.pdf}
 
 }
 
 \caption{Paradoja de Simpson. Relación directa entre las horas de
 estudio para un examen y la nota obtenida.}
 
-\end{figure}
+\end{figure}%
 
 \bookmarksetup{startatroot}
 
-\hypertarget{estimaciuxf3n-de-paruxe1metros-poblacionales}{%
+\chapter{Probabilidad}\label{probabilidad}
+
+La estadística descriptiva permite describir el comportamiento y las
+relaciones entre las variables en la muestra, pero no permite sacar
+conclusiones sobre el resto de la población.
+
+Ha llegado el momento de dar el salto de la muestra a la población y
+pasar de la estadística descriptiva a la inferencia estadística, y el
+puente que lo permite es la \textbf{Teoría de la Probabilidad}.
+
+Hay que tener en cuenta que el conocimiento que se puede obtener de la
+población a partir de la muestra es limitado, y que para obtener
+conclusiones válidas para la población la muestra debe ser
+representativa de esta. Por esta razón, para garantizar la
+representatividad de la muestra, esta debe extraerse
+\emph{aleatoriamente}, es decir, al \emph{azar}.
+
+La teoría de la probabilidad precisamente se encarga de controlar ese
+azar para saber hasta qué punto son fiables las conclusiones obtenidas a
+partir de una muestra.
+
+\section{Experimentos y sucesos
+aleatorios}\label{experimentos-y-sucesos-aleatorios}
+
+El estudio de una característica en una población se realiza a través de
+experimentos aleatorios.
+
+\begin{definition}[Experimento
+aleatorio]\protect\hypertarget{def-experimento-aleatorio}{}\label{def-experimento-aleatorio}
+
+Un \emph{experimento aleatorio} es un experimento que cumple dos
+condiciones:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  El conjunto de posibles resultados es conocido.
+\item
+  No se puede predecir con absoluta certeza el resultado del
+  experimento.
+\end{enumerate}
+
+\end{definition}
+
+\begin{example}[]\protect\hypertarget{exm-experimento-aleatorio}{}\label{exm-experimento-aleatorio}
+
+Un ejemplo típico de experimentos aleatorios son los juegos de azar. El
+lanzamiento de un dado, por ejemplo, es un experimento aleatorio ya que:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Se conoce el conjunto posibles de resultados \(\{1,2,3,4,5,6\}\).
+\item
+  Antes de lanzar el dado, es imposible predecir con absoluta certeza el
+  valor que saldrá.
+\end{enumerate}
+
+Otro ejemplo de experimento aleatorio sería la selección de un individuo
+de una población al azar y la determinación de su grupo sanguíneo.
+
+En general, la obtención de cualquier muestra mediante procedimientos
+aleatorios será un experimento aleatorio.
+
+\end{example}
+
+\begin{definition}[Espacio
+muestral]\protect\hypertarget{def-espacio-muestral}{}\label{def-espacio-muestral}
+
+Al conjunto \(\Omega\) de todos los posibles resultados de un
+experimento aleatorio se le llama \emph{espacio muestral}.
+
+\end{definition}
+
+\begin{example}[]\protect\hypertarget{exm-espacios-muestrales}{}\label{exm-espacios-muestrales}
+
+Algunos ejemplos de espacios muestrales son:
+
+\begin{itemize}
+\tightlist
+\item
+  Lanzamiento de una moneda: \(\Omega=\{c,x\}\).
+\item
+  Lanzamiento de un dado: \(\Omega=\{1,2,3,4,5,6\}\).
+\item
+  Grupo sanguíneo de un individuo seleccionado al azar:
+  \(\Omega=\{\mbox{A},\mbox{B},\mbox{AB},\mbox{0}\}\).
+\item
+  Estatura de un individuo seleccionado al azar:
+  \(\Omega=\mathbb{R}^+\).
+\end{itemize}
+
+\end{example}
+
+En experimentos donde se mide más de una variable, la determinación del
+espacio muestral puede resultar compleja. En tales casos es recomendable
+utilizar un para construir el espacio muestral.
+
+En un diagrama de árbol cada variable se representa en un nivel del
+árbol y cada posible valor de la variable como una rama.
+
+\begin{example}[]\protect\hypertarget{exm-diagrama-arbol}{}\label{exm-diagrama-arbol}
+
+El siguiente diagrama de árbol representa el espacio muestral de un
+experimento aleatorio en el que se mide el sexo y el grupo sanguíneo de
+un individuo al azar.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/espacio_muestral.pdf}
+
+}
+
+\caption{Diagrama de árbol del espacio muestral del sexo y el grupo
+sanguineo.}
+
+\end{figure}%
+
+\end{example}
+
+\begin{definition}[Suceso
+aleatorio]\protect\hypertarget{def-suceso-aleatorio}{}\label{def-suceso-aleatorio}
+
+Un \emph{suceso aleatorio} es cualquier subconjunto del espacio muestral
+\(\Omega\) de un experimento aleatorio.
+
+\end{definition}
+
+Existen distintos tipos de sucesos:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Suceso imposible}: Es el suceso vacío \(\emptyset\). Este
+  suceso nunca ocurre.
+\item
+  \textbf{Sucesos elementales}: Son los sucesos formados por un solo
+  elemento.
+\item
+  \textbf{Sucesos compuestos}: Son los sucesos formados por dos o más
+  elementos.
+\item
+  \textbf{Suceso seguro}: Es el suceso que contiene el propio espacio
+  muestral \(\Omega\). Este suceso siempre ocurre.
+\end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-sucesos-aleatorios}{}\label{exm-sucesos-aleatorios}
+
+En el experimento aleatorio del lanzamiento de un dado, con espacio
+muestral \(\Omega=\{1, 2, 3, 4, 5, 6\}\), el subconjunto \(\{2, 4, 6\}\)
+es un suceso aleatorio que se cumple cuando sale un número par, y el
+subconjunto \(\{1, 2, 3, 4\}\) es un suceso aleatorio que se cumple
+cuando sale un número menor que 5.
+
+\end{example}
+
+\subsection{Espacio de sucesos}\label{espacio-de-sucesos}
+
+\begin{definition}[Espacio de
+sucesos]\protect\hypertarget{def-espacio-sucesos}{}\label{def-espacio-sucesos}
+
+Dado un espacio muestral \(\Omega\) de un experimento aleatorio, el
+conjunto formado por todos los posibles sucesos de \(\Omega\) se llama
+\emph{espacio de sucesos de \(\Omega\)} y se denota
+\(\mathcal{P}(\Omega)\).
+
+\end{definition}
+
+\begin{example}[]\protect\hypertarget{exm-espacio-sucesos}{}\label{exm-espacio-sucesos}
+
+Dado el espacio muestral \(\Omega=\{a,b,c\}\), su espacio de sucesos es
+
+\[\mathcal{P}(\Omega)=\left\{\emptyset, \{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\}\right\}\]
+
+\end{example}
+
+Puesto que los sucesos son conjuntos, por medio de la teoría de
+conjuntos se pueden definir las siguientes operaciones entre sucesos:
+
+\begin{itemize}
+\tightlist
+\item
+  Unión.
+\item
+  Intersección.
+\item
+  Complementario.
+\item
+  Diferencia.
+\end{itemize}
+
+\subsection{Unión de suscesos}\label{uniuxf3n-de-suscesos}
+
+\begin{definition}[Suceso
+unión]\protect\hypertarget{def-union-sucesos}{}\label{def-union-sucesos}
+
+Dados dos sucesos \(A,B\subseteq \Omega\), se llama \emph{suceso unión}
+de \(A\) y \(B\), y se denota \(A\cup B\), al suceso formado por los
+elementos de \(A\) junto a los elementos de \(B\), es decir,
+
+\[A\cup B = \{x\,|\, x\in A\mbox{ o }x\in B\}.\]
+
+\end{definition}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/union.pdf}
+
+}
+
+\caption{Union de dos sucesos.}
+
+\end{figure}%
+
+El suceso unión \(A\cup B\) ocurre siempre que ocurre \(A\) {o} \(B\).
+
+\begin{example}[]\protect\hypertarget{exm-union-sucesos}{}\label{exm-union-sucesos}
+
+Dado el espacio muestral correspondiente al lanzamiento de un dado
+\(\Omega=\{1,2,3,4,5,6\}\) y los sucesos \(A=\{2,4,6\}\) y
+\(B=\{1,2,3,4\}\), la unión de \(A\) y \(B\) es
+\(A\cup B=\{1,2,3,4,6\}\).
+
+\end{example}
+
+\subsection{Intersección de sucesos}\label{intersecciuxf3n-de-sucesos}
+
+\begin{definition}[Suceso
+intersección]\protect\hypertarget{def-interseccion-sucesos}{}\label{def-interseccion-sucesos}
+
+Dados dos sucesos \(A,B\subseteq \Omega\), se llama \emph{suceso
+intersección} de \(A\) y \(B\), y se denota \(A\cap B\), al suceso
+formado por los elementos comunes de \(A\) y \(B\), es decir,
+
+\[A\cap B = \{x\,|\, x\in A\mbox{ y }x\in B\}.\]
+
+\end{definition}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/interseccion.pdf}
+
+}
+
+\caption{Intersección de dos sucesos.}
+
+\end{figure}%
+
+El suceso intersección \(A\cap B\) ocurre siempre que ocurren \(A\) {y}
+\(B\).
+
+Diremos que dos sucesos son \textbf{incompatibles} si su intersección es
+vacía.
+
+\begin{example}[]\protect\hypertarget{exm-interseccion-sucesos}{}\label{exm-interseccion-sucesos}
+
+Dado el espacio muestral correspondiente al lanzamiento de un dado
+\(\Omega=\{1,2,3,4,5,6\}\) y los sucesos \(A=\{2,4,6\}\) y
+\(B=\{1,2,3,4\}\), la intersección de \(A\) y \(B\) es
+\(A\cap B=\{2,4\}\), y por tanto, se trata de sucesos compatibles. Sin
+embargo, el suceso \(C=\{1, 3\}\) es incompatible con \(A\) ya que
+\(A\cap C=\emptyset\).
+
+\end{example}
+
+\subsection{Contrario de un suceso}\label{contrario-de-un-suceso}
+
+\begin{definition}[Suceso
+contrario]\protect\hypertarget{def-contrario-suceso}{}\label{def-contrario-suceso}
+
+Dado suceso \(A\subseteq \Omega\), se llama \emph{suceso contrario} o
+\emph{complementario} de \(A\), y se denota \(\overline A\), al suceso
+formado por los elementos de \(\Omega\) que no pertenecen a \(A\), es
+decir,
+
+\[\overline A = \{x\,|\, x\not\in A\}.\]
+
+\end{definition}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/contrario.pdf}
+
+}
+
+\caption{Contrario de un suceso.}
+
+\end{figure}%
+
+El suceso contrario \(\overline A\) ocurre siempre que {no} ocurre
+\(A\).
+
+\begin{example}[]\protect\hypertarget{exm-contrario-suceso}{}\label{exm-contrario-suceso}
+
+Dado el espacio muestral correspondiente al lanzamiento de un dado
+\(\Omega=\{1,2,3,4,5,6\}\) y los sucesos \(A=\{2,4,6\}\) y
+\(B=\{1,2,3,4\}\), el contrario de \(A\) es \(\overline A=\{1,3,5\}\).
+
+\end{example}
+
+\subsection{Diferencia de sucesos}\label{diferencia-de-sucesos}
+
+\begin{definition}[Suceso
+diferencia]\protect\hypertarget{def-diferencia-sucesos}{}\label{def-diferencia-sucesos}
+
+Dados dos sucesos \(A,B\subseteq \Omega\), se llama \emph{suceso
+diferencia} de \(A\) y \(B\), y se denota \(A-B\), al suceso formado por
+los elementos de \(A\) que no pertenecen a \(B\), es decir,
+
+\[A-B = \{x\,|\, x\in A\mbox{ y }x\not\in B\} = A \cap \overline B.\]
+
+\end{definition}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/diferencia.pdf}
+
+}
+
+\caption{Diferencia de sucesos.}
+
+\end{figure}%
+
+El suceso diferencia \(A-B\) ocurre siempre que ocurre \(A\) pero no
+ocurre \(B\), y también puede expresarse como \(A\cap \bar B\).
+
+\begin{example}[]\protect\hypertarget{exm-diferencia-sucesos}{}\label{exm-diferencia-sucesos}
+
+Dado el espacio muestral correspondiente al lanzamiento de un dado
+\(\Omega=\{1,2,3,4,5,6\}\) y los sucesos \(A=\{2,4,6\}\) y
+\(B=\{1,2,3,4\}\), la diferencia de \(A\) y \(B\) es \(A-B=\{6\}\), y la
+diferencia de \(B\) y \(A\) es \(B-A=\{1,3\}\).
+
+\end{example}
+
+\subsection{Álgebra de sucesos}\label{uxe1lgebra-de-sucesos}
+
+Dados los sucesos \(A,B,C\in  \mathcal{P}(\Omega)\), se cumplen las
+siguientes propiedades:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(A\cup A=A\), \(A\cap A=A\) (idempotencia).
+\item
+  \(A\cup B=B\cup A\), \(A\cap B = B\cap A\) (conmutativa).
+\item
+  \((A\cup B)\cup C = A\cup (B\cup C)\),
+  \((A\cap B)\cap C = A\cap (B\cap C)\) (asociativa).
+\item
+  \((A\cup B)\cap C = (A\cap C)\cup (B\cap C)\),
+  \((A\cap B)\cup C = (A\cup C)\cap (B\cup C)\) (distributiva).
+\item
+  \(A\cup \emptyset=A\), \(A\cap E=A\) (elemento neutro).
+\item
+  \(A\cup E=E\), \(A\cap \emptyset=\emptyset\) (elemento absorbente).
+\item
+  \(A\cup \overline A = E\), \(A\cap \overline A= \emptyset\) (elemento
+  simétrico complementario).
+\item
+  \(\overline{\overline A} = A\) (doble contrario).
+\item
+  \(\overline{A\cup B} = \overline A\cap \overline B\),
+  \(\overline{A\cap B} = \overline A\cup \overline B\) (leyes de
+  Morgan).
+\item
+  \(A\cap B\subseteq A\cup B\).
+\end{enumerate}
+
+\section{Definición de
+probabilidad}\label{definiciuxf3n-de-probabilidad}
+
+\subsection{Definición clásica de
+probabilidad}\label{definiciuxf3n-cluxe1sica-de-probabilidad}
+
+\begin{definition}[Probabilidad -
+Laplace]\protect\hypertarget{def-laplace}{}\label{def-laplace}
+
+Dado un espacio muestral \(\Omega\) de un experimento aleatorio donde
+todos los elementos de \(\Omega\) son equiprobables, la
+\emph{probabilidad} de un suceso \(A\subseteq \Omega\) es el cociente
+entre el número de elementos de \(A\) y el número de elementos de
+\(\Omega\)
+
+\[P(A) = \frac{|A|}{|\Omega|} = \frac{\mbox{nº casos favorables a A}}{\mbox{nº casos posibles}}\]
+
+\end{definition}
+
+Esta definición es ampliamente utilizada, aunque tiene importantes
+restricciones:
+
+\begin{itemize}
+\item
+  Es necesario que todos los elementos del espacio muestral tengan la
+  misma probabilidad de ocurrir (\emph{equiprobabilidad}).
+\item
+  No puede utilizarse con espacios muestrales infinitos, o de los que no
+  se conoce el número de casos posibles.
+\end{itemize}
+
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-caution-color}{\faFire}\hspace{0.5em}{Precaución}, coltitle=black, colframe=quarto-callout-caution-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-caution-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
+
+Esto no se cumple en muchos experimentos aleatorios reales.
+
+\end{tcolorbox}
+
+\begin{example}[]\protect\hypertarget{exm-experimento-sin-equiprobabilidad}{}\label{exm-experimento-sin-equiprobabilidad}
+
+Dado el espacio muestral correspondiente al lanzamiento de un dado
+\(\Omega=\{1,2,3,4,5,6\}\) y el suceso \(A=\{2,4,6\}\), la probabilidad
+de \(A\) es
+
+\[P(A) = \frac{|A|}{|\Omega|} = \frac{3}{6} = 0.5.\]
+
+Sin embargo, si se considera el espacio muestral correspondiente a
+observar el grupo sanguíneo de un individuo al azar,
+\(\Omega=\{O,A,B,AB\}\), no se puede usar la definición clásica de
+probabilidad para calcular la probabilidad de que tenga grupo sanguíneo
+\(A\),
+
+\[P(A) \neq \frac{|A|}{|\Omega|} = \frac{1}{4} = 0.25,\]
+
+ya que los grupos sanguíneos no son igualmente probables en las
+poblaciones humanas.
+
+\end{example}
+
+\subsection{Definición frecuentista de
+probabilidad}\label{definiciuxf3n-frecuentista-de-probabilidad}
+
+\begin{theorem}[Ley de los grandes
+números]\protect\hypertarget{thm-ley-grandes-numeros}{}\label{thm-ley-grandes-numeros}
+
+Cuando un experimento aleatorio se repite un gran número de veces, las
+frecuencias relativas de los sucesos del experimento tienden a
+estabilizarse en torno a cierto número, que es precisamente su
+probabilidad.
+
+\end{theorem}
+
+De acuerdo al teorema anterior, podemos dar la siguiente definición
+
+\begin{definition}[Probabilidad
+frecuentista]\protect\hypertarget{def-probabilidad-frecuentista}{}\label{def-probabilidad-frecuentista}
+
+Dado un espacio muestral \(\Omega\) de un experimento aleatorio
+reproducible, la \emph{probabilidad} de un suceso \(A\subseteq \Omega\)
+es la frecuencia relativa del suceso \(A\) en infinitas repeticiones del
+experimento
+
+\[P(A) = lim_{n\rightarrow \infty}\frac{n_{A}}{n}\]
+
+\end{definition}
+
+Aunque esta definición es muy útil en experimentos científicos
+reproducibles, también tiene serios inconvenientes, ya que
+
+\begin{itemize}
+\tightlist
+\item
+  Sólo se calcula una aproximación de la probabilidad real.
+\item
+  La repetición del experimento debe ser en las mismas condiciones.
+\end{itemize}
+
+\begin{example}[]\protect\hypertarget{exm-probabilidad-frecuentista}{}\label{exm-probabilidad-frecuentista}
+
+Dado el espacio muestral correspondiente al lanzamiento de una moneda
+\(\Omega=\{C,X\}\), si después de lanzar la moneda 100 veces obtenemos
+54 caras, entonces la probabilidad de \(C\) es aproximadamente
+
+\[P(C) = \frac{n_C}{n} = \frac{54}{100} = 0.54.\]
+
+Si se considera el espacio muestral correspondiente a observar el grupo
+sanguíneo de un individuo al azar, \(\Omega=\{O,A,B,AB\}\), si se toma
+una muestra aleatoria de 1000 personas y se observa que 412 tienen grupo
+sanguíneo \(A\), entonces la probabilidad del grupo sanguíneo \(A\) es
+aproximadamente
+
+\[P(A) = \frac{n_A}{n} = \frac{412}{1000} = 0.412.\]
+
+\end{example}
+
+\subsection{Definición axiomática de
+probabilidad}\label{definiciuxf3n-axiomuxe1tica-de-probabilidad}
+
+\begin{definition}[Probabilidad -
+Kolmogórov]\protect\hypertarget{def-probabilidad-kolmogorov}{}\label{def-probabilidad-kolmogorov}
+
+Dado un espacio muestral \(\Omega\) de un experimento aleatorio, una
+función de \emph{probabilidad} es una aplicación que asocia a cada
+suceso \(A\subseteq \Omega\) un número real \(P(A)\), conocido como
+probabilidad de \(A\), que cumple los siguientes axiomas:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  La probabilidad de un suceso cualquiera es positiva o nula,
+  \[P(A)\geq 0.\]
+\item
+  La probabilidad del suceso seguro es igual a la unidad,
+  \[P(\Omega)=1.\]
+\item
+  La probabilidad de la unión de dos sucesos incompatibles
+  (\(A\cap B=\emptyset\)) es igual a la suma de las probabilidades de
+  cada uno de ellos, \[P(A\cup B) = P(A)+P(B).\]
+\end{enumerate}
+
+\end{definition}
+
+\begin{theorem}[]\protect\hypertarget{thm-consecuencias-axiomas-probabilidad}{}\label{thm-consecuencias-axiomas-probabilidad}
+
+Si \(P\) es una función de de probabilidad de un espacio muestral
+\(\Omega\), entonces para cualesquiera sucesos \(A, B\in \Omega\), se
+cumple
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(P(\overline A) = 1-P(A)\).
+\item
+  \(P(\emptyset)= 0\).
+\item
+  Si \(A\subseteq B\) entonces \(P(A)\leq P(B)\).
+\item
+  \(P(A) \leq 1\).
+\item
+  \(P(A-B) = P(A)-P(A\cap B)\).
+\item
+  Si \(A\) y \(B\) son sucesos compatibles, es decir, su intersección no
+  es vacía, entonces
+
+  \[P(A\cup B)= P(A) + P(B) - P(A\cap B).\]
+\item
+  Si el suceso \(A\) está compuesto por los sucesos elementales
+  \(e_1,e_2,...,e_n\), entonces
+
+  \[P(A)=\sum_{i=1}^n P(e_i).\]
+\end{enumerate}
+
+\end{theorem}
+
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
+
+\begin{proof}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\overline A = \Omega \Rightarrow P(A\cup \overline A) = P(\Omega) \Rightarrow P(A)+P(\overline A) = 1 \Rightarrow P(\overline A)=1-P(A)\).
+\item
+  \(\emptyset = \overline \Omega \Rightarrow P(\emptyset) = P(\overline \Omega) = 1-P(\Omega) = 1-1 = 0.\)
+\item
+  \(B = A\cup (B-A)\). Como \(A\) y \(B-A\) son incompatibles,
+  \(P(B) = P(A\cup (B-A)) = P(A)+P(B-A) \geq P(A).\)
+
+  Si pensamos en probabilidades como áreas, es fácil de ver
+  gráficamente,
+
+  \begin{figure}[H]
+
+  {\centering \includegraphics{img/probabilidad/probabilidad_inclusion.pdf}
+
+  }
+
+  \caption{Probabilidad de un suceso incluido en otro.}
+
+  \end{figure}%
+\item
+  \(A\subseteq \Omega \Rightarrow P(A)\leq P(\Omega)=1.\)
+\item
+  \(A=(A-B)\cup (A\cap B)\). Como \(A-B\) y \(A\cap B\) son
+  incompatibles,
+  \(P(A)=P(A-B)+P(A\cap B) \Rightarrow P(A-B)=P(A)-P(A\cap B)\).
+
+  Si pensamos en probabilidades como áreas, es fácil de ver
+  gráficamente,
+
+  \begin{figure}[H]
+
+  {\centering \includegraphics{img/probabilidad/probabilidad_diferencia.pdf}
+
+  }
+
+  \caption{Probabilidad de la diferencia de dos sucesos.}
+
+  \end{figure}%
+\item
+  \(A\cup B= (A-B) \cup (B-A) \cup (A\cap B)\). Como \(A-B\), \(B-A\) y
+  \(A\cap B\) son incompatibles, \(P(A\cup
+  B)=P(A-B)+P(B-A)+P(A\cap B) = P(A)-P(A\cap B)+P(B)-P(A\cap B)+P(A\cap B)= P(A)+P(B)-P(A\cup B)\).
+
+  Si pensamos en probabilidades como áreas, es fácil de ver
+  gráficamente,
+
+  \begin{figure}[H]
+
+  {\centering \includegraphics{img/probabilidad/probabilidad_union.pdf}
+
+  }
+
+  \caption{Probabilidad de la unión de dos sucesos.}
+
+  \end{figure}%
+\item
+  \(A=\{e_1,\cdots,e_n\} = \{e_1\}\cup \cdots \cup \{e_n\} \Rightarrow\)
+  \(P(A)=P(\{e_1\}\cup \cdots \cup \{e_n\}) = P(\{e_1\})+ \cdots P(\{e_n\}).\)
+\end{enumerate}
+
+\end{proof}
+
+\end{tcolorbox}
+
+\subsection{Interpretación de la
+probabilidad}\label{interpretaciuxf3n-de-la-probabilidad}
+
+Como ha quedado claro en los axiomas anteriores, la probabilidad de un
+evento \(A\) es un número real \(P(A)\) que está siempre entre 0 y 1.
+
+En cierto modo, este número expresa la verosimilitud del evento, es
+decir, la confianza que hay en que ocurra \(A\) en el experimento. Por
+tanto, también nos da una medida de la incertidumbre sobre el suceso.
+
+\begin{itemize}
+\item
+  La mayor incertidumbre corresponde a \(P(A)=0.5\) (Es tan probable que
+  ocurra \(A\) como que no ocurra).
+\item
+  La menor incertidumbre corresponde a \(P(A)=1\) (\(A\) sucederá con
+  absoluta certeza) y \(P(A)=0\) (\(A\) no sucederá con absoluta
+  certeza).
+\end{itemize}
+
+Cuando \(P(A)\) está más próximo a 0 que a 1, la confianza en que no
+ocurra \(A\) es mayor que la de que ocurra \(A\). Por el contrario,
+cuando \(P(A)\) está más próximo a 1 que a 0, la confianza en que ocurra
+\(A\) es mayor que la de que no ocurra \(A\).
+
+\section{Probabilidad condicionada}\label{probabilidad-condicionada}
+
+\subsection{Experimentos
+condicionados}\label{experimentos-condicionados}
+
+En algunas ocasiones, es posible que tengamos alguna información sobre
+el experimento antes de su realización. Habitualmente esa información se
+da en forma de un suceso \(B\) del mismo espacio muestral que sabemos
+que es cierto antes de realizar el experimento.
+
+En tal caso se dice que el suceso \(B\) es un suceso
+\emph{condicionante}, y la probabilidad de otro suceso \(A\) se conoce
+como y se expresa
+
+\[P(A|B).\]
+
+Esto debe leerse como \emph{probabilidad de \(A\) dado \(B\)} o
+\emph{probabilidad de \(A\) bajo la condición de \(B\)}.
+
+Los condicionantes suelen cambiar el espacio muestral del experimento y
+por tanto las probabilidades de sus sucesos.
+
+\begin{example}[]\protect\hypertarget{exm-sucesos-condicionados}{}\label{exm-sucesos-condicionados}
+
+Supongamos que tenemos una muestra de 100 hombres y 100 mujeres con las
+siguientes frecuencias
+
+\[
+\begin{array}{|c|c|c|}
+\hline 
+ & \mbox{No fumadores} & \mbox{Fumadores} \\
+ \hline 
+ \mbox{Mujeres} & 80 & 20 \\
+ \hline
+ \mbox{Hombres} & 60 & 40 \\
+ \hline
+\end{array}
+\]
+
+Entonces, usando la definición frecuentista de probabilidad, la
+probabilidad de que una persona elegida al azar sea fumadora es
+
+\[P(\mbox{Fumadora})= \frac{60}{200}=0.3.\]
+
+Sin embargo, si se sabe que la persona elegida es mujer, entonces la
+muestra se reduce a la primera fila, y la probabilidad de ser fumadora
+es
+
+\[P(\mbox{Fumadora}|\mbox{Mujer})=\frac{20}{100}=0.2.\]
+
+\end{example}
+
+\subsection{Probabilidad
+condicionada}\label{probabilidad-condicionada-1}
+
+\begin{definition}[Probabilidad
+condicionada]\protect\hypertarget{def-probabilidad-condicionada}{}\label{def-probabilidad-condicionada}
+
+Dado un espacio muestral \(\Omega\) de un experimento aleatorio, y dos
+dos sucesos \(A,B\subseteq \Omega\), la probabilidad de \(A\)
+\emph{condicionada} por \(B\) es
+
+\[P(A|B) = \frac{P(A\cap B)}{P(B)},\]
+
+siempre y cuando, \(P(B)\neq 0\).
+
+\end{definition}
+
+Esta definición permite calcular probabilidades sin tener que alterar el
+espacio muestral original del experimento.
+
+\begin{example}[]\protect\hypertarget{exm-probabilidad-condicionada}{}\label{exm-probabilidad-condicionada}
+
+En el ejemplo anterior
+
+\[P(\mbox{Fumadora}|\mbox{Mujer})= \frac{P(\mbox{Fumadora}\cap \mbox{Mujer})}{P(\mbox{Mujer})} =  \frac{20/200}{100/200}=\frac{20}{100}=0.2.\]
+
+\end{example}
+
+\subsection{Probabilidad del suceso
+intersección}\label{probabilidad-del-suceso-intersecciuxf3n}
+
+A partir de la definición de probabilidad condicionada es posible
+obtener la fórmula para calcular la probabilidad de la intersección de
+dos sucesos.
+
+\[P(A\cap B) = P(A)P(B|A) = P(B)P(A|B).\]
+
+\begin{example}[]\protect\hypertarget{exm-probabilidad-interseccion}{}\label{exm-probabilidad-interseccion}
+
+En una población hay un 30\% de fumadores y se sabe que el 40\% de los
+fumadores tiene cáncer de pulmón. La probabilidad de que una persona
+elegida al azar sea fumadora y tenga cáncer de pulmón es
+
+\[P(\mbox{Fumadora}\cap \mbox{Cáncer})= P(\mbox{Fumadora})P(\mbox{Cáncer}|\mbox{Fumadora}) = 0.3\times 0.4 = 0.12.\]
+
+\end{example}
+
+\subsection{Independencia de sucesos}\label{independencia-de-sucesos}
+
+En ocasiones, la ocurrencia del suceso condicionante no cambia la
+probabilidad original del suceso principal.
+
+\begin{definition}[Sucesos
+independientes]\protect\hypertarget{def-sucesos-independientes}{}\label{def-sucesos-independientes}
+
+Dado un espacio muestral \(\Omega\) de un experimento aleatorio, dos
+sucesos \(A,B\subseteq \Omega\) son \emph{independientes} si la
+probabilidad de \(A\) no se ve alterada al condicionar por \(B\), y
+viceversa, es decir,
+
+\[P(A|B) = P(A) \quad \mbox{and} \quad P(B|A)=P(B),\]
+
+si \(P(A)\neq 0\) y \(P(B)\neq 0\).
+
+\end{definition}
+
+Esto significa que la ocurrencia de uno evento no aporta información
+relevante para cambiar la incertidumbre sobre el otro.
+
+Cuando dos eventos son independientes, la probabilidad de su
+intersección es igual al producto de sus probabilidades,
+
+\[P(A\cap B) = P(A)P(B).\]
+
+\section{Espacio probabilístico}\label{espacio-probabiluxedstico}
+
+\begin{definition}[Espacio
+probabilístico]\protect\hypertarget{def-espacio-probabilistico}{}\label{def-espacio-probabilistico}
+
+Un \emph{espacio probabilístico} de un experimento aleatorio es una
+terna \((\Omega,\mathcal{F},P)\) donde
+
+\begin{itemize}
+\tightlist
+\item
+  \(\Omega\) es el espacio muestral del experimento.
+\item
+  \(\mathcal{F}\) es un un conjunto de sucesos del experimento.
+\item
+  \(P\) es una función de probabilidad.
+\end{itemize}
+
+\end{definition}
+
+Si conocemos la probabilidad de todos los elementos de \(\Omega\),
+entonces podemos calcular la probabilidad de cualquier suceso en
+\(\mathcal{F}\) y se puede construir fácilmente el espacio
+probabilístico.
+
+Para determinar la probabilidad de cada suceso elemental se puede
+utilizar un diagrama de árbol, mediante las siguientes reglas:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Para cada nodo del árbol, etiquetar la rama que conduce hasta él con
+  la probabilidad de que la variable en ese nivel tome el valor del
+  nodo, condicionada por los sucesos correspondientes a sus nodos
+  antecesores en el árbol.
+\item
+  La probabilidad de cada suceso elemental en las hojas del árbol es el
+  producto de las probabilidades de las ramas que van desde la raíz a la
+  hoja del árbol.
+\end{enumerate}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/espacio_probabilistico.pdf}
+
+}
+
+\caption{Diagrama de árbol de un espacio probabilístico.}
+
+\end{figure}%
+
+\subsection{Árboles de probabilidad con variables
+dependientes}\label{uxe1rboles-de-probabilidad-con-variables-dependientes}
+
+\begin{example}[]\protect\hypertarget{exm-arbol-probabilidad-variables-dependientes}{}\label{exm-arbol-probabilidad-variables-dependientes}
+
+Sea una población en la que el 30\% de las personas fuman, y que la
+incidencia del cáncer de pulmón en fumadores es del 40\% mientras que en
+los no fumadores es del 10\%.
+
+El espacio probabilístico del experimento aleatorio que consiste en
+elegir una persona al azar y medir las variables Fumar y Cáncer de
+pulmón se muestra a continuación.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/espacio_probabilistico_fumar_cancer.pdf}
+
+}
+
+\caption{Diagrama de árbol del espacio probabilístico de fumar y tener
+cáncer de pulmón.}
+
+\end{figure}%
+
+\end{example}
+
+\subsection{Árboles de probabilidad con variables
+independientes}\label{uxe1rboles-de-probabilidad-con-variables-independientes}
+
+\begin{example}[]\protect\hypertarget{exm-arbol-probabilidad-variables-independientes}{}\label{exm-arbol-probabilidad-variables-independientes}
+
+El árbol de probabilidad asociado al experimento aleatorio que consiste
+en el lanzamiento de dos monedas se muestra a continuación.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/espacio_probabilistico_monedas.pdf}
+
+}
+
+\caption{Diágrama de árbol del espacio probabilístico del lanzamiento de
+dos monedas.}
+
+\end{figure}%
+
+\end{example}
+
+\begin{example}[]\protect\hypertarget{exm-arbol-probabilidad-variables-independientes-2}{}\label{exm-arbol-probabilidad-variables-independientes-2}
+
+Dada una población en la que hay un 40\% de hombres y un 60\% de
+mujeres, el experimento aleatorio que consiste en tomar una muestra
+aleatoria de tres personas tiene el árbol de probabilidad que se muestra
+a continuación.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/espacio_probabilistico_muestra.pdf}
+
+}
+
+\caption{Diagrama de árbol del espacio probabilístico del sexo de tres
+individuos elegidos al azar.}
+
+\end{figure}%
+
+\end{example}
+
+\section{Teorema de la probabilidad
+total}\label{teorema-de-la-probabilidad-total}
+
+\begin{definition}[Sistema completo de
+sucesos]\protect\hypertarget{def-sistema-completo-sucesos}{}\label{def-sistema-completo-sucesos}
+
+Una colección de sucesos \(A_1,A_2,\ldots,A_n\) de un mismo espacio
+muestral \(\Omega\) es un \emph{sistema completo} si cumple las
+siguientes condiciones:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  La unión de todos es el espacio muestral:
+  \(A_1\cup \cdots\cup A_n =\Omega\).
+\item
+  Son incompatibles dos a dos: \(A_i\cap A_j = \emptyset\)
+  \(\forall i\neq j\).
+\end{enumerate}
+
+\end{definition}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/particion_espacio_muestral.pdf}
+
+}
+
+\caption{Partición del espacio muestral en un sistema completo de
+sucesos.}
+
+\end{figure}%
+
+En realidad un sistema completo de sucesos es una partición del espacio
+muestral de acuerdo a algún atributo, como por ejemplo el sexo o el
+grupo sanguíneo.
+
+\subsection{Teorema de la probabilidad
+total}\label{teorema-de-la-probabilidad-total-1}
+
+Conocer las probabilidades de un determinado suceso en cada una de las
+partes de un sistema completo puede ser útil para calcular su
+probabilidad.
+
+\begin{theorem}[Probabilidad
+total]\protect\hypertarget{thm-probabilidad-total}{}\label{thm-probabilidad-total}
+
+Dado un sistema completo de sucesos \(A_1,\ldots,A_n\) y un suceso \(B\)
+de un espacio muestral \(\Omega\), la probabilidad de cualquier suceso
+\(B\) del espacio muestral se puede calcular mediante la fórmula
+
+\[P(B) = \sum_{i=1}^n P(A_i\cap B) = \sum_{i=1}^n P(A_i)P(B|A_i).\]
+
+\end{theorem}
+
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
+
+\begin{proof}
+La demostración del teorema es sencilla, ya que al ser
+\(A_1,\ldots,A_n\) un sistema completo tenemos
+
+\[B = B\cap E = B\cap (A_1\cup \cdots \cup A_n) = (B\cap A_1)\cup \cdots \cup (B\cap A_n)\]
+
+y como estos sucesos son incompatibles entre sí, se tiene
+
+\begin{align*}
+P(B) &= P((B\cap A_1)\cup \cdots \cup (B\cap A_n)) = P(B\cap A_1)+\cdots + P(B\cap A_n) =\\
+&= P(A_1)P(B/A_1)+\cdots + P(A_n)P(B/A_n) = \sum_{i=1}^n P(A_i)P(B/A_i).
+\end{align*}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/probabilidad_total.pdf}
+
+}
+
+\caption{Teorema de la probabilidad total.}
+
+\end{figure}%
+
+\end{proof}
+
+\end{tcolorbox}
+
+\begin{example}[]\protect\hypertarget{exm-probabilidad-total}{}\label{exm-probabilidad-total}
+
+Un determinado síntoma \(S\) puede ser originado por una enfermedad
+\(E\) pero también lo pueden presentar las personas sin la enfermedad.
+Sabemos que la prevalencia de la enfermedad \(E\) es \(0.2\). Además, se
+sabe que el \(90\%\) de las personas con la enfermedad presentan el
+síntoma, mientras que sólo el \(40\%\) de las personas sin la enfermedad
+lo presentan. Si se toma una persona al azar de la población, \emph{¿qué
+probabilidad hay de que tenga el síntoma?}
+
+Para responder a la pregunta se puede aplicar el teorema de la
+probabilidad total usando el sistema completo \(\{E,\overline{E}\}\):
+
+\[P(S) = P(E)P(S|E)+P(\overline E)P(S|\overline E) = 0.2\cdot 0.9 + 0.8\cdot 0.4 = 0.5.\]
+
+Es decir, la mitad de la población tendrá el síntoma.
+
+\emph{¡En el fondo se trata de una media ponderada de probabilidades!}
+
+La respuesta a la pregunta anterior es evidente a la luz del árbol de
+probabilidad del espacio probabilístico del experimento.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/espacio_probabilistico_total.pdf}
+
+}
+
+\caption{Aplicación del teorema de la probabilidad total en un espacio
+probabilístico.}
+
+\end{figure}%
+
+\begin{align*}
+P(S) &= P(E,S) + P(\overline E,S) = P(E)P(S|E)+P(\overline E)P(S|\overline E)\\
+& = 0.2\cdot 0.9+ 0.8\cdot 0.4 = 0.18 + 0.32 = 0.5.
+\end{align*}
+
+\end{example}
+
+\section{Teorema de Bayes}\label{teorema-de-bayes}
+
+Los sucesos de un sistema completo de sucesos \(A_1,\cdots,A_n\) también
+pueden verse como las distintas hipótesis ante un determinado hecho
+\(B\).
+
+En estas condiciones resulta útil poder calcular las probabilidades a
+posteriori \(P(A_i|B)\) de cada una de las hipótesis.
+
+\begin{theorem}[Bayes]\protect\hypertarget{thm-bayes}{}\label{thm-bayes}
+
+Dado un sistema completo de sucesos \(A_1,\ldots,A_n\) y un suceso \(B\)
+de un espacio muestral \(\Omega\) y otro suceso \(B\) del mismo espacio
+muestral, la probabilidad de cada suceso \(A_i\) \(i=1,\ldots,n\)
+condicionada por \(B\) puede calcularse con la siguiente fórmula
+
+\[P(A_i|B) = \frac{P(A_i\cap B)}{P(B)} = \frac{P(A_i)P(B|A_i)}{\sum_{i=1}^n P(A_i)P(B|A_i)}.\]
+
+\end{theorem}
+
+\begin{example}[]\protect\hypertarget{exm-teorema-bayes}{}\label{exm-teorema-bayes}
+
+En el ejemplo anterior, una pregunta más interesante es qué diagnosticar
+a una persona que presenta el síntoma.
+
+En este caso se puede interpretar \(E\) y \(\overline{E}\) como las dos
+posibles hipótesis para el síntoma \(S\). Las probabilidades a priori
+para ellas son \(P(E)=0.2\) y \(P(\overline E)=0.8\). Esto quiere decir
+que si no se dispone de información sobre el síntoma, el diagnóstico
+será que la persona no tiene la enfermedad.
+
+Sin embargo, si al reconocer a la persona se observa que presenta el
+síntoma, dicha información condiciona a las hipótesis, y para decidir
+entre ellas es necesario calcular sus probabilidades a posteriori, es
+decir, \(P(E|S)\) y \(P(\overline{E}|S)\).
+
+Para calcular las probabilidades a posteriori se puede utilizar el
+teorema de Bayes:
+
+\begin{align*}
+P(E|S) &= \frac{P(E)P(S|E)}{P(E)P(S|E)+P(\overline{E})P(S|\overline{E})} = \frac{0.2\cdot 0.9}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.18}{0.5}=0.36,\\
+P(\overline{E}|S) &= \frac{P(\overline{E})P(S|\overline{E})}{P(E)P(S|E)+P(\overline{E})P(S|\overline{E})} = \frac{0.8\cdot 0.4}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.32}{0.5}=0.64.
+\end{align*}
+
+Como se puede ver la probabilidad de tener la enfermedad ha aumentado.
+No obstante, la probabilidad de no tener la enfermedad sigue siendo
+mayor que la de tenerla, y por esta razón el diagnóstico seguirá siendo
+que no tiene la enfermedad.
+
+En este caso se dice que el síntoma \(S\) \emph{no es determinante} a la
+hora de diagnosticar la enfermedad.
+
+\end{example}
+
+\section{Epidemiología}\label{epidemiologuxeda}
+
+Una de las ramas de la Medicina que hace un mayor uso de la probabilidad
+es la , que estudia la distribución y las causas de las enfermedades en
+las poblaciones, identificando factores de riesgos para las enfermedades
+de cara a la atención médica preventiva.
+
+En Epidemiología interesa la frecuencia de un \emph{suceso médico} \(E\)
+(típicamente una enfermedad como la gripe, un factor de riesgo como
+fumar o un factor de protección como vacunarse) que se mide mediante una
+variable nominal con dos categorías (ocurrencia o no del suceso).
+
+Hay diferentes medidas relativas a la frecuencia de un suceso médico.
+Las más importantes son:
+
+\begin{itemize}
+\tightlist
+\item
+  Prevalencia
+\item
+  Incidencia
+\item
+  Riesgo relativo
+\item
+  Odds ratio
+\end{itemize}
+
+\subsection{Prevalencia}\label{prevalencia}
+
+\begin{definition}[Prevalencia]\protect\hypertarget{def-prevalencia}{}\label{def-prevalencia}
+
+La \emph{prevalencia} de un suceso médico \(E\) es la proporción de una
+población que está afectada por el suceso.
+
+\[\mbox{Prevalencia}(E) = \frac{\mbox{Nº individuos afectados por $E$}}{\mbox{Tamaño poblacional}}\]
+
+\end{definition}
+
+A menudo, la prevalencia se estima mediante una muestra como la
+frecuencia relativa de los individuos afectados por el suceso en la
+muestra. Es también común expresarla esta frecuencia como un porcentaje.
+
+\begin{example}[]\protect\hypertarget{exm-prevalencia}{}\label{exm-prevalencia}
+
+Para estimar la prevalencia de la gripe se estudió una muestra de
+\(1000\) personas de las que \(150\) presentaron gripe. Así, la
+prevalencia de la gripe es aproximadamente \(150/1000=0.15\), es decir,
+un 15\%.
+
+\end{example}
+
+\subsection{Incidencia}\label{incidencia}
+
+La mide la probabilidad de ocurrencia de un suceso médico en una
+población durante un periodo de tiempo específico. La incidencia puede
+medirse como una proporción acumulada o como una tasa.
+
+\begin{definition}[Incidencia
+acumulada]\protect\hypertarget{def-incidencia-acumulada}{}\label{def-incidencia-acumulada}
+
+La \emph{incidencia acumulada} de un suceso médico \(E\) es la
+proporción de individuos que experimentaron el evento en un periodo de
+tiempo, es decir, el número de nuevos casos afectados por el evento en
+el periodo de tiempo, divido por el tamaño de la población inicialmente
+en riesgo de verse afectada.
+
+\[R(E)=\frac{\mbox{Nº de nuevos casos con $E$}}{\mbox{Tamaño de la población en riesgo}}.\]
+
+\end{definition}
+
+\begin{example}[]\protect\hypertarget{exm-incidencia-acumulada}{}\label{exm-incidencia-acumulada}
+
+Una población contenía inicialmente \(1000\) personas sin gripe y
+después de dos años se observó que \(160\) de ellas sufrieron gripe. La
+incidencia acumulada de la gripe es 160 casos pro 1000 personas por dos
+años, es decir, 16\% en dos años.
+
+\end{example}
+
+\subsection{Tasa de incidencia o Riesgo
+absoluto}\label{tasa-de-incidencia-o-riesgo-absoluto}
+
+\begin{definition}[Riesgo
+absoluto]\protect\hypertarget{def-riesgo-absoluto}{}\label{def-riesgo-absoluto}
+
+La \emph{tasa de incidencia} o \emph{riesgo absoluto} de un suceso
+médico \(E\) es el número de nuevos casos afectados por el evento divido
+por la población en riesgo y por el número de unidades temporales del
+periodo considerado.
+
+\[R(E)=\frac{\mbox{Nº nuevos casos con $E$}}{\mbox{Tamaño población en riesgo}\times \mbox{Nº unidades de tiempo}}\]
+
+\end{definition}
+
+\begin{example}[]\protect\hypertarget{exm-riesgo-absoluto}{}\label{exm-riesgo-absoluto}
+
+Una población contenía inicialmente \(1000\) personas sin gripe y
+después de dos años se observó que \(160\) de ellas sufrieron gripe. Si
+se considera el año como intervalo de tiempo, la tasa de incidencia de
+la gripe es \(160\) casos dividida por \(1000\) personas y por dos años,
+es decir, \(80\) casos por \(1000\) personas-año o 8\% de personas al
+año.
+
+\end{example}
+
+\subsection{Prevalencia vs Incidencia}\label{prevalencia-vs-incidencia}
+
+La prevalencia no debe confundirse con la incidencia. La prevalencia
+indica cómo de extendido está el suceso médico en una población, sin
+preocuparse por cuándo los sujetos se han expuesto al riesgo o durante
+cuánto tiempo, mientras que la incidencia se fija en el riesgo de verse
+afectado por el suceso en un periodo concreto de tiempo.
+
+Así, la prevalencia se calcula en estudios transversales en un momento
+temporal puntual, mientras que para medir la incidencia se necesita un
+estudio longitudinal que permita observar a los individuos durante un
+periodo de tiempo.
+
+La incidencia es más útil cuando se pretende entender la causalidad del
+suceso: por ejemplo, si la incidencia de una enfermedad en una población
+aumenta, seguramente hay un factor de riesgo que lo está promoviendo.
+
+Cuando la tasa de incidencia es aproximadamente constante en la duración
+del suceso, la prevalencia es aproximadamente el producto de la
+incidencia por la duración media del suceso, es decir,
+
+\[ \mbox{Prevalencia} = \mbox{Incidencia} \times \mbox{duración}\]
+
+\subsection{Comparación de riesgos}\label{comparaciuxf3n-de-riesgos}
+
+Para determinar si un factor o característica está asociada con el
+suceso médico es necesario comparar el riesgo del suceso en dos
+poblaciones, una expuesta al factor y la otra no. El grupo expuesto al
+factor se conoce como \emph{grupo tratamiento} o \emph{grupo
+experimental} \(T\) y el grupo no expuesto como \emph{grupo control}
+\(C\).
+
+Habitualmente los casos observados para cada grupo se representan en una
+tabla de \(2\times2\) como la siguiente:
+
+Suceso \(E\)
+
+No suceso \(\overline E\)
+
+Grupo tratamiento \(T\)
+
+\(a\)
+
+\(b\)
+
+Grupo control \(C\)
+
+\(c\)
+
+\(d\)
+
+\subsection{\texorpdfstring{Riesgo atribuible o diferencia de riesgos
+\(RA\)}{Riesgo atribuible o diferencia de riesgos RA}}\label{riesgo-atribuible-o-diferencia-de-riesgos-ra}
+
+\begin{definition}[Riesgo
+atribuible]\protect\hypertarget{def-riesgo-atribuible}{}\label{def-riesgo-atribuible}
+
+El \emph{riesgo atribuible} o \emph{diferencia de riesgo} de un suceso
+médico \(E\) para los individuos expuestos a un factor es la diferencia
+entre los riesgos absolutos de los grupos tratamiento y control.
+
+\[RA(E)=R_T(E)-R_C(E)=\frac{a}{a+b}-\frac{c}{c+d}.\]
+
+\end{definition}
+
+El riesgo atribuible es el riesgo de un suceso que es debido
+específicamente al factor de interés.
+
+Obsérvese que el riesgo atribuible puede ser positivo, cuando el riesgo
+del grupo tratamiento es mayor que el del grupo control, o negativo, de
+lo contrario.
+
+\begin{example}[]\protect\hypertarget{exm-riesgo-atribuible}{}\label{exm-riesgo-atribuible}
+
+Para determinar la efectividad de una vacuna contra la gripe, una
+muestra de \(1000\) personas sin gripe fueron seleccionadas al comienzo
+del año. La mitad de ellas fueron vacunadas (grupo tratamiento) y la
+otra mitad recibieron un placebo (grupo control). La tabla siguiente
+resume los resultados al final del año.
+
+Gripe \(E\)
+
+No gripe \(\overline E\)
+
+Grupo tratamiento (vacunados)
+
+20
+
+480
+
+Grupo control (No vacunados)
+
+80
+
+420
+
+El riesgo atribuible de contraer la gripe cuando se es vacunado es
+
+\[AR(D) = \frac{20}{20+480}-\frac{80}{80+420} = -0.12.\]
+
+Esto quiere decir que el riesgo de contraer la gripe es un 12\% menor en
+vacunados que en no vacunados.
+
+\end{example}
+
+\subsection{\texorpdfstring{Riesgo relativo
+\(RR\)}{Riesgo relativo RR}}\label{riesgo-relativo-rr}
+
+\begin{definition}[Riesgo
+relativo]\protect\hypertarget{def-riesgo-relativo}{}\label{def-riesgo-relativo}
+
+El \emph{riesgo relativo} de un suceso médico \(E\) para los individuos
+expuestos a un factor es el cociente entre las proporciones de
+individuos afectados por el suceso en un periodo de tiempo de los grupos
+tratamiento y control. Es decir, el cociente entre las incidencias de
+grupo tratamiento y el grupo control.
+
+\[RR(D)=\frac{\mbox{Riesgo grupo tratamiento}}{\mbox{Riesgo grupo control}}=\frac{R_T(E)}{R_C(E)}=\frac{a/(a+b)}{c/(c+d)}\]
+
+\end{definition}
+
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
+
+El riesgo relativo compara el riesgo de desarrollar un suceso médico
+entre el grupo tratamiento y el grupo control.
+
+\begin{itemize}
+\tightlist
+\item
+  \(RR=1\) \(\Rightarrow\) No hay asociación entre el suceso y la
+  exposición al factor.
+\item
+  \(RR<1\) \(\Rightarrow\) La exposición al factor disminuye el riesgo
+  del suceso.
+\item
+  \(RR>1\) \(\Rightarrow\) La exposición al factor aumenta el riesgo del
+  suceso.
+\end{itemize}
+
+Cuanto más lejos de 1, más fuerte es la asociación.
+
+\end{tcolorbox}
+
+\begin{example}[]\protect\hypertarget{exm-riesgo-relativo}{}\label{exm-riesgo-relativo}
+
+Para determinar la efectividad de una vacuna contra la gripe, una
+muestra de \(1000\) personas sin gripe fueron seleccionadas al comienzo
+del año. La mitad de ellas fueron vacunadas (grupo tratamiento) y la
+otra mitad recibieron un placebo (grupo control). La tabla siguiente
+resume los resultados al final del año.
+
+Gripe \(E\)
+
+No gripe \(\overline E\)
+
+Grupo tratamiento (vacunados)
+
+20
+
+480
+
+Grupo control (No vacunados)
+
+80
+
+420
+
+El riesgo relativo de contraer la gripe cuando se es vacunado es
+
+\[RR(D) = \frac{20/(20+480)}{80/(80+420)} = 0.25.\]
+
+Así, la probabilidad de contraer la gripe en los individuos vacunados
+fue la cuarta parte de la de contraerla en el caso de no haberse
+vacunado, es decir, la vacuna reduce el riesgo de gripe un 75\%.
+
+\end{example}
+
+\subsection{Odds}\label{odds}
+
+Una forma alternativa de medir el riesgo de un suceso médico es el
+\emph{odds}.
+
+\begin{definition}[]\protect\hypertarget{def-odds}{}\label{def-odds}
+
+El \emph{odds} de un suceso médico \(E\) en una población es el cociente
+entre el número de individuos que adquirieron el suceso y los que no en
+un periodo de tiempo.
+
+\[ODDS(E)=\frac{\mbox{Nº nuevos casos con $E$}}{\mbox{Nº casos sin $E$}}=\frac{P(E)}{P(\overline E)}.\]
+
+\end{definition}
+
+A diferencia de la incidencia, que es una proporción menor o igual que
+1, el odds puede ser mayor que 1. No obstante es posible convertir el
+odds en una probabilidad con al fórmula
+
+\[P(E) = \frac{ODDS(E)}{ODDS(E)+1}.\]
+
+\begin{example}[]\protect\hypertarget{exm-odds}{}\label{exm-odds}
+
+Una población contenía inicialmente \(1000\) personas sin gripe. Después
+de un año \(160\) de ellas tuvieron gripe. Entonces el odds de la gripe
+es \(160/840\).
+
+Obsérvese que la incidencia es \(160/1000\).
+
+\end{example}
+
+\subsection{\texorpdfstring{Odds ratio
+\(OR\)}{Odds ratio OR}}\label{odds-ratio-or}
+
+\begin{definition}[Odds
+ratio]\protect\hypertarget{def-odds-ratio}{}\label{def-odds-ratio}
+
+El \emph{odds ratio} o la \emph{oportunidad relativa} de un suceso
+médico \(E\) para los individuos expuestos a un factor es el cociente
+entre los odds del sucesos de los grupos tratamiento y control.
+
+\[OR(E)=\frac{\mbox{Odds en grupo tratamiento}}{\mbox{Odds en grupo control}}=\frac{a/b}{c/d}=\frac{ad}{bc}.\]
+
+\end{definition}
+
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
+
+El odds ratio compara los odds de un suceso médico entre el grupo
+tratamiento y control. La interpretación es similar a la del riesgo
+relativo:
+
+\begin{itemize}
+\tightlist
+\item
+  \(OR=1\) \(\Rightarrow\) No existe asociación entre el suceso y la
+  exposición al factor.
+\item
+  \(OR<1\) \(\Rightarrow\) La exposición al factor disminuye el riesgo
+  del suceso.
+\item
+  \(OR>1\) \(\Rightarrow\) La exposición al factor aumenta el riesgo del
+  suceso.
+\end{itemize}
+
+Cuanto más lejos de 1, más fuerte es la asociación.
+
+\end{tcolorbox}
+
+\begin{example}[]\protect\hypertarget{exm-odds-ratio}{}\label{exm-odds-ratio}
+
+Para determinar la efectividad de una vacuna contra la gripe, una
+muestra de 1000 personas sin gripe fueron seleccionadas al comienzo del
+año. La mitad de ellas fueron vacunadas (grupo tratamiento) y la otra
+mitad recibieron un placebo (grupo control). La tabla siguiente resume
+los resultados al final del año.
+
+Gripe \(E\)
+
+No gripe \(\overline E\)
+
+Grupo tratamiento (vacunados)
+
+20
+
+480
+
+Grupo control (No vacunados)
+
+80
+
+420
+
+El odds ratio de sufrir la gripe para los individuos vacunados es
+
+\[OR(D) = \frac{20/480}{80/420} = 0.21875.\]
+
+Esto quiere decir que el odds de sufrir la gripe frente a no sufrirla en
+los vacunados es casi un quinto del de los no vacunados, es decir, que
+aproximadamente por cada 22 personas vacunadas con gripe habrá 100
+personas no vacunadas con gripe.
+
+\end{example}
+
+\subsection{Riesgo relativo vs Odds
+ratio}\label{riesgo-relativo-vs-odds-ratio}
+
+El riesgo relativo y el odds ratio son dos medidas de asociación pero su
+interpretación es ligeramente diferente. Mientras que el riesgo relativo
+expresa una comparación de riesgos entre los grupos tratamiento y
+control, el odds ratio expresa una comparación de odds, que no es lo
+mismo que el riesgo. Así, un odds ratio de 2 \emph{no} significa que el
+grupo tratamiento tiene el doble de riesgo de adquirir el suceso.
+
+La interpretación del odds ratio es un poco más enrevesada porque es
+contrafactual, y nos da cuántas veces es más frecuente el suceso en el
+grupo tratamiento en comparación con el control, asumiendo que en el
+grupo control es tan frecuente que ocurra el suceso como que no.
+
+La ventaja del odds ratio es que no depende de la prevalencia o la
+incidencia del suceso, y debe usarse siempre que el número de individuos
+que presenta el suceso se selecciona arbitrariamente en ambos grupos,
+como ocurre en los estudios casos-control.
+
+\begin{example}[]\protect\hypertarget{exm-riesgo-relativo-vs-odds-ratio}{}\label{exm-riesgo-relativo-vs-odds-ratio}
+
+Para determinar la asociación entre el cáncer de pulmón y fumar se
+tomaron dos muestras (la segunda con el doble de individuos sin cáncer)
+obteniendo los siguientes resultados:
+
+\textbf{Muestra 1}
+
+Cáncer
+
+No cáncer
+
+Fumadores
+
+60
+
+80
+
+No fumadores
+
+40
+
+320
+
+\begin{align*}
+RR(D) &= \frac{60/(60+80)}{40/(40+320)} = 3.86.\\
+OR(D) &= \frac{60/80}{40/320} = 6. 
+\end{align*}
+
+\textbf{Muestra 2}
+
+Cáncer
+
+No cáncer
+
+Fumadores
+
+60
+
+160
+
+No fumadores
+
+40
+
+640
+
+\begin{align*}
+RR(D) &= \frac{60/(60+160)}{40/(40+640)} = 4.64.\\
+OR(D) &= \frac{60/160}{40/640} = 6. 
+\end{align*}
+
+Así, cuando cambia la incidencia o prevalencia de un suceso (cáncer de
+pulmón) el riesgo relativo cambia, mientras que el odds ratio no.
+
+\end{example}
+
+La relación entre el riesgo relativo y el odds ratio viene dada por la
+siguiente fórmula
+
+\[RR = \frac{OR}{1-R_0+R_0\cdot OR} = OR \frac{1-R_1}{1-R_0},\]
+
+donde \(R_C\) and \(R_T\) son la prevalencia o la incidencia en los
+grupos control y tratamiento respectivamente.
+
+El odds ratio siempre sobrestima el riesgo relativo cuando este es mayor
+que 1 y lo subestima cuando es menor que 1. No obstante, con sucesos
+médicos raros (con una prevalencia o incidencia baja) el riesgo relativo
+y el odds ratio son casi iguales.
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/odds_ratio_vs_riesgo_relativo.pdf}
+
+}
+
+\caption{Odss ratio versus riesgo relativo.}
+
+\end{figure}%
+
+\section{Tests diagnósticos}\label{tests-diagnuxf3sticos}
+
+En Epidemiología es común el uso de test para diagnosticar enfermedades.
+
+Generalmente estos test no son totalmente fiables, sino que hay cierta
+probabilidad de acierto o fallo en el diagnóstico, que suele
+representarse en la siguiente tabla:
+
+Presencia enfermedad \(E\)
+
+Ausencia enfermedad \(\overline E\)
+
+Test positivo \(+\)
+
+{Verdadero positivo }\(VP\)
+
+{Falso positivo }\(FP\)
+
+Test negativo \(−\)
+
+{Falso negativo }\(FN\)
+
+{Verdadero Negativo }\(VN\)
+
+\subsection{Sensibilidad y especificidad de un test
+diagnóstico}\label{sensibilidad-y-especificidad-de-un-test-diagnuxf3stico}
+
+La fiabilidad de un test diagnóstico depende de las siguientes
+probabilidades.
+
+\begin{definition}[Sensibilidad]\protect\hypertarget{def-sensibilidad}{}\label{def-sensibilidad}
+
+La \emph{sensibilidad} de un test diagnóstico es la proporción de
+resultados positivos del test en personas con la enfermedad,
+
+\[P(+|E)=\frac{VP}{VP+FN}.\]
+
+\end{definition}
+
+\begin{definition}[Especificidad]\protect\hypertarget{def-especificidad}{}\label{def-especificidad}
+
+La \emph{especificidad} de un test diagnóstico es la proporción de
+resultados negativos del test en personas sin la enfermedad,
+
+\[P(-|\overline{E})=\frac{VN}{VN+FP}.\]
+
+\end{definition}
+
+Normalmente existe un balance entre la sensibilidad y la especificidad.
+
+Un test con una alta sensibilidad detectará la enfermedad en la mayoría
+de las personas enfermas, pero también dará más falsos positivos que un
+test menos sensible. De este modo, un resultado positivo en un test con
+una gran sensibilidad no es muy útil para confirmar la enfermedad, pero
+un resultado negativo es útil para descartar la enfermedad, ya que
+raramente da resultados negativos en personas con la enfermedad.
+
+Por otro lado, un test con una alta especificidad descartará la
+enfermedad en la mayoría de las personas sin la enfermedad, pero también
+producirá más falsos negativos que un test menos específico. Así, un
+resultado negativo en un test con una gran especificidad no es útil para
+descartar la enfermedad, pero un resultado positivo es muy útil para
+confirmar la enfermedad, ya que raramente da resultados positivos en
+personas sin la enfermedad.
+
+\begin{example}[]\protect\hypertarget{exm-sensibilidad-especificidad}{}\label{exm-sensibilidad-especificidad}
+
+Un test diagnóstico para la gripe se ha aplicado a una muestra aleatoria
+de \(1000\) personas. Los resultados aparecen resumidos en la siguiente
+tabla.
+
+Presencia de gripe \(E\)
+
+Ausencia de gripe \(\overline E\)
+
+Test \(+\)
+
+95
+
+90
+
+Test \(−\)
+
+5
+
+810
+
+Según esta muestra, la prevalencia de la gripe puede estimarse como
+
+\[P(E) = \frac{95+5}{1000} = 0.1.\]
+
+La sensibilidad del test diagnóstico es
+
+\[P(+|E) = \frac{95}{95+5}= 0.95.\]
+
+Y la especificidad es
+
+\[P(-|\overline{E}) = \frac{810}{90+810}=0.9.\]
+
+Así pues, se trata de un buen test tanto para descartar la enfermedad
+como para confirmarla, pero es un poco mejor para confirmarla que para
+descartarla porque la especificidad es mayor que la sensibilidad.
+
+\end{example}
+
+Decidir entre un test con una gran sensibilidad o un test con una gran
+especificidad depende del tipo de enfermedad y el objetivo del test. En
+general, utilizaremos un test sensible cuando:
+
+\begin{itemize}
+\tightlist
+\item
+  La enfermedad es grave y es importante detectarla.
+\item
+  La enfermedad es curable.
+\item
+  Los falsos positivos no provocan traumas serios.
+\end{itemize}
+
+Y utilizaremos un test específico cuando:
+
+\begin{itemize}
+\tightlist
+\item
+  La enfermedad es importante pero difícil o imposible de curar.
+\item
+  Los falsos positivos pueden provocar traumas serios.
+\item
+  El tratamiento de los falsos positivos puede tener graves
+  consecuencias.
+\end{itemize}
+
+\subsection{Valores predictivos de un test
+diagnóstico}\label{valores-predictivos-de-un-test-diagnuxf3stico}
+
+Pero el aspecto más importante de un test diagnóstico es su poder
+predictivo, que se mide con las siguientes probabilidades a posteriori.
+
+\begin{definition}[Valor predictivo
+positivo]\protect\hypertarget{def-valor-predictivo-positivo}{}\label{def-valor-predictivo-positivo}
+
+El \emph{valor predictivo positivo} de un test diagnóstico es la
+proporción de personas con la enfermedad entre las personas con
+resultado positivo en el test,
+
+\[P(E|+) = \frac{VP}{VP+FP}.\]
+
+\end{definition}
+
+\begin{definition}[Valor predictivo
+negativo]\protect\hypertarget{def-valor-predictivo-negativo}{}\label{def-valor-predictivo-negativo}
+
+El \emph{valor predictivo negativo} de un test diagnóstico es la
+proporción de personas sin la enfermedad entre las personas con
+resultado negativo en el test,
+
+\[P(\overline{E}|-) = \frac{VN}{VN+FN}.\]
+
+\end{definition}
+
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
+
+Los valores predictivos positivo y negativo permiten confirmar o
+descartar la enfermedad, respectivamente, si alcanzan al menos el umbral
+de \(0.5\).
+
+\[
+\begin{array}{rcl}
+VPP>0.5 & \Rightarrow & \mbox{Diagnosticar la enfermedad}\\
+VPN>0.5 & \Rightarrow & \mbox{Diagnosticar la no enfermedad} 
+\end{array}
+\]
+
+\end{tcolorbox}
+
+No obstante, estas probabilidades dependen de la prevalencia de la
+enfermedad \(P(E)\). Pueden calcularse a partir de la sensibilidad y la
+especificidad del test diagnóstico usando el teorema de Bayes.
+
+\begin{align*}
+VPP=P(E|+) &= \frac{P(E)P(+|E)}{P(E)P(+|E)+P(\overline{E})P(+|\overline{E})}\\
+VPN=P(\overline{E}|-) &= \frac{P(\overline{E})P(-|\overline{E})}{P(E)P(-|E)+P(\overline{E})P(-|\overline{E})}
+\end{align*}
+
+Así, con enfermedades frecuentes, el valor predictivo positivo aumenta,
+y con enfermedades raras, el valor predictivo negativo aumenta.
+
+\begin{example}[]\protect\hypertarget{exm-valores-predictivos}{}\label{exm-valores-predictivos}
+
+Siguiendo con el ejemplo anterior de la gripe, se tiene que el valor
+predictivo positivo del test es
+
+\[VPP = P(E|+) = \frac{95}{95+90} = 0.5135.\]
+
+Como este valor es mayor que \(0.5\), eso significa que se diagnosticará
+la gripe si el resultado del test es positivo. No obstante, la confianza
+en el diagnóstico será baja, ya que el valor es poco mayor que \(0.5\).
+
+Por otro lado, el valor predictivo negativo es
+
+\[VPN = P(\overline{E}|-) = \frac{810}{5+810} = 0.9939.\]
+
+Como este valor es casi 1, eso significa que es casi seguro que no se
+tiene la gripe cuando el resultado del test es negativo.
+
+Así, se puede concluir que este test es muy potente para descartar la
+gripe, pero no lo est tanto para confirmarla.
+
+\end{example}
+
+\subsection{Razón de verosimilitud de un test
+diagnóstico}\label{razuxf3n-de-verosimilitud-de-un-test-diagnuxf3stico}
+
+La siguientes medidas también se derivan de la sensibilidad y la
+especificidad de un test diagnóstico.
+
+\begin{definition}[Razón de verosimilitud
+positiva]\protect\hypertarget{def-razon-verosimilitud-positiva}{}\label{def-razon-verosimilitud-positiva}
+
+La \emph{razón de verosimilitud positiva} de un test diagnóstico es el
+cociente entre la probabilidad de un resultado positivo en personas con
+la enfermedad y personas sin la enfermedad, respectivamente.
+
+\[RV+=\frac{P(+|E)}{P(+|\overline{E})} = \frac{\mbox{Sensibilidad}}{1-\mbox{Especificidad}}.\]
+
+\end{definition}
+
+\begin{definition}[Razón de verosimilitud
+negativa]\protect\hypertarget{def-razon-verosimilitud-negativa}{}\label{def-razon-verosimilitud-negativa}
+
+La \emph{razón de verosimilitud negativa} de un test diagnóstico es el
+cociente entre la probabilidad de un resultado negativo en personas con
+la enfermedad y personas sin la enfermedad, respectivamente.
+
+\[RV-=\frac{P(-|E)}{P(-|\overline{E})} = \frac{1-\mbox{Sensibilidad}}{\mbox{Especificidad}}.\]
+
+\end{definition}
+
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
+
+La razón de verosimilitud positiva puede interpretarse como el número de
+veces que un resultado positivo es más probable en personas con la
+enfermedad que en personas sin la enfermedad.
+
+Por otro lado, la razón de verosimilitud negativa puede interpretarse
+como el número de veces que un resultado negativo es más probable en
+personas con la enfermedad que en personas sin la enfermedad.
+
+Las probabilidades a posteriori pueden calculares a partir de las
+probabilidades a priori usando las razones de verosimilitud
+
+\[P(E|+) = \frac{P(E)P(+|E)}{P(E)P(+|E)+P(\overline{E})P(+|\overline{E})} = \frac{P(E)RV+}{1-P(E)+P(E)RV+}\]
+
+Así,
+
+\begin{itemize}
+\tightlist
+\item
+  Una razón de verosimilitud positiva mayor que 1 aumenta la
+  probabilidad de la enfermedad.
+\item
+  Una razón de verosimilitud positiva menor que 1 disminuye la
+  probabilidad de la enfermedad.
+\item
+  Una razón de verosimilitud 1 no cambia la probabilidad a priori de la
+  de tener la enfermedad.
+\end{itemize}
+
+\end{tcolorbox}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{img/probabilidad/razon_verosimilitud.pdf}
+
+}
+
+\caption{Razón de verosimilitud.}
+
+\end{figure}%
+
+\bookmarksetup{startatroot}
+
 \chapter{Estimación de parámetros
-poblacionales}\label{estimaciuxf3n-de-paruxe1metros-poblacionales}}
+poblacionales}\label{estimaciuxf3n-de-paruxe1metros-poblacionales}
 
 Los modelos de distribución de probabilidad vistos en el tema anterior
 explican el comportamiento de las variables aleatorias, pero para ello
@@ -4154,8 +5846,7 @@ muestreo más apropiada para el tipo de estudio; en el caso de los
 errores, aunque no se pueden evitar, se tratará de reducirlos al máximo
 y acotarlos.
 
-\hypertarget{distribuciones-muestrales}{%
-\section{Distribuciones muestrales}\label{distribuciones-muestrales}}
+\section{Distribuciones muestrales}\label{distribuciones-muestrales}
 
 Los valores de una variable \(X\) en una muestra de tamaño \(n\) de una
 población pueden verse como el valor de una variable aleatoria
@@ -4246,13 +5937,9 @@ la población.
 Sea una población en la que la cuarta parte de las familias no tienen
 hijos, la mitad de las familias tiene 1 hijo, y el resto tiene 2 hijos.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/distribucion-variable-muestral.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/distribucion-variable-muestral.pdf}
+\end{center}
 
 \end{example}
 
@@ -4266,47 +5953,27 @@ parámetros que la determinan (\(\mu\), \(\sigma\), \(p\), \ldots).
 Si se toma la media muestral \(\bar X\) de las muestras de tamaño 2 del
 ejemplo anterior, su distribución de probabilidad es
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/distribucion-media.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/distribucion-media.pdf}
+\end{center}
 
 \end{example}
 
 \begin{figure}
 
-\begin{minipage}[t]{0.50\linewidth}
-
-{\centering 
-
-\raisebox{-\height}{
-
-\includegraphics{img/estimacion/diagrama-barras-distribucion-poblacion.pdf}
-
-}
-
-}
-
+\begin{minipage}{0.50\linewidth}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/diagrama-barras-distribucion-poblacion.pdf}
+\end{center}
 \end{minipage}%
 %
-\begin{minipage}[t]{0.50\linewidth}
-
-{\centering 
-
-\raisebox{-\height}{
-
-\includegraphics{img/estimacion/diagrama-barras-distribucion-media.pdf}
-
-}
-
-}
-
+\begin{minipage}{0.50\linewidth}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/diagrama-barras-distribucion-media.pdf}
+\end{center}
 \end{minipage}%
 
-\end{figure}
+\end{figure}%
 
 \emph{¿Cuál es la probabilidad de obtener una media muestral que
 aproxime la media poblacional con un error máximo de 0.5?}
@@ -4337,10 +6004,9 @@ Este teorema además es la explicación de que la mayoría de las variables
 biológicas presenten una distribución normal, ya que suelen ser causa de
 múltiples factores que suman sus efectos de manera independiente.
 
-\hypertarget{distribuciuxf3n-de-la-media-muestral-para-muestras-grandes-ngeq-30}{%
 \subsection{\texorpdfstring{Distribución de la media muestral para
 muestras grandes
-(\(n\geq 30\))}{Distribución de la media muestral para muestras grandes (n\textbackslash geq 30)}}\label{distribuciuxf3n-de-la-media-muestral-para-muestras-grandes-ngeq-30}}
+(\(n\geq 30\))}{Distribución de la media muestral para muestras grandes (n\textbackslash geq 30)}}\label{distribuciuxf3n-de-la-media-muestral-para-muestras-grandes-ngeq-30}
 
 La media muestral de una muestra aleatoria de tamaño \(n\) es la suma de
 \(n\) variables aleatorias independientes, idénticamente distribuidas:
@@ -4400,20 +6066,15 @@ P(1.8<\bar x<2.2) = 0.7267.
 P(1.8<\bar x<2.2) = 0.9545.
 \]
 
-\begin{figure}
-
-{\centering \includegraphics{img/estimacion/teorema-central-limite.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics{img/estimacion/teorema-central-limite.pdf}
+\end{center}
 
 \end{example}
 
-\hypertarget{distribuciuxf3n-de-una-proporciuxf3n-muestral-para-muestras-grandes-ngeq-30}{%
 \subsection{\texorpdfstring{Distribución de una proporción muestral para
 muestras grandes
-(\(n\geq 30\))}{Distribución de una proporción muestral para muestras grandes (n\textbackslash geq 30)}}\label{distribuciuxf3n-de-una-proporciuxf3n-muestral-para-muestras-grandes-ngeq-30}}
+(\(n\geq 30\))}{Distribución de una proporción muestral para muestras grandes (n\textbackslash geq 30)}}\label{distribuciuxf3n-de-una-proporciuxf3n-muestral-para-muestras-grandes-ngeq-30}
 
 Una proporción \(p\) poblacional puede calcularse como la media de una
 variable dicotómica (0,1). Esta variable se conoce como \emph{variable
@@ -4440,8 +6101,7 @@ muestral también será normal:
 \hat p \sim N\left(\sum_{i=1}^n \frac{p}{n},\sqrt{\sum_{i=1}^n \frac{p(1-p)}{n^2}} \right) = N\left(p,\sqrt{\frac{p(1-p)}{n}} \right).
 \]
 
-\hypertarget{estimadores}{%
-\section{Estimadores}\label{estimadores}}
+\section{Estimadores}\label{estimadores}
 
 Los estadísticos muestrales pueden utilizarse para aproximar los
 parámetros de la población, y cuando un estadístico se utiliza con este
@@ -4472,13 +6132,9 @@ población de partida.
 Mientras que el estimador es una función que es única, la estimación no
 es única, sino que depende de la muestra tomada.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/estimador-estimacion.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/estimador-estimacion.pdf}
+\end{center}
 
 \begin{example}[]\protect\hypertarget{exm-estimacion-fumadores}{}\label{exm-estimacion-fumadores}
 
@@ -4534,16 +6190,11 @@ La estimación de parámetros puede realizar de de dos formas:
   cometido en la estimación.
 \end{itemize}
 
-\begin{figure}
+\begin{center}
+\includegraphics[width=1\textwidth,height=\textheight]{img/estimacion/estimacion-puntual-intervalo.pdf}
+\end{center}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{img/estimacion/estimacion-puntual-intervalo.pdf}
-
-}
-
-\end{figure}
-
-\hypertarget{estimaciuxf3n-puntual}{%
-\section{Estimación puntual}\label{estimaciuxf3n-puntual}}
+\section{Estimación puntual}\label{estimaciuxf3n-puntual}
 
 La estimación puntual utiliza un único estimador para estimar el valor
 del parámetro desconocido de la población.
@@ -4594,7 +6245,7 @@ E(\hat \theta)=\theta.
 
 \end{definition}
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/estimadores-sesgados-insesgados.pdf}
 
@@ -4602,7 +6253,7 @@ E(\hat \theta)=\theta.
 
 \caption{Distribución de estimadores sesgados e insesgados.}
 
-\end{figure}
+\end{figure}%
 
 Cuando un estimador no es insesgado, a la diferencia entre su esperanza
 y el valor del parámetro \(\theta\) se le llama \emph{sesgo}:
@@ -4629,39 +6280,21 @@ Un estimador \(\hat \theta_n\) para muestras de tamaño \(n\) es
 
 \begin{figure}
 
-\begin{minipage}[t]{0.50\linewidth}
-
-{\centering 
-
-\raisebox{-\height}{
+\begin{minipage}{0.50\linewidth}
 
 \includegraphics{img/estimacion/estimadores-consistentes.pdf}
 
-}
-
-\caption{Distribución de estimadores consistentes.}
-
-}
-
+\subcaption{\label{}Distribución de estimadores consistentes.}
 \end{minipage}%
 %
-\begin{minipage}[t]{0.50\linewidth}
-
-{\centering 
-
-\raisebox{-\height}{
+\begin{minipage}{0.50\linewidth}
 
 \includegraphics{img/estimacion/estimadores-consistentes-sesgados.pdf}
 
-}
-
-\caption{Distribución de estimadores consistentes segados.}
-
-}
-
+\subcaption{\label{}Distribución de estimadores consistentes segados.}
 \end{minipage}%
 
-\end{figure}
+\end{figure}%
 
 Las condiciones suficientes para que un estimador sea consistente son:
 
@@ -4690,7 +6323,7 @@ ECM(\hat \theta) = Sesgo(\hat \theta)^2+Var(\theta).
 
 \end{definition}
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/estimador-eficiente-sesgado.pdf}
 
@@ -4698,7 +6331,7 @@ ECM(\hat \theta) = Sesgo(\hat \theta)^2+Var(\theta).
 
 \caption{Distribución de estimadores insesgados y eficientes sesgados.}
 
-\end{figure}
+\end{figure}%
 
 \begin{definition}[Estimador asintóticamente
 normal]\protect\hypertarget{def-estimador-asintóticamente-normal}{}\label{def-estimador-asintóticamente-normal}
@@ -4713,7 +6346,7 @@ grande.:::
 Como veremos más adelante esta propiedad es muy interesante para hacer
 estimaciones de parámetros mediante intervalos.
 
-\begin{figure}
+\begin{figure}[H]
 
 {\centering \includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/estimador-asintoticamente-normal.pdf}
 
@@ -4721,7 +6354,7 @@ estimaciones de parámetros mediante intervalos.
 
 \caption{Distribución de estimadores asintóticamente normales.}
 
-\end{figure}
+\end{figure}%
 
 \begin{definition}[Estimador
 suficiente]\protect\hypertarget{def-estimador-suficiente}{}\label{def-estimador-suficiente}
@@ -4783,31 +6416,22 @@ define la \emph{cuasivarianza muestral} como
 
 \end{definition}
 
-\hypertarget{estimaciuxf3n-por-intervalos}{%
-\section{Estimación por intervalos}\label{estimaciuxf3n-por-intervalos}}
+\section{Estimación por intervalos}\label{estimaciuxf3n-por-intervalos}
 
 El principal problema de la estimación puntual es que, una vez
 seleccionada la muestra y hecha la estimación, resulta imposible saber
 el error cometido.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\textwidth,height=\textheight]{img/estimacion/error-estimacion-puntual.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=0.5\textwidth,height=\textheight]{img/estimacion/error-estimacion-puntual.pdf}
+\end{center}
 
 Para controlar el error de la estimación es mejor utilizar la estimación
 por intervalos
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\textwidth,height=\textheight]{img/estimacion/error-estimacion-intervalo.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=0.5\textwidth,height=\textheight]{img/estimacion/error-estimacion-intervalo.pdf}
+\end{center}
 
 La estimación por intervalos trata de construir a partir de la muestra
 un intervalo dentro del cual se supone que se encuentra el parámetro a
@@ -4863,8 +6487,7 @@ Teóricamente, de cada 100 intervalos para estimar un parámetro
 
 \includegraphics{07-estimacion_files/figure-pdf/unnamed-chunk-1-1.pdf}
 
-\hypertarget{error-de-estimaciuxf3n}{%
-\subsection{Error de estimación}\label{error-de-estimaciuxf3n}}
+\subsection{Error de estimación}\label{error-de-estimaciuxf3n}
 
 Otro de los aspectos más importantes de un intervalo de confianza es su
 error.
@@ -4881,13 +6504,9 @@ A=l_s-l_i.
 
 \end{definition}
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\textwidth,height=\textheight]{img/estimacion/error-estimacion-intervalo.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=0.5\textwidth,height=\textheight]{img/estimacion/error-estimacion-intervalo.pdf}
+\end{center}
 
 Para que un intervalo sea útil no debe ser demasiado impreciso.
 
@@ -4920,17 +6539,12 @@ simétrica, de manera que el extremo inferior deje una probabilidad
 acumulada inferior \(\alpha/2\) y el extremo superior deje una
 probabilidad acumulada superior también de \(\alpha/2\).
 
-\begin{figure}
+\begin{center}
+\includegraphics[width=0.7\textwidth,height=\textheight]{img/estimacion/extremos-intervalos.pdf}
+\end{center}
 
-{\centering \includegraphics[width=0.7\textwidth,height=\textheight]{img/estimacion/extremos-intervalos.pdf}
-
-}
-
-\end{figure}
-
-\hypertarget{intervalos-de-confianza-para-una-poblaciuxf3n}{%
 \section{Intervalos de confianza para una
-población}\label{intervalos-de-confianza-para-una-poblaciuxf3n}}
+población}\label{intervalos-de-confianza-para-una-poblaciuxf3n}
 
 A continuación se presentan los intervalos de confianza para estimar un
 parámetro de una poblacion:
@@ -4951,10 +6565,9 @@ parámetro de una poblacion:
   Intervalo para un proporción de una población.
 \end{itemize}
 
-\hypertarget{intervalo-de-confianza-para-la-media-de-una-poblaciuxf3n-normal-con-varianza-conocida}{%
 \subsection{Intervalo de confianza para la media de una población normal
 con varianza
-conocida}\label{intervalo-de-confianza-para-la-media-de-una-poblaciuxf3n-normal-con-varianza-conocida}}
+conocida}\label{intervalo-de-confianza-para-la-media-de-una-poblaciuxf3n-normal-con-varianza-conocida}
 
 Sea \(X\) una variable aleatoria que cumple las siguientes hipótesis:
 
@@ -4991,13 +6604,9 @@ Como la distribución normal estándar es simétrica respecto al 0, lo
 mejor es tomar valores opuestos \(-z_{\alpha/2}\) y \(z_{\alpha/2}\) que
 dejen sendas colas de probabilidad acumulada \(\alpha/2\).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/extremos-intervalo-media-normal.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/extremos-intervalo-media-normal.pdf}
+\end{center}
 
 A partir de aquí, deshaciendo la tipificación, resulta sencillo llegar a
 los estimadores que darán los extremos del intervalo de confianza:
@@ -5067,10 +6676,9 @@ de manera que depende de:
 Por tanto, la única forma de reducir la imprecisión del intervalo,
 manteniendo la confianza, es aumentando el tamaño muestral.
 
-\hypertarget{cuxe1lculo-del-tamauxf1o-muestra-para-estimar-la-media-de-una-poblaciuxf3n-normal-con-varianza-conocida}{%
 \subsubsection{Cálculo del tamaño muestra para estimar la media de una
 población normal con varianza
-conocida}\label{cuxe1lculo-del-tamauxf1o-muestra-para-estimar-la-media-de-una-poblaciuxf3n-normal-con-varianza-conocida}}
+conocida}\label{cuxe1lculo-del-tamauxf1o-muestra-para-estimar-la-media-de-una-poblaciuxf3n-normal-con-varianza-conocida}
 
 Teniendo en cuenta que la amplitud o imprecisión del intervalo para la
 media de una población normal con varianza conocida es
@@ -5141,15 +6749,14 @@ n = 4 z_{\alpha/2}^2\frac{\sigma^2}{A^2} = 4\cdot 1.96^2\frac{1.5^2}{(2\cdot 0.5
 \]
 
 Por tanto, se necesitaría una muestra de al menos 35 estudiantes para
-conseguir un intervalo del 95\% de confianza y una precisión de
-\(\pm 0.5\) puntos.
+conseguir un intervalo del 95\% de confianza y una precisión de \(\pm
+0.5\) puntos.
 
 \end{example}
 
-\hypertarget{intervalo-de-confianza-para-la-media-de-una-poblaciuxf3n-normal-con-varianza-desconocida}{%
 \subsection{Intervalo de confianza para la media de una población normal
 con varianza
-desconocida}\label{intervalo-de-confianza-para-la-media-de-una-poblaciuxf3n-normal-con-varianza-desconocida}}
+desconocida}\label{intervalo-de-confianza-para-la-media-de-una-poblaciuxf3n-normal-con-varianza-desconocida}
 
 Sea \(X\) una variable aleatoria que cumple las siguientes hipótesis:
 
@@ -5208,10 +6815,9 @@ o bien
 
 \end{theorem}
 
-\hypertarget{calculo-del-tamauxf1o-muestral-para-estimar-la-media-de-una-poblaciuxf3n-normal-con-varianza-desconocida}{%
 \subsubsection{Calculo del tamaño muestral para estimar la media de una
 población normal con varianza
-desconocida}\label{calculo-del-tamauxf1o-muestral-para-estimar-la-media-de-una-poblaciuxf3n-normal-con-varianza-desconocida}}
+desconocida}\label{calculo-del-tamauxf1o-muestral-para-estimar-la-media-de-una-poblaciuxf3n-normal-con-varianza-desconocida}
 
 Al igual que antes, teniendo en cuenta que la amplitud o imprecisión del
 intervalo para la media de una población con varianza desconocida es
@@ -5295,9 +6901,8 @@ de confianza y una precisión de \(\pm 0.5\) puntos.
 
 \end{example}
 
-\hypertarget{intervalo-de-confianza-para-la-media-de-una-poblaciuxf3n-no-normal}{%
 \subsection{Intervalo de confianza para la media de una población no
-normal}\label{intervalo-de-confianza-para-la-media-de-una-poblaciuxf3n-no-normal}}
+normal}\label{intervalo-de-confianza-para-la-media-de-una-poblaciuxf3n-no-normal}
 
 Sea \(X\) una variable aleatoria que cumple las siguientes hipótesis:
 
@@ -5337,9 +6942,8 @@ confianza \(1-\alpha\) es
 
 \end{theorem}
 
-\hypertarget{intervalo-de-confianza-para-la-varianza-de-una-poblaciuxf3n-normal}{%
 \subsection{Intervalo de confianza para la varianza de una población
-normal}\label{intervalo-de-confianza-para-la-varianza-de-una-poblaciuxf3n-normal}}
+normal}\label{intervalo-de-confianza-para-la-varianza-de-una-poblaciuxf3n-normal}
 
 Sea \(X\) una variable aleatoria que cumple las siguientes hipótesis:
 
@@ -5373,13 +6977,9 @@ toman dos valores \(\chi^{n-1}_{\alpha/2}\) y
 \(\chi^{n-1}_{1-\alpha/2}\) que dejen sendas colas de probabilidad
 acumulada inferior de \(\alpha/2\) y \(1-\alpha/2\) respectivamente.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/extremos-intervalo-varianza-normal.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/extremos-intervalo-varianza-normal.pdf}
+\end{center}
 
 Así pues, se tiene
 
@@ -5442,9 +7042,8 @@ Sustituyendo estos valores en la fórmula del intervalo, se llega a
 
 \end{example}
 
-\hypertarget{intervalo-de-confianza-para-una-proporciuxf3n}{%
 \subsection{Intervalo de confianza para una
-proporción}\label{intervalo-de-confianza-para-una-proporciuxf3n}}
+proporción}\label{intervalo-de-confianza-para-una-proporciuxf3n}
 
 Para estimar la proporción \(p\) de individuos de una población que
 presentan una determinada característica, se parte de la variable que
@@ -5515,9 +7114,8 @@ o bien
 
 \end{theorem}
 
-\hypertarget{cuxe1lculo-del-tamauxf1o-muestra-para-estimar-una-proporciuxf3n}{%
 \subsubsection{Cálculo del tamaño muestra para estimar una
-proporción}\label{cuxe1lculo-del-tamauxf1o-muestra-para-estimar-una-proporciuxf3n}}
+proporción}\label{cuxe1lculo-del-tamauxf1o-muestra-para-estimar-una-proporciuxf3n}
 
 La amplitud o imprecisión del intervalo para la proporción de una
 población es
@@ -5597,9 +7195,8 @@ intervalo para la proporción con una confianza del \(95\%\).
 
 \end{example}
 
-\hypertarget{intervalos-de-confianza-para-la-comparaciuxf3n-dos-poblaciones}{%
 \section{Intervalos de confianza para la comparación dos
-poblaciones}\label{intervalos-de-confianza-para-la-comparaciuxf3n-dos-poblaciones}}
+poblaciones}\label{intervalos-de-confianza-para-la-comparaciuxf3n-dos-poblaciones}
 
 En muchos estudios el objetivo en sí no es averiguar el valor de un
 parámetro, sino compararlo con el de otra población. Por ejemplo,
@@ -5644,10 +7241,9 @@ la comparación de dos poblaciones:
   Intervalo para la diferencia de proporciones de dos poblaciones.
 \end{itemize}
 
-\hypertarget{intervalo-de-confianza-para-la-diferencia-de-medias-de-poblaciones-normales-con-varianzas-conocidas}{%
 \subsection{Intervalo de confianza para la diferencia de medias de
 poblaciones normales con varianzas
-conocidas}\label{intervalo-de-confianza-para-la-diferencia-de-medias-de-poblaciones-normales-con-varianzas-conocidas}}
+conocidas}\label{intervalo-de-confianza-para-la-diferencia-de-medias-de-poblaciones-normales-con-varianzas-conocidas}
 
 Sean \(X_1\) y \(X_2\) dos variables aleatorias que cumplen las
 siguientes hipótesis:
@@ -5717,10 +7313,9 @@ o bien
 
 \end{theorem}
 
-\hypertarget{intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales}{%
 \subsection{Intervalo de confianza para la diferencia de medias de dos
 poblaciones normales con varianzas desconocidas e
-iguales}\label{intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales}}
+iguales}\label{intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales}
 
 Sean \(X_1\) y \(X_2\) dos variables aleatorias que cumplen las
 siguientes hipótesis:
@@ -5847,7 +7442,8 @@ Si se supone que ambas variables tienen la misma varianza, se tiene
   \(\bar{X}_2=\frac{8+\cdots +7}{12}=6.75\) puntos.
 \item
   \(S_1^2= \frac{4^2+\cdots + 3^2}{10}-5.3^2=3.21\) y
-  \(S_2^2= \frac{8^2+\cdots +3^2}{12}-6.75^2=2.6875\) puntos\(^2\).
+  \(S_2^2= \frac{8^2+\cdots
+  +3^2}{12}-6.75^2=2.6875\) puntos\(^2\).
 \item
   \(\hat{S}_p^2 = \frac{10\cdot 3.21+12\cdot 2.6875}{10+12-2}= 3.2175\)
   puntos\(^2\), y \(\hat S_p=1.7937\).
@@ -5874,10 +7470,9 @@ contiene tanto valores positivos como negativos, y por tanto contiene al
 modo que se supone que son iguales y no se puede decir que haya
 diferencias significativas entre los grupos.
 
-\hypertarget{intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-y-distintas}{%
 \subsection{Intervalo de confianza para la diferencia de medias de dos
 poblaciones normales con varianzas desconocidas y
-distintas}\label{intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-y-distintas}}
+distintas}\label{intervalo-de-confianza-para-la-diferencia-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-y-distintas}
 
 Sean \(X_1\) y \(X_2\) dos variables aleatorias que cumplen las
 siguientes hipótesis:
@@ -5963,9 +7558,8 @@ desconocidas, es necesario calcular el intervalo de confianza para la
 razón de varianzas y elegir el intervalo para la comparación de medias
 en función del valor de dicho intervalo.
 
-\hypertarget{intervalo-de-confianza-para-el-cociente-de-varianzas}{%
 \subsection{Intervalo de confianza para el cociente de
-varianzas}\label{intervalo-de-confianza-para-el-cociente-de-varianzas}}
+varianzas}\label{intervalo-de-confianza-para-el-cociente-de-varianzas}
 
 Sean \(X_1\) y \(X_2\) dos variables aleatorias que cumplen las
 siguientes hipótesis:
@@ -6001,13 +7595,9 @@ se toman dos valores \(f^{n_2-1,n_1-1}_{\alpha/2}\) y
 \(f^{n_2-1,n_1-1}_{1-\alpha/2}\) que dejen sendas colas de probabilidad
 acumulada inferior de \(\alpha/2\) y \(1-\alpha/2\) respectivamente.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/extremos-intervalo-comparacion-varianzas-normal.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{img/estimacion/extremos-intervalo-comparacion-varianzas-normal.pdf}
+\end{center}
 
 Así pues, se tiene
 
@@ -6082,9 +7672,8 @@ una confianza del \(95\%\), se tiene:
   \(\bar{X}_2=\frac{8+\cdots +7}{12}=6.75\) puntos.
 \item
   \(\hat{S}_1^2= \frac{(4-5.3)^2+\cdots + (3-5.3)^2}{9}=3.5667\)
-  puntos\(^2\) y
-  \(\hat{S}_2^2= \frac{(8-6.75)^2+\cdots + (3-6.75)^2}{11}=2.9318\)
-  puntos\(^2\).
+  puntos\(^2\) y \(\hat{S}_2^2=
+  \frac{(8-6.75)^2+\cdots + (3-6.75)^2}{11}=2.9318\) puntos\(^2\).
 \item
   \(f^{n_2-1,n_1-1}_{\alpha/2}=f^{11,9}_{0.025}\) es el valor de la F de
   Fisher de 11 y 9 grados de libertad que deja una probabilidad
@@ -6117,9 +7706,8 @@ intervalo de confianza para la diferencia de medias que habría que tomar
 es el que parte de la hipótesis de igualdad de varianzas, que
 precisamente es el que se ha utilizado antes.
 
-\hypertarget{intervalo-de-confianza-para-la-diferencia-de-proporciones}{%
 \subsection{Intervalo de confianza para la diferencia de
-proporciones}\label{intervalo-de-confianza-para-la-diferencia-de-proporciones}}
+proporciones}\label{intervalo-de-confianza-para-la-diferencia-de-proporciones}
 
 Para comparar las proporciones \(p_1\) y \(p_2\) de individuos que
 presentan una determinada característica en dos poblaciones
@@ -6225,13 +7813,11 @@ de aprobados.
 
 \bookmarksetup{startatroot}
 
-\hypertarget{contrastes-de-hipuxf3tesis-paramuxe9tricos}{%
 \chapter{Contrastes de hipótesis
-paramétricos}\label{contrastes-de-hipuxf3tesis-paramuxe9tricos}}
+paramétricos}\label{contrastes-de-hipuxf3tesis-paramuxe9tricos}
 
-\hypertarget{hipuxf3tesis-estaduxedstica-y-tipos-de-contrastes}{%
 \section{Hipótesis estadística y tipos de
-contrastes}\label{hipuxf3tesis-estaduxedstica-y-tipos-de-contrastes}}
+contrastes}\label{hipuxf3tesis-estaduxedstica-y-tipos-de-contrastes}
 
 En muchos estudios estadísticos, el objetivo, más que estimar el valor
 de un parámetro desconocido en la población, es comprobar la veracidad
@@ -6258,8 +7844,7 @@ porcentaje de aprobados es mayor del 50\%.
 
 \end{example}
 
-\hypertarget{contraste-de-hipuxf3tesis}{%
-\subsection{Contraste de hipótesis}\label{contraste-de-hipuxf3tesis}}
+\subsection{Contraste de hipótesis}\label{contraste-de-hipuxf3tesis}
 
 En general nunca se sabrá con absoluta certeza si una hipótesis
 estadística es cierta o falsa, ya que para ello habría que estudiar a
@@ -6280,9 +7865,8 @@ probabilidad}.
 La metodología que se encarga de contrastar la veracidad de las
 hipótesis estadísticas se conoce como \emph{contraste de hipótesis}.
 
-\hypertarget{tipos-de-contrastes-de-hipuxf3tesis}{%
 \subsection{Tipos de contrastes de
-hipótesis}\label{tipos-de-contrastes-de-hipuxf3tesis}}
+hipótesis}\label{tipos-de-contrastes-de-hipuxf3tesis}
 
 \begin{itemize}
 \item
@@ -6310,9 +7894,8 @@ hipótesis}\label{tipos-de-contrastes-de-hipuxf3tesis}}
 Cuando las hipótesis se plantean sobre parámetros de la población,
 también se habla de \textbf{contrastes paramétricos}.
 
-\hypertarget{hipuxf3tesis-nula-e-hipuxf3tesis-alternativa}{%
 \subsection{Hipótesis nula e hipótesis
-alternativa}\label{hipuxf3tesis-nula-e-hipuxf3tesis-alternativa}}
+alternativa}\label{hipuxf3tesis-nula-e-hipuxf3tesis-alternativa}
 
 En la mayoría de los casos un contraste supone tomar una decisión entre
 dos hipótesis antagonistas:
@@ -6355,15 +7938,14 @@ El investigador jugaría el papel del fiscal, ya que su objetivo
 consistiría en intentar rechazar la hipótesis nula, es decir, demostrar
 culpabilidad del acusado.
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 ¡Esta metodología siempre favorece a la hipótesis nula!
 
 \end{tcolorbox}
 
-\hypertarget{contrastes-de-hipuxf3tesis-paramuxe9tricos-1}{%
 \subsection{Contrastes de hipótesis
-paramétricos}\label{contrastes-de-hipuxf3tesis-paramuxe9tricos-1}}
+paramétricos}\label{contrastes-de-hipuxf3tesis-paramuxe9tricos-1}
 
 En muchos contrastes, sobre todo en las pruebas de conformidad y de
 homogeneidad, las hipótesis se formulan sobre parámetros desconocidos de
@@ -6432,13 +8014,11 @@ H_1: & p<0.5
 
 \end{example}
 
-\hypertarget{metodologuxeda-para-realizar-un-contraste-de-hipuxf3tesis}{%
 \section{Metodología para realizar un contraste de
-hipótesis}\label{metodologuxeda-para-realizar-un-contraste-de-hipuxf3tesis}}
+hipótesis}\label{metodologuxeda-para-realizar-un-contraste-de-hipuxf3tesis}
 
-\hypertarget{estaduxedstico-del-contraste}{%
 \subsection{Estadístico del
-contraste}\label{estaduxedstico-del-contraste}}
+contraste}\label{estaduxedstico-del-contraste}
 
 La aceptación o rechazo de la hipótesis nula depende, en última
 instancia, de lo que se observe en la muestra.
@@ -6486,9 +8066,8 @@ rechazo?}
 
 \end{example}
 
-\hypertarget{regiones-de-aceptaciuxf3n-y-de-rechazo}{%
 \subsection{Regiones de aceptación y de
-rechazo}\label{regiones-de-aceptaciuxf3n-y-de-rechazo}}
+rechazo}\label{regiones-de-aceptaciuxf3n-y-de-rechazo}
 
 Una vez elegido el estadístico del contraste, lo siguiente es decidir
 para qué valores de este estadístico se decidirá aceptar la hipótesis
@@ -6517,23 +8096,21 @@ la hipótesis nula:
   \(H_1:\ \theta\neq\theta_0\).
 \end{itemize}
 
-\begin{figure}
-
-{\centering \includegraphics[width=7.29167in,height=\textheight]{index_files/mediabag/img/contrastes/regiones_bilateral.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=7.29167in,height=\textheight]{index_files/mediabag/img/contrastes/regiones_bilateral.pdf}
+\end{center}
 
 \begin{itemize}
 \item
   Contraste unilateral de menor \(H_0:\ \theta=\theta_0\)
-  \&H\_1:~\theta\textless{}\theta\_0\$.
+  \&H\_1:~\theta\textless{}\theta\_0\$. \begin{center}
   \includegraphics[width=7.29167in,height=\textheight]{index_files/mediabag/img/contrastes/regiones_unilateral_menor.pdf}
+  \end{center}
 \item
   Contraste unilateral de mayor \(H_0:\ \theta=\theta_0\)
-  \(H_1:\ \theta>\theta_0\).
+  \(H_1:\ \theta>\theta_0\). \begin{center}
   \includegraphics[width=7.29167in,height=\textheight]{index_files/mediabag/img/contrastes/regiones_unilateral_mayor.pdf}
+  \end{center}
 \end{itemize}
 
 \begin{example}[]\protect\hypertarget{exm-regiones-aceptacion-rechazo}{}\label{exm-regiones-aceptacion-rechazo}
@@ -6553,19 +8130,14 @@ contraste unilateral de menor, la región de rechazo quedará por debajo
 del 5. Pero, \emph{¿dónde poner el límite entre las regiones de
 aceptación y de rechazo?}
 
-\begin{figure}
-
-{\centering \includegraphics[width=7.29167in,height=\textheight]{index_files/mediabag/img/contrastes/regiones_contraste_proporcion_hombres.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=7.29167in,height=\textheight]{index_files/mediabag/img/contrastes/regiones_contraste_proporcion_hombres.pdf}
+\end{center}
 
 \end{example}
 
-\hypertarget{errores-en-un-contraste-de-hipuxf3tesis}{%
 \subsection{Errores en un contraste de
-hipótesis}\label{errores-en-un-contraste-de-hipuxf3tesis}}
+hipótesis}\label{errores-en-un-contraste-de-hipuxf3tesis}
 
 Hemos visto que un contraste de hipótesis se realiza mediante una regla
 de decisión que permite aceptar o rechazar la hipótesis nula dependiendo
@@ -6600,9 +8172,8 @@ dos tipos:
 \end{array}
 \]
 
-\hypertarget{riesgos-de-los-errores-de-un-contraste-de-hipuxf3tesis}{%
 \subsection{Riesgos de los errores de un contraste de
-hipótesis}\label{riesgos-de-los-errores-de-un-contraste-de-hipuxf3tesis}}
+hipótesis}\label{riesgos-de-los-errores-de-un-contraste-de-hipuxf3tesis}
 
 Los riesgos de cometer cada tipo de error se cuantifican mediante
 probabilidades:
@@ -6626,7 +8197,7 @@ P(\mbox{Aceptar }H_0|H_1) \leq \beta.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, coltitle=black, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 En principio, puesto que esta metodología favorece a la hipótesis nula,
 el error del tipo I suele ser más grave que el error del tipo II, y por
@@ -6648,31 +8219,22 @@ tal caso, si se ha tomado la decisión acertada, la probabilidad de error
 es 0 y si se ha tomado la decisión equivocada, la probabilidad de error
 es 1.
 
-\hypertarget{determinaciuxf3n-de-las-regiones-de-aceptaciuxf3n-y-de-rechazo-en-funciuxf3n-del-riesgo-alpha}{%
 \subsection{\texorpdfstring{Determinación de las regiones de aceptación
 y de rechazo en función del riesgo
-\(\alpha\)}{Determinación de las regiones de aceptación y de rechazo en función del riesgo \textbackslash alpha}}\label{determinaciuxf3n-de-las-regiones-de-aceptaciuxf3n-y-de-rechazo-en-funciuxf3n-del-riesgo-alpha}}
+\(\alpha\)}{Determinación de las regiones de aceptación y de rechazo en función del riesgo \textbackslash alpha}}\label{determinaciuxf3n-de-las-regiones-de-aceptaciuxf3n-y-de-rechazo-en-funciuxf3n-del-riesgo-alpha}
 
 Una vez fijado el riesgo \(\alpha\) que se está dispuesto a tolerar, es
 posible delimitar las regiones de aceptación y de rechazo para el
 estadístico del contraste de manera que la probabilidad acumulada en la
 región de rechazo sea \(\alpha\), suponiendo cierta la hipótesis nula.
 
-\begin{figure}
+\begin{center}
+\includegraphics[width=1\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/regiones_bilateral_normal.pdf}
+\end{center}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/regiones_bilateral_normal.pdf}
-
-}
-
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/regiones_unilateral_mayor_normal.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=1\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/regiones_unilateral_mayor_normal.pdf}
+\end{center}
 
 \begin{example}[]\protect\hypertarget{exm-regiones-aceptacion-rechazo}{}\label{exm-regiones-aceptacion-rechazo}
 
@@ -6690,19 +8252,14 @@ hipótesis nula? \[P(X\leq 1)= f(0)+f(1) = 0.0010 + 0.0098 = 0.0107.\] Es
 decir, sólo se podría rechazar la hipótesis nula con 0 o 1 hombres en la
 muestra.
 
-\begin{figure}
-
-{\centering \includegraphics[width=7.29167in,height=\textheight]{index_files/mediabag/img/contrastes/regiones_contraste_proporcion_hombres_2.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=7.29167in,height=\textheight]{index_files/mediabag/img/contrastes/regiones_contraste_proporcion_hombres_2.pdf}
+\end{center}
 
 \end{example}
 
-\hypertarget{riesgo-beta-y-tamauxf1o-del-efecto}{%
 \subsection{\texorpdfstring{Riesgo \(\beta\) y tamaño del
-efecto}{Riesgo \textbackslash beta y tamaño del efecto}}\label{riesgo-beta-y-tamauxf1o-del-efecto}}
+efecto}{Riesgo \textbackslash beta y tamaño del efecto}}\label{riesgo-beta-y-tamauxf1o-del-efecto}
 
 Aunque el error de tipo II pueda parecer menos grave, también interesa
 que el riesgo \(\beta\) sea bajo, ya que de lo contrario será difícil
@@ -6720,8 +8277,7 @@ práctico o clínico. Esa mínima diferencia que se considera clínicamente
 significativa se conoce como \textbf{tamaño del efecto} y se representa
 por \(\delta\).
 
-\hypertarget{potencia-de-un-contraste}{%
-\subsection{Potencia de un contraste}\label{potencia-de-un-contraste}}
+\subsection{Potencia de un contraste}\label{potencia-de-un-contraste}
 
 Puesto que el objetivo del investigador suele ser rechazar la hipótesis
 nula, a menudo, lo más interesante de un contraste es su capacidad para
@@ -6746,10 +8302,9 @@ contraste.
 Un contraste poco potente no suele ser interesante ya que no permitirá
 rechazar la hipótesis nula aunque haya evidencias en su contra.
 
-\hypertarget{cuxe1lculo-del-riesgo-beta-y-de-la-potencia-1-beta}{%
 \subsection{\texorpdfstring{Cálculo del riesgo \(\beta\) y de la
 potencia
-\(1-\beta\)}{Cálculo del riesgo \textbackslash beta y de la potencia 1-\textbackslash beta}}\label{cuxe1lculo-del-riesgo-beta-y-de-la-potencia-1-beta}}
+\(1-\beta\)}{Cálculo del riesgo \textbackslash beta y de la potencia 1-\textbackslash beta}}\label{cuxe1lculo-del-riesgo-beta-y-de-la-potencia-1-beta}
 
 :::\{\#exm-** Supóngase que en el contraste sobre la proporción de
 hombres no se considera importante una diferencia de menos de un 10\%
@@ -6776,30 +8331,21 @@ que la potencia del contraste sería sólo de
 lo que indica que no se trataría de un buen contraste para detectar
 diferencias de un 10\% en el valor del parámetro.
 
-\hypertarget{relaciuxf3n-del-riesgo-beta-y-el-tamauxf1o-del-efecto-delta}{%
 \subsection{\texorpdfstring{Relación del riesgo \(\beta\) y el tamaño
 del efecto
-\(\delta\)}{Relación del riesgo \textbackslash beta y el tamaño del efecto \textbackslash delta}}\label{relaciuxf3n-del-riesgo-beta-y-el-tamauxf1o-del-efecto-delta}}
+\(\delta\)}{Relación del riesgo \textbackslash beta y el tamaño del efecto \textbackslash delta}}\label{relaciuxf3n-del-riesgo-beta-y-el-tamauxf1o-del-efecto-delta}
 
 El riesgo \(\beta\) depende directamente de la mínima diferencia
 \(\delta\) que se desea detectar con respecto al valor del parámetro que
 establece la hipótesis nula.
 
-\begin{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/riesgo_beta_tamaño_efecto_pequeño.pdf}
+\end{center}
 
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/riesgo_beta_tamaño_efecto_pequeño.pdf}
-
-}
-
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/riesgo_beta_tamaño_efecto_grande.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/riesgo_beta_tamaño_efecto_grande.pdf}
+\end{center}
 
 \begin{example}[]\protect\hypertarget{exm-potencia-contraste}{}\label{exm-potencia-contraste}
 
@@ -6827,28 +8373,19 @@ aunque seguiría siendo un contraste poco potente.
 
 \end{example}
 
-\hypertarget{relaciuxf3n-entre-los-riesgos-alpha-y-beta}{%
 \subsection{\texorpdfstring{Relación entre los riesgos \(\alpha\) y
-\(\beta\)}{Relación entre los riesgos \textbackslash alpha y \textbackslash beta}}\label{relaciuxf3n-entre-los-riesgos-alpha-y-beta}}
+\(\beta\)}{Relación entre los riesgos \textbackslash alpha y \textbackslash beta}}\label{relaciuxf3n-entre-los-riesgos-alpha-y-beta}
 
 Los riesgos \(\alpha\) y \(\beta\) están enfrentados, es decir, cuando
 uno aumenta el otro disminuye y viceversa.
 
-\begin{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/relacion_riesgos_alpha_pequeño.pdf}
+\end{center}
 
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/relacion_riesgos_alpha_pequeño.pdf}
-
-}
-
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/relacion_riesgos_alpha_grande.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/relacion_riesgos_alpha_grande.pdf}
+\end{center}
 
 \begin{example}[]\protect\hypertarget{exm-relacion-riesgos-alfa-beta}{}\label{exm-relacion-riesgos-alfa-beta}
 
@@ -6870,29 +8407,20 @@ y ahora la potencia ha subido hasta
 
 \end{example}
 
-\hypertarget{relaciuxf3n-de-los-riesgos-de-error-y-el-tamauxf1o-muestral}{%
 \subsection{Relación de los riesgos de error y el tamaño
-muestral}\label{relaciuxf3n-de-los-riesgos-de-error-y-el-tamauxf1o-muestral}}
+muestral}\label{relaciuxf3n-de-los-riesgos-de-error-y-el-tamauxf1o-muestral}
 
 Los riesgos de error también dependen el tamaño de la muestra, ya que al
 aumentar el tamaño de la muestra, la dispersión del estadístico del
 contraste disminuye y con ello también lo hacen los riesgos de error.
 
-\begin{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/relacion_riesgos_tamaño_muestral_pequeño.pdf}
+\end{center}
 
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/relacion_riesgos_tamaño_muestral_pequeño.pdf}
-
-}
-
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/relacion_riesgos_tamaño_muestral_grande.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/relacion_riesgos_tamaño_muestral_grande.pdf}
+\end{center}
 
 \begin{example}[]\protect\hypertarget{exm-relacion-riesgos-tamaño-muestral}{}\label{exm-relacion-riesgos-tamaño-muestral}
 
@@ -6919,8 +8447,7 @@ hipótesis nula.
 
 \end{example}
 
-\hypertarget{curva-de-potencia}{%
-\section{Curva de potencia}\label{curva-de-potencia}}
+\section{Curva de potencia}\label{curva-de-potencia}
 
 La potencia de un contraste depende del valor del parámetro que
 establezca la hipótesis alternativa y, por tanto, es una función de este
@@ -6944,19 +8471,14 @@ la curva de potencia.
 La curva de potencia correspondiente al contraste sobre la proporción de
 hombres en la población es la siguiente
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/potencia.pdf}
-
-}
-
-\end{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth,height=\textheight]{index_files/mediabag/img/contrastes/potencia.pdf}
+\end{center}
 
 \end{example}
 
-\hypertarget{p-valor-de-un-contraste-de-hipuxf3tesis}{%
 \subsection{\texorpdfstring{\(p\)-valor de un contraste de
-hipótesis}{p-valor de un contraste de hipótesis}}\label{p-valor-de-un-contraste-de-hipuxf3tesis}}
+hipótesis}{p-valor de un contraste de hipótesis}}\label{p-valor-de-un-contraste-de-hipuxf3tesis}
 
 En general, siempre que la estimación del estadístico caiga dentro de la
 región de rechazo, rechazaremos la hipótesis nula, pero evidentemente,
@@ -6990,14 +8512,13 @@ tomar la decisión de rechazar la hipótesis nula. Cuanto más próximo esté
 el \(p\)-valor a 1, mayor confianza existe al aceptar la hipótesis nula,
 y cuanto más próximo esté a 0, mayor confianza hay al rechazarla.
 
-\hypertarget{regla-de-decisiuxf3n-de-un-contraste}{%
 \subsection{Regla de decisión de un
-contraste}\label{regla-de-decisiuxf3n-de-un-contraste}}
+contraste}\label{regla-de-decisiuxf3n-de-un-contraste}
 
 Una vez fijado el riesgo \(\alpha\), la regla de decisión para realizar
 un contraste también puede expresarse de la siguiente manera:
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, breakable, bottomtitle=1mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, left=2mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, rightrule=.15mm, titlerule=0mm, toprule=.15mm, coltitle=black, opacityback=0, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, coltitle=black, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, toprule=.15mm, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, colback=white, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, bottomtitle=1mm, titlerule=0mm, arc=.35mm, leftrule=.75mm]
 
 \textbf{Regla de decisión}
 
@@ -7034,9 +8555,8 @@ rechazar la hipótesis nula se tomaría con mayor confianza.
 
 \end{example}
 
-\hypertarget{pasos-para-la-realizaciuxf3n-de-un-contraste-de-hipuxf3tesis}{%
 \subsection{Pasos para la realización de un contraste de
-hipótesis}\label{pasos-para-la-realizaciuxf3n-de-un-contraste-de-hipuxf3tesis}}
+hipótesis}\label{pasos-para-la-realizaciuxf3n-de-un-contraste-de-hipuxf3tesis}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -7064,9 +8584,8 @@ hipótesis}\label{pasos-para-la-realizaciuxf3n-de-un-contraste-de-hipuxf3tesis}}
   aceptarla en caso contrario.
 \end{enumerate}
 
-\hypertarget{contrastes-paramuxe9tricos-muxe1s-importantes}{%
 \section{Contrastes paramétricos más
-importantes}\label{contrastes-paramuxe9tricos-muxe1s-importantes}}
+importantes}\label{contrastes-paramuxe9tricos-muxe1s-importantes}
 
 Pruebas de conformidad:
 
@@ -7105,9 +8624,8 @@ Pruebas de homogeneidad:
   Contraste de comparación de proporciones de dos poblaciones.
 \end{itemize}
 
-\hypertarget{contraste-para-la-media-de-una-poblaciuxf3n-normal-con-varianza-conocida}{%
 \section{Contraste para la media de una población normal con varianza
-conocida}\label{contraste-para-la-media-de-una-poblaciuxf3n-normal-con-varianza-conocida}}
+conocida}\label{contraste-para-la-media-de-una-poblaciuxf3n-normal-con-varianza-conocida}
 
 Sea \(X\) una variable aleatoria que cumple las siguientes condiciones:
 
@@ -7136,9 +8654,8 @@ H_1 &: \mu\neq \mu_0\end{align*}
 \textbf{Región de rechazo}: \(Z\leq z_{\alpha/2}\) y
 \(Z\geq z_{1-\alpha/2}\).
 
-\hypertarget{contraste-para-la-media-de-una-poblaciuxf3n-normal-con-varianza-desconocida}{%
 \section{Contraste para la media de una población normal con varianza
-desconocida}\label{contraste-para-la-media-de-una-poblaciuxf3n-normal-con-varianza-desconocida}}
+desconocida}\label{contraste-para-la-media-de-una-poblaciuxf3n-normal-con-varianza-desconocida}
 
 Sea \(X\) una variable aleatoria que cumple las siguientes condiciones:
 
@@ -7226,9 +8743,8 @@ de manera que la potencia del contraste para detectar una diferencia de
 
 \end{example}
 
-\hypertarget{determinaciuxf3n-del-tamauxf1o-muestral-en-un-contraste-para-la-media}{%
 \subsection{Determinación del tamaño muestral en un contraste para la
-media}\label{determinaciuxf3n-del-tamauxf1o-muestral-en-un-contraste-para-la-media}}
+media}\label{determinaciuxf3n-del-tamauxf1o-muestral-en-un-contraste-para-la-media}
 
 Se ha visto que para un riesgo \(\alpha\) la región de rechazo era
 
@@ -7277,10 +8793,9 @@ de manera que habría que haber tomado al menos 16 alumnos.
 
 \end{example}
 
-\hypertarget{contraste-para-la-media-de-una-poblaciuxf3n-con-varianza-desconocida-y-muestras-grandes}{%
 \section{Contraste para la media de una población con varianza
 desconocida y muestras
-grandes}\label{contraste-para-la-media-de-una-poblaciuxf3n-con-varianza-desconocida-y-muestras-grandes}}
+grandes}\label{contraste-para-la-media-de-una-poblaciuxf3n-con-varianza-desconocida-y-muestras-grandes}
 
 Sea \(X\) una variable aleatoria que cumple las siguientes condiciones:
 
@@ -7311,9 +8826,8 @@ límite por tratarse de muestras grandes (\(n\geq 30)\) se tiene
 \textbf{Región de rechazo}: \(Z\leq -z_{\alpha/2}\) y
 \(Z\geq z_{\alpha/2}\).
 
-\hypertarget{contraste-para-la-varianza-de-una-poblaciuxf3n-normal}{%
 \section{Contraste para la varianza de una población
-normal}\label{contraste-para-la-varianza-de-una-poblaciuxf3n-normal}}
+normal}\label{contraste-para-la-varianza-de-una-poblaciuxf3n-normal}
 
 Sea \(X\) una variable aleatoria que cumple las siguientes hipótesis:
 
@@ -7383,9 +8897,8 @@ lo que no se puede rechazar la hipótesis nula para \(\alpha=0.05\).
 
 \end{example}
 
-\hypertarget{contraste-para-proporciuxf3n-de-una-poblaciuxf3n}{%
 \section{Contraste para proporción de una
-población}\label{contraste-para-proporciuxf3n-de-una-poblaciuxf3n}}
+población}\label{contraste-para-proporciuxf3n-de-una-poblaciuxf3n}
 
 Sea \(p\) la proporción de individuos de una población que tienen una
 determinada característica.
@@ -7439,10 +8952,9 @@ porcentaje de aprobados es mayor de la mitad.
 
 \end{example}
 
-\hypertarget{contraste-de-comparaciuxf3n-de-medias-de-dos-poblaciones-normales-con-varianzas-conocidas}{%
 \section{Contraste de comparación de medias de dos poblaciones normales
 con varianzas
-conocidas}\label{contraste-de-comparaciuxf3n-de-medias-de-dos-poblaciones-normales-con-varianzas-conocidas}}
+conocidas}\label{contraste-de-comparaciuxf3n-de-medias-de-dos-poblaciones-normales-con-varianzas-conocidas}
 
 Sean \(X_1\) y \(X_2\) dos variables aleatorias que cumplen las
 siguientes condiciones:
@@ -7487,10 +8999,9 @@ N(0,1).
 \textbf{Región de rechazo}: \(Z\leq -z_{\alpha/2}\) y
 \(Z\geq z_{\alpha/2}\).
 
-\hypertarget{contraste-de-comparaciuxf3n-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales}{%
 \section{Contraste de comparación de medias de dos poblaciones normales
 con varianzas desconocidas e
-iguales}\label{contraste-de-comparaciuxf3n-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales}}
+iguales}\label{contraste-de-comparaciuxf3n-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas-e-iguales}
 
 Sean \(X_1\) y \(X_2\) dos variables aleatorias que cumplen las
 siguientes condiciones:
@@ -7575,10 +9086,9 @@ diferencias significativas entre las notas medias de los grupos.
 
 \end{example}
 
-\hypertarget{contraste-de-comparaciuxf3n-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas}{%
 \section{Contraste de comparación de medias de dos poblaciones normales
 con varianzas
-desconocidas}\label{contraste-de-comparaciuxf3n-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas}}
+desconocidas}\label{contraste-de-comparaciuxf3n-de-medias-de-dos-poblaciones-normales-con-varianzas-desconocidas}
 
 Sean \(X_1\) y \(X_2\) dos variables aleatorias que cumplen las
 siguientes condiciones:
@@ -7617,9 +9127,8 @@ con \(g=n_1+n_2-2-\Delta\) y
 \textbf{Región de rechazo}: \(T\leq -t_{\alpha/2}^{g}\) y
 \(T\geq t_{\alpha/2}^{g}\).
 
-\hypertarget{contraste-de-comparaciuxf3n-de-varianzas-de-dos-poblaciones-normales}{%
 \section{Contraste de comparación de varianzas de dos poblaciones
-normales}\label{contraste-de-comparaciuxf3n-de-varianzas-de-dos-poblaciones-normales}}
+normales}\label{contraste-de-comparaciuxf3n-de-varianzas-de-dos-poblaciones-normales}
 
 Sean \(X_1\) y \(X_2\) dos variables aleatorias que cumplen las
 siguientes condiciones:
@@ -7696,9 +9205,8 @@ lo que se mantiene la hipótesis de igualdad de varianzas.
 
 \end{example}
 
-\hypertarget{contraste-de-comparaciuxf3n-de-proporciones-de-dos-poblaciones}{%
 \section{Contraste de comparación de proporciones de dos
-poblaciones}\label{contraste-de-comparaciuxf3n-de-proporciones-de-dos-poblaciones}}
+poblaciones}\label{contraste-de-comparaciuxf3n-de-proporciones-de-dos-poblaciones}
 
 Sean \(p_1\) y \(p_2\) las respectivas proporciones de individuos que
 presentan una determinada característica en dos poblaciones.
@@ -7758,9 +9266,8 @@ y el \(p\)-valor del contraste es \(2P(Z\leq -2.1483)= 0.0317\), de
 manera que se rechaza la hipótesis nula para \(\alpha=0.05\) y se
 concluye que hay diferencias.
 
-\hypertarget{realizaciuxf3n-de-contrastes-mediante-intervalos-de-confianza}{%
 \section{Realización de contrastes mediante intervalos de
-confianza}\label{realizaciuxf3n-de-contrastes-mediante-intervalos-de-confianza}}
+confianza}\label{realizaciuxf3n-de-contrastes-mediante-intervalos-de-confianza}
 
 Una interesante alternativa a la realización de un contraste
 

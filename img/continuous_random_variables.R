@@ -24,7 +24,7 @@ plot(x, y2, xlim=c(0,30), ylim=c(0,0.11), type="n", xlab="$X$", ylab="Probabilit
 axis(side=1, at=c(x[20],x[60]), labels=c("a","b"))
 polygon(c(x[20],x[20:60],x[60]), c(0,y2[20:60],0), col=color5, lty=0) 
 lines(x, y2, type="l", col=color1, lwd=2)
-text(12,0.02,"$\\displaystyle \\int_a^b f(x)\\,dx$")
+text(12,0.02,"$\\displaystyle \\int_a^b f(x)\,dx$")
 box()
 dev.off()
 
@@ -55,7 +55,7 @@ plot(x, y, type="n", ylim=c(0,0.08), xlab="X", ylab="Probability density $f(x)$"
 polygon(c(x[2],x[2],x[3],x[3]), c(0,y[1],y[2],0), col=color5, lty=0)
 lines(x, y, col=color1, lwd=2)
 text(7.5,0.04,"$P(5<X<10)=$")
-text(7.5,0.03,"$\\displaystyle \\int_5^{10} \\frac{1}{15}\\,dx$")
+text(7.5,0.03,"$\\displaystyle \\int_5^{10} \\frac{1}{15}\,dx$")
 dev.off()
 
 # Normal density function
