@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Manual de Estadística - 5&nbsp; Probabilidad</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./08-estimacion.html" rel="next">
+<link href="./04-relaciones-cualitativas.html" rel="prev">
+<link href="./img/logos/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la busqueda",
+    "search-hide-matches-text": "Esconder resultados adicionales",
+    "search-more-match-text": "hay más resultados en este documento",
+    "search-more-matches-text": "más resultados en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Manual de Estadística - 5&nbsp; Probabilidad">
+<meta property="og:description" content="">
+<meta property="og:image" content="img/logos/sticker.png">
+<meta property="og:site_name" content="Manual de Estadística">
+<meta name="twitter:title" content="Manual de Estadística - 5&nbsp; Probabilidad">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="img/logos/sticker.png">
+<meta name="twitter:site" content="@aprendeconalf">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-probabilidad.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Manual de Estadística</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://aprendeconalf.es" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./manual-estadistica.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./manual-estadistica.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a la Estadística</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-estadistica-descriptiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-regresion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regresión</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-relaciones-cualitativas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Relaciones entre variables cualitativas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-probabilidad.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-estimacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-contrastes-parametricos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#experimentos-y-sucesos-aleatorios" id="toc-experimentos-y-sucesos-aleatorios" class="nav-link active" data-scroll-target="#experimentos-y-sucesos-aleatorios"><span class="header-section-number">5.1</span> Experimentos y sucesos aleatorios</a>
+  <ul class="collapse">
+  <li><a href="#espacio-de-sucesos" id="toc-espacio-de-sucesos" class="nav-link" data-scroll-target="#espacio-de-sucesos"><span class="header-section-number">5.1.1</span> Espacio de sucesos</a></li>
+  <li><a href="#unión-de-suscesos" id="toc-unión-de-suscesos" class="nav-link" data-scroll-target="#unión-de-suscesos"><span class="header-section-number">5.1.2</span> Unión de suscesos</a></li>
+  <li><a href="#intersección-de-sucesos" id="toc-intersección-de-sucesos" class="nav-link" data-scroll-target="#intersección-de-sucesos"><span class="header-section-number">5.1.3</span> Intersección de sucesos</a></li>
+  <li><a href="#contrario-de-un-suceso" id="toc-contrario-de-un-suceso" class="nav-link" data-scroll-target="#contrario-de-un-suceso"><span class="header-section-number">5.1.4</span> Contrario de un suceso</a></li>
+  <li><a href="#diferencia-de-sucesos" id="toc-diferencia-de-sucesos" class="nav-link" data-scroll-target="#diferencia-de-sucesos"><span class="header-section-number">5.1.5</span> Diferencia de sucesos</a></li>
+  <li><a href="#álgebra-de-sucesos" id="toc-álgebra-de-sucesos" class="nav-link" data-scroll-target="#álgebra-de-sucesos"><span class="header-section-number">5.1.6</span> Álgebra de sucesos</a></li>
+  </ul></li>
+  <li><a href="#definición-de-probabilidad" id="toc-definición-de-probabilidad" class="nav-link" data-scroll-target="#definición-de-probabilidad"><span class="header-section-number">5.2</span> Definición de probabilidad</a>
+  <ul class="collapse">
+  <li><a href="#definición-clásica-de-probabilidad" id="toc-definición-clásica-de-probabilidad" class="nav-link" data-scroll-target="#definición-clásica-de-probabilidad"><span class="header-section-number">5.2.1</span> Definición clásica de probabilidad</a></li>
+  <li><a href="#definición-frecuentista-de-probabilidad" id="toc-definición-frecuentista-de-probabilidad" class="nav-link" data-scroll-target="#definición-frecuentista-de-probabilidad"><span class="header-section-number">5.2.2</span> Definición frecuentista de probabilidad</a></li>
+  <li><a href="#definición-axiomática-de-probabilidad" id="toc-definición-axiomática-de-probabilidad" class="nav-link" data-scroll-target="#definición-axiomática-de-probabilidad"><span class="header-section-number">5.2.3</span> Definición axiomática de probabilidad</a></li>
+  <li><a href="#interpretación-de-la-probabilidad" id="toc-interpretación-de-la-probabilidad" class="nav-link" data-scroll-target="#interpretación-de-la-probabilidad"><span class="header-section-number">5.2.4</span> Interpretación de la probabilidad</a></li>
+  </ul></li>
+  <li><a href="#probabilidad-condicionada" id="toc-probabilidad-condicionada" class="nav-link" data-scroll-target="#probabilidad-condicionada"><span class="header-section-number">5.3</span> Probabilidad condicionada</a>
+  <ul class="collapse">
+  <li><a href="#experimentos-condicionados" id="toc-experimentos-condicionados" class="nav-link" data-scroll-target="#experimentos-condicionados"><span class="header-section-number">5.3.1</span> Experimentos condicionados</a></li>
+  <li><a href="#probabilidad-condicionada-1" id="toc-probabilidad-condicionada-1" class="nav-link" data-scroll-target="#probabilidad-condicionada-1"><span class="header-section-number">5.3.2</span> Probabilidad condicionada</a></li>
+  <li><a href="#probabilidad-del-suceso-intersección" id="toc-probabilidad-del-suceso-intersección" class="nav-link" data-scroll-target="#probabilidad-del-suceso-intersección"><span class="header-section-number">5.3.3</span> Probabilidad del suceso intersección</a></li>
+  <li><a href="#independencia-de-sucesos" id="toc-independencia-de-sucesos" class="nav-link" data-scroll-target="#independencia-de-sucesos"><span class="header-section-number">5.3.4</span> Independencia de sucesos</a></li>
+  </ul></li>
+  <li><a href="#espacio-probabilístico" id="toc-espacio-probabilístico" class="nav-link" data-scroll-target="#espacio-probabilístico"><span class="header-section-number">5.4</span> Espacio probabilístico</a>
+  <ul class="collapse">
+  <li><a href="#árboles-de-probabilidad-con-variables-dependientes" id="toc-árboles-de-probabilidad-con-variables-dependientes" class="nav-link" data-scroll-target="#árboles-de-probabilidad-con-variables-dependientes"><span class="header-section-number">5.4.1</span> Árboles de probabilidad con variables dependientes</a></li>
+  <li><a href="#árboles-de-probabilidad-con-variables-independientes" id="toc-árboles-de-probabilidad-con-variables-independientes" class="nav-link" data-scroll-target="#árboles-de-probabilidad-con-variables-independientes"><span class="header-section-number">5.4.2</span> Árboles de probabilidad con variables independientes</a></li>
+  </ul></li>
+  <li><a href="#teorema-de-la-probabilidad-total" id="toc-teorema-de-la-probabilidad-total" class="nav-link" data-scroll-target="#teorema-de-la-probabilidad-total"><span class="header-section-number">5.5</span> Teorema de la probabilidad total</a>
+  <ul class="collapse">
+  <li><a href="#teorema-de-la-probabilidad-total-1" id="toc-teorema-de-la-probabilidad-total-1" class="nav-link" data-scroll-target="#teorema-de-la-probabilidad-total-1"><span class="header-section-number">5.5.1</span> Teorema de la probabilidad total</a></li>
+  </ul></li>
+  <li><a href="#teorema-de-bayes" id="toc-teorema-de-bayes" class="nav-link" data-scroll-target="#teorema-de-bayes"><span class="header-section-number">5.6</span> Teorema de Bayes</a></li>
+  <li><a href="#epidemiología" id="toc-epidemiología" class="nav-link" data-scroll-target="#epidemiología"><span class="header-section-number">5.7</span> Epidemiología</a>
+  <ul class="collapse">
+  <li><a href="#prevalencia" id="toc-prevalencia" class="nav-link" data-scroll-target="#prevalencia"><span class="header-section-number">5.7.1</span> Prevalencia</a></li>
+  <li><a href="#incidencia" id="toc-incidencia" class="nav-link" data-scroll-target="#incidencia"><span class="header-section-number">5.7.2</span> Incidencia</a></li>
+  <li><a href="#tasa-de-incidencia-o-riesgo-absoluto" id="toc-tasa-de-incidencia-o-riesgo-absoluto" class="nav-link" data-scroll-target="#tasa-de-incidencia-o-riesgo-absoluto"><span class="header-section-number">5.7.3</span> Tasa de incidencia o Riesgo absoluto</a></li>
+  <li><a href="#prevalencia-vs-incidencia" id="toc-prevalencia-vs-incidencia" class="nav-link" data-scroll-target="#prevalencia-vs-incidencia"><span class="header-section-number">5.7.4</span> Prevalencia vs Incidencia</a></li>
+  <li><a href="#comparación-de-riesgos" id="toc-comparación-de-riesgos" class="nav-link" data-scroll-target="#comparación-de-riesgos"><span class="header-section-number">5.7.5</span> Comparación de riesgos</a></li>
+  <li><a href="#riesgo-atribuible-o-diferencia-de-riesgos-ra" id="toc-riesgo-atribuible-o-diferencia-de-riesgos-ra" class="nav-link" data-scroll-target="#riesgo-atribuible-o-diferencia-de-riesgos-ra"><span class="header-section-number">5.7.6</span> Riesgo atribuible o diferencia de riesgos <span class="math inline">\(RA\)</span></a></li>
+  <li><a href="#riesgo-relativo-rr" id="toc-riesgo-relativo-rr" class="nav-link" data-scroll-target="#riesgo-relativo-rr"><span class="header-section-number">5.7.7</span> Riesgo relativo <span class="math inline">\(RR\)</span></a></li>
+  <li><a href="#odds" id="toc-odds" class="nav-link" data-scroll-target="#odds"><span class="header-section-number">5.7.8</span> Odds</a></li>
+  <li><a href="#odds-ratio-or" id="toc-odds-ratio-or" class="nav-link" data-scroll-target="#odds-ratio-or"><span class="header-section-number">5.7.9</span> Odds ratio <span class="math inline">\(OR\)</span></a></li>
+  <li><a href="#riesgo-relativo-vs-odds-ratio" id="toc-riesgo-relativo-vs-odds-ratio" class="nav-link" data-scroll-target="#riesgo-relativo-vs-odds-ratio"><span class="header-section-number">5.7.10</span> Riesgo relativo vs Odds ratio</a></li>
+  </ul></li>
+  <li><a href="#tests-diagnósticos" id="toc-tests-diagnósticos" class="nav-link" data-scroll-target="#tests-diagnósticos"><span class="header-section-number">5.8</span> Tests diagnósticos</a>
+  <ul class="collapse">
+  <li><a href="#sensibilidad-y-especificidad-de-un-test-diagnóstico" id="toc-sensibilidad-y-especificidad-de-un-test-diagnóstico" class="nav-link" data-scroll-target="#sensibilidad-y-especificidad-de-un-test-diagnóstico"><span class="header-section-number">5.8.1</span> Sensibilidad y especificidad de un test diagnóstico</a></li>
+  <li><a href="#valores-predictivos-de-un-test-diagnóstico" id="toc-valores-predictivos-de-un-test-diagnóstico" class="nav-link" data-scroll-target="#valores-predictivos-de-un-test-diagnóstico"><span class="header-section-number">5.8.2</span> Valores predictivos de un test diagnóstico</a></li>
+  <li><a href="#razón-de-verosimilitud-de-un-test-diagnóstico" id="toc-razón-de-verosimilitud-de-un-test-diagnóstico" class="nav-link" data-scroll-target="#razón-de-verosimilitud-de-un-test-diagnóstico"><span class="header-section-number">5.8.3</span> Razón de verosimilitud de un test diagnóstico</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>La estadística descriptiva permite describir el comportamiento y las relaciones entre las variables en la muestra, pero no permite sacar conclusiones sobre el resto de la población.</p>
+<p>Ha llegado el momento de dar el salto de la muestra a la población y pasar de la estadística descriptiva a la inferencia estadística, y el puente que lo permite es la <strong>Teoría de la Probabilidad</strong>.</p>
+<p>Hay que tener en cuenta que el conocimiento que se puede obtener de la población a partir de la muestra es limitado, y que para obtener conclusiones válidas para la población la muestra debe ser representativa de esta. Por esta razón, para garantizar la representatividad de la muestra, esta debe extraerse <em>aleatoriamente</em>, es decir, al <em>azar</em>.</p>
+<p>La teoría de la probabilidad precisamente se encarga de controlar ese azar para saber hasta qué punto son fiables las conclusiones obtenidas a partir de una muestra.</p>
+<section id="experimentos-y-sucesos-aleatorios" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="experimentos-y-sucesos-aleatorios"><span class="header-section-number">5.1</span> Experimentos y sucesos aleatorios</h2>
+<p>El estudio de una característica en una población se realiza a través de experimentos aleatorios.</p>
+<div id="def-experimento-aleatorio" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.1 (Experimento aleatorio)</strong></span> Un <em>experimento aleatorio</em> es un experimento que cumple dos condiciones:</p>
+<ol type="1">
+<li>El conjunto de posibles resultados es conocido.</li>
+<li>No se puede predecir con absoluta certeza el resultado del experimento.</li>
+</ol>
+</div>
+<div id="exm-experimento-aleatorio" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.1</strong></span> Un ejemplo típico de experimentos aleatorios son los juegos de azar. El lanzamiento de un dado, por ejemplo, es un experimento aleatorio ya que:</p>
+<ol type="1">
+<li>Se conoce el conjunto posibles de resultados <span class="math inline">\(\{1,2,3,4,5,6\}\)</span>.</li>
+<li>Antes de lanzar el dado, es imposible predecir con absoluta certeza el valor que saldrá.</li>
+</ol>
+<p>Otro ejemplo de experimento aleatorio sería la selección de un individuo de una población al azar y la determinación de su grupo sanguíneo.</p>
+<p>En general, la obtención de cualquier muestra mediante procedimientos aleatorios será un experimento aleatorio.</p>
+</div>
+<div id="def-espacio-muestral" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.2 (Espacio muestral)</strong></span> Al conjunto <span class="math inline">\(\Omega\)</span> de todos los posibles resultados de un experimento aleatorio se le llama <em>espacio muestral</em>.</p>
+</div>
+<div id="exm-espacios-muestrales" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.2</strong></span> Algunos ejemplos de espacios muestrales son:</p>
+<ul>
+<li>Lanzamiento de una moneda: <span class="math inline">\(\Omega=\{c,x\}\)</span>.</li>
+<li>Lanzamiento de un dado: <span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span>.</li>
+<li>Grupo sanguíneo de un individuo seleccionado al azar: <span class="math inline">\(\Omega=\{\mbox{A},\mbox{B},\mbox{AB},\mbox{0}\}\)</span>.</li>
+<li>Estatura de un individuo seleccionado al azar: <span class="math inline">\(\Omega=\mathbb{R}^+\)</span>.</li>
+</ul>
+</div>
+<p>En experimentos donde se mide más de una variable, la determinación del espacio muestral puede resultar compleja. En tales casos es recomendable utilizar un para construir el espacio muestral.</p>
+<p>En un diagrama de árbol cada variable se representa en un nivel del árbol y cada posible valor de la variable como una rama.</p>
+<div id="exm-diagrama-arbol" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.3</strong></span> El siguiente diagrama de árbol representa el espacio muestral de un experimento aleatorio en el que se mide el sexo y el grupo sanguíneo de un individuo al azar.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/espacio_muestral.svg" class="img-fluid figure-img" width="500"></p>
+<figcaption>Diagrama de árbol del espacio muestral del sexo y el grupo sanguineo.</figcaption>
+</figure>
+</div>
+</div>
+<div id="def-suceso-aleatorio" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.3 (Suceso aleatorio)</strong></span> Un <em>suceso aleatorio</em> es cualquier subconjunto del espacio muestral <span class="math inline">\(\Omega\)</span> de un experimento aleatorio.</p>
+</div>
+<p>Existen distintos tipos de sucesos:</p>
+<ul>
+<li><strong>Suceso imposible</strong>: Es el suceso vacío <span class="math inline">\(\emptyset\)</span>. Este suceso nunca ocurre.</li>
+<li><strong>Sucesos elementales</strong>: Son los sucesos formados por un solo elemento.</li>
+<li><strong>Sucesos compuestos</strong>: Son los sucesos formados por dos o más elementos.</li>
+<li><strong>Suceso seguro</strong>: Es el suceso que contiene el propio espacio muestral <span class="math inline">\(\Omega\)</span>. Este suceso siempre ocurre.</li>
+</ul>
+<div id="exm-sucesos-aleatorios" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.4</strong></span> En el experimento aleatorio del lanzamiento de un dado, con espacio muestral <span class="math inline">\(\Omega=\{1, 2, 3, 4, 5, 6\}\)</span>, el subconjunto <span class="math inline">\(\{2, 4, 6\}\)</span> es un suceso aleatorio que se cumple cuando sale un número par, y el subconjunto <span class="math inline">\(\{1, 2, 3, 4\}\)</span> es un suceso aleatorio que se cumple cuando sale un número menor que 5.</p>
+</div>
+<section id="espacio-de-sucesos" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="espacio-de-sucesos"><span class="header-section-number">5.1.1</span> Espacio de sucesos</h3>
+<div id="def-espacio-sucesos" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.4 (Espacio de sucesos)</strong></span> Dado un espacio muestral <span class="math inline">\(\Omega\)</span> de un experimento aleatorio, el conjunto formado por todos los posibles sucesos de <span class="math inline">\(\Omega\)</span> se llama <em>espacio de sucesos de <span class="math inline">\(\Omega\)</span></em> y se denota <span class="math inline">\(\mathcal{P}(\Omega)\)</span>.</p>
+</div>
+<div id="exm-espacio-sucesos" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.5</strong></span> Dado el espacio muestral <span class="math inline">\(\Omega=\{a,b,c\}\)</span>, su espacio de sucesos es</p>
+<p><span class="math display">\[\mathcal{P}(\Omega)=\left\{\emptyset, \{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\}\right\}\]</span></p>
+</div>
+<p>Puesto que los sucesos son conjuntos, por medio de la teoría de conjuntos se pueden definir las siguientes operaciones entre sucesos:</p>
+<ul>
+<li>Unión.</li>
+<li>Intersección.</li>
+<li>Complementario.</li>
+<li>Diferencia.</li>
+</ul>
+</section>
+<section id="unión-de-suscesos" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="unión-de-suscesos"><span class="header-section-number">5.1.2</span> Unión de suscesos</h3>
+<div id="def-union-sucesos" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.5 (Suceso unión)</strong></span> Dados dos sucesos <span class="math inline">\(A,B\subseteq \Omega\)</span>, se llama <em>suceso unión</em> de <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, y se denota <span class="math inline">\(A\cup B\)</span>, al suceso formado por los elementos de <span class="math inline">\(A\)</span> junto a los elementos de <span class="math inline">\(B\)</span>, es decir,</p>
+<p><span class="math display">\[A\cup B = \{x\,|\, x\in A\mbox{ o }x\in B\}.\]</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/union.svg" class="img-fluid figure-img" width="400"></p>
+<figcaption>Union de dos sucesos.</figcaption>
+</figure>
+</div>
+<p>El suceso unión <span class="math inline">\(A\cup B\)</span> ocurre siempre que ocurre <span class="math inline">\(A\)</span> <span style="color:red;">o</span> <span class="math inline">\(B\)</span>.</p>
+<div id="exm-union-sucesos" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.6</strong></span> Dado el espacio muestral correspondiente al lanzamiento de un dado <span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span> y los sucesos <span class="math inline">\(A=\{2,4,6\}\)</span> y <span class="math inline">\(B=\{1,2,3,4\}\)</span>, la unión de <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> es <span class="math inline">\(A\cup B=\{1,2,3,4,6\}\)</span>.</p>
+</div>
+</section>
+<section id="intersección-de-sucesos" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="intersección-de-sucesos"><span class="header-section-number">5.1.3</span> Intersección de sucesos</h3>
+<div id="def-interseccion-sucesos" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.6 (Suceso intersección)</strong></span> Dados dos sucesos <span class="math inline">\(A,B\subseteq \Omega\)</span>, se llama <em>suceso intersección</em> de <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, y se denota <span class="math inline">\(A\cap B\)</span>, al suceso formado por los elementos comunes de <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, es decir,</p>
+<p><span class="math display">\[A\cap B = \{x\,|\, x\in A\mbox{ y }x\in B\}.\]</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/interseccion.svg" class="img-fluid figure-img" width="400"></p>
+<figcaption>Intersección de dos sucesos.</figcaption>
+</figure>
+</div>
+<p>El suceso intersección <span class="math inline">\(A\cap B\)</span> ocurre siempre que ocurren <span class="math inline">\(A\)</span> <span style="color:red;">y</span> <span class="math inline">\(B\)</span>.</p>
+<p>Diremos que dos sucesos son <strong>incompatibles</strong> si su intersección es vacía.</p>
+<div id="exm-interseccion-sucesos" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.7</strong></span> Dado el espacio muestral correspondiente al lanzamiento de un dado <span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span> y los sucesos <span class="math inline">\(A=\{2,4,6\}\)</span> y <span class="math inline">\(B=\{1,2,3,4\}\)</span>, la intersección de <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> es <span class="math inline">\(A\cap B=\{2,4\}\)</span>, y por tanto, se trata de sucesos compatibles. Sin embargo, el suceso <span class="math inline">\(C=\{1, 3\}\)</span> es incompatible con <span class="math inline">\(A\)</span> ya que <span class="math inline">\(A\cap C=\emptyset\)</span>.</p>
+</div>
+</section>
+<section id="contrario-de-un-suceso" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="contrario-de-un-suceso"><span class="header-section-number">5.1.4</span> Contrario de un suceso</h3>
+<div id="def-contrario-suceso" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.7 (Suceso contrario)</strong></span> Dado suceso <span class="math inline">\(A\subseteq \Omega\)</span>, se llama <em>suceso contrario</em> o <em>complementario</em> de <span class="math inline">\(A\)</span>, y se denota <span class="math inline">\(\overline A\)</span>, al suceso formado por los elementos de <span class="math inline">\(\Omega\)</span> que no pertenecen a <span class="math inline">\(A\)</span>, es decir,</p>
+<p><span class="math display">\[\overline A = \{x\,|\, x\not\in A\}.\]</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/contrario.svg" class="img-fluid figure-img" width="400"></p>
+<figcaption>Contrario de un suceso.</figcaption>
+</figure>
+</div>
+<p>El suceso contrario <span class="math inline">\(\overline A\)</span> ocurre siempre que <span style="color:red;">no</span> ocurre <span class="math inline">\(A\)</span>.</p>
+<div id="exm-contrario-suceso" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.8</strong></span> Dado el espacio muestral correspondiente al lanzamiento de un dado <span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span> y los sucesos <span class="math inline">\(A=\{2,4,6\}\)</span> y <span class="math inline">\(B=\{1,2,3,4\}\)</span>, el contrario de <span class="math inline">\(A\)</span> es <span class="math inline">\(\overline A=\{1,3,5\}\)</span>.</p>
+</div>
+</section>
+<section id="diferencia-de-sucesos" class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5" class="anchored" data-anchor-id="diferencia-de-sucesos"><span class="header-section-number">5.1.5</span> Diferencia de sucesos</h3>
+<div id="def-diferencia-sucesos" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.8 (Suceso diferencia)</strong></span> Dados dos sucesos <span class="math inline">\(A,B\subseteq \Omega\)</span>, se llama <em>suceso diferencia</em> de <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, y se denota <span class="math inline">\(A-B\)</span>, al suceso formado por los elementos de <span class="math inline">\(A\)</span> que no pertenecen a <span class="math inline">\(B\)</span>, es decir,</p>
+<p><span class="math display">\[A-B = \{x\,|\, x\in A\mbox{ y }x\not\in B\} = A \cap \overline B.\]</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/diferencia.svg" class="img-fluid figure-img" width="400"></p>
+<figcaption>Diferencia de sucesos.</figcaption>
+</figure>
+</div>
+<p>El suceso diferencia <span class="math inline">\(A-B\)</span> ocurre siempre que ocurre <span class="math inline">\(A\)</span> pero no ocurre <span class="math inline">\(B\)</span>, y también puede expresarse como <span class="math inline">\(A\cap \bar B\)</span>.</p>
+<div id="exm-diferencia-sucesos" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.9</strong></span> Dado el espacio muestral correspondiente al lanzamiento de un dado <span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span> y los sucesos <span class="math inline">\(A=\{2,4,6\}\)</span> y <span class="math inline">\(B=\{1,2,3,4\}\)</span>, la diferencia de <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> es <span class="math inline">\(A-B=\{6\}\)</span>, y la diferencia de <span class="math inline">\(B\)</span> y <span class="math inline">\(A\)</span> es <span class="math inline">\(B-A=\{1,3\}\)</span>.</p>
+</div>
+</section>
+<section id="álgebra-de-sucesos" class="level3" data-number="5.1.6">
+<h3 data-number="5.1.6" class="anchored" data-anchor-id="álgebra-de-sucesos"><span class="header-section-number">5.1.6</span> Álgebra de sucesos</h3>
+<p>Dados los sucesos <span class="math inline">\(A,B,C\in  \mathcal{P}(\Omega)\)</span>, se cumplen las siguientes propiedades:</p>
+<ol type="1">
+<li><span class="math inline">\(A\cup A=A\)</span>, <span class="math inline">\(A\cap A=A\)</span> (idempotencia).</li>
+<li><span class="math inline">\(A\cup B=B\cup A\)</span>, <span class="math inline">\(A\cap B = B\cap A\)</span> (conmutativa).</li>
+<li><span class="math inline">\((A\cup B)\cup C = A\cup (B\cup C)\)</span>, <span class="math inline">\((A\cap B)\cap C = A\cap (B\cap C)\)</span> (asociativa).</li>
+<li><span class="math inline">\((A\cup B)\cap C = (A\cap C)\cup (B\cap C)\)</span>, <span class="math inline">\((A\cap B)\cup C = (A\cup C)\cap (B\cup C)\)</span> (distributiva).</li>
+<li><span class="math inline">\(A\cup \emptyset=A\)</span>, <span class="math inline">\(A\cap E=A\)</span> (elemento neutro).</li>
+<li><span class="math inline">\(A\cup E=E\)</span>, <span class="math inline">\(A\cap \emptyset=\emptyset\)</span> (elemento absorbente).</li>
+<li><span class="math inline">\(A\cup \overline A = E\)</span>, <span class="math inline">\(A\cap \overline A= \emptyset\)</span> (elemento simétrico complementario).</li>
+<li><span class="math inline">\(\overline{\overline A} = A\)</span> (doble contrario).</li>
+<li><span class="math inline">\(\overline{A\cup B} = \overline A\cap \overline B\)</span>, <span class="math inline">\(\overline{A\cap B} = \overline A\cup \overline B\)</span> (leyes de Morgan).</li>
+<li><span class="math inline">\(A\cap B\subseteq A\cup B\)</span>.</li>
+</ol>
+</section>
+</section>
+<section id="definición-de-probabilidad" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="definición-de-probabilidad"><span class="header-section-number">5.2</span> Definición de probabilidad</h2>
+<section id="definición-clásica-de-probabilidad" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="definición-clásica-de-probabilidad"><span class="header-section-number">5.2.1</span> Definición clásica de probabilidad</h3>
+<div id="def-laplace" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.9 (Probabilidad - Laplace)</strong></span> Dado un espacio muestral <span class="math inline">\(\Omega\)</span> de un experimento aleatorio donde todos los elementos de <span class="math inline">\(\Omega\)</span> son equiprobables, la <em>probabilidad</em> de un suceso <span class="math inline">\(A\subseteq \Omega\)</span> es el cociente entre el número de elementos de <span class="math inline">\(A\)</span> y el número de elementos de <span class="math inline">\(\Omega\)</span></p>
+<p><span class="math display">\[P(A) = \frac{|A|}{|\Omega|} = \frac{\mbox{nº casos favorables a A}}{\mbox{nº casos posibles}}\]</span></p>
+</div>
+<p>Esta definición es ampliamente utilizada, aunque tiene importantes restricciones:</p>
+<ul>
+<li><p>Es necesario que todos los elementos del espacio muestral tengan la misma probabilidad de ocurrir (<em>equiprobabilidad</em>).</p></li>
+<li><p>No puede utilizarse con espacios muestrales infinitos, o de los que no se conoce el número de casos posibles.</p></li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Precaución
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Esto no se cumple en muchos experimentos aleatorios reales.</p>
+</div>
+</div>
+<div id="exm-experimento-sin-equiprobabilidad" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.10</strong></span> Dado el espacio muestral correspondiente al lanzamiento de un dado <span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span> y el suceso <span class="math inline">\(A=\{2,4,6\}\)</span>, la probabilidad de <span class="math inline">\(A\)</span> es</p>
+<p><span class="math display">\[P(A) = \frac{|A|}{|\Omega|} = \frac{3}{6} = 0.5.\]</span></p>
+<p>Sin embargo, si se considera el espacio muestral correspondiente a observar el grupo sanguíneo de un individuo al azar, <span class="math inline">\(\Omega=\{O,A,B,AB\}\)</span>, no se puede usar la definición clásica de probabilidad para calcular la probabilidad de que tenga grupo sanguíneo <span class="math inline">\(A\)</span>,</p>
+<p><span class="math display">\[P(A) \neq \frac{|A|}{|\Omega|} = \frac{1}{4} = 0.25,\]</span></p>
+<p>ya que los grupos sanguíneos no son igualmente probables en las poblaciones humanas.</p>
+</div>
+</section>
+<section id="definición-frecuentista-de-probabilidad" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="definición-frecuentista-de-probabilidad"><span class="header-section-number">5.2.2</span> Definición frecuentista de probabilidad</h3>
+<div id="thm-ley-grandes-numeros" class="theorem">
+<p><span class="theorem-title"><strong>Teorema 5.1 (Ley de los grandes números)</strong></span> Cuando un experimento aleatorio se repite un gran número de veces, las frecuencias relativas de los sucesos del experimento tienden a estabilizarse en torno a cierto número, que es precisamente su probabilidad.</p>
+</div>
+<p>De acuerdo al teorema anterior, podemos dar la siguiente definición</p>
+<div id="def-probabilidad-frecuentista" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.10 (Probabilidad frecuentista)</strong></span> Dado un espacio muestral <span class="math inline">\(\Omega\)</span> de un experimento aleatorio reproducible, la <em>probabilidad</em> de un suceso <span class="math inline">\(A\subseteq \Omega\)</span> es la frecuencia relativa del suceso <span class="math inline">\(A\)</span> en infinitas repeticiones del experimento</p>
+<p><span class="math display">\[P(A) = lim_{n\rightarrow \infty}\frac{n_{A}}{n}\]</span></p>
+</div>
+<p>Aunque esta definición es muy útil en experimentos científicos reproducibles, también tiene serios inconvenientes, ya que</p>
+<ul>
+<li>Sólo se calcula una aproximación de la probabilidad real.</li>
+<li>La repetición del experimento debe ser en las mismas condiciones.</li>
+</ul>
+<div id="exm-probabilidad-frecuentista" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.11</strong></span> Dado el espacio muestral correspondiente al lanzamiento de una moneda <span class="math inline">\(\Omega=\{C,X\}\)</span>, si después de lanzar la moneda 100 veces obtenemos 54 caras, entonces la probabilidad de <span class="math inline">\(C\)</span> es aproximadamente</p>
+<p><span class="math display">\[P(C) = \frac{n_C}{n} = \frac{54}{100} = 0.54.\]</span></p>
+<p>Si se considera el espacio muestral correspondiente a observar el grupo sanguíneo de un individuo al azar, <span class="math inline">\(\Omega=\{O,A,B,AB\}\)</span>, si se toma una muestra aleatoria de 1000 personas y se observa que 412 tienen grupo sanguíneo <span class="math inline">\(A\)</span>, entonces la probabilidad del grupo sanguíneo <span class="math inline">\(A\)</span> es aproximadamente</p>
+<p><span class="math display">\[P(A) = \frac{n_A}{n} = \frac{412}{1000} = 0.412.\]</span></p>
+</div>
+</section>
+<section id="definición-axiomática-de-probabilidad" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="definición-axiomática-de-probabilidad"><span class="header-section-number">5.2.3</span> Definición axiomática de probabilidad</h3>
+<div id="def-probabilidad-kolmogorov" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.11 (Probabilidad - Kolmogórov)</strong></span> Dado un espacio muestral <span class="math inline">\(\Omega\)</span> de un experimento aleatorio, una función de <em>probabilidad</em> es una aplicación que asocia a cada suceso <span class="math inline">\(A\subseteq \Omega\)</span> un número real <span class="math inline">\(P(A)\)</span>, conocido como probabilidad de <span class="math inline">\(A\)</span>, que cumple los siguientes axiomas:</p>
+<ol type="1">
+<li>La probabilidad de un suceso cualquiera es positiva o nula, <span class="math display">\[P(A)\geq 0.\]</span></li>
+<li>La probabilidad del suceso seguro es igual a la unidad, <span class="math display">\[P(\Omega)=1.\]</span></li>
+<li>La probabilidad de la unión de dos sucesos incompatibles (<span class="math inline">\(A\cap B=\emptyset\)</span>) es igual a la suma de las probabilidades de cada uno de ellos, <span class="math display">\[P(A\cup B) = P(A)+P(B).\]</span></li>
+</ol>
+</div>
+<div id="thm-consecuencias-axiomas-probabilidad" class="theorem">
+<p><span class="theorem-title"><strong>Teorema 5.2</strong></span> Si <span class="math inline">\(P\)</span> es una función de de probabilidad de un espacio muestral <span class="math inline">\(\Omega\)</span>, entonces para cualesquiera sucesos <span class="math inline">\(A, B\in \Omega\)</span>, se cumple</p>
+<ol type="1">
+<li><p><span class="math inline">\(P(\overline A) = 1-P(A)\)</span>.</p></li>
+<li><p><span class="math inline">\(P(\emptyset)= 0\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(A\subseteq B\)</span> entonces <span class="math inline">\(P(A)\leq P(B)\)</span>.</p></li>
+<li><p><span class="math inline">\(P(A) \leq 1\)</span>.</p></li>
+<li><p><span class="math inline">\(P(A-B) = P(A)-P(A\cap B)\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son sucesos compatibles, es decir, su intersección no es vacía, entonces</p>
+<p><span class="math display">\[P(A\cup B)= P(A) + P(B) - P(A\cap B).\]</span></p></li>
+<li><p>Si el suceso <span class="math inline">\(A\)</span> está compuesto por los sucesos elementales <span class="math inline">\(e_1,e_2,...,e_n\)</span>, entonces</p>
+<p><span class="math display">\[P(A)=\sum_{i=1}^n P(e_i).\]</span></p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Demostración
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="proof">
+<p><span class="proof-title"><em>Prueba</em>. </span></p>
+<ol type="1">
+<li><p><span class="math inline">\(\overline A = \Omega \Rightarrow P(A\cup \overline A) = P(\Omega) \Rightarrow P(A)+P(\overline A) = 1 \Rightarrow P(\overline A)=1-P(A)\)</span>.</p></li>
+<li><p><span class="math inline">\(\emptyset = \overline \Omega \Rightarrow P(\emptyset) = P(\overline \Omega) = 1-P(\Omega) = 1-1 = 0.\)</span></p></li>
+<li><p><span class="math inline">\(B = A\cup (B-A)\)</span>. Como <span class="math inline">\(A\)</span> y <span class="math inline">\(B-A\)</span> son incompatibles, <span class="math inline">\(P(B) = P(A\cup (B-A)) = P(A)+P(B-A) \geq P(A).\)</span></p>
+<p>Si pensamos en probabilidades como áreas, es fácil de ver gráficamente,</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/probabilidad_inclusion.svg" class="img-fluid figure-img" width="400"></p>
+<figcaption>Probabilidad de un suceso incluido en otro.</figcaption>
+</figure>
+</div></li>
+<li><p><span class="math inline">\(A\subseteq \Omega \Rightarrow P(A)\leq P(\Omega)=1.\)</span></p></li>
+<li><p><span class="math inline">\(A=(A-B)\cup (A\cap B)\)</span>. Como <span class="math inline">\(A-B\)</span> y <span class="math inline">\(A\cap B\)</span> son incompatibles, <span class="math inline">\(P(A)=P(A-B)+P(A\cap B) \Rightarrow P(A-B)=P(A)-P(A\cap B)\)</span>.</p>
+<p>Si pensamos en probabilidades como áreas, es fácil de ver gráficamente,</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/probabilidad_diferencia.svg" class="img-fluid figure-img" width="400"></p>
+<figcaption>Probabilidad de la diferencia de dos sucesos.</figcaption>
+</figure>
+</div></li>
+<li><p><span class="math inline">\(A\cup B= (A-B) \cup (B-A) \cup (A\cap B)\)</span>. Como <span class="math inline">\(A-B\)</span>, <span class="math inline">\(B-A\)</span> y <span class="math inline">\(A\cap B\)</span> son incompatibles, <span class="math inline">\(P(A\cup
+B)=P(A-B)+P(B-A)+P(A\cap B) = P(A)-P(A\cap B)+P(B)-P(A\cap B)+P(A\cap B)= P(A)+P(B)-P(A\cup B)\)</span>.</p>
+<p>Si pensamos en probabilidades como áreas, es fácil de ver gráficamente,</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/probabilidad_union.svg" class="img-fluid figure-img" width="400"></p>
+<figcaption>Probabilidad de la unión de dos sucesos.</figcaption>
+</figure>
+</div></li>
+<li><p><span class="math inline">\(A=\{e_1,\cdots,e_n\} = \{e_1\}\cup \cdots \cup \{e_n\} \Rightarrow\)</span> <span class="math inline">\(P(A)=P(\{e_1\}\cup \cdots \cup \{e_n\}) = P(\{e_1\})+ \cdots P(\{e_n\}).\)</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="interpretación-de-la-probabilidad" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="interpretación-de-la-probabilidad"><span class="header-section-number">5.2.4</span> Interpretación de la probabilidad</h3>
+<p>Como ha quedado claro en los axiomas anteriores, la probabilidad de un evento <span class="math inline">\(A\)</span> es un número real <span class="math inline">\(P(A)\)</span> que está siempre entre 0 y 1.</p>
+<p>En cierto modo, este número expresa la verosimilitud del evento, es decir, la confianza que hay en que ocurra <span class="math inline">\(A\)</span> en el experimento. Por tanto, también nos da una medida de la incertidumbre sobre el suceso.</p>
+<ul>
+<li><p>La mayor incertidumbre corresponde a <span class="math inline">\(P(A)=0.5\)</span> (Es tan probable que ocurra <span class="math inline">\(A\)</span> como que no ocurra).</p></li>
+<li><p>La menor incertidumbre corresponde a <span class="math inline">\(P(A)=1\)</span> (<span class="math inline">\(A\)</span> sucederá con absoluta certeza) y <span class="math inline">\(P(A)=0\)</span> (<span class="math inline">\(A\)</span> no sucederá con absoluta certeza).</p></li>
+</ul>
+<p>Cuando <span class="math inline">\(P(A)\)</span> está más próximo a 0 que a 1, la confianza en que no ocurra <span class="math inline">\(A\)</span> es mayor que la de que ocurra <span class="math inline">\(A\)</span>. Por el contrario, cuando <span class="math inline">\(P(A)\)</span> está más próximo a 1 que a 0, la confianza en que ocurra <span class="math inline">\(A\)</span> es mayor que la de que no ocurra <span class="math inline">\(A\)</span>.</p>
+</section>
+</section>
+<section id="probabilidad-condicionada" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="probabilidad-condicionada"><span class="header-section-number">5.3</span> Probabilidad condicionada</h2>
+<section id="experimentos-condicionados" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="experimentos-condicionados"><span class="header-section-number">5.3.1</span> Experimentos condicionados</h3>
+<p>En algunas ocasiones, es posible que tengamos alguna información sobre el experimento antes de su realización. Habitualmente esa información se da en forma de un suceso <span class="math inline">\(B\)</span> del mismo espacio muestral que sabemos que es cierto antes de realizar el experimento.</p>
+<p>En tal caso se dice que el suceso <span class="math inline">\(B\)</span> es un suceso <em>condicionante</em>, y la probabilidad de otro suceso <span class="math inline">\(A\)</span> se conoce como y se expresa</p>
+<p><span class="math display">\[P(A|B).\]</span></p>
+<p>Esto debe leerse como <em>probabilidad de <span class="math inline">\(A\)</span> dado <span class="math inline">\(B\)</span></em> o <em>probabilidad de <span class="math inline">\(A\)</span> bajo la condición de <span class="math inline">\(B\)</span></em>.</p>
+<p>Los condicionantes suelen cambiar el espacio muestral del experimento y por tanto las probabilidades de sus sucesos.</p>
+<div id="exm-sucesos-condicionados" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.12</strong></span> Supongamos que tenemos una muestra de 100 hombres y 100 mujeres con las siguientes frecuencias</p>
+<p><span class="math display">\[
+\begin{array}{|c|c|c|}
+\hline
+&amp; \mbox{No fumadores} &amp; \mbox{Fumadores} \\
+\hline
+\mbox{Mujeres} &amp; 80 &amp; 20 \\
+\hline
+\mbox{Hombres} &amp; 60 &amp; 40 \\
+\hline
+\end{array}
+\]</span></p>
+<p>Entonces, usando la definición frecuentista de probabilidad, la probabilidad de que una persona elegida al azar sea fumadora es</p>
+<p><span class="math display">\[P(\mbox{Fumadora})= \frac{60}{200}=0.3.\]</span></p>
+<p>Sin embargo, si se sabe que la persona elegida es mujer, entonces la muestra se reduce a la primera fila, y la probabilidad de ser fumadora es</p>
+<p><span class="math display">\[P(\mbox{Fumadora}|\mbox{Mujer})=\frac{20}{100}=0.2.\]</span></p>
+</div>
+</section>
+<section id="probabilidad-condicionada-1" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="probabilidad-condicionada-1"><span class="header-section-number">5.3.2</span> Probabilidad condicionada</h3>
+<div id="def-probabilidad-condicionada" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.12 (Probabilidad condicionada)</strong></span> Dado un espacio muestral <span class="math inline">\(\Omega\)</span> de un experimento aleatorio, y dos dos sucesos <span class="math inline">\(A,B\subseteq \Omega\)</span>, la probabilidad de <span class="math inline">\(A\)</span> <em>condicionada</em> por <span class="math inline">\(B\)</span> es</p>
+<p><span class="math display">\[P(A|B) = \frac{P(A\cap B)}{P(B)},\]</span></p>
+<p>siempre y cuando, <span class="math inline">\(P(B)\neq 0\)</span>.</p>
+</div>
+<p>Esta definición permite calcular probabilidades sin tener que alterar el espacio muestral original del experimento.</p>
+<div id="exm-probabilidad-condicionada" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.13</strong></span> En el ejemplo anterior</p>
+<p><span class="math display">\[P(\mbox{Fumadora}|\mbox{Mujer})= \frac{P(\mbox{Fumadora}\cap \mbox{Mujer})}{P(\mbox{Mujer})} =  \frac{20/200}{100/200}=\frac{20}{100}=0.2.\]</span></p>
+</div>
+</section>
+<section id="probabilidad-del-suceso-intersección" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="probabilidad-del-suceso-intersección"><span class="header-section-number">5.3.3</span> Probabilidad del suceso intersección</h3>
+<p>A partir de la definición de probabilidad condicionada es posible obtener la fórmula para calcular la probabilidad de la intersección de dos sucesos.</p>
+<p><span class="math display">\[P(A\cap B) = P(A)P(B|A) = P(B)P(A|B).\]</span></p>
+<div id="exm-probabilidad-interseccion" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.14</strong></span> En una población hay un 30% de fumadores y se sabe que el 40% de los fumadores tiene cáncer de pulmón. La probabilidad de que una persona elegida al azar sea fumadora y tenga cáncer de pulmón es</p>
+<p><span class="math display">\[P(\mbox{Fumadora}\cap \mbox{Cáncer})= P(\mbox{Fumadora})P(\mbox{Cáncer}|\mbox{Fumadora}) = 0.3\times 0.4 = 0.12.\]</span></p>
+</div>
+</section>
+<section id="independencia-de-sucesos" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="independencia-de-sucesos"><span class="header-section-number">5.3.4</span> Independencia de sucesos</h3>
+<p>En ocasiones, la ocurrencia del suceso condicionante no cambia la probabilidad original del suceso principal.</p>
+<div id="def-sucesos-independientes" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.13 (Sucesos independientes)</strong></span> Dado un espacio muestral <span class="math inline">\(\Omega\)</span> de un experimento aleatorio, dos sucesos <span class="math inline">\(A,B\subseteq \Omega\)</span> son <em>independientes</em> si la probabilidad de <span class="math inline">\(A\)</span> no se ve alterada al condicionar por <span class="math inline">\(B\)</span>, y viceversa, es decir,</p>
+<p><span class="math display">\[P(A|B) = P(A) \quad \mbox{and} \quad P(B|A)=P(B),\]</span></p>
+<p>si <span class="math inline">\(P(A)\neq 0\)</span> y <span class="math inline">\(P(B)\neq 0\)</span>.</p>
+</div>
+<p>Esto significa que la ocurrencia de uno evento no aporta información relevante para cambiar la incertidumbre sobre el otro.</p>
+<p>Cuando dos eventos son independientes, la probabilidad de su intersección es igual al producto de sus probabilidades,</p>
+<p><span class="math display">\[P(A\cap B) = P(A)P(B).\]</span></p>
+</section>
+</section>
+<section id="espacio-probabilístico" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="espacio-probabilístico"><span class="header-section-number">5.4</span> Espacio probabilístico</h2>
+<div id="def-espacio-probabilistico" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.14 (Espacio probabilístico)</strong></span> Un <em>espacio probabilístico</em> de un experimento aleatorio es una terna <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> donde</p>
+<ul>
+<li><span class="math inline">\(\Omega\)</span> es el espacio muestral del experimento.</li>
+<li><span class="math inline">\(\mathcal{F}\)</span> es un un conjunto de sucesos del experimento.</li>
+<li><span class="math inline">\(P\)</span> es una función de probabilidad.</li>
+</ul>
+</div>
+<p>Si conocemos la probabilidad de todos los elementos de <span class="math inline">\(\Omega\)</span>, entonces podemos calcular la probabilidad de cualquier suceso en <span class="math inline">\(\mathcal{F}\)</span> y se puede construir fácilmente el espacio probabilístico.</p>
+<p>Para determinar la probabilidad de cada suceso elemental se puede utilizar un diagrama de árbol, mediante las siguientes reglas:</p>
+<ol type="1">
+<li><p>Para cada nodo del árbol, etiquetar la rama que conduce hasta él con la probabilidad de que la variable en ese nivel tome el valor del nodo, condicionada por los sucesos correspondientes a sus nodos antecesores en el árbol.</p></li>
+<li><p>La probabilidad de cada suceso elemental en las hojas del árbol es el producto de las probabilidades de las ramas que van desde la raíz a la hoja del árbol.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/espacio_probabilistico.svg" class="img-fluid figure-img" width="700"></p>
+<figcaption>Diagrama de árbol de un espacio probabilístico.</figcaption>
+</figure>
+</div>
+<section id="árboles-de-probabilidad-con-variables-dependientes" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="árboles-de-probabilidad-con-variables-dependientes"><span class="header-section-number">5.4.1</span> Árboles de probabilidad con variables dependientes</h3>
+<div id="exm-arbol-probabilidad-variables-dependientes" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.15</strong></span> Sea una población en la que el 30% de las personas fuman, y que la incidencia del cáncer de pulmón en fumadores es del 40% mientras que en los no fumadores es del 10%.</p>
+<p>El espacio probabilístico del experimento aleatorio que consiste en elegir una persona al azar y medir las variables Fumar y Cáncer de pulmón se muestra a continuación.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/espacio_probabilistico_fumar_cancer.svg" class="img-fluid figure-img" width="600"></p>
+<figcaption>Diagrama de árbol del espacio probabilístico de fumar y tener cáncer de pulmón.</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="árboles-de-probabilidad-con-variables-independientes" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="árboles-de-probabilidad-con-variables-independientes"><span class="header-section-number">5.4.2</span> Árboles de probabilidad con variables independientes</h3>
+<div id="exm-arbol-probabilidad-variables-independientes" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.16</strong></span> El árbol de probabilidad asociado al experimento aleatorio que consiste en el lanzamiento de dos monedas se muestra a continuación.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/espacio_probabilistico_monedas.svg" class="img-fluid figure-img" width="600"></p>
+<figcaption>Diágrama de árbol del espacio probabilístico del lanzamiento de dos monedas.</figcaption>
+</figure>
+</div>
+</div>
+<div id="exm-arbol-probabilidad-variables-independientes-2" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.17</strong></span> Dada una población en la que hay un 40% de hombres y un 60% de mujeres, el experimento aleatorio que consiste en tomar una muestra aleatoria de tres personas tiene el árbol de probabilidad que se muestra a continuación.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/espacio_probabilistico_muestra.svg" class="img-fluid figure-img" width="700"></p>
+<figcaption>Diagrama de árbol del espacio probabilístico del sexo de tres individuos elegidos al azar.</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="teorema-de-la-probabilidad-total" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="teorema-de-la-probabilidad-total"><span class="header-section-number">5.5</span> Teorema de la probabilidad total</h2>
+<div id="def-sistema-completo-sucesos" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.15 (Sistema completo de sucesos)</strong></span> Una colección de sucesos <span class="math inline">\(A_1,A_2,\ldots,A_n\)</span> de un mismo espacio muestral <span class="math inline">\(\Omega\)</span> es un <em>sistema completo</em> si cumple las siguientes condiciones:</p>
+<ol type="1">
+<li><p>La unión de todos es el espacio muestral: <span class="math inline">\(A_1\cup \cdots\cup A_n =\Omega\)</span>.</p></li>
+<li><p>Son incompatibles dos a dos: <span class="math inline">\(A_i\cap A_j = \emptyset\)</span> <span class="math inline">\(\forall i\neq j\)</span>.</p></li>
+</ol>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/particion_espacio_muestral.svg" class="img-fluid figure-img" width="300"></p>
+<figcaption>Partición del espacio muestral en un sistema completo de sucesos.</figcaption>
+</figure>
+</div>
+<p>En realidad un sistema completo de sucesos es una partición del espacio muestral de acuerdo a algún atributo, como por ejemplo el sexo o el grupo sanguíneo.</p>
+<section id="teorema-de-la-probabilidad-total-1" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="teorema-de-la-probabilidad-total-1"><span class="header-section-number">5.5.1</span> Teorema de la probabilidad total</h3>
+<p>Conocer las probabilidades de un determinado suceso en cada una de las partes de un sistema completo puede ser útil para calcular su probabilidad.</p>
+<div id="thm-probabilidad-total" class="theorem">
+<p><span class="theorem-title"><strong>Teorema 5.3 (Probabilidad total)</strong></span> Dado un sistema completo de sucesos <span class="math inline">\(A_1,\ldots,A_n\)</span> y un suceso <span class="math inline">\(B\)</span> de un espacio muestral <span class="math inline">\(\Omega\)</span>, la probabilidad de cualquier suceso <span class="math inline">\(B\)</span> del espacio muestral se puede calcular mediante la fórmula</p>
+<p><span class="math display">\[P(B) = \sum_{i=1}^n P(A_i\cap B) = \sum_{i=1}^n P(A_i)P(B|A_i).\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Demostración
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="proof">
+<p><span class="proof-title"><em>Prueba</em>. </span>La demostración del teorema es sencilla, ya que al ser <span class="math inline">\(A_1,\ldots,A_n\)</span> un sistema completo tenemos</p>
+<p><span class="math display">\[B = B\cap E = B\cap (A_1\cup \cdots \cup A_n) = (B\cap A_1)\cup \cdots \cup (B\cap A_n)\]</span></p>
+<p>y como estos sucesos son incompatibles entre sí, se tiene</p>
+<p><span class="math display">\[\begin{align*}
+P(B) &amp;= P((B\cap A_1)\cup \cdots \cup (B\cap A_n)) = P(B\cap A_1)+\cdots + P(B\cap A_n) =\\
+&amp;= P(A_1)P(B/A_1)+\cdots + P(A_n)P(B/A_n) = \sum_{i=1}^n P(A_i)P(B/A_i).
+\end{align*}\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/probabilidad_total.svg" class="img-fluid figure-img" width="300"></p>
+<figcaption>Teorema de la probabilidad total.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="exm-probabilidad-total" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.18</strong></span> Un determinado síntoma <span class="math inline">\(S\)</span> puede ser originado por una enfermedad <span class="math inline">\(E\)</span> pero también lo pueden presentar las personas sin la enfermedad. Sabemos que la prevalencia de la enfermedad <span class="math inline">\(E\)</span> es <span class="math inline">\(0.2\)</span>. Además, se sabe que el <span class="math inline">\(90\%\)</span> de las personas con la enfermedad presentan el síntoma, mientras que sólo el <span class="math inline">\(40\%\)</span> de las personas sin la enfermedad lo presentan. Si se toma una persona al azar de la población, <em>¿qué probabilidad hay de que tenga el síntoma?</em></p>
+<p>Para responder a la pregunta se puede aplicar el teorema de la probabilidad total usando el sistema completo <span class="math inline">\(\{E,\overline{E}\}\)</span>:</p>
+<p><span class="math display">\[P(S) = P(E)P(S|E)+P(\overline E)P(S|\overline E) = 0.2\cdot 0.9 + 0.8\cdot 0.4 = 0.5.\]</span></p>
+<p>Es decir, la mitad de la población tendrá el síntoma.</p>
+<p><em>¡En el fondo se trata de una media ponderada de probabilidades!</em></p>
+<p>La respuesta a la pregunta anterior es evidente a la luz del árbol de probabilidad del espacio probabilístico del experimento.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/espacio_probabilistico_total.svg" class="img-fluid figure-img" width="600"></p>
+<figcaption>Aplicación del teorema de la probabilidad total en un espacio probabilístico.</figcaption>
+</figure>
+</div>
+<p><span class="math display">\[\begin{align*}
+P(S) &amp;= P(E,S) + P(\overline E,S) = P(E)P(S|E)+P(\overline E)P(S|\overline E)\\
+&amp; = 0.2\cdot 0.9+ 0.8\cdot 0.4 = 0.18 + 0.32 = 0.5.
+\end{align*}\]</span></p>
+</div>
+</section>
+</section>
+<section id="teorema-de-bayes" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="teorema-de-bayes"><span class="header-section-number">5.6</span> Teorema de Bayes</h2>
+<p>Los sucesos de un sistema completo de sucesos <span class="math inline">\(A_1,\cdots,A_n\)</span> también pueden verse como las distintas hipótesis ante un determinado hecho <span class="math inline">\(B\)</span>.</p>
+<p>En estas condiciones resulta útil poder calcular las probabilidades a posteriori <span class="math inline">\(P(A_i|B)\)</span> de cada una de las hipótesis.</p>
+<div id="thm-bayes" class="theorem">
+<p><span class="theorem-title"><strong>Teorema 5.4 (Bayes)</strong></span> Dado un sistema completo de sucesos <span class="math inline">\(A_1,\ldots,A_n\)</span> y un suceso <span class="math inline">\(B\)</span> de un espacio muestral <span class="math inline">\(\Omega\)</span> y otro suceso <span class="math inline">\(B\)</span> del mismo espacio muestral, la probabilidad de cada suceso <span class="math inline">\(A_i\)</span> <span class="math inline">\(i=1,\ldots,n\)</span> condicionada por <span class="math inline">\(B\)</span> puede calcularse con la siguiente fórmula</p>
+<p><span class="math display">\[P(A_i|B) = \frac{P(A_i\cap B)}{P(B)} = \frac{P(A_i)P(B|A_i)}{\sum_{i=1}^n P(A_i)P(B|A_i)}.\]</span></p>
+</div>
+<div id="exm-teorema-bayes" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.19</strong></span> En el ejemplo anterior, una pregunta más interesante es qué diagnosticar a una persona que presenta el síntoma.</p>
+<p>En este caso se puede interpretar <span class="math inline">\(E\)</span> y <span class="math inline">\(\overline{E}\)</span> como las dos posibles hipótesis para el síntoma <span class="math inline">\(S\)</span>. Las probabilidades a priori para ellas son <span class="math inline">\(P(E)=0.2\)</span> y <span class="math inline">\(P(\overline E)=0.8\)</span>. Esto quiere decir que si no se dispone de información sobre el síntoma, el diagnóstico será que la persona no tiene la enfermedad.</p>
+<p>Sin embargo, si al reconocer a la persona se observa que presenta el síntoma, dicha información condiciona a las hipótesis, y para decidir entre ellas es necesario calcular sus probabilidades a posteriori, es decir, <span class="math inline">\(P(E|S)\)</span> y <span class="math inline">\(P(\overline{E}|S)\)</span>.</p>
+<p>Para calcular las probabilidades a posteriori se puede utilizar el teorema de Bayes:</p>
+<p><span class="math display">\[\begin{align*}
+P(E|S) &amp;= \frac{P(E)P(S|E)}{P(E)P(S|E)+P(\overline{E})P(S|\overline{E})} = \frac{0.2\cdot 0.9}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.18}{0.5}=0.36,\\
+P(\overline{E}|S) &amp;= \frac{P(\overline{E})P(S|\overline{E})}{P(E)P(S|E)+P(\overline{E})P(S|\overline{E})} = \frac{0.8\cdot 0.4}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.32}{0.5}=0.64.
+\end{align*}\]</span></p>
+<p>Como se puede ver la probabilidad de tener la enfermedad ha aumentado. No obstante, la probabilidad de no tener la enfermedad sigue siendo mayor que la de tenerla, y por esta razón el diagnóstico seguirá siendo que no tiene la enfermedad.</p>
+<p>En este caso se dice que el síntoma <span class="math inline">\(S\)</span> <em>no es determinante</em> a la hora de diagnosticar la enfermedad.</p>
+</div>
+</section>
+<section id="epidemiología" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="epidemiología"><span class="header-section-number">5.7</span> Epidemiología</h2>
+<p>Una de las ramas de la Medicina que hace un mayor uso de la probabilidad es la , que estudia la distribución y las causas de las enfermedades en las poblaciones, identificando factores de riesgos para las enfermedades de cara a la atención médica preventiva.</p>
+<p>En Epidemiología interesa la frecuencia de un <em>suceso médico</em> <span class="math inline">\(E\)</span> (típicamente una enfermedad como la gripe, un factor de riesgo como fumar o un factor de protección como vacunarse) que se mide mediante una variable nominal con dos categorías (ocurrencia o no del suceso).</p>
+<p>Hay diferentes medidas relativas a la frecuencia de un suceso médico. Las más importantes son:</p>
+<ul>
+<li>Prevalencia</li>
+<li>Incidencia</li>
+<li>Riesgo relativo</li>
+<li>Odds ratio</li>
+</ul>
+<section id="prevalencia" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="prevalencia"><span class="header-section-number">5.7.1</span> Prevalencia</h3>
+<div id="def-prevalencia" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.16 (Prevalencia)</strong></span> La <em>prevalencia</em> de un suceso médico <span class="math inline">\(E\)</span> es la proporción de una población que está afectada por el suceso.</p>
+<p><span class="math display">\[\mbox{Prevalencia}(E) = \frac{\mbox{Nº individuos afectados por $E$}}{\mbox{Tamaño poblacional}}\]</span></p>
+</div>
+<p>A menudo, la prevalencia se estima mediante una muestra como la frecuencia relativa de los individuos afectados por el suceso en la muestra. Es también común expresarla esta frecuencia como un porcentaje.</p>
+<div id="exm-prevalencia" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.20</strong></span> Para estimar la prevalencia de la gripe se estudió una muestra de <span class="math inline">\(1000\)</span> personas de las que <span class="math inline">\(150\)</span> presentaron gripe. Así, la prevalencia de la gripe es aproximadamente <span class="math inline">\(150/1000=0.15\)</span>, es decir, un 15%.</p>
+</div>
+</section>
+<section id="incidencia" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2" class="anchored" data-anchor-id="incidencia"><span class="header-section-number">5.7.2</span> Incidencia</h3>
+<p>La mide la probabilidad de ocurrencia de un suceso médico en una población durante un periodo de tiempo específico. La incidencia puede medirse como una proporción acumulada o como una tasa.</p>
+<div id="def-incidencia-acumulada" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.17 (Incidencia acumulada)</strong></span> La <em>incidencia acumulada</em> de un suceso médico <span class="math inline">\(E\)</span> es la proporción de individuos que experimentaron el evento en un periodo de tiempo, es decir, el número de nuevos casos afectados por el evento en el periodo de tiempo, divido por el tamaño de la población inicialmente en riesgo de verse afectada.</p>
+<p><span class="math display">\[R(E)=\frac{\mbox{Nº de nuevos casos con $E$}}{\mbox{Tamaño de la población en riesgo}}.\]</span></p>
+</div>
+<div id="exm-incidencia-acumulada" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.21</strong></span> Una población contenía inicialmente <span class="math inline">\(1000\)</span> personas sin gripe y después de dos años se observó que <span class="math inline">\(160\)</span> de ellas sufrieron gripe. La incidencia acumulada de la gripe es 160 casos pro 1000 personas por dos años, es decir, 16% en dos años.</p>
+</div>
+</section>
+<section id="tasa-de-incidencia-o-riesgo-absoluto" class="level3" data-number="5.7.3">
+<h3 data-number="5.7.3" class="anchored" data-anchor-id="tasa-de-incidencia-o-riesgo-absoluto"><span class="header-section-number">5.7.3</span> Tasa de incidencia o Riesgo absoluto</h3>
+<div id="def-riesgo-absoluto" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.18 (Riesgo absoluto)</strong></span> La <em>tasa de incidencia</em> o <em>riesgo absoluto</em> de un suceso médico <span class="math inline">\(E\)</span> es el número de nuevos casos afectados por el evento divido por la población en riesgo y por el número de unidades temporales del periodo considerado.</p>
+<p><span class="math display">\[R(E)=\frac{\mbox{Nº nuevos casos con $E$}}{\mbox{Tamaño población en riesgo}\times \mbox{Nº unidades de tiempo}}\]</span></p>
+</div>
+<div id="exm-riesgo-absoluto" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.22</strong></span> Una población contenía inicialmente <span class="math inline">\(1000\)</span> personas sin gripe y después de dos años se observó que <span class="math inline">\(160\)</span> de ellas sufrieron gripe. Si se considera el año como intervalo de tiempo, la tasa de incidencia de la gripe es <span class="math inline">\(160\)</span> casos dividida por <span class="math inline">\(1000\)</span> personas y por dos años, es decir, <span class="math inline">\(80\)</span> casos por <span class="math inline">\(1000\)</span> personas-año o 8% de personas al año.</p>
+</div>
+</section>
+<section id="prevalencia-vs-incidencia" class="level3" data-number="5.7.4">
+<h3 data-number="5.7.4" class="anchored" data-anchor-id="prevalencia-vs-incidencia"><span class="header-section-number">5.7.4</span> Prevalencia vs Incidencia</h3>
+<p>La prevalencia no debe confundirse con la incidencia. La prevalencia indica cómo de extendido está el suceso médico en una población, sin preocuparse por cuándo los sujetos se han expuesto al riesgo o durante cuánto tiempo, mientras que la incidencia se fija en el riesgo de verse afectado por el suceso en un periodo concreto de tiempo.</p>
+<p>Así, la prevalencia se calcula en estudios transversales en un momento temporal puntual, mientras que para medir la incidencia se necesita un estudio longitudinal que permita observar a los individuos durante un periodo de tiempo.</p>
+<p>La incidencia es más útil cuando se pretende entender la causalidad del suceso: por ejemplo, si la incidencia de una enfermedad en una población aumenta, seguramente hay un factor de riesgo que lo está promoviendo.</p>
+<p>Cuando la tasa de incidencia es aproximadamente constante en la duración del suceso, la prevalencia es aproximadamente el producto de la incidencia por la duración media del suceso, es decir,</p>
+<p><span class="math display">\[ \mbox{Prevalencia} = \mbox{Incidencia} \times \mbox{duración}\]</span></p>
+</section>
+<section id="comparación-de-riesgos" class="level3" data-number="5.7.5">
+<h3 data-number="5.7.5" class="anchored" data-anchor-id="comparación-de-riesgos"><span class="header-section-number">5.7.5</span> Comparación de riesgos</h3>
+<p>Para determinar si un factor o característica está asociada con el suceso médico es necesario comparar el riesgo del suceso en dos poblaciones, una expuesta al factor y la otra no. El grupo expuesto al factor se conoce como <em>grupo tratamiento</em> o <em>grupo experimental</em> <span class="math inline">\(T\)</span> y el grupo no expuesto como <em>grupo control</em> <span class="math inline">\(C\)</span>.</p>
+<p>Habitualmente los casos observados para cada grupo se representan en una tabla de <span class="math inline">\(2\times2\)</span> como la siguiente:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">
+</th>
+<th style="text-align: center;">
+Suceso <span class="math inline">\(E\)</span>
+</th>
+<th style="text-align: center;">
+No suceso <span class="math inline">\(\overline E\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">
+Grupo tratamiento <span class="math inline">\(T\)</span>
+</td>
+<td style="text-align: center;">
+<span class="math inline">\(a\)</span>
+</td>
+<td style="text-align: center;">
+<span class="math inline">\(b\)</span>
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+Grupo control <span class="math inline">\(C\)</span>
+</td>
+<td style="text-align: center;">
+<span class="math inline">\(c\)</span>
+</td>
+<td style="text-align: center;">
+<span class="math inline">\(d\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="riesgo-atribuible-o-diferencia-de-riesgos-ra" class="level3" data-number="5.7.6">
+<h3 data-number="5.7.6" class="anchored" data-anchor-id="riesgo-atribuible-o-diferencia-de-riesgos-ra"><span class="header-section-number">5.7.6</span> Riesgo atribuible o diferencia de riesgos <span class="math inline">\(RA\)</span></h3>
+<div id="def-riesgo-atribuible" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.19 (Riesgo atribuible)</strong></span> El <em>riesgo atribuible</em> o <em>diferencia de riesgo</em> de un suceso médico <span class="math inline">\(E\)</span> para los individuos expuestos a un factor es la diferencia entre los riesgos absolutos de los grupos tratamiento y control.</p>
+<p><span class="math display">\[RA(E)=R_T(E)-R_C(E)=\frac{a}{a+b}-\frac{c}{c+d}.\]</span></p>
+</div>
+<p>El riesgo atribuible es el riesgo de un suceso que es debido específicamente al factor de interés.</p>
+<p>Obsérvese que el riesgo atribuible puede ser positivo, cuando el riesgo del grupo tratamiento es mayor que el del grupo control, o negativo, de lo contrario.</p>
+<div id="exm-riesgo-atribuible" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.23</strong></span> Para determinar la efectividad de una vacuna contra la gripe, una muestra de <span class="math inline">\(1000\)</span> personas sin gripe fueron seleccionadas al comienzo del año. La mitad de ellas fueron vacunadas (grupo tratamiento) y la otra mitad recibieron un placebo (grupo control). La tabla siguiente resume los resultados al final del año.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">
+</th>
+<th style="text-align: center;">
+Gripe <span class="math inline">\(E\)</span>
+</th>
+<th style="text-align: center;">
+No gripe <span class="math inline">\(\overline E\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">
+Grupo tratamiento (vacunados)
+</td>
+<td style="text-align: center;">
+20
+</td>
+<td style="text-align: center;">
+480
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+Grupo control (No vacunados)
+</td>
+<td style="text-align: center;">
+80
+</td>
+<td style="text-align: center;">
+420
+</td>
+</tr>
+</tbody>
+</table>
+<p>El riesgo atribuible de contraer la gripe cuando se es vacunado es</p>
+<p><span class="math display">\[AR(D) = \frac{20}{20+480}-\frac{80}{80+420} = -0.12.\]</span></p>
+<p>Esto quiere decir que el riesgo de contraer la gripe es un 12% menor en vacunados que en no vacunados.</p>
+</div>
+</section>
+<section id="riesgo-relativo-rr" class="level3" data-number="5.7.7">
+<h3 data-number="5.7.7" class="anchored" data-anchor-id="riesgo-relativo-rr"><span class="header-section-number">5.7.7</span> Riesgo relativo <span class="math inline">\(RR\)</span></h3>
+<div id="def-riesgo-relativo" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.20 (Riesgo relativo)</strong></span> El <em>riesgo relativo</em> de un suceso médico <span class="math inline">\(E\)</span> para los individuos expuestos a un factor es el cociente entre las proporciones de individuos afectados por el suceso en un periodo de tiempo de los grupos tratamiento y control. Es decir, el cociente entre las incidencias de grupo tratamiento y el grupo control.</p>
+<p><span class="math display">\[RR(D)=\frac{\mbox{Riesgo grupo tratamiento}}{\mbox{Riesgo grupo control}}=\frac{R_T(E)}{R_C(E)}=\frac{a/(a+b)}{c/(c+d)}\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Interpretación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El riesgo relativo compara el riesgo de desarrollar un suceso médico entre el grupo tratamiento y el grupo control.</p>
+<ul>
+<li><span class="math inline">\(RR=1\)</span> <span class="math inline">\(\Rightarrow\)</span> No hay asociación entre el suceso y la exposición al factor.</li>
+<li><span class="math inline">\(RR&lt;1\)</span> <span class="math inline">\(\Rightarrow\)</span> La exposición al factor disminuye el riesgo del suceso.</li>
+<li><span class="math inline">\(RR&gt;1\)</span> <span class="math inline">\(\Rightarrow\)</span> La exposición al factor aumenta el riesgo del suceso.</li>
+</ul>
+<p>Cuanto más lejos de 1, más fuerte es la asociación.</p>
+</div>
+</div>
+<div id="exm-riesgo-relativo" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.24</strong></span> Para determinar la efectividad de una vacuna contra la gripe, una muestra de <span class="math inline">\(1000\)</span> personas sin gripe fueron seleccionadas al comienzo del año. La mitad de ellas fueron vacunadas (grupo tratamiento) y la otra mitad recibieron un placebo (grupo control). La tabla siguiente resume los resultados al final del año.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">
+</th>
+<th style="text-align: center;">
+Gripe <span class="math inline">\(E\)</span>
+</th>
+<th style="text-align: center;">
+No gripe <span class="math inline">\(\overline E\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">
+Grupo tratamiento (vacunados)
+</td>
+<td style="text-align: center;">
+20
+</td>
+<td style="text-align: center;">
+480
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+Grupo control (No vacunados)
+</td>
+<td style="text-align: center;">
+80
+</td>
+<td style="text-align: center;">
+420
+</td>
+</tr>
+</tbody>
+</table>
+<p>El riesgo relativo de contraer la gripe cuando se es vacunado es</p>
+<p><span class="math display">\[RR(D) = \frac{20/(20+480)}{80/(80+420)} = 0.25.\]</span></p>
+<p>Así, la probabilidad de contraer la gripe en los individuos vacunados fue la cuarta parte de la de contraerla en el caso de no haberse vacunado, es decir, la vacuna reduce el riesgo de gripe un 75%.</p>
+</div>
+</section>
+<section id="odds" class="level3" data-number="5.7.8">
+<h3 data-number="5.7.8" class="anchored" data-anchor-id="odds"><span class="header-section-number">5.7.8</span> Odds</h3>
+<p>Una forma alternativa de medir el riesgo de un suceso médico es el <em>odds</em>.</p>
+<div id="def-odds" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.21</strong></span> El <em>odds</em> de un suceso médico <span class="math inline">\(E\)</span> en una población es el cociente entre el número de individuos que adquirieron el suceso y los que no en un periodo de tiempo.</p>
+<p><span class="math display">\[ODDS(E)=\frac{\mbox{Nº nuevos casos con $E$}}{\mbox{Nº casos sin $E$}}=\frac{P(E)}{P(\overline E)}.\]</span></p>
+</div>
+<p>A diferencia de la incidencia, que es una proporción menor o igual que 1, el odds puede ser mayor que 1. No obstante es posible convertir el odds en una probabilidad con al fórmula</p>
+<p><span class="math display">\[P(E) = \frac{ODDS(E)}{ODDS(E)+1}.\]</span></p>
+<div id="exm-odds" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.25</strong></span> Una población contenía inicialmente <span class="math inline">\(1000\)</span> personas sin gripe. Después de un año <span class="math inline">\(160\)</span> de ellas tuvieron gripe. Entonces el odds de la gripe es <span class="math inline">\(160/840\)</span>.</p>
+<p>Obsérvese que la incidencia es <span class="math inline">\(160/1000\)</span>.</p>
+</div>
+</section>
+<section id="odds-ratio-or" class="level3" data-number="5.7.9">
+<h3 data-number="5.7.9" class="anchored" data-anchor-id="odds-ratio-or"><span class="header-section-number">5.7.9</span> Odds ratio <span class="math inline">\(OR\)</span></h3>
+<div id="def-odds-ratio" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.22 (Odds ratio)</strong></span> El <em>odds ratio</em> o la <em>oportunidad relativa</em> de un suceso médico <span class="math inline">\(E\)</span> para los individuos expuestos a un factor es el cociente entre los odds del sucesos de los grupos tratamiento y control.</p>
+<p><span class="math display">\[OR(E)=\frac{\mbox{Odds en grupo tratamiento}}{\mbox{Odds en grupo control}}=\frac{a/b}{c/d}=\frac{ad}{bc}.\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Interpretación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El odds ratio compara los odds de un suceso médico entre el grupo tratamiento y control. La interpretación es similar a la del riesgo relativo:</p>
+<ul>
+<li><span class="math inline">\(OR=1\)</span> <span class="math inline">\(\Rightarrow\)</span> No existe asociación entre el suceso y la exposición al factor.</li>
+<li><span class="math inline">\(OR&lt;1\)</span> <span class="math inline">\(\Rightarrow\)</span> La exposición al factor disminuye el riesgo del suceso.</li>
+<li><span class="math inline">\(OR&gt;1\)</span> <span class="math inline">\(\Rightarrow\)</span> La exposición al factor aumenta el riesgo del suceso.</li>
+</ul>
+<p>Cuanto más lejos de 1, más fuerte es la asociación.</p>
+</div>
+</div>
+<div id="exm-odds-ratio" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.26</strong></span> Para determinar la efectividad de una vacuna contra la gripe, una muestra de 1000 personas sin gripe fueron seleccionadas al comienzo del año. La mitad de ellas fueron vacunadas (grupo tratamiento) y la otra mitad recibieron un placebo (grupo control). La tabla siguiente resume los resultados al final del año.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">
+</th>
+<th style="text-align: center;">
+Gripe <span class="math inline">\(E\)</span>
+</th>
+<th style="text-align: center;">
+No gripe <span class="math inline">\(\overline E\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">
+Grupo tratamiento (vacunados)
+</td>
+<td style="text-align: center;">
+20
+</td>
+<td style="text-align: center;">
+480
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+Grupo control (No vacunados)
+</td>
+<td style="text-align: center;">
+80
+</td>
+<td style="text-align: center;">
+420
+</td>
+</tr>
+</tbody>
+</table>
+<p>El odds ratio de sufrir la gripe para los individuos vacunados es</p>
+<p><span class="math display">\[OR(D) = \frac{20/480}{80/420} = 0.21875.\]</span></p>
+<p>Esto quiere decir que el odds de sufrir la gripe frente a no sufrirla en los vacunados es casi un quinto del de los no vacunados, es decir, que aproximadamente por cada 22 personas vacunadas con gripe habrá 100 personas no vacunadas con gripe.</p>
+</div>
+</section>
+<section id="riesgo-relativo-vs-odds-ratio" class="level3" data-number="5.7.10">
+<h3 data-number="5.7.10" class="anchored" data-anchor-id="riesgo-relativo-vs-odds-ratio"><span class="header-section-number">5.7.10</span> Riesgo relativo vs Odds ratio</h3>
+<p>El riesgo relativo y el odds ratio son dos medidas de asociación pero su interpretación es ligeramente diferente. Mientras que el riesgo relativo expresa una comparación de riesgos entre los grupos tratamiento y control, el odds ratio expresa una comparación de odds, que no es lo mismo que el riesgo. Así, un odds ratio de 2 <em>no</em> significa que el grupo tratamiento tiene el doble de riesgo de adquirir el suceso.</p>
+<p>La interpretación del odds ratio es un poco más enrevesada porque es contrafactual, y nos da cuántas veces es más frecuente el suceso en el grupo tratamiento en comparación con el control, asumiendo que en el grupo control es tan frecuente que ocurra el suceso como que no.</p>
+<p>La ventaja del odds ratio es que no depende de la prevalencia o la incidencia del suceso, y debe usarse siempre que el número de individuos que presenta el suceso se selecciona arbitrariamente en ambos grupos, como ocurre en los estudios casos-control.</p>
+<div id="exm-riesgo-relativo-vs-odds-ratio" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.27</strong></span> Para determinar la asociación entre el cáncer de pulmón y fumar se tomaron dos muestras (la segunda con el doble de individuos sin cáncer) obteniendo los siguientes resultados:</p>
+<p><strong>Muestra 1</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">
+</th>
+<th style="text-align: center;">
+Cáncer
+</th>
+<th style="text-align: center;">
+No cáncer
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">
+Fumadores
+</td>
+<td style="text-align: center;">
+60
+</td>
+<td style="text-align: center;">
+80
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+No fumadores
+</td>
+<td style="text-align: center;">
+40
+</td>
+<td style="text-align: center;">
+320
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\begin{align*}
+RR(D) &amp;= \frac{60/(60+80)}{40/(40+320)} = 3.86.\\
+OR(D) &amp;= \frac{60/80}{40/320} = 6.
+\end{align*}\]</span></p>
+<p><strong>Muestra 2</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">
+</th>
+<th style="text-align: center;">
+Cáncer
+</th>
+<th style="text-align: center;">
+No cáncer
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">
+Fumadores
+</td>
+<td style="text-align: center;">
+60
+</td>
+<td style="text-align: center;">
+160
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+No fumadores
+</td>
+<td style="text-align: center;">
+40
+</td>
+<td style="text-align: center;">
+640
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\begin{align*}
+RR(D) &amp;= \frac{60/(60+160)}{40/(40+640)} = 4.64.\\
+OR(D) &amp;= \frac{60/160}{40/640} = 6.
+\end{align*}\]</span></p>
+<p>Así, cuando cambia la incidencia o prevalencia de un suceso (cáncer de pulmón) el riesgo relativo cambia, mientras que el odds ratio no.</p>
+</div>
+<p>La relación entre el riesgo relativo y el odds ratio viene dada por la siguiente fórmula</p>
+<p><span class="math display">\[RR = \frac{OR}{1-R_0+R_0\cdot OR} = OR \frac{1-R_1}{1-R_0},\]</span></p>
+<p>donde <span class="math inline">\(R_C\)</span> and <span class="math inline">\(R_T\)</span> son la prevalencia o la incidencia en los grupos control y tratamiento respectivamente.</p>
+<p>El odds ratio siempre sobrestima el riesgo relativo cuando este es mayor que 1 y lo subestima cuando es menor que 1. No obstante, con sucesos médicos raros (con una prevalencia o incidencia baja) el riesgo relativo y el odds ratio son casi iguales.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/odds_ratio_vs_riesgo_relativo.svg" class="img-fluid figure-img" width="500"></p>
+<figcaption>Odss ratio versus riesgo relativo.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="tests-diagnósticos" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="tests-diagnósticos"><span class="header-section-number">5.8</span> Tests diagnósticos</h2>
+<p>En Epidemiología es común el uso de test para diagnosticar enfermedades.</p>
+<p>Generalmente estos test no son totalmente fiables, sino que hay cierta probabilidad de acierto o fallo en el diagnóstico, que suele representarse en la siguiente tabla:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">
+</th>
+<th style="text-align: center;">
+Presencia enfermedad <span class="math inline">\(E\)</span>
+</th>
+<th style="text-align: center;">
+Ausencia enfermedad <span class="math inline">\(\overline E\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">
+Test positivo <span class="math inline">\(+\)</span>
+</td>
+<td style="text-align: center;">
+<span style="color: green">Verdadero positivo </span><span class="math inline">\(VP\)</span>
+</td>
+<td style="text-align: center;">
+<span style="color: red">Falso positivo </span><span class="math inline">\(FP\)</span>
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+Test negativo <span class="math inline">\(−\)</span>
+</td>
+<td style="text-align: center;">
+<span style="color: red">Falso negativo </span><span class="math inline">\(FN\)</span>
+</td>
+<td style="text-align: center;">
+<span style="color: green">Verdadero Negativo </span><span class="math inline">\(VN\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="sensibilidad-y-especificidad-de-un-test-diagnóstico" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="sensibilidad-y-especificidad-de-un-test-diagnóstico"><span class="header-section-number">5.8.1</span> Sensibilidad y especificidad de un test diagnóstico</h3>
+<p>La fiabilidad de un test diagnóstico depende de las siguientes probabilidades.</p>
+<div id="def-sensibilidad" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.23 (Sensibilidad)</strong></span> La <em>sensibilidad</em> de un test diagnóstico es la proporción de resultados positivos del test en personas con la enfermedad,</p>
+<p><span class="math display">\[P(+|E)=\frac{VP}{VP+FN}.\]</span></p>
+</div>
+<div id="def-especificidad" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.24 (Especificidad)</strong></span> La <em>especificidad</em> de un test diagnóstico es la proporción de resultados negativos del test en personas sin la enfermedad,</p>
+<p><span class="math display">\[P(-|\overline{E})=\frac{VN}{VN+FP}.\]</span></p>
+</div>
+<p>Normalmente existe un balance entre la sensibilidad y la especificidad.</p>
+<p>Un test con una alta sensibilidad detectará la enfermedad en la mayoría de las personas enfermas, pero también dará más falsos positivos que un test menos sensible. De este modo, un resultado positivo en un test con una gran sensibilidad no es muy útil para confirmar la enfermedad, pero un resultado negativo es útil para descartar la enfermedad, ya que raramente da resultados negativos en personas con la enfermedad.</p>
+<p>Por otro lado, un test con una alta especificidad descartará la enfermedad en la mayoría de las personas sin la enfermedad, pero también producirá más falsos negativos que un test menos específico. Así, un resultado negativo en un test con una gran especificidad no es útil para descartar la enfermedad, pero un resultado positivo es muy útil para confirmar la enfermedad, ya que raramente da resultados positivos en personas sin la enfermedad.</p>
+<div id="exm-sensibilidad-especificidad" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.28</strong></span> Un test diagnóstico para la gripe se ha aplicado a una muestra aleatoria de <span class="math inline">\(1000\)</span> personas. Los resultados aparecen resumidos en la siguiente tabla.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">
+</th>
+<th style="text-align: center;">
+Presencia de gripe <span class="math inline">\(E\)</span>
+</th>
+<th style="text-align: center;">
+Ausencia de gripe <span class="math inline">\(\overline E\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">
+Test <span class="math inline">\(+\)</span>
+</td>
+<td style="text-align: center;">
+95
+</td>
+<td style="text-align: center;">
+90
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+Test <span class="math inline">\(−\)</span>
+</td>
+<td style="text-align: center;">
+5
+</td>
+<td style="text-align: center;">
+810
+</td>
+</tr>
+</tbody>
+</table>
+<p>Según esta muestra, la prevalencia de la gripe puede estimarse como</p>
+<p><span class="math display">\[P(E) = \frac{95+5}{1000} = 0.1.\]</span></p>
+<p>La sensibilidad del test diagnóstico es</p>
+<p><span class="math display">\[P(+|E) = \frac{95}{95+5}= 0.95.\]</span></p>
+<p>Y la especificidad es</p>
+<p><span class="math display">\[P(-|\overline{E}) = \frac{810}{90+810}=0.9.\]</span></p>
+<p>Así pues, se trata de un buen test tanto para descartar la enfermedad como para confirmarla, pero es un poco mejor para confirmarla que para descartarla porque la especificidad es mayor que la sensibilidad.</p>
+</div>
+<p>Decidir entre un test con una gran sensibilidad o un test con una gran especificidad depende del tipo de enfermedad y el objetivo del test. En general, utilizaremos un test sensible cuando:</p>
+<ul>
+<li>La enfermedad es grave y es importante detectarla.</li>
+<li>La enfermedad es curable.</li>
+<li>Los falsos positivos no provocan traumas serios.</li>
+</ul>
+<p>Y utilizaremos un test específico cuando:</p>
+<ul>
+<li>La enfermedad es importante pero difícil o imposible de curar.</li>
+<li>Los falsos positivos pueden provocar traumas serios.</li>
+<li>El tratamiento de los falsos positivos puede tener graves consecuencias.</li>
+</ul>
+</section>
+<section id="valores-predictivos-de-un-test-diagnóstico" class="level3" data-number="5.8.2">
+<h3 data-number="5.8.2" class="anchored" data-anchor-id="valores-predictivos-de-un-test-diagnóstico"><span class="header-section-number">5.8.2</span> Valores predictivos de un test diagnóstico</h3>
+<p>Pero el aspecto más importante de un test diagnóstico es su poder predictivo, que se mide con las siguientes probabilidades a posteriori.</p>
+<div id="def-valor-predictivo-positivo" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.25 (Valor predictivo positivo)</strong></span> El <em>valor predictivo positivo</em> de un test diagnóstico es la proporción de personas con la enfermedad entre las personas con resultado positivo en el test,</p>
+<p><span class="math display">\[P(E|+) = \frac{VP}{VP+FP}.\]</span></p>
+</div>
+<div id="def-valor-predictivo-negativo" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.26 (Valor predictivo negativo)</strong></span> El <em>valor predictivo negativo</em> de un test diagnóstico es la proporción de personas sin la enfermedad entre las personas con resultado negativo en el test,</p>
+<p><span class="math display">\[P(\overline{E}|-) = \frac{VN}{VN+FN}.\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Interpretación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Los valores predictivos positivo y negativo permiten confirmar o descartar la enfermedad, respectivamente, si alcanzan al menos el umbral de <span class="math inline">\(0.5\)</span>.</p>
+<p><span class="math display">\[
+\begin{array}{rcl}
+VPP&gt;0.5 &amp; \Rightarrow &amp; \mbox{Diagnosticar la enfermedad}\\
+VPN&gt;0.5 &amp; \Rightarrow &amp; \mbox{Diagnosticar la no enfermedad}
+\end{array}
+\]</span></p>
+</div>
+</div>
+<p>No obstante, estas probabilidades dependen de la prevalencia de la enfermedad <span class="math inline">\(P(E)\)</span>. Pueden calcularse a partir de la sensibilidad y la especificidad del test diagnóstico usando el teorema de Bayes.</p>
+<p><span class="math display">\[\begin{align*}
+VPP=P(E|+) &amp;= \frac{P(E)P(+|E)}{P(E)P(+|E)+P(\overline{E})P(+|\overline{E})}\\
+VPN=P(\overline{E}|-) &amp;= \frac{P(\overline{E})P(-|\overline{E})}{P(E)P(-|E)+P(\overline{E})P(-|\overline{E})}
+\end{align*}\]</span></p>
+<p>Así, con enfermedades frecuentes, el valor predictivo positivo aumenta, y con enfermedades raras, el valor predictivo negativo aumenta.</p>
+<div id="exm-valores-predictivos" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 5.29</strong></span> Siguiendo con el ejemplo anterior de la gripe, se tiene que el valor predictivo positivo del test es</p>
+<p><span class="math display">\[VPP = P(E|+) = \frac{95}{95+90} = 0.5135.\]</span></p>
+<p>Como este valor es mayor que <span class="math inline">\(0.5\)</span>, eso significa que se diagnosticará la gripe si el resultado del test es positivo. No obstante, la confianza en el diagnóstico será baja, ya que el valor es poco mayor que <span class="math inline">\(0.5\)</span>.</p>
+<p>Por otro lado, el valor predictivo negativo es</p>
+<p><span class="math display">\[VPN = P(\overline{E}|-) = \frac{810}{5+810} = 0.9939.\]</span></p>
+<p>Como este valor es casi 1, eso significa que es casi seguro que no se tiene la gripe cuando el resultado del test es negativo.</p>
+<p>Así, se puede concluir que este test es muy potente para descartar la gripe, pero no lo est tanto para confirmarla.</p>
+</div>
+</section>
+<section id="razón-de-verosimilitud-de-un-test-diagnóstico" class="level3" data-number="5.8.3">
+<h3 data-number="5.8.3" class="anchored" data-anchor-id="razón-de-verosimilitud-de-un-test-diagnóstico"><span class="header-section-number">5.8.3</span> Razón de verosimilitud de un test diagnóstico</h3>
+<p>La siguientes medidas también se derivan de la sensibilidad y la especificidad de un test diagnóstico.</p>
+<div id="def-razon-verosimilitud-positiva" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.27 (Razón de verosimilitud positiva)</strong></span> La <em>razón de verosimilitud positiva</em> de un test diagnóstico es el cociente entre la probabilidad de un resultado positivo en personas con la enfermedad y personas sin la enfermedad, respectivamente.</p>
+<p><span class="math display">\[RV+=\frac{P(+|E)}{P(+|\overline{E})} = \frac{\mbox{Sensibilidad}}{1-\mbox{Especificidad}}.\]</span></p>
+</div>
+<div id="def-razon-verosimilitud-negativa" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 5.28 (Razón de verosimilitud negativa)</strong></span> La <em>razón de verosimilitud negativa</em> de un test diagnóstico es el cociente entre la probabilidad de un resultado negativo en personas con la enfermedad y personas sin la enfermedad, respectivamente.</p>
+<p><span class="math display">\[RV-=\frac{P(-|E)}{P(-|\overline{E})} = \frac{1-\mbox{Sensibilidad}}{\mbox{Especificidad}}.\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Interpretación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La razón de verosimilitud positiva puede interpretarse como el número de veces que un resultado positivo es más probable en personas con la enfermedad que en personas sin la enfermedad.</p>
+<p>Por otro lado, la razón de verosimilitud negativa puede interpretarse como el número de veces que un resultado negativo es más probable en personas con la enfermedad que en personas sin la enfermedad.</p>
+<p>Las probabilidades a posteriori pueden calculares a partir de las probabilidades a priori usando las razones de verosimilitud</p>
+<p><span class="math display">\[P(E|+) = \frac{P(E)P(+|E)}{P(E)P(+|E)+P(\overline{E})P(+|\overline{E})} = \frac{P(E)RV+}{1-P(E)+P(E)RV+}\]</span></p>
+<p>Así,</p>
+<ul>
+<li>Una razón de verosimilitud positiva mayor que 1 aumenta la probabilidad de la enfermedad.</li>
+<li>Una razón de verosimilitud positiva menor que 1 disminuye la probabilidad de la enfermedad.</li>
+<li>Una razón de verosimilitud 1 no cambia la probabilidad a priori de la de tener la enfermedad.</li>
+</ul>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/probabilidad/razon_verosimilitud.svg" class="img-fluid figure-img" width="500"></p>
+<figcaption>Razón de verosimilitud.</figcaption>
+</figure>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./04-relaciones-cualitativas.html" class="pagination-link  aria-label=" &lt;span="" entre="" variables="" cualitativas&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Relaciones entre variables cualitativas</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./08-estimacion.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>Estimación de parámetros poblacionales</span>">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

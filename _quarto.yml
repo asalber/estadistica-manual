@@ -41,11 +41,12 @@ book:
     - 01-introduccion.qmd
     - 02-estadistica-descriptiva.qmd
     - 03-regresion.qmd
-    - 04-probabilidad.qmd
+    - 04-relaciones-cualitativas.qmd
+    - 05-probabilidad.qmd
     # - 05-variables-aletaorias-discretas.qmd
     # - 06-variables-aleatorias-continuas.qmd
-    - 07-estimacion.qmd
-    - 08-contrastes-parametricos.qmd
+    - 08-estimacion.qmd
+    - 09-contrastes-parametricos.qmd
     
 #bibliography: references.bib
 
