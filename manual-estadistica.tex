@@ -51,6 +51,46 @@
   \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
@@ -941,7 +981,7 @@ estadístico y suele consistir en:
   (\emph{estadísticos muestrales}).
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, arc=.35mm, titlerule=0mm]
 
 No tiene poder inferencial, por lo que nunca deben sacarse conclusiones
 sobre la población a partir de las medidas resumen que aporta la
@@ -1166,7 +1206,7 @@ x_i & n_i & f_i \\
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 Obsérvese que en este caso las frecuencias acumuladas no tienen sentido
 al no existir un orden entre los valores de la variable.
@@ -1214,14 +1254,46 @@ barra.
 El diagrama de barras que aparece a continuación muestra la distribución
 de frecuencias absolutas del número de hijos en la muestra anterior.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"datos/hijos{-}coches.csv"}\NormalTok{)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Hijos)) }\SpecialCharTok{+} 
+    \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{fill=}\NormalTok{blueceu, }\AttributeTok{width =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/diagrama-barras-1.pdf}
 
 Y a continuación se muestra el polígono de frecuencias.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}}\NormalTok{ p }\SpecialCharTok{+}  
+    \FunctionTok{geom\_freqpoly}\NormalTok{(}\AttributeTok{bins=}\DecValTok{5}\NormalTok{, }\AttributeTok{col=}\NormalTok{redceu)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
 
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/poligono-frecuencias-absolutas-1.pdf}
 
 El diagrama de barras que aparece a continuación muestra la distribución
 de frecuencias relativas del número de hijos en la muestra anterior.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Hijos)) }\SpecialCharTok{+} 
+    \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ ..prop..), }\AttributeTok{fill=}\NormalTok{blueceu, }\AttributeTok{width =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia Relativa"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: The dot-dot notation (`..prop..`) was deprecated in ggplot2 3.4.0.
+i Please use `after_stat(prop)` instead.
+\end{verbatim}
 
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/diagrama-barras-relativas-1.pdf}
 
@@ -1229,16 +1301,49 @@ El diagrama de barras que aparece a continuación muestra la distribución
 de frecuencias absolutas acumuladas del número de hijos en la muestra
 anterior.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Hijos)) }\SpecialCharTok{+} 
+    \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =} \FunctionTok{cumsum}\NormalTok{(..count..)), }\AttributeTok{fill=}\NormalTok{blueceu, }\AttributeTok{width =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia acumulada"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/diagrama-barras-acumuladas-1.pdf}
 
 Y el diagrama de barras que aparece a continuación muestra la
 distribución de frecuencias relativas acumuladas del número de hijos en
 la muestra anterior.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Hijos)) }\SpecialCharTok{+} 
+    \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =} \FunctionTok{cumsum}\NormalTok{(..prop..)), }\AttributeTok{fill=}\NormalTok{blueceu, }\AttributeTok{width =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa acumulada"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/diagrama-barras-relativas-acumuladas-1.pdf}
 
 Finalmente, el último diagrama muestra el polígono de frecuencias
 relativas acumuladas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df.freq }\OtherTok{\textless{}{-}} \FunctionTok{count}\NormalTok{(df, Hijos) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{f =}\NormalTok{ n }\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(n), }\AttributeTok{N =} \FunctionTok{cumsum}\NormalTok{(n), }\AttributeTok{F =}\NormalTok{ N }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(n))}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{unlist}\NormalTok{(}\FunctionTok{lapply}\NormalTok{(df.freq}\SpecialCharTok{$}\NormalTok{Hijos, rep, }\DecValTok{2}\NormalTok{))}
+\NormalTok{F }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FunctionTok{head}\NormalTok{(}\FunctionTok{unlist}\NormalTok{(}\FunctionTok{lapply}\NormalTok{(df.freq}\SpecialCharTok{$}\NormalTok{F, rep, }\DecValTok{2}\NormalTok{)),}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{))}
+\NormalTok{df2 }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Hijos =}\NormalTok{ x, }\AttributeTok{F =}\NormalTok{ F)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Hijos)) }\SpecialCharTok{+} 
+    \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =} \FunctionTok{cumsum}\NormalTok{(..prop..)), }\AttributeTok{fill=}\NormalTok{blueceu, }\AttributeTok{width =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df2, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Hijos, }\AttributeTok{y=}\NormalTok{F, }\AttributeTok{group=}\DecValTok{1}\NormalTok{), }\AttributeTok{col=}\NormalTok{redceu) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa acumulada"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
 
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/poligono-relativas-acumuladas-1.pdf}
 
@@ -1267,10 +1372,31 @@ cada barra con segmentos.
 El siguiente histograma muestra la distribución de frecuencias absolutas
 de las estaturas.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"datos/estatura{-}peso.csv"}\NormalTok{)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Estatura)) }\SpecialCharTok{+} 
+    \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{150}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{10}\NormalTok{), }\AttributeTok{col=}\StringTok{"white"}\NormalTok{, }\AttributeTok{fill=}\NormalTok{blueceu) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/histograma-1.pdf}
 
 El siguiente histograma muestra la distribución de frecuencias relativas
 con el polígono de frecuencias.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{breaks }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{150}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Estatura)) }\SpecialCharTok{+} 
+    \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{breaks =}\NormalTok{ breaks, }\AttributeTok{col=}\StringTok{"white"}\NormalTok{, }\AttributeTok{fill=}\NormalTok{blueceu) }\SpecialCharTok{+}
+    \FunctionTok{geom\_freqpoly}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{col=}\NormalTok{redceu, }\AttributeTok{breaks =}\NormalTok{ breaks) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
 
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/histograma-frecuencias-relativas-1.pdf}
 
@@ -1283,6 +1409,22 @@ como \textbf{ojiva}.
 
 El histograma y la ojiva siguientes muestran la distribución de
 frecuencias relativas acumuladas de estaturas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{breaks }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{150}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Estatura)) }\SpecialCharTok{+} 
+    \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =} \FunctionTok{cumsum}\NormalTok{(..count..)}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(..count..)), }\AttributeTok{breaks =}\NormalTok{ breaks, }\AttributeTok{col=}\StringTok{"white"}\NormalTok{, }\AttributeTok{fill=}\NormalTok{blueceu) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa acumulada"}\NormalTok{)}
+\NormalTok{df.p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot\_build}\NormalTok{(p)}\SpecialCharTok{$}\NormalTok{data[[}\DecValTok{1}\NormalTok{]]}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(df.p}\SpecialCharTok{$}\NormalTok{xmin[}\DecValTok{1}\NormalTok{], df.p}\SpecialCharTok{$}\NormalTok{xmax)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, df.p}\SpecialCharTok{$}\NormalTok{ymax)}
+\NormalTok{df2 }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(x, y)}
+\NormalTok{p }\OtherTok{\textless{}{-}}\NormalTok{ p }\SpecialCharTok{+}
+    \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df2, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y, }\AttributeTok{group =} \DecValTok{1}\NormalTok{), }\AttributeTok{col=}\NormalTok{redceu)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
 
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/histograma-frecuencias-relativas-acumuladas-1.pdf}
 
@@ -1312,6 +1454,18 @@ que en dos dimensiones (áreas de los sectores).
 El diagrama de sectores siguiente muestra la distribución de frecuencias
 relativas de los grupos sanguíneos.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"datos/grupo{-}sanguineo.csv"}\NormalTok{)}
+\NormalTok{tab }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(df[[}\StringTok{"Grupo.Sanguineo.Hijo"}\NormalTok{]])}
+\NormalTok{labels }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(tab)}
+\NormalTok{pctg }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(tab}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(tab)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{labels }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(labels, pctg) }\CommentTok{\# add percents to labels }
+\NormalTok{labels }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(labels,}\StringTok{"\%"}\NormalTok{,}\AttributeTok{sep=}\StringTok{""}\NormalTok{) }\CommentTok{\# ad \% to labels }
+\FunctionTok{pie}\NormalTok{(tab, }\AttributeTok{main=}\StringTok{"Distribución de los grupos sanguineos"}\NormalTok{, }\AttributeTok{labels=}\NormalTok{labels, }\AttributeTok{col=}\FunctionTok{c}\NormalTok{(greenceu, redceu, mygreen, blueceu))}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/diagrama-sectores-1.pdf}
 
 \end{example}
@@ -1326,6 +1480,21 @@ familiares]\protect\hypertarget{exm-distribucion-ingresos-familiares}{}\label{ex
 
 ~
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{income }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{2500}\NormalTok{,}\DecValTok{207500}\NormalTok{,}\DecValTok{5000}\NormalTok{)}\SpecialCharTok{/}\DecValTok{1000}
+\NormalTok{counts }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{4235}\NormalTok{, }\DecValTok{4071}\NormalTok{, }\DecValTok{6324}\NormalTok{, }\DecValTok{6470}\NormalTok{, }\DecValTok{6765}\NormalTok{, }\DecValTok{6222}\NormalTok{, }\DecValTok{6354}\NormalTok{, }\DecValTok{5743}\NormalTok{, }\DecValTok{5203}\NormalTok{, }\DecValTok{5002}\NormalTok{, }\DecValTok{5078}\NormalTok{, }\DecValTok{4140}\NormalTok{, }\DecValTok{4367}\NormalTok{, }\DecValTok{3733}\NormalTok{, }\DecValTok{3683}\NormalTok{, }\DecValTok{3650}\NormalTok{, }\DecValTok{3354}\NormalTok{, }\DecValTok{2893}\NormalTok{, }\DecValTok{2850}\NormalTok{, }\DecValTok{2452}\NormalTok{, }\DecValTok{2792}\NormalTok{, }\DecValTok{2232}\NormalTok{, }\DecValTok{2158}\NormalTok{, }\DecValTok{1748}\NormalTok{, }\DecValTok{1987}\NormalTok{, }\DecValTok{1675}\NormalTok{, }\DecValTok{1474}\NormalTok{, }\DecValTok{1380}\NormalTok{, }\DecValTok{1220}\NormalTok{, }\DecValTok{1111}\NormalTok{, }\DecValTok{1313}\NormalTok{, }\DecValTok{1017}\NormalTok{, }\DecValTok{993}\NormalTok{, }\DecValTok{761}\NormalTok{, }\DecValTok{822}\NormalTok{, }\DecValTok{700}\NormalTok{, }\DecValTok{677}\NormalTok{, }\DecValTok{536}\NormalTok{, }\DecValTok{561}\NormalTok{, }\DecValTok{431}\NormalTok{, }\DecValTok{314}\NormalTok{, }\DecValTok{215}\NormalTok{)}
+\NormalTok{breaks }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{210000}\NormalTok{,}\DecValTok{5000}\NormalTok{)}\SpecialCharTok{/}\DecValTok{1000}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Ingresos =} \FunctionTok{rep}\NormalTok{(income, counts))}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Ingresos)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{breaks =}\NormalTok{ breaks, }\AttributeTok{col =} \StringTok{"white"}\NormalTok{, }\AttributeTok{fill =}\NormalTok{ blueceu) }\SpecialCharTok{+}
+    \FunctionTok{xlab}\NormalTok{(}\StringTok{"Ingresos anuales (miles de $)"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Distribución de ingresos familiares en USA"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/histograma-ingresos-familiares-1.pdf}
 
 \end{example}
@@ -1334,6 +1503,20 @@ familiares]\protect\hypertarget{exm-distribucion-ingresos-familiares}{}\label{ex
 fallecimiento]\protect\hypertarget{exm-distribucion-edad-fallecimiento}{}\label{exm-distribucion-edad-fallecimiento}
 
 ~
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{counts }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{65}\NormalTok{, }\DecValTok{116}\NormalTok{, }\DecValTok{69}\NormalTok{, }\DecValTok{78}\NormalTok{, }\DecValTok{319}\NormalTok{, }\DecValTok{501}\NormalTok{, }\DecValTok{633}\NormalTok{, }\DecValTok{655}\NormalTok{, }\DecValTok{848}\NormalTok{, }\DecValTok{1226}\NormalTok{, }\DecValTok{1633}\NormalTok{, }\DecValTok{2459}\NormalTok{, }\DecValTok{3375}\NormalTok{, }\DecValTok{4669}\NormalTok{, }\DecValTok{6152}\NormalTok{, }\DecValTok{7436}\NormalTok{, }\DecValTok{9526}\NormalTok{, }\DecValTok{12619}\NormalTok{, }\DecValTok{12455}\NormalTok{, }\DecValTok{7113}\NormalTok{, }\DecValTok{2104}\NormalTok{)}
+\NormalTok{breaks }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{,}\DecValTok{5}\NormalTok{)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Edad =} \FunctionTok{rep}\NormalTok{(breaks, counts))}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Edad)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{breaks =}\NormalTok{ breaks, }\AttributeTok{col =} \StringTok{"white"}\NormalTok{, }\AttributeTok{fill =}\NormalTok{ blueceu) }\SpecialCharTok{+}
+    \FunctionTok{xlab}\NormalTok{(}\StringTok{"Edad de fallecimiento"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Distribución de la edad de fallecimiento de hombres australianos."}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
 
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/histograma-edad-fallecimiento-1.pdf}
 
@@ -1344,6 +1527,21 @@ metro]\protect\hypertarget{exm-distribucion-tiempo-espera-metro}{}\label{exm-dis
 
 ~
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{time }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\AttributeTok{min =} \DecValTok{0}\NormalTok{, }\AttributeTok{max =} \DecValTok{15}\NormalTok{)}
+\NormalTok{breaks }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Tiempo =}\NormalTok{ time)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Tiempo)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{breaks =}\NormalTok{ breaks, }\AttributeTok{col =} \StringTok{"white"}\NormalTok{, }\AttributeTok{fill =}\NormalTok{ blueceu) }\SpecialCharTok{+}
+    \FunctionTok{xlab}\NormalTok{(}\StringTok{"Tiempo de espera (min)"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Distribución del tiempo de espera del metro."}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/histograma-tiempo-espera-metro-1.pdf}
 
 \end{example}
@@ -1352,6 +1550,21 @@ metro]\protect\hypertarget{exm-distribucion-tiempo-espera-metro}{}\label{exm-dis
 restaurante]\protect\hypertarget{exm-distribucion-llegada-clientes-restaurantes}{}\label{exm-distribucion-llegada-clientes-restaurantes}
 
 ~
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{counts }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{35}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{48}\NormalTok{, }\DecValTok{75}\NormalTok{, }\DecValTok{67}\NormalTok{, }\DecValTok{43}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{21}\NormalTok{, }\DecValTok{23}\NormalTok{, }\DecValTok{47}\NormalTok{, }\DecValTok{63}\NormalTok{, }\DecValTok{44}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{15}\NormalTok{)}
+\NormalTok{breaks }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FloatTok{8.5}\NormalTok{,}\FloatTok{23.5}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Tiempo =} \FunctionTok{rep}\NormalTok{(breaks, counts))}
+\NormalTok{breaks }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{8}\NormalTok{,}\DecValTok{24}\NormalTok{)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Tiempo)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{breaks =}\NormalTok{ breaks, }\AttributeTok{col =} \StringTok{"white"}\NormalTok{, }\AttributeTok{fill =}\NormalTok{ blueceu) }\SpecialCharTok{+}
+    \FunctionTok{xlab}\NormalTok{(}\StringTok{"Tiempo"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Distribución del tiempo de llegada de clientes a un restaurante"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
 
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/histograma-tiempo-llegada-restaurante-1.pdf}
 
@@ -1365,6 +1578,20 @@ hombres]\protect\hypertarget{exm-distribucion-peso-hombres}{}\label{exm-distribu
 
 ~
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Peso =} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\AttributeTok{mean =} \DecValTok{88}\NormalTok{, }\AttributeTok{sd =} \DecValTok{12}\NormalTok{))}
+\NormalTok{breaks }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{140}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Peso)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{breaks =}\NormalTok{ breaks, }\AttributeTok{col =} \StringTok{"white"}\NormalTok{, }\AttributeTok{fill =}\NormalTok{ blueceu) }\SpecialCharTok{+}
+    \FunctionTok{xlab}\NormalTok{(}\StringTok{"Peso (kg)"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Distribución del peso de los hombres"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/histograma-peso-hombres-1.pdf}
 
 \end{example}
@@ -1373,6 +1600,20 @@ hombres]\protect\hypertarget{exm-distribucion-peso-hombres}{}\label{exm-distribu
 mujeres]\protect\hypertarget{exm-distribucion-estatura-mujeres}{}\label{exm-distribucion-estatura-mujeres}
 
 ~
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Estatura =} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\AttributeTok{mean =} \DecValTok{164}\NormalTok{, }\AttributeTok{sd =} \DecValTok{8}\NormalTok{))}
+\NormalTok{breaks }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{130}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Estatura)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{breaks =}\NormalTok{ breaks, }\AttributeTok{col =} \StringTok{"white"}\NormalTok{, }\AttributeTok{fill =}\NormalTok{ blueceu) }\SpecialCharTok{+}
+    \FunctionTok{xlab}\NormalTok{(}\StringTok{"Estatura (cm)"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Distribución de la estatura de las mujeres"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
 
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/histograma-estatura-mujeres-1.pdf}
 
@@ -1383,6 +1624,23 @@ sexo]\protect\hypertarget{exm-distribucion-estaturas-sexo}{}\label{exm-distribuc
 
 ~
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{10000}
+\NormalTok{mujeres }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\AttributeTok{mean =} \DecValTok{164}\NormalTok{, }\AttributeTok{sd =} \DecValTok{8}\NormalTok{)}
+\NormalTok{hombres }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\AttributeTok{mean =} \DecValTok{175}\NormalTok{, }\AttributeTok{sd =} \DecValTok{9}\NormalTok{)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Estatura =} \FunctionTok{c}\NormalTok{(mujeres, hombres), }\AttributeTok{Sexo =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{"Mujer"}\NormalTok{,n), }\FunctionTok{rep}\NormalTok{(}\StringTok{"Hombre"}\NormalTok{, n)))}
+\NormalTok{breaks }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{130}\NormalTok{, }\DecValTok{210}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Estatura, }\AttributeTok{fill =}\NormalTok{ Sexo)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{breaks =}\NormalTok{ breaks, }\AttributeTok{position =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{col =} \StringTok{"white"}\NormalTok{, }\AttributeTok{alpha=}\FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{xlab}\NormalTok{(}\StringTok{"Estatura (cm)"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Distribución de estaturas según sexo"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/histograma-estatura-sexo-1.pdf}
 
 \end{example}
@@ -1391,6 +1649,17 @@ sexo]\protect\hypertarget{exm-distribucion-estaturas-sexo}{}\label{exm-distribuc
 mujeres]\protect\hypertarget{exm-distribucion-estaturas-ambos-sexos}{}\label{exm-distribucion-estaturas-ambos-sexos}
 
 ~
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Estatura)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{breaks =}\NormalTok{ breaks, }\AttributeTok{col =} \StringTok{"white"}\NormalTok{, }\AttributeTok{fill =}\NormalTok{ blueceu) }\SpecialCharTok{+}
+    \FunctionTok{xlab}\NormalTok{(}\StringTok{"Estatura (cm)"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Distribución de estaturas de hombres y mujeres"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
 
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/histograma-estatura-ambos-sexo-1.pdf}
 
@@ -1401,6 +1670,20 @@ colesterol]\protect\hypertarget{exm-distribucion-colesterol}{}\label{exm-distrib
 
 ~
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Colesterol =} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\AttributeTok{mean =} \DecValTok{192}\NormalTok{, }\AttributeTok{sd =} \DecValTok{18}\NormalTok{))}
+\NormalTok{breaks }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{120}\NormalTok{, }\DecValTok{265}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Colesterol)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{breaks =}\NormalTok{ breaks, }\AttributeTok{col =} \StringTok{"white"}\NormalTok{, }\AttributeTok{fill =}\NormalTok{ blueceu) }\SpecialCharTok{+}
+    \FunctionTok{xlab}\NormalTok{(}\StringTok{"Colesterol (mg/dl)"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Distribución del colesterol"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/histograma-colesterol-1.pdf}
 
 \end{example}
@@ -1409,6 +1692,20 @@ colesterol]\protect\hypertarget{exm-distribucion-colesterol}{}\label{exm-distrib
 notas]\protect\hypertarget{exm-distribucion-notas}{}\label{exm-distribucion-notas}
 
 ~
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Nota =} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\AttributeTok{mean =} \FloatTok{5.5}\NormalTok{, }\AttributeTok{sd =} \FloatTok{1.4}\NormalTok{))}
+\NormalTok{breaks }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{, }\FloatTok{0.5}\NormalTok{)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Nota)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ ..density..), }\AttributeTok{breaks =}\NormalTok{ breaks, }\AttributeTok{col =} \StringTok{"white"}\NormalTok{, }\AttributeTok{fill =}\NormalTok{ blueceu) }\SpecialCharTok{+}
+    \FunctionTok{xlab}\NormalTok{(}\StringTok{"Nota"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Frecuencia relativa"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Distribución de notas de Estadística"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
 
 \includegraphics{02-estadistica-descriptiva_files/figure-pdf/histograma-notas-1.pdf}
 
@@ -1543,7 +1840,7 @@ A partir de la tabla de frecuencias puede calcularse con la fórmula
 En la mayoría de los casos, la media aritmética es la medida que mejor
 representa a la muestra.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 No puede calcularse para variables cualitativas.
 
@@ -1700,7 +1997,7 @@ es decir, hay el mismo número de valores por debajo y por encima de la
 mediana. Por tanto, tiene frecuencias acumuladas \(N_{Me}= n/2\) y
 \(F_{Me}= 0.5\).
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 No puede calcularse para variables nominales.
 
@@ -1780,7 +2077,7 @@ resolviendo la ecuación se tiene la siguiente fórmula para calcular la
 mediana
 
 \[
-Me=l_i+\frac{0.5-F_{i-1}}{F_i-F_{i-1}}(l_i-l_{i-1})=l_i+\frac{0.5-F_{i-1}}{f_i}a_i
+Me=l_{i-1}+\frac{0.5-F_{i-1}}{F_i-F_{i-1}}(l_i-l_{i-1})=l_{i-1}+\frac{0.5-F_{i-1}}{f_i}a_i
 \]
 
 \begin{example}[Datos
@@ -1914,7 +2211,7 @@ siguiente orden:
   calcularla sólo se tienen en cuenta las frecuencias absolutas.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 Hay que tener cuidado con los datos atípicos, ya que la media puede
 distorsionarse cuando hay datos atípicos. En tal caso es mejor utilizar
@@ -2165,7 +2462,7 @@ siguientes pasos:
   superior.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 Los bigotes no son las vallas.
 
@@ -2272,7 +2569,7 @@ como la raíz cuadrada positiva de su varianza muestral.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-tip-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, arc=.35mm, titlerule=0mm]
 
 Tanto la varianza como la desviación típica sirven para cuantificar la
 dispersión de los datos en torno a la media. Cuando la varianza o la
@@ -2399,7 +2696,7 @@ absoluto de su media muestral.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-tip-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, arc=.35mm, titlerule=0mm]
 
 El coeficiente de variación muestral mide la dispersión relativa de los
 valores de la muestra en torno a la media muestral.
@@ -2462,7 +2759,7 @@ cubo.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-tip-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, arc=.35mm, titlerule=0mm]
 
 Mide el grado de simetría de los valores de la muestra con respecto a la
 media muestra, es decir, cuantos valores de la muestra están por encima
@@ -2568,7 +2865,7 @@ típica a la cuarta y al resultado se le resta 3.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-tip-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, arc=.35mm, titlerule=0mm]
 
 El coeficiente de apuntamiento mide la concentración de valores en torno
 a la media y la longitud de las colas de la distribución. Se toma como
@@ -2664,7 +2961,7 @@ mesocúrticas, de manera que, tanto el coeficiente de asimetría como el
 de apuntamiento pueden utilizarse para contrastar si los datos de la
 muestra provienen de una población normal.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-tip-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, arc=.35mm, titlerule=0mm]
 
 En general, se suele rechazar la hipótesis de normalidad de la población
 cuando \(g_1\) o \(g_2\) estén fuera del intervalo \([-2,2]\).
@@ -2780,7 +3077,7 @@ cambia de signo si \(b\) es negativo.
 
 \end{theorem}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, arc=.35mm, titlerule=0mm]
 
 Se deja como ejercicio.
 
@@ -2808,7 +3105,7 @@ valor que resulta de aplicarle la transformación de tipificación
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-tip-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, arc=.35mm, titlerule=0mm]
 
 La puntuación típica es el número de desviaciones típicas que un valor
 está por encima o por debajo de la media, y es útil para evitar la
@@ -2823,7 +3120,7 @@ Dada una variable muetral \(X\), si \(Z\) es la variable tipificada de
 
 \[\bar z = 0 \qquad s_{z} = 1.\]
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, arc=.35mm, titlerule=0mm]
 
 Se deja como ejercicio.
 
@@ -3051,7 +3348,7 @@ muestra se define
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 Para las variables bidimensionales no tienen sentido las frecuencias
 acumuladas.
@@ -3151,7 +3448,7 @@ de estaturas y pesos de la muestra anterior.
 
 \end{example}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, arc=.35mm, titlerule=0mm]
 
 El diagrama de dispersión da información visual sobre el tipo de
 relación entre las variables.
@@ -3322,7 +3619,7 @@ También puede calcularse de manera más sencilla mediante la fórmula
 
 \[s_{xy}=\frac{\sum x_iy_jn_{ij}}{n}-\bar x\bar y.\]
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, arc=.35mm, titlerule=0mm]
 
 La covarianza sirve para estudiar la relación lineal entre dos
 variables:
@@ -3506,7 +3803,7 @@ es
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 Como la varianza residual puede tomar valores entre 0 y \(s_y^2\), se
 tiene que
@@ -3515,7 +3812,7 @@ tiene que
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, arc=.35mm, titlerule=0mm]
 
 Cuanto mayor sea \(r^2\), mejor explicará el modelo de regresión la
 relación entre las variables, en particular:
@@ -3531,7 +3828,7 @@ relación entre las variables, en particular:
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 En el caso de las rectas de regresión, el coeficiente de determinación
 puede calcularse con esta fórmula
@@ -3540,7 +3837,7 @@ puede calcularse con esta fórmula
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, arc=.35mm, titlerule=0mm]
 
 \begin{proof}
 Cuando el modelo ajustado es la recta de regresión la varianza residual
@@ -3606,7 +3903,7 @@ r = \sqrt{r^2} = \dfrac{s_{xy}}{s_xs_y}.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 Como \(r^2\) toma valores entre 0 y 1, \(r\) tomará valores entre -1 y
 1,
@@ -3615,7 +3912,7 @@ Como \(r^2\) toma valores entre 0 y 1, \(r\) tomará valores entre -1 y
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, arc=.35mm, titlerule=0mm]
 
 El coeficiente de correlación lineal no sólo mide mide el grado de
 dependencia lineal sino también su dirección (creciente o decreciente):
@@ -3693,7 +3990,7 @@ influyen en la fiabilidad de las predicciones de un modelo de regresión:
   consecuencia, más fiables serán las predicciones.
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 Además, hay que tener en cuenta que un modelo de regresión es válido
 únicamente para el rango de valores observados en la muestra. Fuera de
@@ -3857,7 +4154,7 @@ independencia}\label{la-falta-de-ajuste-no-significa-independencia}
 Es importante señalar que cada modelo de regresión tiene su propio
 coeficiente de determinación.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 Así, un coeficiente de determinación cercano a cero significa que no
 existe relación entre las variables del tipo planteado por el modelo,
@@ -3904,7 +4201,7 @@ atípicos para cada variable por separado.
 
 \end{figure}%
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 Los datos atípicos en regresión suelen provocar cambios drásticos en el
 ajuste de los modelos de regresión, y por tanto, habrá que tener mucho
@@ -4022,7 +4319,7 @@ valor ordinal de \(Y\) del individuo \(i\).
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-important-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-important-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-important-color!10!white, opacityback=0, colframe=quarto-callout-important-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, arc=.35mm, titlerule=0mm]
 
 Como el coeficiente de correlación de Spearman es en el fondo el
 coeficiente de correlación lineal aplicado a los órdenes, se tiene que
@@ -4031,7 +4328,7 @@ coeficiente de correlación lineal aplicado a los órdenes, se tiene que
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, arc=.35mm, titlerule=0mm]
 
 \begin{itemize}
 \tightlist
@@ -4208,7 +4505,7 @@ categorías de \(Y\).
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-important-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-important-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-important-color!10!white, opacityback=0, colframe=quarto-callout-important-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, arc=.35mm, titlerule=0mm]
 
 Por ser suma de cuadrados, se cumple que
 
@@ -4216,7 +4513,7 @@ Por ser suma de cuadrados, se cumple que
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, arc=.35mm, titlerule=0mm]
 
 \(\chi^2=0\) cuando los atributos son independientes, y crece a medida
 que aumenta la dependencia entre las variables.
@@ -4286,7 +4583,7 @@ Dada una muestra de tamaño \(n\) en la que se han medido dos atributos
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-important-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-important-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-important-color!10!white, opacityback=0, colframe=quarto-callout-important-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Importante}, arc=.35mm, titlerule=0mm]
 
 De la definición anterior se deduce que
 
@@ -4294,14 +4591,14 @@ De la definición anterior se deduce que
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, arc=.35mm, titlerule=0mm]
 
 \(C=0\) cuando las variables son independientes, y crece a medida que
 aumenta la relación.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 Aunque \(C\) nunca puede llegar a valer 1, se puede demostrar que para
 tablas de contingencia con \(k\) filas y \(k\) columnas, el valor máximo
@@ -4730,7 +5027,7 @@ restricciones:
   se conoce el número de casos posibles.
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-caution-color}{\faFire}\hspace{0.5em}{Precaución}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-caution-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-caution-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-caution-color!10!white, opacityback=0, colframe=quarto-callout-caution-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-caution-color}{\faFire}\hspace{0.5em}{Precaución}, arc=.35mm, titlerule=0mm]
 
 Esto no se cumple en muchos experimentos aleatorios reales.
 
@@ -4873,7 +5170,7 @@ cumple
 
 \end{theorem}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, arc=.35mm, titlerule=0mm]
 
 \begin{proof}
 \leavevmode
@@ -5268,7 +5565,7 @@ de un espacio muestral \(\Omega\), la probabilidad de cualquier suceso
 
 \end{theorem}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Demostración}, arc=.35mm, titlerule=0mm]
 
 \begin{proof}
 La demostración del teorema es sencilla, ya que al ser
@@ -5617,7 +5914,7 @@ grupo tratamiento y el grupo control.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, arc=.35mm, titlerule=0mm]
 
 El riesgo relativo compara el riesgo de desarrollar un suceso médico
 entre el grupo tratamiento y el grupo control.
@@ -5718,7 +6015,7 @@ entre los odds del sucesos de los grupos tratamiento y control.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, arc=.35mm, titlerule=0mm]
 
 El odds ratio compara los odds de un suceso médico entre el grupo
 tratamiento y control. La interpretación es similar a la del riesgo
@@ -6036,7 +6333,7 @@ resultado negativo en el test,
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, arc=.35mm, titlerule=0mm]
 
 Los valores predictivos positivo y negativo permiten confirmar o
 descartar la enfermedad, respectivamente, si alcanzan al menos el umbral
@@ -6114,7 +6411,7 @@ la enfermedad y personas sin la enfermedad, respectivamente.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, arc=.35mm, titlerule=0mm]
 
 La razón de verosimilitud positiva puede interpretarse como el número de
 veces que un resultado positivo es más probable en personas con la
@@ -8296,7 +8593,7 @@ El investigador jugaría el papel del fiscal, ya que su objetivo
 consistiría en intentar rechazar la hipótesis nula, es decir, demostrar
 culpabilidad del acusado.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 ¡Esta metodología siempre favorece a la hipótesis nula!
 
@@ -8555,7 +8852,7 @@ P(\mbox{Aceptar }H_0|H_1) \leq \beta.
 
 \end{definition}
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-warning-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Advertencia}, arc=.35mm, titlerule=0mm]
 
 En principio, puesto que esta metodología favorece a la hipótesis nula,
 el error del tipo I suele ser más grave que el error del tipo II, y por
@@ -8876,7 +9173,7 @@ contraste}\label{regla-de-decisiuxf3n-de-un-contraste}
 Una vez fijado el riesgo \(\alpha\), la regla de decisión para realizar
 un contraste también puede expresarse de la siguiente manera:
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, leftrule=.75mm, titlerule=0mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, opacitybacktitle=0.6, left=2mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, coltitle=black, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm, breakable, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Interpretación}, arc=.35mm, titlerule=0mm]
 
 \textbf{Regla de decisión}
 
@@ -9064,7 +9361,7 @@ Para realizar el contraste se tiene:
 \item
   \(\bar x = \frac{6.3+\cdots+5.2}{10}=\frac{58.1}{10}=5.81\) puntos.
 \item
-  \(\hat s^2 = \frac{(6.3-5.56)^2+\cdots+(5.2-5.56)^2}{9} = \frac{15.949}{9}=1.7721\)
+  \(\hat s^2 = \frac{(6.3-5.81)^2+\cdots+(5.2-5.81)^2}{9} = \frac{15.949}{9}=1.7721\)
   puntos\(^2\), y \(\hat s=1.3312\) puntos.
 \end{itemize}
 
@@ -9132,9 +9429,9 @@ z_\beta = \frac{z_{1-\alpha}\frac{\hat s}{\sqrt n}-\delta}{\frac{\hat s}{\sqrt n
 \begin{example}[]\protect\hypertarget{exm-tamaño-muestral-contraste-media}{}\label{exm-tamaño-muestral-contraste-media}
 
 Se ha visto en el ejemplo anterior que la potencia del contraste para
-detectar una diferencia en la nota media de 1 punto era del \(69.96\%\).
-Para aumentar la potencia del test hasta un \(90\%\), ¿cuántos alumnos
-habría que tomar en la muestra?
+detectar una diferencia en la nota media de 1 punto era del \(69.96%
+\)\%. Para aumentar la potencia del test hasta un \(90\)\%, ¿cuántos
+alumnos habría que tomar en la muestra?
 
 Como se desea una potencia \(1-\beta=0.9\), el riesgo \(\beta=0.1\) y
 mirando en la tabla de la normal estándar se puede comprobar que
@@ -9240,7 +9537,7 @@ Para realizar el contraste se tiene:
 \item
   \(\bar x = \frac{6.3+\cdots+5.2}{10}=\frac{58.1}{10}=5.81\) puntos.
 \item
-  \(\hat s^2 = \frac{(6.3-5.56)^2+\cdots+(5.2-5.56)^2}{9} = \frac{15.949}{9}=1.7721\)
+  \(\hat s^2 = \frac{(6.3-5.81)^2+\cdots+(5.2-5.81)^2}{9} = \frac{15.949}{9}=1.7721\)
   puntos\(^2\).
 \end{itemize}
 
@@ -9425,7 +9722,7 @@ Para realizar el contraste, se tiene
   \(\bar{X}_1 = \frac{4+\cdots +3}{10}=5.3\) puntos y
   \(\bar{X}_2=\frac{8+\cdots +7}{12}=6.75\) puntos.
 \item
-  \(S_1^2= \frac{(4^2+\cdots + 3^2}{10}-5.3^2=3.21\) puntos\(^2\) y
+  \(S_1^2= \frac{4^2+\cdots + 3^2}{10}-5.3^2=3.21\) puntos\(^2\) y
   \(S_2^2= \frac{8^2+\cdots +3^2}{12}-6.75^2=2.69\) puntos\(^2\).
 \item
   \(\hat{S}_p^2 = \frac{10\cdot 3.21+12\cdot 2.6875}{10+12-2}= 3.2175\)
@@ -9597,10 +9894,12 @@ central del límite, \(X_1\sim N(np_1,\sqrt{np_1(1-p_1)})\) y
 \textbf{Región de rechazo}: \(z\leq z_{\alpha/2}\) y
 \(z\geq z_{1-\alpha/2}\).
 
-:::\{\#exm-contraste-diferencia-proporciones\} Se quiere comparar los
-porcentajes de aprobados en dos grupos que han seguido metodologías
-distintas. En el primer grupo han aprobado 24 alumnos de un total de 40,
-mientras que en el segundo han aprobado 48 de 60.
+\begin{example}[]\protect\hypertarget{exm-contraste-diferencia-proporciones}{}\label{exm-contraste-diferencia-proporciones}
+
+Se quiere comparar los porcentajes de aprobados en dos grupos que han
+seguido metodologías distintas. En el primer grupo han aprobado 24
+alumnos de un total de 40, mientras que en el segundo han aprobado 48 de
+60.
 
 El contraste que se plantea es
 
@@ -9623,6 +9922,8 @@ Z = \frac{\hat{p}_1-\hat{p_2}}{\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_
 y el \(p\)-valor del contraste es \(2P(Z\leq -2.1483)= 0.0317\), de
 manera que se rechaza la hipótesis nula para \(\alpha=0.05\) y se
 concluye que hay diferencias.
+
+\end{example}
 
 \section{Realización de contrastes mediante intervalos de
 confianza}\label{realizaciuxf3n-de-contrastes-mediante-intervalos-de-confianza}

@@ -534,7 +534,7 @@ $$H_0: \mu=5 \quad H_1: \mu>5$$
 Para realizar el contraste se tiene:
 
 - $\bar x = \frac{6.3+\cdots+5.2}{10}=\frac{58.1}{10}=5.81$ puntos.
-- $\hat s^2 = \frac{(6.3-5.56)^2+\cdots+(5.2-5.56)^2}{9} = \frac{15.949}{9}=1.7721$ puntos$^2$, y $\hat s=1.3312$ puntos.
+- $\hat s^2 = \frac{(6.3-5.81)^2+\cdots+(5.2-5.81)^2}{9} = \frac{15.949}{9}=1.7721$ puntos$^2$, y $\hat s=1.3312$ puntos.
 
 Y el estadístico del contraste vale
 
@@ -589,8 +589,8 @@ z_\beta = \frac{z_{1-\alpha}\frac{\hat s}{\sqrt n}-\delta}{\frac{\hat s}{\sqrt n
 $$
 
 :::{#exm-tamaño-muestral-contraste-media}
-Se ha visto en el ejemplo anterior que la potencia del contraste para detectar una diferencia en la nota media de 1 punto era del $69.96\%$.
-Para aumentar la potencia del test hasta un $90\%$, ¿cuántos alumnos habría que tomar en la muestra?
+Se ha visto en el ejemplo anterior que la potencia del contraste para detectar una diferencia en la nota media de 1 punto era del $69.96%$%.
+Para aumentar la potencia del test hasta un $90$%, ¿cuántos alumnos habría que tomar en la muestra?
 
 Como se desea una potencia $1-\beta=0.9$, el riesgo $\beta=0.1$ y mirando en la tabla de la normal estándar se puede comprobar que $z_\beta = z_{0.1}=1.2816$.
 
@@ -667,7 +667,7 @@ $$
 Para realizar el contraste se tiene:
 
 - $\bar x = \frac{6.3+\cdots+5.2}{10}=\frac{58.1}{10}=5.81$ puntos.
-- $\hat s^2 = \frac{(6.3-5.56)^2+\cdots+(5.2-5.56)^2}{9} = \frac{15.949}{9}=1.7721$ puntos$^2$.
+- $\hat s^2 = \frac{(6.3-5.81)^2+\cdots+(5.2-5.81)^2}{9} = \frac{15.949}{9}=1.7721$ puntos$^2$.
 
 El estadístico del contraste vale
 
@@ -802,7 +802,7 @@ $$
 Para realizar el contraste, se tiene
 
 - $\bar{X}_1 = \frac{4+\cdots +3}{10}=5.3$ puntos y $\bar{X}_2=\frac{8+\cdots +7}{12}=6.75$ puntos.
-- $S_1^2= \frac{(4^2+\cdots + 3^2}{10}-5.3^2=3.21$ puntos$^2$ y $S_2^2= \frac{8^2+\cdots +3^2}{12}-6.75^2=2.69$ puntos$^2$.
+- $S_1^2= \frac{4^2+\cdots + 3^2}{10}-5.3^2=3.21$ puntos$^2$ y $S_2^2= \frac{8^2+\cdots +3^2}{12}-6.75^2=2.69$ puntos$^2$.
 - $\hat{S}_p^2 = \frac{10\cdot 3.21+12\cdot 2.6875}{10+12-2}= 3.2175$ puntos$^2$, y $\hat S_p=1.7937$.
 
 Si se suponen varianzas iguales, el estadístico del contraste vale
@@ -944,6 +944,7 @@ Z = \frac{\hat{p}_1-\hat{p_2}}{\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_
 $$
 
 y el $p$-valor del contraste es $2P(Z\leq -2.1483)= 0.0317$, de manera que se rechaza la hipótesis nula para $\alpha=0.05$ y se concluye que hay diferencias.
+:::
 
 ## Realización de contrastes mediante intervalos de confianza
 

@@ -763,7 +763,7 @@ Con datos agrupados la mediana se calcula interpolando en el polígono de frecue
 Ambas expresiones son iguales ya que el ángulo $\alpha$ es el mismo, y resolviendo la ecuación se tiene la siguiente fórmula para calcular la mediana
 
 $$
-Me=l_i+\frac{0.5-F_{i-1}}{F_i-F_{i-1}}(l_i-l_{i-1})=l_i+\frac{0.5-F_{i-1}}{f_i}a_i
+Me=l_{i-1}+\frac{0.5-F_{i-1}}{F_i-F_{i-1}}(l_i-l_{i-1})=l_{i-1}+\frac{0.5-F_{i-1}}{f_i}a_i
 $$
 
 :::{#exm-mediana-datos-agrupados}

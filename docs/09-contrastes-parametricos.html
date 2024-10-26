@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.5.0">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -796,7 +796,7 @@ H_1 &amp;: \mu\neq \mu_0\end{align*}\]</span></p>
 <p>Para realizar el contraste se tiene:</p>
 <ul>
 <li><span class="math inline">\(\bar x = \frac{6.3+\cdots+5.2}{10}=\frac{58.1}{10}=5.81\)</span> puntos.</li>
-<li><span class="math inline">\(\hat s^2 = \frac{(6.3-5.56)^2+\cdots+(5.2-5.56)^2}{9} = \frac{15.949}{9}=1.7721\)</span> puntos<span class="math inline">\(^2\)</span>, y <span class="math inline">\(\hat s=1.3312\)</span> puntos.</li>
+<li><span class="math inline">\(\hat s^2 = \frac{(6.3-5.81)^2+\cdots+(5.2-5.81)^2}{9} = \frac{15.949}{9}=1.7721\)</span> puntos<span class="math inline">\(^2\)</span>, y <span class="math inline">\(\hat s=1.3312\)</span> puntos.</li>
 </ul>
 <p>Y el estadístico del contraste vale</p>
 <p><span class="math display">\[
@@ -834,7 +834,7 @@ T=\frac{\bar x-\mu_0}{\hat s/\sqrt{n}} \geq t^{n-1}_{1-\alpha} \approx z_{1-\alp
 z_\beta = \frac{z_{1-\alpha}\frac{\hat s}{\sqrt n}-\delta}{\frac{\hat s}{\sqrt n}} \Leftrightarrow \delta = (z_{1-\alpha}-z_\beta)\frac{\hat s}{\sqrt n} \Leftrightarrow n = (z_{1-\alpha}-z_\beta)^2\frac{\hat s^2}{\delta^2} = (z_\alpha+z_\beta)^2\frac{\hat s^2}{\delta^2}.
 \]</span></p>
 <div id="exm-tamaño-muestral-contraste-media" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 7.12</strong></span> Se ha visto en el ejemplo anterior que la potencia del contraste para detectar una diferencia en la nota media de 1 punto era del <span class="math inline">\(69.96\%\)</span>. Para aumentar la potencia del test hasta un <span class="math inline">\(90\%\)</span>, ¿cuántos alumnos habría que tomar en la muestra?</p>
+<p><span class="theorem-title"><strong>Ejemplo 7.12</strong></span> Se ha visto en el ejemplo anterior que la potencia del contraste para detectar una diferencia en la nota media de 1 punto era del <span class="math inline">\(69.96%\)</span>%. Para aumentar la potencia del test hasta un <span class="math inline">\(90\)</span>%, ¿cuántos alumnos habría que tomar en la muestra?</p>
 <p>Como se desea una potencia <span class="math inline">\(1-\beta=0.9\)</span>, el riesgo <span class="math inline">\(\beta=0.1\)</span> y mirando en la tabla de la normal estándar se puede comprobar que <span class="math inline">\(z_\beta = z_{0.1}=1.2816\)</span>.</p>
 <p>Aplicando la fórmula anterior para determinar el tamaño muestral necesario, se tiene</p>
 <p><span class="math display">\[
@@ -894,7 +894,7 @@ H_0: \sigma=1 \quad H_1: \sigma&gt;1
 <p>Para realizar el contraste se tiene:</p>
 <ul>
 <li><span class="math inline">\(\bar x = \frac{6.3+\cdots+5.2}{10}=\frac{58.1}{10}=5.81\)</span> puntos.</li>
-<li><span class="math inline">\(\hat s^2 = \frac{(6.3-5.56)^2+\cdots+(5.2-5.56)^2}{9} = \frac{15.949}{9}=1.7721\)</span> puntos<span class="math inline">\(^2\)</span>.</li>
+<li><span class="math inline">\(\hat s^2 = \frac{(6.3-5.81)^2+\cdots+(5.2-5.81)^2}{9} = \frac{15.949}{9}=1.7721\)</span> puntos<span class="math inline">\(^2\)</span>.</li>
 </ul>
 <p>El estadístico del contraste vale</p>
 <p><span class="math display">\[
@@ -1001,7 +1001,7 @@ H_0: \mu_1=\mu_2\qquad H_1: \mu_1\neq \mu_2
 <p>Para realizar el contraste, se tiene</p>
 <ul>
 <li><span class="math inline">\(\bar{X}_1 = \frac{4+\cdots +3}{10}=5.3\)</span> puntos y <span class="math inline">\(\bar{X}_2=\frac{8+\cdots +7}{12}=6.75\)</span> puntos.</li>
-<li><span class="math inline">\(S_1^2= \frac{(4^2+\cdots + 3^2}{10}-5.3^2=3.21\)</span> puntos<span class="math inline">\(^2\)</span> y <span class="math inline">\(S_2^2= \frac{8^2+\cdots +3^2}{12}-6.75^2=2.69\)</span> puntos<span class="math inline">\(^2\)</span>.</li>
+<li><span class="math inline">\(S_1^2= \frac{4^2+\cdots + 3^2}{10}-5.3^2=3.21\)</span> puntos<span class="math inline">\(^2\)</span> y <span class="math inline">\(S_2^2= \frac{8^2+\cdots +3^2}{12}-6.75^2=2.69\)</span> puntos<span class="math inline">\(^2\)</span>.</li>
 <li><span class="math inline">\(\hat{S}_p^2 = \frac{10\cdot 3.21+12\cdot 2.6875}{10+12-2}= 3.2175\)</span> puntos<span class="math inline">\(^2\)</span>, y <span class="math inline">\(\hat S_p=1.7937\)</span>.</li>
 </ul>
 <p>Si se suponen varianzas iguales, el estadístico del contraste vale</p>
@@ -1098,7 +1098,8 @@ H_0: p_1=p_2\qquad H_1: p_1\neq p_2
 \]</span></p>
 <p><strong>Región de aceptación</strong>: <span class="math inline">\(z_{\alpha/2}&lt; Z &lt; z_{1-\alpha/2}\)</span>.<br>
 <strong>Región de rechazo</strong>: <span class="math inline">\(z\leq z_{\alpha/2}\)</span> y <span class="math inline">\(z\geq z_{1-\alpha/2}\)</span>.</p>
-<p>:::{#exm-contraste-diferencia-proporciones} Se quiere comparar los porcentajes de aprobados en dos grupos que han seguido metodologías distintas. En el primer grupo han aprobado 24 alumnos de un total de 40, mientras que en el segundo han aprobado 48 de 60.</p>
+<div id="exm-contraste-diferencia-proporciones" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 7.17</strong></span> Se quiere comparar los porcentajes de aprobados en dos grupos que han seguido metodologías distintas. En el primer grupo han aprobado 24 alumnos de un total de 40, mientras que en el segundo han aprobado 48 de 60.</p>
 <p>El contraste que se plantea es</p>
 <p><span class="math display">\[
 H_0: p_1=p_2\qquad H_1: p_1\neq p_2
@@ -1108,6 +1109,7 @@ H_0: p_1=p_2\qquad H_1: p_1\neq p_2
 Z = \frac{\hat{p}_1-\hat{p_2}}{\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}} = \frac{0.6-0.8}{\sqrt{\frac{0.6(1-0.6)}{40}+\frac{0.8(1-0.8)}{60}}} = -2.1483,
 \]</span></p>
 <p>y el <span class="math inline">\(p\)</span>-valor del contraste es <span class="math inline">\(2P(Z\leq -2.1483)= 0.0317\)</span>, de manera que se rechaza la hipótesis nula para <span class="math inline">\(\alpha=0.05\)</span> y se concluye que hay diferencias.</p>
+</div>
 </section>
 <section id="realización-de-contrastes-mediante-intervalos-de-confianza" class="level2" data-number="7.15">
 <h2 data-number="7.15" class="anchored" data-anchor-id="realización-de-contrastes-mediante-intervalos-de-confianza"><span class="header-section-number">7.15</span> Realización de contrastes mediante intervalos de confianza</h2>
@@ -1149,7 +1151,7 @@ H_0: \theta=\theta_0\qquad H_1: \theta\neq \theta_0
 </tbody>
 </table>
 <div id="exm-contraste-mediante-intervalos-confianza" class="theorem example">
-<p><span class="theorem-title"><strong>Ejemplo 7.17</strong></span> Volviendo al contraste para comparar el rendimiento académico de dos grupos de alumnos que han obtenido las siguientes puntuaciones:</p>
+<p><span class="theorem-title"><strong>Ejemplo 7.18</strong></span> Volviendo al contraste para comparar el rendimiento académico de dos grupos de alumnos que han obtenido las siguientes puntuaciones:</p>
 <p><span class="math display">\[\begin{align*}
 X_1 &amp;: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3  \\
 X_2 &amp;: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
