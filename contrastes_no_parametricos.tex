@@ -1,0 +1,846 @@
+% Version control information:
+%$HeadURL: https://practicas-spss.googlecode.com/svn/trunk/anova_1_factor/anova_1_factor.tex $
+%$LastChangedDate: 2010-09-27 16:37:11 +0200 (lun, 27 sep 2010) $
+%$LastChangedRevision: 3 $
+%$LastChangedBy: asalber $
+%$Id: anova_1_factor.tex 3 2010-09-27 14:37:11Z asalber $
+
+\chapter[Contras de Hipótesis No Paramétricos]{Contrastes de Hipótesis\\ No Paramétricos}
+
+
+\section{Fundamentos teóricos}
+
+Gran parte de los procedimientos estadísticos diseñados para hacer inferencia (prueba $T$ para contrastar hipótesis sobre medias, prueba $F$ para contrastar hipótesis sobre varianzas...), presentan tres características comunes:
+
+\begin{itemize}
+\item Permiten contrastar hipótesis referidas a algún parámetro poblacional ($\mu$, $\sigma$, ...), o relaciones entre parámetros poblacionales ($\mu_1-\mu_2$, $\sigma_1/\sigma_2$, ...).
+\item Exigen el cumplimiento de determinados supuestos sobre las poblaciones originales de las que se extraen las muestras, como la normalidad o la igualdad de varianzas (homocedasticidad), e incluso sobre la manera de obtener los datos, como la aleatoriedad en las observaciones.
+\item Están diseñados para trabajar con variables cuantitativas.
+\end{itemize}
+
+A los procedimientos estadísticos que presentan las tres características anteriores se les denomina \textbf{Contrastes Paramétricos} o \textbf{Pruebas Paramétricas}, y son las técnicas estadísticas más utilizadas. No obstante, presentan dos inconvenientes que hacen que su utilidad se vea reducida: por un lado, exigen el cumplimiento de supuestos que en determinadas ocasiones pueden resultar demasiado restrictivos (a menudo las distribuciones no son normales, o no se tiene homogeneidad de varianzas...); por otro, no siempre se puede trabajar con variables cuantitativas (en ciencias sociales y de la salud, en muchos casos serán cualitativas y en el mejor de los casos cualitativas ordinales).
+
+Afortunadamente, existen contrastes que permiten poner a prueba hipótesis que no se refieren específicamente a parámetros poblacionales (como $\mu$ o $\sigma$), o que no exigen supuestos demasiado restrictivos en las poblaciones originales, e incluso que tampoco necesitan trabajar con variables cuantitativas. Este tipo de contrastes que no cumplen alguna de las tres características de los contrastes paramétricos reciben el nombre de \textbf{Contrastes No Paramétricos} o \textbf{Pruebas No Paramétricas}.
+
+En realidad, en términos estrictos, para tener un contraste no paramétrico sería suficiente con que en el mismo no se plantease una hipótesis sobre algún parámetro poblacional. Por eso, algunos autores distinguen entre contrastes no paramétricos y contrastes de distribución libre (distribution-free), o exentos de distribución, que serían los que no impondrían supuestos restrictivos en la distribución de la población original. No obstante, como casi todos los contrastes no paramétricos son a su vez de distribución libre, hoy en día se denomina contraste no paramétrico a cualquiera que no cumpla alguna de las tres características señaladas.
+
+Los mayores atractivos de los contrastes no paramétricos son:
+
+\begin{itemize}
+\item	Al exigir condiciones menos restrictivas a la muestra sobre las características de la distribución de la población de la que se ha extraído, son más generales que los paramétricos (se pueden aplicar tanto a situaciones en las que no se deberían aplicar paramétricos como a situaciones en las que sí que se podrían aplicar).
+\item	Son especialmente útiles cuando hay que analizar muestras pequeñas, ya que, con muestras grandes ($n\geq 30$), aunque la población de partida no siga una distribución normal, el Teorema Central del Límite garantiza que la variable media muestral sí que será normal, y no habrá ningún problema con contrastes sobre la media poblacional basados en la media muestral cuyo comportamiento es normal (por ejemplo, contrastes con la T de Student). Con muestras pequeñas ($n<30$), si la distribución de los datos de la muestra no es normal, tampoco podemos garantizar que lo sea la distribución de la media muestral, y no quedará más remedio que acudir a contrastes no paramétricos cuando se pretenda ver si hay o no diferencias significativas entre distribuciones.
+\item  Permiten trabajar tanto con variables cualitativas como cuantitativas. En éstas últimas, en lugar de trabajar con los valores originales, generalmente se trabaja con su rangos, es decir, simplemente con el número de orden que ocupa cada valor, por lo que incluso se simplifican los cálculos necesarios para aplicar los contrastes.
+\end{itemize}
+
+Por otro lado, también hay inconvenientes:
+
+\begin{itemize}
+\item Si en un problema concreto se puede aplicar tanto una prueba paramétrica como una no paramétrica, la paramétrica presentará mayor potencia, es decir, mayor capacidad de detección de diferencias significativas; o lo que es lo mismo, la no paramétrica necesitará mayores diferencias muestrales para concluir que hay diferencias poblacionales.
+\item Con las pruebas paramétricas no sólo se pueden realizar los contrastes de hipótesis planteados sobre los adecuados parámetros poblacionales para llegar al p-valor del contraste, sino que también se pueden generar intervalos de confianza con los que delimitar adecuadamente el posible valor de dichos parámetros. Con el p-valor se genera un número que cuantifica si el efecto analizado ha sido o no estadísticamente significativo, pero puede que el efecto sea tan pequeño que no resulte clínicamente relevante, mientras que con el intervalo de confianza sí que se aprecia la magnitud del efecto, y por lo tanto se puede concluir si ha sido o no clínicamente relevante. Igualmente, la aplicación de una prueba no paramétrica permitirá obtener un p-valor del contraste, pero en muy pocas de ellas hay procedimientos desarrollados que permitan obtener intervalos de confianza.
+
+\end{itemize}
+
+En las técnicas no paramétricas no se tiene en cuenta la magnitud de los datos, sino su orden. El número de orden que cada dato ocupa recibe el nombre de rango del dato. Por ello, gran parte de los contrastes no paramétricos, además de sobre variables cuantitativas, también pueden aplicarse sobre variables cualitativas ordinales, a cuyos valores también se les podrá asignar un rango (un número de orden).
+
+Por otra parte, el proceso para llevar a cabo un contraste no paramétrico es muy parecido al de uno paramétrico:
+
+\begin{enumerate}
+\item Planteamos una hipótesis nula $H_0$ y su correspondiente alternativa $H_1$.
+\item Suponiendo cierta la $H_0$, se calcula el valor de un estadístico muestral de distribución conocida.
+\item A partir del estadístico, se calcula el p-valor del contraste y se acepta o se rechaza $H_0$ dependiendo de que el p-valor obtenido haya sido, respectivamente, mayor o menor que el nivel de significación marcado en la prueba (habitualmente $0,05$).
+\end{enumerate}
+
+
+\subsection{Contrastes no paramétricos más habituales}
+Los contrastes no paramétricos más habituales son:
+
+\begin{description}
+\item[Test de rachas] Se utiliza para analizar la \emph{aleatoriedad de una muestra}, es decir, si las sucesisvas elecciones de los individuos de la muestra se han realizado al azar.
+\item[Test de Kolmogorov-Smirnov] Se utiliza para analizar la \emph{normalidad de los datos de una muestra}, o en general, para ver si la distribución de frecuencias de la muestra se ajusta a una distribución teórica dada.
+\item[Test de Shapiro-Wilk]. También se utiliza para analizar la \emph{normalidad de los datos de la muestra}. Es más adecuado que el de Kolmogorov-Smirnov para muestras pequeñas. 
+\item[Test de la U de Mann-Whitney] Se utiliza para analizar las \emph{diferencias entre dos muestras, con datos independientes, en variables cuantitativas u ordinales}. Su correspondiente test paramétrico para variables cuantitativas es la T de Student de datos independientes.
+\item[Test de Wilcoxon] Se utiliza para analizar las \emph{diferencias entre dos muestras, con datos pareados, en variables cuantitativas u ordinales}. Su correspondiente test paramétrico para variables cuantitativas es la T de Student de datos pareados o emparejados.
+\item[Test de Kruskal-Wallis] Se utiliza para analizar las \emph{diferencias entre varias muestras (más de dos), con datos independientes, en variables cuantitativas u ordinales}. Su correspondiente test paramétrico para variables cuantitativas es el ANOVA.
+\item[Test de Friedman] Se utiliza para analizar las \emph{diferencias entre varias muestras, con datos pareados, en variables cuantitativas u ordinales}. Su correspondiente test paramétrico para variables cuantitativas es el ANOVA de medidas repetidas.
+\item[Test de Levene] Se utiliza para analizar la \emph{homogeneidad de varianzas de varias muestras} (dos o más), sin tener en cuenta la normalidad de los datos. Su correspondiente test paramétrico cuando se comparan dos muestras es el test de igualdad de varianzas mediante la distribución F de Fisher.
+\item[Test de la Rho de Spearman] Se utiliza para analizar la \emph{correlación entre dos variables cuantitativas u ordinales}. Su correspondiente test paramétrico es el basado en el coeficiente de determinación de Pearson.
+\item[Test de la Chi Cuadrado] Se utiliza para analizar la \emph{relación entre dos variables cualitativas nominales}. A este contraste y sus variantes se le dedicará la próxima práctica en exclusiva.
+\end{itemize}
+
+A continuación se analizan todos los contrastes enumerados.
+
+\subsection{Aleatoriedad de una muestra: Test de rachas}
+Frecuentemente suponemos que la muestra que utilizamos es aleatoria simple, es decir, que las  $n$  observaciones se han tomado de manera aleatoria e independientemente unas de otras, y de la misma población. Pero, en general, esta hipótesis no siempre se puede admitir, siendo por tanto necesario, en muchos casos, contrastar si realmente estamos frente a una muestra aleatoria simple o no.
+
+El Test de Rachas es una prueba que mide hasta qué punto el valor de una observación en una variable puede influir en las observaciones siguientes. Por ejemplo, si la variable analizada es el sexo y la muestra es aleatoria extraída de una población con aproximadamente el mismo número de mujeres que de hombres, entonces resultará prácticamente imposible que después de preguntar a un individuo que resulta ser hombre, los 10 individuos siguientes también sean hombres; en todo caso, podrían aparecer ``rachas" de 3 o 4 hombres seguidos, pero no de 10.
+
+Consideremos una muestra de tamaño $n$ que ha sido dividida en dos categorías $X$ e $Y$ con $n_{1}$ y $n_{2}$ observaciones cada una. Se denomina racha a una sucesión de valores de la misma categoría. Por ejemplo, si estudiamos una población de personas y anotamos el sexo: $X$ = Hombre e $Y$= Mujer, y obtenemos la secuencia: $X X X Y Y X Y Y Y$, tendríamos $n_{1}=4$, $n_{2}=5$, $n=n_{1}+n_{2}=9$, y el número de rachas igual a 4. En función de las cantidades $n_{1}$ y $n_{2}$ se espera que el número de rachas no sea ni muy pequeño ni muy grande, lo cual equivale a decir que no pueden aparecer rachas demasiado largas, ni demasiadas rachas cortas.
+
+Si las observaciones son cantidades numéricas, pueden dividirse en dos categorías que posean aproximadamente el mismo tamaño sin más que considerar la mediana de las observaciones como valor que sirve para dividir la muestra entre los valores que están por encima de la mediana y los que están por debajo.
+
+Con todo ello, el Test de Rachas permite determinar si la variable aleatoria número observado de rachas, $R$, en una muestra de tamaño $n$ (dividida en dos categorías de tamaños $n_1$ y $n_2$), es lo suficientemente grande o pequeño como para rechazar la hipótesis de independencia (aleatoriedad) entre las observaciones. Para el contraste generalmente se utiliza el estadístico:
+\[
+Z = \frac{R-E(R)}{\sigma_R}
+\]
+donde
+\[
+E(R) = \frac{2n_1n_2}{n+1}
+\quad \textrm{y}\quad
+\sigma_R = \sqrt{\frac{2n_1n_2(2n_1n_2-n)}{n^2(n+1)}}.
+\]
+En el supuesto de que se cumpla la hipótesis nula de aleatoriedad de la muestra, se puede demostrar que el estadístico $Z$ sigue una distribución normal tipificada, que es la que se utiliza para dar el $p$ valor de la prueba.
+
+Por último, conviene no confundir la hipótesis de aleatoriedad de una muestra con la hipótesis de bondad de ajuste de los datos de una muestra mediante una distribución dada. Por ejemplo, si en 10 lanzamientos de una moneda obtenemos 5 caras y 5 cruces, sin duda los datos se ajustan adecuadamente a una binomial con probabilidad de éxito igual a $0,5$, y para comprobarlo, por ejemplo, se podría utilizar un test de Chi-cuadrado; pero si las 5 caras salen justo en los 5 primeros lanzamientos y las 5 cruces en los últimos, difícilmente se podría cumplir la hipótesis de independencia o aleatoriedad.
+
+
+\subsection{Pruebas de normalidad}
+Ya hemos comentado que muchos procedimientos estadísticos
+(intervalos de confianza, contraste de hipótesis, análisis de la varianza,\ldots)
+únicamente son aplicables si los datos provienen de distribuciones normales.
+Por ello, antes de su aplicación conviene comprobar si se cumple la
+hipótesis de normalidad.
+
+No obstante, las inferencias respecto a medias son en general
+robustas (no les afecta demasiado la hipótesis de normalidad), sea
+cual sea la población base, si las muestras son grandes
+($n\geq30$) ya que la distribución de la media muestral es
+asintóticamente normal. Por ello, gran parte de los métodos paramétricos son válidos con muestras
+grandes incluso si las distribuciones de partida dejan de ser normales, pero, aunque válidos,
+ las inferencias respecto a la media dejan de ser
+óptimas; es decir los métodos paramétricos pierden precisión, y esto se traduce en intervalos innecesariamente grandes o contrastes
+poco potentes.
+
+Por otro lado, las inferencias respecto a varianzas son muy
+sensibles a la hipótesis de normalidad, por lo que no conviene
+construir intervalos o contrastes para varianzas si no tenemos
+cierta seguridad de que la población es aproximadamente normal.
+
+Entre los múltiples métodos que se utilizan para contrastar la
+hipótesis de normalidad destacan:
+
+\begin{itemize}
+\item El cálculo de los estadísticos de asimetría y curtosis de la
+distribución.
+\item La prueba de Kolmogorov-Smirnov, especialmente en su versión corregida por Lilliefors.
+\item La prueba de Saphiro-Wilks.
+\item Gráficos Q-Q y P-P de comparación con la distribución normal.
+\end{itemize}
+
+Conviene hacer la aclaración de que la prueba de Kolmogorov-Smirnov no tiene aplicación específica al contraste de normalidad,
+sino que, como también sucede con la Chi-cuadrado, la prueba de Kolmogorov-Smirnov, ha sido desarrollada para establecer el ajuste de los datos observados mediante un modelo teórico (una distribución de probabilidad) que no tiene que ser específicamente
+normal. La corrección de Lilliefors adapta la prueba de Kolmogorov-Smirnov para un contraste específico de normalidad.
+
+En cuanto a la conveniencia de una u otra prueba, hay que destacar que
+no existe un contraste óptimo para probar la hipótesis de
+normalidad. La razón es que la potencia relativa de un contraste
+de normalidad depende del tamaño muestral y de la verdadera
+distribución que genera los datos. Desde un punto de vista poco
+riguroso, el contraste de Shapiro-Wilks es, en términos
+generales, el más conveniente en pequeñas muestras $(n<30)$,
+mientras que el de Kolmogorov-Smirnov, en la versión modificada de
+Lilliefors, es más adecuado para muestras grandes.
+
+Pasamos a dar una pequeña explicación más detallada de cada uno de
+los contrastes citados.
+
+
+\subsubsection{Estadísticos de asimetría y curtosis}
+Una primera idea de si los datos provienen de una distribución
+normal, nos la pueden dar los estadísticos de asimetría, $g_1$, y
+de curtosis, $g_2$, junto con sus correspondientes errores estándar, $EE_{g1}$ y $EE_{g2}$.
+Sabemos que las distribuciones normales son
+simétricas, y por tanto $g_1=0$, y tienen un apuntamiento normal,
+$g_2=0$. Según esto, si una muestra proviene de una población
+normal sus coeficientes de asimetría y de apuntamiento no deberían
+estar lejos de 0, y se acepta que no están demasiado lejos de 0 cuando:
+\begin{enumerate}
+\item $|g_1|<2\cdot EE_{g1}$
+\item $|g_2|<2\cdot EE_{g2}$
+\end{enumerate}
+Los estadísticos $g_1$, $g_2$, $EE_{g1}$, y $EE_{g2}$ se pueden obtener fácilmente en cualquier análisis descriptivo de la muestra.
+
+
+\subsubsection{Contraste de Kolmogorov-Smirnov y corrección de Lilliefors}
+Este contraste general, válido para comprobar si los datos de una
+variable aleatoria continua se ajustan adecuadamente mediante un
+modelo de distribución continuo, compara la función de
+distribución teórica con la empírica de una muestra. Tiene la
+ventaja de que no requiere agrupar los datos. Utiliza el
+estadístico:
+\[
+D_n = \sup |F_n(x)-F(x)|
+\]
+donde $F_n (x)$ es la función de distribución empírica muestral
+(la probabilidad acumulada hasta un cierto valor de la variable
+suponiendo que en cada uno de los $n$ valores de la muestra
+acumulamos una probabilidad igual a $1/n$) y $F(x)$ es la función
+de distribución teórica (probabilidad acumulada hasta un cierto
+valor de la variable, o lo que es lo mismo $\int_{-\infty}^x f(t)\,dt$, donde $f(t)$ es la función de densidad teórica).
+
+Con el estadístico $D_n$, se calcula:
+\[
+Z_{K-S} = \frac{D_n}{\sqrt n}
+\]
+que sigue una distribución normal tipificada.
+
+Para el caso específico en que se contrasta si la muestra proviene de una distribución normal, más que el estadístico $Z_{K-S}$ se utiliza directamente la $D_n$ pero con una distribución tabulada corregida introducida por Lilliefors, por lo que a veces se habla del test de Kolomogorov-Smirnov-Lilliefors, específico para el contraste de normalidad.
+
+En general, el test de Kolmogorov-Smirnov sin corrección resulta menos potente, y por lo tanto será más difícil rechazar la normalidad de los datos, que el corregido por Lilliefors, especialmente si la presunta falta de normalidad se produce porque la distribución de partida presenta valores atípicos.
+
+Ya sea mediante el método de Kolmogorov-Smirnov en general o mediante la corrección introducida por Lilliefors, obtenemos un $p$ valor del contraste con el que aceptar o rechazar la hipótesis nula de normalidad de los datos de la muestra.
+
+
+\subsubsection{Contraste de Shapiro-Wilk}
+
+Es una prueba sólo válida para contrastar el ajuste de unos datos muestrales mediante una distribución normal. Además, por su potencia, se considera que es la más adecuada para analizar muestras pequeñas ($n<30$).
+
+En el proceso, se calcula un estadístico llamado $W$ de Shapiro-Wilk (la forma detallada de obtenerlo va más allá del nivel de esta práctica), cuya distribución está tabulada. Con ello, de nuevo se genera un $p$ valor que se utiliza para aceptar o no la hipótesis nula de normalidad de los datos de la muestra.
+
+
+\subsubsection{Gráficos Q-Q y P-P de comparación con la distribución normal}
+Son procedimientos gráficos que permiten llegar a conclusiones cualitativas sobre si los datos se ajustan adecuadamente mediante una distribución normal.
+
+\begin{itemize}
+\item El gráfico Q-Q: presenta en el eje de abcisas
+los valores de la variable, y en el eje de ordenadas el valor que
+le correspondería en una distribución normal tipificada según las
+probabilidades acumuladas obtenidas gracias a la función de
+distribución empírica. Junto con los puntos obtenidos, también se representa la recta que se obtendría sin más
+que tipificar los datos teniendo en cuenta la media y la
+desviación típica de los mismos, de manera que si los datos se ajustasen de
+forma perfecta mediante una distribución normal, los puntos
+quedarían justo en la recta, mientras que si las distancias entre los puntos y la recta son grandes no cabría aceptar la normalidad del conjunto de datos.
+
+\item El gráfico P-P: es muy parecido al Q-Q pero directamente representa en un eje la probabilidad acumulada observada hasta cada valor de la variable teniendo en cuenta la función de distribución empírica y en el otro la probabilidad acumulada teórica que le correspondería si los datos se ajustasen perfectamente mediante una distribución normal. De nuevo se representa la recta que se produciría si el ajuste fuese perfecto.
+\end{itemize}
+
+
+\subsection[Test U de Mann-Whitney para comparación de dos poblaciones independientes]{Test de la U de Mann-Whitney para la comparación de dos poblaciones independientes}
+
+Este test sustituye a la $T$ de Student para comparar las medias de dos grupos independientes cuando no se cumplen los supuestos en los que se basa la prueba $T$. Como requiere ordenar los valores antes de hacer el test, no compara realmente las medias, sino los denominados rangos o números de orden de los datos.
+
+Se debe usar cuando:
+\begin{itemize}
+\item Alguna de las dos muestras contiene menos de 30 observaciones y no se puede asumir normalidad.
+\item La comparación se realiza en una variable ordinal en vez de ser realmente cuantitativa.
+\item La muestra es muy pequeña (menos de 10 observaciones en alguno de las dos grupos)
+\end{itemize}
+
+Intuitivamente, si se ordenan de menor a mayor conjuntamente los datos de dos muestras y se les asigna a cada uno de ellos su rango (es decir su número de orden dentro de la lista obtenida al unir los datos de las dos muestras, teniendo en cuenta que si hay dos o más datos iguales se les asigna a todos ellos el rango promedio de los que les corresponderían si fuesen distintos) es natural que, si se cumple que las dos muestras originales están igualmente distribuidas, los rangos se mezclen al azar y no que los rangos de una de las muestras aparezcan al principio y los de la otra al final, pues esto sería indicio de que una de las muestras tendría valores sistemáticamente mayores o menores que la otra. Con esta idea, se plantean las hipótesis:
+\begin{align*}
+H_0 &: \textrm{Las poblaciones de las que provienen las muestras están igualmente distribuidas.}\\
+H_1 &: \textrm{Las poblaciones difieren en su distribución.}
+\end{align*}
+
+Para llevar a cabo el contraste de hipótesis, se obtienen las sumas de rangos de la muestra 1, $R_1$, y la de la muestra 2, $R_2$. Con $R_1$ y $R_2$ se calculan los estadísticos:
+\begin{align*}
+U_1  &= n_1n_2+\frac{n_1(n_1+1)}{2}-R_1,
+\\
+U_2  &= n_1n_2+\frac{n_2(n_2+1)}{2}-R_2= n_1n_2-U_1.
+\end{align*}
+
+Y teniendo en cuenta $U_1$ y $U_2$, se toma $U$, que es el mínimo de $U_1$ y $U_2$, del que se conoce su distribución de probabilidad y con el que se puede calcular el $p$ valor del contraste. No obstante, para muestras grandes, $(n\geq30)$, los cálculos con la distribución exacta pueden ser complicados y por eso se suele trabajar con un estadístico $Z$ que sigue una distribución normal tipificada:
+\[
+Z = \frac{U-\dfrac{n_1n_2}{2}}{\sqrt{\dfrac{n_1n_2}{n(n-1)}\left(\dfrac{n^3-n}{12}-\sum_{i = 1}^k \dfrac{t_i^3-t_i}{12}\right)}}
+\]
+donde $k$ es el número de rangos distintos en los que existen empates y $t_i$ el número de puntuaciones distintas empatadas en el rango $i$.
+
+
+\subsection{Test de Wilcoxon para la comparación de dos poblaciones emparejadas}
+Este test, también llamado prueba de rangos con signo de Wilcoxon, se debe utilizar en lugar de la $T$ para datos emparejados cuando:
+
+\begin{itemize}
+\item Los datos a comparar son ordinales.
+\item Son datos cuantitativos pero la muestra es pequeña $(<30)$ y además no sigue una distribución normal en la variable diferencia entre las dos mediciones emparejadas.
+\end{itemize}
+
+Intuitivamente, si calculamos las diferencias individuo a individuo en las dos variables emparejadas, suponiendo que no hay diferencia global entre las dos variables se obtendrán aproximadamente tantas diferencias positivas como negativas. Además, sería conveniente trabajar con un test que no sólo detecte si la diferencia ha sido positiva o negativa, sino que también debería tener en cuenta la cuantía de la diferencia, o al menos el orden en la cuantía de la diferencia; con ello se podrían compensar situaciones en las que hay pocas diferencias negativas de mucha cuantía frente a muchas positivas pero de poca cuantía, o a la inversa. Con esta idea, se plantean las hipótesis:
+\begin{align*}
+H_0 &: \textrm{No hay diferencias entre las observaciones emparejadas.}\\
+H_1 &: \textrm{Hay diferencias entre las observaciones emparejadas.}
+\end{align*}
+
+Para realizar el contraste de hipótesis, en primer lugar se calculan las diferencias entre los datos emparejados de las variables $X$ e $Y$ para cada uno de los $n$ individuos:
+\[
+D_i = X_i-Y_i \quad i = 1,...,n.
+\]
+
+Posteriormente se desechan la diferencias nulas y se toman los valores absolutos de todas las diferencias, $\left|{D_i}\right|$, asignándoles rangos (órdenes), $R_i$ (si hay empates, se asignan rangos promedio). Después se suman por separado los rangos de las diferencias que han resultado positivas, $S_{+}=\sum{R_{i}^{+}}$, y por otra parte los rangos de las diferencias que han resultado negativas, $S_{-}=\sum{R_{i}^{-}}$. Y con ello, si $H_0$ fuese correcta, la suma de rangos positivos debería ser muy parecida a la suma de rangos negativos: $S_+=S_-$.
+
+Por último, teniendo en cuenta que se conoce la distribución de probabilidad de los estadísticos $S_+$ y $S_-$, se puede calcular el $p$ valor del contraste con la hipótesis nula de su igualdad. No obstante, para muestras grandes, los programas de estadística suelen utilizar un nuevo estadístico $Z$ que sigue una distribución normal tipificada:
+\[
+Z = \frac{S-\dfrac{n(n+1)}{4}}{\sqrt{\dfrac{n(n+1)(2n+1)}{24}-\sum_{i=1}^k\dfrac{t_i^3-t_i}{48}}},
+\]
+donde $S$ es el mínimo de $S_+$ y $S_-$, $k$ el número de rangos distintos en los que existen empates, y $t_i$ el número de puntuaciones empatadas en el rango $i$.
+
+Es importante tener en cuaenta que SPSS calcula el $p$-valor basándose en la aproximación normal, pero si el programa tiene instalado el módulo de Pruebas Exactas, será adecuado calcular el $p$-valor exacto, especialmente en muestras pequeñas.
+
+
+\subsection{Test de Kruskal-Wallis para la comparación de varias poblaciones independientes}
+Es el test no paramétrico equivalente en su uso al ANOVA, de tal forma que permite contrastar si $k$ muestras independientes (con $k\geq3$) han sido obtenidas de una misma población y por lo tanto presentan igual distribución.
+
+Se debe usar el Test de Kruskal-Wallis en lugar del ANOVA cuando:
+\begin{itemize}
+\item Los datos son ordinales.
+\item No hay normalidad en alguna de las muestras.
+\item No hay igualdad de varianzas (heterocedasticidad).
+\end{itemize}
+
+Su uso está también especialmente indicado en el caso de muestras pequeñas y/o tamaños muestrales desiguales, ya que entonces es muy arriesgado suponer normalidad y homocedasticidad de los datos.
+
+En esencia, el Test de Kruskal-Wallis es una extensión del test de la U de Mann-Whitney, pero trabajando con $k$ muestras en lugar de 2.
+
+Las hipótesis que se contrastan son:
+\begin{align*}
+H_0 &: \textrm{Las poblaciones de las que provienen las $k$ muestras están igualmente distribuidas.}\\
+H_1 &: \textrm{Alguna de las poblaciones difiere en su distribución con respecto a las demás.}
+\end{align*}
+
+Para realizar el contraste, primero se ordenan de menor a mayor todos los valores observados en las k muestras. Luego se asigna el rango 1 al valor inferior, el rango 2 al 2º valor y así sucesivamente. En caso de empate entre dos valores se asigna la media de los números de orden de los individuos empatados. Después se suman por separado los rangos asignados a las observaciones de cada grupo y se obtiene la suma de rangos de cada grupo: $R_i, i=1,...,k$. Con la suma de rangos dentro de cada grupo se puede obtener el rango medio de cada grupo sin más que dividir la suma entre el número total de observaciones en el grupo: $R_{i}/n_i, i=1,...,k$. Y por último, si la hipótesis nula fuera cierta, los rangos medios de cada grupo serían muy parecidos entre sí y muy parecidos al rango medio total.
+
+Basándose en lo anterior, el estadístico $H$ de Kruskall-Wallis se calcula mediante la fórmula:
+\[
+H = \frac{12}{n(n+1)}\sum_{i=1}^k \frac{R_i^2}{n_i}-3(n+1).
+\]
+
+Y se puede demostrar que, si la hipótesis nula es cierta, $H$ sigue una distribución Chi-cuadrado con $k-1$ grados de libertad, que es lo que se utiliza para calcular el $p$-valor del contraste. Si el número de muestras es 3 y el número de observaciones en alguna no pasa de 5, el estadístico $H$ no sigue una distribución Chi-cuadrado, pero su distribución está convenientemente tabulada y los programas estadísticos aplican las adecuadas correcciones.
+
+Si el resultado del test fuera significativo, para buscar entre qué grupos existen diferencias, se harán comparaciones por parejas con la $U$ de Mann-Whitney, pero penalizando los $p$ valores obtenidos; esto quiere decir que los $p$ valores de cada una las parejas comparadas deben multiplicarse por el número de comparaciones realizadas. Con ello se logra controlar el error de tipo I en el contraste global, es decir la probabilidad de que haya aparecido, simplemente por azar y no porque realmente haya diferencias, algún $p$ valor menor que el nivel de significación fijado. Por ejemplo, en un problema con 4 grupos, habría que hacer 6 comparaciones de parejas distintas, y trabajando con un $p$-valor frontera de 0,05, la probabilidad de que apareciese alguna diferencia significativa entre las parejas simplemente por azar viene dada por: $1-0,05^0\cdot0,95^6=0,265$ (probabilidad de algún éxito en una binomial de 6 intentos y probabilidad de éxito 0,05), que queda muy alejado del 0,05 global con el que se suele trabajar; mientras que con un $p-valor$ frontera de $0,05/4=0,0125$, $1-0,0125^0\cdot0,9875^5=0,073$, que es muy parecido $0,05$. Igualmente, con $n$ grupos, habría que exigir un $p$-valor en cada comparación de $0,05/n$; o lo que es lo mismo, no considerar como significativas ninguna de las comparaciones entre parejas en las que el $p$-valor obtenido multiplicado por $n$ sea mayor que $0,05$.
+
+
+\subsection{Test de Friedman para la comparación de medidas repetidas}
+
+Es el test no paramétrico equivalente al ANOVA de medidas repetidas, y por lo tanto se aplica en situaciones en las que para cada individuo tenemos varias medidas (3 o más) en diferentes tiempos, en una situación muy similar a la del Test de Wilcoxon para datos emparejados, pero en este último caso con sólo 2 medidas en cada individuo. Generalmente cada medida representa el resultado de un tratamiento, por lo que habitualmente se habla de que tenemos $n$ individuos con $k$ tratamientos, siendo $k\geq3$.
+
+Se usa el Test de Friedman en lugar del ANOVA de medidas repetidas cuando:
+
+\begin{itemize}
+\item Se comparan medidas repetidas ordinales en lugar de cuantitativas.
+\item Alguna de las variables diferencia, generadas mediante la diferencia de todos los tratamientos tomados dos a dos, no siga una distribución normal.
+\item Alguna de las variables diferencia, generadas mediante la diferencia de todos los tratamientos tomados dos a dos, no tenga la misma varianza.
+\end{itemize}
+
+Cuando todas las variables diferencia sigan distribuciones normales con la misma varianza, se dice que los datos cumplen con el supuesto de Esfericidad, necesario para aplicar el ANOVA de medidas repetidas. Algunos programas, como PASW, contrastan el supuesto de esfericidad de los datos, por ejemplo con un Test de Esfericidad de Mauchly.
+
+De nuevo, con el test de Friedman, las hipótesis del contraste a realizar son:
+\begin{align*}
+H_0 &: \textrm{No hay diferencias entre los diferentes tratamientos o medidas.}\\
+H_1 &: \textrm{Al menos uno de los tratamientos o medidas es distinto del resto.}
+\end{align*}
+
+Para realizar el contraste, se reemplazan los datos de cada sujeto por su rango dentro de cada fila, es decir por su posición, una vez ordenados de menor a mayor los datos correspondientes a las diferentes observaciones de cada uno de los sujetos. En el caso de empates se asignará el rango promedio de los valores empatados. Con ello, tenemos una matriz de rangos $R_{ij}$, donde $i=1,...,n$ siendo $n$ el número de individuos, y $j=1,...,k$, siendo $k$ el número de tratamientos. Después se suman los rangos correspondientes a cada una de las mediciones realizadas:
+\[
+R_j = \sum_{i=1}^n R_{ij} \quad j = 1,...,k
+\]
+y se calculan sus correspondientes promedios sin más que dividir entre $n$:
+\[
+\bar R_j = \frac{R_j}{n} \quad j = 1,...,k.
+\]
+
+En estas condiciones, si la hipótesis nula fuera cierta, los rangos promedio dentro de cada tratamiento deberían ser similares, por lo que es posible plantearse de nuevo un contraste basado en la Chi-cuadrado. El estadístico, debido a Friedman, en el que se va a basar el contraste es:
+\[
+\chi^2 = \frac{12}{nk(k+1)}\sum_{j=1}^k R_j^2-3n(k+1),
+\]
+que sigue una distribución Chi-cuadrado con $k-1$ grados de libertad y es el que se utiliza para calcular el $p$ valor del contraste. Si una vez realizado el contraste se rechaza la hipótesis nula, habrá que determinar qué tratamientos son los que presentan un comportamiento diferente del resto. Para ello, habrá que aplicar un test de Wilcoxon para datos emparejados a cada una de las parejas que se puedan formar teniendo en cuenta los diferentes tratamientos (los diferentes tiempos en los que se ha medido la respuesta). Por ejemplo, si tenemos 3 tratamientos para cada individuo, se pueden generar tres comparaciones pareadas: 1-2, 1-3 y 2-3. Después de aplicar el test de Wilcoxon, debemos corregir el $p$ valor obtenido en cada cruce multiplicándolo por el número de comparaciones realizado. Por ejemplo, si en la comparación 1-2 hemos obtenido un $p$ valor igual a 0,03, teniendo en cuenta que hay 3 comparaciones posibles, el $p$ valor corregido sería 0,09.
+
+
+\subsection{Test de Levene para el contraste de homogenidad de varianzas}
+
+Como ya se ha comentado, en algunos test paramétricos que realizan la comparación de medias de diferentes muestras se exige la condición de que las muestras tengan igualdad de varianzas (homogeneidad de varianzas u homocedasticidad), especialmente en el ANOVA y también en algunos tipos concretos de $T$ de Student. En realidad, se puede utilizar la distribución $F$ de Fisher para comprobar la homogeneidad de varianzas de dos poblaciones de las que se han extraído muestras aleatorias, pero tiene el problema de que exige la normalidad de los datos y además está limitado a la comparación de dos varianzas. Por lo tanto, sería conveniente disponer de un test no paramétrico que permita realizar el contraste de homogeneidad de varianzas sin suponer la normalidad de los datos, y además también permitir el contraste de homogeneidad de varianzas entre más de dos muestras. Eso mismo es lo que realiza el Test de Levene, cuyas hipótesis vinculadas son:
+\begin{align*}
+H_0 &: \textrm{Las varianzas poblacionales son iguales ($\sigma^2_1=\sigma^2_2=...=\sigma^2_k$).}\\
+H_1 &: \textrm{Al menos alguna de las varianzas es diferente al resto.}
+\end{align*}
+
+Para hacer el contraste se utiliza el estadístico de Levene:
+\[
+W = \frac{(n-k)}{(k-1)}\frac{\sum_{i=1}^k n_i(Z_{i\cdot}-Z_{\cdot\cdot})^2}{\sum_{i = 1}^k\sum_{j = 1}^{n_i}(Z_{ij}-Z_{i\cdot})^2}
+,
+\]
+donde:
+\begin{itemize}
+\item $k$ es el número de grupos diferentes.
+\item $n$ es el número total de individuos.
+\item $N_i$ es el número de individuos en el grupo $i$.
+\item $Y_{ij}$ es el valor del individuo $j$ en el grupo $i$.
+\item Para $Z_{ij}$ se utiliza habitualmente uno de los dos siguientes criterios:
+\[
+Z_{ij} = 
+\begin{cases}
+|Yij-\bar Y_{i\cdot}| \\
+|Yij - Me(Y_{i\cdot})|  \\
+\end{cases}
+\]
+donde $\bar Y_{i\cdot}$ es la media del grupo $i$ y $Me(Y_{i\cdot})$ es la mediana del grupo $i$. Cuando se utilizan las medianas en lugar de las medias, el Test de Levene suele recibir el nombre de Test de Brown-Forsythe.
+
+\item $Z_{\cdot\cdot}$ es la media de todas las $Z_{ij}$:
+\[
+Z_{\cdot\cdot} = \frac{1}{n}\sum_{i=1}^k\sum_{j=1}^{n_i}Z_{ij}
+\]
+
+\item $Z_{i\cdot}$ es la media de los $Z_{ij}$ en el grupo $i$:
+\[
+Z_{i\cdot} = \frac{1}{n_i }\sum_{j=1}^{n_i}Z_{ij}
+\]
+\end{itemize}
+
+Al final, si se cumple la hipótesis nula de igualdad de varianzas se podría demostrar que el estadístico $W$ debería seguir una distribución $F(k-1,N-k)$ de Fisher con $k-1$ y $N-k$ grados de libertad, que es la que se utiliza para calcular el $p$ valor del contraste.
+
+
+\subsection{El coeficiente de correlación de Spearman}
+El coeficiente de correlación de Spearman, $\rho$, es el equivalente no paramétrico al coeficiente de correlación lineal, $r$. Se utiliza en lugar de $r$ cuando:
+
+\begin{itemize}
+\item Las variables entre las que se analiza la correlación no siguen distribuciones normales.
+\item Cuando se quiere poner de manifiesto la relación entre variables ordinales.
+\end{itemize}
+
+Además, a diferencia del coeficiente de correlación lineal de Pearson, $r$, el coeficiente de Spearman no estima específicamente una asociación lineal entre las variables, sino que es capaz de detectar asociación en general. De hecho, las hipótesis del contraste de asociación de dos variables mediante $\rho$ serían:
+\begin{align*}
+H_0 &: \textrm{No hay asociación entre las dos variables.}\\
+H_1 &: \textrm{Hay asociación entre las dos variables.}
+\end{align*}
+
+Para calcular el coeficiente $\rho$ se utilizan los rangos de los valores (el orden de cada valor), tomando rangos promedio cuando tengamos dos o más valores iguales en alguna de las variables. Si tenemos dos variables $X$ e $Y$, entre las que queremos ver si hay relación, con $n$ valores, el primer paso es obtenemos los rangos: $R_{x_i}$ y $R_{y_i}$, $i=1,...,n$. Después se calcula la diferencia entre rangos: $d_i=R_{x_i}-R_{y_i}$, $i=1,...,n$, y posteriormente se calcula $\rho$ mediante la fórmula:
+
+\[
+\rho  = 1-\frac{6\sum_{i=1}^n d_i^2}{n(n^2-1)}
+\]
+Otra forma de obtener el coeficiente $\rho$, que conduce exactamente a los mismos resultados que la fórmula anterior, es calcular el coeficiente de correlación lineal $r$ pero de los rangos en lugar del $r$ de los valores de partida.
+
+El resultado obtenido para $\rho$, igual que con $r$, siempre está comprendido entre $-1$ y $1$. Si $\rho$ está cercano o es igual a 1, quiere decir que los rangos crecen a la vez en las dos variables, mientras que si su valor está cercano o es igual a $-1$, quiere decir que cuando en una variable crecen los rangos en la otra decrecen. Si está cercano a 0 quiere decir que no hay correlación entre los rangos.
+
+Por último, una vez obtenido $\rho$ el contraste de si existe o no asociación entre las variables se puede reformular en términos de si $\rho$ puede o no ser igual a 0:
+\begin{align*}
+H_0 &: \rho=0.\\
+H_1 &: \rho\neq 0.
+\end{align*}
+
+Para ello se utiliza el estadístico:
+\[
+t_\rho = \frac{\rho\sqrt{n-2}}{\sqrt{1-\rho^2}},
+\]
+q
+ue, bajo la hipótesis nula de no asociación entre las variables ($\rho=0$) y siempre que el tamaño muestral no sea demasiado pequeño (por ejemplo, $n\geq10$), sigue una distribución $T$ de Student con $n-2$ grados de libertad, lo cual se puede utilizar para calcular el $p$ valor del contraste.
+
+\clearpage
+\newpage
+
+\section{Ejercicios resueltos}
+\begin{enumerate}[leftmargin=*]
+\item Procedemos a lanzar una moneda 30 veces y obtenemos la siguiente secuencia C (cara) y X (Cruz):
+
+\begin{center}
+X-C-X-C-X-C-X-X-C-C-X-C-C-X-C-X-C-X-X-C-X-C-X-C-X-C-C-X-X-X
+\end{center}
+
+Se pide:
+\begin{enumerate}
+\item Crear las variables \variable{Secuencia} e introducir los datos de la muestra.
+
+\begin{indicacion}
+Para comprobar, como se pedirá en el siguiente apartado, si los datos de una secuencia siguen o no una distribución aleatoria, es necesario definir la variable como numérica e introducir un número diferente para cada categoría. Por ejemplo, podemos introducir el valor 1 para la cruz X, y el valor 2 para la cara C. Posteriormente, se le puede asignar una etiqueta de valor a cada número.
+\end{indicacion}
+
+\item Comprobar si sería correcto suponer esa secuencia como aleatoria.
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Pruebas no paramétricas\flecha Cuadro de diálogos antiguo\flecha Rachas}.
+\item En el cuadro de diálogo que aparece, seleccionar la variable \variable{Secuencia} y pasarla al campo \campo{Contrastar Variables}. En el campo \campo{Punto de corte} seleccionar la opción \opcion{Personalizado}, y escoger el valor $1,5$ si se ha introducido la X como 1 y la C como 2 (si se han introducido otros valores numéricos, escoger como Punto de corte personalizado la media de los dos valores introducidos), y por último hacer click sobre el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item ¿Qué interpretación darías al $p$ valor obtenido?
+
+\end{enumerate}
+
+\item  Una central de productos lácteos recibe diariamente la
+leche de dos granjas $X$ e $Y$. Para analizar la
+calidad de la leche, durante una temporada, se controla el
+contenido de materia grasa de la leche que proviene de ambas
+granjas, con los siguientes resultados:
+\[
+\begin{array}{ll|ll}
+\multicolumn{2}{c|}{X} & \multicolumn{2}{c}{Y} \\
+\hline
+0.34 & 0.34 & 0.30 & 0.29 \\
+0.32 & 0.33 & 0.30 & 0.32 \\
+0.33 & 0.30 & 0.30 & 0.32 \\
+0.31 & 0.32 & 0.29 & 0.31 \\
+ &  & 0.32 & 0.31 \\
+ &  & 0.32 & 0.33 \\
+\end{array}
+\]
+
+
+\begin{enumerate}
+\item Crear las variables \variable{Grasa} y \variable{Granja}, e
+ introducir los datos de la muestra.
+
+\item Comprobar la hipótesis de normalidad de los datos en cada grupo.
+\begin{indicacion}
+Para realizar el contraste de normalidad vamos a utilizar el test de Kolmogorov-Smirnov-Lilliefors. Para ello:
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Estadísticos descriptivos\flecha Explorar...}
+\item Seleccionar en \campo{Lista de dependientes} la variable \variable{Grasa}, y en \campo{Lista de factores} la variable \variable{Granja}. En \campo{Visualización} debe estar activa la opción \opcion{Gráficos}, y en el botón \boton{Gráficos} debe estar activa la opción \opcion{Gráficos con pruebas de normalidad}.
+\end{enumerate}
+\end{indicacion}
+
+\item Contrastar la hipótesis de igualdad de varianzas (homocedasticidad) entre los datos de los dos grupos.
+\begin{indicacion}
+Para realizar el contraste de igualdad de varianzas entre los dos grupos, vamos a utilizar el test de Levene. Para ello:
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Estadísticos descriptivos\flecha Explorar...}
+\item Seleccionar en \campo{Lista de dependientes} la variable \variable{Grasa}, y en \campo{Lista de factores} la variable \variable{Granja}. En \campo{Visualización} debe estar activa la opción \opcion{Gráficos}, y pinchando en el botón \boton{Gráficos}, en \opcion{Dispersión por nivel con prueba de Levene} se debe escoger la opción \opcion{No transformados}.
+\end{enumerate}
+\end{indicacion}
+
+\item Utilizando el contraste más adecuado, ¿se puede concluir que existen diferencias significativas en el
+contenido medio de grasa según la procedencia de la leche?
+\begin{indicacion}
+Aunque según el análisis anterior, no podemos rechazar la hipótesis de normalidad en los grupos que queremos comparar y tampoco la igualdad de varianzas en los datos de los dos grupos, pero como la muestra es muy pequeña e incluso uno de los grupos tiene menos de 10 observaciones, lo más correcto sería aplicar el contraste de la U de Mann Whitney. Para ello:
+\begin{enumerate}
+\item  Seleccionar el menú \menu{Analizar\flecha Pruebas no paramétricas\flecha Cuadro de diálogos antiguo\flecha 2 muestras independientes...}.
+\item En el cuadro de dialogo que aparece seleccionar la variable
+\variable{Grasa} al campo \campo{Lista Contrastar variables}, seleccionar la
+variable \variable{Granja} al campo \campo{Variable de agrupación} y hacer click sobre el botón \boton{Definir grupos}.
+\item En el cuadro de diálogo que aparece introducir en el campo \campo{Grupo 1} el valor de la variable \variable{Granja} correspondiente a la granja $X$ y en el campo \campo{Grupo 2} el correspondiente a la granja $Y$, hacer click sobre el botón \boton{Continuar} y hacer click en el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+\end{enumerate}
+
+
+\item  Para ver si una campaña de publicidad sobre un
+ fármaco ha influido en sus ventas, se tomó una muestra de
+ 8 farmacias y se midió el número de unidades de dicho
+ fármaco vendidas durante un mes, antes y después de la
+ campaña, obteniéndose los siguientes resultados:
+\[
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|}
+\hline Antes & 147 & 163 & 121 & 205 & 132 & 190 & 176 & 147 \\
+\hline Después & 150 & 171 & 132 & 208 & 141 & 184 & 182 & 149
+\\
+\hline
+\end{tabular}
+\]
+
+\begin{enumerate}
+\item Crear las variables \variable{Antes} y \variable{Despues} e
+ introducir los datos de la muestra.
+
+\item Comprobar la hipótesis de normalidad de la variable diferencia.
+
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Transformar\flecha Calcular}.
+\item En el cuadro de diálogo que aparece introducir el nombre de la nueva variable \variable{Diferencia} en el campo \variable{Variable de destino}, en el campo \campo{Expresión numérica} introducir \comando{Antes-Despues} y hacer click en el botón \boton{Aceptar}.
+\item Seleccionar el menú \menu{Analizar\flecha Estadísticos descriptivos\flecha Explorar...}
+\item Seleccionar en \campo{Lista de dependientes} la variable \variable{Diferencia}. En \campo{Visualización} debe estar activa la opción \opcion{Gráficos}, y en el botón \boton{Gráficos} debe estar activa la opción \opcion{Gráficos con pruebas de normalidad}.
+\end{enumerate}
+\end{indicacion}
+
+\item Utilizando el contraste más adecuado, ¿se puede concluir que la campaña de publicidad ha aumentado las ventas?
+
+\begin{indicacion}
+\begin{enumerate}
+\item Aunque, según el análisis anterior, no podemos rechazar la hipótesis de normalidad en la variable diferencia, como la muestra es muy pequeña, lo más correcto sería aplicar el contraste de Wilcoxon.
+\item  Seleccionar el menú \menu{Analizar\flecha Pruebas no paramétricas\flecha Cuadro de diálogos antiguo\flecha 2 muestras relacionadas}.
+\item En el cuadro de diálogo que aparece seleccionar las variables \variable{Antes} y \variable{Despues} al campo \campo{Contrastar Pares} y hacer click sobre el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+\end{enumerate}
+
+
+\item Se han valorado los cambios en la presión arterial sistólica (antes del tratamiento con el fármaco menos después del tratamiento, en mm Hg) en quince pacientes, que se dividieron en tres grupos, aplicando a cada grupo un fármaco diferente. Los resultados obtenidos tras un año de tratamiento fueron:
+\[
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline Fármaco & Cambio presión & Fármaco & Cambio presión & Fármaco & Cambio presión \\
+\hline 1 & 12 & 2 & -3 & 3 & 1 \\
+\hline 1 & 15 & 2 & 5 & 3 & 5 \\
+\hline 1 & 16 & 2 & -8 & 3 & 19 \\
+\hline 1 & 6 & 2 & -2 & 3 & 45 \\
+\hline 1 & 8 & 2 & 4 & 3 & 3 \\
+\hline
+\end{tabular}
+\]
+
+\begin{enumerate}
+\item Crear las variables \variable{Farmaco} y \variable{Cambio} e
+ introducir los datos de la muestra.
+
+\item Generar un diagrama de dispersión con los datos de los 15 pacientes, con el fármaco en el eje $X$ y el cambio en la presión arterial sistólica en el eje $Y$. A la vista del diagrama, ¿crees que los datos presentas homogeneidad de varianzas? ¿crees que hay algún grupo con un cambio en la presión arterial diferente del resto?
+    
+\begin{indicacion}
+
+\begin{enumerate}
+\item Seleccionar el menú \menu{Gráficos\flecha Cuadros de diálogo antiguos\flecha Dispersión/Puntos...}.
+
+\item Escoger la opción \opcion{Dispersion simple}, y pinchar en botón \boton{Definir}.
+\item Seleccionar como \menu{Eje X} la variable \variable{Farmaco}, y como \menu{Eje Y} la variable \variable{Cambio}.
+\end{enumerate}
+\end{indicacion}
+
+\item Analizar la normalidad de los datos de los 3 grupos y la homogeneidad de varianzas.
+\begin{indicacion}
+Para analizar la normalidad de los datos de los 3 grupos utilizamos el test de Kolmogorov-Smirnov-Lilliefors, y para la homogeneidad de varianzas el test de Levene. Para ello:
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Estadísticos descriptivos\flecha Explorar...}
+\item Seleccionar en \campo{Lista de dependientes} la variable \variable{Cambio}, y en \campo{Lista de factores} la variable \variable{Farmaco}. 
+\item Para la prueba de normalidad, en \campo{Visualización} debe estar activa la opción \opcion{Gráficos}, y en el botón \boton{Gráficos} debe estar activa la opción \opcion{Gráficos con pruebas de normalidad}.
+\item Para la prueba de homogeneidad de varianzas, en \campo{Visualización} debe estar activa la opción \opcion{Gráficos}, y pinchando en el botón \boton{Gráficos}, en \opcion{Dispersión por nivel con prueba de Levene} se debe escoger la opción \opcion{No transformados}.
+\end{enumerate}
+\end{indicacion}
+
+\item Utilizando el contraste más adecuado, ¿se puede concluir que existen diferencias en los cambios de la presión sistólica en función del fármaco recibido?
+\begin{indicacion}
+En este caso no se cumple la homogeneidad de varianzas, por lo que no se puede aplicar una ANOVA y tendremos que recurrir al test de Kruskal-Wallis.
+\begin{enumerate}
+\item  Seleccionar el menú \menu{Analizar\flecha Pruebas no paramétricas\flecha Cuadro de diálogos antiguo\flecha k muestras independientes}.
+\item En el cuadro de dialogo que aparece seleccionar la variable
+ \variable{Cambio} al campo \campo{Lista Contrastar variables}, seleccionar la
+ variable \variable{Farmaco} al campo \campo{Variable de agrupación} y hacer click sobre el botón \boton{Definir rango}.
+\item En el cuadro de diálogo que aparece introducir en el campo \campo{Mínimo} el valor 1, y en el campo \campo{Máximo} el valor 3, hacer click sobre el botón \boton{Continuar} y hacer click en el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item ¿Entre qué grupos se dan las diferencias significativas?
+
+\begin{indicacion}
+Para analizar entre qué grupos se dan las diferencias significativas mediante un test no paramétrico, hay que utilizar la U de Mann Whitney, y ver si hay diferencias significativas entre todas las categorías de la variable \variable{Farmaco} tomadas dos a dos; es decir, hay que ver si hay diferencias entre 1-2, 1-3 y 2-3. Posteriormente, el $p$ valor obtenido en cada uno de los análisis lo multiplicamos por 3 que es el número de categorías de la variable \variable{Farmaco}. Por ejemplo, para la comparación 1-3: 
+\begin{enumerate}
+\item  Seleccionar el menú \menu{Analizar\flecha Pruebas no paramétricas\flecha Cuadro de diálogos antiguo\flecha 2 muestras independientes...}.
+\item En el cuadro de dialogo que aparece seleccionar la variable \variable{Cambio} al campo \campo{Lista Contrastar variables}, seleccionar la
+variable \variable{Farmaco} al campo \campo{Variable de agrupación} y hacer click sobre el botón \boton{Definir grupos}.
+\item En el cuadro de diálogo que aparece introducir en el campo \campo{Grupo 1} el valor 1 (valor de la variable \variable{Farmaco} correspondiente al primero de los grupos que consideramos), y en el campo \campo{Grupo 2} el valor 3 (valor de la variable \variable{Farmaco} correspondiente al segundo de los grupos que consideramos). Posteriormente, hacer click sobre el botón \boton{Continuar} y hacer click en el botón \boton{Aceptar}.
+\item Una vez obtenido el $p$-valor, no olvidar multiplicar por 3.
+\end{enumerate}
+\end{indicacion}
+\end{enumerate}
+
+
+\item Se quiere contrastar la dificultad de cuatro modelos de examen que se van a poner en la convocatoria ordinaria de la asignatura de bioestadística. Para ello se pide a cinco profesores diferentes que valoren cada uno de los modelos de 0 a 10, y los resultados fueron:
+
+\[
+\begin{tabular}{|c|c|c|c|c|}
+\hline  & Modelo1 & Modelo2 & Modelo3 & Modelo4  \\
+\hline Profesor1 & 6 & 8 & 5 & 8 \\
+\hline Profesor2 & 5 & 4 & 7 & 9 \\
+\hline Profesor3 & 5 & 4 & 5 & 6 \\
+\hline Profesor4 & 7 & 4 & 6 & 7 \\
+\hline Profesor5 & 6 & 3 & 7 & 8 \\
+\hline
+\end{tabular}
+\]
+
+\begin{enumerate}
+\item Crear las variables \variable{Modelo1}, \variable{Modelo2}, \variable{Modelo3} y \variable{Modelo4} e introducir los datos de la muestra.
+
+\item ¿Podemos afirmar que el grado de dificultad de los modelos es diferente? Utilizar un test de Friedman para dar respuesta a la pregunta.
+\begin{indicacion}
+\begin{enumerate}
+\item  Seleccionar el menú \menu{Analizar\flecha Pruebas no paramétricas\flecha Cuadro de diálogos antiguo\flecha K muestras relacionadas}.
+\item En el cuadro de diálogo que aparece seleccionar las variables \variable{modelo1}, \variable{modelo2}, \variable{modelo3} y \variable{modelo4} al campo \campo{Variables de contraste} y hacer click sobre el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\end{enumerate}
+
+
+\item El test de Apgar es un examen clínico de neonatología en donde el médico realiza una prueba medida en 3 estándares sobre el recién nacido para obtener una primera valoración simple (macroscópica) y clínica sobre el estado general del neonato después del parto. El recién nacido es evaluado de acuerdo a cinco parámetros fisioanatómicos simples, que son: color de la piel, frecuencia cardíaca, reflejos, tono muscular y respiración. A cada parámetro se le asigna una puntuación entre 0 y 2, y sumando las cinco puntuaciones se obtiene el resultado del test.
+El test se realiza al minuto, a los cinco minutos y, en ocasiones, a los diez minutos de nacer. La puntuación al primer minuto evalúa el nivel de tolerancia del recién nacido al proceso del nacimiento y su posible sufrimiento, mientras que la puntuación obtenida a los 5 minutos evalúa el nivel de adaptabilidad del recién nacido al medio ambiente y su capacidad de recuperación.
+
+En la siguiente tabla se refleja la puntuación obtenida por 22 recién nacidos en el test de Apgar al minuto y a los cinco minutos de haber nacido:
+\begin{center}
+\begin{tabular}{lrrrrrrrrrrr}
+\hline
+Apgar1 & 10 & 3 & 8 & 9 & 8 & 9 & 8 & 8 & 8 & 8 & 7 \\
+\hline
+Apgar5 & 10 & 6 & 9 & 10 & 9 & 10 & 9 & 9 & 9 & 9 & 9 \\
+\hline
+\\
+\hline
+Apgar1 & 8 & 6 & 8 & 9 & 9 & 9 & 9 & 8 & 9 & 3 & 9 \\
+\hline
+Apgar5 & 9 & 6 & 8 & 9 & 9 & 9 & 9 & 8 & 9 & 3 & 9 \\
+\hline
+\end{tabular}
+\end{center}
+
+Con los datos anteriores se pretende realizar un contraste de hipótesis para analizar si existe o no relación entre las dos puntuaciones. 
+Para ello:
+\begin{enumerate}
+\item Crear las variables Apgar1 y Apgar5 e introducir los datos de la muestra.
+\item Comprobar si las variables siguen distribuciones normales.
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Estadísticos descriptivos\flecha Explorar...}
+\item Seleccionar en \campo{Lista de dependientes} la variables \variable{Apgar1} y \variable{Apgar2}, y dejar vacía la \campo{Lista de factores}. En \campo{Visualización} debe estar activa la opción \opcion{Gráficos}, y en el botón \boton{Gráficos} debe estar activa la opción \opcion{Gráficos con pruebas de normalidad}.
+\end{enumerate}
+\end{indicacion}
+
+\item Realizar el contraste de hipótesis bilateral: $H_0$: No hay relación entre las variables, $H_1$: Sí que hay relación.
+\begin{indicacion}
+Como las variables analizadas no siguen distribuciones normales, para realizar un contraste de relación entre ambas hay que obtener el coeficiente de correlación de Spearman y ver si es o no significativamente diferente de $0$. Para ello:
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Correlaciones\flecha Bivariadas}. 
+\item En el cuadro de diálogo que aparece, pasar las variable \variable{Apgar1} y \variable{Apgar2} al campo \campo{Variables}. Seleccionar en la lista de \campo{Coeficientes de correlación} la opción \opcion{Spearman} y hacer click sobre el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+\end{enumerate}
+
+
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item El departamento de calidad de un laboratorio farmacéutico, recoge una muestra de una de las maquinas que producen ampollas de suero fisiológico y comprueba los siguientes resultados, C (correcto) y D (Defectuoso):
+\begin{center}
+C-C-C-C-D-C-C-C-C-D-D-D-C-C-C-C-C-C-C-C-C-C-D-D-D-C-C-C-C-D-D-D-C-C-C-C-C-C-D-D-C-C-C-C-C
+\end{center}
+
+¿Se puede considerar que el resultado obtenido sigue una secuencia aleatoria?
+
+
+\item  Se ha realizado un estudio para investigar el efecto del
+ejercicio físico en el nivel de colesterol en la sangre. En el
+estudio participaron once personas, a las que se les midió el
+nivel de colesterol antes y después de desarrollar un programa
+de ejercicios. Los resultados obtenidos fueron los siguientes:
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+Nivel Previo & 223 & 212 & 221 & 210 & 225 & 202 & 198 & 200 & 185 & 220\\
+\hline
+Nivel Posterior & 226 & 211 & 222 & 212 & 225 & 201 & 196 & 217 & 130 &220  \\
+\hline
+\end{tabular}
+\end{center}
+
+Utilizando el contraste más adecuado, ¿se puede concluir que el ejercicio
+físico disminuye el nivel de colesterol?
+
+
+\item Dos químicos $A$ y $B$ realizan respectivamente 14 y 16 determinaciones de la actividad radiactiva de una muestra de material. Sus resultados en Curios:
+\begin{center}
+\begin{tabular}{ll|ll}
+\multicolumn{2}{c|}{A} & \multicolumn{2}{c}{B} \\
+\hline
+263.10 & 262.60 & 286.53 & 254.54 \\
+262.10 & 259.60 & 284.55 & 286.30 \\
+257.60 & 262.20 & 272.52 & 282.90 \\
+261.70 & 261.20 & 283.85 & 253.75 \\
+260.70 & 259.20 & 252.01 & 245.26 \\
+269.13 & 268.63 & 275.08 & 266.08 \\
+268.13 & 217.00 & 267.53 & 252.05 \\
+ &  & 253.82 & 269.81 \\
+\end{tabular}
+\end{center}
+
+Utilizando el contraste más adecuado, ¿se puede concluir que existen diferencias significativas en la actividad detectada por cada químico?
+
+
+\item En un hospital se están evaluando dos tratamientos diferentes para ver si existen diferencias entre ellos, para lo cual se seleccionaron dos grupos de 32 pacientes cada uno y se aplicó un tratamiento a cada grupo. Los resultados fueron:
+
+ \begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+\cline{2-5}
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Empeoraron} & \multicolumn{1}{c|}{Igual} & \multicolumn{1}{c|}{Mejoraron} & \multicolumn{1}{c|}{Curaron} \\
+\hline
+\multicolumn{1}{|c|}{A} & \multicolumn{1}{c|}{9} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{6} \\
+\hline
+\multicolumn{1}{|c|}{B} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{11} & \multicolumn{1}{c|}{10} \\
+\hline
+\end{tabular}
+\end{center}
+
+Utilizando el contraste más adecuado, ¿se puede concluir que existen diferencias significativas entre ambos tratamientos?
+
+
+\item Queremos comparar las calificiaciones iniciales de un grupo de 20 alumnos, con las obtenidas al final del curso, pera ver si existen diferencias, las calificaciones fueron (SS suspenso, A aprobado, N notable y SB sobresaliente):
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+ Alumno & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+\hline
+Calificación Inicial & SS & A & A & SS & N & SS & SS & SB & A & A  \\
+\hline
+Calificación Final & A & A & SS & A & SB & N & A & N & SS & A  \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+ Alumno & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 10 \\
+\hline
+Nota Inicial & SS & N & A & SS & SB & A & N & SS & A & SB  \\
+\hline
+Nota Final & SB & A & N & A & SB & A & N & A & N & SB  \\
+\hline
+\end{tabular}
+\end{center}
+
+Utilizando el contraste más adecuado, ¿se puede concluir que existen diferencias significativas entre las calificaciones al comienzo y al final del curso?
+
+\item Disponemos de la evaluación que han obtenido tres grupos de prácticas de las asignatura de bioestadística (MM muy mal, M mal, R regular, B bien y MB muy bien):
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+Grupo 01 & R & B & R & M & MM & B & MB & R & M & B & M & R & R & MM & M\\
+\hline
+Grupo 02 & B & R & M & B & R & M & B & MB & M & R & M & R & & &  \\
+\hline
+Grupo 03 & MB & B & M & R & B & MB & B & R & B & MB & B & R & MB & &  \\
+\hline
+\end{tabular}
+\end{center}
+
+Utilizando el contraste más adecuado, ¿se puede concluir que existen diferencias significativas en la evaluación de los diferentes grupos?
+
+
+\item Para comparar las dificultades presentados por un grupo de problemas de lógica, se han seleccionado aleatoriamente a ocho individuos a los que se les ha planteado tres pruebas iguales, a cada uno y se han anotado los tiempos, en minutos, que han tardado en resolverlos. Los resultados obtenidos son:
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{Prueba 1} & \multicolumn{1}{c|}{Prueba 2} & \multicolumn{1}{c|}{Prueba 3} \\
+\hline
+\multicolumn{1}{|c|}{38} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{35} \\
+\hline
+\multicolumn{1}{|c|}{22} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{9} \\
+\hline
+\multicolumn{1}{|c|}{14} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{8} \\
+\hline
+\multicolumn{1}{|c|}{8} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{4} \\
+\hline
+\multicolumn{1}{|c|}{6} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{8} \\
+\hline
+\multicolumn{1}{|c|}{10} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{10} \\
+\hline
+\multicolumn{1}{|c|}{14} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{5} \\
+\hline
+\multicolumn{1}{|c|}{8} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{3} \\
+\hline
+\end{tabular}
+\end{center}
+
+Utilizando el contraste más adecuado, ¿se puede concluir que existen diferencias significativas en los tiempos de resolución de las tres pruebas?
+
+\item La siguiente tabla muestra los datos de 9 pacientes con anemia aplástica:
+
+\begin{center}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{Reticulocitos (\%)} & \multicolumn{1}{c|}{3,6} & \multicolumn{1}{c|}{2,0} & \multicolumn{1}{c|}{0,3} & \multicolumn{1}{c|}{0,3} & \multicolumn{1}{c|}{0,2} & \multicolumn{1}{c|}{3,0} & \multicolumn{1}{c|}{0,0} & \multicolumn{1}{c|}{1,0} & \multicolumn{1}{c|}{2,2} \\
+\hline
+\multicolumn{1}{|c|}{Linfocitos (por mm$^2$)} & \multicolumn{1}{c|}{1700} & \multicolumn{1}{c|}{3078} & \multicolumn{1}{c|}{1820} & \multicolumn{1}{c|}{2706} & \multicolumn{1}{c|}{2086} & \multicolumn{1}{c|}{2299} & \multicolumn{1}{c|}{676} & \multicolumn{1}{c|}{2088} & \multicolumn{1}{c|}{2013} \\
+\hline
+\end{tabular}
+
+\end{center}
+
+Mediante el adecuado contraste de hipótesis basado en el coeficiente de correlación de Spearman, ¿existe relación entre ambas variables?
+
+\end{enumerate}

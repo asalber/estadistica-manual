@@ -1,0 +1,349 @@
+% Version control information:
+%$HeadURL: https://practicas-spss.googlecode.com/svn/trunk/anova_1_factor/anova_1_factor.tex $
+%$LastChangedDate: 2010-09-27 16:37:11 +0200 (lun, 27 sep 2010) $
+%$LastChangedRevision: 3 $
+%$LastChangedBy: asalber $
+%$Id: anova_1_factor.tex 3 2010-09-27 14:37:11Z asalber $
+
+\chapter{Análisis de la Varianza de 1 Factor}
+
+\section{Fundamentos teóricos}
+
+El \emph{Análisis de la Varianza con un Factor} es una técnica
+estadística de contraste de hipótesis, que sirve para comparar las medias una variable cuantitativa, que suele llamarse \emph{variable dependiente} o \emph{respuesta}, en distintos grupos o muestras definidas por una variable cualitativa, llamada \emph{variable independiente} o \emph{factor}. Las distintas categorías del factor que definen los grupos a comparar se conocen como \emph{niveles} o \emph{tratamientos} del factor. 
+
+Se trata, por tanto, de una generalización de la \emph{prueba T para la comparación de medias de dos muestras independientes}, para diseños experimentales con más de dos muestras. Y se diferencia de un análisis de regresión simple, donde tanto la variable dependiente como la independiente eran cuantitativas, en que en el análisis de la varianza de un factor, la variable independiente o factor es una variable cualitativa.
+
+Un ejemplo de aplicación de esta técnica podría ser la comparación del nivel de colesterol medio según el grupo sanguíneo. En este caso, la dependiente o factor es el grupo sanguíneo, con cuatro niveles (A, B, O, AB), mientras que la variable respuesta es el nivel de colesterol.
+
+Para comparar las medias de la variable respuesta según los diferentes niveles del factor, se plantea un contraste de hipótesis en el que la hipótesis nula, $H_0$, es que la variable respuesta tiene igual media en todos los niveles, mientras que la hipótesis alternativa, $H_1$, es que hay diferencias
+estadísticamente significativas entre al menos dos de las medias. Dicho contraste se realiza mediante la descomposición de la varianza total de la variable respuesta; de ahí procede el nombre de esta técnica: \emph{ANOVA} (Analysis of Variance en inglés).
+
+\subsection{El contraste de ANOVA}
+La notación habitual en ANOVA es la siguiente:
+\begin{description}
+\item[$k$] es el número de niveles del factor.
+\item[$n_i$] es el tamaño de la muestra aleatoria correspondiente al nivel $i$-ésimo del factor.
+\item[$n = \sum_{i = 1}^k {n_i}$] es el número total de observaciones.
+\item[$X_{ij}\ (i = 1,...,k;\,j = 1,...,n_i)$] es una variable aleatoria que indica la respuesta de la $j$-ésimo individuo al $i$-ésimo nivel del factor.
+\item [$x_{ij}$] es el valor concreto, en una muestra dada, de la variable $X_{ij}$.
+\[
+\begin{array}{cccc}
+\multicolumn{4}{c}{\textrm{Niveles del Factor}} \\
+\hline
+1 & 2 & \cdots & k\\
+\hline
+X_{11} & X_{21} & \cdots & X_{k1}\\
+X_{12} & X_{22} & \cdots & X_{k2}\\
+\vdots & \vdots & \vdots & \vdots\\
+X_{1n_1} & X_{2n_2} & \cdots & X_{kn_k}\\
+\hline
+\end{array}
+\]
+\item[$\mu_i$] es la media de la población del nivel $i$.
+\item [$\bar X_i = \sum_{j = 1}^{n_i} X_{ij}/n_i$] es la variable media muestral del nivel $i$, y estimador de $\mu_i$.
+\item [$\bar x_i = \sum_{j = 1}^{n_i} x_{ij}/n_i$] es la estimación concreta para una muestra dada de la variable media muestral del nivel $i$.
+\item [$\mu$] es la media global de la población (incluidos todos los niveles).
+\item [$\bar X  = \sum_{i = 1}^k \sum_{j = 1}^{n_i } X_{ij}/n$] es la variable media muestral de todas las respuestas, y estimador de $\mu$.
+\item [$\bar x  = \sum_{i = 1}^k \sum_{j = 1}^{n_i }x_{ij}/n$] es la estimación concreta para una muestra dada de la variable media muestral.
+\end{description}
+
+Con esta notación podemos expresar la variable respuesta mediante un modelo matemático que la descompone en componentes atribuibles a distintas causas:
+\[
+X_{ij} = \mu+(\mu_i-\mu) + (X_{ij}-\mu_i),
+\]
+es decir, la respuesta $j$-ésima en el nivel $i$-ésimo puede descomponerse como resultado de una media global, más la desviación con respecto a la media global debida al hecho de que recibe el tratamiento $i$-ésimo, más una nueva desviación con respecto a la media del nivel debida a influencias aleatorias.
+
+Sobre este modelo se plantea la hipótesis nula: las medias correspondientes a todos los niveles son iguales; y su correspondiente alternativa: al menos hay dos medias de nivel que son diferentes.
+\begin{align*}
+H_0: & \mu_1 = \mu_2  = \cdots = \mu _k\\
+H_1: & \mu_i \neq \mu_j \textrm{ para algún } i\neq j.
+\end{align*}
+Para poder realizar el contraste con este modelo es necesario plantear ciertas hipótesis
+estructurales (supuestos del modelo):
+\begin{description}
+\item[Independencia] Las $k$ muestras, correspondientes a los $k$ niveles del factor, representan muestras aleatorias independientes de $k$ poblaciones con medias $\mu_1  = \mu_2  = \cdots = \mu_k$ desconocidas.
+\item[Normalidad] Cada una de las $k$ poblaciones es normal.
+\item[Homocedasticidad] Cada una de las $k$ poblaciones tiene la misma varianza $\sigma^2$.
+\end{description}
+
+Teniendo en cuenta la hipótesis nula y los supuestos del modelo, si se sustituye en el modelo las medias poblacionales por sus correspondientes estimadores muestrales, se tiene
+\[
+X_{ij} = \bar X+(\bar X_i-\bar X)+(X_{ij}-\bar X_i}),
+\]
+o lo que es lo mismo,
+\[
+X_{ij}-\bar X= (\bar X_i-\bar X)+(X_{ij}-\bar X_i}).
+\]
+
+Elevando al cuadrado y teniendo en cuenta las propiedades de los sumatorios, se llega a la ecuación que recibe el nombre de \emph{identidad de la suma de cuadrados}:
+\[
+\sum_{i=1}^k \sum_{j=1}^{n_i} (X_{ij}-\bar X)^2  = \sum_{i=1}^k n_i(\bar X_i-\bar X)^2 }+\sum_{i=1}^k \sum_{j = 1}^{n_i}(X_{ij}-\bar X_i)^2,
+\]
+donde:
+\begin{description}
+\item [$\sum_{i=1}^k \sum_{j=1}^{n_i} (X_{ij}- \bar X)^2$] recibe el nombre de \emph{suma
+total de cuadrados}, ($STC$), y es la suma de cuadrados de las desviaciones con respecto a la media global; por lo tanto, una medida de la variabilidad total de los datos.
+\item [$\sum_{j=1}^k n_i(\bar X_i-\bar X)^2$] recibe el nombre de \emph{suma de cuadrados de los
+tratamientos o suma de cuadrados intergrupos}, ($SCInter$), y es la suma ponderada de cuadrados de las desviaciones de la media de cada nivel con respecto a la media global; por lo tanto, una
+medida de la variabilidad atribuida al hecho de que se utilizan diferentes niveles o tratamientos.
+\item [$\sum_{i=1}^k \sum_{j=1}^{n_i}(X_{ij}-\bar X_i )^2$] recibe el nombre de \emph{suma de cuadrados residual o suma de cuadrados intragrupos}, ($SCIntra$), y es la suma de cuadrados de las desviaciones de las observaciones con respecto a las medias de los sus respectivos niveles o
+tratamientos; por lo tanto, una medida de la variabilidad en los datos atribuida a las fluctuaciones aleatorias dentro del mismo nivel.
+\end{description}
+
+Con esta notación la identidad de suma de cuadrados se expresa:
+\[
+SCT=SCInter+SCIntra
+\]
+Y un último paso para llegar al estadístico que permitirá contrastar $H_0$, es la definición de los \emph{Cuadrados Medios}, que se obtienen al dividir cada una de las sumas de cuadrados por
+sus correspondientes grados de libertad. Para $SCT$ el número de grados de libertad es $n-1$; para $SCInter$ es $k-1$; y para $SCIntra$ es $n-k$. Por lo tanto,
+\begin{align*}
+CMT &= \frac{SCT}{n - 1}\\
+CMInter &= \frac{SCInter}{k - 1}\\
+CMIntra &= \frac{SCIntra}{n -k}
+\end{align*}
+
+Y se podría demostrar que, en el supuesto de ser cierta la hipótesis nula y los supuestos del modelo, el cociente:
+\[
+\frac{{CMInter}}{{CMIntra}}
+\]
+sigue una distribución $F$ de Fisher con $k-1$ y $n-k$ grados de libertad.
+
+De esta forma, si $H_0$ es cierta, el valor del cociente para un conjunto de muestras dado, estará próximo a 0 (aún siendo siempre mayor que 0); pero si no se cumple $H_0$ crece la variabilidad intergrupos y la estimación del estadístico crece. En definitiva, realizaremos un contraste de hipótesis unilateral con cola a la derecha de igualdad de varianzas, y para ello calcularemos el $p$-valor de la estimación de $F$ obtenida y aceptaremos o rechazaremos en función del nivel de significación fijado.
+
+\subsubsection{Tabla de ANOVA}
+Todos los estadísticos planteados en el apartado anterior se recogen en una tabla denominada Tabla de ANOVA, en la que se ponen los resultados de las estimaciones de dichos estadísticos en las muestras concretas objeto de estudio. 
+Esas tablas también son las que aportan como resultado de cualquier ANOVA los programas
+estadísticos, que suelen añadir al final de la tabla el $p$-valor del estadístico $F$ calculado, y que permite aceptar o rechazar la hipótesis nula de que las medias correspondientes a todos los niveles del factor son iguales.
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{lp{2cm}p{2cm}p{3.3cm}p{2.5cm}p{1.7cm}}
+\hline
+ & Suma de\newline cuadrados & Grados de\newline libertad & Cuadrados medios & Estadístico F & p-valor\\
+\hline
+Intergrupos & $SCInter$ & $k-1$ & $CMInter=\frac{SCInter}{k-1}$ & $f=\frac{CMInter}{CMIntra}$ & $P(F>f)$ \\
+Intragrupos & $SCIntra$ & $n-k$ & $CMIntra=\frac{SCIntra}{n-k}$ &  & \\
+Total & $SCT$ & $n-1$ & & & \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\subsection{Test de comparaciones múltiples y por parejas}
+Una vez realizado el ANOVA de un factor para comparar las $k$ medias correspondientes a los $k$ niveles o tratamientos del factor, se puede concluir aceptando la hipótesis nula, en cuyo caso se da por concluido el análisis de los datos en cuanto a detección de diferencias entre los niveles, o rechazándola, en cuyo caso es natural continuar con el análisis para tratar de localizar con precisión dónde está la diferencia, cuáles son los niveles cuyas respuestas son estadísticamente diferentes.
+
+En el segundo caso, hay varios métodos que permiten detectar las diferencias entre las medias de los diferentes niveles, y que reciben el nombre de \emph{test de comparaciones múltiples}. A su
+vez este tipo de test se suelen clasificar en:
+\begin{description}
+\item[Test de comparaciones por parejas] Su objetivo es la comparación una a una de todas las posibles parejas de medias que se pueden tomar al considerar los diferentes niveles. Su resultado es una tabla en la que se reflejan las diferencias entre todas las posibles parejas y los intervalos de confianza para dichas diferencias, con la indicación de si hay o no diferencias significativas entre las mismas. Hay que aclarar que los intervalos obtenidos no son los mismos que resultarían si se considera cada pareja de medias por separado, ya que el rechazo de $H_0$ en el contraste general de ANOVA implica la aceptación de una hipótesis alternativa en la que están involucrados varios contrastes individuales a su vez; y si queremos mantener un nivel de significación $\alpha$ en el general, en los individuales debemos utilizar un $\alpha'$ considerablemente más pequeño.
+\item[Test de rango múltiple] Su objetivo es la identificación de subconjuntos homogéneos de medias que no se diferencian entre sí.
+\end{description}
+Para los primeros se puede utilizar el test de Bonferroni; para los segundos, el test de Duncan; y para ambas categorías a la vez los test HSD de Tukey y Scheffé.
+
+\clearpage
+\newpage
+
+\section{Ejercicios resueltos}
+\begin{enumerate}[leftmargin=*]
+\item Se realiza un estudio para comparar la eficacia de tres programas terapéuticos para el tratamiento del acné. Se emplean tres métodos:
+
+\begin{enumerate}
+\item Lavado, dos veces al día, con cepillo de polietileno y un jabón abrasivo, junto con el uso diario de 250 mg de tetraciclina.
+
+\item Aplicación de crema de tretinoína, evitar el sol, lavado dos veces al día con un jabón emulsionante y agua, y utilización dos veces al día de 250 mg de tetraciclina.
+
+\item Evitar el agua, lavado dos veces al día con un limpiador sin lípidos y uso de crema de tretinoína y de peróxido benzoílico.
+
+\end{enumerate}
+En el estudio participan 35 pacientes. 
+Se separó aleatoriamente a estos pacientes en tres subgrupos de tamaños 10, 12 y 13, a los que se asignó respectivamente los tratamientos I, II, y III.
+Después de 16 semanas se anotó para cada paciente el porcentaje de mejoría en el número de lesiones.
+\[
+\begin{array}{ll|ll|ll}
+\multicolumn{6}{c}{\textrm{Tratamiento}} \\
+\hline
+\multicolumn{2}{c}{\textrm{I}} & \multicolumn{2}{c}{\textrm{II}} & \multicolumn{2}{c}{\textrm{III}} \\
+\hline
+48.6 & 50.8 & 68.0 & 71.9 & 67.5 & 61.4 \\
+49.4 & 47.1 & 67.0 & 71.5 & 62.5 & 67.4 \\
+50.1 & 52.5 & 70.1 & 69.9 & 64.2 & 65.4 \\
+49.8 & 49.0 & 64.5 & 68.9 & 62.5 & 63.2 \\
+50.6 & 46.7 & 68.0 & 67.8 & 63.9 & 61.2 \\
+     &      & 68.3 & 68.9 & 64.8 & 60.5 \\
+     &      &      &      & 62,3 &      \\
+\hline
+\end{array}
+\]
+\begin{enumerate}
+
+\item Crear las variables \variable{tratamiento} y \variable{mejora} e introducir los datos de la muestra.
+\begin{indicacion}
+Para cualquier ANOVA, a pesar de que la variable \variable{tratamiento} es cualitativa, conviene que se introduzca como cuantitativa, ya que
+SPSS sólo admite como factor de clasificación variables cuantitativas. Si hubiese que mostrar los diferentes niveles de la variable factor
+como cualidades, bastará con asignarles etiquetas).
+\end{indicacion}
+
+\item Dibujar el diagrama de dispersión. ¿Qué conclusiones sacas de la nube de puntos?
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Gráficos\flecha Cuadros de diálogo antiguos\flecha Dispersión/Puntos}.
+\item En el cuadro de diálogo que aparece, seleccionar la opción \campo{Dispersión simple}
+y hacer click en el botón \boton{Definir}.
+\item En el siguiente cuadro de diálogo que aparece, seleccionar la variable
+\variable{mejora} al campo \campo{Eje Y} y la variable \variable{tratamiento} al
+campo \campo{Eje X}, y hacer click sobre el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item Obtener la tabla de ANOVA correspondiente al problema. ¿Se puede concluir que los tres tratamientos tienen el mismo efecto medio con
+un nivel de significación de $0.05$?
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Comparar medias\flecha ANOVA de un factor}.
+\item En el cuadro de diálogo que aparece, seleccionar la variable
+\variable{mejora} al campo \campo{Lista de dependientes} y la variable
+\variable{tratamiento} al campo \campo{factor}, y hacer click sobre el botón
+\boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item Obtener la tabla de ANOVA correspondiente al problema pero que además muestre los intervalos de confianza de los 3 diferentes
+tratamientos, con una significación de $0.05$, y diversos estadísticos de cada unos de ellos.
+\begin{indicacion}
+Repetir los mismos pasos del apartado anterior, haciendo click en el botón \boton{Opciones} del último cuadro de
+diálogo y activar la opción \campo{Descriptivos}.
+\end{indicacion}
+
+
+\item Si se puede concluir que los tratamientos no han tenido el mismo efecto medio, ¿entre qué parejas de tratamientos hay diferencias
+estadísticamente significativas?
+\begin{indicacion}
+Repetir los mismos pasos del apartado anterior, haciendo click en el botón
+\boton{Post hoc} del último cuadro de diálogo y activar la opción de \campo{Bonferroni} con un nivel de
+significación de $0.05$.
+\end{indicacion}
+
+\item Si se puede concluir que los tratamientos no han tenido el mismo efecto medio, ¿cuáles son los grupos homogéneos (grupos con un
+comportamiento similar en cuanto a mejora se refiere) de tratamientos que se pueden establecer?
+\begin{indicacion}
+Repetir los mismos pasos del apartado anterior, activando la opción de \campo{Duncan}.
+\end{indicacion}
+\end{enumerate}
+
+\item Se sospecha que hay diferencias en la preparación del examen de selectividad entre los diferentes centros de bachillerato de una
+ciudad. Con el fin de comprobarlo, de cada uno de los 5 centros, se eligieron 8 alumnos al azar, con la condición de que hubieran cursado
+las mismas asignaturas, y se anotaron las notas que obtuvieron en el examen de selectividad. Los resultados fueron:
+\[
+\begin{array}{lllll}
+\multicolumn{5}{c}{\text{Centros}} \\
+\hline
+1 & 2 & 3 & 4 & 5 \\
+\hline
+5.5 & 6.1 & 4.9 & 3.2 & 6.7 \\
+5.2 & 7.2 & 5.5 & 3.3 & 5.8 \\
+5.9 & 5.5 & 6.1 & 5.5 & 5.4 \\
+7.1 & 6.7 & 6.1 & 5.7 & 5.5 \\
+6.2 & 7.6 & 6.2 & 6.0 & 4.9 \\
+5.9 & 5.9 & 6.4 & 6.1 & 6.2 \\
+5.3 & 8.1 & 6.9 & 4.7 & 6.1 \\
+6.2 & 8.3 & 4.5 & 5.1 & 7.0 \\
+\hline
+\end{array}
+\]
+
+\begin{enumerate}
+\item Crear las variables \variable{nota} y \variable{centro} e introducir los datos de la muestra.
+
+\item Dibujar el diagrama de dispersión. ¿Qué conclusiones sacas sobre la nota media de selectividad en los distintos centros?
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Gráficos\flecha Cuadros de diálogo antiguos\flecha Dispersión/Puntos}.
+\item En el cuadro de diálogo que aparece, seleccionar la opción \campo{Dispersión simple}
+y hacer click en el botón \boton{Definir}.
+\item En el siguiente cuadro de diálogo que aparece, seleccionar la variable \variable{nota} al campo \campo{Eje Y} y la variable
+\variable{centro} al campo \campo{Eje X}, y hacer click sobre el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item Realizar el contraste de ANOVA. ¿Se puede confimar la sospecha de que hay diferencias entre las notas medias de los centros?
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Comparar medias\flecha ANOVA de un factor}.
+\item En el cuadro de diálogo que aparece, seleccionar la variable \variable{nota} al campo \campo{Lista de dependientes} y la variable
+\variable{centro} al campo \campo{factor}, y hacer click sobre el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item ¿Qué centros son los mejores en la preparación de la selectividad?
+\begin{indicacion}
+Repetir los mismos pasos del apartado anterior, haciendo click en el botón \boton{Post hoc} del último cuadro de diálogo y activar las
+opciones de \campo{Bonferroni}, para ver los intervalos de diferencias entre centros, y de \campo{Duncan} para establecer grupos de
+comportamiento homogéneo.
+\end{indicacion}
+\end{enumerate}
+\end{enumerate}
+
+\clearpage
+\newpage
+
+
+\section{Ejercicios propuestos}
+\begin{enumerate}[leftmargin=*]
+
+\item Se midió la frecuencia cardíaca (latidos por minuto) en
+cuatro grupos de adultos; controles normales (A), pacientes con
+angina (B), individuos con arritmias cardíacas (C) y pacientes
+recuperados del infarto de miocardio (D). Los resultados son los
+siguientes:
+
+\begin{center}
+\begin{tabular}{llll}
+A & B & C & D \\
+\hline
+83 & 81 & 75 & 61 \\
+61 & 65 & 68 & 75 \\
+80 & 77 & 80 & 78 \\
+63 & 87 & 80 & 80 \\
+67 & 95 & 74 & 68 \\
+89 & 89 & 78 & 65 \\
+71 & 103 & 69 & 68 \\
+73 & 89 & 72 & 69 \\
+70 & 78 & 76 & 70 \\
+66 & 83 & 75 & 79 \\
+57 & 91 & 69 & 61 \\
+\hline
+\end{tabular}
+\end{center}
+
+¿Proporcionan estos datos la suficiente evidencia para indicar una
+diferencia en la frecuencia cardiaca media entre esos cuatro tipos
+de pacientes?. Considerar $\alpha=0.05$.
+
+
+\item Se midió la frecuencia respiratoria (inspiraciones por
+minuto) en ocho animales de laboratorio y con tres niveles
+diferentes de exposición al monóxido de carbono. Los resultados
+son los siguientes:
+\begin{center}
+\begin{tabular}{lll}
+\multicolumn{3}{c}{Nivel de exposición} \\
+\hline
+\multicolumn{1}{c}{Bajo} & \multicolumn{1}{c}{Moderado} & \multicolumn{1}{c}{Alto} \\
+\hline
+\multicolumn{1}{c}{36} & \multicolumn{1}{c}{43} & \multicolumn{1}{c}{45} \\
+\multicolumn{1}{c}{33} & \multicolumn{1}{c}{38} & \multicolumn{1}{c}{39} \\
+\multicolumn{1}{c}{35} & \multicolumn{1}{c}{41} & \multicolumn{1}{c}{33} \\
+\multicolumn{1}{c}{39} & \multicolumn{1}{c}{34} & \multicolumn{1}{c}{39} \\
+\multicolumn{1}{c}{41} & \multicolumn{1}{c}{28} & \multicolumn{1}{c}{33} \\
+\multicolumn{1}{c}{41} & \multicolumn{1}{c}{44} & \multicolumn{1}{c}{26} \\
+\multicolumn{1}{c}{44} & \multicolumn{1}{c}{30} & \multicolumn{1}{c}{39} \\
+\multicolumn{1}{c}{45} & \multicolumn{1}{c}{31} & \multicolumn{1}{c}{29} \\
+\hline
+\end{tabular}
+\end{center}
+
+Con base en estos datos, ¿es posible concluir que los tres niveles
+de exposición, en promedio, tienen un efecto diferente sobre la
+frecuencia respiratoria? Tomar $\alpha=0,05$.
+\end{enumerate}
+

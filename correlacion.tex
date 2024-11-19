@@ -1,0 +1,438 @@
+% Version control information:
+%$HeadURL: https://practicas-spss.googlecode.com/svn/trunk/correlacion/correlacion.tex $
+%$LastChangedDate: 2010-09-27 16:37:11 +0200 (lun, 27 sep 2010) $
+%$LastChangedRevision: 3 $
+%$LastChangedBy: asalber $
+%$Id: correlacion.tex 3 2010-09-27 14:37:11Z asalber $
+
+\chapter{Correlación}
+
+\section{Fundamentos teóricos}
+El principal objetivo de la regresión simple es construir un modelo funcional
+$y=f(x)$ que explique lo mejor posible la relación entre dos variables $X$
+(variable independiente) e $Y$ (variable dependiente) medidas en una misma
+muestra. Generalmente, el modelo construido se utiliza para realizar
+inferencias predictivas de $Y$ en función de $X$ en el resto de la población.
+Pero aunque la regresión garantiza que el modelo construido es el mejor
+posible, dentro del tipo de modelo elegido (lineal, polinómico, exponencial,
+logarítmico, etc.), puede que aún así, no sea un buen modelo para hacer
+predicciones, precisamente porque no haya relación de ese tipo entre $X$ e
+$Y$. Así pues, con el fin de validar un modelo para realizar predicciones
+fiables, se necesitan medidas que nos hablen del grado de dependencia entre $X$ e
+$Y$, con respecto a un modelo de regresión construido. Estas medidas se conocen
+como medidas de \emph{correlación}.
+
+Dependiendo del tipo de modelo ajustado, habrá distintos tipos de medidas de
+correlación. Así, si el modelo de regresión construido es una recta,
+hablaremos de correlación lineal; si es un polinomio, hablaremos de correlación
+polinómica; si es una función exponencial, hablaremos de correlación
+exponencial, etc. En cualquier caso, estas medidas nos hablarán de lo bueno
+que es el modelo construido, y como consecuencia, de si podemos fiarnos de las
+predicciones realizadas con dicho modelo.
+
+La mayoría de las medidas de correlación surgen del estudio de los residuos o
+errores en $Y$, que son las distancias de los puntos del diagrama de
+dispersión a la curva de regresión construida, medidas en el eje $Y$, tal y
+como se muestra en la figura ~(\ref{g:residuos2}). Estas distancias, son en
+realidad, los errores predictivos del modelo sobre los propios valores de la
+muestra.
+
+\begin{figure}[h!]
+  \centering
+  \scalebox{0.8}{\input{correlacion/img/residuos_y}}
+  \caption{Residuos o errores en $Y$. El residuo correspondiente a un punto $(x_i,y_j)$
+  es la diferencia entre el valor $y_j$ observado en la muestra, y el valor
+  teórico del modelo $f(x_i)$, es decir, $e_{ij}=y_j-f(x_i)$.}\label{g:residuos2}
+\end{figure}
+
+Cuanto más pequeños sean los residuos, mejor se ajustará el modelo a la nube
+de puntos, y por tanto, mejor explicará la relación entre $X$ e $Y$. Cuando
+todos los residuos son nulos, la curva de regresión pasa por todos los puntos
+de la nube, y entonces se dice que la relación es perfecta, o bien que existe
+una dependencia funcional entre $X$ e $Y$ (figura~\ref{g:dependenciafuncional2}).
+Por contra, cuando los residuos sean grandes, el modelo no explicará bien la
+relación entre $X$ e $Y$, y por tanto, sus predicciones no serán fiables
+(figura~\ref{g:independencialineal2}).
+
+\begin{figure}[h!]
+\centering \subfigure[Dependencia funcional lineal.]
+{\label{g:dependenciafuncional2}
+\scalebox{0.7}{\input{correlacion/img/rectas_dependencia_lineal_perfecta}}}\qquad
+\subfigure[Independencia
+lineal.]{\label{g:independencialineal2}
+\scalebox{0.7}{\input{correlacion/img/rectas_independencia_lineal}}}
+\caption{Distintos grados de dependencia. En el primer caso, la relación es
+perfecta y los residuos son nulos. En el segundo caso no existe relación
+lineal y los residuos son grandes.}
+\end{figure}
+
+\subsection{Varianza residual}
+Una primera medida de correlación, construida a partir de los residuos es la
+\emph{varianza residual}, que se define como el promedio de los residuos al
+cuadrado:
+\[
+s^2_{ry}=\frac{\sum_{i,j} e_{ij}^2 n_{ij}}{n}= \frac{\sum_{i,j} (y_j-f(x_i))^2
+n_{ij}}{n}.
+\]
+
+Cuando los residuos son nulos, entonces $s^2_{ry}=0$ y eso indica que hay
+dependencia funcional. Por otro lado, cuando las variables son independientes,
+con respecto al modelo de regresión ajustado, entonces los residuos se
+convierten en las desviaciones de los valores de $Y$ con respecto a su media, y se cumple
+que $s^2_{ry}=s_y^2$. Así pues, se cumple que
+\[  0 \leq s^2_{ry}\leq s_y^2. \]
+Según esto, cuanto menor sea la varianza residual, mayor será la dependencia
+entre $X$ e $Y$, de acuerdo al modelo ajustado. No obstante, la varianza tiene
+como unidades las unidades de $Y$ al cuadrado, y eso dificulta su
+interpretación.
+
+\subsection{Coeficiente de determinación}
+Puesto que el valor máximo que puede tomar la varianza residual es la varianza
+de $Y$, se puede definir fácilmente un coeficiente a partir de la comparación
+de ambas medidas. Surge así el \emph{coeficiente de determinación} que se
+define como
+\[
+R^2=1-\frac{s^2_{ry}}{s_y^2}.
+\]
+
+Se cumple que
+\[ 0\leq R^2\leq 1,\]
+y además no tiene unidades, por lo que es más fácil de interpretar que la
+varianza residual:
+\begin{itemize}
+\item $R^2=0$ indica que existe independencia según el
+tipo de relación planteada por el modelo de regresión.
+\item $R^2=1$ indica dependencia funcional.
+\end{itemize}
+Por tanto, cuanto mayor sea $R^2$, mejor será el modelo de regresión.
+
+Si multiplicamos el coeficiente de determinación por 100, se obtiene el
+porcentaje de variabilidad de $Y$ que explica el modelo de regresión. El
+porcentaje restante corresponde a la variabilidad que queda por explicar y se
+corresponde con el error predictivo del modelo. Así, por ejemplo, si tenemos
+un coeficiente de determinación $R^2=0.5$, el modelo de regresión explicaría
+la mitad de la variabilidad de $Y$, y en consecuencia, si se utiliza dicho
+modelo para hacer predicciones, estas tendrían la mitad de error que si no se
+utilizase, y se tomase como valor de la predicción el valor de la media de $Y$.
+
+\subsubsection{Coeficiente de determinación lineal}
+En el caso de que el modelo de regresión sea lineal, la fórmula del
+coeficiente de determinación se simplifica y se convierte en
+\[
+r^2=\frac{s_{xy}^2}{s_x^2 s_y^2},
+\]
+que se conoce como \emph{coeficiente de determinación lineal}.
+
+\subsection{Coeficiente de correlación}
+Otra medida de dependencia bastante habitual es el \emph{coeficiente de
+correlación}, que se define como la raíz cuadrada del coeficiente de
+determinación:
+\[
+R=\pm\sqrt{1-\frac{s^2_{ry}}{s_y^2}},
+\]
+tomando la raíz del mismo signo que la covarianza.
+
+La única ventaja del coeficiente de correlación con respecto al coeficiente de
+determinación, es que tiene signo, y por tanto, además del grado de
+dependencia entre $X$ e $Y$, también nos habla de si la relación es directa
+(signo +) o inversa (signo -). Su interpretación es:
+\begin{itemize}
+\item $R=0$ indica independencia con respecto al tipo de relación planteada por el modelo de
+regresión.
+\item $R=-1$ indica dependencia funcional inversa.
+\item $R=1$ indica dependencia funcional directa.
+\end{itemize}
+Por consiguiente, cuanto más próximo esté a -1 o a 1, mejor será el modelo de
+regresión.
+
+\subsubsection{Coeficiente de correlación lineal}
+Al igual que ocurría con el coeficiente de determinación, cuando el modelo de
+regresión es lineal, la fórmula del coeficiente de correlación se convierte en
+\[
+r=\frac{s_{xy}}{s_x s_y},
+\]
+y se llama \emph{coeficiente de correlación lineal}.
+
+Por último, conviene remarcar que un coeficiente de determinación o de
+correlación nulo, indica que hay independencia según el modelo de regresión
+construido, pero puede haber dependencia de otro tipo. Esto se ve claramente en el ejemplo de  la figura~\ref{g:dependenciaparabolica}.
+
+\begin{figure}[h!]
+\centering \subfigure[Dependencia lineal débil.]
+{\label{g:dependencialinealdebil}
+\scalebox{0.7}{\input{correlacion/img/recta_regresion_relacion_parabolica}}}\qquad
+\subfigure[Dependencia parabólica fuerte.] {\label{g:dependenciaparabolicafuerte}
+\scalebox{0.7}{\input{correlacion/img/regresion_parabolica}}}
+\caption{En la figura de la izquierda se ha ajustado un modelo lineal y se ha obtenido un
+$R^2=0$, lo que indica que el modelo no explica nada de la relación entre $X$ e
+$Y$, pero no podemos afirmar que $X$ e $Y$ son independientes. De hecho, en la
+figura de la derecha se observa que al ajustar un modelo parabólico, $R^2=0.97$,
+lo que indica que casi hay una dependencia funcional parabólica entre $X$ e $Y$.}
+\label{g:dependenciaparabolica}
+\end{figure}
+
+\subsubsection{Fiabilidad de las predicciones}
+Aunque el coeficiente de determinación o de correlación nos hablan de la bondad de un modelo de regresión, no es el único dato que hay que tener en cuenta a la hora de hacer predicciones.
+
+La fiabilidad de las predicciones que hagamos con un modelo de regresión depende de varias cosas:
+\begin{itemize}
+\item El coeficiente de determinación: Cuando mayor sea, menores serán los errores predictivos y mayor la fiabilidad de las predicciones.
+\item La variablidad de la población: Cuanto más variable es una población, más difícil es predecir y por tanto menos fiables serán las predicciones del modelo.
+\item El tamaño muestral: Cuanto mayor sea, más información tendremos y, en consecuencia, más fiables serán las predicciones. 
+\end{itemize} 
+
+Además, hay que tener en cuenta que un modelo de regresión es válido para el
+rango de valores observados en la muestra, pero fuera de ese rango no tenemos
+información del tipo de relación entre las variables, por lo que no deberíamos
+hacer predicciones para valores que estén lejos de los observados en la
+muestra.
+
+
+\section{Ejercicios prácticos}
+\begin{enumerate}[leftmargin=*]
+
+\item  En una licenciatura se quiere estudiar la relación entre el número
+medio de horas de estudio diarias y el número de asignaturas suspensas. Para ello se
+obtuvo la siguiente muestra:
+\begin{center}
+\begin{tabular}{cccccccc}
+  Horas & Suspensos &  & Horas & Suspensos & & Horas & Suspensos  \\
+  \cline{1-2}\cline{4-5}\cline{7-8}
+  3.5 & 1 & & 2.2 & 2 & & 1.3 & 4 \\
+  0.6 & 5 & & 3.3 & 0 & & 3.1 & 0 \\
+  2.8 & 1 & & 1.7 & 3 & & 2.3 & 2 \\
+  2.5 & 3 & & 1.1 & 3 & & 3.2 & 2 \\
+  2.6 & 1 & & 2.0 & 3 & & 0.9 & 4 \\
+  3.9 & 0 & & 3.5 & 0 & & 1.7 & 2 \\
+  1.5 & 3 & & 2.1 & 2 & & 0.2 & 5 \\
+  0.7 & 3 & & 1.8 & 2 & & 2.9 & 1 \\
+  3.6 & 1 & & 1.1 & 4 & & 1.0 & 3 \\
+  3.7 & 1 & & 0.7 & 4 & & 2.3 & 2 \\
+\end{tabular}
+
+\end{center}
+
+Se pide:
+
+\begin{enumerate}
+\item  Crear las variables \textsf{horasestudio} y
+\textsf{suspensos} e introducir estos datos.
+
+\item Calcular los coeficientes de correlación y de determinación
+lineal. ¿Es un buen modelo la recta de regresión? ¿Qué porcentaje
+de la variabilidad del número de suspensos está explicada por el
+modelo?
+
+\begin{indicacion}{
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Regresion\flecha Lineal...}.
+
+\item Seleccionar la variable \variable{suspensos} en el campo
+\texttt{Dependiente} del cuadro de diálogo.
+
+\item Seleccionar la variable \variable{horasestudio} en el campo
+\texttt{Independiente} del cuadro de diálogo y hacer click sobre
+el botón \boton{Aceptar}.
+
+\item Observaremos en la ventana de resultados obtenida, la tabla
+denominada \texttt{Coeficientes}, y en la columna \texttt{B} de
+los \texttt{Resumen del modelo}, encontramos el valor del
+coeficiente de correlación \texttt{R} y el del coeficiente de
+determinación \texttt{R cuadrado}.
+
+
+\end{enumerate}}
+\end{indicacion}
+
+
+\item Utilizar la recta de regresión para predecir el número de
+suspensos correspondiente a 3 horas de estudio diarias. ¿Es fiable
+esta predicción?
+
+\begin{indicacion}{
+\begin{enumerate}
+
+\item Para escribir la recta, observaremos en la ventana de
+resultados obtenida, la tabla denominada \texttt{Coeficientes}, y
+en la columna \texttt{B} de los \texttt{Coeficientes no
+estandarizados}, encontramos en la primera fila la
+\textsf{constante} de la recta y en la segunda la
+\texttt{pendiente}.
+
+\item Crear una nueva variable \texttt{valores} e introducir los
+valores que queremos estudiar.
+
+\item Crear otra nueva variable \texttt{prediccion}, seleccionando
+el  menú \menu{Transformar\flecha Calcular...}.
+
+\item  Introducir el nombre de la nueva variable
+\texttt{prediccion} en el campo \campo{Variable de destino} del
+cuadro de diálogo.
+
+\item Introducir la ecuación de la recta en el campo
+\texttt{Expresión numérica}, utilizando los coeficientes citados
+anteriormente  y la variable \texttt{valores} y hacer click sobre
+el botón \boton{Aceptar}.
+\end{enumerate}}
+\end{indicacion}
+
+
+\item Según el modelo lineal, ¿cuántas horas diarias tendrá que
+estudiar como mínimo un alumno si quiere aprobarlo todo?.
+
+\begin{indicacion}{
+Seguir los mismos pasos de los apartados anteriores, pero
+escogiendo como variable dependiente \textsf{horas estudio}, y
+como independiente \textsf{suspensos}}
+\end{indicacion}
+
+
+
+\end{enumerate}
+
+\item Después de tomar un litro de vino se ha medido la
+concentración de alcohol en la sangre en distintos instantes, obteniendo:
+\[
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline Tiempo después (minutos) & 30 & 60 & 90 & 120 & 150 & 180 & 210\\ \hline
+Concentración (gramos/litro) & 1.6 & 1.7 & 1.5 & 1.1 & 0.7 & 0.2 & 2.1\\
+\hline
+\end{tabular}
+\]
+Se pide:
+
+\begin{enumerate}
+\item Crear las variables \textsf{tiempo} y \textsf{alcohol} e introducir estos datos.
+
+\item Calcular el coeficiente de correlación lineal e
+interpretarlo.
+
+\begin{indicacion}{
+\begin{enumerate}
+\item Seleccionar el menú
+\texttt{Analizar\flecha Correlaciones\flecha Bivariadas...}.
+
+\item Seleccionar ambas variables en el campo \campo{Variables}
+del cuadro de diálogo y hacer click sobre el botón
+\texttt{Aceptar}.
+\end{enumerate}}
+\end{indicacion}
+
+\item  Dibujar el diagrama de dispersión junto con la recta
+ajustada correspondiente a \texttt{alcohol} sobre \texttt{tiempo}.
+¿Existe algún individuo con un residuo demasiado grande? Si es
+así, eliminar dicho individuo de la muestra y volver a calcular el
+coeficiente de correlación. ¿Ha mejorado el modelo?
+
+\begin{indicacion}{
+\begin{enumerate}
+\item Seleccionar el menú \menu{Gráficos\flecha Dispersión...}, elegir
+la opción \opcion{simple} y  hacer click sobre el botón
+\texttt{Definir}. \item Seleccionar la variable \variable{alcohol}
+en el campo \campo{Eje Y} del cuadro de diálogo. \item
+Seleccionar la variable \variable{tiempo} en el campo \campo{Eje X}
+del cuadro de diálogo y hacer click sobre el botón
+\texttt{Aceptar}.
+
+\item Editar el gráfico realizado anteriormente haciendo un doble
+click sobre él.
+
+\item Seleccionar los puntos haciendo click sobre alguno de ellos.
+\item Seleccionar el menú \menu{Gráfico\flecha Añadir elemento de
+gráfico\flecha Linea de ajuste total} (También se podría usar en lugar
+del menu, la barra de herramientas) \item Cerrar el editor de
+gráficos, cerrando la ventana.
+
+\item Si existe algún individuo con un residuo demasiado grande,
+ir a la ventana del \texttt{Editor de datos}, y eliminarlo.
+
+\item Repetir los pasos del apartado anterior.
+\end{enumerate}}
+\end{indicacion}
+
+
+\item  Si la concentración máxima de alcohol en la sangre que
+permite la ley para poder conducir es 0.4 g/l, ¿cuánto tiempo
+habrá que esperar después de tomarse un litro de vino para poder
+conducir sin infringir la ley? ¿Es fiable esta predicción?
+
+\begin{indicacion}{
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Regresión\flecha Lineal...}.
+
+\item Seleccionar la variable \variable{tiempo} en el campo
+\texttt{Dependiente} del cuadro de diálogo.
+
+\item Seleccionar la variable \variable{alcohol} en el campo
+\texttt{Independiente} del cuadro de diálogo y hacer click sobre
+el botón \boton{Aceptar}.
+
+\item Para escribir la recta, observaremos en la ventana de
+resultados obtenida, la tabla denominada \texttt{Coeficientes}, y
+en la columna \texttt{B} de los \texttt{Coeficientes no
+estandarizados}, encontramos en la primera fila la
+\textsf{constante} de la recta y en la segunda la
+\texttt{pendiente}.
+
+\item Crear una nueva variable \texttt{valores} e introducir los
+valores que queremos estudiar.
+
+\item Crear otra nueva variable \texttt{prediccion}, seleccionando
+el  menú \menu{Transformar\flecha Calcular...}.
+
+\item  Introducir el nombre de la nueva variable
+\texttt{prediccion} en el campo \campo{Variable de destino} del
+cuadro de diálogo.
+
+\item Introducir la ecuación de la recta en el campo
+\texttt{Expresión numérica}, utilizando los coeficientes citados
+anteriormente  y la variable \texttt{valores} y hacer click sobre
+el botón \boton{Aceptar}.
+
+\end{enumerate}}
+\end{indicacion}
+
+
+
+\end{enumerate}
+
+\end{enumerate}
+
+
+\section{Problemas}
+\begin{enumerate}[leftmargin=*]
+\item  Se determina la pérdida de actividad que experimenta un
+medicamento desde el momento de su fabricación a lo largo del tiempo, obteniéndose
+el siguiente resultado:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline Tiempo (en años) & 1 & 2 & 3 & 4 & 5 \\ \hline Actividad restante (\%) & 96 &
+84 & 70 & 58 & 52 \\ \hline
+\end{tabular}
+\end{center}
+
+Se desea calcular:
+
+\begin{enumerate}
+\item  Calcular el coeficiente de determinación e interpretarlo.
+
+\item ¿Cuándo tiempo debe pasar para que el fármaco tenga una actividad del 80\%? ¿Cuándo será nula la actividad? ¿Son igualmente fiables estas predicciones?
+\end{enumerate}
+
+\item Al realizar un estudio sobre la dosificación de un cierto
+medicamento, se trataron 6 pacientes con dosis diarias de 2 mg, 7 pacientes con 3 mg
+y otros 7 pacientes con 4 mg. De los pacientes tratados con 2 mg, 2 curaron al cabo
+de 5 días, y 4 al cabo de 6 días. De los pacientes tratados con 3 mg diarios, 2
+curaron al cabo de 3 días, 4 al cabo de 5 días y 1 al cabo de 6 días. Y de los
+pacientes tratados con 4 mg diarios, 5 curaron al cabo de 3 días y 2 al cabo de 5
+días. Se pide:
+
+\begin{enumerate}
+\item  Calcular el coeficiente de correlación lineal e interpretarlo.
+
+\item  Determinar el tiempo esperado de curación para una dosis de 5 mg diarios. ¿Es fiable esta predicción?
+
+\end{enumerate}
+
+\end{enumerate}

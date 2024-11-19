@@ -47,6 +47,7 @@ book:
     # - 06-variables-aleatorias-continuas.qmd
     - 08-estimacion.qmd
     - 09-contrastes-parametricos.qmd
+    - 10-anova-ancova.qmd
     
 #bibliography: references.bib
 
@@ -57,9 +58,11 @@ format:
       dark: [darkly, custom-dark.scss]
       light: [flatly, custom.scss]
     html-math-method: mathjax
+    default-image-extension: svg
   pdf:
     documentclass: scrreport
     papersize: a4
+    default-image-extension: pdf
     template-partials:
       - before-body.tex
     titlegraphic: img/logos/sticker.png

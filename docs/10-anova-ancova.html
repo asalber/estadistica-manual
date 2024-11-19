@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Manual de Estadística - 8&nbsp; Análisis de la Varianza</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./09-contrastes-parametricos.html" rel="prev">
+<link href="./img/logos/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la busqueda",
+    "search-hide-matches-text": "Esconder resultados adicionales",
+    "search-more-match-text": "hay más resultados en este documento",
+    "search-more-matches-text": "más resultados en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Manual de Estadística - 8&nbsp; Análisis de la Varianza">
+<meta property="og:description" content="">
+<meta property="og:image" content="img/logos/sticker.png">
+<meta property="og:site_name" content="Manual de Estadística">
+<meta name="twitter:title" content="Manual de Estadística - 8&nbsp; Análisis de la Varianza">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="img/logos/sticker.png">
+<meta name="twitter:site" content="@aprendeconalf">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-anova-ancova.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Análisis de la Varianza</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Manual de Estadística</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://aprendeconalf.es" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./manual-estadistica.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./manual-estadistica.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a la Estadística</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-estadistica-descriptiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-regresion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regresión</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-relaciones-cualitativas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Relaciones entre variables cualitativas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-probabilidad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-estimacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-contrastes-parametricos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-anova-ancova.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Análisis de la Varianza</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#análisis-de-la-varianza-de-1-factor" id="toc-análisis-de-la-varianza-de-1-factor" class="nav-link active" data-scroll-target="#análisis-de-la-varianza-de-1-factor"><span class="header-section-number">8.1</span> Análisis de la varianza de 1 factor</a>
+  <ul class="collapse">
+  <li><a href="#el-contraste-de-anova" id="toc-el-contraste-de-anova" class="nav-link" data-scroll-target="#el-contraste-de-anova"><span class="header-section-number">8.1.1</span> El contraste de ANOVA</a></li>
+  <li><a href="#test-de-comparaciones-múltiples-y-por-parejas" id="toc-test-de-comparaciones-múltiples-y-por-parejas" class="nav-link" data-scroll-target="#test-de-comparaciones-múltiples-y-por-parejas"><span class="header-section-number">8.1.2</span> Test de comparaciones múltiples y por parejas</a></li>
+  </ul></li>
+  <li><a href="#anova-de-dos-o-más-factores" id="toc-anova-de-dos-o-más-factores" class="nav-link" data-scroll-target="#anova-de-dos-o-más-factores"><span class="header-section-number">8.2</span> ANOVA de dos o más factores</a>
+  <ul class="collapse">
+  <li><a href="#anova-de-dos-factores-con-dos-niveles-cada-factor" id="toc-anova-de-dos-factores-con-dos-niveles-cada-factor" class="nav-link" data-scroll-target="#anova-de-dos-factores-con-dos-niveles-cada-factor"><span class="header-section-number">8.2.1</span> ANOVA de dos factores con dos niveles cada factor</a></li>
+  <li><a href="#anova-de-dos-factores-con-tres-o-más-niveles-en-algún-factor" id="toc-anova-de-dos-factores-con-tres-o-más-niveles-en-algún-factor" class="nav-link" data-scroll-target="#anova-de-dos-factores-con-tres-o-más-niveles-en-algún-factor"><span class="header-section-number">8.2.2</span> ANOVA de dos factores con tres o más niveles en algún factor</a></li>
+  <li><a href="#anova-de-tres-o-más-factores" id="toc-anova-de-tres-o-más-factores" class="nav-link" data-scroll-target="#anova-de-tres-o-más-factores"><span class="header-section-number">8.2.3</span> ANOVA de tres o más factores</a></li>
+  <li><a href="#factores-fijos-y-factores-aleatorios" id="toc-factores-fijos-y-factores-aleatorios" class="nav-link" data-scroll-target="#factores-fijos-y-factores-aleatorios"><span class="header-section-number">8.2.4</span> Factores fijos y Factores aleatorios</a></li>
+  </ul></li>
+  <li><a href="#anova-de-medidas-repetidas" id="toc-anova-de-medidas-repetidas" class="nav-link" data-scroll-target="#anova-de-medidas-repetidas"><span class="header-section-number">8.3</span> ANOVA de medidas repetidas</a>
+  <ul class="collapse">
+  <li><a href="#anova-de-medidas-repetidas-anova-de-una-o-más-vías" id="toc-anova-de-medidas-repetidas-anova-de-una-o-más-vías" class="nav-link" data-scroll-target="#anova-de-medidas-repetidas-anova-de-una-o-más-vías"><span class="header-section-number">8.3.1</span> ANOVA de medidas repetidas + ANOVA de una o más vías</a></li>
+  </ul></li>
+  <li><a href="#análisis-de-la-covarianza-ancova" id="toc-análisis-de-la-covarianza-ancova" class="nav-link" data-scroll-target="#análisis-de-la-covarianza-ancova"><span class="header-section-number">8.4</span> Análisis de la covarianza: ANCOVA</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Análisis de la Varianza</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="análisis-de-la-varianza-de-1-factor" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="análisis-de-la-varianza-de-1-factor"><span class="header-section-number">8.1</span> Análisis de la varianza de 1 factor</h2>
+<p>El <em>Análisis de la Varianza con un Factor</em> (ANOVA por sus siglas en inglés), es una técnica estadística de contraste de hipótesis, que sirve para comparar las medias una variable cuantitativa, que suele llamarse <em>variable dependiente</em> o <em>respuesta</em>, en distintos grupos o muestras definidas por una variable cualitativa, llamada <em>variable independiente</em> o <em>factor</em>. Las distintas categorías del factor que definen los grupos a comparar se conocen como <em>niveles</em> o <em>tratamientos</em> del factor.</p>
+<p>Se trata, por tanto, de una generalización de la <em>prueba T para la comparación de medias de dos muestras independientes</em>, para diseños experimentales con más de dos muestras. Y se diferencia de un análisis de regresión simple, donde tanto la variable dependiente como la independiente eran cuantitativas, en que en el análisis de la varianza de un factor, la variable independiente o factor es una variable cualitativa, aunque como veremos más adelante en los contrastes de regresión, se puede plantear un contraste de ANOVA como si fuese un contraste de regresión lineal.</p>
+<p>Un ejemplo de aplicación de esta técnica podría ser la comparación del nivel de colesterol medio según el grupo sanguíneo. En este caso, la dependiente o factor es el grupo sanguíneo, con cuatro niveles (A, B, O, AB), mientras que la variable respuesta es el nivel de colesterol.</p>
+<p>Para comparar las medias de la variable respuesta según los diferentes niveles del factor, se plantea un contraste de hipótesis en el que la hipótesis nula, <span class="math inline">\(H_0\)</span>, es que la variable respuesta tiene igual media en todos los niveles, mientras que la hipótesis alternativa, <span class="math inline">\(H_1\)</span>, es que hay diferencias estadísticamente significativas entre al menos dos de las medias. Dicho contraste se realiza mediante la descomposición de la varianza total de la variable respuesta; de ahí procede el nombre de esta técnica.</p>
+<section id="el-contraste-de-anova" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="el-contraste-de-anova"><span class="header-section-number">8.1.1</span> El contraste de ANOVA</h3>
+<p>La notación habitual en ANOVA es la siguiente:</p>
+<ul>
+<li><span class="math inline">\(k\)</span>: es el número de niveles del factor.</li>
+<li><span class="math inline">\(n_i\)</span>: es el tamaño de la muestra aleatoria correspondiente al nivel <span class="math inline">\(i\)</span>-ésimo del factor.</li>
+<li><span class="math inline">\(n = \sum_{i = 1}^k {n_i}\)</span>: es el número total de observaciones.</li>
+<li><span class="math inline">\(X_{ij}\ (i = 1,...,k;\,j = 1,...,n_i)\)</span>: es una variable aleatoria que indica la respuesta del <span class="math inline">\(j\)</span>-ésimo individuo al <span class="math inline">\(i\)</span>-ésimo nivel del factor.</li>
+<li><span class="math inline">\(x_{ij}\)</span>: es el valor concreto, en una muestra dada, de la variable <span class="math inline">\(X_{ij}\)</span>.</li>
+</ul>
+<p><span class="math display">\[
+\begin{array}{c}
+\mbox{Niveles del factor}\\
+\begin{array}{cccc}
+\hline
+1 &amp; 2 &amp; \cdots &amp; k\\
+\hline
+X_{11} &amp; X_{21} &amp; \cdots &amp; X_{k1}\\
+X_{12} &amp; X_{22} &amp; \cdots &amp; X_{k2}\\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots\\
+X_{1n_1} &amp; X_{2n_2} &amp; \cdots &amp; X_{kn_k}\\
+\hline
+\end{array}
+\end{array}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\mu_i\)</span>: es la media de la población del nivel <span class="math inline">\(i\)</span>.</li>
+<li><span class="math inline">\(\bar X_i = \sum_{j = 1}^{n_i} X_{ij}/n_i\)</span>: es la variable media muestral del nivel <span class="math inline">\(i\)</span>, y estimador de <span class="math inline">\(\mu_i\)</span>.</li>
+<li><span class="math inline">\(\bar x_i = \sum_{j = 1}^{n_i} x_{ij}/n_i\)</span>: es la estimación concreta para una muestra dada de la variable media muestral del nivel <span class="math inline">\(i\)</span>.</li>
+<li><span class="math inline">\(\mu\)</span>: es la media global de la población (incluidos todos los niveles).</li>
+<li><span class="math inline">\(\bar X  = \sum_{i = 1}^k \sum_{j = 1}^{n_i } X_{ij}/n\)</span>: es la variable media muestral de todas las respuestas, y estimador de <span class="math inline">\(\mu\)</span>.</li>
+<li><span class="math inline">\(\bar x  = \sum_{i = 1}^k \sum_{j = 1}^{n_i }x_{ij}/n\)</span>: es la estimación concreta para una muestra dada de la variable media muestral.</li>
+</ul>
+<p>Con esta notación podemos expresar la variable respuesta mediante un modelo matemático que la descompone en componentes atribuibles a distintas causas:</p>
+<p><span class="math display">\[
+X_{ij} = \mu + (\mu_i-\mu) + (X_{ij}-\mu_i),
+\]</span></p>
+<p>es decir, la respuesta <span class="math inline">\(j\)</span>-ésima en el nivel <span class="math inline">\(i\)</span>-ésimo puede descomponerse como resultado de una media global, más la desviación con respecto a la media global debida al hecho de que recibe el tratamiento <span class="math inline">\(i\)</span>-ésimo, más una nueva desviación con respecto a la media del nivel debida a influencias aleatorias.</p>
+<p>Sobre este modelo se plantea la hipótesis nula: las medias correspondientes a todos los niveles son iguales; y su correspondiente alternativa: al menos hay dos medias de nivel que son diferentes.</p>
+<p><span class="math display">\[\begin{align*}
+H_0: &amp; \mu_1 = \mu_2  = \cdots = \mu _k\\
+H_1: &amp; \mu_i \neq \mu_j \textrm{ para algún } i\neq j.
+\end{align*}\]</span></p>
+<p>Para poder realizar el contraste con este modelo es necesario plantear ciertas hipótesis estructurales (supuestos del modelo):</p>
+<ul>
+<li>ndependencia: Las <span class="math inline">\(k\)</span> muestras, correspondientes a los <span class="math inline">\(k\)</span> niveles del factor,representan muestras aleatorias independientes de <span class="math inline">\(k\)</span> poblaciones con medias <span class="math inline">\(\mu_1  = \mu_2  = \cdots = \mu_k\)</span> desconocidas.</li>
+<li>Normalidad: Cada una de las <span class="math inline">\(k\)</span> poblaciones es normal.</li>
+<li>Homocedasticidad: Cada una de las <span class="math inline">\(k\)</span> poblaciones tiene la misma varianza <span class="math inline">\(\sigma^2\)</span>.</li>
+</ul>
+<p>Teniendo en cuenta la hipótesis nula y los supuestos del modelo, si se sustituye en el modelo las medias poblacionales por sus correspondientes estimadores muestrales, se tiene</p>
+<p><span class="math display">\[
+X_{ij} = \bar X+(\bar X_i-\bar X)+(X_{ij}-\bar X_i),\]</span> o lo que es lo mismo, <span class="math display">\[X_{ij}-\bar X= (\bar X_i-\bar X)+(X_{ij}-\bar X_i).
+\]</span></p>
+<p>Elevando al cuadrado y teniendo en cuenta las propiedades de los sumatorios, se llega a la ecuación que recibe el nombre de <em>identidad de la suma de cuadrados</em>:</p>
+<p><span class="math display">\[
+\sum_{i=1}^k \sum_{j=1}^{n_i} (X_{ij}-\bar X)^2  = \sum_{i=1}^k n_i(\bar X_i-\bar X)^2 +\sum_{i=1}^k \sum_{j = 1}^{n_i}(X_{ij}-\bar X_i)^2,
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\sum_{i=1}^k \sum_{j=1}^{n_i} (X_{ij}- \bar X)^2\)</span>: recibe el nombre de <em>suma total de cuadrados</em>, (<span class="math inline">\(STC\)</span>), y es la suma de cuadrados de las desviaciones con respecto a la media global; por lo tanto, una medida de la variabilidad total de los datos.</li>
+<li><span class="math inline">\(\sum_{j=1}^k n_i(\bar X_i-\bar X)^2\)</span>: recibe el nombre de <em>suma de cuadrados de los tratamientos o suma de cuadrados intergrupos</em>, (<span class="math inline">\(SCInter\)</span>), y es la suma ponderada de cuadrados de las desviaciones de la media de cada nivel con respecto a la media global; por lo tanto, una medida de la variabilidad atribuida al hecho de que se utilizan diferentes niveles o tratamientos.</li>
+<li><span class="math inline">\(\sum_{i=1}^k \sum_{j=1}^{n_i}(X_{ij}-\bar X_i )^2\)</span>: recibe el nombre de <em>suma de cuadrados residual o suma de cuadrados intragrupos</em>, (<span class="math inline">\(SCIntra\)</span>), y es la suma de cuadrados de las desviaciones de las observaciones con respecto a las medias de sus respectivos niveles o tratamientos; por lo tanto, una medida de la variabilidad en los datos atribuida a las fluctuaciones aleatorias dentro del mismo nivel.</li>
+</ul>
+<p>Con esta notación la identidad de suma de cuadrados se expresa:</p>
+<p><span class="math display">\[
+SCT = SCInter + SCIntra
+\]</span></p>
+<p>Y un último paso para llegar al estadístico que permitirá contrastar <span class="math inline">\(H_0\)</span>, es la definición de los <em>Cuadrados Medios</em>, que se obtienen al dividir cada una de las sumas de cuadrados por sus correspondientes grados de libertad. Para <span class="math inline">\(SCT\)</span> el número de grados de libertad es <span class="math inline">\(n-1\)</span>; para <span class="math inline">\(SCInter\)</span> es <span class="math inline">\(k-1\)</span>; y para <span class="math inline">\(SCIntra\)</span> es <span class="math inline">\(n-k\)</span>.</p>
+<p>Por lo tanto,</p>
+<p><span class="math display">\[\begin{align*}
+CMT &amp;= \frac{SCT}{n - 1}\\
+CMInter &amp;= \frac{SCInter}{k - 1}\\
+CMIntra &amp;= \frac{SCIntra}{n -k}
+\end{align*}\]</span></p>
+<p>Y se podría demostrar que, en el supuesto de ser cierta la hipótesis nula y los supuestos del modelo, el cociente</p>
+<p><span class="math display">\[
+\frac{{CMInter}}{{CMIntra}}
+\]</span></p>
+<p>sigue una distribución <span class="math inline">\(F\)</span> de Fisher con <span class="math inline">\(k-1\)</span> y <span class="math inline">\(n-k\)</span> grados de libertad.</p>
+<p>De esta forma, si <span class="math inline">\(H_0\)</span> es cierta, el valor del cociente para un conjunto de muestras dado, estará próximo a 0 (aún siendo siempre mayor que 0); pero si no se cumple <span class="math inline">\(H_0\)</span> crece la variabilidad intergrupos y la estimación del estadístico crece. En definitiva, realizaremos un contraste de hipótesis unilateral con cola a la derecha de igualdad de varianzas, y para ello calcularemos el <span class="math inline">\(p\)</span>-valor de la estimación de <span class="math inline">\(F\)</span> obtenida y aceptaremos o rechazaremos en función del nivel de significación fijado.</p>
+<section id="tabla-de-anova" class="level4" data-number="8.1.1.1">
+<h4 data-number="8.1.1.1" class="anchored" data-anchor-id="tabla-de-anova"><span class="header-section-number">8.1.1.1</span> Tabla de ANOVA</h4>
+<p>Todos los estadísticos planteados en el apartado anterior se recogen en una tabla denominada Tabla de ANOVA, en la que se ponen los resultados de las estimaciones de dichos estadísticos en las muestras concretas objeto de estudio. Esas tablas también son las que aportan como resultado de cualquier ANOVA los programas estadísticos, que suelen añadir al final de la tabla el <span class="math inline">\(p\)</span>-valor del estadístico <span class="math inline">\(F\)</span> calculado, y que permite aceptar o rechazar la hipótesis nula de que las medias correspondientes a todos los niveles del factor son iguales.</p>
+<table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">Suma de cuadrados</th>
+<th style="text-align: center;">Grados de libertad</th>
+<th style="text-align: center;">Cuadrados medios</th>
+<th style="text-align: center;">Estadístico F</th>
+<th style="text-align: center;">p-valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Intergrupos</td>
+<td style="text-align: center;"><span class="math inline">\(SCInter\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(k-1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(CMInter=\frac{SCInter}{k-1}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f=\frac{CMInter}{CMIntra}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P(F&gt;f)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Intragrupos</td>
+<td style="text-align: center;"><span class="math inline">\(SCIntra\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n-k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(CMIntra=\frac{SCIntra}{n-k}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: center;"><span class="math inline">\(SCT\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n-1\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="test-de-comparaciones-múltiples-y-por-parejas" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="test-de-comparaciones-múltiples-y-por-parejas"><span class="header-section-number">8.1.2</span> Test de comparaciones múltiples y por parejas</h3>
+<p>Una vez realizado el ANOVA de un factor para comparar las <span class="math inline">\(k\)</span> medias correspondientes a los <span class="math inline">\(k\)</span> niveles o tratamientos del factor, se puede concluir aceptando la hipótesis nula, en cuyo caso se da por concluido el análisis de los datos en cuanto a detección de diferencias entre los niveles, o rechazándola, en cuyo caso es natural continuar con el análisis para tratar de localizar con precisión dónde está la diferencia, cuáles son los niveles cuyas respuestas son estadísticamente diferentes.</p>
+<p>En el segundo caso, hay varios métodos que permiten detectar las diferencias entre las medias de los diferentes niveles, y que reciben el nombre de <em>test de comparaciones múltiples</em>. A su vez este tipo de test se suele clasificar en:</p>
+<ul>
+<li><p>Test de comparaciones por parejas: Su objetivo es la comparación una a una de todas las posibles parejas de medias que se pueden tomar al considerar los diferentes niveles. Su resultado es una tabla en la que se reflejan las diferencias entre todas las posibles parejas y los intervalos de confianza para dichas diferencias, con la indicación de si hay o no diferencias significativas entre las mismas. Hay que aclarar que los intervalos obtenidos no son los mismos que resultarían si se considera cada pareja de medias por separado, ya que el rechazo de <span class="math inline">\(H_0\)</span> en el contraste general de ANOVA implica la aceptación de una hipótesis alternativa en la que están involucrados varios contrastes individuales a su vez; y si queremos mantener un nivel de significación <span class="math inline">\(\alpha\)</span> en el general, en los individuales debemos utilizar un <span class="math inline">\(\alpha'\)</span> considerablemente más pequeño.</p></li>
+<li><p>Test de rango múltiple: Su objetivo es la identificación de subconjuntos homogéneos de medias que no se diferencian entre sí.</p></li>
+</ul>
+<p>Para los primeros se puede utilizar el test de Bonferroni; para los segundos, el test de Duncan; y para ambas categorías a la vez los test HSD de Tukey y Scheffé.</p>
+</section>
+</section>
+<section id="anova-de-dos-o-más-factores" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="anova-de-dos-o-más-factores"><span class="header-section-number">8.2</span> ANOVA de dos o más factores</h2>
+<p>En muchos problemas aparece no ya un único factor que permite clasificar los individuos de la muestra en <span class="math inline">\(k\)</span> diferentes niveles, sino que pueden presentarse dos o más factores que permiten clasificar a los individuos de la muestra en múltiples grupos según diferentes criterios, que se pueden analizar para ver si hay o no diferencias significativas entre las medias de la variable respuesta.</p>
+<p>Para tratar con este tipo de problemas surge el <em>ANOVA de Dos o Más Factores</em> (o también <em>ANOVA de Dos o Más Vías</em>) como una generalización del proceso de un factor, que además de permitir el análisis de la influencia de cada uno de los factores por separado también hace posible el estudio de la <em>interacción</em> entre ellos.</p>
+<p>Por otra parte, también son frecuentes los problemas en los que se toma más de una medida de una variable cuantitativa (respuesta) en cada sujeto de la muestra, y se procede al análisis de las diferencias entre las diferentes medidas. Si sólo se toman dos, el procedimiento adecuado es la T de Student de datos pareados, o su correspondiente no paramétrico, el test de Wilcoxon; pero si se han tomado tres o más medidas, el test paramétrico correspondiente a la T de Student de datos pareados es el <em>ANOVA de Medidas Repetidas</em>.</p>
+<p>Incluso también se puede dar el caso de un problema en el que se analice una misma variable cuantitativa medida en varias ocasiones en cada sujeto de la muestra pero teniendo en cuenta a la vez la influencia de uno, dos o más factores que permiten clasificar a los individuos en varios subgrupos diferentes. En definitiva, pueden aparecer problemas donde a la par que un ANOVA de medidas repetidas se requiera realizar un ANOVA de dos o más vías.</p>
+<p>Por último, la situación más compleja que se puede plantear en el análisis de una respuesta cuantitativa se presenta cuando, añadida a medidas repetidas y dos o más vías o factores de clasificación, se tienen una o más variables cuantitativas, llamadas <em>covariables</em>, que se piensa que pueden influir en la variable respuesta. Se procede entonces a realizar un <em>ANCOVA</em> o <em>Análisis de Covarianza</em>, con el que se pretende analizar la influencia de los factores y también ver si hay diferencias entre las medidas repetidas pero habiendo eliminado previamente la influencia (variabilidad) debida a la presencia de las covariables que se pretenden controlar.</p>
+<section id="anova-de-dos-factores-con-dos-niveles-cada-factor" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="anova-de-dos-factores-con-dos-niveles-cada-factor"><span class="header-section-number">8.2.1</span> ANOVA de dos factores con dos niveles cada factor</h3>
+<p>Para entender qué es un ANOVA de dos o más factores, conviene partir de un caso sencillo con dos factores y dos niveles en cada factor. Por ejemplo, se puede plantear un experimento con individuos que siguen o no una dieta (primer factor: dieta, con dos niveles: sí y no), y que a su vez toman o no un determinado fármaco (segundo factor: fármaco, con dos niveles: sí y no) para reducir su peso corporal (variable respuesta numérica: reducción del peso corporal expresada en Kg). En esta situación, se generan cuatro grupos diferentes: los que no hacen dieta ni toman fármaco (No-No), los que no hacen dieta pero sí toman fármaco (No-Sí), los que hacen dieta y no toman fármaco (Sí-No), y los que hacen dieta y toman fármaco (Sí-Sí). Y se pueden plantear tres efectos diferentes:</p>
+<ul>
+<li><p>El de la dieta: viendo si hay o no diferencias significativas en los Kg perdidos entre los individuos que la han seguido y los que no.</p></li>
+<li><p>El del fármaco: viendo si hay o no diferencias significativas en los Kg perdidos entre los individuos que lo han tomado y los que no.</p></li>
+<li><p>El de la interacción: viendo si el efecto combinado de dieta y fármaco es diferente del que tendrían sumando sus efectos por separado, y entonces se diría que sí que hay interacción; o si por el contrario el efecto de la combinación de dieta y fármaco es el mismo que la suma de los efectos por separado, y entonces se diría que no hay interacción.<br>
+A su vez, si hay interacción se puede dar en dos sentidos: si la combinación de dieta y fármaco ha hecho perder más kilos a los pacientes de los que cabría esperar con la suma de dieta y fármaco por separado, entonces la interacción de ambos factores ha actuado en sinergia con los mismos, mientras que si la combinación ha hecho perder menos kilos de los que cabría esperar con dieta y fármaco por separado, entonces la interacción ha actuado en antagonismo con ambos.</p></li>
+</ul>
+<p>Siguiendo con el ejemplo, supongamos que la tabla que aparece a continuación refleja la media de Kg perdidos dentro de cada uno de los grupos comentados. Por simplificar el ejemplo, no se reflejan los Kg en cada individuo con la consiguiente variabilidad de los mismos, pero el ANOVA de dos vías sí que tendría en cuenta esa variabilidad para poder hacer inferencia estadística, plantear contrastes de hipótesis y calcular sus correspondientes p-valores.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">Fármaco No</th>
+<th style="text-align: center;">Fármaco Sí</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Dieta No</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dieta Sí</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">8</td>
+</tr>
+</tbody>
+</table>
+<p>Si los resultados obtenidos fuesen los de la tabla anterior, se diría que no hay interacción entre fármaco y dieta, ya que el efecto del fármaco en el grupo de los que no hacen dieta ha hecho perder 5 Kg en media a los individuos, el efecto de la dieta en el grupo de los que no toman fármaco les ha hecho perder 3 Kg en media, y el efecto combinado de dieta y fármaco ha hecho perder 8 Kg con respecto a los que no hacen dieta y tampoco toman fármaco. Estos 8 Kg son iguales a la suma de 3 y 5, es decir iguales a la suma de los efectos de los factores por separado, sin ningún tipo de interacción (de término añadido) que cambie el resultado de la suma.</p>
+<p>Con las medias de los cuatro grupos que se generan en el cruce de los dos factores, cada uno con dos niveles (2x2), se representan los gráficos de medias que aparecen más adelante. En estos gráficos, cuando no hay interacción las rectas que unen las medias correspondientes a un mismo nivel de uno de los factores son paralelas dentro de cierto margen de variabilidad.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/anova-ancova/sininteraccion.svg" class="img-fluid figure-img"></p>
+<figcaption>Gráfico de medias de dos factores sin interacción</figcaption>
+</figure>
+</div>
+<p>Por el contrario, también podría obtenerse una tabla en la que la suma de los efectos por separado fuese menor que el efecto combinado de dieta y fármaco:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">Fármaco No</th>
+<th style="text-align: center;">Fármaco Sí</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Dieta No</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dieta Sí</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">12</td>
+</tr>
+</tbody>
+</table>
+<p>En este caso, dejando al margen las variabilidad dentro de cada uno de los grupos y suponiendo que la misma es lo suficientemente pequeña como para que las diferencias sean significativas, los 8 Kg en media que se perderían al sumar los efectos por separado de dieta y fármaco son menores que los 12 que, en media, han perdido los individuos que han tomado el fármaco y han seguido la dieta a la vez. Por lo tanto, se ha producido una interacción de los dos factores que, al unirlos, ha servido para potenciar sus efectos por separado. Dicho de otra forma, para explicar el resultado final de los individuos que han tomado el fármaco y también han seguido la dieta habría que introducir un nuevo término en la suma, el término de interacción, que contribuiría con 4 Kg de pérdida añadidos a los 8 Kg que se perderían considerando simplemente la suma de dieta y fármaco. Como este nuevo término contribuye a aumentar la pérdida que se obtendría al sumar los efectos por separado de ambos factores, se trataría de un caso de interacción en sinergia con los dos factores de partida.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/anova-ancova/coninteraccion1.svg" class="img-fluid figure-img"></p>
+<figcaption>Gráfico de medias de dos factores con interacción sinérgica</figcaption>
+</figure>
+</div>
+<p>Por último, también se podría obtener una tabla en la que la suma de los efectos por separado fuese mayor que el efecto combinado de los dos factores:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">Fármaco No</th>
+<th style="text-align: center;">Fármaco Sí</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Dieta No</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dieta Sí</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+</tr>
+</tbody>
+</table>
+<p>Igualmente, en este nuevo ejemplo los 8 Kg en media que se perderían al sumar los efectos por separado de los dos factores son mayores que los 4 que en realidad pierden, en media, los individuos que han seguido la dieta y utilizado el fármaco. Por lo tanto, para explicar el resultado obtenido en el grupo de los que toman el fármaco y siguen la dieta habría que introducir un término añadido a la suma de efectos sin más, que se restaría a los 8 Kg hasta dejarlos en 4 Kg. Se trataría de un caso de interacción en antagonismo con los dos factores de partida.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/anova-ancova/coninteraccion2.svg" class="img-fluid figure-img"></p>
+<figcaption>Gráfico de medias de dos factores con interacción antagónica</figcaption>
+</figure>
+</div>
+<p>En realidad, la interacción también puede producirse en sinergia con uno de los factores y en antagonismo con el otro, ya que a veces los dos factores pueden producir un efecto con signo contrario. Por ejemplo, al hablar del factor dieta, se tiende a pensar que se trata de una dieta que sirve para bajar el peso, pero también cabe plantearse un experimento con personas que siguen una dieta de alto contenido calórico que en principio debería hacerles subir peso y ver qué evolución siguen cuando a la vez toman un fármaco para bajarlo.</p>
+<p>Como puede deducirse fácilmente de las tablas y gráficas anteriores, la presencia de interacción implica que la diferencia entre las medias de los dos grupos dentro de un mismo nivel de uno de los factores no es la misma que para el otro nivel. Por ejemplo, en la segunda tabla, la diferencia entre las medias de Kg perdidos entre los que sí que toman el fármaco y los que no lo toman vale: 5-0=5 Kg en los que no hacen dieta, y 12-3=9 Kg en los que sí que hacen dieta. Lo cual gráficamente se traduce en que la pendiente de la recta que une las medias dentro del grupo de los que sí que toman el fármaco es diferente de la pendiente que une las medias dentro del grupo de los que no lo toman. En las ideas anteriores se basará el planteamiento del contraste de hipótesis para ver si la interacción ha resultado o no significativa.</p>
+<p>Como ya se ha comentado, en cualquiera de las tablas anteriores se podrían analizar tres efectos diferentes: el de la dieta, el del fármaco y el de la interacción de dieta con fármaco; lo cual, en términos matemáticos, se traduce en tres contrastes de hipótesis diferentes:</p>
+<ol type="1">
+<li><p>Efecto de la dieta sobre la cantidad de peso perdido:</p>
+<p><span class="math inline">\(H_0: \mu_{\text{con dieta}}=\mu_{\text{sin dieta}}\)</span><br>
+<span class="math inline">\(H_1: \mu_{\text{con dieta}}\neq\mu_{\text{sin dieta}}\)</span></p></li>
+<li><p>Efecto del fármaco sobre la cantidad de peso perdido:</p>
+<p><span class="math inline">\(H_0: \mu_{\text{con fármaco}}=\mu_{\text{sin fármaco}}\)</span><br>
+<span class="math inline">\(H_1: \mu_{\text{con fármaco}}\neq\mu_{\text{sin fármaco}}\)</span></p></li>
+<li><p>Efecto de la interacción entre dieta y fármaco, que a su vez se puede plantear de dos formas equivalentes:</p>
+<ol type="a">
+<li><p>Viendo si dentro dentro de los grupos definidos en función de la dieta la diferencia de Kg perdidos entre los que toman fármaco y los que no lo toman es la misma:</p>
+<p><span class="math inline">\(H_0: (\mu_{\text{con fármaco}}-\mu_{\text{sin fármaco}})_{\text{sin dieta}}=(\mu_{\text{con fármaco}}-\mu_{\text{sin fármaco}})_{\text{con dieta}}\)</span><br>
+<span class="math inline">\(H_1: (\mu_{\text{con fármaco}}-\mu_{\text{sin fármaco}})_{\text{sin dieta}}\neq(\mu_{\text{con fármaco}}-\mu_{\text{sin fármaco}})_{\text{con dieta}}\)</span></p></li>
+<li><p>Viendo si dentro de los grupos definidos en función del fármaco la diferencia de Kg perdidos entre los que hacen dieta y los que no la hacen es la misma:</p>
+<p><span class="math inline">\(H_0: (\mu_{\text{con dieta}}-\mu_{\text{sin dieta}})_{\text{sin fármaco}}=(\mu_{\text{con dieta}}-\mu_{\text{sin dieta}})_{\text{con fármaco}}\)</span><br>
+<span class="math inline">\(H_1: (\mu_{\text{con dieta}}-\mu_{\text{sin dieta}})_{\text{sin fármaco}}\neq(\mu_{\text{con dieta}}-\mu_{\text{sin dieta}})_{\text{con fármaco}}\)</span></p></li>
+</ol></li>
+</ol>
+<p>Aunque los detalles matemáticos más precisos sobre cómo el ANOVA de dos o más vías da respuesta a los contrastes expuestos quedan fuera del nivel de esta práctica, la idea general es sencilla y muy parecida a la explicada con más detalle en la práctica de ANOVA de una vía. En el ANOVA de una vía, la variabilidad total de los datos, expresada como suma de distancias al cuadrado con respecto a la media global (llamada Suma de Cuadrados Total), se descompone en dos diferentes fuentes de variabilidad: las distancias al cuadrado de los datos de cada grupo con respecto a la media del grupo, <em>Suma de Cuadrados Intra</em>, más las distancias al cuadrado entre las diferentes medias de los grupos y la media general, <em>Suma de Cuadrados Inter</em>. La suma de cuadrados intra-grupos es también llamada <em>Variabilidad Residual</em> o <em>Suma de Cuadrados Residual</em>, ya que su cuantía es una medida de la dispersión residual, remanente incluso después de haber dividido los datos en grupos. Estas sumas de cuadrados, una vez divididas por sus correspondientes grados de libertad, generan varianzas llamadas <em>Cuadrados Medios</em>, y el cociente de cuadrados medios (cuadrado medio inter dividido entre cuadrado medio intra) bajo la hipótesis nula de igualdad de medias en todos los grupos sigue una distribución <em>F</em> de Fisher que se puede utilizar para calcular un <span class="math inline">\(p\)</span>-valor del contraste de igualdad de medias. En el ANOVA de dos factores, en lugar de dos fuentes de variabilidad tenemos cuatro: una por el primer factor, otra por el segundo, otra por la interacción y otra más que contempla la variabilidad residual o variabilidad intragrupos. En el ejemplo anterior, las cuatro fuentes de variabilidad son:</p>
+<ol type="1">
+<li>La debida al primer factor: la dieta.</li>
+<li>La debida al segundo factor: el fármaco.</li>
+<li>La debida a la interacción entre ambos.</li>
+<li>La residual.</li>
+</ol>
+<p>Las tres primeras fuentes de variabilidad llevan asociadas sus correspondientes sumas de cuadrados, similares a la suma de cuadrados inter del ANOVA de una vía, mientras que la variabilidad residual lleva asociada su suma de cuadrados residual, similar a la suma de cuadrados intra del ANOVA de una vía. Dividiendo las sumas de cuadrados entre sus respectivos grados de libertad se obtienen varianzas, que divididas entre la varianza residual generan, bajo la hipótesis nula de igualdad de medias, valores <em>f</em> de la distribución <em>F</em> de Fisher que pueden utilizarse para calcular el p-valor del correspondiente contraste.</p>
+<p>Lo anterior se resume en forma de tabla de un ANOVA de dos vías, considerando un primer factor con <span class="math inline">\(k_1\)</span> niveles, un segundo factor con <span class="math inline">\(k_2\)</span> niveles y un total de datos <span class="math inline">\(n\)</span>. Si se denomina F1 al primer factor, F2 al segundo, I a la interacción y R al residual, la tabla de un ANOVA de dos vías tiene la siguiente forma:</p>
+<div class="center">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fuente</th>
+<th style="text-align: left;">Suma Cuad</th>
+<th style="text-align: left;">Grad Lib</th>
+<th style="text-align: left;">Cuad Medios</th>
+<th style="text-align: left;">f</th>
+<th style="text-align: left;"><span class="math inline">\(p\)</span>-valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">F1</td>
+<td style="text-align: left;"><span class="math inline">\(SF1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(GF1=k_1-1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(CF1=\dfrac{{SF1}}{{GF1}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(f1=\dfrac{{CF1}}{{CR}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(P(F&gt;f1)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F2</td>
+<td style="text-align: left;"><span class="math inline">\(SF2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(GF2=k_2-1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(CF2=\dfrac{{SF2}}{{GF2}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(f2=\dfrac{{CF2}}{{CR}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(P(F&gt;f2)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I</td>
+<td style="text-align: left;"><span class="math inline">\(SI\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(GI=GF1 \cdot GF2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(CI=\dfrac{{SI}}{{GI}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(fI=\dfrac{{CI}}{{CR}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(P(F&gt;fI)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R</td>
+<td style="text-align: left;"><span class="math inline">\(SR\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(GR=n-1-GF1-GF2-GI\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(CR=\dfrac{{SR}}{{GR}}\)</span></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: left;"><span class="math inline">\(ST\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(GT=n-1\)</span></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Una vez obtenida la tabla, habitualmente mediante un programa de estadística para evitar realizar la gran cantidad de cálculos que conlleva (los distintos programas pueden proporcionar tablas ligeramente diferentes a la expuesta en esta práctica, en las que pueden aparecer filas añadidas cuya interpretación dependerá del programa utilizado), el siguiente paso es la interpretación de los <span class="math inline">\(p\)</span>-valores obtenidos en cada uno de los factores y en la interacción. Para ello, resulta clave el <span class="math inline">\(p\)</span>-valor de la interacción porque condicionará completamente el análisis:</p>
+<ul>
+<li><p>Si la interacción no ha resultado significativa (<span class="math inline">\(p\)</span>-valor de la interacción mayor que el nivel de significación, habitualmente <span class="math inline">\(0.05\)</span>), se puede considerar por separado la actuación de los dos factores y ver si hay o no diferencias significativas en sus niveles atendiendo al <span class="math inline">\(p\)</span>-valor que aparece en la tabla para cada uno de ellos. Por ejemplo, en la primera de las tablas del análisis de Kg perdidos en función de la dieta y el fármaco, se obtendría que la interacción no es significativa, lo cual implicaría que habría que analizar el efecto de los factores por separado. Para ello, se acudiría al <span class="math inline">\(p\)</span>-valor del factor dieta y si es menor que el nivel de significación fijado, entonces el factor dieta habría resultado significativo, lo cual quiere decir que habría diferencias significativas (más allá de las asumibles por azar) entre los Kg perdidos por los individuos que hacen dieta y los que no; y todo ello, independientemente de si los individuos están tomando o no el fármaco, ya que no hay una interacción significativa que ligue los resultados de la dieta con el fármaco. Igualmente, con el factor fármaco, se acudiría a su <span class="math inline">\(p\)</span>-valor y se vería si hay o no diferencias significativas entre los Kg perdidos por los que toman el fármaco y los que no lo hacen, independientemente de si siguen o no la dieta.</p></li>
+<li><p>Si la interacción ha resultado significativa (<span class="math inline">\(p\)</span>-valor de la interacción menor que el nivel de significación, habitualmente <span class="math inline">\(0.05\)</span>), no se puede considerar por separado la actuación de los dos factores, la presencia de uno de los factores condiciona lo que sucede en el otro y el análisis de diferencias debidas al segundo factor debe realizarse por separado dentro de cada uno de los niveles del primero; y a la inversa, el análisis de diferencias debidas al primero debe realizarse por separado dentro de cada uno de los niveles del segundo. Por ejemplo, en la segunda de las tablas del análisis de Kg perdidos en función de la dieta y el fármaco, muy probablemente se obtendría que la interacción sí que es significativa, con lo cual no habría un único efecto del fármaco: en el grupo de los que no toman el fármaco, la diferencia de Kg perdidos entre los que sí que hacen dieta y los que no la hacen no sería la misma que en el grupo de los que sí que toman el fármaco. E igualmente, tampoco habría un único efecto de la dieta: en el grupo de los que no hacen dieta, la diferencia de Kg perdidos entre los que sí que toman el fármaco y los que no lo hacen no sería la misma que en el grupo de los que sí que hacen dieta.</p></li>
+</ul>
+<p>Una aclaración final importante es que en ningún caso un ANOVA de dos factores con dos niveles en cada vía equivale a hacer por separado una T de Student de datos independientes en cada uno de los factores. Ni siquiera en el caso de que no haya interacción el <span class="math inline">\(p\)</span>-valor que se obtiene en cada uno de los dos factores coincide con el que se obtendría en la comparación de los niveles mediante la T de Student. El ANOVA de dos factores es una técnica multivariante que cuantifica la influencia de cada una de las variables independientes en la variable dependiente después de haber eliminado la parte de la variabilidad que se debe a las otras variables independientes que forman parte del modelo. En el ejemplo de los Kg perdidos, no sería lo mismo analizar la influencia de la variable dieta después de eliminar la variabilidad explicada mediante la variable fármaco e incluso la interacción entre dieta y fármaco, que es lo que haría el ANOVA de dos factores, que analizar simplemente la influencia de la variable dieta sin más, o fármaco sin más, que es lo que podríamos hacer mediante una T de Student de datos independientes. Tampoco el análisis de la interacción en el ANOVA de dos factores equivale a realizar un ANOVA de una vía considerando una nueva variable independiente con cuatro categorías diferentes (1:Sí-Sí, 2:Sí-No, 3:No-Sí, 4:No-No), por el mismo motivo: las conclusiones del ANOVA de dos vías hay que entenderlas en el contexto de una técnica multivariante en que la importancia de cada variable independiente se obtiene después de eliminar de los datos la variabilidad debida a las demás.</p>
+</section>
+<section id="anova-de-dos-factores-con-tres-o-más-niveles-en-algún-factor" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="anova-de-dos-factores-con-tres-o-más-niveles-en-algún-factor"><span class="header-section-number">8.2.2</span> ANOVA de dos factores con tres o más niveles en algún factor</h3>
+<p>El planteamiento y resolución de un ANOVA de dos factores con tres o más niveles en algún factor es muy parecido al ya expuesto de dos niveles en cada factor. Únicamente cambian ligeramente las hipótesis nulas planteadas en los factores en las que habría que incluir la igualdad de tantas medias como niveles tenga el factor analizado, y las alternativas en las que se supone que alguna de las medias es diferente. En cuanto a las interacciones, también se contemplarían diferencias de medias pero teniendo en cuenta que hay más diferencias posibles al tener más niveles dentro de cada factor.</p>
+<p>En cuanto a la interpretación final de los resultados de la tabla del ANOVA, si no hay interacción y sin embargo hay diferencias significativas en cualquiera de los factores con 3 o más niveles, el siguiente paso sería ver entre qué medias se dan esas diferencias. Por ejemplo, si no hay interacción y se ha rechazado la hipótesis nula de igualdad de medias entre los tres niveles del factor 1, habría que ver si esas diferencias aparecen entre los niveles 1 y 2, o entre el 1 y 3, e incluso entre el 2 y el 3, independientemente del factor 2; e igualmente con el factor 2. Para poder ver entre qué niveles hay diferencias, habría que realizar <em>Test de Comparaciones Múltiples y por Parejas</em>; por ejemplo un test de Bonferroni o cualquier otro de los vistos en la práctica de ANOVA de una vía. Si la interacción saliese significativa, habría que hacer lo mismo pero considerando las posibles diferencias entre los 3 niveles del factor 1 dentro de cada nivel del factor 2 y viceversa.</p>
+<p>Como ya se ha comentado para el ANOVA de dos factores con dos niveles en cada factor y la T de Student de datos independientes, igualmente el ANOVA de dos factores con tres o más niveles en algún factor no equivale a dos ANOVAS de una vía. El <span class="math inline">\(p\)</span>-valor que se obtiene en el de dos factores no es el mismo que que se obtendría en los ANOVAS de una vía realizados teniendo en cuenta cada uno de los factores por separado,incluso si la interacción no es significativa.</p>
+</section>
+<section id="anova-de-tres-o-más-factores" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="anova-de-tres-o-más-factores"><span class="header-section-number">8.2.3</span> ANOVA de tres o más factores</h3>
+<p>Aunque los fundamentos del ANOVA de tres o más factores son muy parecidos a los de dos y la tabla obtenida es muy similar, la complejidad en la interpretación sube un escalón. Por ejemplo, en un ANOVA de tres factores la tabla presentaría los tres efectos de cada uno de los factores por separado, las tres interacciones dobles (1 con 2, 1 con 3 y 2 con 3), e incluso también podría mostrar la interacción triple (los programas de estadística permiten considerar o no las interacciones de cualquier orden). Si la interacción triple fuese significativa, entonces no se podría hablar del efecto general del factor 1, sino que habría que analizar el efecto del factor 1 dentro de cada nivel del 2 y a su vez dentro de cada nivel del 3, y así sucesivamente. Si la interacción triple no fuese significativa pero sí que lo fuese la del factor 1 con el 2, entonces habría que analizar el efecto del factor 1 dentro de cada uno de los niveles del 2 pero independientemente del factor 3. Y así hasta completar un conjunto muy grande de análisis posibles y de Test de Comparaciones Múltiples aplicados. No obstante, es el propio experimentador el que debe limitar el conjunto de análisis a realizar con un planteamiento muy claro del experimento, reduciendo en la medida de lo posible el número de factores considerados y teniendo claro que no merece la pena considerar interacciones triples, o de órdenes superiores, si no hay forma clara de interpretar su resultado.</p>
+<p>En ningún caso un ANOVA de tres o más factores equivale a tres ANOVAS de una vía realizados teniendo en cuenta los factores considerados por separado.</p>
+</section>
+<section id="factores-fijos-y-factores-aleatorios" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="factores-fijos-y-factores-aleatorios"><span class="header-section-number">8.2.4</span> Factores fijos y Factores aleatorios</h3>
+<p>A la hora de realizar un ANOVA de varios factores, el tratamiento de la variabilidad debida a cada uno de ellos y también las conclusiones que se pueden obtener después de realizarlo, son diferentes dependiendo de que los factores sean fijos o aleatorios.</p>
+<p>Se entiende como <em>Factor Fijo o Factor de Efectos Fijos</em> aquel cuyos niveles los establece, los fija de antemano, el investigador (por ejemplo, cantidades concretas de fármaco o de tiempo transcurrido), o vienen dados por la propia naturaleza del factor (por ejemplo, el sexo o la dieta). Su variabilidad es más fácil de controlar y también resulta más sencillo su tratamiento en los cálculos que hay que hacer para llegar a la tabla final del ANOVA, pero tienen el problema de que los niveles concretos que toma el factor constituyen la población de niveles sobre los que se hace inferencia. Es decir, no se pueden sacar conclusiones poblacionales que no se refieran a esos niveles fijos con los que se ha trabajado.</p>
+<p>Por contra, un <em>Factor Aleatorio o Factor de Efectos Aleatorios</em> es aquel cuyos niveles son seleccionados de forma aleatoria entre todos los posibles niveles del factor (por ejemplo, cantidad de fármaco, con niveles 23 mg, 132 mg y 245 mg, obtenidos al escoger 3 niveles de forma aleatoria entre 0 y 250 mg). Su tratamiento es más complicado, pero al constituir una muestra aleatoria de niveles, se pretende sacar conclusiones extrapolables a todos los niveles posibles.</p>
+<section id="supuestos-del-modelo-de-anova-de-dos-o-más-vías" class="level4" data-number="8.2.4.1">
+<h4 data-number="8.2.4.1" class="anchored" data-anchor-id="supuestos-del-modelo-de-anova-de-dos-o-más-vías"><span class="header-section-number">8.2.4.1</span> Supuestos del modelo de ANOVA de dos o más vías</h4>
+<p>Como ya sucedía con el ANOVA de una vía, el de dos o más vías es un test paramétrico que supone que:</p>
+<ul>
+<li><p>Los qdatos deben seguir distribuciones normales dentro de cada categoría, entendiendo por categorías todas las que se forman del cruce de todos los niveles de todos los factores. Por ejemplo, en un ANOVA de 2 factores con 3 niveles en cada factor, se tienen <span class="math inline">\(3^2\)</span> categorías diferentes.</p></li>
+<li><p>Todas las distribuciones normales deben tener igualdad de varianzas (homocedasticidad).</p></li>
+</ul>
+<p>Cuando no se cumplen las condiciones anteriores y además las muestras son pequeñas, no se debería aplicar el ANOVA de dos o más vías, con el problema añadido de que no hay un test no paramétrico que lo sustituya. Mediante test no paramétricos (sobre todo mediante el test de Kruskall-Wallis) se podría controlar la influencia de cada uno de los factores por separado en los datos, pero nunca el importantísimo papel de la interacción.</p>
+</section>
+</section>
+</section>
+<section id="anova-de-medidas-repetidas" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="anova-de-medidas-repetidas"><span class="header-section-number">8.3</span> ANOVA de medidas repetidas</h2>
+<p>En muchos problemas se cuantifica el valor de una variable dependiente en varias ocasiones en el mismo sujeto (por ejemplo: en un grupo de individuos que están siguiendo una misma dieta, se puede anotar el peso perdido al cabo de un mes, al cabo de dos y al cabo de tres), y se intenta comparar la media de esa variable en las diferentes ocasiones en que se ha medido, es decir, ver si ha habido una evolución de la variable a lo largo de las diferentes medidas (en el ejemplo anterior, una evolución del peso perdido). Conceptualmente es una situación análoga a la estudiada al comparar dos medias con datos emparejados mediante una T de Student de datos emparejados, o su correspondiente no paramétrico, el test de Wilcoxon, pero ahora hay más de dos medidas emparejadas, realizadas en el mismo individuo. En estas situaciones se utiliza el ANOVA de medidas repetidas.</p>
+<p>El ANOVA de medidas repetidas, como también sucede con cualquier otro test que utilice datos emparejados, tiene la ventaja de que las comparaciones que se realizan están basadas en lo que sucede dentro de cada sujeto (intra-sujetos), lo cual reduce el ruido o variabilidad que se produce en comparaciones entre diferentes grupos de sujetos. Por ejemplo, en el estudio sobre la evolución del peso perdido con personas que siguen la misma dieta, se podría haber cuantificado la variable al cabo de uno, dos y tres meses, pero en tres grupos diferentes que hubiesen seguido la misma dieta, pero con este diseño del estudio no se controlan otras variables que pueden influir en el resultado final, por ejemplo el sexo, la edad, o la cantidad de ejercicio que se hace al día. Dicho de otra forma, en el diseño con grupos independientes es posible que alguno de los grupos tenga una media de edad superior, o no haya igual número de hombres que de mujeres, y todo ello tener su reflejo en el número de Kg perdidos. Mientras que, con el diseño de datos emparejados, la segunda medida se compara con la primera que también se ha realizado en la misma persona, y por lo tanto es igual su sexo, su edad y la cantidad de deporte que realiza; y así con todas las demás medidas que se comparan entre sí pero dentro del mismo individuo. Eso permite controlar la variabilidad y detectar pequeñas diferencias que de otra forma serían indetectables.</p>
+<section id="anova-de-medidas-repetidas-como-anova-de-dos-vías-sin-interacción" class="level4" data-number="8.3.0.1">
+<h4 data-number="8.3.0.1" class="anchored" data-anchor-id="anova-de-medidas-repetidas-como-anova-de-dos-vías-sin-interacción"><span class="header-section-number">8.3.0.1</span> ANOVA de medidas repetidas como ANOVA de dos vías sin interacción</h4>
+<p>El ANOVA de medidas repetidas puede realizarse como un ANOVA de dos vías sin interacción sin más que realizar los cálculos oportunos introduciendo adecuadamente los datos en un programa estadístico.</p>
+<p>En la situación de partida, si suponemos que tenemos <span class="math inline">\(k\)</span> medidas emparejadas de una variable dependiente numérica y <span class="math inline">\(n\)</span> individuos en los que hemos tomado las medidas, los datos se pueden organizar como aparecen en la tabla siguientes:</p>
+<div class="center">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">2-5</th>
+<th style="text-align: left;">VarDep 1</th>
+<th style="text-align: left;">VarDep 2</th>
+<th style="text-align: left;">...</th>
+<th style="text-align: left;">VarDep k</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Individuo 1</td>
+<td style="text-align: left;"><span class="math inline">\(x_{1,1}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(x_{1,2}\)</span></td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;"><span class="math inline">\(x_{1,k}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Individuo 2</td>
+<td style="text-align: left;"><span class="math inline">\(x_{2,1}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(x_{2,2}\)</span></td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;"><span class="math inline">\(x_{2,k}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Individuo n</td>
+<td style="text-align: left;"><span class="math inline">\(x_{n,1}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(x_{n,2}\)</span></td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;"><span class="math inline">\(x_{n,k}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Pero esos mismos datos también se pueden ordenar en un formato de tabla mucho más conveniente para poderles aplicar un ANOVA de dos vías:</p>
+<div class="center">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">2-4</th>
+<th style="text-align: left;">Var Dep</th>
+<th style="text-align: left;">Individuo</th>
+<th style="text-align: left;">Medida</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fila 1</td>
+<td style="text-align: left;"><span class="math inline">\(x_{1,1}\)</span></td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fila 2</td>
+<td style="text-align: left;"><span class="math inline">\(x_{2,1}\)</span></td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fila n</td>
+<td style="text-align: left;"><span class="math inline">\(x_{n,1}\)</span></td>
+<td style="text-align: left;">n</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fila n+1</td>
+<td style="text-align: left;"><span class="math inline">\(x_{1,2}\)</span></td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fila n+2</td>
+<td style="text-align: left;"><span class="math inline">\(x_{2,2}\)</span></td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fila 2n</td>
+<td style="text-align: left;"><span class="math inline">\(x_{n,2}\)</span></td>
+<td style="text-align: left;">n</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fila (k-1)n+1</td>
+<td style="text-align: left;"><span class="math inline">\(x_{1,k}\)</span></td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">k</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fila (k-1)n+2</td>
+<td style="text-align: left;"><span class="math inline">\(x_{2,k}\)</span></td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">k</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">..</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fila kn</td>
+<td style="text-align: left;"><span class="math inline">\(x_{n,k}\)</span></td>
+<td style="text-align: left;">n</td>
+<td style="text-align: left;">k</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Con ello, tanto Individuo como Medida son variables categóricas que dividen la muestra total (<span class="math inline">\(n\cdot k\)</span> datos de la variable dependiente) en grupos: <span class="math inline">\(n\)</span> grupos en la variable Individuo y <span class="math inline">\(k\)</span> grupos en la variable Medida. Además, considerando el cruce de ambas variables (Medida x Individuo) se forman <span class="math inline">\(n\cdot k\)</span> grupos con un único dato de la variable dependiente en cada grupo.</p>
+<p>Para explicar la variabilidad de los datos de la variable dependiente cuantitativa se pueden considerar tres fuentes: la debida a la variable Medida, la debida a la variable Individuo, y la residual. Ahora no cabe hablar de la variabilidad debida a la interacción entre Medida e Individuo ya que los grupos que surgen del cruce de los dos factores sólo tienen un dato y no es viable calcular medias y dispersiones dentro de un grupo con un único dato. Y el análisis de la influencia de cada uno de los factores se realiza mediante un ANOVA de dos factores sin interacción, que genera la siguiente tabla:</p>
+<div class="center">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fuente</th>
+<th style="text-align: left;">Suma Cuad</th>
+<th style="text-align: left;">Grad Lib</th>
+<th style="text-align: left;">Cuad Med</th>
+<th style="text-align: left;">F</th>
+<th style="text-align: left;">p-valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">F1=Medida</td>
+<td style="text-align: left;"><span class="math inline">\(SF1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(GF1=k-1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(CF1=\dfrac{SF1}{GF1}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(f1=\dfrac{CF1}{CR}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(P(F&gt;f1)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F2=Individuo</td>
+<td style="text-align: left;"><span class="math inline">\(SF2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(GF2=n-1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(CF2=\dfrac{SF2}{GF2}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(f2=\dfrac{CF2}{CR}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(P(F&gt;f2)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Residual</td>
+<td style="text-align: left;"><span class="math inline">\(SR\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(GR=(n \cdot k)-1-GF1-GF2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(CR=\dfrac{SR}{GR}\)</span></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total</td>
+<td style="text-align: left;"><span class="math inline">\(ST\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(GT=(n\cdot k)-1\)</span></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Y permite dar respuesta a los siguientes contrastes:</p>
+<ol type="1">
+<li><p>En la variable Medida:</p>
+<p><span class="math inline">\(H_0: \mu_{\text{Medida 1}}=\mu_{\text{Medida 2}}=...=\mu_{\text{Medida k}}\)</span><br>
+<span class="math inline">\(H_1\)</span>: Alguna de las medias es diferente.</p>
+<p>Si el <span class="math inline">\(p\)</span>-valor obtenido es menor que el nivel de significación fijado querrá decir que alguna de las medias es significativamente diferente del resto. Este es el contraste más importante del ANOVA de medidas repetidas y supone que la variabilidad dentro de cada individuo (intra-sujeto) es lo suficientemente grande como para que se descarte el azar como su causa. Por lo tanto la variable Medida ha tenido un efecto significativo.</p></li>
+<li><p>En la variable Individuo:</p>
+<p><span class="math inline">\(H_0: \mu_{\text{Individuo 1}}=\mu_{\text{Individuo 2}}=...=\mu_{\text{Individuo n}}\)</span><br>
+<span class="math inline">\(H_1\)</span>: Alguna de las medias es diferente.</p>
+<p>Si el <span class="math inline">\(p\)</span>-valor obtenido es menor que el nivel de significación fijado querrá decir que alguna de las medias es significativamente diferente del resto, y por lo tanto alguno de los individuos analizados ha tenido un comportamiento en la variable dependiente diferente del resto. En realidad no es un contraste importante en el ANOVA de medidas repetidas ya que supone un análisis de la variabilidad entre individuos (inter-sujetos), pero es muy difícil que en un experimento dado esta variabilidad no esté presente.</p></li>
+</ol>
+<p>Si la conclusión del ANOVA es que hay que rechazar alguna de las dos hipótesis nulas, ya sea la de igualdad de medias en los grupos formados por la variable Medida o la de igualdad de medias en los grupos formados por la variable Individuo, entonces en el siguiente paso se podría aplicar un Test de Comparaciones Múltiples y por Parejas, por ejemplo un test de Bonferroni, para ver qué medias son diferentes, especialmente para ver entre qué niveles del la variable Medida se dan las diferencias.</p>
+</section>
+<section id="supuestos-del-anova-de-medidas-repetidas" class="level4" data-number="8.3.0.2">
+<h4 data-number="8.3.0.2" class="anchored" data-anchor-id="supuestos-del-anova-de-medidas-repetidas"><span class="header-section-number">8.3.0.2</span> Supuestos del ANOVA de medidas repetidas</h4>
+<p>Como en cualquier otro ANOVA, en el de medidas repetidas se exige que:</p>
+<ul>
+<li><p>Los datos de la variable dependiente deben seguir distribuciones normales dentro de cada grupo, ya sea formado por la variable Medida o por la variable Individuo. Como el contraste más importante se realiza en la variable Medida, resultará especialmente importante que sean normales las distribuciones de todas las Medidas.</p></li>
+<li><p>Todas las distribuciones normales deben tener igualdad de varianzas (homocedasticidad), especialmente las de las diferentes Medidas.</p></li>
+</ul>
+<p>Cuando en un ANOVA de medidas repetidas se cumple la normalidad y la homocedasticidad de todas las distribuciones se dice que se cumple la <em>Esfericidad</em> de los datos, y hay tests estadísticos especialmente diseñados para contrastar la esfericidad como la <em>prueba de Mauchly</em>.</p>
+<p>Cuando no se cumplen las condiciones anteriores y además las muestras son pequeñas, no se debería aplicar el ANOVA de medidas repetidas, pero al menos sí que hay una prueba no paramétrica que permite realizar el contraste de si hay o no diferencias significativas entre los distintos niveles de la variable Medida, que es el <em>test de Friedman</em>.</p>
+</section>
+<section id="anova-de-medidas-repetidas-anova-de-una-o-más-vías" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="anova-de-medidas-repetidas-anova-de-una-o-más-vías"><span class="header-section-number">8.3.1</span> ANOVA de medidas repetidas + ANOVA de una o más vías</h3>
+<p>No son pocos los problemas en los que, además de analizar el efecto intra-sujetos en una variable dependiente cuantitativa medida varias veces en los mismos individuos para el que cabría plantear un ANOVA de medidas repetidas, también aparecen variables cualitativas que se piensa que pueden estar relacionadas con la variable dependiente. Estas últimas variables introducen un efecto que aunque habitualmente es catalogado como inter-sujetos más bien se trataría de un efecto inter-grupos, yaque permiten definir grupos entre los que se podría plantear un ANOVA de una o más vías. Por ejemplo, se podría analizar la pérdida de peso en una muestra de individuos al cabo de uno, dos y tres meses de tratamiento (ANOVA de medidas repetidas), pero teniendo en cuenta que los individuos de la muestra han sido divididos en seis grupos que se forman por el cruce de dos factores, Dieta y Ejercicio, con tres dietas diferentes: a, b y c, y dos niveles de ejercicio físico diferentes: bajo y alto. Para analizar la influencia de estos dos factores inter-sujetos, habría que plantear un ANOVA de dos vías con interacción. Para un ejemplo como el comentado, aunque los datos podrían disponerse de una forma similar a la que permite realizar el ANOVA de medidas repetidas como un ANOVA de dos factores (variables Medida e Individuo), y añadirle dos factores más (Dieta y Ejercicio), no resulta cómodo tener que introducir en la matriz de datos varias filas para un mismo individuo (tantas como medidas repetidas diferentes se hayan realizado). Por ello, determinados programas de estadística, como PASW, permiten realizar ANOVAs de medidas repetidas introduciendo los datos en el formato clásico, una fila para cada individuo y una variable para cada una de las medidas repetidas, definiendo factores intra-sujeto que en realidad estarían compuestos por todas las variables que forman parte de las medidas repetidas. Además, a los factores intra-sujeto permiten añadirle nuevos factores inter-sujeto (categorías) que pueden influir en las variables respuesta (las diferentes medidas), e incluso comprobar si hay o no interacción entre los factores inter-sujeto entre sí y con los factores intra-sujeto. Por lo tanto, son procedimientos que realizan a la vez un ANOVA de medidas repetidas y un ANOVA de una o más vías, con la ventaja de que se pueden introducir los datos en la forma clásica: una fila para cada individuo.</p>
+<p>El resultado de la aplicación de estos procedimientos es muy parecido a los comentados en apartados previos: se generan tablas de ANOVA en las que se calcula un <span class="math inline">\(p\)</span>-valor para cada uno de los factores, ya sean intra-sujeto (medidas repetidas) o inter-sujeto (categorías), y también para la interacción, ya sea de los factores inter-sujeto entre sí o de factores inter-sujeto con los intra-sujeto.</p>
+</section>
+</section>
+<section id="análisis-de-la-covarianza-ancova" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="análisis-de-la-covarianza-ancova"><span class="header-section-number">8.4</span> Análisis de la covarianza: ANCOVA</h2>
+<p>El análisis de la covarianza, ANCOVA, es una extensión del ANOVA (ya sea de una o varias vías y de medidas repetidas), que permite analizar la influencia que sobre la variable dependiente cuantitativa tienen todas las variables independientes categóricas (factores) y las medidas repetidas contempladas en el ANOVA, pero, además, eliminando el efecto que otra u otras variables independientes cuantitativas podrían tener sobre la variable respuesta. Las variables independientes cuyo efecto se pretende eliminar (controlar o ajustar) son llamadas <em>Covariables o Covariantes</em> porque se se espera que covaríen, es decir, que estén correlacionadas con la variable dependiente.</p>
+<p>Aunque la explicación detallada de cómo se realiza el ANCOVA va más allá del nivel de lo expuesto en esta práctica, la idea es sencilla: se puede plantear un análisis de regresión de la variable dependiente en función de la covariable (o de las covariables si hay más de una), y eliminar la parte de la variabilidad de la dependiente que se puede explicar gracias a la covariable sin más que trabajar con los residuos del modelo de regresión en lugar de con los datos originales. Posteriormente, se procede a realizar una ANOVA, de uno o varios factores e incluso de medidas repetidas, aplicado a los residuos.</p>
+<p>El resultado final de la aplicación del ANCOVA es una tabla muy parecida a la del ANOVA, pero con una línea añadida por para cada una de las covariables. En esas líneas se recoge la cantidad de variabilidad explicada por cada una de las covariables y su correspondiente <span class="math inline">\(p\)</span>-valor, que da respuesta al contraste de si la covariable es o no prescindible para explicar lo que sucede en la variable dependiente (en términos más técnicos, el contraste sería si la pendiente del modelo de regresión de la variable independiente en función de la covariable puede o no ser igual a 0). En la tabla del ANCOVA no hay ninguna línea añadida que contemple la posible interacción entre la covariable y los distintos factores inter-sujetos, simplemente porque si hubiese interacción no debería aplicarse un modelo de ANCOVA ya que el efecto del factor no podría estimarse porque dependería del valor concreto considerado en la covariable, que, por ser continua, tiene infinitos valores, luego habría infinitos diferentes efectos del factor y no se le podría asignar un <span class="math inline">\(p\)</span>-valor concreto. Pero sí que la tabla añade una línea para la interacción de cada uno de los factores intra-sujetos con cada una de las covariables, ya que cada factor intra-sujetos internamente está compuesto por varias variables cuantitativas que pueden presentar diferentes pendientes en la regresión en función de la covariable.</p>
+<p>Si la representación gráfica habitual para ver si una serie de factores influyen o no en una variable respuesta cuantitativa (ANOVA) es el denominado gráfico de medias, en el ANCOVA el efecto de la covariable en la variable respuesta se puede ver mediante la nube puntos de la variable respuesta en función de la covariable, que presentará un aspecto más o menos rectilíneo dependiendo del nivel de correlación lineal entre ambas. Además, también se puede intuir si un determinado factor influye en la variable respuesta una vez eliminada la influencia de la covariable:</p>
+<ul>
+<li><p>Si la nube de puntos puede ajustarse adecuadamente mediante una única recta de pendente nula, independientemente de los niveles del factor, entonces quiere decir que ni la covariable ni el factor son significativos para explicar la variable respuesta.</p></li>
+<li><p>Si la nube de puntos se ajusta adecuadamente mediante una única recta de pendiente no nula, independientemente de los niveles del factor, entonces quiere decir que la covariable sí que es significativa pero no así el factor, ya que, una vez eliminada la influencia de la covariable (es decir, tomando como variable dependiente los residuos del ajuste inicial) no habría diferencias entre los distintos niveles (los puntos de las diferentes categorías quedarían a la misma altura).</p>
+<p>Por ejemplo, en la siguiente figura aparece el resultado de un experimento en el que se han anotado los Kg perdidos por personas que han seguido dos tipos diferentes de dieta, pero teniendo en cuenta como covariable el índice de masa corporal, que se piensa que también puede influir en el número de Kg perdidos pero que, sin embargo, no se ha controlado a la hora de elaborar los grupos y claramente han quedado desequilibrados en la covariable (los que han tomado la dieta 2 tienen en media mayor índice de masa corporal que los que han tomado la dieta 1). Según la figura, cabría esperar que haya diferencias significativas en los Kg perdidos según la dieta (parece que la dieta 2 hace perder más Kg que la dieta 1), pero en realidad todo se debe a la covariable, y eliminado su efecto (si la pendiente de la recta fuese 0) los dos grupos habrían perdido cantidades muy similares de peso. En definitiva, en similares condiciones de índice de masa corporal, la dieta 2 no haría perder más Kg.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/anova-ancova/covariable1.svg" class="img-fluid figure-img"></p>
+<figcaption>Nube de puntos con covariable significativa y factor no significativo</figcaption>
+</figure>
+</div></li>
+<li><p>Si la nube de puntos se ajusta adecuadamente mediante varias rectas de pendiente nula, una por cada nivel del factor, entonces la covariable no es significativa, pero sí el factor.</p></li>
+<li><p>Si la nube de puntos se ajusta adecuadamente con rectas, una por cada nivel del factor, con igual pendiente no nula, y al menos una de las rectas es diferente de todas las demás (al menos uno de los niveles aparece desplazado), entonces tanto la covariable como el factor serían significativos a la hora de explicar la variable dependiente.</p>
+<p>Por ejemplo, en la siguiente figura aparece el resultado de un experimento similar al ya comentado: Kg perdidos en función de la dieta y de la covariable índice de masa corporal que no se ha controlado adecuadamente a la hora de hacer los grupos (el grupo de los que toman la dieta 2 tiene mayor IMC de partida). A la vista de la gráfica incluso parece que hay diferencias significativas en el número de Kg perdidos de tal forma que los de la dieta 2 haría perder más, pero todo es consecuencia de la covariable; eliminado su efecto, el número de Kg perdidos por los individuos que toman la dieta 1 es mayor (eliminada la pendiente de la recta, los puntos de la dieta 1 quedarían por arriba).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/anova-ancova/covariable2.svg" class="img-fluid figure-img"></p>
+<figcaption>Nube de puntos con covariable significativa y factor también significativo</figcaption>
+</figure>
+</div></li>
+<li><p>Si la nube de puntos se ajusta adecuadamente con diferentes rectas, una por cada nivel del factor, con pendientes no nulas pero diferentes, entonces quiere decir que habría interacción entre covariable y factor y no debería plantearse un modelo de ANCOVA.</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./09-contrastes-parametricos.html" class="pagination-link  aria-label=" &lt;span="" de="" hipótesis="" paramétricos&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

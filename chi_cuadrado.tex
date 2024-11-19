@@ -1,0 +1,545 @@
+% Version control information:
+%$HeadURL: https://practicas-spss.googlecode.com/svn/trunk/anova_1_factor/anova_1_factor.tex $
+%$LastChangedDate: 2010-09-27 16:37:11 +0200 (lun, 27 sep 2010) $
+%$LastChangedRevision: 3 $
+%$LastChangedBy: asalber $
+%$Id: anova_1_factor.tex 3 2010-09-27 14:37:11Z asalber $
+
+\chapter{Contrastes Basados en el Estadístico $\chi^{2}$}
+\section{Fundamentos teóricos}
+Existen multitud de situaciones en el ámbito de la salud, o en 
+cualquier otro ámbito, en las que el investigador está interesado en determinar posibles relaciones entre variables cualitativas. Un ejemplo podría ser el estudio de si existe relación entre las complicaciones tras una intervención quirúrgica y el
+ sexo del paciente, o bien el hospital en el que se lleva a cabo 
+la intervención.
+En este caso, todas las técnicas de inferencia vistas hasta ahora para variables cuantitativas no son aplicables, y para ello utilizaremos un contraste de hipótesis basado en el estadístico $\chi^{2}$ (Chi-cuadrado).
+
+Sin embargo, aunque éste sea su aspecto
+ más conocido, el uso del test no se limita al estudio de la 
+posible relación entre variables cualitativas, y también se aplica para comprobar el ajuste de la distribución muestral de una
+ variable, ya sea cualitativa o cuantitativa, a su hipotético
+modelo teórico de distribución.
+
+En general, este tipo de tests consiste en tomar una muestra y
+observar si hay diferencia significativa entre las \emph{frecuencias
+observadas} y las especificadas por la ley teórica del modelo que
+se contrasta, también denominadas \emph{frecuencias esperadas}.
+
+Podríamos decir que existen dos grandes bloques de aplicaciones
+básicas en el uso del test de la $\chi^{2}$:
+
+\begin{enumerate}
+\item \textbf{Test de ajuste de distribuciones}. Es un contraste
+de significación para saber si los datos de la población, de la
+cual hemos extraído una muestra, son conforme a una ley de
+distribución teórica que sospechamos que es la correcta.
+
+Por ejemplo: disponemos de 400 datos que, a priori, siguen una
+distribución de probabilidad uniforme, pero ¿es estadísticamente
+cierto que se ajusten a dicho tipo de distribución?
+
+
+\item \textbf{Test para tablas de contingencia.} En las que se parte de la tabla de frecuencias bidimensional para las distintas modalidades de las variables cualitativas. Aunque muy a menudo el test de la
+$\chi^{2}$ aplicado en tablas de contingencia se denomina prueba
+de independencia, en realidad se aplica en dos diseños
+experimentales diferentes, que hacen que se clasifique en dos
+bloques diferentes:
+
+
+\begin{enumerate}
+\item \textbf{Prueba de independencia}. Mediante la que el
+investigador pretende estudiar la relación entre dos variables cualitativas en una población.
+
+Por ejemplo: tenemos una muestra de 200 enfermos (el investigador
+tan sólo controla el total en una muestra) operados de apendicitis
+en 4 hospitales diferentes y queremos ver si hay relación entre la
+posible infección postoperatoria y el hospital en el que el paciente ha sido operado.
+
+\item \textbf{Prueba de homogeneidad}. Mediante la que el
+investigador pretende ver si la proporción de una determinada
+característica es la misma en poblaciones, tal vez, diferentes.
+
+Por ejemplo: tenemos dos muestras diferentes, una de ellas de 100
+individuos VIH positivos, y otra de 600 VIH negativos (el
+investigador controla el total en ambas muestras), y queremos
+analizar si la proporción de individuos con problemas
+gastrointestinales es la misma en ambas.
+\end{enumerate}
+\end{enumerate}
+
+Por último, aunque el test de la Chi-cuadrado es muy importante en el análisis de las relaciones entre variables cualitativas, su aplicación puede conducir a errores en determinadas situaciones; sobre todo cuando los tamaños muestrales son pequeños, lo cual conduce a que en algunas categorías apenas tengamos individuos y ello invalida los supuestos de aplicación del test; y también cuando tenemos variables cualitativas analizadas en los mismos individuos pero en diferentes tiempos, es decir, mediante datos pareados. Para el primer caso, cuando el número de individuos en alguna categoría es muy pequeño, se utiliza el test Exacto de Fisher, mientras que en el segundo, con datos pareados, se utiliza el test de McNemar.
+
+
+\subsection{Contraste $\chi^{2}$ de Pearson para ajuste de distribuciones}
+Es el contrate de ajuste más antiguo y es válido para todo tipo de
+distribuciones. Para analizar una muestra de una variable agrupada
+en categorías (aunque sea cuantitativa), evaluando una hipótesis
+previa sobre probabilidad de cada modalidad o categoría, se realiza un contraste de hipótesis Chi-cuadrado de bondad de ajuste.
+
+El contraste se basa en hacer un recuento de los datos y comparar las
+frecuencias observadas de cada una de las modalidades con las
+frecuencias esperadas por el modelo teórico que se contrasta.
+De este modo, se calcula el estadístico:
+\[
+\chi^2 = \sum_{i=1}^k \frac{(O_i-E_i)^2}{E_i},
+\]
+donde $O_i$ son las frecuencias observadas en la muestra en la
+modalidad $i$, y  $E_i$ son las frecuencias esperadas para la
+misma modalidad según el modelo teórico. Las frecuencias esperadas
+se calculan multiplicando el tamaño de la muestra por la
+probabilidad de la correspondiente modalidad según el modelo
+teórico, es decir $E_i=np_i$, siendo $p_i$ la probabilidad de la modalidad $i$.
+
+Si la población de la que se ha obtenido la muestra sigue el
+modelo de distribución teórica, el estadístico anterior se
+distribuye como $\chi^{2}$ con $k-1$ grados de libertad, donde $k$
+es el número de modalidades de la variable. Un valor del
+estadístico $\chi^{2}$ grande indica que las distribuciones de las
+frecuencias observadas y esperadas son bastantes diferentes,
+mientras que un valor pequeño del estadístico indica que hay poca
+diferencia entre ellas.
+
+La prueba $\chi^2$ de bondad del ajuste es válida si todas las
+frecuencias esperadas son mayores o iguales que 1 y no más de un
+$20\%$ de ellas tienen frecuencias esperadas menores que 5. Si no
+se cumple lo anterior, entonces las categorías implicadas deben
+combinarse con categorías adyacentes para garantizar que todas
+cumplen la condición. Si las categorías corresponden a variables
+cuantitativas categorizadas, no tienen necesariamente que
+corresponder a la misma amplitud de variable.
+
+
+\subsection{Contraste $\chi^{2}$ en tablas de contingencia}
+Como ya hemos visto, el contraste de la $\chi^2$ en tablas de
+contingencia sirve para establecer relaciones entre variables
+cualitativas (o cuantitativas categorizadas), entre las que no
+puede realizarse un análisis de regresión y correlación, y tanto
+para determinar independencia entre variables, como homogeneidad
+entre poblaciones (igual proporción de una determinada
+característica). Para ello, describimos el proceso metodológico en
+el caso de independencia entre variables, que en la práctica, y
+aunque conceptualmente son casos diferentes, es el mismo también
+para la homogeneidad entre poblaciones.
+
+Por tablas de contingencia se entiende aquellas tablas de doble
+entrada donde se realiza una clasificación de la muestra de
+acuerdo a un doble criterio de clasificación. Por ejemplo, la
+clasificación de unos individuos de acuerdo a su sexo y su grupo
+sanguíneo crearía una tabla donde cada celda de la tabla
+representaría la frecuencia bivariante de las características
+correspondientes a su fila y columna (por ejemplo mujeres de grupo
+sanguíneo A). Si se toma una muestra aleatoria de tamaño $n$ en la
+que se miden ambas variables y se representan las frecuencias de
+los pares observados en una tabla bidimensional, tenemos:
+
+\[
+\begin{tabular}{|l|lllll|l|}
+\cline{1-6}
+$X/Y$ & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$y_j$} & \multicolumn{1}{c}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{l}{} \\
+\hline
+\multicolumn{1}{|c|}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\
+\multicolumn{1}{|c|}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\
+\multicolumn{1}{|c|}{$x_i$} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$n_{ij}$} & \multicolumn{1}{c}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{$n_i$} \\
+\multicolumn{1}{|c|}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\
+\multicolumn{1}{|c|}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\
+\hline
+\multicolumn{1}{c|}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$n_j$} & \multicolumn{1}{c}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{$n$} \\
+\cline{2-7}
+\end{tabular}
+\]
+Donde $n_{ij}$ es la frecuencia absoluta del par $(x_i, y_j)$,
+$n_i$ es la frecuencia marginal de la modalidad $x_i$ y $n_j$ es
+la frecuencia marginal de la modalidad $y_j$. Dichas frecuencias
+aparecen en los márgenes de la tabla de contingencia sumando las
+frecuencias por filas y columnas, y por ello se conocen como
+frecuencias marginales.
+
+Siguiendo un procedimiento parecido al del apartado anterior, se
+comparan las frecuencias observadas en la muestra (frecuencias
+reales) con las frecuencias esperadas (frecuencias teóricas). Para
+ello, calculamos la probabilidad de cada casilla de la tabla
+teniendo en cuenta que si ambas variables son independientes la
+probabilidad de cada celda surge como un producto de
+probabilidades (probabilidad de la intersección de dos sucesos
+independientes) $p_{ij}=p_ip_j=\frac{n_i}{n}\frac{n_j}{n}$. De este modo,
+obtenemos la frecuencia esperada como:
+\[E_i=np_{ij}=n\frac{n_i}{n}\frac{n_j}{n}=\frac{n_in_j}{n},\]
+Y con ello se calcula el estadístico de la Chi-cuadrado de Pearson:
+\[
+\chi^2 = \sum_{i,j}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}.
+\]
+En el caso de que $X$ e $Y$ fuesen independientes, este
+estadístico presenta una distribución Chi-cuadrado con
+$(f-1)(c-1)$ grados de libertad, donde $f$ es el número de filas
+de la tabla de contingencia y $c$ el número de columnas. Un valor
+del estadístico Chi-cuadrado grande indica que las distribuciones
+de las frecuencias observadas y esperadas son bastantes
+diferentes, y por lo tanto falta de independencia; mientras que un
+valor pequeño del estadístico indica que hay poca diferencia entre
+ellas, lo cual nos indica que son independientes.
+
+Este test es adecuado si las frecuencias esperadas para cada celda
+valen como mínimo 1 y no más de un $20\%$ de ellas tienen
+frecuencias esperadas menores que 5. En el caso de una tabla 2x2,
+estas cifras se alcanzan sólo cuando ninguna frecuencia esperada
+es menor que 5. Si esto no se cumple, puede, entre otras,
+utilizarse una prueba para pequeñas muestras llamada prueba exacta
+de Fisher.
+
+
+\subsection{Test exacto de Fisher}
+Este test se puede utilizar cuando no se cumplan las condiciones necesarias para aplicar el test de la Chi cuadrado (más de un 20\% de las frecuencias esperadas para cada celda son menores que 5). Aunque, dada la gran cantidad de cálculos necesarios para llegar al resultado final del test, los programas de Estadística sólo lo calculaban para tablas de contingencia 2x2, en versiones actuales pueden incorporar módulos específicos que amplían la capacidad del núcleo del programa base, y que sí que permiten evaluar el test de Fisher en tablas con más categorías. Por ejemplo, en PASW, si se ha instalado el módulo de Pruebas Exactas, se puede calcular el test Exacto de Fisher en tablas generales con F categorías en las filas y  C categorías en las columnas.
+
+El test Exacto de Fisher está basado en la distribución exacta de los datos y no en aproximaciones asintóticas, y presupone que los marginales de la tabla de contingencia están fijos. El procedimiento para su cálculo consiste en evaluar la probabilidad asociada, bajo el supuesto de independencia, a todas las tablas que se pueden formar con los mismos totales marginales que los datos observados y variando las frecuencias de cada casilla para contemplar todas las situaciones en las que hay un desequilibrio de proporciones tan grande o más que en la tabla analizada. Para el cálculo de la probabilidad asociada a cada tabla se utiliza la función de probabilidad de una variable discreta hipergeométrica.
+
+Aunque generalmente el test Exacto de Fisher es más conservador que la Chi cuadrado (resulta más complicado que detecte diferencias estadísticamente significativas entre las proporciones), no obstante tiene la ventaja de que se puede aplicar sin ninguna restricción en las frecuencias de las casillas de la tabla de contingencia.
+
+
+\subsection{Test de McNemar para datos emparejados}
+Hasta ahora hemos supuesto que las muestras a comparar eran independientes, es decir dos grupos diferentes en los que se había mirado una
+determinada característica. Por lo tanto, hemos realizado comparaciones de proporciones de individuos que presentan una determinada
+característica en dos grupos distintos, pero también nos podemos plantear comparar la proporción de individuos que presentan esa
+característica en un mismo grupo de individuos pero analizados en dos momentos diferentes. En este último caso se habla comparación de
+proporciones en datos emparejados, pareados o apareados.
+
+Por ejemplo, si queremos ver si existen o no diferencias en la mejora de los síntomas de una determinada enfermedad, y para ello aplicamos
+dos fármacos distintos a un grupo de individuos en dos momentos diferentes en los que hayan contraído la misma enfermedad. En este caso,
+podría pensarse que resultaría adecuado aplicar tanto la chi cuadrado como el test exacto de Fisher para determinar si existe diferencias
+entre ambos fármacos en la proporción de pacientes curados, pero aquí hay una diferencia fundamental con los casos anteriores y es que sólo
+tenemos un grupo de pacientes y no dos. En este tipo de estudios se reduce considerablemente la variabilidad aleatoria, ya que es un mismo
+individuo el que se somete a los dos tratamientos, y el que manifieste mejoría en los síntomas no dependerá de otros factores tan
+importantes como, por ejemplo, la edad, el sexo o el tipo de alimentación, que pueden influir pero que tal vez no se controlen adecuadamente
+en un diseño de grupos independientes. Al reducir la variabilidad aleatoria mediante datos emparejados, pequeñas diferencias entre las
+proporciones pueden llegar a ser significativas, incluso con tamaños muestrales pequeños, lo cual se traduce en que este tipo de diseños del
+experimento resultan más eficientes a la hora de obtener resultados estadísticamente significativos.
+
+No obstante, nuevos diseños implican nuevas formas de tratar los datos, y el procedimiento más adecuado es el que se utiliza en el test de
+McNemar para datos emparejados. Para su aplicación en nuestro ejemplo, se debería construir una tabla con 4 casillas en las que se
+contabilicen: las personas que han obtenido una mejoría de los síntomas con los dos fármacos, los que han obtenido con el primero y no con
+el segundo, los que han obtenido con el segundo y no con el primero y los que no han obtenido mejoría con ninguno.
+
+\[
+\begin{array}{|c|c|c|c|}
+\hline
+\textrm{Mejoría 1º $\setminus$ Mejoría 2º} & \textrm{Sí} & \textrm{No} & \textrm{Totales} \\
+\hline
+\textrm{Sí} & a & b & a+b \\
+\hline
+\textrm{No} & c & d & c+d \\
+\hline
+\textrm{Totales} & a+c & b+d & n=a+b+c+d \\
+\hline
+\end{array}
+\]
+
+Con ello, la proporción muestral de pacientes que han experimentado mejoría con el medicamento 1 vale: $\widehat{p}_1=(a+b)/n$, e igualmente
+con el 2: $\widehat{p}_2=(a+c)/n$, y podemos plantear el contraste cuya hipótesis nula es que no hay diferencia de proporciones
+poblacionales entre ambos medicamentos: $H_0: p_1=p_2$, que puede realizarse sin más que tener en cuenta el oportuno intervalo de confianza
+para la diferencia de proporciones, o también que, en el supuesto de igualdad de proporciones
+\[z = \dfrac{b-c}{\sqrt{b + c}},\]
+es un estadístico que sigue una distribución normal tipificada, y 
+\[\chi ^2 = \dfrac{(b-c)^2}{b+c}$,\]
+es un estadístico que sigue una distribución Chi-cuadrado con un grado de libertad. 
+Con cualquiera de ellos, se podría calcular el p-valor del contraste.
+
+\clearpage
+\newpage
+
+\section{Ejercicios Resueltos}
+\begin{enumerate}[leftmargin=*]
+\item Dadas dos parejas de genes Aa y Bb, la descendencia del
+cruce efectuado según las leyes de Mendel, debe estar compuesto
+del siguiente modo:
+
+\[
+\begin{tabular}{ll}
+\multicolumn{1}{c}{Fenotipo} & \multicolumn{1}{c}{Frecuencias Relativas} \\
+\multicolumn{1}{c}{AB} & \multicolumn{1}{c}{9/16 = 0,5625} \\
+\multicolumn{1}{c}{Ab} & \multicolumn{1}{c}{3/16 = 0,1875} \\
+\multicolumn{1}{c}{aB} & \multicolumn{1}{c}{3/16 = 0,1875} \\
+\multicolumn{1}{c}{ab} & \multicolumn{1}{c}{1/16 = 0,0625} \\
+\end{tabular}
+\]
+
+Elegidos 300 individuos al azar de cierta población, se observa la
+siguiente distribución de frecuencias:
+
+\[
+\begin{tabular}{ll}
+\multicolumn{1}{c}{Fenotipo} & \multicolumn{1}{c}{Frecuencias Observadas} \\
+\multicolumn{1}{c}{AB} & \multicolumn{1}{c}{165} \\
+\multicolumn{1}{c}{Ab} & \multicolumn{1}{c}{47} \\
+\multicolumn{1}{c}{aB} & \multicolumn{1}{c}{67} \\
+\multicolumn{1}{c}{ab} & \multicolumn{1}{c}{21} \\
+\end{tabular}
+\]
+
+Se pide
+\begin{enumerate}
+\item Crear las variables \textsf{fenotipo} y \textsf{frecuencia} e introducir los datos de la muestra.
+\item Ponderar los datos mediante la variable \variable{frecuencia}.
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Datos\flecha Ponderar casos}.
+\item En el cuadro de diálogo resultante activar la opción \opcion{Ponderar casos
+mediante}, seleccionar la variable \variable{frecuencia} en el campo \campo{Variable frecuencia} y hacer click en el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+
+\item Comprobar si esta muestra cumple las leyes de Mendel.
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el men\'{u} \texttt{Analizar\flecha Pruebas no paramétricas\flecha Cuadro de diálogo antiguos\flecha Chi-cuadrado}.
+\item En el cuadro de diálogo que aparece seleccionar la variable \variable{fenotipo} al campo \campo{Lista Contrastar Variables}, y en \texttt{Valores esperados} marcar la opción \opcion{valores} e
+introducir las proporciones según las leyes de Mendel y siguiendo
+el orden en el que aparecen los fenotipos, y hacer click sobre el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item A la vista de los resultados del contraste, ¿se puede aceptar que se cumplen las leyes de Mendel en los individuos de dicha población?
+\end{enumerate}
+
+
+\item En un estudio sobre úlceras pépticas se determinó el grupo
+sanguíneo de 1655 pacientes ulcerosos y 10000 controles, los datos
+fueron:
+
+\[
+\begin{tabular}{|l|l|l|l|l|}
+\cline{2-5}
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{O} & \multicolumn{1}{c|}{A} & \multicolumn{1}{c|}{B} & \multicolumn{1}{c|}{AB} \\
+\hline
+\multicolumn{1}{|c|}{Paciente} & \multicolumn{1}{c|}{911} & \multicolumn{1}{c|}{579} & \multicolumn{1}{c|}{124} & \multicolumn{1}{c|}{41} \\
+\hline
+\multicolumn{1}{|c|}{Controles} & \multicolumn{1}{c|}{4578} & \multicolumn{1}{c|}{4219} & \multicolumn{1}{c|}{890} & \multicolumn{1}{c|}{313} \\
+\hline
+\end{tabular}
+\]
+
+\begin{enumerate}
+\item Crear las variables \textsf{participantes}, \textsf{grupo\_sanguíneo} y \textsf{frecuencia} e introducir los datos.
+\item Ponderar los datos mediante la variable \variable{frecuencia}.
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Datos\flecha Ponderar casos}.
+\item En el cuadro de diálogo resultante activar la opción \opcion{Ponderar casos
+mediante}, seleccionar la variable \variable{frecuencia} en el campo \campo{Variable frecuencia} y hacer click en el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item Construir la tabla de contingencia y realizar el contraste Chi-cuadrado.
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Estadísticos Descriptivos\flecha Tablas de
+contingencia}.
+\item En el cuadro de diálogo que aparece, seleccionar la variable \variable{participantes} al campo \campo{Filas} y la variable \texttt{grupo\_sanguíneo} al campo \campo{Columnas}, y hacer click sobre el botón \boton{Estadísticos}.
+\item En el cuadro de diálogo que aparece, marcar la casilla \texttt{Chi-cuadrado} y hacer click en el botón \boton{Continuar}.
+\item En el cuadro de diálogo inicial, hacer click sobre el botón \boton{Casillas}.
+\item En el cuadro de diálogo que aparece, marcar las casillas \texttt{Frecuencias observadas} y \texttt{Esperadas}, y hacer click sobre el botón \boton{Continuar} y \texttt{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item A la vista de los resultados del contraste, ¿existe alguna relación entre el grupo sanguíneo y la úlcera
+péptica?, es decir, ¿se puede concluir que la proporción de
+pacientes y de controles es diferente dependiendo del grupo
+sanguíneo?
+\end{enumerate}
+
+\item Mitchell et al. (1976, Annals of Human Biology), partiendo
+de una muestra de 478 individuos, estudiaron la distribución de
+los grupos sanguíneos en varias regiones del sur-oeste de Escocia,
+obteniendo los resultados que se muestran:
+\[
+\begin{tabular}{|l|l|l|l|l|}
+\cline{2-4}
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Eskdale} & \multicolumn{1}{c|}{Annandale} & \multicolumn{1}{c|}{Nithsdale} & \multicolumn{1}{c}{} \\
+\hline
+\multicolumn{1}{|c|}{A} & \multicolumn{1}{c|}{33} & \multicolumn{1}{c|}{54} & \multicolumn{1}{c|}{98} & \multicolumn{1}{c|}{185} \\
+\hline
+\multicolumn{1}{|c|}{B} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{35} & \multicolumn{1}{c|}{55} \\
+\hline
+\multicolumn{1}{|c|}{O} & \multicolumn{1}{c|}{56} & \multicolumn{1}{c|}{52} & \multicolumn{1}{c|}{115} & \multicolumn{1}{c|}{223} \\
+\hline
+\multicolumn{1}{|c|}{AB} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{15} \\
+\hline
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{100} & \multicolumn{1}{c|}{125} & \multicolumn{1}{c|}{253} & \multicolumn{1}{c|}{478} \\
+\cline{2-5}
+\end{tabular}
+\]
+
+\begin{enumerate}
+\item Crear las variables \textsf{grupo\_sanguíneo},
+\textsf{región} y \textsf{frecuencia} e introducir los datos.
+\item Ponderar el estudio, por la variable \variable{frecuencia}
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Datos\flecha Ponderar casos}.
+\item En el cuadro de diálogo resultante activar la opción \opcion{Ponderar casos
+mediante}, seleccionar la variable \variable{frecuencia} en el campo \campo{Variable frecuencia} y hacer click en el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item Construir la tabla de contingencia y realizar el contraste Chi-cuadrado.
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Estadísticos Descriptivos\flecha Tablas de
+contingencia}.
+\item En el cuadro de diálogo que aparece, seleccionar la variable \variable{grupo\_sanguíneo} al campo \campo{Filas} y la variable \texttt{región} al campo \campo{Columnas}, y hacer click sobre el botón \boton{Estadísticos}.
+\item En el cuadro de diálogo que aparece, marcar la casilla \texttt{Chi-cuadrado} y hacer click en el botón \boton{Continuar}.
+\item En el cuadro de diálogo inicial, hacer click sobre el botón \boton{Casillas}.
+\item En el cuadro de diálogo que aparece, marcar las casillas \texttt{Frecuencias observadas} y \texttt{Esperadas}, y hacer click sobre el botón \boton{Continuar} y \texttt{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item En vista de los resultados del contraste, ¿se distribuyen los grupos sanguíneos de igual manera en las
+diferentes regiones?
+\end{enumerate}
+
+\item En un estudio para saber si el habito de fumar está relacionado con el sexo, se ha preguntado a 26 personas. De los 9 hombres consultados 2 respondieron que fumaban, mientras que de las 17 mujeres consultadas, 6 fumaban. ¿Podemos afirmar que existe relación entre ambas variables?
+\begin{enumerate}
+\item Crear las variables \textsf{sexo},
+\textsf{fuma} y \textsf{frecuencia} e introducir los datos.
+\item Ponderar el estudio, por la variable \variable{frecuencia}
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Datos\flecha Ponderar casos}.
+\item En el cuadro de diálogo resultante activar la opción \opcion{Ponderar casos
+mediante}, seleccionar la variable \variable{frecuencia} en el campo \campo{Variable frecuencia} y hacer click en el botón \boton{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item Construir la tabla de contingencia y realizar el contraste Chi-cuadrado.
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Estadísticos Descriptivos\flecha Tablas de
+contingencia}.
+\item En el cuadro de diálogo que aparece, seleccionar la variable \variable{sexo} al campo \campo{Filas} y la variable \texttt{fuma} al campo \campo{Columnas}, y hacer click sobre el botón \boton{Estadísticos}.
+\item En el cuadro de diálogo que aparece, marcar la casilla \texttt{Chi-cuadrado} y hacer click en el botón \boton{Continuar}.
+\item En el cuadro de diálogo inicial, hacer click sobre el botón \boton{Casillas}.
+\item En el cuadro de diálogo que aparece, marcar las casillas \texttt{Frecuencias observadas} y \texttt{Esperadas}, y hacer click sobre el botón \boton{Continuar} y \texttt{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item En vista de los resultados del contraste, ¿se distribuyen los fumadores de igual manera en ambos sexos?
+
+\begin{indicacion}
+En este caso el procedimiento a seguir es igual que para la Chi cuadrado, pero vemos que ahora no se cumplen las condiciones para poder aplicar esta prueba, por eso nos tendremos que fijar en el \textsf{Estadístico exacto de Fisher}, que si podemos aplicar, teniendo en cuenta si estamos realizando un contraste bilateral o unilateral.
+\end{indicacion}
+\end{enumerate}
+
+\item Para probar la eficacia de dos fármacos diferentes contra las migrañas, se seleccionaron a 20 personas que padecían migrañas
+habitualmente, y se les dió a tomar a cada uno los fármacos en momentos diferentes. Luego se les preguntó si habían obtenido mejoría o no
+con el fármaco tomado. Los resultados fueron los siguientes:
+\[
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+\cline{2-11}
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{4}& \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{7} & \multicolumn{1}{c|}{8}& \multicolumn{1}{c|}{9} & \multicolumn{1}{c|}{10}  \\
+\hline
+\multicolumn{1}{|c|}{Fármaco 1} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí}& \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{No} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{No}& \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí}  \\
+\hline
+\multicolumn{1}{|c|}{Fármaco 2} & \multicolumn{1}{c|}{No} & \multicolumn{1}{c|}{No} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{No} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{No} & \multicolumn{1}{c|}{No}& \multicolumn{1}{c|}{No} & \multicolumn{1}{c|}{No} \\
+\hline
+\end{tabular}
+\]
+ \[
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+\cline{2-11}
+\multicolumn{1}{c|}{}  & \multicolumn{1}{c|}{11} & \multicolumn{1}{c|}{12}& \multicolumn{1}{c|}{13} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{15} & \multicolumn{1}{c|}{16}& \multicolumn{1}{c|}{17} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{19} & \multicolumn{1}{c|}{20} \\
+\hline
+\multicolumn{1}{|c|}{Fármaco 1} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{No}& \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{No} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí}& \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{No} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{Sí} \\
+\hline
+\multicolumn{1}{|c|}{Fármaco 2} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{No}& \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{No} & \multicolumn{1}{c|}{No} & \multicolumn{1}{c|}{Sí}& \multicolumn{1}{c|}{No} & \multicolumn{1}{c|}{Sí} & \multicolumn{1}{c|}{No} & \multicolumn{1}{c|}{No}\\
+\hline
+\end{tabular}
+\]
+
+\begin{enumerate}
+\item Crear las variables \textsf{Mejora\_Farmaco1},
+ y \textsf{Mejora\_Farmaco2} e introducir los datos.
+\item Construir la tabla de contingencia y realizar el contraste de McNemar.
+\begin{indicacion}
+\begin{enumerate}
+\item Seleccionar el menú \menu{Analizar\flecha Estadísticos Descriptivos\flecha Tablas de
+contingencia}.
+\item En el cuadro de diálogo que aparece, seleccionar la variable \variable{Mejora\_Farmaco1} al campo \campo{Filas} y la variable \texttt{Mejora\_Farmaco2} al campo \campo{Columnas}, y hacer click sobre el botón \boton{Estadísticos}.
+\item En el cuadro de diálogo que aparece, marcar la casilla \texttt{McNemar} y hacer click en el botón \boton{Continuar}.
+\item En el cuadro de diálogo inicial, hacer click sobre el botón \boton{Casillas}.
+\item En el cuadro de diálogo que aparece, marcar las casillas \texttt{Frecuencias observadas} y \texttt{Esperadas}, y hacer click sobre el botón \boton{Continuar} y \texttt{Aceptar}.
+\end{enumerate}
+\end{indicacion}
+
+\item En vista de los resultados del contraste, ¿podemos afirmar que existen diferencias significativas entre los dos fármacos?
+
+\begin{indicacion}
+Otra forma de realizar este mismo contraste, sería seleccionado el menú \menu{Analizar\flecha Pruebas no paramétricas\flecha Cuadros de diálogo antiguos\flecha 2 muestras relacionadas}. Luego pasar las dos variables a contrastar al cuadro \texttt{Contrastar pares}, marcar la casilla \texttt{McNemar}y hacer click sobre el botón  \texttt{Aceptar}.
+\end{indicacion}
+\end{enumerate}
+
+\end{enumerate}
+
+
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Supongamos que queremos comprobar si un dado está bien equilibrado o no. Lo lanzamos 1200 veces, y obtenemos los siguientes
+resultados:
+\[
+\begin{tabular}{ll}
+\multicolumn{1}{c}{Número} & \multicolumn{1}{c}{Frecuencias de aparición} \\
+\multicolumn{1}{c}{1} & \multicolumn{1}{c}{120} \\
+\multicolumn{1}{c}{2} & \multicolumn{1}{c}{275} \\
+\multicolumn{1}{c}{3} & \multicolumn{1}{c}{95} \\
+\multicolumn{1}{c}{4} & \multicolumn{1}{c}{310} \\
+\multicolumn{1}{c}{5} & \multicolumn{1}{c}{85} \\
+\multicolumn{1}{c}{6} & \multicolumn{1}{c}{315} \\
+\end{tabular}
+\]
+\begin{enumerate}
+\item A la vista de los resultados, ¿se puede aceptar que el dado está bien equilibrado?
+\item Nos dicen que, en este dado, los números pares aparecen con una frecuencias 3 veces superior a la de los impares. Contrastar dicha
+hipótesis.
+\end{enumerate}
+
+\item Se realiza un estudio en una población de pacientes críticos hipotéticos y se observan, entre otras, dos variables, la evolución (si
+sobreviven SV o no NV) y la presencia o ausencia de coma, al ingreso. Se obtienen los siguientes resultados:
+\[
+\begin{tabular}{l|l|l|l|}
+\cline{2-3}
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{No coma} & \multicolumn{1}{c|}{Coma} & \multicolumn{1}{c}{} \\
+\hline
+\multicolumn{1}{|c|}{SV} & \multicolumn{1}{c|}{484} & \multicolumn{1}{c|}{37} & \multicolumn{1}{c|}{521} \\
+\hline
+\multicolumn{1}{|c|}{NV} & \multicolumn{1}{c|}{118} & \multicolumn{1}{c|}{89} & \multicolumn{1}{c|}{207} \\
+\hline
+\multicolumn{1}{c|}{} & \multicolumn{1}{c|}{602} & \multicolumn{1}{c|}{126} & \multicolumn{1}{c|}{728} \\
+\cline{2-4}
+\end{tabular}
+\]
+Nos preguntamos: ¿es el coma al ingreso un factor de riesgo para la mortalidad?
+
+\item La recuperación producida por dos tratamientos distintos A y B, se clasifican en tres categorías: muy buena, buena y mala. Se
+administra el tratamiento A a 32 pacientes y el B a otros 28. De las 22 recuperaciones muy buenas, 10 corresponden al tratamiento A; de las
+24 recuperaciones buenas, 14 corresponden al tratamiento A y de las 14 que tienen una mala recuperación, 8 corresponden al tratamiento A.
+¿Son igualmente efectivos ambos tratamientos para la recuperación de los pacientes?
+
+\item Para contrastar la hipótesis de que las mujeres tienen más éxito en sus estudios que los hombres, se ha tomado una muestra de 10
+chicos y otra de 10 chicas que han sido examinados por un profesor que aprueba siempre al 40\% de los alumnos presentados a examen. Teniendo
+en cuenta que sólo aprobaron 2 chicos, utiliza el test de hipótesis más adecuado para decidir si la citada hipótesis es cierta.
+
+\item Se ha preguntado a los 150 alumnos de un curso, si estaban de acuerdo o no, con la metodología de enseñanza de dos profesores,
+distintos que les han dado clase en la asignatura de bioestadística. Los resultados se recogen en la siguiente tabla:
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\cline{2-3}
+\multicolumn{1}{c|}{Profesor 1 $\backslash$ Profesor 2} & Opinión favorable & Opinión desfavorable  \\
+\hline
+Opinión favorable & 37 & 48  \\
+\hline
+Opinión desfavorable & 44 & 21 \\
+\hline
+\end{tabular}
+\end{center}
+
+¿Podemos afirmar que existe diferente opinión por parte de los alumnos, sobre los dos profesores?
+
+\end{enumerate}
+
