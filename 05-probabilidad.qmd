@@ -11,7 +11,7 @@ blueceulight <- rgb(137,211,243,255,maxColorValue = 255) #89D3F3
 redceu <- rgb(238,50,36,255,maxColorValue = 255) #FF3333
 greenceu <- rgb(204,204,51,255,maxColorValue = 255) #CCCC33
 mygreen <- rgb(3, 191, 61, 255, maxColorValue = 255) #03BF3D
-orangeceu <- rgb(248,131,121,255,maxColorValue = 255)#F88379
+orangeceu <- rgb(248,131,121,255,maxColorValue = 255) #F88379
 purpleceu <- rgb(169,78,145,255,maxColorValue = 255) #996699
 greyceu <- rgb(117,117,97,255,maxColorValue = 255) #666666
 library(tidyverse)
