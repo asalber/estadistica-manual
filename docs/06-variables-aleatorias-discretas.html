@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Variables aleatorias discretas – Manual de Estadística</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./07-variables-aleatorias-continuas.html" rel="next">
+<link href="./05-probabilidad.html" rel="prev">
+<link href="./img/logos/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3419ea62b3ca2d77d3d547f86109e84e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-eaeb381c6b7494c50009502241a4985c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-b050db56f2b97c639b7ebc2cf71c06d7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5e50218c20039713403b52e69b91eb5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la busqueda",
+    "search-hide-matches-text": "Esconder resultados adicionales",
+    "search-more-match-text": "hay más resultados en este documento",
+    "search-more-matches-text": "más resultados en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="6&nbsp; Variables aleatorias discretas – Manual de Estadística">
+<meta property="og:description" content="">
+<meta property="og:image" content="img/variables_aleatorias_discretas/espacio_probabilistico_dos_monedas.svg">
+<meta property="og:site_name" content="Manual de Estadística">
+</head>
+
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-variables-aleatorias-discretas.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Variables aleatorias discretas</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Manual de Estadística</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://aprendeconalf.es" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
+    <a href="https://github.com/asalber/estadistica-tipos-estudios" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./manual-estadistica.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./manual-estadistica.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=|url|" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a la Estadística</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-estadistica-descriptiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-regresion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regresión</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-relaciones-cualitativas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Relaciones entre variables cualitativas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-probabilidad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-variables-aleatorias-discretas.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Variables aleatorias discretas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-variables-aleatorias-continuas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variables aleatorias continuas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-estimacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-contrastes-parametricos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-anova-ancova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análisis de la Varianza</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#variable-aleatoria" id="toc-variable-aleatoria" class="nav-link active" data-scroll-target="#variable-aleatoria"><span class="header-section-number">6.1</span> Variable aleatoria</a></li>
+  <li><a href="#distribución-de-probabilidad-de-una-variable-aleatoria-discreta" id="toc-distribución-de-probabilidad-de-una-variable-aleatoria-discreta" class="nav-link" data-scroll-target="#distribución-de-probabilidad-de-una-variable-aleatoria-discreta"><span class="header-section-number">6.2</span> Distribución de probabilidad de una variable aleatoria discreta</a></li>
+  <li><a href="#estadísticos-poblacionales" id="toc-estadísticos-poblacionales" class="nav-link" data-scroll-target="#estadísticos-poblacionales"><span class="header-section-number">6.3</span> Estadísticos poblacionales</a></li>
+  <li><a href="#modelos-de-distribución-de-probabilidad-discretos" id="toc-modelos-de-distribución-de-probabilidad-discretos" class="nav-link" data-scroll-target="#modelos-de-distribución-de-probabilidad-discretos"><span class="header-section-number">6.4</span> Modelos de distribución de probabilidad discretos</a>
+  <ul class="collapse">
+  <li><a href="#distribución-uniforme-discreta" id="toc-distribución-uniforme-discreta" class="nav-link" data-scroll-target="#distribución-uniforme-discreta"><span class="header-section-number">6.4.1</span> Distribución uniforme discreta</a></li>
+  <li><a href="#distribución-binomial" id="toc-distribución-binomial" class="nav-link" data-scroll-target="#distribución-binomial"><span class="header-section-number">6.4.2</span> Distribución binomial</a></li>
+  <li><a href="#distribución-hipergeométrica" id="toc-distribución-hipergeométrica" class="nav-link" data-scroll-target="#distribución-hipergeométrica"><span class="header-section-number">6.4.3</span> Distribución hipergeométrica</a></li>
+  <li><a href="#distribución-geométrica" id="toc-distribución-geométrica" class="nav-link" data-scroll-target="#distribución-geométrica"><span class="header-section-number">6.4.4</span> Distribución geométrica</a></li>
+  <li><a href="#distribución-binomial-negativa" id="toc-distribución-binomial-negativa" class="nav-link" data-scroll-target="#distribución-binomial-negativa"><span class="header-section-number">6.4.5</span> Distribución binomial negativa</a></li>
+  <li><a href="#distribución-de-poisson" id="toc-distribución-de-poisson" class="nav-link" data-scroll-target="#distribución-de-poisson"><span class="header-section-number">6.4.6</span> Distribución de Poisson</a></li>
+  <li><a href="#aproximación-de-la-binomial-mediante-la-poisson" id="toc-aproximación-de-la-binomial-mediante-la-poisson" class="nav-link" data-scroll-target="#aproximación-de-la-binomial-mediante-la-poisson"><span class="header-section-number">6.4.7</span> Aproximación de la binomial mediante la Poisson</a></li>
+  </ul></li>
+  <li><a href="#aplicación-para-las-distribuciones-de-probabilidad-discretas" id="toc-aplicación-para-las-distribuciones-de-probabilidad-discretas" class="nav-link" data-scroll-target="#aplicación-para-las-distribuciones-de-probabilidad-discretas"><span class="header-section-number">6.5</span> Aplicación para las distribuciones de probabilidad discretas</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/asalber/estadistica-tipos-estudios/edit/main/06-variables-aleatorias-discretas.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/asalber/estadistica-tipos-estudios/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Variables aleatorias discretas</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Cuando seleccionamos una muestra al azar de una población estamos realizando un experimento aleatorio, y cualquier variable estadística medida a partir de la muestra será una variable aleatoria, porque sus valores dependerán del azar.</p>
+<p>Con este capítulo entramos de lleno en la inferencia estadística, cuyo objetivo es construir modelos probabilísticos que expliquen el comportamiento de las variables en las poblaciones. Como los valores de una variable aleatoria provienen de la realización de un experimento aleatorio, tendrá asociada una determinada distribución de probabilidad. Nuestro objetivo es conocer lo mejor posible esa distribución, pero debemos recordar que, normalmente, no conoceremos con exactitud cómo se distribuyen los valores de la variable en la población, ya que no podremos medir a todos los individuos. Por tanto, los modelos de distribución de probabilidad que utilizaremos para describir el comportamiento de las variables en las poblaciones serán modelos aproximados.</p>
+<section id="variable-aleatoria" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="variable-aleatoria"><span class="header-section-number">6.1</span> Variable aleatoria</h2>
+<div id="def-variable-aleatoria" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 6.1 (Variable aleatoria)</strong></span> Una <em>variable aleatoria</em> <span class="math inline">\(X\)</span> es una función que asocia un número real a cada elemento del espacio muestral de un experimento aleatorio.</p>
+<p><span class="math display">\[
+X:\Omega \rightarrow \mathbb{R}
+\]</span></p>
+<p>Al conjunto de posibles valores que puede tomar la variable aleatoria se le llama <em>rango</em> o <em>recorrido</em> de la variable, y se representa por <span class="math inline">\(\mbox{Ran}(X)\)</span>.</p>
+</div>
+<div id="exm-variable-aleatoria-dado" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.1</strong></span> La variable <span class="math inline">\(X\)</span> que mide el resultado del lanzamiento de un dado es una variable aleatoria, y su rango es</p>
+<p><span class="math display">\[
+\mbox{Ran}(X)=\{1,2,3,4,5,6\}.
+\]</span></p>
+</div>
+<p>Las variables aleatorias se clasifican en dos tipos:</p>
+<ul>
+<li><strong>Discretas (VAD):</strong> toman valores aislados, y su rango es numerable (finito o infinito numerable). Por ejemplo, el número de hijos, el número de cigarrillos o el número de asignaturas aprobadas.</li>
+<li><strong>Continuas (VAC):</strong> toman valores en un intervalo real, y su rango es no numerable. Por ejemplo, el peso, la estatura, la edad o el nivel de colesterol.</li>
+</ul>
+<p>Los modelos probabilísticos de cada tipo de variable tienen características diferenciadas, y por eso se estudian por separado. En este capítulo se estudian los modelos probabilísticos de las variables aleatorias discretas.</p>
+</section>
+<section id="distribución-de-probabilidad-de-una-variable-aleatoria-discreta" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="distribución-de-probabilidad-de-una-variable-aleatoria-discreta"><span class="header-section-number">6.2</span> Distribución de probabilidad de una variable aleatoria discreta</h2>
+<p>Como los valores de una variable aleatoria están asociados a los sucesos elementales del correspondiente experimento aleatorio, cada valor tendrá asociada una probabilidad.</p>
+<div id="def-funcion-probabilidad-discreta" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 6.2 (Función de probabilidad)</strong></span> La <em>función de probabilidad</em> de una variable aleatoria discreta <span class="math inline">\(X\)</span> es una función <span class="math inline">\(f(x)\)</span> que asocia a cada valor de la variable su probabilidad</p>
+<p><span class="math display">\[
+f(x_i) = P(X=x_i).
+\]</span></p>
+</div>
+<p>Al igual que se acumulaban las frecuencias en las muestras, tiene sentido acumular probabilidades en las poblaciones. De eso se encarga la función de distribución.</p>
+<div id="def-funcion-distribucion-discreta" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 6.3 (Función de distribución)</strong></span> La <em>función de distribución</em> de una variable aleatoria discreta <span class="math inline">\(X\)</span> es una función <span class="math inline">\(F(x)\)</span> que asocia a cada valor <span class="math inline">\(x_i\)</span> de la variable la probabilidad de que la variable tome un valor menor o igual que dicho valor</p>
+<p><span class="math display">\[
+F(x_i) = P(X\leq x_i) = f(x_1)+\cdots +f(x_i).
+\]</span></p>
+</div>
+<p>Al recorrido de la variable, junto a su función de probabilidad o de distribución, se le llama <strong>distribución de probabilidad</strong> de la variable. Tanto la función de probabilidad como la de distribución suelen representarse en forma de tabla:</p>
+<p><span class="math display">\[
+\begin{array}{|c|cccc|c|}
+\hline
+X &amp; x_1 &amp; x_2 &amp; \cdots &amp; x_n &amp; \sum\\ \hline
+f(x) &amp; f(x_1) &amp; f(x_2) &amp; \cdots &amp; f(x_n) &amp; 1\\
+\hline
+F(x) &amp; F(x_1) &amp; F(x_2) &amp; \cdots &amp; F(x_n) =1 &amp; \\
+\hline
+\end{array}
+\]</span></p>
+<p>Al igual que la distribución de frecuencias de una variable reflejaba cómo se distribuían los valores de la variable en una muestra, la distribución de probabilidad de una variable aleatoria sirve para reflejar cómo se distribuyen los valores de dicha variable en toda la población.</p>
+<div id="exm-distribucion-dos-monedas" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.2 (Lanzamiento de dos monedas)</strong></span> Sea <span class="math inline">\(X\)</span> la variable aleatoria que mide el número de caras en el lanzamiento de dos monedas. El árbol de probabilidad del espacio probabilístico del experimento se muestra a continuación.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_discretas/espacio_probabilistico_dos_monedas.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Espacio probabilístico del lanzamiento de dos monedas.</figcaption>
+</figure>
+</div>
+<p>Y según esto, su distribución de probabilidad es</p>
+<p><span class="math display">\[
+\begin{array}{|c|ccc|}
+\hline
+X &amp; 0 &amp; 1 &amp; 2\\ \hline
+f(x) &amp; 0.25 &amp; 0.5 &amp; 0.25\\
+\hline
+F(x) &amp; 0.25 &amp; 0.75 &amp; 1 \\
+\hline
+\end{array}
+\qquad
+F(x) =
+\begin{cases}
+0 &amp; \mbox{si } x&lt;0\\
+0.25 &amp; \mbox{si } 0\leq x&lt; 1\\
+0.75 &amp; \mbox{si } 1\leq x&lt; 2\\
+1 &amp; \mbox{si } x\geq 2
+\end{cases}
+\]</span></p>
+</div>
+<p>La función de probabilidad y la de distribución también suelen representarse gráficamente, de igual modo que representábamos las frecuencias muestrales. Como se trata de variables discretas, el diagrama que se utiliza es el diagrama de barras o el diagrama de puntos, donde para cada valor se levanta una barra con el valor de la función de probabilidad o con el valor de la función de distribución.</p>
+<p><img src="img/variables_aleatorias_discretas/funcion_probabilidad_dos_monedas.svg" class="img-fluid" style="width:48.0%" alt="Función de probabilidad (izquierda) y función de distribución (derecha) del número de caras al lanzar dos monedas."> <img src="img/variables_aleatorias_discretas/funcion_distribucion_dos_monedas.svg" class="img-fluid" style="width:48.0%"></p>
+</section>
+<section id="estadísticos-poblacionales" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="estadísticos-poblacionales"><span class="header-section-number">6.3</span> Estadísticos poblacionales</h2>
+<p>Al igual que para describir las variables en las muestras se utilizan estadísticos descriptivos muestrales, para describir las características de las variables aleatorias se utilizan estadísticos poblacionales. Su definición es análoga a la de los muestrales, pero utilizando probabilidades en lugar de frecuencias relativas. Para distinguirlos de los muestrales, se suelen representar con letras griegas.</p>
+<p>Los más importantes son:</p>
+<ul>
+<li><strong>Media o esperanza matemática:</strong></li>
+</ul>
+<p><span class="math display">\[
+\mu = E(X) = \sum_{i=1}^n x_i f(x_i).
+\]</span></p>
+<ul>
+<li><strong>Varianza:</strong></li>
+</ul>
+<p><span class="math display">\[
+\sigma^2 = Var(X) = \sum_{i=1}^n x_i^2 f(x_i) -\mu^2.
+\]</span></p>
+<ul>
+<li><strong>Desviación típica:</strong></li>
+</ul>
+<p><span class="math display">\[
+\sigma = +\sqrt{\sigma^2}.
+\]</span></p>
+<p>Es decir, si para la media muestral sumábamos el producto de cada valor por su frecuencia relativa, la media poblacional, también llamada esperanza matemática, se calcula sumando el producto de cada valor de la variable por su probabilidad. La varianza poblacional se calcula sumando los productos de los cuadrados de los valores de la variable por su probabilidad y restándole la media poblacional al cuadrado. La desviación típica poblacional, como siempre, es la raíz cuadrada positiva de la varianza.</p>
+<p>Otros estadísticos se definen de forma similar a como lo hacíamos para muestras. Por ejemplo, la mediana será el valor cuya probabilidad acumulada sea <span class="math inline">\(0.5\)</span>.</p>
+<div id="exm-estadisticos-dos-monedas" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.3 (Estadísticos del lanzamiento de dos monedas)</strong></span> En el experimento aleatorio del lanzamiento de dos monedas, a partir de la distribución de probabilidad</p>
+<p><span class="math display">\[
+\begin{array}{|c|ccc|}
+\hline
+X &amp; 0 &amp; 1 &amp; 2\\ \hline
+f(x) &amp; 0.25 &amp; 0.5 &amp; 0.25\\
+\hline
+F(x) &amp; 0.25 &amp; 0.75 &amp; 1 \\
+\hline
+\end{array}
+\]</span></p>
+<p>se pueden calcular fácilmente los estadísticos poblacionales:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mu &amp;= \sum_{i=1}^n x_i f(x_i) = 0\cdot 0.25 + 1\cdot 0.5 + 2\cdot 0.25 = 1 \mbox{ cara},\\
+\sigma^2 &amp;= \sum_{i=1}^n x_i^2 f(x_i) -\mu^2 = (0^2\cdot 0.25 + 1^2\cdot 0.5 + 2^2\cdot 0.25) - 1^2 = 0.5 \mbox{ caras}^2,\\
+\sigma &amp;= +\sqrt{0.5} = 0.71 \mbox{ caras}.
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+<section id="modelos-de-distribución-de-probabilidad-discretos" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="modelos-de-distribución-de-probabilidad-discretos"><span class="header-section-number">6.4</span> Modelos de distribución de probabilidad discretos</h2>
+<p>De acuerdo al tipo de experimento en el que se mide la variable aleatoria, existen diferentes modelos de distribución de probabilidad. En teoría, para obtener la distribución de probabilidad de una variable aleatoria en una población sería necesario conocer el valor de la variable en todos los individuos de la población, lo cual casi siempre es imposible. Sin embargo, dependiendo de la naturaleza del experimento, a veces es posible obtener la distribución de probabilidad de una variable aleatoria sin medirla en toda la población.</p>
+<p>Los modelos discretos más habituales son:</p>
+<ul>
+<li>Distribución uniforme discreta.</li>
+<li>Distribución binomial.</li>
+<li>Distribución hipergeométrica.</li>
+<li>Distribución geométrica.</li>
+<li>Distribución binomial negativa.</li>
+<li>Distribución de Poisson.</li>
+</ul>
+<section id="distribución-uniforme-discreta" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="distribución-uniforme-discreta"><span class="header-section-number">6.4.1</span> Distribución uniforme discreta</h3>
+<p>Cuando, por la simetría del experimento, todos los valores <span class="math inline">\(a=x_1,\ldots,x_k=b\)</span> de una variable discreta <span class="math inline">\(X\)</span> son igualmente probables, se dice que la variable sigue un <em>modelo de distribución uniforme</em>.</p>
+<div id="def-distribucion-uniforme-discreta" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 6.4 (Distribución uniforme discreta <span class="math inline">\(U(a,b)\)</span>)</strong></span> Se dice que una variable aleatoria <span class="math inline">\(X\)</span> sigue un <em>modelo de distribución uniforme</em> de parámetros <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>, y se nota <span class="math inline">\(X\sim U(a,b)\)</span>, si su rango es <span class="math inline">\(\mbox{Ran}(X) = \{a, a+1, \ldots,b\}\)</span> y su función de probabilidad vale</p>
+<p><span class="math display">\[
+f(x)=\frac{1}{b-a+1}.
+\]</span></p>
+</div>
+<p>Obsérvese que <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> son el mínimo y el máximo del rango, respectivamente.</p>
+<p>Su media y varianza valen</p>
+<p><span class="math display">\[
+\mu = \sum_{i=0}^{b-a}\frac{a+i}{b-a+1}=\frac{a+b}{2} \qquad \sigma^2 =\sum_{i=0}^{b-a}\frac{(a+i-\mu)^2}{b-a+1}=
+\frac{(b-a+1)^2-1}{12}.
+\]</span></p>
+<div id="exm-uniforme-dado" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.4 (Lanzamiento de un dado)</strong></span> La variable que mide el número obtenido al lanzar un dado sigue un modelo de distribución uniforme <span class="math inline">\(U(1,6)\)</span>. Como puede tomar 6 valores distintos, del 1 al 6, su función de probabilidad es constante y vale <span class="math inline">\(1/6\)</span> para cualquier valor, tal y como se aprecia en la gráfica.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_discretas/funcion_probabilidad_uniforme_discreta.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Función de probabilidad de la distribución uniforme <span class="math inline">\(U(1,6)\)</span>.</figcaption>
+</figure>
+</div>
+</div>
+<p>El modelo de distribución uniforme es el más sencillo, pero resulta poco útil en la práctica, ya que la equiprobabilidad no suele cumplirse fuera de los juegos de azar.</p>
+</section>
+<section id="distribución-binomial" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="distribución-binomial"><span class="header-section-number">6.4.2</span> Distribución binomial</h3>
+<p>Mucho más habitual es el modelo binomial, que suele darse en experimentos aleatorios con las siguientes características:</p>
+<ul>
+<li>El experimento consiste en una secuencia de <span class="math inline">\(n\)</span> repeticiones de un mismo ensayo aleatorio. Por ejemplo, tirar 10 veces una moneda.</li>
+<li>Los ensayos se realizan bajo idénticas condiciones, y cada uno de ellos tiene únicamente dos posibles resultados, que habitualmente se denotan por éxito (<span class="math inline">\(A\)</span>) o fracaso (<span class="math inline">\(\overline A\)</span>). Por ejemplo, en cada lanzamiento, cara (éxito) o cruz (fracaso).</li>
+<li>Los ensayos son independientes, por lo que el resultado de cualquier ensayo no influye sobre el resultado de ningún otro.</li>
+<li>La probabilidad de éxito es idéntica para todos los ensayos y vale <span class="math inline">\(P(A)=p\)</span>. Por ejemplo, la probabilidad de sacar cara es <span class="math inline">\(0.5\)</span> en todos los lanzamientos.</li>
+</ul>
+<p>En estas condiciones, la variable aleatoria <span class="math inline">\(X\)</span> que mide el número de éxitos obtenidos en los <span class="math inline">\(n\)</span> ensayos sigue un <em>modelo de distribución binomial</em> de parámetros <span class="math inline">\(n\)</span> y <span class="math inline">\(p\)</span>. Así, la variable que mide el número de caras obtenidas en 10 lanzamientos de una moneda sigue un modelo de distribución binomial de parámetros <span class="math inline">\(n=10\)</span> y <span class="math inline">\(p=0.5\)</span>.</p>
+<div id="def-distribucion-binomial" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 6.5 (Distribución binomial <span class="math inline">\(B(n,p)\)</span>)</strong></span> Se dice que una variable aleatoria <span class="math inline">\(X\)</span> sigue un <em>modelo de distribución binomial</em> de parámetros <span class="math inline">\(n\)</span> y <span class="math inline">\(p\)</span>, y se nota <span class="math inline">\(X\sim B(n,p)\)</span>, si su recorrido es <span class="math inline">\(\mbox{Ran}(X) = \{0,1,\ldots,n\}\)</span> y su función de probabilidad vale</p>
+<p><span class="math display">\[
+f(x) = \binom{n}{x}p^x(1-p)^{n-x} = \frac{n!}{x!(n-x)!}p^x(1-p)^{n-x}.
+\]</span></p>
+<p>donde <span class="math inline">\(n\)</span> es el número de repeticiones del ensayo y <span class="math inline">\(p\)</span> la probabilidad de éxito en cada repetición. El número combinatorio <span class="math inline">\(\binom{n}{x}\)</span> se define como <span class="math inline">\(\frac{n!}{x!(n-x)!}\)</span>, siendo <span class="math inline">\(n!\)</span> el producto de todos los números consecutivos desde <span class="math inline">\(1\)</span> hasta <span class="math inline">\(n\)</span>.</p>
+</div>
+<p>Su media y su varianza valen</p>
+<p><span class="math display">\[
+\mu = n\cdot p \qquad \sigma^2 = n\cdot p\cdot (1-p).
+\]</span></p>
+<div id="exm-binomial-10-monedas" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.5 (Diez lanzamientos de una moneda)</strong></span> La variable que mide el número de caras obtenidas al lanzar 10 veces una moneda sigue un modelo de distribución binomial <span class="math inline">\(B(10,\,0.5)\)</span>. En su gráfica se puede observar cómo se reparte la probabilidad entre los valores de 0 a 10. El 0 y el 10 tienen probabilidades muy bajas, ya que es muy difícil que al tirar diez veces una moneda no se obtenga ninguna cara, o que se obtengan 10. Lo más probable, como se aprecia en el gráfico, es sacar 5 caras, que además es su media.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_discretas/funcion_probabilidad_binomial.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Función de probabilidad de la distribución binomial <span class="math inline">\(B(10,\,0.5)\)</span>.</figcaption>
+</figure>
+</div>
+</div>
+<div id="exm-binomial-calculos-monedas" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.6 (Cálculos con la binomial)</strong></span> Sea <span class="math inline">\(X\sim B(10,\,0.5)\)</span> la variable que mide el número de caras en 10 lanzamientos de una moneda. Entonces:</p>
+<ul>
+<li>La probabilidad de sacar 4 caras es</li>
+</ul>
+<p><span class="math display">\[
+f(4) = \binom{10}{4}0.5^4 (1-0.5)^{10-4} = \frac{10!}{4!6!}0.5^4\, 0.5^6 = 210\cdot 0.5^{10} = 0.2051.
+\]</span></p>
+<ul>
+<li>La probabilidad de sacar dos o menos caras es</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+F(2) &amp;= f(0) +f(1) + f(2) =\\
+&amp;= \binom{10}{0}0.5^0 (1-0.5)^{10-0} + \binom{10}{1}0.5^1 (1-0.5)^{10-1} + \binom{10}{2}0.5^2 (1-0.5)^{10-2} =\\
+&amp;= 0.0547.
+\end{aligned}
+\]</span></p>
+<ul>
+<li>El número esperado de caras, es decir, la media, es</li>
+</ul>
+<p><span class="math display">\[
+\mu = 10\cdot 0.5 = 5 \mbox{ caras}.
+\]</span></p>
+</div>
+<p>Conocer la fórmula de la función de probabilidad de la binomial facilita mucho el cálculo de probabilidades para esta variable.</p>
+<div id="exm-binomial-muestra-reemplazamiento" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.7 (Muestra aleatoria con reemplazamiento)</strong></span> En una población hay un 40% de fumadores. La variable <span class="math inline">\(X\)</span> que mide el número de fumadores en una muestra aleatoria con reemplazamiento de 3 personas sigue un modelo de distribución binomial <span class="math inline">\(X\sim B(3,\,0.4)\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_discretas/espacio_probabilistico_binomial.svg" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Espacio probabilístico del número de fumadores en una muestra de 3 personas.</figcaption>
+</figure>
+</div>
+<p>Sus probabilidades son</p>
+<p><span class="math display">\[
+\renewcommand{\arraystretch}{1.5}
+\begin{array}{lll}
+f(0)=\binom{3}{0}0.4^0(1-0.4)^{3-0}= 0.6^3, &amp; \quad &amp;
+f(1)=\binom{3}{1}0.4^1(1-0.4)^{3-1}= 3\cdot 0.4\cdot 0.6^2,\\
+f(2)=\binom{3}{2}0.4^2(1-0.4)^{3-2}= 3\cdot 0.4^2\cdot 0.6, &amp; &amp;
+f(3)=\binom{3}{3}0.4^3(1-0.4)^{3-3}= 0.4^3.
+\end{array}
+\]</span></p>
+</div>
+</section>
+<section id="distribución-hipergeométrica" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="distribución-hipergeométrica"><span class="header-section-number">6.4.3</span> Distribución hipergeométrica</h3>
+<p>En el modelo binomial los ensayos son independientes y la probabilidad de éxito es la misma en todos ellos, lo que ocurre, por ejemplo, cuando se extrae una muestra aleatoria con reemplazamiento. Sin embargo, cuando la muestra se extrae sin reemplazamiento de una población finita, la composición de la población cambia tras cada extracción, de manera que los ensayos dejan de ser independientes y la probabilidad de éxito varía de un ensayo a otro. En estas circunstancias, si en una población de <span class="math inline">\(N\)</span> individuos hay <span class="math inline">\(K\)</span> que presentan una determinada característica (éxitos), la variable aleatoria <span class="math inline">\(X\)</span> que mide el número de éxitos en una muestra aleatoria sin reemplazamiento de <span class="math inline">\(n\)</span> individuos sigue un <em>modelo de distribución hipergeométrica</em>.</p>
+<div id="def-distribucion-hipergeometrica" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 6.6 (Distribución hipergeométrica <span class="math inline">\(H(N,K,n)\)</span>)</strong></span> Se dice que una variable aleatoria <span class="math inline">\(X\)</span> sigue un <em>modelo de distribución hipergeométrica</em> de parámetros <span class="math inline">\(N\)</span>, <span class="math inline">\(K\)</span> y <span class="math inline">\(n\)</span>, y se nota <span class="math inline">\(X\sim H(N,K,n)\)</span>, si su rango es <span class="math inline">\(\mbox{Ran}(X) = \{\max(0,n-N+K),\ldots,\min(n,K)\}\)</span> y su función de probabilidad vale</p>
+<p><span class="math display">\[
+f(x) = \frac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}},
+\]</span></p>
+<p>donde <span class="math inline">\(N\)</span> es el tamaño de la población, <span class="math inline">\(K\)</span> el número de éxitos en la población y <span class="math inline">\(n\)</span> el tamaño de la muestra.</p>
+</div>
+<p>La fórmula se obtiene aplicando la regla de Laplace: <span class="math inline">\(\binom{N}{n}\)</span> es el número de muestras posibles de tamaño <span class="math inline">\(n\)</span>, mientras que <span class="math inline">\(\binom{K}{x}\binom{N-K}{n-x}\)</span> es el número de muestras con exactamente <span class="math inline">\(x\)</span> éxitos y <span class="math inline">\(n-x\)</span> fracasos.</p>
+<p>Si llamamos <span class="math inline">\(p=K/N\)</span> a la proporción de éxitos en la población, su media y su varianza valen</p>
+<p><span class="math display">\[
+\mu = n\cdot p \qquad \sigma^2 = n\cdot p\cdot (1-p)\frac{N-n}{N-1}.
+\]</span></p>
+<p>Obsérvese que la media coincide con la de la binomial <span class="math inline">\(B(n,p)\)</span>, pero la varianza es menor, ya que se multiplica por el factor <span class="math inline">\(\frac{N-n}{N-1}&lt;1\)</span>, conocido como <em>factor de corrección para poblaciones finitas</em>. Cuando el tamaño de la población <span class="math inline">\(N\)</span> es muy grande en comparación con el de la muestra <span class="math inline">\(n\)</span>, este factor es prácticamente 1, y extraer un individuo apenas cambia la composición de la población, por lo que la distribución hipergeométrica <span class="math inline">\(H(N,K,n)\)</span> puede aproximarse mediante la binomial <span class="math inline">\(B(n,K/N)\)</span>. En la práctica, esta aproximación suele utilizarse cuando <span class="math inline">\(n\leq 0.05N\)</span>.</p>
+<div id="exm-hipergeometrica-muestra-sin-reemplazamiento" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.8 (Muestra aleatoria sin reemplazamiento)</strong></span> En un grupo de 20 pacientes hay 8 fumadores. Si se eligen al azar 5 pacientes sin reemplazamiento, la variable <span class="math inline">\(X\)</span> que mide el número de fumadores en la muestra sigue un modelo de distribución hipergeométrica <span class="math inline">\(X\sim H(20,8,5)\)</span>, y la gráfica de su función de probabilidad es la siguiente.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-hipergeometrica-20-8-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Diagrama de puntos con las probabilidades de obtener entre 0 y 5 fumadores, con el máximo en 2 fumadores.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hipergeometrica-20-8-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-variables-aleatorias-discretas_files/figure-html/fig-hipergeometrica-20-8-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Diagrama de puntos con las probabilidades de obtener entre 0 y 5 fumadores, con el máximo en 2 fumadores." width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hipergeometrica-20-8-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.1: Función de probabilidad de la distribución hipergeométrica <span class="math inline">\(H(20,8,5)\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Entonces:</p>
+<ul>
+<li>La probabilidad de que haya exactamente 2 fumadores en la muestra es</li>
+</ul>
+<p><span class="math display">\[
+f(2) = \frac{\binom{8}{2}\binom{12}{3}}{\binom{20}{5}} = \frac{28\cdot 220}{15504} = 0.3973.
+\]</span></p>
+<ul>
+<li>La probabilidad de que haya al menos un fumador en la muestra es</li>
+</ul>
+<p><span class="math display">\[
+P(X\geq 1) = 1-f(0) = 1-\frac{\binom{8}{0}\binom{12}{5}}{\binom{20}{5}} = 1-\frac{792}{15504} = 1-0.0511 = 0.9489.
+\]</span></p>
+<ul>
+<li>El número esperado de fumadores en la muestra y su varianza son</li>
+</ul>
+<p><span class="math display">\[
+\mu = 5\cdot\frac{8}{20} = 2 \mbox{ fumadores}, \qquad \sigma^2 = 5\cdot 0.4\cdot 0.6\cdot\frac{20-5}{20-1} = 0.9474 \mbox{ fumadores}^2.
+\]</span></p>
+<p>Si la muestra se hubiese extraído con reemplazamiento, el número de fumadores seguiría una distribución binomial <span class="math inline">\(B(5,\,0.4)\)</span>, con la misma media, 2 fumadores, pero con una varianza mayor, <span class="math inline">\(5\cdot 0.4\cdot 0.6 = 1.2\)</span> fumadores<span class="math inline">\(^2\)</span>. En este caso no conviene aproximar la hipergeométrica mediante la binomial, ya que la muestra supone una cuarta parte de la población.</p>
+</div>
+</section>
+<section id="distribución-geométrica" class="level3" data-number="6.4.4">
+<h3 data-number="6.4.4" class="anchored" data-anchor-id="distribución-geométrica"><span class="header-section-number">6.4.4</span> Distribución geométrica</h3>
+<p>Cuando en lugar de fijar el número de repeticiones de un ensayo con dos posibles resultados, éxito o fracaso, se repite el ensayo hasta obtener el primer éxito, la variable que mide el número de fracasos obtenidos antes del primer éxito sigue un <em>modelo de distribución geométrica</em>.</p>
+<div id="def-distribucion-geometrica" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 6.7 (Distribución geométrica <span class="math inline">\(G(p)\)</span>)</strong></span> Se dice que una variable aleatoria <span class="math inline">\(X\)</span> sigue un <em>modelo de distribución geométrica</em> de parámetro <span class="math inline">\(p\)</span>, y se nota <span class="math inline">\(X\sim G(p)\)</span>, si su rango es <span class="math inline">\(\mbox{Ran}(X)=\{0,1,2,\ldots\}\)</span> y su función de probabilidad vale</p>
+<p><span class="math display">\[
+f(x) = (1-p)^{x}p,
+\]</span></p>
+<p>donde <span class="math inline">\(p\)</span> es la probabilidad de éxito en cada ensayo.</p>
+</div>
+<p>El modelo geométrico se utiliza para modelar el número de fracasos necesarios hasta obtener el primer éxito en una serie de ensayos independientes con dos posibles resultados, como el número de pacientes sanos que se examinan hasta encontrar un paciente enfermo.</p>
+<p>Su media y su varianza valen</p>
+<p><span class="math display">\[
+\mu = \frac{1-p}{p} \qquad \sigma^2 = \frac{1-p}{p^2}.
+\]</span></p>
+<div id="exm-distribucion-geometrica" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.9 (Número de no fumadores hasta el primer fumador)</strong></span> En una población hay aproximadamente un 30% de fumadores. La variable que mide el número de personas no fumadoras que hay que examinar hasta encontrar la primera persona fumadora sigue una distribución geométrica <span class="math inline">\(G(0.3)\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-geometrica-03" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Diagrama de puntos decreciente con la probabilidad de encontrar la primera persona fumadora tras x no fumadoras.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geometrica-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-variables-aleatorias-discretas_files/figure-html/fig-geometrica-03-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Diagrama de puntos decreciente con la probabilidad de encontrar la primera persona fumadora tras x no fumadoras." width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geometrica-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.2: Función de probabilidad de la distribución geométrica <span class="math inline">\(G(0.3)\)</span>, truncada en 14 fracasos.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>La siguiente figura muestra las gráficas de las funciones de probabilidad de distribuciones geométricas con distintos valores de <span class="math inline">\(p\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-geometrica-formas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Tres diagramas de puntos de distribuciones geométricas con p = 0.1, 0.5 y 0.9; cuanto mayor es p, más concentrada está la probabilidad en valores bajos.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geometrica-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-variables-aleatorias-discretas_files/figure-html/fig-geometrica-formas-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Tres diagramas de puntos de distribuciones geométricas con p = 0.1, 0.5 y 0.9; cuanto mayor es p, más concentrada está la probabilidad en valores bajos." width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geometrica-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.3: Forma de la distribución geométrica para distintos valores de <span class="math inline">\(p\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Como se puede observar, cuanto mayor es la probabilidad de éxito, más concentrada está la probabilidad en los valores bajos, ya que es más probable obtener el primer éxito tras pocos fracasos.</p>
+</section>
+<section id="distribución-binomial-negativa" class="level3" data-number="6.4.5">
+<h3 data-number="6.4.5" class="anchored" data-anchor-id="distribución-binomial-negativa"><span class="header-section-number">6.4.5</span> Distribución binomial negativa</h3>
+<p>La distribución binomial negativa generaliza la geométrica: en lugar de repetir el ensayo hasta obtener el primer éxito, se repite hasta obtener un número fijo <span class="math inline">\(r\)</span> de éxitos, y la variable mide el número de fracasos obtenidos antes de alcanzarlos.</p>
+<div id="def-distribucion-binomial-negativa" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 6.8 (Distribución binomial negativa <span class="math inline">\(BN(r,p)\)</span>)</strong></span> Se dice que una variable aleatoria <span class="math inline">\(X\)</span> sigue un <em>modelo de distribución binomial negativa</em> de parámetros <span class="math inline">\(r\)</span> y <span class="math inline">\(p\)</span>, y se nota <span class="math inline">\(X\sim BN(r, p)\)</span>, si su rango es <span class="math inline">\(\mbox{Ran}(X)=\{0, 1, 2, \ldots\}\)</span> y su función de probabilidad vale</p>
+<p><span class="math display">\[
+f(x) = \binom{r+x-1}{x}p^r(1-p)^{x},
+\]</span></p>
+<p>donde <span class="math inline">\(r\)</span> es el número de éxitos y <span class="math inline">\(p\)</span> la probabilidad de éxito en cada ensayo.</p>
+</div>
+<p>El modelo binomial negativo se utiliza para modelar el número de fracasos necesarios para obtener <span class="math inline">\(r\)</span> éxitos en una serie de ensayos independientes con dos posibles resultados, como el número de pacientes sanos que se examinan hasta encontrar el tercer paciente enfermo. Obsérvese que la distribución geométrica es un caso particular de la binomial negativa con <span class="math inline">\(r=1\)</span>, es decir, <span class="math inline">\(G(p)=BN(1,p)\)</span>.</p>
+<p>Su media y su varianza valen</p>
+<p><span class="math display">\[
+\mu = \frac{r(1-p)}{p} \qquad \sigma^2 = \frac{r(1-p)}{p^2}.
+\]</span></p>
+<div id="exm-distribucion-binomial-negativa" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.10 (Número de no fumadores hasta el tercer fumador)</strong></span> En una población hay aproximadamente un 30% de fumadores. La variable que mide el número de personas no fumadoras que hay que examinar hasta encontrar 3 personas fumadoras sigue una distribución binomial negativa <span class="math inline">\(BN(3, 0.3)\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-binomial-negativa-3-03" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Diagrama de puntos de la distribución binomial negativa con r = 3 y p = 0.3, con la probabilidad concentrada entre 0 y 15 no fumadoras.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binomial-negativa-3-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-variables-aleatorias-discretas_files/figure-html/fig-binomial-negativa-3-03-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Diagrama de puntos de la distribución binomial negativa con r = 3 y p = 0.3, con la probabilidad concentrada entre 0 y 15 no fumadoras." width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binomial-negativa-3-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.4: Función de probabilidad de la distribución binomial negativa <span class="math inline">\(BN(3, 0.3)\)</span>, truncada en 25 fracasos.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>La siguiente figura muestra las gráficas de las funciones de probabilidad de distribuciones binomiales negativas con distintos valores de <span class="math inline">\(r\)</span> y <span class="math inline">\(p\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-binomial-negativa-formas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Nueve diagramas de puntos de distribuciones binomiales negativas combinando r = 1, 3 y 5 con p = 0.2, 0.5 y 0.8.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binomial-negativa-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-variables-aleatorias-discretas_files/figure-html/fig-binomial-negativa-formas-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Nueve diagramas de puntos de distribuciones binomiales negativas combinando r = 1, 3 y 5 con p = 0.2, 0.5 y 0.8." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binomial-negativa-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.5: Forma de la distribución binomial negativa para distintos valores de <span class="math inline">\(r\)</span> y <span class="math inline">\(p\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Como se puede observar, para <span class="math inline">\(r=1\)</span> la distribución coincide con la geométrica, mientras que al aumentar <span class="math inline">\(r\)</span> o disminuir <span class="math inline">\(p\)</span> la probabilidad se desplaza hacia valores más altos y la distribución se vuelve más dispersa.</p>
+</section>
+<section id="distribución-de-poisson" class="level3" data-number="6.4.6">
+<h3 data-number="6.4.6" class="anchored" data-anchor-id="distribución-de-poisson"><span class="header-section-number">6.4.6</span> Distribución de Poisson</h3>
+<p>La distribución de Poisson surge en experimentos aleatorios con las siguientes características:</p>
+<ul>
+<li>El experimento consiste en observar la aparición de sucesos puntuales sobre un soporte continuo, ya sea en un intervalo fijo de tiempo o en un espacio. Por ejemplo, averías de máquinas en un período de tiempo, llamadas recibidas en una centralita, número de linfocitos en un volumen de sangre, etc.</li>
+<li>Los sucesos ocurren de forma independiente.</li>
+<li>El experimento produce, a largo plazo, un número medio constante <span class="math inline">\(\lambda\)</span> de sucesos puntuales por unidad de soporte continuo.</li>
+</ul>
+<p>En estas circunstancias, la variable aleatoria <span class="math inline">\(X\)</span> que mide el número de ocurrencias del fenómeno en el intervalo considerado sigue un <em>modelo de distribución de Poisson</em> de parámetro <span class="math inline">\(\lambda\)</span>.</p>
+<div id="def-distribucion-poisson" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 6.9 (Distribución de Poisson <span class="math inline">\(P(\lambda)\)</span>)</strong></span> Se dice que una variable aleatoria <span class="math inline">\(X\)</span> sigue un <em>modelo de distribución de Poisson</em> de parámetro <span class="math inline">\(\lambda\)</span>, y se nota <span class="math inline">\(X\sim P(\lambda)\)</span>, si su rango es <span class="math inline">\(\mbox{Ran}(X) = \{0,1,\ldots,\infty\}\)</span> y su función de probabilidad vale</p>
+<p><span class="math display">\[
+f(x) = e^{-\lambda}\frac{\lambda^x}{x!}.
+\]</span></p>
+</div>
+<p>Obsérvese que <span class="math inline">\(\lambda\)</span> es el número medio de sucesos en el intervalo unidad de referencia, y cambiará si se cambia la amplitud del intervalo. Además, su media y su varianza valen</p>
+<p><span class="math display">\[
+\mu = \lambda \qquad \sigma^2 = \lambda.
+\]</span></p>
+<div id="exm-poisson-ingresos-hospital" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.11 (Ingresos diarios en un hospital)</strong></span> Sea un hospital en el que se producen por término medio 4 ingresos diarios. La variable aleatoria <span class="math inline">\(X\)</span> que mide el número de ingresos en un día sigue un modelo de distribución de Poisson <span class="math inline">\(X\sim P(4)\)</span>, y la gráfica de su función de probabilidad es la siguiente. Aunque teóricamente la variable podría tomar valores hasta <span class="math inline">\(\infty\)</span>, la probabilidad de que ocurran más de 10 ingresos ya es casi despreciable.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_discretas/funcion_probabilidad_poisson.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Función de probabilidad de la distribución de Poisson <span class="math inline">\(P(4)\)</span>.</figcaption>
+</figure>
+</div>
+</div>
+<div id="exm-poisson-calculos-hospital" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.12 (Cálculos con la Poisson)</strong></span> Sea <span class="math inline">\(X\sim P(4)\)</span> la variable que mide el número de ingresos diarios en el hospital. Entonces:</p>
+<ul>
+<li>La probabilidad de que un día cualquiera se produzcan 5 ingresos es</li>
+</ul>
+<p><span class="math display">\[
+f(5) = e^{-4}\frac{4^5}{5!} = 0.1563.
+\]</span></p>
+<ul>
+<li>La probabilidad de que un día se produzcan menos de 2 ingresos es</li>
+</ul>
+<p><span class="math display">\[
+F(1) = f(0)+f(1) = e^{-4}\frac{4^0}{0!} + e^{-4}\frac{4^1}{1!} = 5e^{-4} = 0.0916.
+\]</span></p>
+<ul>
+<li>La probabilidad de que un día se produzcan más de 1 ingreso es</li>
+</ul>
+<p><span class="math display">\[
+P(X&gt;1) = 1- P(X\leq 1) = 1- F(1) = 1- 0.0916 = 0.9084.
+\]</span></p>
+<p>Obsérvese que, para calcular <span class="math inline">\(P(X&gt;1)\)</span>, hemos tenido que recurrir a la probabilidad del suceso contrario, ya que de otro modo habría que sumar <span class="math inline">\(f(2)+f(3)+\cdots\)</span> hasta infinito.</p>
+</div>
+</section>
+<section id="aproximación-de-la-binomial-mediante-la-poisson" class="level3" data-number="6.4.7">
+<h3 data-number="6.4.7" class="anchored" data-anchor-id="aproximación-de-la-binomial-mediante-la-poisson"><span class="header-section-number">6.4.7</span> Aproximación de la binomial mediante la Poisson</h3>
+<p>El modelo de distribución de Poisson surge a partir del modelo binomial cuando el número de repeticiones del ensayo tiende a infinito y la probabilidad de éxito tiende a cero.</p>
+<div id="thm-ley-casos-raros" class="theorem">
+<p><span class="theorem-title"><strong>Teorema 6.1 (Ley de los casos raros)</strong></span> La distribución binomial <span class="math inline">\(X\sim B(n,p)\)</span> tiende a la distribución de Poisson <span class="math inline">\(P(\lambda)\)</span>, con <span class="math inline">\(\lambda=n\cdot p\)</span>, cuando <span class="math inline">\(n\)</span> tiende a infinito y <span class="math inline">\(p\)</span> tiende a cero, es decir,</p>
+<p><span class="math display">\[
+\lim_{n\rightarrow \infty, p\rightarrow 0}\binom{n}{x}p^x(1-p)^{n-x} = e^{-\lambda}\frac{\lambda^x}{x!}.
+\]</span></p>
+</div>
+<p>En la práctica, esta aproximación suele utilizarse para <span class="math inline">\(n\geq 30\)</span> y <span class="math inline">\(p\leq 0.1\)</span>, de modo que, en tales circunstancias, la variable <span class="math inline">\(X\sim B(n,p)\)</span> puede aproximarse mediante el modelo de Poisson <span class="math inline">\(P(n\cdot p)\)</span>.</p>
+<div id="exm-aproximacion-poisson-vacuna" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.13 (Reacciones adversas a una vacuna)</strong></span> Se sabe que una vacuna produce una reacción adversa en el 4% de los casos. Si se vacunan 50 personas, ¿cuál es la probabilidad de que haya más de 2 personas con reacción adversa?</p>
+<p>La variable que mide el número de personas con reacción adversa entre las 50 vacunadas sigue un modelo de distribución binomial <span class="math inline">\(X\sim B(50,\,0.04)\)</span>. Pero como <span class="math inline">\(n=50&gt;30\)</span> y <span class="math inline">\(p=0.04&lt;0.1\)</span>, se cumplen las condiciones de la ley de los casos raros, y se puede aproximar mediante una distribución de Poisson <span class="math inline">\(P(50\cdot 0.04)=P(2)\)</span>.</p>
+<p>Así pues, utilizando la fórmula de la función de probabilidad de la distribución de Poisson, se tiene</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(X&gt;2) &amp;= 1 -P(X\leq 2) = 1-f(0)-f(1)-f(2) = 1-e^{-2}\frac{2^0}{0!}-e^{-2}\frac{2^1}{1!}-e^{-2}\frac{2^2}{2!} =\\
+&amp;= 1-5e^{-2} = 0.3233.
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+</section>
+<section id="aplicación-para-las-distribuciones-de-probabilidad-discretas" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="aplicación-para-las-distribuciones-de-probabilidad-discretas"><span class="header-section-number">6.5</span> Aplicación para las distribuciones de probabilidad discretas</h2>
+<p>El siguiente enlace lleva a una aplicación web interactiva que permite visualizar las principales distribuciones de probabilidad discretas, explorando cómo cambian su función de probabilidad y su función de distribución al modificar sus parámetros.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://nube.aprendeconalf.es/shiny/distribuciones/"><img src="img/variables_aleatorias_discretas/aplicacion-distribuciones-probabilidad-discretas.png" class="img-fluid figure-img"></a></p>
+<figcaption>Aplicación para las distribuciones de probabilidad</figcaption>
+</figure>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-probabilidad.html" class="pagination-link" aria-label="Probabilidad">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./07-variables-aleatorias-continuas.html" class="pagination-link" aria-label="Variables aleatorias continuas">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variables aleatorias continuas</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/asalber/estadistica-tipos-estudios/edit/main/06-variables-aleatorias-discretas.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/asalber/estadistica-tipos-estudios/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div></div></footer></body></html>

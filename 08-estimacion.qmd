@@ -410,7 +410,8 @@ $$
 
 :::{#def-estimador-asintóticamente-normal}
 ## Estimador asintóticamente normal
-Un estimador $\hat \theta$ es _asintóticamente normal_ si, independientemente de la distribución de la variable aleatoria muestral, su distribución es normal si el tamaño de la muestra es suficientemente grande.:::
+Un estimador $\hat \theta$ es _asintóticamente normal_ si, independientemente de la distribución de la variable aleatoria muestral, su distribución es normal si el tamaño de la muestra es suficientemente grande.
+
 :::
 
 Como veremos más adelante esta propiedad es muy interesante para hacer estimaciones de parámetros mediante intervalos.

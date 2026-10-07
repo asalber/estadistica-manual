@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>7&nbsp; Variables aleatorias continuas – Manual de Estadística</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./08-estimacion.html" rel="next">
+<link href="./06-variables-aleatorias-discretas.html" rel="prev">
+<link href="./img/logos/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3419ea62b3ca2d77d3d547f86109e84e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-eaeb381c6b7494c50009502241a4985c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-b050db56f2b97c639b7ebc2cf71c06d7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5e50218c20039713403b52e69b91eb5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la busqueda",
+    "search-hide-matches-text": "Esconder resultados adicionales",
+    "search-more-match-text": "hay más resultados en este documento",
+    "search-more-matches-text": "más resultados en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="7&nbsp; Variables aleatorias continuas – Manual de Estadística">
+<meta property="og:description" content="">
+<meta property="og:image" content="img/variables_aleatorias_continuas/funcion_densidad.svg">
+<meta property="og:site_name" content="Manual de Estadística">
+</head>
+
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-variables-aleatorias-continuas.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variables aleatorias continuas</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Manual de Estadística</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://aprendeconalf.es" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
+    <a href="https://github.com/asalber/estadistica-tipos-estudios" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./manual-estadistica.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./manual-estadistica.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=|url|" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a la Estadística</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-estadistica-descriptiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-regresion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regresión</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-relaciones-cualitativas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Relaciones entre variables cualitativas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-probabilidad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-variables-aleatorias-discretas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Variables aleatorias discretas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-variables-aleatorias-continuas.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variables aleatorias continuas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-estimacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-contrastes-parametricos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-anova-ancova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análisis de la Varianza</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#distribución-de-probabilidad-de-una-variable-continua" id="toc-distribución-de-probabilidad-de-una-variable-continua" class="nav-link active" data-scroll-target="#distribución-de-probabilidad-de-una-variable-continua"><span class="header-section-number">7.1</span> Distribución de probabilidad de una variable continua</a></li>
+  <li><a href="#cálculo-de-probabilidades-como-áreas" id="toc-cálculo-de-probabilidades-como-áreas" class="nav-link" data-scroll-target="#cálculo-de-probabilidades-como-áreas"><span class="header-section-number">7.2</span> Cálculo de probabilidades como áreas</a></li>
+  <li><a href="#estadísticos-poblacionales" id="toc-estadísticos-poblacionales" class="nav-link" data-scroll-target="#estadísticos-poblacionales"><span class="header-section-number">7.3</span> Estadísticos poblacionales</a></li>
+  <li><a href="#modelos-de-distribución-de-probabilidad-continuos" id="toc-modelos-de-distribución-de-probabilidad-continuos" class="nav-link" data-scroll-target="#modelos-de-distribución-de-probabilidad-continuos"><span class="header-section-number">7.4</span> Modelos de distribución de probabilidad continuos</a>
+  <ul class="collapse">
+  <li><a href="#distribución-uniforme-continua" id="toc-distribución-uniforme-continua" class="nav-link" data-scroll-target="#distribución-uniforme-continua"><span class="header-section-number">7.4.1</span> Distribución uniforme continua</a></li>
+  <li><a href="#distribución-beta" id="toc-distribución-beta" class="nav-link" data-scroll-target="#distribución-beta"><span class="header-section-number">7.4.2</span> Distribución beta</a></li>
+  <li><a href="#distribución-normal" id="toc-distribución-normal" class="nav-link" data-scroll-target="#distribución-normal"><span class="header-section-number">7.4.3</span> Distribución normal</a></li>
+  <li><a href="#distribución-exponencial" id="toc-distribución-exponencial" class="nav-link" data-scroll-target="#distribución-exponencial"><span class="header-section-number">7.4.4</span> Distribución exponencial</a></li>
+  <li><a href="#distribución-gamma" id="toc-distribución-gamma" class="nav-link" data-scroll-target="#distribución-gamma"><span class="header-section-number">7.4.5</span> Distribución gamma</a></li>
+  <li><a href="#distribución-gamma-inversa" id="toc-distribución-gamma-inversa" class="nav-link" data-scroll-target="#distribución-gamma-inversa"><span class="header-section-number">7.4.6</span> Distribución gamma inversa</a></li>
+  <li><a href="#distribución-chi-cuadrado" id="toc-distribución-chi-cuadrado" class="nav-link" data-scroll-target="#distribución-chi-cuadrado"><span class="header-section-number">7.4.7</span> Distribución chi-cuadrado</a></li>
+  <li><a href="#distribución-t-de-student" id="toc-distribución-t-de-student" class="nav-link" data-scroll-target="#distribución-t-de-student"><span class="header-section-number">7.4.8</span> Distribución T de Student</a></li>
+  <li><a href="#distribución-f-de-fisher-snedecor" id="toc-distribución-f-de-fisher-snedecor" class="nav-link" data-scroll-target="#distribución-f-de-fisher-snedecor"><span class="header-section-number">7.4.9</span> Distribución F de Fisher-Snedecor</a></li>
+  </ul></li>
+  <li><a href="#aplicación-para-las-distribuciones-de-probabilidad-continuas" id="toc-aplicación-para-las-distribuciones-de-probabilidad-continuas" class="nav-link" data-scroll-target="#aplicación-para-las-distribuciones-de-probabilidad-continuas"><span class="header-section-number">7.5</span> Aplicación para las distribuciones de probabilidad continuas</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/asalber/estadistica-tipos-estudios/edit/main/07-variables-aleatorias-continuas.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/asalber/estadistica-tipos-estudios/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variables aleatorias continuas</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Las variables aleatorias continuas, a diferencia de las discretas, se caracterizan porque pueden tomar cualquier valor en un intervalo real. Es decir, el conjunto de valores que pueden tomar no solo es infinito, sino que además es no numerable.</p>
+<p>Esta densidad de valores hace imposible calcular la probabilidad de cada uno de ellos, y por tanto no podemos definir los modelos de distribución de probabilidad por medio de una función de probabilidad como en el caso discreto.</p>
+<p>Por otro lado, la medida de una variable aleatoria continua suele estar limitada por la precisión del proceso o del instrumento de medida. Por ejemplo, conocer la estatura exacta de una persona es imposible, ya que no se dispone de un instrumento de medida de precisión infinita. Cuando se dice que una estatura es <span class="math inline">\(1.68\)</span> m, no se está diciendo que es exactamente <span class="math inline">\(1.68\)</span> m, sino que la estatura está entre <span class="math inline">\(1.675\)</span> y <span class="math inline">\(1.685\)</span> m, ya que el instrumento de medida solo es capaz de precisar hasta el centímetro.</p>
+<p>Así pues, en el caso de variables continuas <strong>no tiene sentido medir probabilidades de valores aislados, sino que se medirán probabilidades de intervalos.</strong></p>
+<section id="distribución-de-probabilidad-de-una-variable-continua" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="distribución-de-probabilidad-de-una-variable-continua"><span class="header-section-number">7.1</span> Distribución de probabilidad de una variable continua</h2>
+<p>Para conocer cómo se distribuye la probabilidad entre los valores de una variable aleatoria continua se utiliza una función equivalente a la función de probabilidad de las variables discretas, pero continua. Esta función se conoce como <em>función de densidad</em>.</p>
+<div id="def-funcion-densidad" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 7.1 (Función de densidad de probabilidad)</strong></span> La <em>función de densidad de probabilidad</em> de una variable aleatoria continua <span class="math inline">\(X\)</span> es una función <span class="math inline">\(f(x)\)</span> que cumple las siguientes propiedades:</p>
+<ul>
+<li>Es no negativa: <span class="math inline">\(f(x)\geq 0\)</span> para todo <span class="math inline">\(x\in \mathbb{R}\)</span>.</li>
+<li>El área acumulada entre la función y el eje de abscisas es 1:</li>
+</ul>
+<p><span class="math display">\[
+\int_{-\infty}^{\infty} f(x)\; dx = 1.
+\]</span></p>
+<ul>
+<li>La probabilidad de que <span class="math inline">\(X\)</span> tome un valor entre <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> es igual al área que queda por debajo de la función de densidad, y por encima del eje de abscisas, limitada por <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+P(a\leq X\leq b) = \int_a^b f(x)\; dx.
+\]</span></p>
+</div>
+<p>La función de densidad mide la probabilidad relativa de cada valor, pero <strong>¡ojo!, <span class="math inline">\(f(x)\)</span> no es la probabilidad de que la variable tome el valor <span class="math inline">\(x\)</span></strong>, porque <span class="math inline">\(P(X=x)=0\)</span> para cada valor <span class="math inline">\(x\)</span>. A diferencia del caso discreto, para variables continuas la probabilidad de un valor aislado es siempre nula.</p>
+<p>La forma de calcular probabilidades a partir de la función de densidad es medir el área que queda por debajo de la función hasta el eje <span class="math inline">\(X\)</span>. El área total, dada por la integral entre <span class="math inline">\(-\infty\)</span> y <span class="math inline">\(\infty\)</span>, debe ser 1, que es la probabilidad total.</p>
+<p>Al igual que para las variables discretas, también tiene sentido medir probabilidades acumuladas por debajo de un determinado valor.</p>
+<div id="def-funcion-distribucion-continua" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 7.2 (Función de distribución)</strong></span> La <em>función de distribución</em> de una variable aleatoria continua <span class="math inline">\(X\)</span> es una función <span class="math inline">\(F(x)\)</span> que asocia a cada valor <span class="math inline">\(a\)</span> la probabilidad de que la variable tome un valor menor o igual que <span class="math inline">\(a\)</span>:</p>
+<p><span class="math display">\[
+F(a) = P(X\leq a) = \int_{-\infty}^{a} f(x)\; dx.
+\]</span></p>
+</div>
+</section>
+<section id="cálculo-de-probabilidades-como-áreas" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="cálculo-de-probabilidades-como-áreas"><span class="header-section-number">7.2</span> Cálculo de probabilidades como áreas</h2>
+<p>Como ya hemos dicho, la función de densidad nos permite calcular la probabilidad de un intervalo <span class="math inline">\([a,b]\)</span> como el área acumulada por debajo de la función en dicho intervalo:</p>
+<p><span class="math display">\[
+P(a\leq X\leq b) = \int_a^b f(x)\, dx = F(b)-F(a).
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/funcion_densidad.svg" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Probabilidad de un intervalo como área bajo la función de densidad.</figcaption>
+</figure>
+</div>
+<p>Para ello tenemos dos posibilidades: calcular la integral definida de la función de densidad entre <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>, o bien, a partir de la función de distribución, medir el área acumulada por debajo de <span class="math inline">\(b\)</span> y restarle el área acumulada por debajo de <span class="math inline">\(a\)</span>, para quedarnos con el área que hay entre ambos valores. Como es más fácil hacer restas que calcular integrales, trabajaremos la mayoría de las veces con funciones de distribución.</p>
+<div id="exm-calculo-probabilidades-integral" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 7.1 (Cálculo de probabilidades con una función de densidad)</strong></span> Dada la siguiente función:</p>
+<p><span class="math display">\[
+f(x) =
+\begin{cases}
+0 &amp; \mbox{si } x&lt;0\\
+e^{-x} &amp; \mbox{si } x\geq 0,
+\end{cases}
+\]</span></p>
+<p>veamos que se trata de una función de densidad. Es evidente que la función es no negativa, así que solo hay que comprobar que el área por debajo de ella es 1:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int_{-\infty}^\infty f(x)\;dx &amp;= \int_{-\infty}^0 f(x)\;dx +\int_0^\infty f(x)\;dx = \int_{-\infty}^0 0\;dx +\int_0^\infty e^{-x}\;dx =\\
+&amp;= \left[-e^{-x}\right]_0^{\infty} = -e^{-\infty}+e^0 = 1.
+\end{aligned}
+\]</span></p>
+<p>Calculemos ahora la probabilidad de que la variable tome un valor entre 0 y 2:</p>
+<p><span class="math display">\[
+P(0\leq X\leq 2) = \int_0^2 f(x)\;dx = \int_0^2 e^{-x}\;dx = \left[-e^{-x}\right]_0^2 = -e^{-2}+e^0 = 0.8647.
+\]</span></p>
+</div>
+</section>
+<section id="estadísticos-poblacionales" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="estadísticos-poblacionales"><span class="header-section-number">7.3</span> Estadísticos poblacionales</h2>
+<p>El cálculo de los estadísticos poblacionales es similar al caso discreto, pero utilizando la función de densidad en lugar de la función de probabilidad, y extendiendo la suma discreta a una integral en todo el recorrido de la variable.</p>
+<p>Los más importantes son:</p>
+<ul>
+<li><strong>Media o esperanza matemática:</strong></li>
+</ul>
+<p><span class="math display">\[
+\mu = E(X) = \int_{-\infty}^\infty x f(x)\; dx.
+\]</span></p>
+<ul>
+<li><strong>Varianza:</strong></li>
+</ul>
+<p><span class="math display">\[
+\sigma^2 = Var(X) = \int_{-\infty}^\infty x^2 f(x)\; dx -\mu^2.
+\]</span></p>
+<ul>
+<li><strong>Desviación típica:</strong></li>
+</ul>
+<p><span class="math display">\[
+\sigma = +\sqrt{\sigma^2}.
+\]</span></p>
+<p>Otros estadísticos, como la mediana, se definen de forma similar a como se hacía en el caso discreto, pero utilizando la función de distribución.</p>
+<div id="exm-estadisticos-densidad-exponencial" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 7.2 (Estadísticos de una variable continua)</strong></span> Sea <span class="math inline">\(X\)</span> una variable aleatoria con la función de densidad del ejemplo anterior. Su media es</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mu &amp;= \int_{-\infty}^\infty xf(x)\;dx = \int_{-\infty}^0 xf(x)\;dx +\int_0^\infty xf(x)\;dx = \int_{-\infty}^0 0\;dx +\int_0^\infty xe^{-x}\;dx =\\
+&amp;= \left[-e^{-x}(1+x)\right]_0^{\infty} = 1.
+\end{aligned}
+\]</span></p>
+<p>y su varianza vale</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2 &amp;= \int_{-\infty}^\infty x^2f(x)\;dx -\mu^2 = \int_{-\infty}^0 x^2f(x)\;dx +\int_0^\infty x^2f(x)\;dx -\mu^2 = \\
+&amp;= \int_{-\infty}^0 0\;dx +\int_0^\infty x^2e^{-x}\;dx -\mu^2= \left[-e^{-x}(x^2+2x+2)\right]_0^{\infty} - 1^2= 2-1 = 1.
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+<section id="modelos-de-distribución-de-probabilidad-continuos" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="modelos-de-distribución-de-probabilidad-continuos"><span class="header-section-number">7.4</span> Modelos de distribución de probabilidad continuos</h2>
+<p>Existen varios modelos de distribución de probabilidad continuos que aparecen con bastante frecuencia en la naturaleza y también como consecuencia de los procesos de muestreo aleatorio simple. Los más importantes son:</p>
+<ul>
+<li>Distribución uniforme continua.</li>
+<li>Distribución beta.</li>
+<li>Distribución normal.</li>
+<li>Distribución exponencial.</li>
+<li>Distribución gamma.</li>
+<li>Distribución gamma inversa.</li>
+<li>Distribución chi-cuadrado.</li>
+<li>Distribución T de Student.</li>
+<li>Distribución F de Fisher-Snedecor.</li>
+</ul>
+<section id="distribución-uniforme-continua" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="distribución-uniforme-continua"><span class="header-section-number">7.4.1</span> Distribución uniforme continua</h3>
+<p>Cuando todos los valores de una variable continua son equiprobables, se dice que la variable sigue un <em>modelo de distribución uniforme continua</em>.</p>
+<div id="def-distribucion-uniforme-continua" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 7.3 (Distribución uniforme continua <span class="math inline">\(U(a,b)\)</span>)</strong></span> Una variable aleatoria continua <span class="math inline">\(X\)</span> sigue un modelo de distribución <em>uniforme</em> de parámetros <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>, y se nota <span class="math inline">\(X\sim U(a,b)\)</span>, si su rango es <span class="math inline">\(\mbox{Ran}(X) = [a,b]\)</span> y su función de densidad es</p>
+<p><span class="math display">\[
+f(x)= \frac{1}{b-a}\quad \forall x\in [a,b].
+\]</span></p>
+</div>
+<p>Obsérvese que <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> son el mínimo y el máximo del rango, respectivamente, y que la función de densidad es constante. Su media y su varianza valen</p>
+<p><span class="math display">\[
+\mu = \frac{a+b}{2}\qquad \sigma^2=\frac{(b-a)^2}{12}.
+\]</span></p>
+<div id="exm-uniforme-continua-generacion" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 7.3 (Generación aleatoria de un número entre 0 y 1)</strong></span> La generación aleatoria de un número real entre 0 y 1 sigue un modelo de distribución uniforme continua <span class="math inline">\(U(0,1)\)</span>. La gráfica de su función de densidad es la siguiente:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/funcion_densidad_uniforme.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Función de densidad de la distribución uniforme <span class="math inline">\(U(0,1)\)</span>.</figcaption>
+</figure>
+</div>
+<p>Como se ve, la función es constante y vale 1. Esto debe cumplirse, al ser función de densidad, para que el área total por debajo de ella sea 1, y como en realidad se trata del área de un rectángulo de base 1, la altura debe ser también 1.</p>
+</div>
+<p>Como la función de densidad es constante, la función de distribución presenta un crecimiento lineal. Obsérvese que, como para cualquier función de distribución, la probabilidad acumulada al comienzo del recorrido es 0, y al final vale 1, que es la probabilidad total.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/funcion_distribucion_uniforme.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Función de distribución de la distribución uniforme <span class="math inline">\(U(0,1)\)</span>.</figcaption>
+</figure>
+</div>
+<div id="exm-uniforme-autobus" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 7.4 (Espera de un autobús)</strong></span> Un autobús pasa por una parada cada 15 minutos. Si una persona puede llegar a la parada en cualquier instante, ¿cuál es la probabilidad de que espere entre 5 y 10 minutos?</p>
+<p>Está claro que lo mínimo que puede esperar una persona es 0 minutos, si llega justo cuando está el autobús, y lo máximo es 15 minutos, si llega justo cuando el autobús se marcha. Como además puede llegar en cualquier instante con equiprobabilidad, la variable <span class="math inline">\(X\)</span> que mide el tiempo de espera sigue un modelo de distribución uniforme continua <span class="math inline">\(U(0,15)\)</span>.</p>
+<p>Así pues, la probabilidad de esperar entre 5 y 10 minutos es</p>
+<p><span class="math display">\[
+P(5\leq X\leq 10) = \int_{5}^{10} \frac{1}{15}\;dx = \left[\frac{x}{15}\right]_5^{10} = \frac{10}{15}-\frac{5}{15} =\frac{1}{3}.
+\]</span></p>
+<p>Aunque también podría calcularse a partir de la gráfica de la función de densidad, que es constante y vale <span class="math inline">\(1/15\)</span>, midiendo el área que queda por debajo de esta función entre 5 y 10. Como se trata del área de un rectángulo, basta multiplicar la base, que es 5, por la altura, que es <span class="math inline">\(1/15\)</span>, y de nuevo se obtiene <span class="math inline">\(1/3\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/calculo_probabilidades_uniforme.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Probabilidad de esperar entre 5 y 10 minutos.</figcaption>
+</figure>
+</div>
+<p>Además, el tiempo medio de espera será <span class="math inline">\(\mu=\frac{0+15}{2}=7.5\)</span> minutos.</p>
+</div>
+</section>
+<section id="distribución-beta" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="distribución-beta"><span class="header-section-number">7.4.2</span> Distribución beta</h3>
+<p>Cuando una variable continua toma valores en el intervalo <span class="math inline">\([0,1]\)</span>, como ocurre con las proporciones o las probabilidades, pero no todos los valores son igualmente probables, se suele utilizar el <em>modelo de distribución beta</em>.</p>
+<div id="def-distribucion-beta" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 7.4 (Distribución beta <span class="math inline">\(\mbox{Beta}(\alpha,\beta)\)</span>)</strong></span> Una variable aleatoria continua <span class="math inline">\(X\)</span> sigue un modelo de distribución <em>beta</em> de parámetros <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span>, y se nota <span class="math inline">\(X\sim \mbox{Beta}(\alpha,\beta)\)</span>, si su rango es <span class="math inline">\(\mbox{Ran}(X)=[0,1]\)</span> y su función de densidad vale</p>
+<p><span class="math display">\[
+f(x) = \frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)},
+\]</span></p>
+<p>donde <span class="math inline">\(\alpha, \beta&gt;0\)</span> son los parámetros de forma y <span class="math inline">\(B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}\)</span> es la función beta.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La <strong>función gamma</strong> es una generalización del factorial a los números reales positivos, definida como <span class="math inline">\(\Gamma(\alpha) = \int_0^{+\infty} t^{\alpha-1}e^{-t}\,dt\)</span>. Para enteros positivos cumple <span class="math inline">\(\Gamma(n) = (n-1)!\)</span>.</p>
+</div>
+</div>
+<p>El modelo beta se utiliza para modelar proporciones o probabilidades, ya que su rango está acotado en <span class="math inline">\([0,1]\)</span>. Según los valores de <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span> puede tomar formas muy variadas (simétricas, asimétricas, en forma de U, etc.). Obsérvese que la distribución uniforme <span class="math inline">\(U(0,1)\)</span> es un caso particular de la beta con <span class="math inline">\(\alpha=\beta=1\)</span>.</p>
+<p>Su media y su varianza valen</p>
+<p><span class="math display">\[
+\mu = \frac{\alpha}{\alpha+\beta} \qquad \sigma^2 = \frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}.
+\]</span></p>
+<div id="exm-distribucion-beta" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 7.5 (Proporción de respuesta a un tratamiento)</strong></span> La proporción de individuos que responden positivamente a un tratamiento puede modelarse con una distribución <span class="math inline">\(\mbox{Beta}(2, 5)\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-beta-2-5" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Curva de densidad asimétrica a la derecha con máximo cerca de 0.2." data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-beta-2-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-variables-aleatorias-continuas_files/figure-html/fig-beta-2-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Curva de densidad asimétrica a la derecha con máximo cerca de 0.2." width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-beta-2-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.1: Función de densidad de la distribución beta <span class="math inline">\(\text{Beta}(2, 5)\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>La siguiente figura muestra las gráficas de las funciones de densidad de distribuciones beta con distintos valores de <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-beta-formas" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Nueve densidades beta combinando alfa y beta en 1, 10 y 100." data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-beta-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-variables-aleatorias-continuas_files/figure-html/fig-beta-formas-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Nueve densidades beta combinando alfa y beta en 1, 10 y 100." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-beta-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.2: Forma de la distribución beta para distintos valores de <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Como puede observarse, cuando <span class="math inline">\(\alpha=\beta\)</span> la distribución es simétrica respecto de <span class="math inline">\(0.5\)</span>, cuando <span class="math inline">\(\alpha&gt;\beta\)</span> la probabilidad se concentra en los valores altos y cuando <span class="math inline">\(\alpha&lt;\beta\)</span> en los bajos. Además, cuanto mayores son <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span>, más concentrada está la distribución en torno a su media.</p>
+</section>
+<section id="distribución-normal" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="distribución-normal"><span class="header-section-number">7.4.3</span> Distribución normal</h3>
+<p>El modelo de distribución normal es, sin duda, el modelo de distribución continuo más importante, ya que es el que con más frecuencia se presenta en la naturaleza, sobre todo en variables continuas biológicas.</p>
+<div id="def-distribucion-normal" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 7.5 (Distribución normal <span class="math inline">\(N(\mu,\sigma)\)</span>)</strong></span> Una variable aleatoria continua <span class="math inline">\(X\)</span> sigue un modelo de distribución <em>normal</em> de parámetros <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\sigma\)</span>, y se nota <span class="math inline">\(X\sim N(\mu,\sigma)\)</span>, si su rango es <span class="math inline">\(\mathbb{R}\)</span> y su función de densidad vale</p>
+<p><span class="math display">\[
+f(x)= \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}.
+\]</span></p>
+</div>
+<p>Los dos parámetros <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\sigma\)</span> son, precisamente, la media y la desviación típica de la población.</p>
+<p>La gráfica de la función de densidad de la distribución normal tiene forma de campana, conocida como <em>campana de Gauss</em> (en honor a su descubridor), y está centrada en la media <span class="math inline">\(\mu\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/funcion_densidad_normal.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Función de densidad de la distribución normal <span class="math inline">\(N(\mu,\sigma)\)</span>.</figcaption>
+</figure>
+</div>
+<p>La forma de la campana de Gauss depende de sus dos parámetros:</p>
+<ul>
+<li>La media <span class="math inline">\(\mu\)</span> determina dónde está centrada la campana. En la gráfica de la izquierda se muestran las funciones de densidad de dos normales con desviación típica 1, una con media 0 y otra con media 2. Ambas gráficas son idénticas, salvo que la primera está centrada en el 0 y la segunda en el 2.</li>
+<li>La desviación típica <span class="math inline">\(\sigma\)</span>, al ser una medida de la dispersión de la población, determina su anchura. En la gráfica de la derecha se muestran las funciones de densidad de dos normales con media 0 y desviaciones típicas 1 y 2 respectivamente. Ambas están centradas en el 0, pero la primera es más estrecha que la segunda, porque tiene menos dispersión.</li>
+</ul>
+<p><img src="img/variables_aleatorias_continuas/funcion_densidad_normal_medias_diferentes.svg" class="img-fluid" style="width:48.0%" alt="Normales con distinta media (izquierda) y normales con distinta desviación típica (derecha)."> <img src="img/variables_aleatorias_continuas/funcion_densidad_normal_varianzas_diferentes.svg" class="img-fluid" style="width:48.0%"></p>
+<p>La gráfica de la función de distribución de una normal tiene forma de S.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/funcion_distribucion_normal.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Función de distribución de la distribución normal <span class="math inline">\(N(\mu,\sigma)\)</span>.</figcaption>
+</figure>
+</div>
+<section id="propiedades-de-la-distribución-normal" class="level4" data-number="7.4.3.1">
+<h4 data-number="7.4.3.1" class="anchored" data-anchor-id="propiedades-de-la-distribución-normal"><span class="header-section-number">7.4.3.1</span> Propiedades de la distribución normal</h4>
+<ul>
+<li>La función de densidad es simétrica respecto a la media, y por tanto su coeficiente de asimetría es <span class="math inline">\(g_1=0\)</span>.</li>
+<li>También es mesocúrtica, ya que tiene forma de campana de Gauss, y por tanto su coeficiente de apuntamiento vale <span class="math inline">\(g_2=0\)</span>. Recordemos que el apuntamiento de cualquier variable se compara precisamente con el de la distribución normal, que se toma como referencia por ser la distribución más común.</li>
+<li>Al ser simétrica respecto a la media, hasta la media tenemos acumulada la mitad de la probabilidad. Por tanto, la media coincide con la mediana, y también con la moda, ya que sobre la media se alcanza el máximo de la función de densidad:</li>
+</ul>
+<p><span class="math display">\[
+\mu = Me = Mo.
+\]</span></p>
+<ul>
+<li>Tiende asintóticamente a 0 cuando <span class="math inline">\(x\)</span> tiende a <span class="math inline">\(\pm \infty\)</span>.</li>
+</ul>
+<p>Además, se cumple que</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; P(\mu-\sigma \leq X \leq \mu+\sigma) = 0.68,\\
+&amp; P(\mu-2\sigma \leq X \leq \mu+2\sigma) = 0.95,\\
+&amp; P(\mu-3\sigma \leq X \leq \mu+3\sigma) = 0.99.
+\end{aligned}
+\]</span></p>
+<p>Es decir, casi la totalidad de los individuos de la población presentan valores entre la media menos tres veces la desviación típica y la media más tres veces la desviación típica.</p>
+<p><img src="img/variables_aleatorias_continuas/intervalo_normal_68.svg" class="img-fluid" style="width:32.0%" alt="Área comprendida entre \mu-\sigma y \mu+\sigma."> <img src="img/variables_aleatorias_continuas/intervalo_normal_95.svg" class="img-fluid" style="width:32.0%" alt="Área comprendida entre \mu-2\sigma y \mu+2\sigma."> <img src="img/variables_aleatorias_continuas/intervalo_normal_99.svg" class="img-fluid" style="width:32.0%" alt="Área comprendida entre \mu-3\sigma y \mu+3\sigma."></p>
+<div id="exm-normal-colesterol" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 7.6 (Niveles de colesterol)</strong></span> En un estudio se ha comprobado que el nivel de colesterol total en mujeres sanas de entre 40 y 50 años sigue una distribución normal de media 210 mg/dl y desviación típica 20 mg/dl. Atendiendo a las propiedades de la campana de Gauss, se tiene que:</p>
+<ul>
+<li>El 68% de las mujeres sanas tendrán el colesterol entre <span class="math inline">\(210\pm 20\)</span> mg/dl, es decir, entre 190 y 230 mg/dl.</li>
+<li>El 95% de las mujeres sanas tendrán el colesterol entre <span class="math inline">\(210\pm 2\cdot 20\)</span> mg/dl, es decir, entre 170 y 250 mg/dl.</li>
+<li>El 99% de las mujeres sanas tendrán el colesterol entre <span class="math inline">\(210\pm 3\cdot 20\)</span> mg/dl, es decir, entre 150 y 270 mg/dl.</li>
+</ul>
+<p>En la analítica sanguínea suele utilizarse el intervalo <span class="math inline">\(\mu\pm 2\sigma\)</span> para detectar posibles patologías. En el caso del colesterol, dicho intervalo es <span class="math inline">\([170\text{ mg/dl}, 250\text{ mg/dl}]\)</span>. Cuando una persona tiene el colesterol fuera de estos límites, se tiende a pensar que tiene alguna patología, aunque ciertamente podría estar sana, pero la probabilidad de que eso ocurra es solo de un 5%.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/analitica_sanguinea.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Analítica sanguínea.</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="el-teorema-central-del-límite" class="level4" data-number="7.4.3.2">
+<h4 data-number="7.4.3.2" class="anchored" data-anchor-id="el-teorema-central-del-límite"><span class="header-section-number">7.4.3.2</span> El teorema central del límite</h4>
+<p>El comportamiento de la distribución normal lo presentan muchas variables continuas físicas y biológicas. Si pensamos, por ejemplo, en la distribución de las estaturas, veremos que la mayor parte de los individuos presentan estaturas en torno a la media, tanto por encima como por debajo, pero que a medida que nos alejamos de la media hay cada vez menos individuos con dichas estaturas.</p>
+<p>La justificación de que la distribución normal aparezca con tanta frecuencia en la naturaleza la encontramos en el <strong>teorema central del límite</strong>, que veremos más detenidamente en el siguiente tema. Este teorema establece que si una variable aleatoria <span class="math inline">\(X\)</span> proviene de un experimento aleatorio cuyos resultados son debidos a un conjunto muy grande de causas independientes que actúan sumando sus efectos, entonces <span class="math inline">\(X\)</span> sigue una distribución aproximadamente normal.</p>
+<p>Por ejemplo, si pensamos en la tensión arterial, rápidamente identificaremos multitud de factores que influyen en ella, como la edad, el sexo, la dieta, el ejercicio físico o si se fuma o no. El valor de la tensión arterial en un individuo es el resultado de todos estos factores, que suman sus efectos de manera independiente, y por ello la tensión arterial acaba teniendo una distribución normal.</p>
+</section>
+<section id="la-distribución-normal-estándar" class="level4" data-number="7.4.3.3">
+<h4 data-number="7.4.3.3" class="anchored" data-anchor-id="la-distribución-normal-estándar"><span class="header-section-number">7.4.3.3</span> La distribución normal estándar</h4>
+<p>De todas las distribuciones normales, la más importante es la que tiene media <span class="math inline">\(\mu=0\)</span> y desviación típica <span class="math inline">\(\sigma=1\)</span>, que se conoce como <strong>normal estándar</strong>, y se designa por <span class="math inline">\(Z\sim N(0,1)\)</span>. Su función de densidad es una campana de Gauss centrada en el 0, en la que el 99% de los individuos estarán entre -3 y 3.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/funcion_densidad_normal_estandar.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Función de densidad de la distribución normal estándar <span class="math inline">\(N(0,1)\)</span>.</figcaption>
+</figure>
+</div>
+<p>Para evitar tener que calcular probabilidades integrando la función de densidad de la normal estándar, es habitual utilizar su función de distribución, que se suele tabular. En la tabla, la primera columna contiene las décimas y la primera fila las centésimas. Así, para calcular la probabilidad acumulada hasta <span class="math inline">\(0.52\)</span>, tenemos que ir a la fila <span class="math inline">\(0.5\)</span> (5 décimas) y a la columna <span class="math inline">\(0.02\)</span> (2 centésimas), donde aparece la probabilidad acumulada <span class="math inline">\(0.6985\)</span>. Esta es el área que queda por debajo de la campana de Gauss de la normal estándar entre <span class="math inline">\(-\infty\)</span> y <span class="math inline">\(0.52\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/tabla_normal.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fragmento de la tabla de la función de distribución de la normal estándar. Para <span class="math inline">\(P(Z\leq 0.52)\)</span> se busca la fila <span class="math inline">\(0.5\)</span> y la columna <span class="math inline">\(0.02\)</span>.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/calculo_probabilidades_normal_cola_izquierda.svg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Área acumulada por debajo de <span class="math inline">\(0.52\)</span>.</figcaption>
+</figure>
+</div>
+<p>Cuando tengamos que calcular probabilidades acumuladas por encima de un determinado valor (cola de acumulación a la derecha), podemos hacerlo mediante la probabilidad del suceso contrario, ya que la función de distribución siempre mide probabilidades acumuladas por debajo de cada valor. Por ejemplo,</p>
+<p><span class="math display">\[
+P(Z&gt;0.52) =1-P(Z\leq 0.52) = 1-F(0.52) = 1 - 0.6985 = 0.3015.
+\]</span></p>
+<p>Esto es lógico, ya que si el área total por debajo de la campana de Gauss es 1, el área acumulada por encima de <span class="math inline">\(0.52\)</span> será 1 menos el área que queda por debajo de este valor.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/calculo_probabilidades_normal_cola_derecha.svg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Área acumulada por encima de <span class="math inline">\(0.52\)</span>.</figcaption>
+</figure>
+</div>
+</section>
+<section id="tipificación" class="level4" data-number="7.4.3.4">
+<h4 data-number="7.4.3.4" class="anchored" data-anchor-id="tipificación"><span class="header-section-number">7.4.3.4</span> Tipificación</h4>
+<p>Ya sabemos calcular probabilidades con una distribución normal estándar, pero ¿qué hacer cuando la distribución normal no es la estándar? En tal caso hay que transformar la variable normal en una normal estándar.</p>
+<div id="thm-tipificacion" class="theorem">
+<p><span class="theorem-title"><strong>Teorema 7.1 (Tipificación)</strong></span> Si <span class="math inline">\(X\)</span> es una variable que sigue una distribución normal de media <span class="math inline">\(\mu\)</span> y desviación típica <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(X\sim N(\mu,\sigma)\)</span>, entonces la variable que resulta de restarle a <span class="math inline">\(X\)</span> su media <span class="math inline">\(\mu\)</span> y dividir por su desviación típica <span class="math inline">\(\sigma\)</span> sigue un modelo de distribución normal estándar:</p>
+<p><span class="math display">\[
+X\sim N(\mu,\sigma) \Rightarrow Z=\frac{X-\mu}{\sigma}\sim N(0,1).
+\]</span></p>
+<p>Esta transformación lineal se conoce como <em>transformación de tipificación</em>, y la variable resultante <span class="math inline">\(Z\)</span> se conoce como <em>normal tipificada</em>.</p>
+</div>
+<p>Así pues, para calcular probabilidades de una variable normal que no sea la estándar, primero se aplica la transformación de tipificación y después se utiliza la función de distribución de la normal estándar.</p>
+<div id="exm-tipificacion-notas" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 7.7 (Porcentaje de suspensos)</strong></span> Supóngase que la nota de un examen sigue un modelo de distribución normal <span class="math inline">\(N(\mu=6,\sigma=1.5)\)</span>. ¿Qué porcentaje de suspensos habrá en la población?</p>
+<p>Para responder a esta pregunta necesitamos calcular la probabilidad de que la nota sea inferior a 5. Como <span class="math inline">\(X\)</span> no es la normal estándar, se le aplica la transformación de tipificación <span class="math inline">\(Z=\displaystyle \frac{X-\mu}{\sigma} = \frac{X-6}{1.5}\)</span>:</p>
+<p><span class="math display">\[
+P(X&lt;5) = P\left(\frac{X-6}{1.5}&lt;\frac{5-6}{1.5}\right) = P(Z&lt;-0.67).
+\]</span></p>
+<p>Después solo queda mirar en la tabla de la función de distribución de la normal estándar:</p>
+<p><span class="math display">\[
+P(Z&lt;-0.67) = F(-0.67) = 0.2514.
+\]</span></p>
+<p>Así pues, habrán suspendido el 25.14% de los alumnos.</p>
+</div>
+</section>
+</section>
+<section id="distribución-exponencial" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="distribución-exponencial"><span class="header-section-number">7.4.4</span> Distribución exponencial</h3>
+<p>La distribución exponencial está muy relacionada con la distribución de Poisson. Si el número de sucesos que ocurren en un intervalo de tiempo sigue un modelo de Poisson, el tiempo que transcurre hasta que ocurre el primer suceso, o entre dos sucesos consecutivos, sigue un <em>modelo de distribución exponencial</em>.</p>
+<div id="def-distribucion-exponencial" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 7.6 (Distribución exponencial <span class="math inline">\(Exp(\lambda)\)</span>)</strong></span> Una variable aleatoria continua <span class="math inline">\(X\)</span> sigue un modelo de distribución <em>exponencial</em> de parámetro <span class="math inline">\(\lambda\)</span>, y se nota <span class="math inline">\(X\sim Exp(\lambda)\)</span>, si su rango es <span class="math inline">\(\mbox{Ran}(X)=(0,+\infty)\)</span> y su función de densidad vale</p>
+<p><span class="math display">\[
+f(x) = \lambda e^{-\lambda x},
+\]</span></p>
+<p>donde <span class="math inline">\(\lambda &gt; 0\)</span> es la tasa de ocurrencia del suceso, es decir, el número medio de sucesos por unidad de tiempo.</p>
+</div>
+<p>El modelo exponencial se utiliza para modelar tiempos de espera o duraciones positivas, como el tiempo entre llamadas a una centralita o el tiempo de vida de un paciente.</p>
+<p>Su media y su varianza valen</p>
+<p><span class="math display">\[
+\mu = \frac{1}{\lambda} \qquad \sigma^2 = \frac{1}{\lambda^2}.
+\]</span></p>
+<div id="exm-distribucion-exponencial" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 7.8 (Tiempo hasta una infección)</strong></span> Se sabe que la tasa de infecciones por un virus es de 0.2 por día. Entonces, el tiempo hasta que se produce una infección sigue una distribución exponencial <span class="math inline">\(Exp(0.2)\)</span>, y el tiempo medio hasta una infección es <span class="math inline">\(\mu = 1/0.2 = 5\)</span> días.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-exponencial-02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Densidad exponencial decreciente desde 0.2 en el origen." data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-exponencial-02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-variables-aleatorias-continuas_files/figure-html/fig-exponencial-02-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Densidad exponencial decreciente desde 0.2 en el origen." width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exponencial-02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.3: Función de densidad de la distribución exponencial <span class="math inline">\(Exp(0.2)\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>La siguiente figura muestra las gráficas de las funciones de densidad de distribuciones exponenciales con distintos valores de <span class="math inline">\(\lambda\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-exponencial-formas" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Tres densidades exponenciales decrecientes con lambda = 0.1, 0.3 y 0.5." data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-exponencial-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-variables-aleatorias-continuas_files/figure-html/fig-exponencial-formas-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Tres densidades exponenciales decrecientes con lambda = 0.1, 0.3 y 0.5." width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exponencial-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.4: Forma de la distribución exponencial para distintos valores de <span class="math inline">\(\lambda\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Como puede apreciarse, todas son decrecientes y toman el valor <span class="math inline">\(\lambda\)</span> en el origen, de manera que, cuanto mayor es la tasa de ocurrencia, más concentrada está la probabilidad en los tiempos cortos.</p>
+</section>
+<section id="distribución-gamma" class="level3" data-number="7.4.5">
+<h3 data-number="7.4.5" class="anchored" data-anchor-id="distribución-gamma"><span class="header-section-number">7.4.5</span> Distribución gamma</h3>
+<p>La distribución gamma generaliza la exponencial: si los sucesos ocurren con una tasa <span class="math inline">\(\beta\)</span> por unidad de tiempo, el tiempo que transcurre hasta que ocurren <span class="math inline">\(\alpha\)</span> sucesos sigue un <em>modelo de distribución gamma</em>.</p>
+<div id="def-distribucion-gamma" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 7.7 (Distribución gamma <span class="math inline">\(\mbox{Gamma}(\alpha,\beta)\)</span>)</strong></span> Una variable aleatoria continua <span class="math inline">\(X\)</span> sigue un modelo de distribución <em>gamma</em> de parámetros <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span>, y se nota <span class="math inline">\(X\sim \mbox{Gamma}(\alpha,\beta)\)</span>, si su rango es <span class="math inline">\(\mbox{Ran}(X)=(0,+\infty)\)</span> y su función de densidad vale</p>
+<p><span class="math display">\[
+f(x) = \frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x},
+\]</span></p>
+<p>donde <span class="math inline">\(\alpha&gt;0\)</span> es el parámetro de forma, <span class="math inline">\(\beta&gt;0\)</span> el parámetro de tasa y <span class="math inline">\(\Gamma(\alpha)\)</span> la función gamma.</p>
+</div>
+<p>El modelo gamma se utiliza para modelar tiempos de espera o duraciones positivas. Incluye como caso particular la distribución exponencial, ya que <span class="math inline">\(\mbox{Gamma}(1,\lambda)=Exp(\lambda)\)</span>, y, para valores grandes de <span class="math inline">\(\alpha\)</span>, se aproxima a la normal.</p>
+<p>Su media y su varianza valen</p>
+<p><span class="math display">\[
+\mu = \frac{\alpha}{\beta} \qquad \sigma^2 = \frac{\alpha}{\beta^2}.
+\]</span></p>
+<div id="exm-distribucion-gamma" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 7.9 (Tiempo hasta el tercer contagio)</strong></span> Si los contagios de un virus ocurren a una tasa de 2 por hora, el tiempo hasta el tercer contagio sigue una distribución <span class="math inline">\(\mbox{Gamma}(3, 2)\)</span>, y el tiempo medio hasta el tercer contagio es <span class="math inline">\(\mu = 3/2 = 1.5\)</span> horas.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-gamma-3-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Densidad gamma asimétrica a la derecha con máximo en 1 hora." data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gamma-3-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-variables-aleatorias-continuas_files/figure-html/fig-gamma-3-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Densidad gamma asimétrica a la derecha con máximo en 1 hora." width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gamma-3-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.5: Función de densidad de la distribución gamma <span class="math inline">\(\text{Gamma}(3, 2)\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>La siguiente figura muestra las gráficas de las funciones de densidad de distribuciones gamma con distintos valores de <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-gamma-formas" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Nueve densidades gamma combinando alfa = 1, 10 y 30 con beta = 0.1, 0.2 y 0.3." data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gamma-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-variables-aleatorias-continuas_files/figure-html/fig-gamma-formas-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Nueve densidades gamma combinando alfa = 1, 10 y 30 con beta = 0.1, 0.2 y 0.3." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gamma-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.6: Forma de la distribución gamma para distintos valores de <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Como puede observarse, para <span class="math inline">\(\alpha=1\)</span> la densidad es decreciente, como la de la exponencial, mientras que al aumentar <span class="math inline">\(\alpha\)</span> la distribución se vuelve más simétrica y se parece cada vez más a una normal.</p>
+</section>
+<section id="distribución-gamma-inversa" class="level3" data-number="7.4.6">
+<h3 data-number="7.4.6" class="anchored" data-anchor-id="distribución-gamma-inversa"><span class="header-section-number">7.4.6</span> Distribución gamma inversa</h3>
+<p>Si una variable sigue una distribución gamma, su inversa sigue una <em>distribución gamma inversa</em>.</p>
+<div id="def-distribucion-gamma-inversa" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 7.8 (Distribución gamma inversa <span class="math inline">\(\mbox{Gamma}^{-1}(\alpha,\beta)\)</span>)</strong></span> Una variable aleatoria continua <span class="math inline">\(X\)</span> sigue un modelo de distribución <em>gamma inversa</em> de parámetros <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span>, y se nota <span class="math inline">\(X\sim \mbox{Gamma}^{-1}(\alpha,\beta)\)</span>, si su rango es <span class="math inline">\(\mbox{Ran}(X)=(0,+\infty)\)</span> y su función de densidad vale</p>
+<p><span class="math display">\[
+f(x) = \frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{-\alpha-1}e^{-\beta/x},
+\]</span></p>
+<p>donde <span class="math inline">\(\alpha&gt;0\)</span> es el parámetro de forma, <span class="math inline">\(\beta&gt;0\)</span> el parámetro de escala y <span class="math inline">\(\Gamma(\alpha)\)</span> la función gamma.</p>
+</div>
+<p>Si <span class="math inline">\(X\sim \mbox{Gamma}(\alpha, \beta)\)</span>, entonces <span class="math inline">\(1/X\sim \mbox{Gamma}^{-1}(\alpha, \beta)\)</span>. La distribución gamma inversa se utiliza habitualmente para modelar varianzas en estadística bayesiana.</p>
+<p>Su media, para <span class="math inline">\(\alpha&gt;1\)</span>, y su varianza, para <span class="math inline">\(\alpha&gt;2\)</span>, valen</p>
+<p><span class="math display">\[
+\mu = \frac{\beta}{\alpha-1} \qquad \sigma^2 = \frac{\beta^2}{(\alpha-1)^2(\alpha-2)}.
+\]</span></p>
+<p>La siguiente figura muestra las gráficas de las funciones de densidad de distribuciones gamma inversa con distintos valores de <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-gamma-inversa-formas" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Nueve densidades gamma inversa combinando alfa = 5, 10 y 15 con beta = 1, 5 y 10." data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gamma-inversa-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-variables-aleatorias-continuas_files/figure-html/fig-gamma-inversa-formas-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Nueve densidades gamma inversa combinando alfa = 5, 10 y 15 con beta = 1, 5 y 10." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gamma-inversa-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7.7: Forma de la distribución gamma inversa para distintos valores de <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Como puede verse, todas son asimétricas a la derecha. Al aumentar <span class="math inline">\(\beta\)</span> la distribución se desplaza hacia valores más altos y se vuelve más dispersa, mientras que al aumentar <span class="math inline">\(\alpha\)</span> se desplaza hacia valores más bajos y se concentra más.</p>
+</section>
+<section id="distribución-chi-cuadrado" class="level3" data-number="7.4.7">
+<h3 data-number="7.4.7" class="anchored" data-anchor-id="distribución-chi-cuadrado"><span class="header-section-number">7.4.7</span> Distribución chi-cuadrado</h3>
+<div id="def-distribucion-chi-cuadrado" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 7.9 (Distribución chi-cuadrado <span class="math inline">\(\chi^2(n)\)</span>)</strong></span> Dadas <span class="math inline">\(n\)</span> variables aleatorias independientes <span class="math inline">\(Z_1,\ldots,Z_n\)</span>, todas ellas siguiendo un modelo de distribución normal estándar, la variable</p>
+<p><span class="math display">\[
+\chi^2(n) = Z_1^2+\cdots +Z_n^2
+\]</span></p>
+<p>sigue un modelo de distribución de probabilidad <em>chi-cuadrado de <span class="math inline">\(n\)</span> grados de libertad</em>.</p>
+</div>
+<p>Su recorrido es <span class="math inline">\(\mathbb{R}^+\)</span>, y su media y su varianza valen</p>
+<p><span class="math display">\[
+\mu = n, \qquad \sigma^2 = 2n.
+\]</span></p>
+<p>Como se verá más adelante, la distribución chi-cuadrado juega un papel importante en la estimación de la varianza poblacional y en el estudio de la relación entre variables cualitativas.</p>
+<p>La gráfica de la función de densidad de varias distribuciones chi-cuadrado con distintos grados de libertad es la siguiente. Como se puede apreciar, al ser una suma de cuadrados, no presenta valores negativos, y a diferencia de la normal, siempre es asimétrica hacia la derecha.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/funcion_densidad_chi_cuadrado.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Función de densidad de la distribución chi-cuadrado para distintos grados de libertad.</figcaption>
+</figure>
+</div>
+<p>Algunas propiedades de la distribución chi-cuadrado son:</p>
+<ul>
+<li>No toma valores negativos.</li>
+<li>Si <span class="math inline">\(X\sim \chi^2(n)\)</span> e <span class="math inline">\(Y\sim \chi^2(m)\)</span> son independientes, entonces</li>
+</ul>
+<p><span class="math display">\[
+X+Y \sim \chi^2(n+m).
+\]</span></p>
+<ul>
+<li>Al aumentar el número de grados de libertad, se aproxima asintóticamente a una normal.</li>
+</ul>
+</section>
+<section id="distribución-t-de-student" class="level3" data-number="7.4.8">
+<h3 data-number="7.4.8" class="anchored" data-anchor-id="distribución-t-de-student"><span class="header-section-number">7.4.8</span> Distribución T de Student</h3>
+<div id="def-distribucion-t-student" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 7.10 (Distribución T de Student <span class="math inline">\(T(n)\)</span>)</strong></span> Sean <span class="math inline">\(Z\sim N(0,1)\)</span> una variable normal estándar y <span class="math inline">\(X\sim \chi^2(n)\)</span> una variable chi-cuadrado de <span class="math inline">\(n\)</span> grados de libertad, ambas independientes. Entonces la variable</p>
+<p><span class="math display">\[
+T = \frac{Z}{\sqrt{X/n}}
+\]</span></p>
+<p>sigue un modelo de distribución <em>T de Student de <span class="math inline">\(n\)</span> grados de libertad</em>, y se nota <span class="math inline">\(T\sim T(n)\)</span>.</p>
+</div>
+<p>Su recorrido es <span class="math inline">\(\mathbb{R}\)</span>, y su media y su varianza valen</p>
+<p><span class="math display">\[
+\mu = 0, \qquad \sigma^2 = \frac{n}{n-2} \mbox{ si } n&gt;2.
+\]</span></p>
+<p>Como se verá más adelante, la distribución T de Student juega un papel importante en la estimación de la media poblacional.</p>
+<p>La gráfica de la función de densidad de varias distribuciones T de Student con distintos grados de libertad es la siguiente. Como se puede apreciar, esta distribución está centrada en el 0 y es muy parecida a la normal estándar, aunque algo más platicúrtica.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/funcion_densidad_t_student.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Función de densidad de la distribución T de Student para distintos grados de libertad.</figcaption>
+</figure>
+</div>
+<p>Algunas propiedades de la distribución T de Student son:</p>
+<ul>
+<li>La media, la mediana y la moda coinciden: <span class="math inline">\(\mu=Me=Mo\)</span>.</li>
+<li>Es simétrica, por lo que <span class="math inline">\(g_1=0\)</span>.</li>
+<li>Tiende asintóticamente a la distribución normal estándar a medida que aumentan los grados de libertad. En la práctica, para <span class="math inline">\(n\geq 30\)</span> ambas distribuciones son aproximadamente iguales:</li>
+</ul>
+<p><span class="math display">\[
+T(n)\stackrel{n\rightarrow \infty}{\approx}N(0,1).
+\]</span></p>
+</section>
+<section id="distribución-f-de-fisher-snedecor" class="level3" data-number="7.4.9">
+<h3 data-number="7.4.9" class="anchored" data-anchor-id="distribución-f-de-fisher-snedecor"><span class="header-section-number">7.4.9</span> Distribución F de Fisher-Snedecor</h3>
+<div id="def-distribucion-f-fisher" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 7.11 (Distribución F de Fisher-Snedecor <span class="math inline">\(F(m,n)\)</span>)</strong></span> Sean <span class="math inline">\(X\sim \chi^2(m)\)</span> e <span class="math inline">\(Y\sim \chi^2(n)\)</span> dos variables chi-cuadrado con <span class="math inline">\(m\)</span> y <span class="math inline">\(n\)</span> grados de libertad, respectivamente, independientes entre sí. Entonces la variable</p>
+<p><span class="math display">\[
+F = \frac{X/m}{Y/n}
+\]</span></p>
+<p>sigue un modelo de distribución <em>F de Fisher-Snedecor de <span class="math inline">\(m\)</span> y <span class="math inline">\(n\)</span> grados de libertad</em>, y se nota <span class="math inline">\(F\sim F(m,n)\)</span>.</p>
+</div>
+<p>Su recorrido es <span class="math inline">\(\mathbb{R}^+\)</span>, y su media y su varianza valen</p>
+<p><span class="math display">\[
+\mu = \frac{n}{n-2} \mbox{ si } n&gt;2, \qquad \sigma^2 =\frac{2n^2(m+n-2)}{m(n-2)^2(n-4)}\mbox{ si } n&gt;4.
+\]</span></p>
+<p>Como se verá más adelante, la distribución F de Fisher-Snedecor juega un papel importante en la comparación de varianzas poblacionales y en el análisis de la varianza.</p>
+<p>La gráfica de la función de densidad de varias distribuciones F de Fisher-Snedecor con distintos grados de libertad es la siguiente. Al igual que la distribución chi-cuadrado, no presenta valores negativos, y siempre es asimétrica hacia la derecha.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/variables_aleatorias_continuas/funcion_densidad_f_fisher.svg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Función de densidad de la distribución F de Fisher-Snedecor para distintos grados de libertad.</figcaption>
+</figure>
+</div>
+<p>Algunas propiedades de la distribución F de Fisher-Snedecor son:</p>
+<ul>
+<li>No está definida para valores negativos.</li>
+<li>Si <span class="math inline">\(X\sim F(m,n)\)</span>, entonces <span class="math inline">\(1/X\sim F(n,m)\)</span>. Por tanto, si llamamos <span class="math inline">\(f(m,n)_p\)</span> al valor que cumple <span class="math inline">\(P(F(m,n)\leq f(m,n)_p)=p\)</span>, se cumple</li>
+</ul>
+<p><span class="math display">\[
+f(m,n)_p =\frac{1}{f(n,m)_{1-p}}.
+\]</span></p>
+<p>Esto resulta muy útil para utilizar las tablas de su función de distribución.</p>
+</section>
+</section>
+<section id="aplicación-para-las-distribuciones-de-probabilidad-continuas" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="aplicación-para-las-distribuciones-de-probabilidad-continuas"><span class="header-section-number">7.5</span> Aplicación para las distribuciones de probabilidad continuas</h2>
+<p>El siguiente enlace lleva a una aplicación web interactiva que permite visualizar las principales distribuciones de probabilidad continuas, explorando cómo cambian su función de densidad y su función de distribución al modificar sus parámetros.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://nube.aprendeconalf.es/shiny/distribuciones/"><img src="img/variables_aleatorias_continuas/aplicacion-distribuciones-probabilidad-continuas.png" class="img-fluid figure-img"></a></p>
+<figcaption>Aplicación para las distribuciones de probabilidad</figcaption>
+</figure>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./06-variables-aleatorias-discretas.html" class="pagination-link" aria-label="Variables aleatorias discretas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Variables aleatorias discretas</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./08-estimacion.html" class="pagination-link" aria-label="Estimación de parámetros poblacionales">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/asalber/estadistica-tipos-estudios/edit/main/07-variables-aleatorias-continuas.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/asalber/estadistica-tipos-estudios/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div></div></footer></body></html>

@@ -748,6 +748,8 @@ x_i & n_i & f_i & N_i & F_i\\
 \end{array}
 $$
 
+:::
+
 #### Cálculo de la mediana con datos agrupados
 
 Con datos agrupados la mediana se calcula interpolando en el polígono de frecuencias relativas acumuladas para el valor 0.5.
@@ -1004,6 +1006,7 @@ El diagrama siguiente muestra el diagrama de caja y bigotes del peso de una mues
 :::{.content-visible unless-format="html"}
 ![Diagrama de caja y bigotes del peso de recién nacidos.](img/descriptiva/diagrama_caja.png)
 :::
+:::
 
 Para construir el diagrama de caja y bigotes hay que seguir los siguientes pasos:
 
@@ -1028,7 +1031,7 @@ Los bigotes no son las vallas.
 
 5. Finalmente, si en la muestra hay algún dato atípico, se dibuja un punto para cada uno de ellos.
 
-:::{#exm-diagrama-caja}
+:::{#exm-diagrama-caja-hijos}
 El diagrama de caja y bigotes de la muestra del número de hijos de las familias se muestra a continuación.
 
 :::{.content-visible when-format="html"}
@@ -1351,6 +1354,8 @@ $$
 $$g_2 = \frac{\sum (x_i-\bar x)^4n_i/n}{s^4} - 3 = \frac{790704.45/30}{10.1^4}-3 = -0.47.$$
 
 Como se trata de un valor negativo, aunque cercano a 0, podemos decir que la distribución es ligeramente platicúrtica.
+
+:::
 
 Como se verá más adelante en la parte de inferencia, muchas de las pruebas estadísticas solo pueden aplicarse a poblaciones normales.
 

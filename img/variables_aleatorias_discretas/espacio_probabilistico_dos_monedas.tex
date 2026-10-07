@@ -44,9 +44,9 @@ prob/.style={font=\footnotesize,above}
 	};
 
 \begin{scope}[every node/.style={text width=2cm, align=center, anchor=center, font=\bfseries,}]
-\node[above= 0.5cm of root-1-1-1-1] (labels-level) {Probabilidad};
+\node (labels-level) at ([yshift=0.6cm]root-1-1-1-1) {Probabilidad};
 \node[at =(labels-level-|root-1-1-1)] {$\Omega$};
-\node[at =(labels-level-|root-1-1)] {1ª moneda};
-\node[at =(labels-level-|root-1)] {2ª moneda};
+\node[at =(labels-level-|root-1-1)] {2ª moneda};
+\node[at =(labels-level-|root-1)] {1ª moneda};
 \end{scope}
 \end{tikzpicture}

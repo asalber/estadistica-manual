@@ -5,6 +5,7 @@ project:
     port: 1313
 
 execute: 
+  echo: false
   freeze: auto
   cache: true
   daemon: 3600
@@ -25,7 +26,7 @@ book:
   output-file: "manual-estadistica"
   image: img/logos/sticker.png
   cover-image: img/logos/sticker.png
-  sharing: [twitter, linkedin]
+  sharing: [linkedin]
   downloads: [pdf, epub]
   favicon: "img/logos/favicon.ico"
   sidebar:
@@ -34,8 +35,8 @@ book:
       - icon: house-fill
         href: https://aprendeconalf.es
   open-graph: true
-  twitter-card: 
-    site: "@aprendeconalf"
+  repo-url: https://github.com/asalber/estadistica-tipos-estudios
+  repo-actions: [edit, issue]
   chapters:
     - index.qmd
     - 01-introduccion.qmd
@@ -43,8 +44,8 @@ book:
     - 03-regresion.qmd
     - 04-relaciones-cualitativas.qmd
     - 05-probabilidad.qmd
-    # - 05-variables-aletaorias-discretas.qmd
-    # - 06-variables-aleatorias-continuas.qmd
+    - 06-variables-aleatorias-discretas.qmd
+    - 07-variables-aleatorias-continuas.qmd
     - 08-estimacion.qmd
     - 09-contrastes-parametricos.qmd
     - 10-anova-ancova.qmd

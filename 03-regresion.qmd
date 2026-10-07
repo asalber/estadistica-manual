@@ -520,6 +520,8 @@ Aunque el coeficiente de determinación o el de correlación determinan la bonda
 Además, hay que tener en cuenta que un modelo de regresión es válido únicamente para el rango de valores observados en la muestra. Fuera de ese rango no hay información del tipo de relación entre las variables, por lo que no deben hacerse predicciones para valores lejos de los observados en la muestra.
 :::
 
+:::
+
 ## Regresión no lineal
 
 El ajuste de un modelo de regresión no lineal es similar al del modelo lineal y también puede realizarse mediante la técnica de mínimos cuadrados.
@@ -641,6 +643,7 @@ $$\mbox{Bacterias} = e^{3.107+0.352\,\mbox{Horas}}, \mbox{ con } r^2=0.99.$$
 :::
 
 Como se puede apreciar, el modelo exponencial se ajusta mucho mejor que el modelo lineal.
+:::
 
 ## Riesgos de la regresión
 
@@ -725,4 +728,5 @@ Pero si se divide la muestra en dos grupos (buenos y malos estudiantes) se obtie
 
 :::{.content-visible unless-format="html"}
 ![Paradoja de Simpson. Relación directa entre las horas de estudio para un examen y la nota obtenida.](img/regresion/paradoja_simpson_2.pdf)
+:::
 :::

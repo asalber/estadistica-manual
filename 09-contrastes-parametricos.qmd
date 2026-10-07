@@ -285,7 +285,8 @@ Un contraste poco potente no suele ser interesante ya que no permitirá rechazar
 
 ### Cálculo del riesgo $\beta$ y de la potencia $1-\beta$
 
-:::{#exm-** Supóngase que en el contraste sobre la proporción de hombres no se considera importante una diferencia de menos de un 10% con respecto al valor que establece la hipótesis nula, es decir, $\delta=0.1$.
+:::{#exm-riesgo-beta-proporcion}
+Supóngase que en el contraste sobre la proporción de hombres no se considera importante una diferencia de menos de un 10% con respecto al valor que establece la hipótesis nula, es decir, $\delta=0.1$.
 
 Esto permite fijar la hipótesis alternativa
 
@@ -302,6 +303,8 @@ Como puede apreciarse, se trata de un riesgo $\beta$ muy alto, por lo que la pot
 $$1-\beta = 1-0.9536 = 0.0464,$$
 
 lo que indica que no se trataría de un buen contraste para detectar diferencias de un 10% en el valor del parámetro.
+
+:::
 
 ### Relación del riesgo $\beta$ y el tamaño del efecto $\delta$
 
