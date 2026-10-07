@@ -402,6 +402,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análisis de la Varianza</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-modelos-lineales-generalizados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modelos lineales generalizados</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -715,7 +721,7 @@ f(x) = \frac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}},
 <p><span class="theorem-title"><strong>Ejemplo 6.8 (Muestra aleatoria sin reemplazamiento)</strong></span> En un grupo de 20 pacientes hay 8 fumadores. Si se eligen al azar 5 pacientes sin reemplazamiento, la variable <span class="math inline">\(X\)</span> que mide el número de fumadores en la muestra sigue un modelo de distribución hipergeométrica <span class="math inline">\(X\sim H(20,8,5)\)</span>, y la gráfica de su función de probabilidad es la siguiente.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-hipergeometrica-20-8-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Diagrama de puntos con las probabilidades de obtener entre 0 y 5 fumadores, con el máximo en 2 fumadores.">
+<div id="fig-hipergeometrica-20-8-5" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagrama de puntos con las probabilidades de obtener entre 0 y 5 fumadores, con el máximo en 2 fumadores." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-hipergeometrica-20-8-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-variables-aleatorias-discretas_files/figure-html/fig-hipergeometrica-20-8-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Diagrama de puntos con las probabilidades de obtener entre 0 y 5 fumadores, con el máximo en 2 fumadores." width="576">
@@ -768,7 +774,7 @@ f(x) = (1-p)^{x}p,
 <p><span class="theorem-title"><strong>Ejemplo 6.9 (Número de no fumadores hasta el primer fumador)</strong></span> En una población hay aproximadamente un 30% de fumadores. La variable que mide el número de personas no fumadoras que hay que examinar hasta encontrar la primera persona fumadora sigue una distribución geométrica <span class="math inline">\(G(0.3)\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-geometrica-03" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Diagrama de puntos decreciente con la probabilidad de encontrar la primera persona fumadora tras x no fumadoras.">
+<div id="fig-geometrica-03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagrama de puntos decreciente con la probabilidad de encontrar la primera persona fumadora tras x no fumadoras." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-geometrica-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-variables-aleatorias-discretas_files/figure-html/fig-geometrica-03-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Diagrama de puntos decreciente con la probabilidad de encontrar la primera persona fumadora tras x no fumadoras." width="576">
@@ -784,7 +790,7 @@ Figura&nbsp;6.2: Función de probabilidad de la distribución geométrica <span 
 <p>La siguiente figura muestra las gráficas de las funciones de probabilidad de distribuciones geométricas con distintos valores de <span class="math inline">\(p\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-geometrica-formas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Tres diagramas de puntos de distribuciones geométricas con p = 0.1, 0.5 y 0.9; cuanto mayor es p, más concentrada está la probabilidad en valores bajos.">
+<div id="fig-geometrica-formas" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Tres diagramas de puntos de distribuciones geométricas con p = 0.1, 0.5 y 0.9; cuanto mayor es p, más concentrada está la probabilidad en valores bajos." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-geometrica-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-variables-aleatorias-discretas_files/figure-html/fig-geometrica-formas-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Tres diagramas de puntos de distribuciones geométricas con p = 0.1, 0.5 y 0.9; cuanto mayor es p, más concentrada está la probabilidad en valores bajos." width="768">
@@ -817,7 +823,7 @@ f(x) = \binom{r+x-1}{x}p^r(1-p)^{x},
 <p><span class="theorem-title"><strong>Ejemplo 6.10 (Número de no fumadores hasta el tercer fumador)</strong></span> En una población hay aproximadamente un 30% de fumadores. La variable que mide el número de personas no fumadoras que hay que examinar hasta encontrar 3 personas fumadoras sigue una distribución binomial negativa <span class="math inline">\(BN(3, 0.3)\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-binomial-negativa-3-03" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Diagrama de puntos de la distribución binomial negativa con r = 3 y p = 0.3, con la probabilidad concentrada entre 0 y 15 no fumadoras.">
+<div id="fig-binomial-negativa-3-03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagrama de puntos de la distribución binomial negativa con r = 3 y p = 0.3, con la probabilidad concentrada entre 0 y 15 no fumadoras." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-binomial-negativa-3-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-variables-aleatorias-discretas_files/figure-html/fig-binomial-negativa-3-03-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Diagrama de puntos de la distribución binomial negativa con r = 3 y p = 0.3, con la probabilidad concentrada entre 0 y 15 no fumadoras." width="576">
@@ -833,7 +839,7 @@ Figura&nbsp;6.4: Función de probabilidad de la distribución binomial negativa 
 <p>La siguiente figura muestra las gráficas de las funciones de probabilidad de distribuciones binomiales negativas con distintos valores de <span class="math inline">\(r\)</span> y <span class="math inline">\(p\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-binomial-negativa-formas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Nueve diagramas de puntos de distribuciones binomiales negativas combinando r = 1, 3 y 5 con p = 0.2, 0.5 y 0.8.">
+<div id="fig-binomial-negativa-formas" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Nueve diagramas de puntos de distribuciones binomiales negativas combinando r = 1, 3 y 5 con p = 0.2, 0.5 y 0.8." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-binomial-negativa-formas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-variables-aleatorias-discretas_files/figure-html/fig-binomial-negativa-formas-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Nueve diagramas de puntos de distribuciones binomiales negativas combinando r = 1, 3 y 5 con p = 0.2, 0.5 y 0.8." width="672">

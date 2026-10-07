@@ -49,6 +49,7 @@ book:
     - 08-estimacion.qmd
     - 09-contrastes-parametricos.qmd
     - 10-anova-ancova.qmd
+    - 11-modelos-lineales-generalizados.qmd
     
 #bibliography: references.bib
 

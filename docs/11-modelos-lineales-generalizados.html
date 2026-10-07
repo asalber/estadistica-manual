@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>11&nbsp; Modelos lineales generalizados – Manual de Estadística</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./10-anova-ancova.html" rel="prev">
+<link href="./img/logos/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3419ea62b3ca2d77d3d547f86109e84e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-eaeb381c6b7494c50009502241a4985c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-b050db56f2b97c639b7ebc2cf71c06d7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5e50218c20039713403b52e69b91eb5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la busqueda",
+    "search-hide-matches-text": "Esconder resultados adicionales",
+    "search-more-match-text": "hay más resultados en este documento",
+    "search-more-matches-text": "más resultados en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="11&nbsp; Modelos lineales generalizados – Manual de Estadística">
+<meta property="og:description" content="">
+<meta property="og:image" content="11-modelos-lineales-generalizados_files/figure-html/fig-dos-medias-modelo-lineal-1.png">
+<meta property="og:site_name" content="Manual de Estadística">
+<meta property="og:image:alt" content="Diagrama de dispersión de la estatura frente a una variable indicadora que vale 0 para hombres y 1 para mujeres, con la recta de regresión uniendo las medias de ambos grupos.">
+</head>
+
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./11-modelos-lineales-generalizados.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modelos lineales generalizados</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Manual de Estadística</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://aprendeconalf.es" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
+    <a href="https://github.com/asalber/estadistica-tipos-estudios" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./manual-estadistica.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./manual-estadistica.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=|url|" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a la Estadística</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-estadistica-descriptiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estadística Descriptiva</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-regresion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regresión</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-relaciones-cualitativas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Relaciones entre variables cualitativas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-probabilidad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-variables-aleatorias-discretas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Variables aleatorias discretas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-variables-aleatorias-continuas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variables aleatorias continuas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-estimacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimación de parámetros poblacionales</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-contrastes-parametricos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis paramétricos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-anova-ancova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análisis de la Varianza</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-modelos-lineales-generalizados.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modelos lineales generalizados</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#el-modelo-lineal" id="toc-el-modelo-lineal" class="nav-link active" data-scroll-target="#el-modelo-lineal"><span class="header-section-number">11.1</span> El modelo lineal</a>
+  <ul class="collapse">
+  <li><a href="#variables-explicativas-cualitativas-variables-indicadoras" id="toc-variables-explicativas-cualitativas-variables-indicadoras" class="nav-link" data-scroll-target="#variables-explicativas-cualitativas-variables-indicadoras"><span class="header-section-number">11.1.1</span> Variables explicativas cualitativas: variables indicadoras</a></li>
+  </ul></li>
+  <li><a href="#contrastes-de-hipótesis-como-comparación-de-modelos" id="toc-contrastes-de-hipótesis-como-comparación-de-modelos" class="nav-link" data-scroll-target="#contrastes-de-hipótesis-como-comparación-de-modelos"><span class="header-section-number">11.2</span> Contrastes de hipótesis como comparación de modelos</a></li>
+  <li><a href="#contraste-para-la-media-de-una-población" id="toc-contraste-para-la-media-de-una-población" class="nav-link" data-scroll-target="#contraste-para-la-media-de-una-población"><span class="header-section-number">11.3</span> Contraste para la media de una población</a>
+  <ul class="collapse">
+  <li><a href="#muestras-pareadas" id="toc-muestras-pareadas" class="nav-link" data-scroll-target="#muestras-pareadas"><span class="header-section-number">11.3.1</span> Muestras pareadas</a></li>
+  </ul></li>
+  <li><a href="#comparación-de-medias-de-dos-poblaciones-independientes" id="toc-comparación-de-medias-de-dos-poblaciones-independientes" class="nav-link" data-scroll-target="#comparación-de-medias-de-dos-poblaciones-independientes"><span class="header-section-number">11.4</span> Comparación de medias de dos poblaciones independientes</a></li>
+  <li><a href="#contraste-de-correlación-y-regresión-lineal-simple" id="toc-contraste-de-correlación-y-regresión-lineal-simple" class="nav-link" data-scroll-target="#contraste-de-correlación-y-regresión-lineal-simple"><span class="header-section-number">11.5</span> Contraste de correlación y regresión lineal simple</a></li>
+  <li><a href="#análisis-de-la-varianza-de-un-factor" id="toc-análisis-de-la-varianza-de-un-factor" class="nav-link" data-scroll-target="#análisis-de-la-varianza-de-un-factor"><span class="header-section-number">11.6</span> Análisis de la varianza de un factor</a></li>
+  <li><a href="#anova-de-dos-factores" id="toc-anova-de-dos-factores" class="nav-link" data-scroll-target="#anova-de-dos-factores"><span class="header-section-number">11.7</span> ANOVA de dos factores</a></li>
+  <li><a href="#análisis-de-la-covarianza" id="toc-análisis-de-la-covarianza" class="nav-link" data-scroll-target="#análisis-de-la-covarianza"><span class="header-section-number">11.8</span> Análisis de la covarianza</a></li>
+  <li><a href="#contrastes-no-paramétricos-como-modelos-lineales-sobre-rangos" id="toc-contrastes-no-paramétricos-como-modelos-lineales-sobre-rangos" class="nav-link" data-scroll-target="#contrastes-no-paramétricos-como-modelos-lineales-sobre-rangos"><span class="header-section-number">11.9</span> Contrastes no paramétricos como modelos lineales sobre rangos</a></li>
+  <li><a href="#modelos-lineales-generalizados" id="toc-modelos-lineales-generalizados" class="nav-link" data-scroll-target="#modelos-lineales-generalizados"><span class="header-section-number">11.10</span> Modelos lineales generalizados</a>
+  <ul class="collapse">
+  <li><a href="#estimación-y-contraste-de-modelos-lineales-generalizados" id="toc-estimación-y-contraste-de-modelos-lineales-generalizados" class="nav-link" data-scroll-target="#estimación-y-contraste-de-modelos-lineales-generalizados"><span class="header-section-number">11.10.1</span> Estimación y contraste de modelos lineales generalizados</a></li>
+  <li><a href="#regresión-logística-y-comparación-de-proporciones" id="toc-regresión-logística-y-comparación-de-proporciones" class="nav-link" data-scroll-target="#regresión-logística-y-comparación-de-proporciones"><span class="header-section-number">11.10.2</span> Regresión logística y comparación de proporciones</a></li>
+  <li><a href="#regresión-de-poisson-y-contraste-chi-cuadrado-de-independencia" id="toc-regresión-de-poisson-y-contraste-chi-cuadrado-de-independencia" class="nav-link" data-scroll-target="#regresión-de-poisson-y-contraste-chi-cuadrado-de-independencia"><span class="header-section-number">11.10.3</span> Regresión de Poisson y contraste chi-cuadrado de independencia</a></li>
+  </ul></li>
+  <li><a href="#resumen-los-contrastes-como-modelos-lineales" id="toc-resumen-los-contrastes-como-modelos-lineales" class="nav-link" data-scroll-target="#resumen-los-contrastes-como-modelos-lineales"><span class="header-section-number">11.11</span> Resumen: los contrastes como modelos lineales</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Referencias</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/asalber/estadistica-tipos-estudios/edit/main/11-modelos-lineales-generalizados.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/asalber/estadistica-tipos-estudios/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modelos lineales generalizados</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>En los capítulos anteriores hemos estudiado un buen número de contrastes de hipótesis: el contraste para la media de una población, la comparación de medias de dos poblaciones con muestras independientes o pareadas, el contraste de correlación, el análisis de la varianza de uno o varios factores, el análisis de la covarianza, la comparación de proporciones o el contraste chi-cuadrado de independencia. Cada uno de ellos parece una herramienta distinta, con su propio estadístico, su propia distribución y sus propias condiciones de aplicación, lo que suele dar la impresión de que la estadística inferencial es un catálogo de recetas que hay que memorizar.</p>
+<p>Sin embargo, casi todos estos contrastes son casos particulares de un mismo modelo: el <strong>modelo lineal</strong>. En este capítulo veremos que todos ellos pueden plantearse como un modelo de regresión lineal en el que la variable respuesta se explica a partir de una o varias variables explicativas, y que contrastar una hipótesis es, en el fondo, comparar dos modelos: uno más sencillo, en el que se cumple la hipótesis nula, y otro más complejo, en el que no se cumple. Finalmente, veremos cómo los <strong>modelos lineales generalizados</strong> extienden esta idea a variables respuesta que no siguen una distribución normal, como las variables dicotómicas o los recuentos, lo que permite incluir en el mismo marco los contrastes de proporciones y el contraste chi-cuadrado.</p>
+<section id="el-modelo-lineal" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="el-modelo-lineal"><span class="header-section-number">11.1</span> El modelo lineal</h2>
+<p>En el capítulo de regresión vimos cómo construir una recta <span class="math inline">\(y=a+bx\)</span> que explicase una variable dependiente <span class="math inline">\(Y\)</span> a partir de una variable independiente <span class="math inline">\(X\)</span>. Ahora vamos a generalizar esa idea para poder utilizar varias variables explicativas y, sobre todo, para poder hacer inferencia sobre la población a partir de la muestra.</p>
+<div id="def-modelo-lineal" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 11.1 (Modelo lineal)</strong></span> Un <em>modelo lineal</em> explica una variable respuesta cuantitativa <span class="math inline">\(Y\)</span> a partir de <span class="math inline">\(k\)</span> variables explicativas <span class="math inline">\(X_1,\ldots,X_k\)</span> mediante la ecuación</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X_1 + \cdots + \beta_k X_k + \varepsilon,
+\]</span></p>
+<p>donde <span class="math inline">\(\beta_0,\beta_1,\ldots,\beta_k\)</span> son los <em>parámetros</em> o <em>coeficientes</em> del modelo, y <span class="math inline">\(\varepsilon\)</span> es el <em>error aleatorio</em>, que recoge la parte de <span class="math inline">\(Y\)</span> que no explican las variables explicativas.</p>
+</div>
+<p>Para cada individuo <span class="math inline">\(i\)</span> de la muestra, el modelo establece que</p>
+<p><span class="math display">\[
+y_i = \underbrace{\beta_0 + \beta_1 x_{i1} + \cdots + \beta_k x_{ik}}_{\text{Modelo}} + \underbrace{\varepsilon_i}_{\text{Error}},
+\]</span></p>
+<p>es decir, que los datos se descomponen en una parte sistemática, explicada por el modelo, y una parte aleatoria o error:</p>
+<p><span class="math display">\[
+\text{Datos} = \text{Modelo} + \text{Error}.
+\]</span></p>
+<p>Obsérvese que la recta de regresión <span class="math inline">\(y=a+bx\)</span> no es más que el modelo lineal con una única variable explicativa, con <span class="math inline">\(\beta_0=a\)</span> y <span class="math inline">\(\beta_1=b\)</span>. Como en la regresión, los parámetros del modelo se estiman a partir de la muestra mediante el método de mínimos cuadrados, es decir, buscando los valores <span class="math inline">\(\hat\beta_0,\ldots,\hat\beta_k\)</span> que hacen mínima la suma de los cuadrados de los residuos</p>
+<p><span class="math display">\[
+SCE = \sum_{i=1}^n (y_i-\hat y_i)^2 = \sum_{i=1}^n (y_i - \hat\beta_0 - \hat\beta_1 x_{i1} - \cdots - \hat\beta_k x_{ik})^2.
+\]</span></p>
+<p>Para poder hacer inferencia con el modelo se asume que los errores <span class="math inline">\(\varepsilon_i\)</span> cumplen las siguientes condiciones:</p>
+<ul>
+<li><strong>Independencia:</strong> los errores de los distintos individuos son independientes.</li>
+<li><strong>Normalidad:</strong> los errores siguen una distribución normal de media 0.</li>
+<li><strong>Homocedasticidad:</strong> todos los errores tienen la misma varianza <span class="math inline">\(\sigma^2\)</span>.</li>
+</ul>
+<p>Es decir, <span class="math inline">\(\varepsilon_i\sim N(0,\sigma)\)</span> independientes. Estas son, precisamente, las condiciones que se exigían en la prueba T y en el ANOVA, y no es casualidad.</p>
+<section id="variables-explicativas-cualitativas-variables-indicadoras" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="variables-explicativas-cualitativas-variables-indicadoras"><span class="header-section-number">11.1.1</span> Variables explicativas cualitativas: variables indicadoras</h3>
+<p>El modelo lineal solo admite variables explicativas numéricas, pero en muchos contrastes la variable explicativa es cualitativa, como el sexo, el grupo sanguíneo o el tratamiento recibido. Para incluirlas en el modelo se utilizan <em>variables indicadoras</em>.</p>
+<div id="def-variable-indicadora" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 11.2 (Variable indicadora)</strong></span> Dada una variable cualitativa <span class="math inline">\(G\)</span> con <span class="math inline">\(k\)</span> categorías <span class="math inline">\(g_1,\ldots,g_k\)</span>, se llaman <em>variables indicadoras</em> (o <em>variables ficticias</em>) de <span class="math inline">\(G\)</span> a las variables <span class="math inline">\(X_2,\ldots,X_k\)</span> definidas como</p>
+<p><span class="math display">\[
+X_j = \begin{cases}
+1 &amp; \mbox{si } G=g_j,\\
+0 &amp; \mbox{si } G\neq g_j.
+\end{cases}
+\]</span></p>
+<p>La categoría <span class="math inline">\(g_1\)</span>, que no tiene variable indicadora, se llama <em>categoría de referencia</em>.</p>
+</div>
+<p>Así, una variable con dos categorías se representa con una única variable indicadora que vale 0 en la categoría de referencia y 1 en la otra, y una variable con <span class="math inline">\(k\)</span> categorías necesita <span class="math inline">\(k-1\)</span> variables indicadoras. Como veremos, este sencillo truco es el que permite convertir las comparaciones de medias entre grupos en modelos de regresión.</p>
+</section>
+</section>
+<section id="contrastes-de-hipótesis-como-comparación-de-modelos" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="contrastes-de-hipótesis-como-comparación-de-modelos"><span class="header-section-number">11.2</span> Contrastes de hipótesis como comparación de modelos</h2>
+<p>Cualquier hipótesis sobre los parámetros de un modelo lineal puede plantearse como una comparación entre dos modelos <span class="citation" data-cites="judd2017data">(<a href="#ref-judd2017data" role="doc-biblioref">Judd et&nbsp;al. 2017</a>)</span>:</p>
+<ul>
+<li><strong>Modelo compacto (C):</strong> el modelo más sencillo, en el que se cumple la hipótesis nula. Por ejemplo, un modelo en el que algún parámetro vale 0.</li>
+<li><strong>Modelo ampliado (A):</strong> el modelo más complejo, que incluye todos los parámetros del modelo compacto más algunos parámetros adicionales.</li>
+</ul>
+<p>Como el modelo ampliado tiene más parámetros, siempre se ajusta a los datos al menos tan bien como el compacto, es decir, su suma de cuadrados de los residuos es menor o igual: <span class="math inline">\(SCE(A)\leq SCE(C)\)</span>. La pregunta que se plantea el contraste es si la reducción del error que se consigue con el modelo ampliado es suficientemente grande como para compensar su mayor complejidad, o si, por el contrario, puede atribuirse al azar del muestreo.</p>
+<div id="def-reduccion-proporcional-error" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 11.3 (Reducción proporcional del error)</strong></span> Dados un modelo compacto <span class="math inline">\(C\)</span> y un modelo ampliado <span class="math inline">\(A\)</span>, se llama <em>reducción proporcional del error</em> a</p>
+<p><span class="math display">\[
+RPE = \frac{SCE(C)-SCE(A)}{SCE(C)} = 1-\frac{SCE(A)}{SCE(C)}.
+\]</span></p>
+</div>
+<p>La reducción proporcional del error siempre está entre 0 y 1. Vale 0 cuando los parámetros adicionales no reducen nada el error, y 1 cuando el modelo ampliado explica perfectamente los datos. Cuando el modelo compacto es el que no tiene más parámetro que la constante <span class="math inline">\(\beta_0\)</span>, la reducción proporcional del error coincide con el coeficiente de determinación <span class="math inline">\(r^2\)</span> estudiado en el capítulo de regresión.</p>
+<p>Para decidir si la reducción del error es significativa, hay que tener en cuenta cuántos parámetros se han añadido y cuántos datos quedan para estimar el error.</p>
+<div id="thm-contraste-comparacion-modelos" class="theorem">
+<p><span class="theorem-title"><strong>Teorema 11.1 (Contraste de comparación de modelos lineales)</strong></span> Sean <span class="math inline">\(C\)</span> y <span class="math inline">\(A\)</span> dos modelos lineales con <span class="math inline">\(p_C\)</span> y <span class="math inline">\(p_A\)</span> parámetros respectivamente, siendo <span class="math inline">\(C\)</span> un caso particular de <span class="math inline">\(A\)</span> (<span class="math inline">\(p_C&lt;p_A\)</span>), ajustados a una muestra de tamaño <span class="math inline">\(n\)</span>. Si se cumple la hipótesis nula de que los parámetros adicionales del modelo <span class="math inline">\(A\)</span> son nulos, el estadístico</p>
+<p><span class="math display">\[
+F = \frac{(SCE(C)-SCE(A))/(p_A-p_C)}{SCE(A)/(n-p_A)} = \frac{RPE/(p_A-p_C)}{(1-RPE)/(n-p_A)}
+\]</span></p>
+<p>sigue una distribución F de Fisher-Snedecor <span class="math inline">\(F(p_A-p_C,\, n-p_A)\)</span>.</p>
+</div>
+<p>La hipótesis nula se rechaza cuando <span class="math inline">\(F\)</span> es grande, es decir, cuando la reducción del error por cada parámetro añadido es grande comparada con el error que queda sin explicar por cada grado de libertad. Cuando el modelo ampliado solo añade un parámetro <span class="math inline">\(\beta_j\)</span>, el contraste equivale a una prueba T para la hipótesis <span class="math inline">\(H_0: \beta_j=0\)</span>, con estadístico</p>
+<p><span class="math display">\[
+T = \frac{\hat\beta_j}{s(\hat\beta_j)}\sim T(n-p_A),
+\]</span></p>
+<p>siendo <span class="math inline">\(s(\hat\beta_j)\)</span> el error típico de la estimación, y se cumple que <span class="math inline">\(T^2=F\)</span>.</p>
+<p>Este planteamiento único, <em>comparar un modelo compacto con un modelo ampliado</em>, es el que se esconde detrás de todos los contrastes que se presentan a continuación. Lo único que cambia de un contraste a otro son las variables explicativas que se incluyen en cada modelo.</p>
+</section>
+<section id="contraste-para-la-media-de-una-población" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="contraste-para-la-media-de-una-población"><span class="header-section-number">11.3</span> Contraste para la media de una población</h2>
+<p>El modelo lineal más sencillo es el que no tiene ninguna variable explicativa:</p>
+<p><span class="math display">\[
+Y = \beta_0 + \varepsilon.
+\]</span></p>
+<p>En este modelo, la predicción es la misma para todos los individuos, <span class="math inline">\(\hat y_i = \hat\beta_0\)</span>, y el valor de <span class="math inline">\(\hat\beta_0\)</span> que minimiza la suma de cuadrados de los residuos es la media muestral <span class="math inline">\(\bar y\)</span>. Por tanto, <span class="math inline">\(\beta_0\)</span> es la media poblacional <span class="math inline">\(\mu\)</span>, y el contraste para la media de una población normal con varianza desconocida, <span class="math inline">\(H_0: \mu=\mu_0\)</span>, consiste en comparar los modelos</p>
+<p><span class="math display">\[
+\begin{aligned}
+C&amp;: Y = \mu_0 + \varepsilon, \\
+A&amp;: Y = \beta_0 + \varepsilon,
+\end{aligned}
+\]</span></p>
+<p>lo que equivale a contrastar si <span class="math inline">\(\beta_0=0\)</span> en el modelo <span class="math inline">\(Y-\mu_0 = \beta_0 + \varepsilon\)</span>.</p>
+<div id="exm-media-modelo-lineal" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 11.1 (Contraste para la media como modelo lineal)</strong></span> Se ha medido el nivel de colesterol (mg/dl) de una muestra de 20 personas, obteniendo una media de 214.50 mg/dl, y se quiere contrastar si el nivel medio de colesterol en la población es distinto de 200 mg/dl.</p>
+<p>La prueba T para la media de una población, <span class="math inline">\(H_0: \mu=200\)</span>, da un estadístico <span class="math inline">\(t=3.7131\)</span> con <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.0015\)</span>.</p>
+<p>Si ajustamos el modelo lineal <span class="math inline">\(Y-200 = \beta_0 + \varepsilon\)</span>, obtenemos <span class="math inline">\(\hat\beta_0=14.50\)</span>, que es precisamente <span class="math inline">\(\bar y - 200\)</span>, y el contraste <span class="math inline">\(H_0:\beta_0=0\)</span> da un estadístico <span class="math inline">\(t=3.7131\)</span> con <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.0015\)</span>.</p>
+<p>Ambos contrastes son exactamente el mismo, y la conclusión es que el nivel medio de colesterol es significativamente distinto de 200 mg/dl.</p>
+</div>
+<section id="muestras-pareadas" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="muestras-pareadas"><span class="header-section-number">11.3.1</span> Muestras pareadas</h3>
+<p>Cuando se tienen dos medidas de la misma variable en los mismos individuos, como antes y después de un tratamiento, el contraste de comparación de medias de muestras pareadas se reduce a un contraste para la media de las diferencias <span class="math inline">\(D=Y_1-Y_2\)</span>. Por tanto, también es un modelo lineal sin variables explicativas:</p>
+<p><span class="math display">\[
+D = \beta_0 + \varepsilon,
+\]</span></p>
+<p>donde <span class="math inline">\(\beta_0\)</span> es la diferencia media poblacional, y el contraste <span class="math inline">\(H_0: \mu_1=\mu_2\)</span> equivale a <span class="math inline">\(H_0: \beta_0=0\)</span>.</p>
+<div id="exm-pareadas-modelo-lineal" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 11.2 (Muestras pareadas como modelo lineal)</strong></span> Para comprobar la eficacia de un fármaco antihipertensivo se ha medido la tensión arterial sistólica (mm Hg) de 12 pacientes antes y después del tratamiento. La prueba T para muestras pareadas da un estadístico <span class="math inline">\(t=2.8380\)</span> con <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.0161\)</span>. Si ajustamos el modelo lineal <span class="math inline">\(D=\beta_0+\varepsilon\)</span> a las diferencias <span class="math inline">\(D=\text{Antes}-\text{Después}\)</span>, obtenemos <span class="math inline">\(\hat\beta_0=\bar d=9.25\)</span> mm Hg, con estadístico <span class="math inline">\(t=2.8380\)</span> y <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.0161\)</span>, exactamente los mismos que con la prueba T.</p>
+</div>
+</section>
+</section>
+<section id="comparación-de-medias-de-dos-poblaciones-independientes" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="comparación-de-medias-de-dos-poblaciones-independientes"><span class="header-section-number">11.4</span> Comparación de medias de dos poblaciones independientes</h2>
+<p>Para comparar las medias de una variable <span class="math inline">\(Y\)</span> en dos poblaciones, se introduce en el modelo una variable indicadora <span class="math inline">\(X\)</span> que vale 0 para los individuos de la primera población (la de referencia) y 1 para los de la segunda:</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X + \varepsilon.
+\]</span></p>
+<p>Para los individuos de la primera población (<span class="math inline">\(X=0\)</span>) el modelo predice <span class="math inline">\(\beta_0\)</span>, y para los de la segunda (<span class="math inline">\(X=1\)</span>) predice <span class="math inline">\(\beta_0+\beta_1\)</span>. Por tanto,</p>
+<ul>
+<li><span class="math inline">\(\beta_0 = \mu_1\)</span> es la media de la primera población,</li>
+<li><span class="math inline">\(\beta_1 = \mu_2-\mu_1\)</span> es la diferencia entre las medias de las dos poblaciones,</li>
+</ul>
+<p>y el contraste de comparación de medias <span class="math inline">\(H_0: \mu_1=\mu_2\)</span> equivale al contraste <span class="math inline">\(H_0:\beta_1=0\)</span>, es decir, a comparar el modelo compacto <span class="math inline">\(Y=\beta_0+\varepsilon\)</span>, en el que ambas poblaciones tienen la misma media, con el modelo ampliado <span class="math inline">\(Y=\beta_0+\beta_1X+\varepsilon\)</span>.</p>
+<p>Como la variable indicadora solo toma los valores 0 y 1, la recta de regresión pasa por las medias de los dos grupos, y su pendiente, que es lo que avanza la recta cuando <span class="math inline">\(X\)</span> aumenta una unidad, es justamente la diferencia de medias.</p>
+<div id="exm-dos-medias-modelo-lineal" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 11.3 (Comparación de dos medias como modelo lineal)</strong></span> Se quiere comparar la estatura media de hombres y mujeres a partir de una muestra de 30 personas. Tomando como referencia a los hombres, la variable indicadora <span class="math inline">\(X\)</span> vale 0 para los hombres y 1 para las mujeres. La figura muestra los datos y la recta de regresión ajustada.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-dos-medias-modelo-lineal" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Diagrama de dispersión de la estatura frente a una variable indicadora que vale 0 para hombres y 1 para mujeres, con la recta de regresión uniendo las medias de ambos grupos.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dos-medias-modelo-lineal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="11-modelos-lineales-generalizados_files/figure-html/fig-dos-medias-modelo-lineal-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Diagrama de dispersión de la estatura frente a una variable indicadora que vale 0 para hombres y 1 para mujeres, con la recta de regresión uniendo las medias de ambos grupos." width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dos-medias-modelo-lineal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;11.1: Recta de regresión de la estatura sobre la variable indicadora del sexo. La recta pasa por las medias de cada grupo y su pendiente es la diferencia de medias.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>La prueba T de comparación de medias de dos poblaciones con varianzas iguales da un estadístico <span class="math inline">\(t=3.9055\)</span> con <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.0005\)</span>.</p>
+<p>Ajustando el modelo lineal se obtiene:</p>
+<ul>
+<li><span class="math inline">\(\hat\beta_0=180.06\)</span> cm, que es la estatura media de los hombres.</li>
+<li><span class="math inline">\(\hat\beta_1=-11.90\)</span> cm, que es la diferencia entre la estatura media de las mujeres y la de los hombres.</li>
+</ul>
+<p>El contraste <span class="math inline">\(H_0:\beta_1=0\)</span> da un estadístico <span class="math inline">\(t=-3.9055\)</span> con <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.0005\)</span>. El estadístico solo cambia de signo, porque en la prueba T se ha calculado la diferencia hombres − mujeres y en el modelo mujeres − hombres, pero el <span class="math inline">\(p\)</span>-valor es exactamente el mismo.</p>
+</div>
+<p>Cuando no puede suponerse que las varianzas de las dos poblaciones son iguales, se utiliza el mismo modelo, pero permitiendo que la varianza del error sea distinta en cada grupo, lo que se consigue ajustando el modelo por <em>mínimos cuadrados ponderados</em>. Este modelo es equivalente al contraste de comparación de medias con varianzas distintas (prueba de Welch).</p>
+</section>
+<section id="contraste-de-correlación-y-regresión-lineal-simple" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="contraste-de-correlación-y-regresión-lineal-simple"><span class="header-section-number">11.5</span> Contraste de correlación y regresión lineal simple</h2>
+<p>Cuando la variable explicativa <span class="math inline">\(X\)</span> es cuantitativa, el modelo</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X + \varepsilon
+\]</span></p>
+<p>es el modelo de regresión lineal simple que ya conocemos. La pendiente <span class="math inline">\(\beta_1\)</span> mide cuánto cambia la media de <span class="math inline">\(Y\)</span> por cada unidad que aumenta <span class="math inline">\(X\)</span>, y el contraste <span class="math inline">\(H_0:\beta_1=0\)</span> permite decidir si existe relación lineal entre las dos variables en la población. Como la pendiente de la recta de regresión y el coeficiente de correlación lineal tienen el mismo signo y solo se anulan a la vez, este contraste es exactamente el contraste de correlación <span class="math inline">\(H_0: \rho=0\)</span>.</p>
+<div id="exm-correlacion-modelo-lineal" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 11.4 (Contraste de correlación como modelo lineal)</strong></span> En la muestra de 30 personas, el coeficiente de correlación lineal entre la estatura y el peso es <span class="math inline">\(r=0.8505\)</span>, y el contraste de correlación, <span class="math inline">\(H_0:\rho=0\)</span>, da un estadístico <span class="math inline">\(t=8.5582\)</span> con <span class="math inline">\(p\)</span>-valor <span class="math inline">\(&lt; 0.0001\)</span>.</p>
+<p>Si ajustamos el modelo <span class="math inline">\(\text{Peso} = \beta_0 + \beta_1\,\text{Estatura} + \varepsilon\)</span>, obtenemos una pendiente <span class="math inline">\(\hat\beta_1=1.1197\)</span> kg/cm, y el contraste <span class="math inline">\(H_0:\beta_1=0\)</span> da el mismo estadístico <span class="math inline">\(t=8.5582\)</span> y el mismo <span class="math inline">\(p\)</span>-valor. Además, el coeficiente de determinación del modelo es <span class="math inline">\(r^2=0.7234\)</span>, que es el cuadrado del coeficiente de correlación.</p>
+</div>
+</section>
+<section id="análisis-de-la-varianza-de-un-factor" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="análisis-de-la-varianza-de-un-factor"><span class="header-section-number">11.6</span> Análisis de la varianza de un factor</h2>
+<p>El ANOVA de un factor generaliza la comparación de dos medias a <span class="math inline">\(k\)</span> grupos, y su modelo lineal generaliza el de la comparación de dos medias utilizando <span class="math inline">\(k-1\)</span> variables indicadoras <span class="math inline">\(X_2,\ldots,X_k\)</span>:</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_2X_2 + \cdots + \beta_k X_k + \varepsilon.
+\]</span></p>
+<p>En los individuos del grupo de referencia todas las variables indicadoras valen 0, y el modelo predice <span class="math inline">\(\beta_0\)</span>, mientras que en los del grupo <span class="math inline">\(j\)</span> solo vale 1 la indicadora <span class="math inline">\(X_j\)</span>, y el modelo predice <span class="math inline">\(\beta_0+\beta_j\)</span>. Por tanto,</p>
+<ul>
+<li><span class="math inline">\(\beta_0=\mu_1\)</span> es la media del grupo de referencia,</li>
+<li><span class="math inline">\(\beta_j=\mu_j-\mu_1\)</span> es la diferencia entre la media del grupo <span class="math inline">\(j\)</span> y la del grupo de referencia,</li>
+</ul>
+<p>y la hipótesis nula del ANOVA, <span class="math inline">\(H_0:\mu_1=\cdots=\mu_k\)</span>, equivale a <span class="math inline">\(H_0:\beta_2=\cdots=\beta_k=0\)</span>. Es decir, el ANOVA compara el modelo compacto <span class="math inline">\(Y=\beta_0+\varepsilon\)</span>, en el que todos los grupos tienen la misma media, con el modelo ampliado con las <span class="math inline">\(k-1\)</span> variables indicadoras. En este caso, <span class="math inline">\(SCE(C)\)</span> es la suma de cuadrados total, <span class="math inline">\(SCE(A)\)</span> es la suma de cuadrados residual (intra-grupos), y su diferencia es la suma de cuadrados explicada (entre grupos), por lo que el estadístico <span class="math inline">\(F\)</span> de la comparación de modelos es exactamente el estadístico <span class="math inline">\(F\)</span> de la tabla del ANOVA.</p>
+<div id="exm-anova-modelo-lineal" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 11.5 (ANOVA de un factor como modelo lineal)</strong></span> Se quiere comparar el nivel medio de colesterol según el grupo sanguíneo (A, B, O, AB) a partir de una muestra de 32 personas, 8 de cada grupo. Tomando el grupo A como referencia, el modelo lineal es</p>
+<p><span class="math display">\[
+\text{Colesterol} = \beta_0 + \beta_B X_B + \beta_O X_O + \beta_{AB} X_{AB} + \varepsilon,
+\]</span></p>
+<p>donde <span class="math inline">\(X_B\)</span>, <span class="math inline">\(X_O\)</span> y <span class="math inline">\(X_{AB}\)</span> son las variables indicadoras de los grupos B, O y AB. Las estimaciones de los parámetros son:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parámetro</th>
+<th style="text-align: right;">Estimación</th>
+<th style="text-align: left;">Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\beta_0\)</span></td>
+<td style="text-align: right;">203.75</td>
+<td style="text-align: left;">Media del grupo A</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\beta_B\)</span></td>
+<td style="text-align: right;">7.25</td>
+<td style="text-align: left;">Media del grupo B − media del grupo A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\beta_O\)</span></td>
+<td style="text-align: right;">-3.37</td>
+<td style="text-align: left;">Media del grupo O − media del grupo A</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\beta_{AB}\)</span></td>
+<td style="text-align: right;">22.50</td>
+<td style="text-align: left;">Media del grupo AB − media del grupo A</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Y la comparación del modelo compacto con el ampliado es:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 65%">
+<col style="width: 11%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Modelo</th>
+<th style="text-align: center;">Parámetros</th>
+<th style="text-align: right;">SCE</th>
+<th style="text-align: right;">F</th>
+<th style="text-align: right;">p-valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">C: <span class="math inline">\(Y=\beta_0+\varepsilon\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">9425.22</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A: <span class="math inline">\(Y=\beta_0+\beta_BX_B+\beta_OX_O+\beta_{AB}X_{AB}+\varepsilon\)</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: right;">6254.88</td>
+<td style="text-align: right;">4.7307</td>
+<td style="text-align: right;">0.0086</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>La reducción proporcional del error es <span class="math inline">\(RPE = 1-6254.88/9425.22 = 0.3364\)</span>, es decir, el grupo sanguíneo explica el 33.64% de la variabilidad del colesterol, y el estadístico <span class="math inline">\(F=4.7307\)</span>, con <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.0086\)</span>, coincide exactamente con el de la tabla del ANOVA. Por tanto, hay diferencias significativas entre las medias de colesterol de los grupos sanguíneos.</p>
+</div>
+</section>
+<section id="anova-de-dos-factores" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="anova-de-dos-factores"><span class="header-section-number">11.7</span> ANOVA de dos factores</h2>
+<p>Cuando hay dos factores, el modelo lineal incluye las variables indicadoras de cada factor, que recogen sus <em>efectos principales</em>, y los productos de las variables indicadoras de un factor por las del otro, que recogen la <em>interacción</em>. Por ejemplo, si el factor <span class="math inline">\(A\)</span> tiene dos niveles, con variable indicadora <span class="math inline">\(X_A\)</span>, y el factor <span class="math inline">\(B\)</span> tiene otros dos niveles, con variable indicadora <span class="math inline">\(X_B\)</span>, el modelo es</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X_A + \beta_2 X_B + \beta_3 X_AX_B + \varepsilon.
+\]</span></p>
+<p>En este modelo:</p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> es la media de la combinación de los niveles de referencia de ambos factores.</li>
+<li><span class="math inline">\(\beta_1\)</span> es el efecto del factor <span class="math inline">\(A\)</span> cuando <span class="math inline">\(B\)</span> está en su nivel de referencia.</li>
+<li><span class="math inline">\(\beta_2\)</span> es el efecto del factor <span class="math inline">\(B\)</span> cuando <span class="math inline">\(A\)</span> está en su nivel de referencia.</li>
+<li><span class="math inline">\(\beta_3\)</span> es cuánto cambia el efecto de un factor al cambiar el nivel del otro, es decir, la interacción.</li>
+</ul>
+<p>Cada uno de los contrastes de la tabla del ANOVA de dos factores es una comparación de modelos. Por ejemplo, el contraste de la interacción compara el modelo sin interacción, <span class="math inline">\(Y = \beta_0 + \beta_1 X_A + \beta_2 X_B + \varepsilon\)</span>, con el modelo completo, lo que equivale a contrastar <span class="math inline">\(H_0:\beta_3=0\)</span>.</p>
+<div id="exm-anova2-modelo-lineal" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 11.6 (ANOVA de dos factores como modelo lineal)</strong></span> Se quiere estudiar el efecto de la dieta (normal o mediterránea) y de la práctica de ejercicio (no o sí) sobre el nivel de colesterol, para lo que se ha medido el colesterol de 10 personas en cada una de las cuatro combinaciones de dieta y ejercicio. Tomando como referencia la dieta normal y no hacer ejercicio, las estimaciones de los parámetros del modelo con interacción son:</p>
+<ul>
+<li><span class="math inline">\(\hat\beta_0=230.70\)</span> mg/dl: colesterol medio con dieta normal y sin ejercicio.</li>
+<li><span class="math inline">\(\hat\beta_1=-10.60\)</span> mg/dl: efecto de la dieta mediterránea en quienes no hacen ejercicio.</li>
+<li><span class="math inline">\(\hat\beta_2=-11.70\)</span> mg/dl: efecto del ejercicio en quienes siguen la dieta normal.</li>
+<li><span class="math inline">\(\hat\beta_3=-14.30\)</span> mg/dl: reducción adicional cuando se combinan dieta mediterránea y ejercicio.</li>
+</ul>
+<p>La comparación del modelo sin interacción con el modelo con interacción da un estadístico <span class="math inline">\(F=7.7137\)</span> con <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.0086\)</span>, que es exactamente la fila de la interacción en la tabla del ANOVA de dos factores (<span class="math inline">\(F=7.7137\)</span>). Por tanto, hay interacción significativa entre la dieta y el ejercicio: el efecto de la dieta sobre el colesterol es mayor en las personas que hacen ejercicio.</p>
+</div>
+</section>
+<section id="análisis-de-la-covarianza" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="análisis-de-la-covarianza"><span class="header-section-number">11.8</span> Análisis de la covarianza</h2>
+<p>En el modelo lineal pueden mezclarse sin ningún problema variables explicativas cualitativas, mediante sus variables indicadoras, y cuantitativas. Cuando el interés está en comparar las medias de varios grupos, pero se incluye además una variable cuantitativa, o <em>covariable</em>, para controlar su efecto, se obtiene el análisis de la covarianza (ANCOVA). Por ejemplo, con un factor de dos niveles con variable indicadora <span class="math inline">\(X_1\)</span> y una covariable <span class="math inline">\(X_2\)</span>, el modelo es</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \varepsilon,
+\]</span></p>
+<p>que corresponde a dos rectas paralelas, una para cada grupo, con la misma pendiente <span class="math inline">\(\beta_2\)</span> y separadas una distancia <span class="math inline">\(\beta_1\)</span>. El contraste del efecto del factor una vez descontado el efecto de la covariable consiste en comparar el modelo compacto <span class="math inline">\(Y=\beta_0+\beta_2X_2+\varepsilon\)</span>, con una sola recta para todos los individuos, con el modelo ampliado, es decir, contrastar <span class="math inline">\(H_0: \beta_1=0\)</span>.</p>
+<div id="exm-ancova-modelo-lineal" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 11.7 (ANCOVA como modelo lineal)</strong></span> Si se compara el peso medio de hombres y mujeres en la muestra de 30 personas mediante una prueba T, se obtiene un <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.0014\)</span>, por lo que existen diferencias significativas. Pero, como hemos visto, los hombres de la muestra también son más altos, y el peso depende de la estatura. ¿Hay diferencias de peso entre hombres y mujeres de la misma estatura?</p>
+<p>Para responder a esta pregunta se ajusta el modelo</p>
+<p><span class="math display">\[
+\text{Peso} = \beta_0 + \beta_1 X_{\text{mujer}} + \beta_2\, \text{Estatura} + \varepsilon,
+\]</span></p>
+<p>y se obtiene <span class="math inline">\(\hat\beta_1 = -2.15\)</span> kg y <span class="math inline">\(\hat\beta_2=1.0561\)</span> kg/cm.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-ancova-modelo-lineal" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Diagrama de dispersión del peso frente a la estatura, con los puntos coloreados según el sexo y dos rectas de regresión paralelas muy próximas entre sí.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ancova-modelo-lineal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="11-modelos-lineales-generalizados_files/figure-html/fig-ancova-modelo-lineal-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Diagrama de dispersión del peso frente a la estatura, con los puntos coloreados según el sexo y dos rectas de regresión paralelas muy próximas entre sí." width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ancova-modelo-lineal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;11.2: Modelo de ANCOVA del peso en función de la estatura y el sexo: dos rectas paralelas, una para cada sexo.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>La comparación con el modelo compacto, <span class="math inline">\(\text{Peso} = \beta_0 + \beta_2\, \text{Estatura} + \varepsilon\)</span>, da un estadístico <span class="math inline">\(F=0.4246\)</span> con <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.5202\)</span>, por lo que, una vez descontado el efecto de la estatura, no hay diferencias significativas de peso entre hombres y mujeres. Las diferencias de peso observadas en la prueba T se deben a las diferencias de estatura.</p>
+</div>
+</section>
+<section id="contrastes-no-paramétricos-como-modelos-lineales-sobre-rangos" class="level2" data-number="11.9">
+<h2 data-number="11.9" class="anchored" data-anchor-id="contrastes-no-paramétricos-como-modelos-lineales-sobre-rangos"><span class="header-section-number">11.9</span> Contrastes no paramétricos como modelos lineales sobre rangos</h2>
+<p>Muchos contrastes no paramétricos, que no exigen la normalidad de la población, se obtienen aplicando los modelos lineales anteriores a los <em>rangos</em> de los datos en lugar de a los datos originales. El rango de un dato es la posición que ocupa en la muestra ordenada de menor a mayor, y el rango con signo es el rango del valor absoluto del dato multiplicado por su signo. Por ejemplo:</p>
+<ul>
+<li>El <strong>coeficiente de correlación de Spearman</strong>, estudiado en el capítulo de relaciones entre variables, es el coeficiente de correlación de Pearson de los rangos, y su contraste equivale al modelo <span class="math inline">\(\operatorname{rango}(Y) = \beta_0 + \beta_1 \operatorname{rango}(X) + \varepsilon\)</span>.</li>
+<li>La <strong>prueba de Wilcoxon</strong> para una muestra o para muestras pareadas equivale, aproximadamente, al modelo <span class="math inline">\(\operatorname{rango\ con\ signo}(Y) = \beta_0 + \varepsilon\)</span>.</li>
+<li>La <strong>prueba U de Mann-Whitney</strong> para dos muestras independientes equivale, aproximadamente, al modelo <span class="math inline">\(\operatorname{rango}(Y) = \beta_0 + \beta_1 X + \varepsilon\)</span>, con <span class="math inline">\(X\)</span> la variable indicadora del grupo.</li>
+<li>La <strong>prueba de Kruskal-Wallis</strong> para <span class="math inline">\(k\)</span> muestras independientes equivale, aproximadamente, al ANOVA de los rangos, <span class="math inline">\(\operatorname{rango}(Y) = \beta_0 + \beta_2X_2 + \cdots + \beta_kX_k + \varepsilon\)</span>.</li>
+</ul>
+<p>Salvo en el caso de la correlación de Spearman, estas equivalencias no son exactas, pero los <span class="math inline">\(p\)</span>-valores que se obtienen son prácticamente iguales a los de los contrastes no paramétricos para muestras de más de 15 individuos <span class="citation" data-cites="lindelov2019tests">(<a href="#ref-lindelov2019tests" role="doc-biblioref">Lindeløv 2019</a>)</span>.</p>
+<div id="exm-spearman-modelo-lineal" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 11.8 (Correlación de Spearman como modelo lineal)</strong></span> En la muestra de 30 personas, el coeficiente de correlación de Spearman entre la estatura y el peso es <span class="math inline">\(r_s=0.8538\)</span>, y su contraste da un <span class="math inline">\(p\)</span>-valor <span class="math inline">\(&lt; 0.0001\)</span>. Si ajustamos el modelo lineal <span class="math inline">\(\operatorname{rango}(\text{Peso}) = \beta_0 + \beta_1\operatorname{rango}(\text{Estatura}) + \varepsilon\)</span>, la pendiente estimada es <span class="math inline">\(\hat\beta_1=0.8532\)</span>, y el contraste <span class="math inline">\(H_0:\beta_1=0\)</span> da un estadístico <span class="math inline">\(t=8.6770\)</span> con <span class="math inline">\(p\)</span>-valor <span class="math inline">\(&lt; 0.0001\)</span>.</p>
+</div>
+</section>
+<section id="modelos-lineales-generalizados" class="level2" data-number="11.10">
+<h2 data-number="11.10" class="anchored" data-anchor-id="modelos-lineales-generalizados"><span class="header-section-number">11.10</span> Modelos lineales generalizados</h2>
+<p>El modelo lineal exige que la variable respuesta sea cuantitativa y que sus errores sigan una distribución normal con varianza constante. Sin embargo, en muchos estudios la variable respuesta es dicotómica, como estar o no enfermo, o es un recuento, como el número de ingresos hospitalarios en un día. En estos casos, el modelo lineal no es adecuado por varias razones:</p>
+<ul>
+<li>Las predicciones del modelo lineal pueden tomar cualquier valor real, mientras que una probabilidad debe estar entre 0 y 1 y un recuento debe ser positivo.</li>
+<li>La distribución de la respuesta no es normal, sino binomial o de Poisson.</li>
+<li>La varianza no es constante, sino que depende de la media. Por ejemplo, en una variable de Poisson la varianza es igual a la media.</li>
+</ul>
+<p>Los <strong>modelos lineales generalizados</strong> (GLM por sus siglas en inglés), introducidos por <span class="citation" data-cites="nelder1972generalized">Nelder y Wedderburn (<a href="#ref-nelder1972generalized" role="doc-biblioref">1972</a>)</span>, resuelven estos problemas manteniendo la estructura lineal del modelo, pero relacionándola con la media de la respuesta a través de una función.</p>
+<div id="def-modelo-lineal-generalizado" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 11.4 (Modelo lineal generalizado)</strong></span> Un <em>modelo lineal generalizado</em> consta de tres componentes <span class="citation" data-cites="dobson2018introduction">(<a href="#ref-dobson2018introduction" role="doc-biblioref">Dobson y Barnett 2018</a>)</span>:</p>
+<ol type="1">
+<li><strong>Componente aleatoria:</strong> la variable respuesta <span class="math inline">\(Y\)</span> sigue una distribución de la familia exponencial (normal, binomial, Poisson, gamma, etc.) con media <span class="math inline">\(\mu=E(Y)\)</span>.</li>
+<li><strong>Predictor lineal:</strong> una combinación lineal de las variables explicativas <span class="math display">\[
+\eta = \beta_0 + \beta_1 X_1 + \cdots + \beta_k X_k.
+\]</span></li>
+<li><strong>Función de enlace:</strong> una función <span class="math inline">\(g\)</span> monótona y derivable que relaciona la media de la respuesta con el predictor lineal <span class="math display">\[
+g(\mu) = \eta = \beta_0 + \beta_1 X_1 + \cdots + \beta_k X_k.
+\]</span></li>
+</ol>
+</div>
+<p>El modelo lineal es el caso particular de modelo lineal generalizado en el que la respuesta sigue una distribución normal y la función de enlace es la identidad, <span class="math inline">\(g(\mu)=\mu\)</span>. Los modelos lineales generalizados más habituales son los siguientes:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 16%">
+<col style="width: 40%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Respuesta</strong></th>
+<th style="text-align: left;"><strong>Distribución</strong></th>
+<th style="text-align: left;"><strong>Función de enlace</strong></th>
+<th style="text-align: left;"><strong>Modelo</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cuantitativa</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;">Identidad: <span class="math inline">\(g(\mu)=\mu\)</span></td>
+<td style="text-align: left;">Modelo lineal</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dicotómica</td>
+<td style="text-align: left;">Binomial</td>
+<td style="text-align: left;">Logit: <span class="math inline">\(g(\mu)=\log\frac{\mu}{1-\mu}\)</span></td>
+<td style="text-align: left;">Regresión logística</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Recuento</td>
+<td style="text-align: left;">Poisson</td>
+<td style="text-align: left;">Logaritmo: <span class="math inline">\(g(\mu)=\log\mu\)</span></td>
+<td style="text-align: left;">Regresión de Poisson</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Positiva continua</td>
+<td style="text-align: left;">Gamma</td>
+<td style="text-align: left;">Inversa: <span class="math inline">\(g(\mu)=\frac{1}{\mu}\)</span></td>
+<td style="text-align: left;">Regresión gamma</td>
+</tr>
+</tbody>
+</table>
+<section id="estimación-y-contraste-de-modelos-lineales-generalizados" class="level3" data-number="11.10.1">
+<h3 data-number="11.10.1" class="anchored" data-anchor-id="estimación-y-contraste-de-modelos-lineales-generalizados"><span class="header-section-number">11.10.1</span> Estimación y contraste de modelos lineales generalizados</h3>
+<p>En los modelos lineales generalizados los parámetros no se estiman por mínimos cuadrados, sino por el método de <em>máxima verosimilitud</em>, que busca los valores de los parámetros que hacen más probable la muestra observada. En el modelo lineal normal ambos métodos dan las mismas estimaciones.</p>
+<p>Del mismo modo, la suma de cuadrados de los residuos se sustituye por la <em>devianza</em>, que mide la discrepancia entre el modelo y los datos a partir de la verosimilitud, y que en el modelo lineal normal es proporcional a la suma de cuadrados de los residuos. La idea de los contrastes sigue siendo la misma: comparar un modelo compacto con un modelo ampliado.</p>
+<div id="thm-contraste-razon-verosimilitudes" class="theorem">
+<p><span class="theorem-title"><strong>Teorema 11.2 (Contraste de razón de verosimilitudes)</strong></span> Sean <span class="math inline">\(C\)</span> y <span class="math inline">\(A\)</span> dos modelos lineales generalizados con <span class="math inline">\(p_C\)</span> y <span class="math inline">\(p_A\)</span> parámetros respectivamente, siendo <span class="math inline">\(C\)</span> un caso particular de <span class="math inline">\(A\)</span>, y sean <span class="math inline">\(D(C)\)</span> y <span class="math inline">\(D(A)\)</span> sus devianzas. Si se cumple la hipótesis nula de que los parámetros adicionales del modelo <span class="math inline">\(A\)</span> son nulos, el estadístico</p>
+<p><span class="math display">\[
+D(C)-D(A)
+\]</span></p>
+<p>sigue aproximadamente una distribución chi-cuadrado <span class="math inline">\(\chi^2(p_A-p_C)\)</span> para muestras grandes.</p>
+</div>
+<p>Existe otro contraste asintóticamente equivalente, el <em>contraste de puntuaciones</em> o <em>test de Rao</em>, que no requiere ajustar el modelo ampliado y que, como veremos, reproduce exactamente algunos de los contrastes clásicos.</p>
+</section>
+<section id="regresión-logística-y-comparación-de-proporciones" class="level3" data-number="11.10.2">
+<h3 data-number="11.10.2" class="anchored" data-anchor-id="regresión-logística-y-comparación-de-proporciones"><span class="header-section-number">11.10.2</span> Regresión logística y comparación de proporciones</h3>
+<p>Cuando la variable respuesta <span class="math inline">\(Y\)</span> es dicotómica, codificada con 1 para el éxito y 0 para el fracaso, sigue una distribución de Bernoulli cuya media es la probabilidad de éxito, <span class="math inline">\(\mu=p\)</span>. La <em>regresión logística</em> modela esta probabilidad mediante la función de enlace logit:</p>
+<p><span class="math display">\[
+\log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1X_1 + \cdots + \beta_kX_k.
+\]</span></p>
+<p>El cociente <span class="math inline">\(\frac{p}{1-p}\)</span> se conoce como <em>odds</em> o <em>ventaja</em> del éxito, y nos dice cuántas veces es más probable el éxito que el fracaso. Despejando <span class="math inline">\(p\)</span> se obtiene</p>
+<p><span class="math display">\[
+p = \frac{e^{\beta_0 + \beta_1X_1 + \cdots + \beta_kX_k}}{1+e^{\beta_0 + \beta_1X_1 + \cdots + \beta_kX_k}},
+\]</span></p>
+<p>que siempre está entre 0 y 1, cualesquiera que sean los valores de las variables explicativas.</p>
+<p>Si <span class="math inline">\(X\)</span> es la variable indicadora de un grupo, el modelo <span class="math inline">\(\log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1X\)</span> permite comparar la proporción de éxitos en dos poblaciones:</p>
+<ul>
+<li><span class="math inline">\(e^{\beta_0}\)</span> es la odds del éxito en el grupo de referencia.</li>
+<li><span class="math inline">\(e^{\beta_1}\)</span> es el cociente entre las odds del éxito en el segundo grupo y en el de referencia, es decir, el <em>odds ratio</em>.</li>
+</ul>
+<p>Y el contraste de comparación de proporciones <span class="math inline">\(H_0: p_1=p_2\)</span> equivale a <span class="math inline">\(H_0:\beta_1=0\)</span>, o lo que es lo mismo, a que el odds ratio sea 1.</p>
+<div id="exm-logistica-proporciones" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 11.9 (Comparación de proporciones como regresión logística)</strong></span> Para estudiar la eficacia de un fármaco en la prevención de la migraña, se ha administrado el fármaco a 60 pacientes y un placebo a otros 60. Al cabo de un mes, 18 pacientes del grupo placebo (30%) y 9 del grupo del fármaco (15%) han sufrido algún episodio de migraña. El contraste de comparación de proporciones da un estadístico <span class="math inline">\(\chi^2=3.8710\)</span> (que es el cuadrado del estadístico <span class="math inline">\(Z\)</span>) con <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.0491\)</span>.</p>
+<p>Si ajustamos el modelo de regresión logística</p>
+<p><span class="math display">\[
+\log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1X_{\text{fármaco}},
+\]</span></p>
+<p>donde <span class="math inline">\(p\)</span> es la probabilidad de sufrir migraña, se obtiene:</p>
+<ul>
+<li><span class="math inline">\(\hat\beta_0=-0.8473\)</span>, de manera que la odds de sufrir migraña con el placebo es <span class="math inline">\(e^{-0.8473}=0.4286\)</span>, que es <span class="math inline">\(18/42\)</span>.</li>
+<li><span class="math inline">\(\hat\beta_1=-0.8873\)</span>, de manera que el odds ratio es <span class="math inline">\(e^{-0.8873}=0.4118\)</span>, es decir, la odds de sufrir migraña con el fármaco es menos de la mitad que con el placebo.</li>
+</ul>
+<p>La comparación del modelo compacto <span class="math inline">\(\log\left(\frac{p}{1-p}\right) = \beta_0\)</span> con el modelo ampliado mediante el contraste de puntuaciones da exactamente el mismo estadístico, <span class="math inline">\(3.8710\)</span>, y el mismo <span class="math inline">\(p\)</span>-valor, <span class="math inline">\(= 0.0491\)</span>, que el contraste de comparación de proporciones. El contraste de razón de verosimilitudes da un estadístico <span class="math inline">\(D(C)-D(A)=3.9305\)</span> con <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.0474\)</span>, muy parecido.</p>
+</div>
+<p>La gran ventaja de la regresión logística sobre el contraste de proporciones es que permite incluir en el modelo otras variables explicativas, cualitativas o cuantitativas, del mismo modo que el ANCOVA amplía la comparación de medias.</p>
+</section>
+<section id="regresión-de-poisson-y-contraste-chi-cuadrado-de-independencia" class="level3" data-number="11.10.3">
+<h3 data-number="11.10.3" class="anchored" data-anchor-id="regresión-de-poisson-y-contraste-chi-cuadrado-de-independencia"><span class="header-section-number">11.10.3</span> Regresión de Poisson y contraste chi-cuadrado de independencia</h3>
+<p>Cuando la variable respuesta <span class="math inline">\(Y\)</span> es un recuento, se suele asumir que sigue una distribución de Poisson, y la <em>regresión de Poisson</em> modela su media con la función de enlace logaritmo:</p>
+<p><span class="math display">\[
+\log(\mu) = \beta_0 + \beta_1X_1 + \cdots + \beta_kX_k.
+\]</span></p>
+<p>Un caso particularmente interesante es el de las tablas de contingencia, en las que la respuesta es la frecuencia observada en cada casilla. Si las variables cualitativas <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes, la frecuencia esperada en la casilla <span class="math inline">\((i,j)\)</span> es <span class="math inline">\(n\, p_{i\cdot}\, p_{\cdot j}\)</span>, y tomando logaritmos</p>
+<p><span class="math display">\[
+\log(\mu_{ij}) = \log(n) + \log(p_{i\cdot}) + \log(p_{\cdot j}),
+\]</span></p>
+<p>que es un modelo lineal en las variables indicadoras de <span class="math inline">\(A\)</span> y de <span class="math inline">\(B\)</span>, sin interacción. Este modelo se conoce como <em>modelo log-lineal de independencia</em>. Si las variables no son independientes, hay que añadir al modelo la interacción entre <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>. Por tanto, el contraste chi-cuadrado de independencia equivale a comparar el modelo log-lineal sin interacción (compacto) con el modelo con interacción (ampliado), exactamente igual que en el ANOVA de dos factores.</p>
+<div id="exm-poisson-chi-cuadrado" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 11.10 (Contraste chi-cuadrado como modelo log-lineal)</strong></span> Se quiere estudiar si existe relación entre el hábito de fumar y la práctica de ejercicio físico. Para ello se ha preguntado a 120 personas, obteniendo la siguiente tabla de frecuencias:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fumador</th>
+<th style="text-align: center;">Nada</th>
+<th style="text-align: center;">Moderado</th>
+<th style="text-align: center;">Intenso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sí</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">No</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">20</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>El contraste chi-cuadrado de independencia da un estadístico <span class="math inline">\(\chi^2=7.0490\)</span> con <span class="math inline">\(2\)</span> grados de libertad y <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.0295\)</span>.</p>
+<p>Si ajustamos a las frecuencias de las 6 casillas el modelo de regresión de Poisson de independencia,</p>
+<p><span class="math display">\[
+\log(\mu) = \beta_0 + \beta_1X_{\text{No fumador}} + \beta_2X_{\text{Moderado}} + \beta_3X_{\text{Intenso}},
+\]</span></p>
+<p>y el modelo con interacción,</p>
+<p><span class="math display">\[
+\log(\mu) = \beta_0 + \beta_1X_{\text{No fumador}} + \beta_2X_{\text{Moderado}} + \beta_3X_{\text{Intenso}} + \beta_4X_{\text{No fumador}}X_{\text{Moderado}} + \beta_5X_{\text{No fumador}}X_{\text{Intenso}},
+\]</span></p>
+<p>el contraste de puntuaciones para comparar ambos modelos da exactamente el mismo estadístico, <span class="math inline">\(7.0490\)</span>, con 2 grados de libertad (los dos parámetros de la interacción), y el mismo <span class="math inline">\(p\)</span>-valor, <span class="math inline">\(= 0.0295\)</span>, que el contraste chi-cuadrado. El contraste de razón de verosimilitudes da un estadístico <span class="math inline">\(D(C)-D(A)=7.1039\)</span> con <span class="math inline">\(p\)</span>-valor <span class="math inline">\(= 0.0287\)</span>, que se conoce como contraste <span class="math inline">\(G\)</span> de independencia. En cualquier caso, se concluye que el hábito de fumar y la práctica de ejercicio están relacionados.</p>
+</div>
+</section>
+</section>
+<section id="resumen-los-contrastes-como-modelos-lineales" class="level2" data-number="11.11">
+<h2 data-number="11.11" class="anchored" data-anchor-id="resumen-los-contrastes-como-modelos-lineales"><span class="header-section-number">11.11</span> Resumen: los contrastes como modelos lineales</h2>
+<p>La siguiente tabla resume las equivalencias entre los contrastes de hipótesis estudiados y los modelos lineales y lineales generalizados. En todos los casos el contraste consiste en comparar el modelo compacto, en el que se cumple la hipótesis nula, con el modelo ampliado que aparece en la tabla, contrastando la hipótesis nula indicada. La última columna indica cómo se ajusta el modelo ampliado en R.</p>
+<div id="tbl-contrastes-modelos-lineales" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-contrastes-modelos-lineales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;11.1: Contrastes de hipótesis como modelos lineales.
+</figcaption>
+<div aria-describedby="tbl-contrastes-modelos-lineales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 42%">
+<col style="width: 16%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Contraste</strong></th>
+<th style="text-align: left;"><strong>Modelo ampliado</strong></th>
+<th style="text-align: left;"><strong>Hipótesis nula</strong></th>
+<th style="text-align: left;"><strong>R</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Media de una población</td>
+<td style="text-align: left;"><span class="math inline">\(Y-\mu_0=\beta_0+\varepsilon\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\beta_0=0\)</span></td>
+<td style="text-align: left;"><code>lm(y - mu0 ~ 1)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Medias de muestras pareadas</td>
+<td style="text-align: left;"><span class="math inline">\(Y_1-Y_2=\beta_0+\varepsilon\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\beta_0=0\)</span></td>
+<td style="text-align: left;"><code>lm(y1 - y2 ~ 1)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Medias de dos muestras independientes</td>
+<td style="text-align: left;"><span class="math inline">\(Y=\beta_0+\beta_1X+\varepsilon\)</span>, <span class="math inline">\(X\)</span> indicadora</td>
+<td style="text-align: left;"><span class="math inline">\(\beta_1=0\)</span></td>
+<td style="text-align: left;"><code>lm(y ~ grupo)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Correlación de Pearson</td>
+<td style="text-align: left;"><span class="math inline">\(Y=\beta_0+\beta_1X+\varepsilon\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\beta_1=0\)</span></td>
+<td style="text-align: left;"><code>lm(y ~ x)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ANOVA de un factor</td>
+<td style="text-align: left;"><span class="math inline">\(Y=\beta_0+\beta_2X_2+\cdots+\beta_kX_k+\varepsilon\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\beta_2=\cdots=\beta_k=0\)</span></td>
+<td style="text-align: left;"><code>lm(y ~ grupo)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ANOVA de dos factores (interacción)</td>
+<td style="text-align: left;"><span class="math inline">\(Y=\beta_0+\beta_1X_A+\beta_2X_B+\beta_3X_AX_B+\varepsilon\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\beta_3=0\)</span></td>
+<td style="text-align: left;"><code>lm(y ~ a * b)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ANCOVA</td>
+<td style="text-align: left;"><span class="math inline">\(Y=\beta_0+\beta_1X_1+\beta_2X_2+\varepsilon\)</span>, <span class="math inline">\(X_2\)</span> covariable</td>
+<td style="text-align: left;"><span class="math inline">\(\beta_1=0\)</span></td>
+<td style="text-align: left;"><code>lm(y ~ grupo + x)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Correlación de Spearman</td>
+<td style="text-align: left;"><span class="math inline">\(\operatorname{rango}(Y)=\beta_0+\beta_1\operatorname{rango}(X)+\varepsilon\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\beta_1=0\)</span></td>
+<td style="text-align: left;"><code>lm(rank(y) ~ rank(x))</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Wilcoxon (una muestra o pareadas)</td>
+<td style="text-align: left;"><span class="math inline">\(\operatorname{rango\ con\ signo}(Y)=\beta_0+\varepsilon\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\beta_0=0\)</span></td>
+<td style="text-align: left;"><code>lm(signed_rank(y) ~ 1)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mann-Whitney</td>
+<td style="text-align: left;"><span class="math inline">\(\operatorname{rango}(Y)=\beta_0+\beta_1X+\varepsilon\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\beta_1=0\)</span></td>
+<td style="text-align: left;"><code>lm(rank(y) ~ grupo)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kruskal-Wallis</td>
+<td style="text-align: left;"><span class="math inline">\(\operatorname{rango}(Y)=\beta_0+\beta_2X_2+\cdots+\beta_kX_k+\varepsilon\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\beta_2=\cdots=\beta_k=0\)</span></td>
+<td style="text-align: left;"><code>lm(rank(y) ~ grupo)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Comparación de dos proporciones</td>
+<td style="text-align: left;"><span class="math inline">\(\log\frac{p}{1-p}=\beta_0+\beta_1X\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\beta_1=0\)</span></td>
+<td style="text-align: left;"><code>glm(y ~ grupo, family = binomial)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chi-cuadrado de independencia</td>
+<td style="text-align: left;"><span class="math inline">\(\log\mu=\beta_0+\cdots+\)</span> interacción <span class="math inline">\(A\times B\)</span></td>
+<td style="text-align: left;">Interacción nula</td>
+<td style="text-align: left;"><code>glm(n ~ a * b, family = poisson)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Esta visión unificada tiene importantes ventajas:</p>
+<ul>
+<li>En lugar de memorizar un contraste distinto para cada situación, basta con entender un único modelo y saber cómo representar en él las variables explicativas.</li>
+<li>Las condiciones de aplicación son siempre las mismas: independencia, normalidad y homocedasticidad de los errores en el modelo lineal, y la distribución adecuada de la respuesta en el modelo lineal generalizado.</li>
+<li>Los parámetros del modelo tienen una interpretación directa (medias, diferencias de medias, pendientes, odds ratios) y van acompañados de sus intervalos de confianza, lo que permite cuantificar el tamaño de los efectos y no solo su significación.</li>
+<li>Los modelos pueden ampliarse fácilmente con nuevas variables explicativas para controlar el efecto de otras variables, como en el ANCOVA o en la regresión logística múltiple.</li>
+</ul>
+
+
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">Referencias</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-dobson2018introduction" class="csl-entry" role="listitem">
+Dobson, Annette J., y Adrian G. Barnett. 2018. <em>An Introduction to Generalized Linear Models</em>. 4.ª ed. CRC Press.
+</div>
+<div id="ref-judd2017data" class="csl-entry" role="listitem">
+Judd, Charles M., Gary H. McClelland, y Carey S. Ryan. 2017. <em>Data Analysis: A Model Comparison Approach to Regression, ANOVA, and Beyond</em>. 3.ª ed. Routledge.
+</div>
+<div id="ref-lindelov2019tests" class="csl-entry" role="listitem">
+Lindeløv, Jonas Kristoffer. 2019. <em>Common statistical tests are linear models (or: how to teach stats)</em>. <a href="https://lindeloev.github.io/tests-as-linear/">https://lindeloev.github.io/tests-as-linear/</a>.
+</div>
+<div id="ref-nelder1972generalized" class="csl-entry" role="listitem">
+Nelder, John A., y Robert W. M. Wedderburn. 1972. <span>«Generalized Linear Models»</span>. <em>Journal of the Royal Statistical Society. Series A (General)</em> 135 (3): 370-84. <a href="https://doi.org/10.2307/2344614">https://doi.org/10.2307/2344614</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./10-anova-ancova.html" class="pagination-link" aria-label="Análisis de la Varianza">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análisis de la Varianza</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/asalber/estadistica-tipos-estudios/edit/main/11-modelos-lineales-generalizados.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/asalber/estadistica-tipos-estudios/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div></div></footer></body></html>
